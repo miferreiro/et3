@@ -1,4 +1,4 @@
-# README #
+﻿# README #
 
 # GRUPO: LICORCA #
 # INTEGRANTES: #
@@ -6,6 +6,7 @@
 # ALEJANDRO VILA CID #
 # JONATAN COUTO RIÁDIGOS #
 # BRAIS SANTOS NEGREIRA #
+# BRAIS RODRÍGUEZ MARTINEZ #
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
