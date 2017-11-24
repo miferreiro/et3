@@ -1,5 +1,12 @@
 # README #
 
+# GRUPO: LICORCA #
+# INTEGRANTES: #
+# MIGUEL FERREIRO DIAZ #
+# ALEJANDRO VILA CID #
+# JONATAN COUTO RIÁDIGOS #
+# BRAIS SANTOS NEGREIRA #
+
 This README would normally document whatever steps are necessary to get your application up and running.
 
 ### What is this repository for? ###

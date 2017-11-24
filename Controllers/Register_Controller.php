@@ -17,22 +17,19 @@ else{
 		
 	include '../Models/USUARIOS_MODEL.php';
 	
-	
-	$nombreFoto = $_FILES[ 'fotopersonal' ][ 'name' ];
-	$nombreTempFoto = $_FILES[ 'fotopersonal' ][ 'tmp_name' ];
-	$dir_subida = '../Files/';
-	$fotopersonal = $dir_subida . $nombreFoto ;
-	$usuario = new USUARIOS_Model($_REQUEST['login'],$_REQUEST['password'],$_REQUEST['DNI'],$_REQUEST['nombre'],$_REQUEST['apellidos'],
-		$_REQUEST['telefono'],$_REQUEST['email'],$_REQUEST['FechaNacimiento'],$fotopersonal,$_REQUEST['sexo']);
+	$usuario = new USUARIOS_Model($_REQUEST['login'],$_REQUEST['password'],$_REQUEST['nombre'],$_REQUEST['apellidos'],$_REQUEST['email']);
 	$respuesta = $usuario->Register();
 
+	//Si no existe el login en la base de datos
 	if ($respuesta == 'true'){
 		$respuesta = $usuario->ADD();
-		move_uploaded_file( $nombreTempFoto, $fotopersonal );
+		//Incluye la vista mensaje
 		include '../Views/MESSAGE_View.php';
 		new MESSAGE($respuesta, './Login_Controller.php');
 	}
+	//Si existe en la base de datos
 	else{
+		//Incluye la vista mensaje
 		include '../Views/MESSAGE_View.php';
 		new MESSAGE($respuesta, './Login_Controller.php');
 	}
