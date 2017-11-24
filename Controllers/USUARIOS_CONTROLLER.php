@@ -22,46 +22,17 @@ function get_data_form() {
 
 	$login = $_REQUEST[ 'login' ];
 	$password = $_REQUEST[ 'password' ];
-	$DNI = $_REQUEST[ 'DNI' ];
 	$nombre = $_REQUEST[ 'nombre' ];
 	$apellidos = $_REQUEST[ 'apellidos' ];
-	$telefono = $_REQUEST[ 'telefono' ];
 	$email = $_REQUEST[ 'email' ];
-	$FechaNacimiento = $_REQUEST[ 'FechaNacimiento' ];
-	$sexo = $_REQUEST[ 'sexo' ];
-	$fotopersonal = null;
 	$action = $_REQUEST[ 'action' ];
-
-	if ( isset( $_FILES[ 'fotopersonal' ][ 'name' ] ) ) {
-		$nombreFoto = $_FILES[ 'fotopersonal' ][ 'name' ];
-	} else {
-		$nombreFoto = null;
-	}
-
-	if ( isset( $_FILES[ 'fotopersonal' ][ 'tmp_name' ] ) ) {
-		$nombreTempFoto = $_FILES[ 'fotopersonal' ][ 'tmp_name' ];
-	} else {
-		$nombreTempFoto = null;
-	}
-
-
-	if ( $nombreFoto != null ) {
-		$dir_subida = '../Files/';
-		$fotopersonal = $dir_subida . $nombreFoto;
-		move_uploaded_file( $nombreTempFoto, $fotopersonal );
-	}
 
 	$USUARIOS = new USUARIOS_Model(
 		$login,
 		$password,
-		$DNI,
 		$nombre,
 		$apellidos,
-		$telefono,
 		$email,
-		$FechaNacimiento,
-		$fotopersonal,
-		$sexo
 	);
 
 	return $USUARIOS;
@@ -83,7 +54,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$USUARIOS = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '', '', '', '', '', '' );
+			$USUARIOS = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '');
 			$valores = $USUARIOS->RellenaDatos( $_REQUEST[ 'login' ] );
 			new USUARIOS_DELETE( $valores );
 		} else {
@@ -95,7 +66,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT':
 		if ( !$_POST ) {
 
-			$USUARIOS = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '', '', '', '', '', '' );
+			$USUARIOS = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '');
 			$valores = $USUARIOS->RellenaDatos( $_REQUEST[ 'login' ] );
 			new USUARIOS_EDIT( $valores );
 		} else {
@@ -111,23 +82,23 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			$USUARIOS = get_data_form();
 			$datos = $USUARIOS->SEARCH();
-			$lista = array( 'login', 'DNI', 'telefono', 'email', 'FechaNacimiento', 'fotopersonal', 'sexo' );
+			$lista = array( 'login','nombre','apellidos','email');
 			new USUARIOS_SHOWALL( $lista, $datos );
 		}
 		break;
 	case 'SHOWCURRENT':
-		$USUARIOS = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '', '', '', '', '', '' );
+		$USUARIOS = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '');
 		$valores = $USUARIOS->RellenaDatos( $_REQUEST[ 'login' ] );
 		new USUARIOS_SHOWCURRENT( $valores );
 		break;
 	default:
 		if ( !$_POST ) {
-			$USUARIOS = new USUARIOS_Model( '', '', '', '', '', '', '', '', '', '' );
+			$USUARIOS = new USUARIOS_Model( '', '', '', '', '');
 		} else {
 			$USUARIOS = get_data_form();
 		}
 		$datos = $USUARIOS->SEARCH();
-		$lista = array( 'login', 'DNI', 'telefono', 'email', 'FechaNacimiento', 'fotopersonal', 'sexo' );
+		$lista = array(  'login','nombre','apellidos','email' );
 		new USUARIOS_SHOWALL( $lista, $datos );
 }
 
