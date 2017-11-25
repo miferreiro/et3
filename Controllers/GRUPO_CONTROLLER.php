@@ -1,41 +1,36 @@
 <?php
 /*
 	Archivo php
-	Nombre: USUARIOS_CONTROLLER.php
+	Nombre: GRUPO_CONTROLLER.php
 	Autor: 	fta875
 	Fecha de creación: 9/10/2017 
 	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas.
 */
 session_start(); //solicito trabajar con la session
 
-include '../Models/USUARIOS_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Views/USUARIOS_SHOWALL_View.php'; //incluye la vista del showall
-include '../Views/USUARIOS_SEARCH_View.php'; //incluye la vista search
-include '../Views/USUARIOS_ADD_View.php'; //incluye la vista add
-include '../Views/USUARIOS_EDIT_View.php'; //incluye la vista edit
-include '../Views/USUARIOS_DELETE_View.php'; //incluye la vista delete
-include '../Views/USUARIOS_SHOWCURRENT_View.php'; //incluye la vista showcurrent
+include '../Models/GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Views/GRUPO_SHOWALL_View.php'; //incluye la vista del showall
+include '../Views/GRUPO_SEARCH_View.php'; //incluye la vista search
+include '../Views/GRUPO_ADD_View.php'; //incluye la vista add
+include '../Views/GRUPO_EDIT_View.php'; //incluye la vista edit
+include '../Views/GRUPO_DELETE_View.php'; //incluye la vista delete
+include '../Views/GRUPO_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 
 function get_data_form() {
 
-	$login = $_REQUEST[ 'login' ]; //Variable que almacena el valor de login
-	$password = $_REQUEST[ 'password' ]; //Variable que almacena el valor de password
-	$nombre = $_REQUEST[ 'nombre' ]; //Variable que almacena el valor de nombre
-	$apellidos = $_REQUEST[ 'apellidos' ]; //Variable que almacena el valor de apellidos
-	$email = $_REQUEST[ 'email' ]; //Variable que almacena el valor de email
-	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
+	$idGrupo = $_REQUEST[ 'idgroup' ]; //Variable que almacena el valor de idGrupo
+	$NombreGrupo = $_REQUEST[ 'nombreG' ]; //Variable que almacena el valor de NomnbreGrupo
+	$DescripGrupo = $_REQUEST[ 'descrip' ]; //Variable que almacena el valor de DescripGrupo
 
 	$USUARIOS = new USUARIOS_Model(
-		$login,
-		$password,
-		$nombre,
-		$apellidos,
-		$email,
+		$idGrupo,
+		$NombreGrupo,
+		$DescripGrupo,
 	);
 	//Devuelve el valor del objecto model creado
-	return $USUARIOS;
+	return $GRUPOS;
 }
 //Si la variable action no tiene contenido le asignamos ''
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
@@ -45,91 +40,91 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-			new USUARIOS_ADD();
+			new GRUPO_ADD();
 		} else {//Si recive datos los recoge y mediante las funcionalidad de USUARIOS_MODEL inserta los datos
-			$USUARIOS = get_data_form();//Variable que almacena los datos recogidos
-			$respuesta = $USUARIOS->ADD();//Variable que almacena la respuesta de la inserción
+			$GRUPOS = get_data_form();//Variable que almacena los datos recogidos
+			$respuesta = $GRUPOS->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
-			new MESSAGE( $respuesta, '../Controllers/USUARIOS_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			//Variable que recoge un objecto model con solo el login
-			$USUARIOS = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '');
+			$USUARIOS = new GRUPO_MODEL( $_REQUEST[ 'idgroup' ], '', '');
 			//Variable que almacena el relleno de los datos utilizando el login
-			$valores = $USUARIOS->RellenaDatos( $_REQUEST[ 'login' ] );
+			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'idgroup' ] );
 			//Crea una vista delete para ver la tupla
-			new USUARIOS_DELETE( $valores );
+			new GRUPO_DELETE( $valores );
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
 			$USUARIOS = get_data_form();
 			//Variable que almacena la respuesta de realizar el borrado
-			$respuesta = $USUARIOS->DELETE();
+			$respuesta = $GRUPOS->DELETE();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/USUARIOS_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			//Variable que almacena un objeto model con el login
-			$USUARIOS = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '');
+			$USUARIOS = new GRUPO_MODEL( $_REQUEST[ 'idgroup' ], '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
-			$valores = $USUARIOS->RellenaDatos( $_REQUEST[ 'login' ] );
+			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'idgroup' ] );
 			//Muestra la vista del formulario editar
-			new USUARIOS_EDIT( $valores );
+			new GRUPO_EDIT( $valores );
 			//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
-			$USUARIOS = get_data_form();
+			$GRUPOS = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
-			$respuesta = $USUARIOS->EDIT();
+			$respuesta = $GRUPOS->EDIT();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/USUARIOS_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
 		}
 		//Fin del bloque
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-			new USUARIOS_SEARCH();
+			new GRUPO_SEARCH();
 		//Si se reciben datos	
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
-			$USUARIOS = get_data_form();
+			$GRUPOS = get_data_form();
 			//Variable que almacena el resultado de la busqueda
-			$datos = $USUARIOS->SEARCH();
+			$datos = $GRUPOS->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
-			$lista = array( 'login','nombre','apellidos','email');
+			$lista = array( 'idGrupo','Nombre Grupo','Descripcion Grupo');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			new USUARIOS_SHOWALL( $lista, $datos );
+			new GRUPO_SHOWALL( $lista, $datos );
 		}
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 		//Variable que almacena un objeto model con el login
-		$USUARIOS = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '');
+		$USUARIOS = new GRUPO_MODEL( $_REQUEST[ 'login' ], '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
-		$valores = $USUARIOS->RellenaDatos( $_REQUEST[ 'login' ] );
+		$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'login' ] );
 		//Creación de la vista showcurrent
-		new USUARIOS_SHOWCURRENT( $valores );
+		new GRUPO_SHOWCURRENT( $valores );
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
 		if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIOS = new USUARIOS_Model( '', '', '', '', '');
+			$GRUPOS = new USUARIOS_Model( '', '', '');
 		//Si se reciben datos
 		} else {
-			$USUARIOS = get_data_form();
+			$GRUPOS = get_data_form();
 		}
 		//Variable que almacena los datos de la busqueda
-		$datos = $USUARIOS->SEARCH();
+		$datos = $GRUPOS->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
-		$lista = array(  'login','nombre','apellidos','email' );
+		$lista = array( 'idGrupo','Nombre Grupo','Descripcion Grupo');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new USUARIOS_SHOWALL( $lista, $datos );
+		new GRUPO_SHOWALL( $lista, $datos );
 }
 
 ?>
