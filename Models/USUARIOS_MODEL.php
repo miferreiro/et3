@@ -25,7 +25,7 @@ class USUARIOS_MODEL { //declaración de la clase
 		$this->nombre = $nombre;
 		$this->apellidos = $apellidos;
         $this->email = $email;
-        $this->direccion=direccion;
+        $this->direccion=$direccion;
 		$this->telefono = $telefono;
 		
         
