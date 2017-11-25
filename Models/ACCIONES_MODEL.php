@@ -8,7 +8,7 @@ class ACCIONES_MODEL{
     var $DescripcionAccion;//declaracion de la variable DescripcionAccion
 
     //constructor de la clase
-    public __construct($IdAccion,$NombreAccion,$DescripcionAccion){
+    function __construct($IdAccion,$NombreAccion,$DescripcionAccion){
         //Asignamos valores a los atributos de la clase
         $this->$IdAccion=$IdAccion;
         $this->NombreDescripcion=$NombreDescripcion;
