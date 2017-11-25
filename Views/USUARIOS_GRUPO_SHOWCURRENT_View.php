@@ -1,11 +1,11 @@
 <?php
 /*  Archivo php
-	Nombre: USUARIOS_SHOWCURRENT_View.php
+	Nombre: USUARIOS_GRUPO_SHOWCURRENT_View.php
 	Autor: 	fta875
 	Fecha de creación: 9/10/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de un usuario
 */
-class USUARIOS_SHOWCURRENT {
+class USUARIOS_GRUPO_SHOWCURRENT {
 
 	function __construct( $lista ) {
 		$this->lista = $lista;
@@ -29,64 +29,16 @@ class USUARIOS_SHOWCURRENT {
 					<?php echo $this->lista['login'] ?>
 				</td>
 			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['Contraseña'];?>
-				</th>
-				<td>
-					<?php echo $this->lista['password'] ?>
-				</td>
-			</tr>
 
 			<tr>
 				<th>
-					<?php echo $strings['DNI'];?>
+					<?php echo $strings['ID Grupo'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['DNI'] ?>
+					<?php echo $this->lista['ID Grupo'] ?>
 				</td>
 			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['Nombre'];?>
-				</th>
-				<td>
-					<?php echo $this->lista['nombre'] ?>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['Apellidos'];?>
-				</th>
-				<td>
-					<?php echo $this->lista['apellidos'] ?>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['Teléfono'];?>
-				</th>
-				<td>
-					<?php echo $this->lista['telefono'] ?>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['Correo electrónico'];?>
-				</th>
-				<td>
-					<?php echo $this->lista['email'] ?>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['Dirección'];?>
-				</th>
-				<td>
-					<?php echo $this->lista['Dirección'] ?>
-				</td>
-			</tr>
-
+			
 			<caption style="margin-top:10px;" align="bottom">
 				<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post">
 					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>

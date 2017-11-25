@@ -67,37 +67,9 @@ class USUARIOS_EDIT {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Fecha de Nacimiento'];?>
+							<?php echo $strings['Dirección'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaNacimiento" name="FechaNacimiento" class="tcal" value="<?php echo $this->valores['FechaNacimiento']?>" readonly size="15" required/>
-					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Foto personal'];?>
-						</th>
-						<td class="formThTd">
-							<a href="<?php echo $this->valores['fotopersonal']?>" alt="<?php echo $strings['Foto personal'];?>">
-								<?php echo $this->valores['fotopersonal']?></a>
-							<p style="font-size: 12px"><?php echo $strings['Seleccione una nueva foto personal si desea cambiarla, en caso contrario, no es necesario seleccionarla de nuevo.'];?></p>
-					
-							<input type="file" id="fotopersonal" name="fotopersonal" value="<?php echo $this->valores['fotopersonal']?>" accept="image/*"  />
-					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Sexo'];?>
-						</th>
-						<td class="formThTd">
-							<select id="sexo" name="sexo" value="<?php echo $this->valores['sexo']?>" required onBlur="comprobarVacio(this) && comprobarVacio(document.forms['EDIT'].elements[7])" >
-								<option value="">
-									<?php echo $strings['Elija sexo'];?>
-								</option>
-								<option value="hombre" <?php echo (($this->valores['sexo'])=='hombre')? "selected" : ""; ?>>
-									<?php echo $strings['Hombre'];?>
-								</option>
-								<option value="mujer" <?php echo (($this->valores['sexo'])=='mujer')? "selected" : ""; ?>>
-									<?php echo $strings['Mujer'];?>
-								</option>
-							</select>
+						<td class="formThTd"><input type="text" id="direc" name="direc" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Dirección']?>" maxlength="60" size="70" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')" required/>
 					</tr>
 					<tr>
 						<td colspan="2">

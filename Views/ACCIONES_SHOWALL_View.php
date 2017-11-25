@@ -1,11 +1,11 @@
 <?php
 /*  Archivo php
-	Nombre: USUARIOS_SHOWALL_View.php
+	Nombre: ACCION_SHOWALL_View.php
 	Autor: 	fta875
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class USUARIOS_SHOWALL {
+class ACCION_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -62,7 +62,7 @@ class USUARIOS_SHOWALL {
 ?>
 					<td>
 						<form action="../Controllers/USUARIOS_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
+							<input type="hidden" name="login" value="<?php echo $fila['idgroup']; ?>">
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 					<td>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>

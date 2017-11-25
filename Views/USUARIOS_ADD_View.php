@@ -65,32 +65,9 @@ class USUARIOS_ADD {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Fecha de Nacimiento'];?>
+							<?php echo $strings['Dirección'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaNacimiento" name="FechaNacimiento" class="tcal" value="" readonly size="15" required/>
-					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Foto personal'];?>
-						</th>
-						<td class="formThTd"><input type="file" id="fotopersonal" name="fotopersonal" value="" required accept="image/*" onblur="comprobarVacio(document.forms['ADD'].elements[7])"/>
-					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Sexo'];?>
-						</th>
-						<td class="formThTd">
-							<select id="sexo" name="sexo" value="" required onBlur="comprobarVacio(document.forms['ADD'].elements[7]) && comprobarVacio(document.forms['ADD'].elements[8]) && comprobarVacio(this)">
-								<option value="">
-									<?php echo $strings['Elija sexo'];?>
-								</option>
-								<option value="hombre">
-									<?php echo $strings['Hombre'];?>
-								</option>
-								<option value="mujer">
-									<?php echo $strings['Mujer'];?>
-								</option>
-							</select>
+						<td class="formThTd"><input type="text" id="direc" name="direc" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="70" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')" required/>
 					</tr>
 					<tr>
 						<td colspan="2">

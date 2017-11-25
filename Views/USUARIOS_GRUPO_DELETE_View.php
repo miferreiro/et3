@@ -1,11 +1,11 @@
 <?php
 /*  Archivo php
-	Nombre: USUARIOS_DELETE_View.php
+	Nombre: USUARIOS_GRUPO_DELETE_View.php
 	Autor: 	fta875
 	Fecha de creación: 9/10/2017 
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de un usuario y da la opción de borrarlos
 */
-class USUARIOS_DELETE {
+class USUARIOS_GRUPO_DELETE {
 
 	function __construct( $valores ) {
 		$this->valores = $valores;
@@ -30,62 +30,16 @@ class USUARIOS_DELETE {
 						<?php echo $this->valores['login']?>
 					</td>
 				</tr>
+
 				<tr>
 					<th>
-						<?php echo $strings['Contraseña'];?>
+						<?php echo $strings['ID Grupo'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['password']?>
+						<?php echo $this->valores['ID Grupo']?>
 					</td>
 				</tr>
-				<tr>
-					<th>
-						<?php echo $strings['DNI'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['DNI']?>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?php echo $strings['Nombre'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['nombre']?>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?php echo $strings['Apellidos'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['apellidos']?>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?php echo $strings['Teléfono'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['telefono']?>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?php echo $strings['Correo electrónico'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['email']?>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?php echo $strings['Dirección'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['Dirección']?>
-					</td>
-				</tr>
+
 			</table>
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
@@ -93,12 +47,7 @@ class USUARIOS_DELETE {
 			<form action="../Controllers/USUARIOS_CONTROLLER.php" method="post" style="display: inline">
 				<input type="hidden" name="login" value=<?php echo $this->valores['login'] ?> />
 				<input type="hidden" name="password" value=<?php echo $this->valores['password'] ?> />
-				<input type="hidden" name="DNI" value=<?php echo $this->valores['DNI'] ?> />
-				<input type="hidden" name="nombre" value=<?php echo $this->valores['nombre'] ?> />
-				<input type="hidden" name="apellidos" value=<?php echo $this->valores['apellidos'] ?> />
-				<input type="hidden" name="telefono" value=<?php echo $this->valores['telefono'] ?> />
-				<input type="hidden" name="email" value=<?php echo $this->valores['email'] ?> />
-				<input type="hidden" name="FechaNacimiento" value=<?php echo $this->valores['Dirección'] ?> />
+				<input type="hidden" name="DNI" value=<?php echo $this->valores['ID Grupo'] ?> />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
 			<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post" style="display: inline">

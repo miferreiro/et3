@@ -66,32 +66,9 @@ class USUARIOS_SEARCH {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Fecha de Nacimiento'];?>
+							<?php echo $strings['Dirección'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaNacimiento" name="FechaNacimiento" class="tcal" value="" readonly size="15"/>
-					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Foto personal'];?>
-						</th>
-						<td class="formThTd"><input type="file" id="fotopersonal" name="fotopersonal" value="" accept="image/*"/>
-					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Sexo'];?>
-						</th>
-						<td class="formThTd">
-							<select id="sexo" name="sexo" value="">
-								<option value="">
-									<?php echo $strings['Elija sexo'];?>
-								</option>
-								<option value="hombre">
-									<?php echo $strings['Hombre'];?>
-								</option>
-								<option value="mujer">
-									<?php echo $strings['Mujer'];?>
-								</option>
-							</select>
+						<td class="formThTd"><input type="text" id="direc" name="direc" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="70" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
 					</tr>
 					<tr>
 						<td colspan="2">

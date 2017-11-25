@@ -1,11 +1,11 @@
 <?php
 /*  Archivo php
-	Nombre: USUARIOS_SHOWALL_View.php
+	Nombre: USUARIOS_GRUPO_SHOWALL_View.php
 	Autor: 	fta875
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class USUARIOS_SHOWALL {
+class USUARIOS_GRUPO_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -53,8 +53,8 @@ class USUARIOS_SHOWALL {
 ?>
 					<td>
 <?php 
-							echo $fila[ $atributo ];
 
+							echo $fila[ $atributo ];
 ?>
 					</td>
 <?php
