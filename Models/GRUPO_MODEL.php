@@ -8,7 +8,7 @@
         var $nombreGrupo;//Declaracion de la variable nombreGrupo
         var $descripcionGrupo;//Declaracion de la variable descripcionGrupo
             
-        public __construct($idGrupo,$nombreGrupo,$descripcionGrupo){
+        function __construct($idGrupo,$nombreGrupo,$descripcionGrupo){
             //Asignamos valores a los atributos de la clase
             $this->idGrupo=$idGrupo;
             $this->nombreGrupo=$nombreGrupo;
