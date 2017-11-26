@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class ACCION_SHOWALL {
+class PERMISOS_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -75,7 +75,7 @@ class ACCION_SHOWALL {
 				}
 ?>
 			</table>
-			<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post">
+			<form action='../Controllers/PERMISOS_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

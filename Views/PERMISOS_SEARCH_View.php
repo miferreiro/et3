@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a una acción de la base de datos
 */
-class USUARIOS_SEARCH {
+class PERMISOS_SEARCH {
 
 	function __construct() {
 		$this->render();

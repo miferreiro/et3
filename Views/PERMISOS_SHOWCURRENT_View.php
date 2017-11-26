@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una acción
 */
-class ACCION_SHOWCURRENT {
+class PERMISOS_SHOWCURRENT {
 
 	function __construct( $lista ) {
 		$this->lista = $lista;

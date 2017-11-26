@@ -19,7 +19,7 @@ class PERMISOS_ADD {
 			<h2>
 				<?php echo $strings['Formulario de Permiso'];?>
 			</h2>
-			<form name="ADD_PERMISOS" action="../Controllers/USUARIOS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd()">
+			<form name="ADD_PERMISOS" action="../Controllers/PERMISOS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -44,7 +44,7 @@ class PERMISOS_ADD {
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" />
 							</button>
 			</form>
-						<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post" style="display: inline">
+						<form action='../Controllers/PERMISOS_CONTROLLER.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>
