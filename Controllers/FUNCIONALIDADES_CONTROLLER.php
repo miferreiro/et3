@@ -82,6 +82,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new FUNCIONALIDADES_SHOWALL( $lista, $datos );
 		}
 		break;
+		
+	case 'SHOWCURRENT':
+		$FUNCIONALIDADES= new FUNCIONALIDADES_Model( $_REQUEST[ 'idFuncionalidad' ], '', '');
+		$valores = $FUNCIONALIDADES->RellenaDatos( $_REQUEST[ 'idFuncionalidad' ] );
+		new FUNCINOALIDADES_SHOWCURRENT( $valores );
+		break;
 	default:
 		if ( !$_POST ) {
 			$FUNCIONALIDADES = new FUNCIONALIDADES_Model( '', '', '');
