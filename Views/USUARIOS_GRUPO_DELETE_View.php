@@ -46,7 +46,6 @@ class USUARIOS_GRUPO_DELETE {
 			</p>
 			<form action="../Controllers/USUARIOS_CONTROLLER.php" method="post" style="display: inline">
 				<input type="hidden" name="login" value=<?php echo $this->valores['login'] ?> />
-				<input type="hidden" name="password" value=<?php echo $this->valores['password'] ?> />
 				<input type="hidden" name="DNI" value=<?php echo $this->valores['ID Grupo'] ?> />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>

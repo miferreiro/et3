@@ -27,12 +27,7 @@ class USUARIOS_ADD {
 						</th>
 						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="15" size="20" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'15') && comprobarTexto(this,'15')"/>
 					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Contraseña'];?>
-						</th>
-						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="20" size="25" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'20') && comprobarTexto(this,'20')"/>
-					</tr>
+
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['ID Grupo'];?>
