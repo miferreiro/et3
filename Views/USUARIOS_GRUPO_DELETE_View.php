@@ -45,8 +45,8 @@ class USUARIOS_GRUPO_DELETE {
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
 			<form action="../Controllers/USUARIOS_CONTROLLER.php" method="post" style="display: inline">
-				<input type="hidden" name="login" value=<?php echo $this->valores['login'] ?> />
-				<input type="hidden" name="DNI" value=<?php echo $this->valores['ID Grupo'] ?> />
+				<input type="hidden" name="login" value="<?php echo $this->valores['login'] ?>" />
+				<input type="hidden" name="DNI" value="<?php echo $this->valores['ID Grupo'] ?>" />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
 			<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post" style="display: inline">
