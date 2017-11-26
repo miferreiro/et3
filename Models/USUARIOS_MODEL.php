@@ -2,6 +2,7 @@
 
 /*
  Función: modelo de datos definida en una clase que permite interactuar con la base de datos
+ Fecha de creación:23/11/2017
 */
 class USUARIOS_MODEL { //declaración de la clase
 

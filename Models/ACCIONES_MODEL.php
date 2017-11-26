@@ -1,6 +1,7 @@
 
 <?php
 //modelo que interactuará con el controlador y llevará datos a la base de datos ó recogerá valores de la base de datos.
+//Fecha de creación:23/11/2017
 class ACCIONES_MODEL{
 
     var $IdAccion;//clave de la tabla de ACCIONES
@@ -72,6 +73,9 @@ class ACCIONES_MODEL{
 								'$this->DescripcionAccion'
 								)";
                 }
+                    else{
+                        return 'Ya existe la acción introducida en la base de datos'; // ya existe
+                    }
 					}
 					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
@@ -80,7 +84,7 @@ class ACCIONES_MODEL{
 					}
 
 				} else // si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-					return 'Ya existe la acción introducida en la base de datos'; // ya existe
+					return 'Introduzca un valor'; // ya existe
     
 	} // fin del metodo ADD
 
