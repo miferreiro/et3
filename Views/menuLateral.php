@@ -23,12 +23,16 @@
 
 					<ul>
 						<li>
-							<a href="../Controllers/usuarios_Controller.php?action=ADD"><?php echo $strings['Insertar Usuario']; ?></a>
+							<a href="../Controllers/USUARIO_CONTROLLER.php?action=ADD"><?php echo $strings['Insertar Usuario']; ?></a>
 						</li>
 
 
 						<li>
-							<a href="../Controllers/usuarios_Controller.php?action=SEARCH"><?php echo $strings['Buscar Usuario']; ?></a>
+							<a href="../Controllers/USUARIO_CONTROLLER.php?action=SEARCH"><?php echo $strings['Buscar Usuario']; ?></a>
+						</li>
+
+						<li>
+							<a href="../Controllers/usuarios_Controller.php"><?php echo $strings['Mostrar todos']; ?></a>
 						</li>
 
 					</ul>
@@ -36,7 +40,7 @@
 
 
 				<li>
-					<a href="../Controllers/usuarios_Controller.php"><?php echo $strings['Mostrar todos']; ?></a>
+					<a href=""><?php echo $strings['Mostrar todos']; ?></a>
 				</li>
 
 
