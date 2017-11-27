@@ -19,7 +19,7 @@ else{
 
 	//Incluye el acceso al modelo de datos
 	include '../Models/USUARIOS_MODEL.php';
-	$usuario = new USUARIOS_Model($_REQUEST['login'],$_REQUEST['password'],'','','');
+	$usuario = new USUARIOS_MODEL($_REQUEST['login'],$_REQUEST['password'], '', '', '', '', '', '');
 	$respuesta = $usuario->login();
 
 	//Si existe el usuario se devuelve true y le asignamos a la variable de sesion el valor del login
