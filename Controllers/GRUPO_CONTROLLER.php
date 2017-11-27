@@ -105,7 +105,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 		//Variable que almacena un objeto model con el IdGrupo
-		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '', '', '');
+		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 		//Variable que almacena los valores rellenados a traves de IdGrupo
 		$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
 		//Creación de la vista showcurrent
