@@ -3,7 +3,7 @@
 //Modelo que interactúa con el controlador de FUNCIONALIDAD y la tabla de FUNCIONALIDAD de la base de datos.
 //Fecha de creación:26/11/2017
 
-    class FUNCIONALIDAD_MODEL{
+    class FUNCIONALIDAD{
        
 
         var $IdFuncionalidad;//Declaración de la variable IdFuncionalidad, es la clave.

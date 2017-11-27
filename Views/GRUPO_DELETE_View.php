@@ -27,7 +27,7 @@ class GRUPO_DELETE {
 						<?php echo $strings['ID Grupo'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['idgroup']?>
+						<?php echo $this->valores['IdGrupo']?>
 					</td>
 				</tr>
 
@@ -36,7 +36,7 @@ class GRUPO_DELETE {
 						<?php echo $strings['Nombre Grupo'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['nombreG']?>
+						<?php echo $this->valores['NombreGrupo']?>
 					</td>
 				</tr>
 				
@@ -45,7 +45,7 @@ class GRUPO_DELETE {
 						<?php echo $strings['Descripción Grupo'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['descrip']?>
+						<?php echo $this->valores['DescripGrupo']?>
 					</td>
 				</tr>
 				
@@ -53,13 +53,13 @@ class GRUPO_DELETE {
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
-			<form action="../Controllers/USUARIOS_CONTROLLER.php" method="post" style="display: inline">
-				<input type="hidden" name="login" value=<?php echo $this->valores['idgroup'] ?> />
-				<input type="hidden" name="nombre" value=<?php echo $this->valores['nombreG'] ?> />
-				<input type="hidden" name="apellidos" value=<?php echo $this->valores['descrip'] ?> />
+			<form action="../Controllers/GRUPO_CONTROLLER.php" method="post" style="display: inline">
+				<input type="hidden" name="IdGrupo" value=<?php echo $this->valores['IdGrupo'] ?> />
+				<input type="hidden" name="NombreGrupo" value=<?php echo $this->valores['NombreGrupo'] ?> />
+				<input type="hidden" name="DescripGrupo" value=<?php echo $this->valores['DescripGrupo'] ?> />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
-			<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/GRUPO_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>

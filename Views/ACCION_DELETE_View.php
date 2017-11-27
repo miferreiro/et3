@@ -1,10 +1,11 @@
 <?php
 /*  Archivo php
-	Nombre: FUNCIONALIDADES_DELETE_View.php
-	Fecha de creación: 26/11/2017 
-	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una Funcionalidad y da la opción de borrarlos
+	Nombre: ACCION_DELETE_View.php
+	Autor: 	fta875
+	Fecha de creación: 9/10/2017 
+	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una acción y da la opción de borrarlos
 */
-class FUNCIONALIDADES_DELETE {
+class ACCION_DELETE {
 
 	function __construct( $valores ) {
 		$this->valores = $valores;
@@ -23,28 +24,28 @@ class FUNCIONALIDADES_DELETE {
 			<table>
 				<tr>
 					<th>
-						<?php echo $strings['ID Funcionalidad'];?>
+						<?php echo $strings['ID Acción'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['idFunc']?>
+						<?php echo $this->valores['IdAccion']?>
 					</td>
 				</tr>
 
 				<tr>
 					<th>
-						<?php echo $strings['Nombre Funcionalidad'];?>
+						<?php echo $strings['Nombre Acción'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['nombreFunc']?>
+						<?php echo $this->valores['NombreAccion']?>
 					</td>
 				</tr>
 				
 				<tr>
 					<th>
-						<?php echo $strings['Descripción Funcionalidad'];?>
+						<?php echo $strings['Descripción Acción'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['descripFunc']?>
+						<?php echo $this->valores['DescripAccion']?>
 					</td>
 				</tr>
 				
@@ -52,13 +53,13 @@ class FUNCIONALIDADES_DELETE {
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
-			<form action="../Controllers/FUNCIONALIDADES_CONTROLLER.php" method="post" style="display: inline">
-				<input type="hidden" name="idFunc" value=<?php echo $this->valores['idFunc'] ?> />
-				<input type="hidden" name="nombreFunc" value=<?php echo $this->valores['nombreFunc'] ?> />
-				<input type="hidden" name="descripFunc" value=<?php echo $this->valores['descripFunc'] ?> />
+			<form action="../Controllers/ACCION_CONTROLLER.php" method="post" style="display: inline">
+				<input type="hidden" name="IdAccion" value="<?php echo $this->valores['IdAccion'] ?>" />
+				<input type="hidden" name="NombreAccion" value="<?php echo $this->valores['NombreAccion'] ?>" />
+				<input type="hidden" name="DescripAccion" value="<?php echo $this->valores['DescripAccion'] ?>" />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
-			<form action='../Controllers/FUNCIONALIDADES_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/ACCION_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>

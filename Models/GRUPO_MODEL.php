@@ -2,18 +2,18 @@
 
 //modelo de datos definida con una clase que interactúa con el controlador que gestiona el grupo.
 //Fecha de creación:23/11/2017
-    class GRUPO_MODEL{
+    class GRUPO{
         
         //Se definen las vaiables que se utilizarán en esta clase
-        var $idGrupo; //es la clave de la tabla GRUPO.
-        var $nombreGrupo;//Declaracion de la variable nombreGrupo
-        var $descripcionGrupo;//Declaracion de la variable descripcionGrupo
+        var $IdGrupo; //es la clave de la tabla GRUPO.
+        var $NombreGrupo;//Declaracion de la variable NombreGrupo
+        var $DescripGrupo;//Declaracion de la variable DescripGrupo
             
-        function __construct($idGrupo,$nombreGrupo,$descripcionGrupo){
+        function __construct($IdGrupo,$NombreGrupo,$DescripGrupo){
             //Asignamos valores a los atributos de la clase
-            $this->idGrupo=$idGrupo;
-            $this->nombreGrupo=$nombreGrupo;
-            $this->descripcionGrupo=$descripcionGrupo;
+            $this->IdGrupo=$IdGrupo;
+            $this->NombreGrupo=$NombreGrupo;
+            $this->DescripGrupo=$DescripGrupo;
             
             // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -27,15 +27,15 @@
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "select idGrupo,
-                        nombreGrupo,
-                        descripcionGrupo
+		$sql = "select IdGrupo,
+                        NombreGrupo,
+                        DescripGrupo
        			from GRUPO
     			where 
     				(
-					(BINARY idGrupo LIKE '%$this->idGrupo%') &&
-                    (BINARY nombreGrupo LIKE '%$this->nombreGrupo%') &&
-                    (BINARY descripcionGrupo LIKE '%$this->descripcionGrupo%')
+					(BINARY IdGrupo LIKE '%$this->IdGrupo%') &&
+                    (BINARY NombreGrupo LIKE '%$this->NombreGrupo%') &&
+                    (BINARY DescripGrupo LIKE '%$this->DescripGrupo%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -52,10 +52,10 @@
 	// de los atributos del objeto. Comprueba si la clave esta vacia y si 
 	//existe ya en la tabla
 	function ADD() {
-		if ( ( $this->idGrupo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
+		if ( ( $this->IdGrupo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM GRUPO WHERE (  idGrupo COLLATE utf8_bin = '$this->idGrupo')";
+			$sql = "SELECT * FROM GRUPO WHERE (  IdGrupo COLLATE utf8_bin = '$this->IdGrupo')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -63,13 +63,13 @@
                 if ($result->num_rows == 0){ // miramos si el resultado de la consulta es vacio
                     //hacemos la inserción en la base de datos
 					$sql = "INSERT INTO GRUPO (
-							    idGrupo,
-                                nombreGrupo,
-                                descripcionGrupo) 
+							    IdGrupo,
+                                NombreGrupo,
+                                DescripGrupo) 
 								VALUES(
-								'$this->idGrupo',
-								'$this->nombreGrupo',
-								'$this->descripcionGrupo'
+								'$this->IdGrupo',
+								'$this->NombreGrupo',
+								'$this->DescripGrupo'
 								)";
                 }
                     else{
@@ -92,14 +92,14 @@
 	    // se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM GRUPO WHERE (idGrupo COLLATE utf8_bin = '$this->idGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo COLLATE utf8_bin = '$this->IdGrupo')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM GRUPO WHERE (idGrupo COLLATE utf8_bin = '$this->idGrupo' )";
+			$sql = "DELETE FROM GRUPO WHERE (IdGrupo COLLATE utf8_bin = '$this->IdGrupo' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -114,7 +114,7 @@
 	   // en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM GRUPO WHERE (idGrupo COLLATE utf8_bin = '$this->idGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo COLLATE utf8_bin = '$this->IdGrupo')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -130,17 +130,17 @@
 	  // si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM GRUPO WHERE (idGrupo COLLATE utf8_bin = '$this->idGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo COLLATE utf8_bin = '$this->IdGrupo')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
 			
 				$sql = "UPDATE GRUPO SET 
-					idGrupo = '$this->idGrupo',
-					 nombreGrupo='$this->nombreGrupo',
-                     descripcionGrupo='$this->descripcionGrupo'
-				WHERE ( idGrupo COLLATE utf8_bin = '$this->idGrupo'
+					IdGrupo = '$this->IdGrupo',
+					 NombreGrupo='$this->NombreGrupo',
+                     DescripGrupo='$this->DescripGrupo'
+				WHERE ( IdGrupo COLLATE utf8_bin = '$this->IdGrupo'
 				)";
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion

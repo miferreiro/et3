@@ -1,10 +1,10 @@
 <?php
 /*  Archivo php
-	Nombre: FUNCIONALIDADES_ACCION_SHOWCURRENT_View.php
+	Nombre: FUNCIONALIDAD_SHOWCURRENT_View.php
 	Fecha de creación: 26/11/2017 
-	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una accion de una Funcionalidad
+	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una Funcionalidad
 */
-class FUNCIONALIDADES_ACCION_SHOWCURRENT {
+class FUNCIONALIDAD_SHOWCURRENT {
 
 	function __construct( $lista ) {
 		$this->lista = $lista;
@@ -25,21 +25,29 @@ class FUNCIONALIDADES_ACCION_SHOWCURRENT {
 					<?php echo $strings['ID Funcionalidad'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['idFunc'] ?>
+					<?php echo $this->lista['IdFuncionalidad'] ?>
 				</td>
 			</tr>
 	
 			<tr>
 				<th>
-					<?php echo $strings['ID Acción'];?>
+					<?php echo $strings['Nombre Funcionalidad'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['idAccion'] ?>
+					<?php echo $this->lista['NombreFuncionalidad'] ?>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<?php echo $strings['Descripción Funcionalidad'];?>
+				</th>
+				<td>
+					<?php echo $this->lista['DescripFuncionalidad'] ?>
 				</td>
 			</tr>
 			
 			<caption style="margin-top:10px;" align="bottom">
-				<form action='../Controllers/FUNCIONALIDADES_ACCION_CONTROLLER.php' method="post">
+				<form action='../Controllers/FUNCIONALIDAD_CONTROLLER.php' method="post">
 					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 			</caption>

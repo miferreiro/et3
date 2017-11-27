@@ -1,11 +1,10 @@
 <?php
 /*  Archivo php
-	Nombre: ACCION_SHOWALL_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+	Nombre: FUNCIONALIDAD_SHOWALL_View.php
+	Fecha de creación: 26/11/2017 
+	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la funcionalidad que se desea realizar en la aplicación
 */
-class ACCION_SHOWALL {
+class FUNCIONALIDAD_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -25,7 +24,7 @@ class ACCION_SHOWALL {
 			</h2>
 			<table>
 				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/USUARIOS_CONTROLLER.php'>
+					<form action='../Controllers/FUNCIONALIDAD_CONTROLLER.php'>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
@@ -61,8 +60,8 @@ class ACCION_SHOWALL {
 					}
 ?>
 					<td>
-						<form action="../Controllers/USUARIOS_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="login" value="<?php echo $fila['idgroup']; ?>">
+						<form action="../Controllers/FUNCIONALIDAD_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 					<td>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
@@ -75,7 +74,7 @@ class ACCION_SHOWALL {
 				}
 ?>
 			</table>
-			<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post">
+			<form action='../Controllers/FUNCIONALIDAD_ACCION_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

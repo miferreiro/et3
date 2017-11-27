@@ -26,7 +26,7 @@ class ACCION_SHOWCURRENT {
 					<?php echo $strings['ID Acción'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['idaccion'] ?>
+					<?php echo $this->lista['IdAccion'] ?>
 				</td>
 			</tr>
 	
@@ -35,7 +35,7 @@ class ACCION_SHOWCURRENT {
 					<?php echo $strings['Nombre Acción'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['nombreAc'] ?>
+					<?php echo $this->lista['NombreAccion'] ?>
 				</td>
 			</tr>
 			<tr>
@@ -43,12 +43,12 @@ class ACCION_SHOWCURRENT {
 					<?php echo $strings['Descripción Acción'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['descripAc'] ?>
+					<?php echo $this->lista['DescripAccion'] ?>
 				</td>
 			</tr>
 			
 			<caption style="margin-top:10px;" align="bottom">
-				<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post">
+				<form action='../Controllers/ACCION_CONTROLLER.php' method="post">
 					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 			</caption>

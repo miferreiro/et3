@@ -4,7 +4,7 @@
 <?php
  include '../Functions/BdAdmin.php';
 
-    class Usuario_GRUPO{
+    class USU_GRUPO{
         var $login;
         var $IdGrupo;
         

@@ -2,18 +2,18 @@
 <?php
 //modelo que interactuará con el controlador y llevará datos a la base de datos ó recogerá valores de la base de datos.
 //Fecha de creación:23/11/2017
-class ACCIONES_MODEL{
+class ACCION{
 
-    var $IdAccion;//clave de la tabla de ACCIONES
+    var $IdAccion;//clave de la tabla de ACCION
     var $NombreAccion;//declaración de la variable NombreAccion
-    var $DescripcionAccion;//declaracion de la variable DescripcionAccion
+    var $DescripAccion;//declaracion de la variable DescripAccion
 
     //constructor de la clase
-    function __construct($IdAccion,$NombreAccion,$DescripcionAccion){
+    function __construct($IdAccion,$NombreAccion,$DescripAccion){
         //Asignamos valores a los atributos de la clase
         $this->$IdAccion=$IdAccion;
-        $this->NombreDescripcion=$NombreDescripcion;
-        $this->DescripcionAccion=$DescripcionAccion;
+        $this->NombreAccion=$NombreAccion;
+        $this->DescripAccion=$DescripAccion;
         
           // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -29,14 +29,14 @@ class ACCIONES_MODEL{
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "select IdAccion,
-                        NombreDescripcion,
-                        DescripcionAccion
+                        NombreAccion,
+                        DescripAccion
        			from ACCION
     			where 
     				(
 					(BINARY IdAccion LIKE '%$this->IdAccion%') &&
-                    (BINARY NombreDescripcion LIKE '%$this->NombreDescripcion%') &&
-                    (BINARY DescripcionAccion LIKE '%$this->DescripcionAccion%')
+                    (BINARY NombreAccion LIKE '%$this->NombreAccion%') &&
+                    (BINARY DescripAccion LIKE '%$this->DescripAccion%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -65,12 +65,12 @@ class ACCIONES_MODEL{
                     //hacemos la inserción en la base de datos
 					$sql = "INSERT INTO ACCION (
 							    IdAccion,
-                                NombreDescripcion,
-                                DescripcionAccion) 
+                                NombreAccion,
+                                DescripAccion) 
 								VALUES(
 								'$this->IdAccion',
-								'$this->NombreDescripcion',
-								'$this->DescripcionAccion'
+								'$this->NombreAccion',
+								'$this->DescripAccion'
 								)";
                 }
                     else{
@@ -139,8 +139,8 @@ class ACCIONES_MODEL{
 			
 				$sql = "UPDATE ACCION SET 
 					IdAccion = '$this->IdAccion',
-					 NombeDescripcion='$this->NombreDescripcion',
-                     DescripcionAccion='$this->DescripcionAccion'
+					 NombreAccion='$this->NombreAccion',
+                     DescripAccion='$this->DescripAccion'
 				WHERE ( IdAccion COLLATE utf8_bin = '$this->IdAccion'
 				)";
             

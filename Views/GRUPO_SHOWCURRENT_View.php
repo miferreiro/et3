@@ -26,7 +26,7 @@ class GRUPO_SHOWCURRENT {
 					<?php echo $strings['ID Grupo'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['idgroup'] ?>
+					<?php echo $this->lista['IdGrupo'] ?>
 				</td>
 			</tr>
 	
@@ -35,7 +35,7 @@ class GRUPO_SHOWCURRENT {
 					<?php echo $strings['Nombre Grupo'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['nombreG'] ?>
+					<?php echo $this->lista['NombreGrupo'] ?>
 				</td>
 			</tr>
 			<tr>
@@ -43,12 +43,12 @@ class GRUPO_SHOWCURRENT {
 					<?php echo $strings['Descripción Grupo'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['descrip'] ?>
+					<?php echo $this->lista['DescripGrupo'] ?>
 				</td>
 			</tr>
 			
 			<caption style="margin-top:10px;" align="bottom">
-				<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post">
+				<form action='../Controllers/GRUPO_CONTROLLER.php' method="post">
 					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 			</caption>

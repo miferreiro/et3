@@ -2,7 +2,7 @@
         //esta clase  es un modelo que interactúa con la base de datos y el controlador FUNC_ACCION
         //Fecha de creación:26/11/2017
 
-    class  FUNC_ACCION_MODEL{
+    class  FUNC_ACCION{
      
 
         var $IdFuncionalidad; //declaración de la variable IdFuncionalidad, forma parte de la clave

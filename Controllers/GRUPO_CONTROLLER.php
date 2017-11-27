@@ -20,14 +20,14 @@ include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 function get_data_form() {
 
-	$idGrupo = $_REQUEST[ 'idgroup' ]; //Variable que almacena el valor de idGrupo
-	$NombreGrupo = $_REQUEST[ 'nombreG' ]; //Variable que almacena el valor de NomnbreGrupo
-	$DescripGrupo = $_REQUEST[ 'descrip' ]; //Variable que almacena el valor de DescripGrupo
+	$IdGrupo = $_REQUEST[ 'IdGrupo' ]; //Variable que almacena el valor de idGrupo
+	$NombreGrupo = $_REQUEST[ 'NombreGrupo' ]; //Variable que almacena el valor de NomnbreGrupo
+	$DescripGrupo = $_REQUEST[ 'DescripGrupo' ]; //Variable que almacena el valor de DescripGrupo
 
-	$USUARIOS = new USUARIOS_Model(
-		$idGrupo,
+	$GRUPOS = new GRUPO(
+		$IdGrupo,
 		$NombreGrupo,
-		$DescripGrupo,
+		$DescripGrupo
 	);
 	//Devuelve el valor del objecto model creado
 	return $GRUPOS;
@@ -41,7 +41,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			new GRUPO_ADD();
-		} else {//Si recive datos los recoge y mediante las funcionalidad de USUARIOS_MODEL inserta los datos
+		} else {//Si recive datos los recoge y mediante las funcionalidad de GRUPO inserta los datos
 			$GRUPOS = get_data_form();//Variable que almacena los datos recogidos
 			$respuesta = $GRUPOS->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
@@ -51,16 +51,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
-			//Variable que recoge un objecto model con solo el login
-			$USUARIOS = new GRUPO_MODEL( $_REQUEST[ 'idgroup' ], '', '');
-			//Variable que almacena el relleno de los datos utilizando el login
-			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'idgroup' ] );
+			//Variable que recoge un objecto model con solo el idgrupo
+			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
+			//Variable que almacena el relleno de los datos utilizando el IdGrupo
+			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
 			//Crea una vista delete para ver la tupla
 			new GRUPO_DELETE( $valores );
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
-			$USUARIOS = get_data_form();
+			$GRUPOS = get_data_form();
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $GRUPOS->DELETE();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
@@ -70,10 +70,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-			//Variable que almacena un objeto model con el login
-			$USUARIOS = new GRUPO_MODEL( $_REQUEST[ 'idgroup' ], '', '');
-			//Variable que almacena los datos de los atibutos rellenados a traves de login
-			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'idgroup' ] );
+			//Variable que almacena un objeto model con el IdGrupo
+			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
+			//Variable que almacena los datos de los atibutos rellenados a traves de IdGrupo
+			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
 			//Muestra la vista del formulario editar
 			new GRUPO_EDIT( $valores );
 			//Si se reciben valores
@@ -97,24 +97,24 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el resultado de la busqueda
 			$datos = $GRUPOS->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
-			$lista = array( 'idGrupo','Nombre Grupo','Descripcion Grupo');
+			$lista = array( 'IdGrupo','NombreGrupo','DescripGrupo');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new GRUPO_SHOWALL( $lista, $datos );
 		}
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		//Variable que almacena un objeto model con el login
-		$USUARIOS = new GRUPO_MODEL( $_REQUEST[ 'login' ], '', '', '', '');
-		//Variable que almacena los valores rellenados a traves de login
-		$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'login' ] );
+		//Variable que almacena un objeto model con el IdGrupo
+		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '', '', '');
+		//Variable que almacena los valores rellenados a traves de IdGrupo
+		$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
 		//Creación de la vista showcurrent
 		new GRUPO_SHOWCURRENT( $valores );
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
 		if ( !$_POST ) {//Si no se han recibido datos 
-			$GRUPOS = new USUARIOS_Model( '', '', '');
+			$GRUPOS = new GRUPO( '', '', '');
 		//Si se reciben datos
 		} else {
 			$GRUPOS = get_data_form();
@@ -122,7 +122,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los datos de la busqueda
 		$datos = $GRUPOS->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
-		$lista = array( 'idGrupo','Nombre Grupo','Descripcion Grupo');
+		$lista = array( 'IdGrupo','NombreGrupo','DescripGrupo');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new GRUPO_SHOWALL( $lista, $datos );
 }
