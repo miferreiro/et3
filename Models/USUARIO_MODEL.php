@@ -4,30 +4,30 @@
  Función: modelo de datos definida en una clase que permite interactuar con la base de datos
  Fecha de creación:23/11/2017
 */
-class USUARIOS_MODEL{ //declaración de la clase
+class USUARIO_MODEL{ //declaración de la clase
 
 	var $login; // declaración del atributo login
     var $password;//declaración del atributo password
 	var $DNI; // declaración del atributo DNI
-	var $nombre; // declaración del atributo nombre
-	var $apellidos; // declaración del atributo apellidos
-    var $email; // declaración del atributo email
-    var $direccion;//declaración del atributo direccion
-	var $telefono; // declaración del atributo telefono
+	var $Nombre; // declaración del atributo Nombre
+	var $Apellidos; // declaración del atributo Apellidos
+    var $Correo; // declaración del atributo Correo
+    var $Direccion;//declaración del atributo Direccion
+	var $Telefono; // declaración del atributo Telefono
 	var $mysqli; // declaración del atributo manejador de la bd
 
 	//Constructor de la clase
 
-	function __construct($login,$password,$DNI,$nombre,$apellidos,$email,$direccion,$telefono) {
+	function __construct($login,$password,$DNI,$Nombre,$Apellidos,$Correo,$Direccion,$Telefono) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->login = $login;
         $this->password=$password;
 		$this->DNI = $DNI;
-		$this->nombre = $nombre;
-		$this->apellidos = $apellidos;
-        $this->email = $email;
-        $this->direccion=$direccion;
-		$this->telefono = $telefono;
+		$this->Nombre = $Nombre;
+		$this->Apellidos = $Apellidos;
+        $this->Correo = $Correo;
+        $this->Direccion=$Direccion;
+		$this->Telefono = $Telefono;
 		
         
 		// incluimos la funcion de acceso a la bd
@@ -44,22 +44,22 @@ class USUARIOS_MODEL{ //declaración de la clase
 		$sql = "select  login,
                     password,
 					DNI,
-					nombre,
-					apellidos,
-                    email,
-                    direccion,
-					telefono
+					Nombre,
+					Apellidos,
+                    Correo,
+                    Direccion,
+					Telefono
        			from USUARIO 
     			where 
     				(
 					(BINARY login LIKE '%$this->login%') &&
                     (BINARY password LIKE '%$this->password%') &&
     				(BINARY DNI LIKE '%$this->DNI%') &&
-					(BINARY nombre LIKE '%$this->nombre%') &&
-	 				(BINARY apellidos LIKE '%$this->apellidos%') &&
-                    (BINARY email LIKE '%$this->email%') &&
-                    (BINARY direccion LIKE '%$this->direccion%') &&
-	 				(BINARY telefono LIKE '%$this->telefono%')
+					(BINARY Nombre LIKE '%$this->Nombre%') &&
+	 				(BINARY Apellidos LIKE '%$this->Apellidos%') &&
+                    (BINARY Correo LIKE '%$this->Correo%') &&
+                    (BINARY Direccion LIKE '%$this->Direccion%') &&
+	 				(BINARY Telefono LIKE '%$this->Telefono%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -95,11 +95,11 @@ class USUARIOS_MODEL{ //declaración de la clase
 						
 					} else {
 						// construimos el sql para buscar esa clave candidata en la tabla
-						$sql = "SELECT * FROM USUARIO WHERE  (email COLLATE utf8_bin = '$this->email')";
+						$sql = "SELECT * FROM USUARIO WHERE  (Correo COLLATE utf8_bin = '$this->Correo')";
 
-						if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el email)
+						if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el Correo)
 							// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-							return 'Ya existe un usuario con el email introducido en la base de datos';// ya existe
+							return 'Ya existe un usuario con el Correo introducido en la base de datos';// ya existe
 							
 						} else { //si ninguna de las claves candidatas son iguales, insertamos el usuario
                             //insertamos un usuario
@@ -107,20 +107,20 @@ class USUARIOS_MODEL{ //declaración de la clase
 							     login,
                                  password,
 							     DNI,
-					             nombre,
-					             apellidos,
-                                 email,
-                                 direccion,
-					             telefono) 
+					             Nombre,
+					             Apellidos,
+                                 Correo,
+                                 Direccion,
+					             Telefono) 
 								VALUES(
 								'$this->login',
                                 '$this->password',
 								'$this->DNI',
-								'$this->nombre',
-								'$this->apellidos',
-								'$this->email',
-								'$this->direccion',
-								'$this->telefono'
+								'$this->Nombre',
+								'$this->Apellidos',
+								'$this->Correo',
+								'$this->Direccion',
+								'$this->Telefono'
 								)";
 
 						}
@@ -199,11 +199,11 @@ class USUARIOS_MODEL{ //declaración de la clase
 					login = '$this->login',
                     password='$this->password',
 					DNI = '$this->DNI',
-					nombre = '$this->nombre',
-					apellidos = '$this->apellidos',
-                    email = '$this->email',
-                    direccion ='$this->direccion',
-					telefono = '$this->telefono'
+					Nombre = '$this->Nombre',
+					Apellidos = '$this->Apellidos',
+                    Correo = '$this->Correo',
+                    Direccion ='$this->Direccion',
+					Telefono = '$this->Telefono'
 				WHERE ( login COLLATE utf8_bin = '$this->login'
 				)";
             
@@ -237,11 +237,11 @@ class USUARIOS_MODEL{ //declaración de la clase
 					
 				} else {
 					// construimos el sql para buscar esa clave candidata en la tabla
-					$sql = "SELECT * FROM USUARIO WHERE  (email COLLATE utf8_bin = '$this->email')";//miramos si el email está insertado
+					$sql = "SELECT * FROM USUARIO WHERE  (Correo COLLATE utf8_bin = '$this->Correo')";//miramos si el Correo está insertado
 
-					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el email)
+					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el Correo)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-						return 'Ya existe un usuario con el email introducido en la base de datos';// ya existe
+						return 'Ya existe un usuario con el Correo introducido en la base de datos';// ya existe
 						
 					}else{
 								return true; //no existe el usuario

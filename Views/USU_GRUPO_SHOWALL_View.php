@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class USUARIOS_GRUPO_SHOWALL {
+class USU_GRUPO_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -25,7 +25,7 @@ class USUARIOS_GRUPO_SHOWALL {
 			</h2>
 			<table>
 				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/USUARIOS_CONTROLLER.php'>
+					<form action='../Controllers/USU_GRUPO_CONTROLLER.php'>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
@@ -61,7 +61,7 @@ class USUARIOS_GRUPO_SHOWALL {
 					}
 ?>
 					<td>
-						<form action="../Controllers/USUARIOS_CONTROLLER.php" method="get" style="display:inline" >
+						<form action="../Controllers/USU_GRUPO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 					<td>
@@ -75,7 +75,7 @@ class USUARIOS_GRUPO_SHOWALL {
 				}
 ?>
 			</table>
-			<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post">
+			<form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

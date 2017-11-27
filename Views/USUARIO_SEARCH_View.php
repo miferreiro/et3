@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a un usuario e la base de datos
 */
-class USUARIOS_SEARCH {
+class USUARIO_SEARCH {
 
 	function __construct() {
 		$this->render();
@@ -20,7 +20,7 @@ class USUARIOS_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" action="../Controllers/USUARIOS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearch()">
+			<form id="SEARCH" action="../Controllers/USUARIO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearch()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -74,7 +74,7 @@ class USUARIOS_SEARCH {
 						<td colspan="2">
 							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>
 			</form>
-						<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post" style="display:inline">
+						<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display:inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 						</td>

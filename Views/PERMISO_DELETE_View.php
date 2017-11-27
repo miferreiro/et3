@@ -27,7 +27,7 @@ class PERMISOS_DELETE {
 						<?php echo $strings['ID Grupo'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['idGrupo']?>
+						<?php echo $this->valores['IdGrupo']?>
 					</td>
 				</tr>
 
@@ -36,7 +36,7 @@ class PERMISOS_DELETE {
 						<?php echo $strings['ID Funcionalidad'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['idFuncionalidad']?>
+						<?php echo $this->valores['IdFuncionalidad']?>
 					</td>
 				</tr>
 				
@@ -45,7 +45,7 @@ class PERMISOS_DELETE {
 						<?php echo $strings['ID Accion'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['idAccion']?>
+						<?php echo $this->valores['IdAccion']?>
 					</td>
 				</tr>
 				
@@ -53,13 +53,13 @@ class PERMISOS_DELETE {
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
-			<form action="../Controllers/PERMISOS_CONTROLLER.php" method="post" style="display: inline">
-				<input type="hidden" name="idGrupo" value=<?php echo $this->valores['idGrupo'] ?> />
-				<input type="hidden" name="idFuncionalidad" value=<?php echo $this->valores['idFuncionalidad'] ?> />
-				<input type="hidden" name="idAccion" value=<?php echo $this->valores['idAccion'] ?> />
+			<form action="../Controllers/PERMISO_CONTROLLER.php" method="post" style="display: inline">
+				<input type="hidden" name="IdGrupo" value=<?php echo $this->valores['IdGrupo'] ?> />
+				<input type="hidden" name="IdFuncionalidad" value=<?php echo $this->valores['IdFuncionalidad'] ?> />
+				<input type="hidden" name="IdAccion" value=<?php echo $this->valores['IdAccion'] ?> />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
-			<form action='../Controllers/PERMISOS_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/PERMISO_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>

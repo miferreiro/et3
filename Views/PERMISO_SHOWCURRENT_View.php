@@ -26,7 +26,7 @@ class PERMISOS_SHOWCURRENT {
 						<?php echo $strings['ID Grupo'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['idGrupo']?>
+						<?php echo $this->valores['IdGrupo']?>
 					</td>
 				</tr>
 
@@ -35,7 +35,7 @@ class PERMISOS_SHOWCURRENT {
 						<?php echo $strings['ID Funcionalidad'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['idFuncionalidad']?>
+						<?php echo $this->valores['IdFuncionalidad']?>
 					</td>
 				</tr>
 				
@@ -44,12 +44,12 @@ class PERMISOS_SHOWCURRENT {
 						<?php echo $strings['ID Accion'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['idAccion']?>
+						<?php echo $this->valores['IdAccion']?>
 					</td>
 				</tr>
 				
 			</table>
-			<form action='../Controllers/PERMISOS_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/PERMISO_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 <?php

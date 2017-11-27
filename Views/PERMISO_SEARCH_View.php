@@ -20,24 +20,24 @@ class PERMISOS_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" action="../Controllers/PERMISOS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearch()">
+			<form id="SEARCH" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearch()">
 				<table>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['ID Grupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="idGrupo" name="idGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>					</tr>
+						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['ID Funcionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="idFuncionalidad" name="idFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="2" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
+						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="2" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['ID Accion'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="idAccion" name="idAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
+						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
 					</tr>
 					
 					<tr>
@@ -45,7 +45,7 @@ class PERMISOS_SEARCH {
 							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" />
 							</button>
 			</form>
-						<form action='../Controllers/PERMISOS_CONTROLLER.php' method="post" style="display:inline">
+						<form action='../Controllers/PERMISO_CONTROLLER.php' method="post" style="display:inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 						</td>

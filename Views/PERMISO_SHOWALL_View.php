@@ -25,7 +25,7 @@ class PERMISOS_SHOWALL {
 			</h2>
 			<table>
 				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/PERMISOS_CONTROLLER.php'>
+					<form action='../Controllers/PERMISO_CONTROLLER.php'>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
@@ -61,8 +61,8 @@ class PERMISOS_SHOWALL {
 					}
 ?>
 					<td>
-						<form action="../Controllers/PERMISOS_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="idgroup" value="<?php echo $fila['idgroup']; ?>">
+						<form action="../Controllers/PERMISO_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="IdGrupo" value="<?php echo $fila['idgroup']; ?>">
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 					<td>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
@@ -75,7 +75,7 @@ class PERMISOS_SHOWALL {
 				}
 ?>
 			</table>
-			<form action='../Controllers/PERMISOS_CONTROLLER.php' method="post">
+			<form action='../Controllers/PERMISO_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

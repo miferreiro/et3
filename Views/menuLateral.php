@@ -32,7 +32,7 @@
 						</li>
 
 						<li>
-							<a href="../Controllers/usuarios_Controller.php"><?php echo $strings['Mostrar todos']; ?></a>
+							<a href="../Controllers/USUARIO_CONTROLLER.php"><?php echo $strings['Mostrar todos']; ?></a>
 						</li>
 
 					</ul>

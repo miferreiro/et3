@@ -43,55 +43,36 @@ class Register {
 						<th class="formThTd">
 							<?php echo $strings['Nombre']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="nombre" name="nombre" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="30" size="34" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') && comprobarAlfabetico(this,'30')"/>
+						<td class="formThTd"><input type="text" id="Nombre" name="Nombre" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="30" size="34" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') && comprobarAlfabetico(this,'30')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Apellidos']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="50" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
+						<td class="formThTd"><input type="text" id="Apellidos" name="Apellidos" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="50" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
 					</tr>
+                    
+                    <tr>
+						<th class="formThTd">
+							<?php echo $strings['Correo electrónico']; ?>
+						</th>
+						<td class="formThTd"><input type="text" id="Correo" name="Correo" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="60" size="70" required onBlur=" comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarEmail(this)"/>
+					</tr>
+                    
+                    <tr>
+						<th class="formThTd">
+							<?php echo $strings['Dirección']; ?>
+						</th>
+						<td class="formThTd"><input type="text" id="Direccion" name="Direccion" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="60" size="70" required onBlur=" comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarEmail(this)"/>
+					</tr>
+                    
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Teléfono']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="11" size="13" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'11') && comprobarTexto(this,'11') && comprobarTelf(this)"/>
+						<td class="formThTd"><input type="text" id="Telefono" name="Telefono" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="11" size="13" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'11') && comprobarTexto(this,'11') && comprobarTelf(this)"/>
 					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Correo electrónico']; ?>
-						</th>
-						<td class="formThTd"><input type="text" id="email" name="email" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="60" size="70" required onBlur=" comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarEmail(this)"/>
-					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Fecha de Nacimiento']; ?>
-						</th>
-						<td class="formThTd"><input type="text" id="FechaNacimiento" name="FechaNacimiento" class="tcal" value="" readonly size="15" required/>
-					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Foto personal']; ?>
-						</th>
-						<td class="formThTd"><input type="file" id="fotopersonal" name="fotopersonal" value="" required accept="image/*" onblur="comprobarVacio(document.forms['ADD'].elements[7])"/>
-					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Sexo']; ?>
-						</th>
-						<td class="formThTd">
-							<select id="sexo" name="sexo" value="" required onBlur="comprobarVacio(document.forms['ADD'].elements[7]) && comprobarVacio(document.forms['ADD'].elements[8]) && comprobarVacio(this) ">
-								<option value="">
-									<?php echo $strings['Elija sexo']; ?>
-								</option>
-								<option value="hombre">
-									<?php echo $strings['Hombre']; ?>
-								</option>
-								<option value="mujer">
-									<?php echo $strings['Mujer']; ?>
-								</option>
-							</select>
-					</tr>
+					
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="REGISTER"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario'] ?>" /></button>

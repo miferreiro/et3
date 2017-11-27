@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una acción en la base de datos
 */
-class ACCIONES_EDIT {
+class ACCION_EDIT {
 
 	function __construct( $valores ) {
 		$this->valores = $valores;

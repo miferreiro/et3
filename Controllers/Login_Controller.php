@@ -18,7 +18,7 @@ else{
 	include '../Functions/BdAdmin.php';
 
 	//Incluye el acceso al modelo de datos
-	include '../Models/USUARIOS_MODEL.php';
+	include '../Models/USUARIO_MODEL.php';
 	$usuario = new USUARIOS_MODEL($_REQUEST['login'],$_REQUEST['password'], '', '', '', '', '', '');
 	$respuesta = $usuario->login();
 
@@ -26,7 +26,7 @@ else{
 	if ($respuesta == 'true'){
 		session_start();
 		$_SESSION['login'] = $_REQUEST['login'];
-		header('Location:../Controllers/USUARIOS_CONTROLLER.php');
+		header('Location:../Controllers/USUARIO_CONTROLLER.php');
 	}
 	//Si no esta en la base de datos, se muestra la respuesta en la vista mensaje
 	else{
