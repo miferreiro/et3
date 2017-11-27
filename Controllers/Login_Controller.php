@@ -26,7 +26,7 @@ else{
 	if ($respuesta == 'true'){
 		session_start();
 		$_SESSION['login'] = $_REQUEST['login'];
-		header('Location:../Controllers/USUARIO_CONTROLLER.php');
+		header('Location:../Controllers/USUARIOS_CONTROLLER.php');
 	}
 	//Si no esta en la base de datos, se muestra la respuesta en la vista mensaje
 	else{

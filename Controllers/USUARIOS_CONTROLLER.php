@@ -8,7 +8,7 @@
 */
 session_start(); //solicito trabajar con la session
 
-include '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/USUARIOS_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Views/USUARIO_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/USUARIO_SEARCH_View.php'; //incluye la vista search
 include '../Views/USUARIO_ADD_View.php'; //incluye la vista add
@@ -30,7 +30,7 @@ function get_data_form() {
 	$telefono = $_REQUEST[ 'telefono' ]; //Variable que almacena el valor de telefono
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
 
-	$USUARIO = new USUARIO_Model(
+	$USUARIO = new USUARIOS_MODEL(
 		$login,
 		$password,
 		$dni,
@@ -51,23 +51,23 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-			new USUARIO_ADD();
+			new USUARIOS_ADD();
 		} else {//Si recive datos los recoge y mediante las funcionalidad de USUARIO_MODEL inserta los datos
 			$USUARIO = get_data_form();//Variable que almacena los datos recogidos
 			$respuesta = $USUARIO->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
-			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/USUARIOS_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			//Variable que recoge un objecto model con solo el login
-			$USUARIO = new USUARIO_Model( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
+			$USUARIO = new USUARIOS_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena el relleno de los datos utilizando el login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			//Crea una vista delete para ver la tupla
-			new USUARIO_DELETE( $valores );
+			new USUARIOS_DELETE( $valores );
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -75,18 +75,18 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $USUARIO->DELETE();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/USUARIOS_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			//Variable que almacena un objeto model con el login
-			$USUARIO = new USUARIO_Model( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
+			$USUARIO = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			//Muestra la vista del formulario editar
-			new USUARIO_EDIT( $valores );
+			new USUARIOS_EDIT( $valores );
 			//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
@@ -94,13 +94,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $USUARIO->EDIT();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/USUARIOS_CONTROLLER.php' );
 		}
 		//Fin del bloque
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-			new USUARIO_SEARCH();
+			new USUARIOS_SEARCH();
 		//Si se reciben datos	
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -110,22 +110,22 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'Login','Dni','Nombre','Apellidos','Correo','direccion','telefono');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			new USUARIO_SHOWALL( $lista, $datos );
+			new USUARIOS_SHOWALL( $lista, $datos );
 		}
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 		//Variable que almacena un objeto model con el login
-		$USUARIO = new USUARIO_Model( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
+		$USUARIO = new USUARIOS_Model( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
 		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		//Creación de la vista showcurrent
-		new USUARIO_SHOWCURRENT( $valores );
+		new USUARIOS_SHOWCURRENT( $valores );
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
 		if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIO = new USUARIO_Model( '', '', '', '', '', '', '', '');
+			$USUARIO = new USUARIOS_Model( '', '', '', '', '', '', '', '');
 		//Si se reciben datos
 		} else {
 			$USUARIO = get_data_form();
@@ -135,7 +135,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'Login','Dni','Nombre','Apellidos','Correo','direccion','telefono');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new USUARIO_SHOWALL( $lista, $datos );
+		new USUARIOS_SHOWALL( $lista, $datos );
 }
 
 ?>
