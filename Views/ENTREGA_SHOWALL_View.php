@@ -24,7 +24,9 @@ class USU_GRUPO_SHOWALL {
 				<caption style="margin-bottom:10px;">
 					<form action='../Controllers/ENTREGA_CONTROLLER.php'>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+                        <!--este boton te envía al formualrio SEARCH-->
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+                        <!--este boton te envia al formualrio ADD-->
 					</form>
 				</caption>
 				<tr>
@@ -32,7 +34,7 @@ class USU_GRUPO_SHOWALL {
 					foreach ( $lista as $atributo ) {
 ?>
 					<th>
-						<?php echo $strings[$atributo]?>
+						<?php echo $strings[$atributo]?><!--se muestra todos los campos-->
 					</th>
 <?php
 					}
@@ -51,7 +53,7 @@ class USU_GRUPO_SHOWALL {
 					<td>
 <?php 
 
-							echo $fila[ $atributo ];
+							echo $fila[ $atributo ];//se muestra el valor de todos los campos
 ?>
 					</td>
 <?php
@@ -61,11 +63,13 @@ class USU_GRUPO_SHOWALL {
 						<form action="../Controllers/ENTREGA_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
-								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button><!--con este boton pulsas para ver la vista EDIT-->
 					<td>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+                                <!--si pulsas este boton ves la vista DELETE-->
 					<td>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+                                <!--si pulsas este boton ves la vista SHOWCURRENT-->
 						</form>
 
 				</tr>
@@ -75,6 +79,7 @@ class USU_GRUPO_SHOWALL {
 			</table>
 			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+                <!--si pulsas este boton vas atras -->
 			</form>
 		</div>
 <?php

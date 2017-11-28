@@ -24,47 +24,47 @@
 			<table>
 				<tr>
 					<th>
-						<?php echo $strings['login'];?>
+						<?php echo $strings['login'];?><!--se muestra el campo login-->
 					</th>
 					<td>
-						<?php echo $this->valores['login']?>
+						<?php echo $this->valores['login']?><!--se muestra el valor del campo login-->
 					</td>
 				</tr>
 
 				<tr>
 					<th>
-						<?php echo $strings['IdTrabajo'];?>
+						<?php echo $strings['IdTrabajo'];?><!--se muestra el campo IdTrabajo-->
 					</th>
 					<td>
-						<?php echo $this->valores['IdTrabajo']?>
+						<?php echo $this->valores['IdTrabajo']?><!--se muestra el valor del campo IdTrabajo-->
 					</td>
 				</tr>
 				
 				<tr>
 					<th>
-						<?php echo $strings['Alias'];?>
+						<?php echo $strings['Alias'];?><!--se muestra el campo Alias-->
 					</th>
 					<td>
-						<?php echo $this->valores['Alias']?>
+						<?php echo $this->valores['Alias']?><!--se muestra el valor del campo Alias-->
 					</td>
                     
 				</tr>
                 
                 <tr>
 					<th>
-						<?php echo $strings['Horas'];?>
+						<?php echo $strings['Horas'];?><!--se muestra el campo Horas-->
 					</th>
 					<td>
-						<?php echo $this->valores['Horas']?>
+						<?php echo $this->valores['Horas']?><!--se muestra el valor del campo Horas-->
 					</td>
 				</tr>
                 
                 <tr>
 					<th>
-						<?php echo $strings['Ruta'];?>
+						<?php echo $strings['Ruta'];?><!--se muestra el campo Ruta-->
 					</th>
 					<td>
-						<?php echo $this->valores['Ruta']?>
+						<?php echo $this->valores['Ruta']?><!--se muestra el valor delcampo Ruta-->
 					</td>
 				</tr>
                 
@@ -79,7 +79,7 @@
                 
                 <input type="hidden" name="" value="<?php echo $this->valores['IdTrabajo'] ?>" />
                 
-				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
+				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>"><!--boton para conformar el borrado -->
 			</form>
 			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
