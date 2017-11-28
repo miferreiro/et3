@@ -61,7 +61,7 @@ class Register {
                     
                     <tr>
 						<th class="formThTd">
-							<?php echo $strings['Dirección']; ?>
+							<?php echo $strings['Direccion']; ?>
 						</th>
 						<td class="formThTd"><input type="text" id="Direccion" name="Direccion" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="60" size="70" required onBlur=" comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
 					</tr>

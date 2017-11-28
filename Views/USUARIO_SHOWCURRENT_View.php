@@ -51,7 +51,7 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Nombre'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['nombre'] ?>
+					<?php echo $this->lista['Nombre'] ?>
 				</td>
 			</tr>
 			<tr>
@@ -59,7 +59,7 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Apellidos'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['apellidos'] ?>
+					<?php echo $this->lista['Apellidos'] ?>
 				</td>
 			</tr>
 			<tr>
@@ -67,7 +67,7 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Teléfono'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['telefono'] ?>
+					<?php echo $this->lista['Telefono'] ?>
 				</td>
 			</tr>
 			<tr>
@@ -75,15 +75,15 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Correo electrónico'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['email'] ?>
+					<?php echo $this->lista['Correo'] ?>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<?php echo $strings['Dirección'];?>
+					<?php echo $strings['Direccion'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Dirección'] ?>
+					<?php echo $this->lista['Direccion'] ?>
 				</td>
 			</tr>
 

@@ -49,7 +49,7 @@ class USUARIO_MODEL{ //declaración de la clase
                     Correo,
                     Direccion,
 					Telefono
-       			from usuario 
+       			from USUARIO 
     			where 
     				(
 					(BINARY login LIKE '%$this->login%') &&
@@ -79,7 +79,7 @@ class USUARIO_MODEL{ //declaración de la clase
 		if ( ( $this->login <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM usuario WHERE (  login COLLATE utf8_bin = '$this->login')";
+			$sql = "SELECT * FROM USUARIO WHERE (  login  = '$this->login')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -87,7 +87,7 @@ class USUARIO_MODEL{ //declaración de la clase
 
 				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe el login)
 					// construimos el sql para buscar esa clave candidata en la tabla
-					$sql = "SELECT * FROM usuario WHERE (DNI COLLATE utf8_bin = '$this->DNI')";
+					$sql = "SELECT * FROM USUARIO WHERE (DNI  = '$this->DNI')";
 					
 					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el dni)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
@@ -95,15 +95,15 @@ class USUARIO_MODEL{ //declaración de la clase
 						
 					} else {
 						// construimos el sql para buscar esa clave candidata en la tabla
-						$sql = "SELECT * FROM usuario WHERE  (Correo COLLATE utf8_bin = '$this->Correo')";
+						$sql = "SELECT * FROM USUARIO WHERE  (Correo  = '$this->Correo')";
 
 						if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el Correo)
 							// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
 							return 'Ya existe un usuario con el Correo introducido en la base de datos';// ya existe
 							
-						} else { //si ninguna de las claves candidatas son iguales, insertamos el usuario
-                            //insertamos un usuario
-							$sql = "INSERT INTO usuario (
+						} else { //si ninguna de las claves candidatas son iguales, insertamos el USUARIO
+                            //insertamos un USUARIO
+							$sql = "INSERT INTO USUARIO (
 							     login,
                                  password,
 							     DNI,
@@ -136,7 +136,7 @@ class USUARIO_MODEL{ //declaración de la clase
 					return 'Ya existe el usuario introducido en la base de datos'; // ya existe
 			}
 		} else { // si el atributo clave de la bd es vacio solicitamos un valor en un mensaje
-			return 'Introduzca un valor'; // introduzca un valor para el usuario
+			return 'Introduzca un valor'; // introduzca un valor para el USUARIO
 		}
 	} // fin del metodo ADD
 
@@ -152,14 +152,14 @@ class USUARIO_MODEL{ //declaración de la clase
 	// se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM usuario WHERE (login COLLATE utf8_bin = '$this->login')";
+		$sql = "SELECT * FROM USUARIO WHERE (login  = '$this->login')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM usuario WHERE (login COLLATE utf8_bin = '$this->login' )";
+			$sql = "DELETE FROM USUARIO WHERE (login = '$this->login' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -174,7 +174,7 @@ class USUARIO_MODEL{ //declaración de la clase
 	// en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM usuario WHERE (login COLLATE utf8_bin = '$this->login')";
+		$sql = "SELECT * FROM USUARIO WHERE (login = '$this->login')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -189,13 +189,13 @@ class USUARIO_MODEL{ //declaración de la clase
 	// si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM usuario WHERE (login COLLATE utf8_bin = '$this->login')";
+		$sql = "SELECT * FROM USUARIO WHERE (login = '$this->login')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
 			     //modificamos los atributos de la tabla USUARIO
-				$sql = "UPDATE usuario SET 
+				$sql = "UPDATE USUARIO SET 
 					login = '$this->login',
                     password='$this->password',
 					DNI = '$this->DNI',
@@ -204,7 +204,7 @@ class USUARIO_MODEL{ //declaración de la clase
                     Correo = '$this->Correo',
                     Direccion ='$this->Direccion',
 					Telefono = '$this->Telefono'
-				WHERE ( login COLLATE utf8_bin = '$this->login'
+				WHERE ( login  = '$this->login'
 				)";
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
@@ -220,16 +220,16 @@ class USUARIO_MODEL{ //declaración de la clase
 
 
 
-	//Con esta función vemos si ya está registrado el usuario, sino lo registramos
+	//Con esta función vemos si ya está registrado el USUARIO, sino lo registramos
 	function Register() {
         
-		$sql = "select * from usuario where login COLLATE utf8_bin = '" . $this->login . "'";//miramos los usuarios cuyo login es igual al que nos pasan
+		$sql = "select * from USUARIO where login = '" . $this->login . "'";//miramos los USUARIOs cuyo login es igual al que nos pasan
 
 		$result = $this->mysqli->query( $sql ); //hacemos la consulta en la base de datos.
-		if ( $result->num_rows == 1 ) { // existe el usuario
+		if ( $result->num_rows == 1 ) { // existe el USUARIO
 			return 'El usuario ya existe';
 		} else {
-			$sql = "SELECT * FROM usuario WHERE (DNI COLLATE utf8_bin = '$this->DNI')";//miramos si el DNI ya está insertado
+			$sql = "SELECT * FROM USUARIO WHERE (DNI = '$this->DNI')";//miramos si el DNI ya está insertado
 					
 				if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el dni)
 					// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
@@ -237,34 +237,34 @@ class USUARIO_MODEL{ //declaración de la clase
 					
 				} else {
 					// construimos el sql para buscar esa clave candidata en la tabla
-					$sql = "SELECT * FROM usuario WHERE  (Correo COLLATE utf8_bin = '$this->Correo')";//miramos si el Correo está insertado
+					$sql = "SELECT * FROM USUARIO WHERE  (Correo = '$this->Correo')";//miramos si el Correo está insertado
 
 					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el Correo)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
 						return 'Ya existe un usuario con el Correo introducido en la base de datos';// ya existe
 						
 					}else{
-								return true; //no existe el usuario
+								return true; //no existe el USUARIO
 					}
 				}
 		}
 
 	} //fin del método Register
         
-        // funcion login: realiza la comprobación de si existe el usuario en la bd y despues si la pass
-	   // es correcta para ese usuario. Si es asi devuelve true, en cualquier otro caso devuelve el 
+        // funcion login: realiza la comprobación de si existe el USUARIO en la bd y despues si la pass
+	   // es correcta para ese USUARIO. Si es asi devuelve true, en cualquier otro caso devuelve el 
 	   // error correspondiente
 	function login() {
-        //hacemos la consulta para saber que usuario tiene dicho login
+        //hacemos la consulta para saber que USUARIO tiene dicho login
 		$sql = "SELECT *
-			FROM usuario
+			FROM USUARIO
 			WHERE (
 				(login = '$this->login') 
 			)";
 		$resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
 		if ( $resultado->num_rows == 0 ) {//miramos si el numero de filas es 0
 			return 'El usuario no existe';
-		} else {//si no es 0, el usuario existe
+		} else {//si no es 0, el USUARIO existe
 			$tupla = $resultado->fetch_array();//devolvemos la tupla
 			if ( $tupla[ 'password' ] == $this->password ) {//si la contraseña es correcta entra en la página
 				return true;

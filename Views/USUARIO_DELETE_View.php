@@ -51,7 +51,7 @@ class USUARIO_DELETE {
 						<?php echo $strings['Nombre'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['nombre']?>
+						<?php echo $this->valores['Nombre']?>
 					</td>
 				</tr>
 				<tr>
@@ -59,7 +59,7 @@ class USUARIO_DELETE {
 						<?php echo $strings['Apellidos'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['apellidos']?>
+						<?php echo $this->valores['Apellidos']?>
 					</td>
 				</tr>
 				<tr>
@@ -67,7 +67,7 @@ class USUARIO_DELETE {
 						<?php echo $strings['Teléfono'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['telefono']?>
+						<?php echo $this->valores['Telefono']?>
 					</td>
 				</tr>
 				<tr>
@@ -75,15 +75,15 @@ class USUARIO_DELETE {
 						<?php echo $strings['Correo electrónico'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['email']?>
+						<?php echo $this->valores['Correo']?>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						<?php echo $strings['Dirección'];?>
+						<?php echo $strings['Direccion'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['Dirección']?>
+						<?php echo $this->valores['Direccion']?>
 					</td>
 				</tr>
 			</table>
@@ -94,11 +94,11 @@ class USUARIO_DELETE {
 				<input type="hidden" name="login" value=<?php echo $this->valores['login'] ?> />
 				<input type="hidden" name="password" value=<?php echo $this->valores['password'] ?> />
 				<input type="hidden" name="DNI" value=<?php echo $this->valores['DNI'] ?> />
-				<input type="hidden" name="nombre" value=<?php echo $this->valores['nombre'] ?> />
-				<input type="hidden" name="apellidos" value=<?php echo $this->valores['apellidos'] ?> />
-				<input type="hidden" name="telefono" value=<?php echo $this->valores['telefono'] ?> />
-				<input type="hidden" name="email" value=<?php echo $this->valores['email'] ?> />
-				<input type="hidden" name="FechaNacimiento" value=<?php echo $this->valores['Dirección'] ?> />
+				<input type="hidden" name="nombre" value=<?php echo $this->valores['Nombre'] ?> />
+				<input type="hidden" name="apellidos" value=<?php echo $this->valores['Apellidos'] ?> />
+				<input type="hidden" name="telefono" value=<?php echo $this->valores['Telefono'] ?> />
+				<input type="hidden" name="email" value=<?php echo $this->valores['Correo'] ?> />
+				<input type="hidden" name="direc" value=<?php echo $this->valores['Direccion'] ?> />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">

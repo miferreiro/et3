@@ -37,7 +37,7 @@ array(
 	'telefono' => 'Teléfono',
 	'Correo electrónico' => 'Correo electrónico',
 	'Correo' => 'Correo',
-	'Direccion' => 'Direccion',
+	'Direccion' => 'Dirección',
 	'Telefono' => 'Telefono',
 	'email' => 'Correo electrónico',
 	'Fecha de Nacimiento' => 'Fecha de Nacimiento',
