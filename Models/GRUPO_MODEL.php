@@ -125,6 +125,22 @@
 	} // fin del metodo RellenaDatos()
         
         
+		
+        // funcion RellenaShowCurrent()
+        // Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
+	   // en el atributo de la clase
+	function RellenaShowCurrent() { // se construye la sentencia de busqueda de la tupla
+
+		$sql = "SELECT * FROM USU_GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else { // si existe se devuelve la tupla resultado
+			$result = $resultado->fetch_array();
+			return $result;
+		}
+	} // fin del metodo RellenaShowCurrent()		
+		
         // funcion EDIT()
 	   // Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
 	  // si existe se modifica

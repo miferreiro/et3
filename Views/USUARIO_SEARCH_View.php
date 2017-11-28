@@ -26,7 +26,7 @@ class USUARIO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['Usuario'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="15" size="20" onBlur="comprobarLongitud(this,'15') && comprobarTexto(this,'15')"/>
+						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="11" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -52,23 +52,24 @@ class USUARIO_SEARCH {
 						</th>
 						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" onBlur="comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
 					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Teléfono'];?>
-						</th>
-						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="13" onBlur="comprobarLongitud(this,'11') && comprobarTexto(this,'11')"/>
-					</tr>
+
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Correo electrónico'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="email" name="email" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="70" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
+						<td class="formThTd"><input type="text" id="email" name="email" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="40" size="50" onBlur="comprobarLongitud(this,'40') && comprobarTexto(this,'40')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Direccion'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="direc" name="direc" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="70" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
+					</tr>
+					<tr>
+						<th class="formThTd">
+							<?php echo $strings['Teléfono'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="13" onBlur="comprobarLongitud(this,'11') && comprobarTexto(this,'11')"/>
 					</tr>
 					<tr>
 						<td colspan="2">

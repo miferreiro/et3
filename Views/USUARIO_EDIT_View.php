@@ -58,7 +58,7 @@ class USUARIO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Correo electrónico'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="email" name="email" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Correo']?>" maxlength="50" size="60" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarEmail(this)" required/>
+						<td class="formThTd"><input type="text" id="email" name="email" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Correo']?>" maxlength="40" size="50" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'40') && comprobarTexto(this,'40') && comprobarEmail(this)" required/>
 					</tr>
 					<tr>
 						<th class="formThTd">
