@@ -39,7 +39,7 @@ class GRUPO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['DescripGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="textarea" cols="50" rows="3" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="100"  onBlur="comprobarLongitud(this,'100') && comprobarTexto(this,'100') && comprobarAlfabetico(this,'100')"/>
+						<td class="formThTd"><textarea cols="50" rows="3" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="100"  onBlur="comprobarLongitud(this,'100') && comprobarTexto(this,'100') && comprobarAlfabetico(this,'100')"/></textarea>
 					</tr>
 					
 					<tr>

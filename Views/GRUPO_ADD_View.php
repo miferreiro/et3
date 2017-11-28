@@ -37,7 +37,8 @@ class GRUPO_ADD {
 						<th class="formThTd">
 							<?php echo $strings['DescripGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="textarea" cols="50" rows="3" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="100" required onBlur=""/>
+						<td class="formThTd"><textarea cols="50" rows="3" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="100" required onBlur=""/>
+						</textarea>
 					</tr>
 					
 					<tr>
