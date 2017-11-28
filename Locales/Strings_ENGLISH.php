@@ -100,7 +100,9 @@ array(
 	'Gestion de grupo' => 'Group Management',
 	'IdGrupo' => 'IdGroup',
 	'NombreGrupo' => 'Group Name',
-	'DescripGrupo' => 'Description Group'
+	'DescripGrupo' => 'Description Group',
+	'IdFuncionalidad' => 'IdFunctionality',
+	'IdAccion' => 'Action'
 	)
 ;
 

@@ -102,7 +102,9 @@ array(
 	'Gestion de grupo' => 'Gestión de grupo',
 	'IdGrupo' => 'IdGrupo',
 	'NombreGrupo' => 'Nombre Grupo',
-	'DescripGrupo' => 'Descripción Grupo'
+	'DescripGrupo' => 'Descripción Grupo',
+	'IdFuncionalidad' => 'IdFuncionalidad',
+	'IdAccion' => 'IdAccion'
 	)
 ;
 
