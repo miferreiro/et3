@@ -53,11 +53,11 @@ class PERMISO_DELETE {
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
-			<form action="../Controllers/PERMISO_CONTROLLER.php" method="post" style="display: inline">
+			<form action="../Controllers/PERMISO_CONTROLLER.php" method="POST" style="display: inline">
 				<input type="hidden" name="IdGrupo" value=<?php echo $this->valores['IdGrupo'] ?> />
 				<input type="hidden" name="IdFuncionalidad" value=<?php echo $this->valores['IdFuncionalidad'] ?> />
 				<input type="hidden" name="IdAccion" value=<?php echo $this->valores['IdAccion'] ?> />
-				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
+				<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Eliminar']?>" width="32" height="32" /></button>
 			</form>
 			<form action='../Controllers/PERMISO_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>

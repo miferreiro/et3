@@ -10,7 +10,7 @@
         var $IdGrupo;
         
         var $mysqli;
-        public function __construct($IdFuncionalidad, $IdAccion, $IdGrupo){
+        public function __construct($IdGrupo, $IdFuncionalidad, $IdAccion){
             $this->IdFuncionalidad = $IdFuncionalidad;
             $this->IdAccion = $IdAccion;
             $this->IdGrupo = $IdGrupo;
