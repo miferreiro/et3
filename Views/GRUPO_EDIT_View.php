@@ -40,7 +40,7 @@ class GRUPO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['DescripGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="textarea" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['DescripGrupo'] ?>" maxlength="100"  required onBlur=""/>
+						<td class="formThTd"><input type="textarea" cols="50" rows="3" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['DescripGrupo'] ?>" maxlength="100"  required onBlur=""/>
 					</tr>
 					
 					<tr>
