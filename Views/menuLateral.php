@@ -6,33 +6,33 @@
 	</script>
 	<link href="../Views/css/estiloFinal.css" rel="stylesheet" type="text/css">
 
-		<div class="menujq">
+		<div class="menu">
 			<ul>
 				<!--Diferentes opciones de la lista y sus links-->
 
 
 				<li>
 					<div>
-						<a href="#cabecera"><?php echo $strings['Inicio']; ?></a>
+						<!-- <a href="#cabecera"><?php echo $strings['Inicio']; ?></a> -->
 					</div>
 				</li>
 
 
 				<li>
-					<a href="javascript:void();"><?php echo $strings['usuarios']; ?></a>
+					<!-- <a href="javascript:void();"><?php echo $strings['usuarios']; ?></a> -->
 
 					<ul>
 						<li>
-							<a href="../Controllers/USUARIO_CONTROLLER.php?action=ADD"><?php echo $strings['Insertar Usuario']; ?></a>
+							<a href="../Controllers/USUARIO_CONTROLLER.php"><?php echo $strings['Gestion de usuarios']; ?></a>
 						</li>
 
 
 						<li>
-							<a href="../Controllers/USUARIO_CONTROLLER.php?action=SEARCH"><?php echo $strings['Buscar Usuario']; ?></a>
+							<a href="../Controllers/GRUPO_CONTROLLER.php"><?php echo $strings['Gestion de grupo']; ?></a>
 						</li>
 
 						<li>
-							<a href="../Controllers/USUARIO_CONTROLLER.php"><?php echo $strings['Mostrar todos']; ?></a>
+							<!-- <a href="../Controllers/USUARIO_CONTROLLER.php"><?php echo $strings['Mostrar todos']; ?></a> -->
 						</li>
 
 					</ul>
@@ -40,13 +40,13 @@
 
 
 				<li>
-					<a href=""><?php echo $strings['Mostrar todos']; ?></a>
+					<!-- <a href=""><?php echo $strings['Mostrar todos']; ?></a> -->
 				</li>
 
 
 
 				<li>
-					<a href="#footer"><?php echo $strings['Footer']; ?></a>
+					<!-- <a href="#footer"><?php echo $strings['Footer']; ?></a> -->
 				</li>
 			</ul>
 		</div>
