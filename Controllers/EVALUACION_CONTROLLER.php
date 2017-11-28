@@ -26,8 +26,8 @@ function get_data_form() {
 	$IdHistoria = $_REQUEST[ 'IdHistoria' ]; //Variable que almacena el valor de IdHistoria
 	$CorrectoA = $_REQUEST[ 'CorrectoA' ]; //Variable que almacena el valor de CorrectoA
 	$ComenIncorrectoA = $_REQUEST[ 'ComenIncorrectoA' ]; //Variable que almacena el valor de ComenIncorrectoA
-	$CorrectoP = $_REQUEST[ 'email' ]; //Variable que almacena el valor de CorrectoP
-	$ComenIncorrectoP = $_REQUEST[ 'direc' ]; //Variable que almacena el valor de ComenIncorrectoP
+	$CorrectoP = $_REQUEST[ 'CorrectoP' ]; //Variable que almacena el valor de CorrectoP
+	$ComentIncorrectoP = $_REQUEST[ 'ComentIncorrectoP' ]; //Variable que almacena el valor de ComentIncorrectoP
 	$OK = $_REQUEST[ 'OK' ]; //Variable que almacena el valor de OK
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
 
@@ -39,7 +39,7 @@ function get_data_form() {
 		$CorrectoA,
 		$ComenIncorrectoA,
 		$CorrectoP,
-		$ComenIncorrectoP,
+		$ComentIncorrectoP,
 		$OK
 	);
 	//Devuelve el valor del objecto model creado
@@ -76,7 +76,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$EVALUACION = get_data_form();
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $EVALUACION->DELETE();
-			//crea una vista mensaje con la respuesta y la dirección de vuelta
+			//crea una vista mensaje con la respuesta y la ComentIncorrectoPción de vuelta
 			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
@@ -95,7 +95,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$EVALUACION = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $EVALUACION->EDIT();
-			//crea una vista mensaje con la respuesta y la dirección de vuelta
+			//crea una vista mensaje con la respuesta y la ComentIncorrectoPción de vuelta
 			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' );
 		}
 		//Fin del bloque
@@ -110,7 +110,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el resultado de la busqueda
 			$datos = $EVALUACION->SEARCH();
 			//Variable que almacena array con el CorrectoA de los atributos
-			$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA','CorrectoP','ComenIncorrectoP','OK');
+			$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA','CorrectoP','ComentIncorrectoP','OK');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new EVALUACION_SHOWALL( $lista, $datos );
 		}
@@ -135,7 +135,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los datos de la busqueda
 		$datos = $EVALUACION->SEARCH();
 		//Variable que almacena array con el CorrectoA de los atributos
-		$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA','CorrectoP','ComenIncorrectoP','OK');
+		$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA','CorrectoP','ComentIncorrectoP','OK');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new EVALUACION_SHOWALL( $lista, $datos );
 }

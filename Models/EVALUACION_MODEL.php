@@ -13,13 +13,13 @@ class EVALUACION{ //declaración de la clase
 	var $CorrectoA; // declaración del atributo CorrectoA
 	var $ComenIncorrectoA; // declaración del atributo ComenIncorrectoA
     var $CorrectoP; // declaración del atributo CorrectoP
-    var $ComenIncorrectoP;//declaración del atributo ComenIncorrectoP
+    var $ComentIncorrectoP;//declaración del atributo ComenIncorrectoP
 	var $OK; // declaración del atributo OK
 	var $mysqli; // declaración del atributo manejador de la bd
 
 	//Constructor de la clase
 
-	function __construct($IdTrabajo,$LoginEvaluador,$AliasEvaluado,$IdHistoria,$CorrectoA,$ComenIncorrectoA,$CorrectoP,$ComenIncorrectoP,$OK) {
+	function __construct($IdTrabajo,$LoginEvaluador,$AliasEvaluado,$IdHistoria,$CorrectoA,$ComenIncorrectoA,$CorrectoP,$ComentIncorrectoP,$OK) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->IdTrabajo = $IdTrabajo;
 		$this->LoginEvaluador = $LoginEvaluador;
@@ -28,7 +28,7 @@ class EVALUACION{ //declaración de la clase
 		$this->CorrectoA = $CorrectoA;
 		$this->ComenIncorrectoA = $ComenIncorrectoA;
         $this->CorrectoP = $CorrectoP;
-        $this->ComenIncorrectoP=$ComenIncorrectoP;
+        $this->ComentIncorrectoP=$ComentIncorrectoP;
 		$this->OK = $OK;
 		
         
@@ -50,7 +50,7 @@ class EVALUACION{ //declaración de la clase
 					CorrectoA,
 					ComenIncorrectoA,
                     CorrectoP,
-                    ComenIncorrectoP,
+                    ComentIncorrectoP,
 					OK
        			from EVALUACION 
     			where 
@@ -62,7 +62,7 @@ class EVALUACION{ //declaración de la clase
 					(BINARY CorrectoA LIKE '%$this->CorrectoA%') &&
 	 				(BINARY ComenIncorrectoA LIKE '%$this->ComenIncorrectoA%') &&
                     (BINARY CorrectoP LIKE '%$this->CorrectoP%') &&
-                    (BINARY ComenIncorrectoP LIKE '%$this->ComenIncorrectoP%') &&
+                    (BINARY ComentIncorrectoP LIKE '%$this->ComentIncorrectoP%') &&
 	 				(BINARY OK LIKE '%$this->OK%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
@@ -98,7 +98,7 @@ class EVALUACION{ //declaración de la clase
 					            CorrectoA,
 					            ComenIncorrectoA,
                                 CorrectoP,
-                                ComenIncorrectoP,
+                                ComentIncorrectoP,
 					            OK) 
 								VALUES(
                                 '$this->IdTrabajo',
@@ -108,7 +108,7 @@ class EVALUACION{ //declaración de la clase
 		                        '$this->CorrectoA',
 		                        '$this->ComenIncorrectoA',
                                 '$this->CorrectoP',
-                                '$this->ComenIncorrectoP',
+                                '$this->ComentIncorrectoP',
 		                        '$this->OK'
 								)";
                 }
@@ -190,7 +190,7 @@ class EVALUACION{ //declaración de la clase
 					CorrectoA = '$this->CorrectoA',
 					ComenIncorrectoA = '$this->ComenIncorrectoA',
                     CorrectoP = '$this->CorrectoP',
-                    ComenIncorrectoP ='$this->ComenIncorrectoP',
+                    ComentIncorrectoP ='$this->ComenIncorrectoP',
 					OK = '$this->OK'
 				WHERE ( IdTrabajo = '$this->IdTrabajo' && IdAccion = '$this->LoginEvaluador' && IdAccion = '$this->AliasEvaluado' && 
                 IdHistoria = '$this->IdHistoria'

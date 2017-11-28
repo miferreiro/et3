@@ -54,9 +54,30 @@ class EVALUACION_ADD {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Alias Evaluado'];?>
+							<?php echo $strings['Comentario IncorrectoA'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="AliasEvaluado" name="AliasEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+						<td class="formThTd"><input type="text" id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+					</tr>
+                    
+                    <tr>
+						<th class="formThTd">
+							<?php echo $strings['CorrectoP'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="CorrectoP" name="CorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+					</tr>
+                    
+                    <tr>
+						<th class="formThTd">
+							<?php echo $strings['Comentario IncorrectoP'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="ComentIncorrectoP" name="ComentIncorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+					</tr>
+                    
+                    <tr>
+						<th class="formThTd">
+							<?php echo $strings['OK'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="OK" name="OK" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
 					
 					
