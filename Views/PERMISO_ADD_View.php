@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
 */
-class PERMISOS_ADD {
+class PERMISO_ADD {
 
 	function __construct() {
 		$this->render();
@@ -23,18 +23,18 @@ class PERMISOS_ADD {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Grupo'];?>
+							<?php echo $strings['IdGrupo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Funcionalidad'];?>
+							<?php echo $strings['IdFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="2" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
+						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Accion'];?>
+							<?php echo $strings['IdAccion'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
 					</tr>

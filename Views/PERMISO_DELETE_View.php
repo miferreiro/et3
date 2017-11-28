@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una acción y da la opción de borrarlos
 */
-class PERMISOS_DELETE {
+class PERMISO_DELETE {
 
 	function __construct( $valores ) {
 		$this->valores = $valores;
@@ -24,7 +24,7 @@ class PERMISOS_DELETE {
 			<table>
 				<tr>
 					<th>
-						<?php echo $strings['ID Grupo'];?>
+						<?php echo $strings['IdGrupo'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdGrupo']?>
@@ -33,7 +33,7 @@ class PERMISOS_DELETE {
 
 				<tr>
 					<th>
-						<?php echo $strings['ID Funcionalidad'];?>
+						<?php echo $strings['IdFuncionalidad'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdFuncionalidad']?>
@@ -42,7 +42,7 @@ class PERMISOS_DELETE {
 				
 				<tr>
 					<th>
-						<?php echo $strings['ID Accion'];?>
+						<?php echo $strings['IdAccion'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdAccion']?>

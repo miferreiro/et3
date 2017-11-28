@@ -25,7 +25,7 @@ function get_data_form(){
 	$IdAccion = $_REQUEST['IdAccion'];
 	$action= $_REQUEST['action'];
 	
-	$PERMISO = new PERMISO(
+	$PERMISO = new PERMISO_MODEL(
 		$IdGrupo,
 		$IdFuncionalidad,
 		$IdAccion
@@ -51,8 +51,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$PERMISO = new PERMISO( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ] );
-			$valores = $PERMISO->RellenaDatos( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccionI' ]  );
+			$PERMISO = new PERMISO_MODEL( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ] );
+			$valores = $PERMISO->RellenaDatos( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ]  );
 			new PERMISO_DELETE( $valores );
 		} else {
 			$PERMISO = get_data_form();
@@ -70,9 +70,18 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new PERMISO_SHOWALL( $lista, $datos );
 		}
 		break;
+	case 'SHOWCURRENT'://Caso showcurrent
+		//Variable que almacena un objeto model con el IdGrupo
+		$PERMISO = new PERMISO_MODEL( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ] );
+		//Variable que almacena los valores rellenados a traves de IdGrupo
+		$valores = $PERMISO->RellenaDatos( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ]  );
+		//Creación de la vista showcurrent
+		new PERMISO_SHOWCURRENT( $valores );
+		//Final del bloque
+		break;
 	default:
 		if ( !$_POST ) {
-			$PERMISO = new PERMISO( '', '', '');
+			$PERMISO = new PERMISO_MODEL( '', '', '');
 		} else {
 			$PERMISO = get_data_form();
 		}

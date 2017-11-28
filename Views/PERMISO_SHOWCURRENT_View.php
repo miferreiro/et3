@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una acción
 */
-class PERMISOS_SHOWCURRENT {
+class PERMISO_SHOWCURRENT {
 
 	function __construct( $lista ) {
 		$this->lista = $lista;
@@ -23,35 +23,38 @@ class PERMISOS_SHOWCURRENT {
 		<table>
 				<tr>
 					<th>
-						<?php echo $strings['ID Grupo'];?>
+						<?php echo $strings['IdGrupo'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['IdGrupo']?>
+						<?php echo $this->lista['IdGrupo']?>
 					</td>
 				</tr>
 
 				<tr>
 					<th>
-						<?php echo $strings['ID Funcionalidad'];?>
+						<?php echo $strings['IdFuncionalidad'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['IdFuncionalidad']?>
+						<?php echo $this->lista['IdFuncionalidad']?>
 					</td>
 				</tr>
 				
 				<tr>
 					<th>
-						<?php echo $strings['ID Accion'];?>
+						<?php echo $strings['IdAccion'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['IdAccion']?>
+						<?php echo $this->lista['IdAccion']?>
 					</td>
 				</tr>
 				
+				<caption style="margin-top:10px;" align="bottom">
+				<form action='../Controllers/PERMISO_CONTROLLER.php' method="post">
+					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
+				</form>
+				</caption>
+				
 			</table>
-			<form action='../Controllers/PERMISO_CONTROLLER.php' method="post" style="display: inline">
-				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
-			</form>
 <?php
 		include '../Views/Footer.php';
 	}

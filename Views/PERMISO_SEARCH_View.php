@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a una acción de la base de datos
 */
-class PERMISOS_SEARCH {
+class PERMISO_SEARCH {
 
 	function __construct() {
 		$this->render();
@@ -20,24 +20,24 @@ class PERMISOS_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearch()">
+			<form id="SEARCH" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Grupo'];?>
+							<?php echo $strings['IdGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>					</tr>
+						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarEntero(this,0,99)"/>					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Funcionalidad'];?>
+							<?php echo $strings['IdFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="2" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
+						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarEntero(this,0,99)"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Accion'];?>
+							<?php echo $strings['IdAccion'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
+						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarEntero(this,0,99)"/>
 					</tr>
 					
 					<tr>

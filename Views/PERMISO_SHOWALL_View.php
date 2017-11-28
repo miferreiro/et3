@@ -62,8 +62,9 @@ class PERMISO_SHOWALL {
 ?>
 					<td>
 						<form action="../Controllers/PERMISO_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="IdGrupo" value="<?php echo $fila['idgroup']; ?>">
-								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+							<input type="hidden" name="IdGrupo" value="<?php echo $fila['IdGrupo']; ?>">
+							<input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
+							<input type="hidden" name="IdAccion" value="<?php echo $fila['IdAccion']; ?>">
 					<td>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
 					<td>

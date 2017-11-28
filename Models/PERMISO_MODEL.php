@@ -4,7 +4,7 @@
 <?php
  include '../Functions/BdAdmin.php';
 
-    class PERMISO{
+    class PERMISO_MODEL{
         var $IdFuncionalidad;
         var $IdAccion;
         var $IdGrupo;
@@ -141,7 +141,7 @@ function DELETE()
 // funcion RellenaDatos()
 // Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 // en el atributo de la clase
-function RellenaDatos($IdFuncionalidad, $IdAccion, $IdGrupo)
+function RellenaDatos($IdGrupo, $IdFuncionalidad, $IdAccion)
 {	// se construye la sentencia de busqueda de la tupla
     $sql = "SELECT * FROM PERMISO WHERE (IdFuncionalidad = '$this->IdFuncionalidad' && IdAccion = '$this->IdAccion' && IdGrupo = '$this->IdGrupo')";
     // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
