@@ -24,7 +24,7 @@ class GRUPO_DELETE {
 			<table>
 				<tr>
 					<th>
-						<?php echo $strings['ID Grupo'];?>
+						<?php echo $strings['IdGrupo'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdGrupo']?>
@@ -33,7 +33,7 @@ class GRUPO_DELETE {
 
 				<tr>
 					<th>
-						<?php echo $strings['Nombre Grupo'];?>
+						<?php echo $strings['NombreGrupo'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['NombreGrupo']?>
@@ -42,7 +42,7 @@ class GRUPO_DELETE {
 				
 				<tr>
 					<th>
-						<?php echo $strings['Descripción Grupo'];?>
+						<?php echo $strings['DescripGrupo'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['DescripGrupo']?>

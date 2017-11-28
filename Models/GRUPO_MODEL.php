@@ -55,7 +55,7 @@
 		if ( ( $this->IdGrupo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM GRUPO WHERE (  IdGrupo COLLATE utf8_bin = '$this->IdGrupo')";
+			$sql = "SELECT * FROM GRUPO WHERE (  IdGrupo = '$this->IdGrupo')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -92,14 +92,14 @@
 	    // se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo COLLATE utf8_bin = '$this->IdGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM GRUPO WHERE (IdGrupo COLLATE utf8_bin = '$this->IdGrupo' )";
+			$sql = "DELETE FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -114,7 +114,7 @@
 	   // en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo COLLATE utf8_bin = '$this->IdGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -130,7 +130,7 @@
 	  // si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo COLLATE utf8_bin = '$this->IdGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
@@ -140,7 +140,7 @@
 					IdGrupo = '$this->IdGrupo',
 					 NombreGrupo='$this->NombreGrupo',
                      DescripGrupo='$this->DescripGrupo'
-				WHERE ( IdGrupo COLLATE utf8_bin = '$this->IdGrupo'
+				WHERE ( IdGrupo = '$this->IdGrupo'
 				)";
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion

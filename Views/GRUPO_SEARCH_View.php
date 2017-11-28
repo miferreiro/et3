@@ -24,20 +24,20 @@ class GRUPO_SEARCH {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Grupo'];?>
+							<?php echo $strings['IdGrupo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="15" size="20" onBlur="comprobarLongitud(this,'15') && comprobarTexto(this,'15')"/>
 					</tr>
 
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Nombre Grupo'];?>
+							<?php echo $strings['NombreGrupo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur="comprobarLongitud(this,'30') && comprobarTexto(this,'30') && comprobarAlfabetico(this,'30')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Descripción'];?>
+							<?php echo $strings['DescripGrupo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" onBlur="comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
 					</tr>
