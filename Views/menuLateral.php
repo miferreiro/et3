@@ -31,6 +31,8 @@
 							<a href="../Controllers/GRUPO_CONTROLLER.php"><?php echo $strings['Gestion de grupo']; ?></a>
 						</li>
 
+						
+						
 						<li>
 							<!-- <a href="../Controllers/USUARIO_CONTROLLER.php"><?php echo $strings['Mostrar todos']; ?></a> -->
 						</li>

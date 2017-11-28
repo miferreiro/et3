@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class PERMISOS_SHOWALL {
+class PERMISO_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;

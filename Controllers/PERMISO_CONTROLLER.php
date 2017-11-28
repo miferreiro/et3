@@ -13,7 +13,6 @@ include '../Models/PERMISO_MODEL.php';
 include '../Views/PERMISO_SHOWALL_View.php';
 include '../Views/PERMISO_SEARCH_View.php';
 include '../Views/PERMISO_ADD_View.php';
-include '../Views/PERMISO_EDIT_View.php';
 include '../Views/PERMISO_DELETE_View.php';
 include '../Views/PERMISO_SHOWCURRENT_View.php';
 include '../Views/MESSAGE_View.php';
@@ -52,8 +51,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$PERMISO = new PERMISO( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ]);
-			$valores = $PERMISO->RellenaDatos( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ] );
+			$PERMISO = new PERMISO( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ] );
+			$valores = $PERMISO->RellenaDatos( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccionI' ]  );
 			new PERMISO_DELETE( $valores );
 		} else {
 			$PERMISO = get_data_form();
