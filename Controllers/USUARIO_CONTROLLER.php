@@ -30,7 +30,7 @@ function get_data_form() {
 	$telefono = $_REQUEST[ 'telefono' ]; //Variable que almacena el valor de telefono
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
 
-	$USUARIO = new USUARIO_Model(
+	$USUARIO = new USUARIO_MODEL(
 		$login,
 		$password,
 		$dni,

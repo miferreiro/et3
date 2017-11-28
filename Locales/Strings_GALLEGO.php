@@ -95,8 +95,13 @@ array(
 	'Seleccione una nueva foto personal si desea cambiarla, en caso contrario, no es necesario seleccionarla de nuevo.'=> 'Seleccione unha nova foto persoal se quere cambiala, en caso contrario, non é necesario volver a seleccionala.',
 	'Modificar' => 'Modificar',
 	'Eliminar' => 'Eliminar',
-	'Ver en detalle' => 'Ver en detalle'
-	
+	'Ver en detalle' => 'Ver en detalle',
+	'Gestion de usuarios' => 'Xestión de usuarios',
+	'Gestion de grupo' => 'Xestión de grupo',
+	'IdGrupo' => 'IdGrupo',
+	'NombreGrupo' => 'Nome Grupo',
+	'DescripGrupo' => 'Descripción Grupo'
+
 	)
 ;
 
