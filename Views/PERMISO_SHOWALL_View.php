@@ -61,7 +61,7 @@ class PERMISO_SHOWALL {
 					}
 ?>
 					<td>
-						<form action="../Controllers/PERMISO_CONTROLLER.php" method="get" style="display:inline" >
+						<form action="../Controllers/PERMISO_CONTROLLER.php" method="GET" style="display:inline" >
 							<input type="hidden" name="IdGrupo" value="<?php echo $fila['IdGrupo']; ?>">
 							<input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
 							<input type="hidden" name="IdAccion" value="<?php echo $fila['IdAccion']; ?>">
