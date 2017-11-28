@@ -66,7 +66,7 @@ class USUARIO_SEARCH {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Dirección'];?>
+							<?php echo $strings['Direccion'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="direc" name="direc" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="70" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
 					</tr>

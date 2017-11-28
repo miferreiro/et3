@@ -584,6 +584,7 @@ function comprobarEdit() {
 	nombreuser = document.forms['EDIT'].elements[3];
 	apellidosuser = document.forms['EDIT'].elements[4];
 	emailuser = document.forms['EDIT'].elements[5];
+	direccion = document.forms['EDIT'].elements[6];
 	telefono = document.forms['EDIT'].elements[7];
 
 

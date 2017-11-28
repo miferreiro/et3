@@ -26,13 +26,13 @@ else{
 		$respuesta = $usuario->ADD();
 		//Incluye la vista mensaje
 		include '../Views/MESSAGE_View.php';
-		new MESSAGE($respuesta, './Login_Controller.php');
+		new MESSAGE($respuesta, '../index.php');
 	}
 	//Si existe en la base de datos
 	else{
 		//Incluye la vista mensaje
 		include '../Views/MESSAGE_View.php';
-		new MESSAGE($respuesta, './Login_Controller.php');
+		new MESSAGE($respuesta, '../index.php');
 	}
 
 }
