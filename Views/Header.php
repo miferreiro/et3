@@ -48,7 +48,7 @@
 		
 			echo $strings['Usuario no identificado'];
 ?> 
-		<a href = '../Controllers/Register_Controller.php' ><img src="../Views/icon/registrarse.png" alt="<?php echo $strings['Registrar']?>" /></a>
+		<a href = '../Controllers/Registro_Controller.php' ><img src="../Views/icon/registrarse.png" alt="<?php echo $strings['Registrar']?>" /></a>
 <?php		
 	}
 ?>

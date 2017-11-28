@@ -19,13 +19,13 @@ class Register {
 			<h2>
 				<?php echo $strings['Registro']; ?>
 			</h2>
-			<form name="ADD" action='../Controllers/Register_Controller.php' method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd();">
+			<form name="ADD" action='../Controllers/Registro_Controller.php' method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd();">
 				<table>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Usuario']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="15" size="20" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'15') && comprobarTexto(this,'15')"/>
+						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="9" size="11" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -56,14 +56,14 @@ class Register {
 						<th class="formThTd">
 							<?php echo $strings['Correo electrónico']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="Correo" name="Correo" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="60" size="70" required onBlur=" comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarEmail(this)"/>
+						<td class="formThTd"><input type="text" id="Correo" name="Correo" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="40" size="50" required onBlur=" comprobarVacio(this) && comprobarLongitud(this,'40') && comprobarTexto(this,'40') && comprobarEmail(this)"/>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['Dirección']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="Direccion" name="Direccion" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="60" size="70" required onBlur=" comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarEmail(this)"/>
+						<td class="formThTd"><input type="text" id="Direccion" name="Direccion" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="60" size="70" required onBlur=" comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
 					</tr>
                     
 					<tr>

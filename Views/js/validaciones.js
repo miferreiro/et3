@@ -292,9 +292,7 @@ function comprobarAdd() {
 	var apellidosuser; /*variable que representa el elemento apellidosuser del formulario add */
 	var telefono; /*variable que representa el elemento telefono del formulario add */
 	var emailuser; /*variable que representa el elemento emailuser del formulario add */
-	var fechnacuser; /*variable que representa el elemento fechnacuser del formulario add */
-	var fotoPersonal; /*variable que representa el elemento foto personal del formulario add */
-	var sexo; /*variable que representa el elemento sexo del formulario add */
+    var direccion /*variable que representa el elemento direccion del formulario add */
 
 
 	login = document.forms['ADD'].elements[0];
@@ -302,11 +300,10 @@ function comprobarAdd() {
 	dni = document.forms['ADD'].elements[2];
 	nombreuser = document.forms['ADD'].elements[3];
 	apellidosuser = document.forms['ADD'].elements[4];
-	telefono = document.forms['ADD'].elements[5];
-	emailuser = document.forms['ADD'].elements[6];
-	fechnacuser = document.forms['ADD'].elements[7];
-	fotoPersonal = document.forms['ADD'].elements[8];
-	sexo = document.forms['ADD'].elements[9];
+	emailuser = document.forms['ADD'].elements[5];
+	direccion = document.forms['ADD'].elements[6];
+	telefono = document.forms['ADD'].elements[7];
+
 
 
 	/*Comprueba si login es vacio, retorna false*/
@@ -314,11 +311,11 @@ function comprobarAdd() {
 		return false;
 	} else {
 		/*Comprobamos su longitud, si es mayor que 15, retorna false*/
-		if (!comprobarLongitud(login, 15)) {
+		if (!comprobarLongitud(login, 9)) {
 			return false;
 		} else {
 			/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(login, 15)) {
+			if (!comprobarTexto(login, 9)) {
 				return false;
 			}
 		}
@@ -396,6 +393,40 @@ function comprobarAdd() {
 			}
 		}
 	}
+
+	/*Comprueba si emailuser es vacio, retorna false*/
+	if (!comprobarVacio(emailuser)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 60, retorna false*/
+		if (!comprobarLongitud(emailuser, 40)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(emailuser, 40)) {
+				return false;
+			} else {
+				/*Comprueba si tiene su formato incorrecto, si es así, retorna false*/
+				if (!comprobarEmail(emailuser)) {
+					return false;
+				}
+			}
+		}
+	}
+	if (!comprobarVacio(direccion)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 60, retorna false*/
+		if (!comprobarLongitud(direccion, 60)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(direccion, 60)) {
+				return false;
+			} 
+		}
+	}
+
 	/*Comprueba si telelefono es vacio, retorna false*/
 	if (!comprobarVacio(telefono)) {
 		return false;
@@ -416,38 +447,6 @@ function comprobarAdd() {
 			}
 		}
 	}
-	/*Comprueba si emailuser es vacio, retorna false*/
-	if (!comprobarVacio(emailuser)) {
-		return false;
-	} else {
-		/*Comprueba su longitud, si es mayor que 60, retorna false*/
-		if (!comprobarLongitud(emailuser, 60)) {
-			return false;
-		} else {
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(emailuser, 60)) {
-				return false;
-			} else {
-				/*Comprueba si tiene su formato incorrecto, si es así, retorna false*/
-				if (!comprobarEmail(emailuser)) {
-					return false;
-				}
-			}
-		}
-	}
-	/*Comprueba si  fechnacuser es vacio, retorna false*/
-	if (!comprobarVacio(fechnacuser)) {
-		return false;
-	}
-	/*Comprueba si fotoPersonal es vacio, retorna false*/
-	if (!comprobarVacio(fotoPersonal)) {
-		return false;
-	}
-	/*Comprueba si sexo es vacio, retorna false*/
-	if (!comprobarVacio(sexo)) {
-		return false;
-	}
-
 	encriptar();
 	return true;
 }
@@ -471,15 +470,16 @@ function comprobarSearch() {
 	dni = document.forms['SEARCH'].elements[2];
 	nombreuser = document.forms['SEARCH'].elements[3];
 	apellidosuser = document.forms['SEARCH'].elements[4];
-	telefono = document.forms['SEARCH'].elements[5];
-	emailuser = document.forms['SEARCH'].elements[6];
+	emailuser = document.forms['SEARCH'].elements[5];
+	direccion = document.forms['SEARCH'].elements[6];
+	telefono = document.forms['SEARCH'].elements[7];
 
 	/*Comprueba la longitud que tiene login, si es mayor que 15, retorna false*/
-	if (!comprobarLongitud(login, 15)) {
+	if (!comprobarLongitud(login, 9)) {
 		return false;
 	} else {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(login, 15)) {
+		if (!comprobarTexto(login, 9)) {
 			return false;
 		}
 	}
@@ -530,21 +530,35 @@ function comprobarSearch() {
 			}
 		}
 	}
-	/*Comprueba la longitud que tiene telefono, si es mayor que 11, retorna false*/
+
+	/*Comprueba la longitud que tiene emailuser, si es mayor que 60, retorna false*/
+	if (!comprobarLongitud(emailuser, 40)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(emailuser, 40)) {
+			return false;
+		}
+	}
+	
+
+		/*Comprueba su longitud, si es mayor que 60, retorna false*/
+	if (!comprobarLongitud(direccion, 60)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(direccion, 60)) {
+				return false;
+			} 
+		}
+	
+	
+		/*Comprueba la longitud que tiene telefono, si es mayor que 11, retorna false*/
 	if (!comprobarLongitud(telefono, 11)) {
 		return false;
 	} else {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(telefono, 11)) {
-			return false;
-		}
-	}
-	/*Comprueba la longitud que tiene emailuser, si es mayor que 60, retorna false*/
-	if (!comprobarLongitud(emailuser, 60)) {
-		return false;
-	} else {
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(emailuser, 60)) {
 			return false;
 		}
 	}
@@ -562,9 +576,6 @@ function comprobarEdit() {
 	var apellidosuser; /*variable que representa el elemento apellidosuser del formulario edit */
 	var telefono; /*variable que representa el elemento telefono del formulario edit */
 	var emailuser; /*variable que representa el elemento emailuser del formulario edit */
-	var fechnacuser; /*variable que representa el elemento fechnacuser del formulario edit */
-	var fotoPersonal; /*variable que representa el elemento foto personal del formulario edit */
-	var sexo; /*variable que representa el elemento sexo del formulario edit */
 
 
 	login = document.forms['EDIT'].elements[0];
@@ -572,11 +583,9 @@ function comprobarEdit() {
 	dni = document.forms['EDIT'].elements[2];
 	nombreuser = document.forms['EDIT'].elements[3];
 	apellidosuser = document.forms['EDIT'].elements[4];
-	telefono = document.forms['EDIT'].elements[5];
-	emailuser = document.forms['EDIT'].elements[6];
-	fechnacuser = document.forms['EDIT'].elements[7];
-	fotoPersonal = document.forms['EDIT'].elements[8];
-	sexo = document.forms['EDIT'].elements[9];
+	emailuser = document.forms['EDIT'].elements[5];
+	telefono = document.forms['EDIT'].elements[7];
+
 
 
 	/*Comprueba si login es vacio, retorna false*/
@@ -584,11 +593,11 @@ function comprobarEdit() {
 		return false;
 	} else {
 		/*Comprobamos su longitud, si es mayor que 15, retorna false*/
-		if (!comprobarLongitud(login, 15)) {
+		if (!comprobarLongitud(login, 9)) {
 			return false;
 		} else {
 			/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(login, 15)) {
+			if (!comprobarTexto(login, 9)) {
 				return false;
 			}
 		}
@@ -666,6 +675,42 @@ function comprobarEdit() {
 			}
 		}
 	}
+
+	/*Comprueba si emailuser es vacio, retorna false*/
+	if (!comprobarVacio(emailuser)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 60, retorna false*/
+		if (!comprobarLongitud(emailuser, 40)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(emailuser, 40)) {
+				return false;
+			} else {
+				/*Comprueba si tiene su formato incorrecto, si es así, retorna false*/
+				if (!comprobarEmail(emailuser)) {
+					return false;
+				}
+			}
+		}
+	}
+	
+		/*Comprueba si direccion es vacio, retorna false*/
+	if (!comprobarVacio(direccion)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 50, retorna false*/
+		if (!comprobarLongitud(direccion, 60)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(direccion, 60)) {
+				return false;
+			} 
+		}
+	}
+	
 	/*Comprueba si telelefono es vacio, retorna false*/
 	if (!comprobarVacio(telefono)) {
 		return false;
@@ -686,34 +731,6 @@ function comprobarEdit() {
 			}
 		}
 	}
-	/*Comprueba si emailuser es vacio, retorna false*/
-	if (!comprobarVacio(emailuser)) {
-		return false;
-	} else {
-		/*Comprueba su longitud, si es mayor que 60, retorna false*/
-		if (!comprobarLongitud(emailuser, 60)) {
-			return false;
-		} else {
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(emailuser, 60)) {
-				return false;
-			} else {
-				/*Comprueba si tiene su formato incorrecto, si es así, retorna false*/
-				if (!comprobarEmail(emailuser)) {
-					return false;
-				}
-			}
-		}
-	}
-	/*Comprueba si el fechnacuser es vacio, retorna false*/
-	if (!comprobarVacio(fechnacuser)) {
-		return false;
-	}
-
-	/*Comprueba si el sexo es vacio, retorna false*/
-	if (!comprobarVacio(sexo)) {
-		return false;
-	}
 	return true;
 
 
@@ -733,12 +750,12 @@ function comprobarLogin() {
 	if (!comprobarVacio(login)) {
 		return false;
 	} else {
-		/*Comprobamos su longitud, si es mayor que 15, retorna false*/
-		if (!comprobarLongitud(login, 15)) {
+		/*Comprobamos su longitud, si es mayor que 9, retorna false*/
+		if (!comprobarLongitud(login, 9)) {
 			return false;
 		} else {
 			/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(login, 15)) {
+			if (!comprobarTexto(login, 9)) {
 				return false;
 			}
 		}
