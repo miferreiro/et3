@@ -204,7 +204,7 @@ class USUARIO_MODEL{ //declaración de la clase
                     Correo = '$this->Correo',
                     Direccion ='$this->Direccion',
 					Telefono = '$this->Telefono'
-				WHERE ( login COLLATE utf8_bin = '$this->login'
+				WHERE ( login = '$this->login'
 				)";
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
@@ -223,7 +223,7 @@ class USUARIO_MODEL{ //declaración de la clase
 	//Con esta función vemos si ya está registrado el usuario, sino lo registramos
 	function Register() {
         
-		$sql = "select * from USUARIO where login COLLATE utf8_bin = '" . $this->login . "'";//miramos los usuarios cuyo login es igual al que nos pasan
+		$sql = "select * from USUARIO where login = '" . $this->login . "'";//miramos los usuarios cuyo login es igual al que nos pasan
 
 		$result = $this->mysqli->query( $sql ); //hacemos la consulta en la base de datos.
 		if ( $result->num_rows == 1 ) { // existe el usuario
