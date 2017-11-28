@@ -32,7 +32,7 @@ class USU_GRUPO_SHOWCURRENT {
 
 			<tr>
 				<th>
-					<?php echo $strings['ID Grupo'];?>
+					<?php echo $strings['IdGrupo'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['IdGrupo'] ?>

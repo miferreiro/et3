@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a un usuario e la base de datos
 */
-class USUARIOS_GRUPO_SEARCH {
+class USU_GRUPO_SEARCH {
 
 	function __construct() {
 		$this->render();
@@ -20,20 +20,20 @@ class USUARIOS_GRUPO_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" action="../Controllers/USUARIOS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearch()">
+			<form id="SEARCH" action="../Controllers/USU_GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Usuario'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="15" size="20" onBlur="comprobarLongitud(this,'15') && comprobarTexto(this,'15')"/>
+						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="11" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
 
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Grupo'];?>
+							<?php echo $strings['IdGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="idgroup" name="idgroup" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="11" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
 					
 					<tr>

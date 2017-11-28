@@ -38,7 +38,7 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) { //mira si no existe una acción
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD': //se hace este case en el caso de que queramos insertar
 		if ( !$_POST ) { // si no existe dolar POST  se muestra la vista ADD de USU_GRUPO.
-			new USU_ADD();
+			new USU_GRUPO_ADD();
 		} else { // si existe dolar POST
 			$USU_GRUPO = get_data_form();// se pasa a la variable USU_GRUPO un objeto del modelo USU_GRUPO
 			$respuesta = $USU_GRUPO->ADD();//obtenemos la respuesta que viene del método ADD() de la clase USU_GRUPO
@@ -62,7 +62,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new USU_GRUPO_DELETE( $valores ); //se muestra la vista DELETE con el login y el IdGrupo.
 		} else {//si existe dolar POST
 			$USU_GRUPO = get_data_form(); // se le pasa a la variable $USU el login y IdGrupo a eliminar
-			$respuesta = $USU->DELETE(); // con el método DELETE de USU_GRUPO se elimna ese login y IdGrupo de la base de datos.
+			$respuesta = $USU_GRUPO->DELETE(); // con el método DELETE de USU_GRUPO se elimna ese login y IdGrupo de la base de datos.
 			new MESSAGE( $respuesta, '../Controllers/USU_GRUPO_CONTROLLER.php' );// se muestar en una vista un mensaje después del borrado.
 		}
 		break;

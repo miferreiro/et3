@@ -63,11 +63,12 @@ class USU_GRUPO_SHOWALL {
 					<td>
 						<form action="../Controllers/USU_GRUPO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
-								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
-					<td>
+							<input type="hidden" name="IdGrupo" value="<?php echo $fila['IdGrupo']; ?>">
+
+					
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
-					<td>
-								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+				
+							
 						</form>
 
 				</tr>

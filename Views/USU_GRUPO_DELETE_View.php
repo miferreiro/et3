@@ -33,7 +33,7 @@ class USU_GRUPO_DELETE {
 
 				<tr>
 					<th>
-						<?php echo $strings['ID Grupo'];?>
+						<?php echo $strings['IdGrupo'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdGrupo']?>
@@ -46,7 +46,7 @@ class USU_GRUPO_DELETE {
 			</p>
 			<form action="../Controllers/USU_GRUPO_CONTROLLER.php" method="post" style="display: inline">
 				<input type="hidden" name="login" value="<?php echo $this->valores['login'] ?>" />
-				<input type="hidden" name="DNI" value="<?php echo $this->valores['ID Grupo'] ?>" />
+				<input type="hidden" name="DNI" value="<?php echo $this->valores['IdGrupo'] ?>" />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
 			<form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="post" style="display: inline">

@@ -98,6 +98,7 @@ array(
 	'Ver en detalle' => 'Ver en detalle',
 	'Gestion de usuarios' => 'Xestión de usuarios',
 	'Gestion de grupo' => 'Xestión de grupo',
+	'Gestion de grupo' => 'Xestión de usuarios-grupo',
 	'IdGrupo' => 'IdGrupo',
 	'NombreGrupo' => 'Nome Grupo',
 	'DescripGrupo' => 'Descripción Grupo',

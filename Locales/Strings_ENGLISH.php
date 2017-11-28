@@ -98,6 +98,7 @@ array(
 	'Ver en detalle' => 'See details',
 	'Gestion de usuarios' => 'User Management',
 	'Gestion de grupo' => 'Group Management',
+	'Gestion de usuarios-grupo' => 'Users-Group Management',
 	'IdGrupo' => 'IdGroup',
 	'NombreGrupo' => 'Group Name',
 	'DescripGrupo' => 'Description Group',

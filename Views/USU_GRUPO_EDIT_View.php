@@ -21,7 +21,7 @@ class USU_GRUPO_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/USU_GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEdit()">
+			<form name="EDIT" action="../Controllers/USU_GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" >
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -32,7 +32,7 @@ class USU_GRUPO_EDIT {
 
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Grupo'];?>
+							<?php echo $strings['IdGrupo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdGrupo']?>" maxlength="9" size="11" onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')" required/>
 					</tr>

@@ -100,6 +100,7 @@ array(
 	'Ver en detalle' => 'Ver en detalle',
 	'Gestion de usuarios' => 'Gestión de usuarios',
 	'Gestion de grupo' => 'Gestión de grupo',
+	'Gestion de usuarios-grupo' => 'Gestión de usuarios-grupo',
 	'IdGrupo' => 'IdGrupo',
 	'NombreGrupo' => 'Nombre Grupo',
 	'DescripGrupo' => 'Descripción Grupo',

@@ -114,7 +114,7 @@ function EDIT()
 // se manda un mensaje de que ese valor de clave no existe
 function DELETE()
 {	// se construye la sentencia sql de busqueda con los atributos de la clase
-    $sql = "SELECT * FROM USU_GRUPO WHERE (login = '$this->login' && IdGrupo = '$this->IdGrupo')";
+    $sql = "SELECT login,IdGrupo FROM USU_GRUPO WHERE (login = '$this->login' && IdGrupo = '$this->IdGrupo')";
     // se ejecuta la query
     $result = $this->mysqli->query($sql);
     // si existe una tupla con ese valor de clave
