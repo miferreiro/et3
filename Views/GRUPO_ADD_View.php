@@ -25,19 +25,19 @@ class GRUPO_ADD {
 						<th class="formThTd">
 							<?php echo $strings['IdGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="15" size="20" required onBlur=""/>
+						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" required onBlur=""/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['NombreGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" required onBlur=""/>
+						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="65" required onBlur=""/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['DescripGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" required onBlur=""/>
+						<td class="formThTd"><input type="textarea" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="100" required onBlur=""/>
 					</tr>
 					
 					<tr>
