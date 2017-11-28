@@ -23,7 +23,7 @@ class GRUPO_SHOWCURRENT {
 		<table class="tablaDatos">
 			<tr>
 				<th>
-					<?php echo $strings['ID Grupo'];?>
+					<?php echo $strings['IdGrupo'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['IdGrupo'] ?>
@@ -32,7 +32,7 @@ class GRUPO_SHOWCURRENT {
 	
 			<tr>
 				<th>
-					<?php echo $strings['Nombre Grupo'];?>
+					<?php echo $strings['NombreGrupo'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['NombreGrupo'] ?>
@@ -40,7 +40,7 @@ class GRUPO_SHOWCURRENT {
 			</tr>
 			<tr>
 				<th>
-					<?php echo $strings['Descripción Grupo'];?>
+					<?php echo $strings['DescripGrupo'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['DescripGrupo'] ?>

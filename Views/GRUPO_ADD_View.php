@@ -19,25 +19,25 @@ class GRUPO_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd()">
+			<form name="ADD" action="../Controllers/GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Grupo'];?>
+							<?php echo $strings['IdGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="15" size="20" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'15') && comprobarTexto(this,'15')"/>
+						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="15" size="20" required onBlur=""/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Nombre Grupo'];?>
+							<?php echo $strings['NombreGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') && comprobarAlfabetico(this,'30')"/>
+						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" required onBlur=""/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Descripción Grupo'];?>
+							<?php echo $strings['DescripGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'50') && comprobarTexto(this,'50')"/>
+						<td class="formThTd"><input type="text" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" required onBlur=""/>
 					</tr>
 					
 					<tr>
