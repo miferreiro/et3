@@ -54,7 +54,7 @@ class GRUPO_DELETE {
 <?php
 					}
 ?>
-						</form>
+						
 
 				</tr>
 <?php
