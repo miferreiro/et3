@@ -30,7 +30,7 @@ class FUNC_ACCION_SEARCH {
 
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Acción'];?>
+							<?php echo $strings['IdAccion'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
