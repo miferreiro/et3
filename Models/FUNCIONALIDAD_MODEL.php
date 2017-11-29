@@ -9,6 +9,7 @@
         var $IdFuncionalidad;//Declaración de la variable IdFuncionalidad, es la clave.
         var $NombreFuncionalidad;//Declaración de la variable NombreFuncionalidad
         var $DescripFuncionalidad;//Declaración de la variable DescripFuncionalidad
+        var $dependencias;//Declaración de la variable dependencias
         
         
         
@@ -124,6 +125,24 @@
 			$result = $resultado->fetch_array();
 			return $result;
 		}
+	} // fin del metodo RellenaDatos()
+        
+        // funcion RellenaDatos()
+	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
+	// en el atributo de la clase
+	function dependencias() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias = null;
+
+		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $keys = array('FUNC_ACCION');
+            $dependencias = array_fill_keys($keys , $result);
+        }
+        
+        return $dependencias;
 	} // fin del metodo RellenaDatos()
        
          // funcion EDIT()
