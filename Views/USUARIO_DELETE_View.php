@@ -7,13 +7,15 @@
 */
 class USUARIO_DELETE {
 
-	function __construct( $valores ) {
+	function __construct( $valores, $dependencias ) {
 		$this->valores = $valores;
+		$this->dependencias = $dependencias;
 		$this->render( $this->valores );
 	}
 
-	function render( $valores ) {
+	function render( $valores, $dependencias ) {
 		$this->valores = $valores;
+		$this->dependencias = $dependencias;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -87,6 +89,72 @@ class USUARIO_DELETE {
 					</td>
 				</tr>
 			</table>
+            
+            <?php
+            
+            if($dependencias != null){
+                if(array_key_exists(USU_GRUPO, $dependencias)){
+            ?>
+                    <td>USU_GRUPO</td>
+                    <td><?php echo $dependencias['USU_GRUPO']['login'] ?></td>
+				    <td><?php echo $dependencias['USU_GRUPO']['IdGrupo'] ?></td>
+            <?php
+                }
+                if(array_key_exists(ENTREGA, $dependencias)){
+            ?>
+                    <td>ENTREGA</td>
+                    <td><?php echo $dependencias['ENTREGA']['login'] ?></td>
+				    <td><?php echo $dependencias['ENTREGA']['IdTrabajo'] ?></td>
+				    <td><?php echo $dependencias['ENTREGA']['Alias'] ?></td>
+				    <td><?php echo $dependencias['ENTREGA']['Horas'] ?></td>
+				    <td><?php echo $dependencias['ENTREGA']['Ruta'] ?></td>
+            <?php
+                }
+                if(array_key_exists(ASIGNAC_QA, $dependencias)){
+            ?>
+                    <td>ASIGNAC_QA</td>
+                    <td><?php echo $dependencias['ASIGNAC_QA']['IdTrabajo'] ?></td>
+				    <td><?php echo $dependencias['ASIGNAC_QA']['LoginEvaluador'] ?></td>
+				    <td><?php echo $dependencias['ASIGNAC_QA']['LoginEvaluado'] ?></td>
+				    <td><?php echo $dependencias['ASIGNAC_QA']['AliasEvaluado'] ?></td>
+            <?php
+                }
+                if(array_key_exists(ASIGNAC_QA2, $dependencias)){
+            ?>
+                    <td>ASIGNAC_QA</td>
+                    <td><?php echo $dependencias['ASIGNAC_QA']['IdTrabajo'] ?></td>
+				    <td><?php echo $dependencias['ASIGNAC_QA']['LoginEvaluador'] ?></td>
+				    <td><?php echo $dependencias['ASIGNAC_QA']['LoginEvaluado'] ?></td>
+				    <td><?php echo $dependencias['ASIGNAC_QA']['AliasEvaluado'] ?></td>
+            <?php
+                }
+                if(array_key_exists(NOTA_TRABAJO, $dependencias)){
+            ?>
+                    <td>NOTA_TRABAJO</td>
+                    <td><?php echo $dependencias['NOTA_TRABAJO']['login'] ?></td>
+				    <td><?php echo $dependencias['NOTA_TRABAJO']['IdTrabajo'] ?></td>
+				    <td><?php echo $dependencias['NOTA_TRABAJO']['NotaTrabajo'] ?></td>
+            <?php
+                }
+                if(array_key_exists(EVALUACION, $dependencias)){
+            ?>
+                    <td>EVALUACIÓN</td>
+                    <td><?php echo $dependencias['EVALUACION']['IdTrabajo'] ?></td>
+				    <td><?php echo $dependencias['EVALUACION']['LoginEvaluador'] ?></td>
+				    <td><?php echo $dependencias['EVALUACION']['AliasEvaluado'] ?></td>
+				    <td><?php echo $dependencias['EVALUACION']['IdHistoria'] ?></td>
+				    <td><?php echo $dependencias['EVALUACION']['CorrectoA'] ?></td>
+				    <td><?php echo $dependencias['EVALUACION']['CorrectoP'] ?></td>
+				    <td><?php echo $dependencias['EVALUACION']['OK'] ?></td>
+
+            <?php
+                }
+            
+                
+                }
+            else{
+              ?>  
+            
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
@@ -107,6 +175,9 @@ class USUARIO_DELETE {
 		</div>
 <?php
 		include '../Views/Footer.php';
+                }
+            }
+        
 	}
 }
 

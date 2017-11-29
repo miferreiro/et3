@@ -67,7 +67,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el relleno de los datos utilizando el login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			//Crea una vista delete para ver la tupla
-			new USUARIO_DELETE( $valores );
+            $dependencias = $USUARIO->dependencias($_REQUEST['login']);
+            
+			new USUARIO_DELETE( $valores, $dependencias );
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos

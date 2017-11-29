@@ -183,6 +183,57 @@ class USUARIO_MODEL{ //declaración de la clase
 			return $result;
 		}
 	} // fin del metodo RellenaDatos()
+    
+    // funcion RellenaDatos()
+	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
+	// en el atributo de la clase
+	function dependencias() { // se construye la sentencia de busqueda de la tupla
+
+		$sql = "SELECT * FROM USU_GRUPO WHERE (login = '$this->login')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $dependencias[USU_GRUPO]= $result;
+        }
+        
+        $sql = "SELECT * FROM ENTREGA WHERE (login = '$this->login')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $dependencias[ENTREGA] = $result;
+        }
+        
+        $sql = "SELECT * FROM ASIGNAC_QA WHERE (LoginEvaluador = '$this->login')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $dependencias[ASIGNAC_QA]= $result;
+        }
+		
+        $sql = "SELECT * FROM ASIGNAC_QA WHERE (LoginEvaluado = '$this->login')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $dependencias[ASIGNAC_QA2] = $result;
+        }
+        
+        $sql = "SELECT * FROM NOTA_TRABAJO WHERE (login = '$this->login')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $dependencias[NOTA_TRABAJO] = $result;
+        }
+        
+        $sql = "SELECT * FROM EVALUACION WHERE (LoginEvaluador = '$this->login')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $dependencias[EVALUACION] = $result;
+        }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
+
 
 	// funcion EDIT()
 	// Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
