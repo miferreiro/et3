@@ -109,7 +109,9 @@ array(
 	'NombreFuncionalidad' => 'Nome Funcionalidade',
 	'DescripFuncionalidad' => 'Descripción Funcionalidade',
 	'IdAccion' => 'Id Accion',
-	'Gestión de permisos' => 'Xestión de permisos'
+	'Gestión de permisos' => 'Xestión de permisos',
+	'Mostrar todos' => 'Mostrar todos',
+	'Buscador' => 'Buscador'
 	)
 ;
 
