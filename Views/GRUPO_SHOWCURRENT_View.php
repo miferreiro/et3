@@ -7,55 +7,65 @@
 */
 class GRUPO_SHOWCURRENT {
 
-	function __construct( $lista ) {
-		$this->lista = $lista;
-		$this->render( $this->lista );
-	}
 
-	function render( $lista ) {
+	function __construct( $lista, $datos) {
 		$this->lista = $lista;
+		$this->datos = $datos;
+		$this->render($this->lista,$this->datos);
+	}
+	
+	function render($lista,$datos){
+		$this->lista = $lista;
+		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<h2>
-			<?php echo $strings['Vista detallada'];?>
-		</h2>
-		<table class="tablaDatos">
-			<tr>
-				<th>
-					<?php echo $strings['IdGrupo'];?>
-				</th>
-				<td>
-					<?php echo $this->lista['IdGrupo'] ?>
-				</td>
-			</tr>
-	
-			<tr>
-				<th>
-					<?php echo $strings['NombreGrupo'];?>
-				</th>
-				<td>
-					<?php echo $this->lista['NombreGrupo'] ?>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['DescripGrupo'];?>
-				</th>
-				<td>
-					<?php echo $this->lista['DescripGrupo'] ?>
-				</td>
-			</tr>
-			
-			<caption style="margin-top:10px;" align="bottom">
-				<form action='../Controllers/GRUPO_CONTROLLER.php' method="post">
-					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
-				</form>
-			</caption>
-		</table>
+		<div class="seccion">
+			<h2>
+				<?php echo $strings['Tabla de datos'];?>
+			</h2>
+			<table>
 
+				<tr>
+<?php
+					foreach ( $lista as $atributo ) {
+?>
+					<th>
+						<?php echo $strings[$atributo]?>
+					</th>
+<?php
+					}
+?>
+				</tr>
+<?php
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+?>
+				<tr>
+<?php
+					foreach ( $lista as $atributo ) {
+?>
+					<td>
+<?php 
+							echo $fila[ $atributo ];
+
+?>
+					</td>
+<?php
+					}
+?>
+						</form>
+
+				</tr>
+<?php
+				}
+?>
+			</table>
+			<form action='../Controllers/GRUPO_CONTROLLER.php' method="post">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			</form>
+		</div>
 <?php
 		include '../Views/Footer.php';
-	}
-}
+		}
+		}
 ?>

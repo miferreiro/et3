@@ -108,8 +108,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 		//Variable que almacena los valores rellenados a traves de IdGrupo
 		$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
+		//Variable que almacena array con el nombre de los atributos
+		$lista = array( 'login', 'IdGrupo');
 		//Creación de la vista showcurrent
-		new GRUPO_SHOWCURRENT( $valores );
+		new GRUPO_SHOWCURRENT( $lista, $valores );
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
