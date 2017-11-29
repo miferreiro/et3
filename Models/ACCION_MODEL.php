@@ -124,6 +124,24 @@ class ACCION{
 			return $result;
 		}
 	} // fin del metodo RellenaDatos()
+    
+    // funcion RellenaDatos()
+	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
+	// en el atributo de la clase
+	function dependencias() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias = null;
+
+		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdAccion = '$this->IdAccion')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $keys = array('FUNC_ACCION');
+            $dependencias = array_fill_keys($keys , $result);
+        }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
         
         
         // funcion EDIT()

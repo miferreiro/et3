@@ -54,7 +54,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			$FUNCIONALIDAD = new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '');
 			$valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ]);
-			new FUNCIONALIDAD_DELETE( $valores );
+			$dependencias = $FUNCIONALIDAD->dependencias( $_REQUEST[ 'IdFuncionalidad' ]);
+			new FUNCIONALIDAD_DELETE( $valores, $dependencias );
 		} else {
 			$FUNCIONALIDAD = get_data_form();
 			$respuesta = $FUNCIONALIDAD->DELETE();

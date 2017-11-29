@@ -54,7 +54,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			$ACCION = new ACCION( $_REQUEST[ 'IdAccion' ], '', '');
 			$valores = $ACCION->RellenaDatos( $_REQUEST[ 'IdAccion' ]);
-			new ACCION_DELETE( $valores );
+			$dependencias = $ACCION->dependencias( $_REQUEST[ 'IdAccion' ]);
+			new ACCION_DELETE( $valores, $dependencias );
 		} else {
 			$ACCION = get_data_form();
 			$respuesta = $ACCION->DELETE();

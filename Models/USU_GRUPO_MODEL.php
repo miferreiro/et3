@@ -24,6 +24,36 @@
 function ADD()
 {
     if (($this->login <> '' && $this->IdGrupo <> '')){ // si el atributo clave de la entidad no esta vacío'
+        
+        $usuario="SELECT * FROM USUARIO WHERE (login = '$this->login')";
+        
+        $result=$this->mysqli->query($usuario);
+        
+        if(!$result){
+            return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+        }
+        else{
+            
+            if($result->num_rows == 0){
+                return "No puedes insertar un usuario debido a que no existe, debes insertar previamente un usuario";
+            }
+        }
+        
+        $grupo = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+        
+        $result = $this->mysqli->query($grupo);
+        
+        if(!$result){
+             return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara 
+        }
+        
+        else{
+                if($result->num_rows == 0){
+                    
+                    return "No puedes insertar un grupo debido a que no existe, debes insertar previamente un grupo";
+                }    
+        
+        }
 		
 		// construimos el sql para buscar esa clave en la tabla
         $sql = "SELECT * FROM USU_GRUPO WHERE (login = '$this->login' && IdGrupo = '$this->IdGrupo')";
