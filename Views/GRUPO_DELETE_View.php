@@ -69,8 +69,9 @@ class GRUPO_DELETE {
                 if(array_key_exists('USU_GRUPO', $dependencias)){
             ?>
                 <h3>Para borrar este grupo tendrá que eliminar a sus integrantes del grupo.</h3>
-                }
             <?php
+                }
+            
                 if(array_key_exists('PERMISO', $dependencias)){
             ?>
                     <td>PERMISO</td>
