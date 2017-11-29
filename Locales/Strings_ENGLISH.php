@@ -32,6 +32,8 @@ array(
 	'Nombre' => 'Name',
 	'nombre' => 'name',
 	'Gestion de funcionalidades' => 'Functionality management',
+	'Gestion de funcionalidades/acciones' => 'Functionality/actions management',
+	'Gestion de aciones' => 'Actions management',
 	'Apellidos' => 'Surnames',
 	'apellidos' => 'Surnames',
 	'Teléfono' => 'Telephone',

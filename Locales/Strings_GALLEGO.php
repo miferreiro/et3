@@ -47,6 +47,8 @@ array(
 	'Sexo' => 'Sexo',
 	'sexo' => 'Sexo',
 	'Gestion de funcionalidades' => 'Xestión de funcionalidades',
+	'Gestion de funcionalidades/acciones' => 'Xestión de funcionalidades/accións',
+	'Gestion de aciones' => 'Xestión de accións',
 	'¿Está seguro de que quiere borrar esta tupla de la tabla?'=>'¿Está seguro de que quere borrar esta tupla da táboa?',
 	'Error en la consulta sobre la base de datos' => 'Error na consulta sobre a base de datos',
 	'No se ha podido conectar con la base de datos' => 'Non se ha podido conectar coa base de datos',

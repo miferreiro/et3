@@ -98,6 +98,8 @@ array(
 	'Modificar' => 'Modificar',
 	'Eliminar' => 'Eliminar',
 	'Gestion de funcionalidades' => 'Gestión de funcionalidades',
+	'Gestion de funcionalidades/acciones' => 'Gestión de funcionalidades/acciones',
+	'Gestion de acciones' => 'Gestión de acciones',
 	'Ver en detalle' => 'Ver en detalle',
 	'Gestion de usuarios' => 'Gestión de usuarios',
 	'Gestion de grupo' => 'Gestión de grupo',

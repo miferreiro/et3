@@ -43,7 +43,14 @@
                      
 					<ul>
 						<li>
-							<a href="../Controllers/FUNC_ACCION_CONTROLLER.php"><?php echo $strings['Gestion de funcionalidades']; ?></a>
+							<a href="../Controllers/FUNC_ACCION_CONTROLLER.php"><?php echo $strings['Gestion de funcionalidades/acciones']; ?></a>
+						</li>
+												<li>
+						    <a href="../Controllers/FUNCIONALIDAD_CONTROLLER.php"><?php echo $strings['Gestion de funcionalidades']; ?></a>
+						</li>
+												<li>
+							<a href="../Controllers/FUNC_ACCION_CONTROLLER.php"><?php echo $strings['Gestion de acciones']; ?></a>
+							
 						</li>
 
 					</ul>
