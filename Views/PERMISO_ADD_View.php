@@ -17,7 +17,7 @@ class PERMISO_ADD {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['Formulario de Permiso'];?>
+				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
 			<form name="ADD_PERMISOS" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd()">
 				<table>
