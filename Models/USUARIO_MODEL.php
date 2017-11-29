@@ -15,6 +15,7 @@ class USUARIO_MODEL{ //declaración de la clase
     var $Direccion;//declaración del atributo Direccion
 	var $Telefono; // declaración del atributo Telefono
 	var $mysqli; // declaración del atributo manejador de la bd
+    var $dependencias;//declaración del atributo dependencias
 
 	//Constructor de la clase
 
@@ -188,6 +189,8 @@ class USUARIO_MODEL{ //declaración de la clase
 	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	// en el atributo de la clase
 	function dependencias() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias = null;
 
 		$sql = "SELECT * FROM USU_GRUPO WHERE (login = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
