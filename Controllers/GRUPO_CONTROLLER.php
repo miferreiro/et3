@@ -54,12 +54,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que recoge un objecto model con solo el idgrupo
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 			//Variable que almacena el relleno de los datos utilizando el IdGrupo
-			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
+			$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
+			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
             $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'login', 'IdGrupo');
 			//Crea una vista delete para ver la tupla
-			new GRUPO_DELETE( $valores, $lista, $dependencias);
+			new GRUPO_DELETE( $valores, $valores2, $lista, $dependencias);
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -111,10 +112,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 		//Variable que almacena los valores rellenados a traves de IdGrupo
 		$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
+		//Variable que almacena los valores rellenados a traves de IdGrupo
+		$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'login', 'IdGrupo');
 		//Creación de la vista showcurrent
-		new GRUPO_SHOWCURRENT( $lista, $valores );
+		new GRUPO_SHOWCURRENT( $lista, $valores, $valores2 );
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto

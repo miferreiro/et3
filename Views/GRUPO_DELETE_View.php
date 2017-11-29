@@ -7,15 +7,17 @@
 */
 class GRUPO_DELETE {
 
-	function __construct( $valores , $lista, $dependencias) {
+	function __construct( $valores, $valores2 , $lista, $dependencias) {
 		$this->valores = $valores;
+		$this->valores2 = $valores2;
 		$this->lista = $lista;
 		$this->dependencias = $dependencias;
-		$this->render( $this->valores, $this->lista , $this->dependencias );
+		$this->render( $this->valores, $this->valores2, $this->lista , $this->dependencias );
 	}
 
-	function render( $valores, $lista, $dependencias ) {
+	function render( $valores, $valores2, $lista, $dependencias ) {
 		$this->valores = $valores;
+		$this->valores2 = $valores2;
 		$this->lista = $lista;
 		$this->dependencias = $dependencias;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
@@ -25,6 +27,36 @@ class GRUPO_DELETE {
 			<h2>
 				<?php echo $strings['Tabla de borrado'];?>
 			</h2>
+					
+			<table>
+				<tr>
+					<th>
+						<?php echo $strings['IdGrupo'];?>
+					</th>
+					<td>
+						<?php echo $this->valores2['IdGrupo']?>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<?php echo $strings['NombreGrupo'];?>
+					</th>
+					<td>
+						<?php echo $this->valores2['NombreGrupo']?>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<?php echo $strings['DescripGrupo'];?>
+					</th>
+					<td>
+						<?php echo $this->valores2['DescripGrupo']?>
+					</td>
+				</tr>
+	
+			</table>
+			<br>
+			<br>
 			<table>
 				
 				<tr>
@@ -80,6 +112,11 @@ class GRUPO_DELETE {
 				    <td><?php echo $dependencias['PERMISO']['IdAccion'] ?></td>
             <?php
                 }
+				?>
+				<form action='../Controllers/GRUPO_CONTROLLER.php' method="post" style="display: inline">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+				</form>
+			<?php
             }
             else{
                 ?>
@@ -87,10 +124,9 @@ class GRUPO_DELETE {
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
 			<form action="../Controllers/GRUPO_CONTROLLER.php" method="post" style="display: inline">
-				<input type="hidden" name="login" value=<?php echo $this->valores['login'] ?> />
-				<input type="hidden" name="IdGrupo" value=<?php echo $this->valores['IdGrupo'] ?> />
-				<input type="hidden" name="NombreGrupo" value=<?php echo $this->valores['NombreGrupo'] ?> />
-				<input type="hidden" name="DescripGrupo" value=<?php echo $this->valores['DescripGrupo'] ?> />
+				<input type="hidden" name="IdGrupo" value=<?php echo $valores2['IdGrupo'] ?> />
+				<input type="hidden" name="NombreGrupo" value=<?php echo $valores2['NombreGrupo'] ?> />
+				<input type="hidden" name="DescripGrupo" value=<?php echo $valores2['DescripGrupo'] ?> />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
 			<form action='../Controllers/GRUPO_CONTROLLER.php' method="post" style="display: inline">

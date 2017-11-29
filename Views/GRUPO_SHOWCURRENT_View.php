@@ -8,15 +8,17 @@
 class GRUPO_SHOWCURRENT {
 
 
-	function __construct( $lista, $datos) {
+	function __construct( $lista, $datos, $datos2) {
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+		$this->datos2 = $datos2;
+		$this->render($this->lista,$this->datos,$this->datos2);
 	}
 	
-	function render($lista,$datos){
+	function render($lista,$datos,$datos2){
 		$this->lista = $lista;
 		$this->datos = $datos;
+		$this->datos2 = $datos2;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -24,6 +26,36 @@ class GRUPO_SHOWCURRENT {
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
+			<table>
+				<tr>
+					<th>
+						<?php echo $strings['IdGrupo'];?>
+					</th>
+					<td>
+						<?php echo $this->datos2['IdGrupo']?>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<?php echo $strings['NombreGrupo'];?>
+					</th>
+					<td>
+						<?php echo $this->datos2['NombreGrupo']?>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<?php echo $strings['DescripGrupo'];?>
+					</th>
+					<td>
+						<?php echo $this->datos2['DescripGrupo']?>
+					</td>
+				</tr>
+	
+			</table>
+			<br>
+			<br>
+			
 			<table>
 
 				<tr>
