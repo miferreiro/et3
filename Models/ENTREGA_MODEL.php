@@ -60,7 +60,33 @@
 	//existe ya en la tabla
 	function ADD() {
 		if ( ( $this->login <> '' $this->IdTrabajo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
-
+            
+            $trabajo = "SELECT * FROM TRABAJO WHERE ( IdTrabajo='$this->IdTrabajo')";
+                    $result=$this->mysqli->query($trabajo);
+                if(!$result){
+                    return "No se ha podido conectar a la base de datos";
+                }
+                else{
+                    if($result->num_rows == 0){
+                        return "No puedes añadir la entrega debido a que no se añadio un trabajo";
+                    }
+                }
+            
+                $usuario = "SELECT * FROM USUARIO WHERE (login= '$this->login')";
+            
+                 $result=$this->mysqli->query($ususario);
+            
+                if(!$result){
+                    
+                      return "No se ha podido conectar a la base de datos";
+                }
+            
+                else{
+                    if($result->num_rows == 0){
+                        return "No puedes añadir la entrega debido a que no se añadio un trabajo";
+                    }
+                }
+            
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM ENTREGA WHERE (  login = '$this->login' && IdTrabajo = '$this->IdTrabajo')";
 
