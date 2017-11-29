@@ -105,7 +105,9 @@ array(
 	'IdGrupo' => 'IdGroup',
 	'NombreGrupo' => 'Group Name',
 	'DescripGrupo' => 'Description Group',
-	'IdFuncionalidad' => 'Id Functionality',
+	'IdFuncionalidad' => 'Functionality Id',
+	'NombreFuncionalidad' => 'Functionality Name',
+	'DescripFuncionalidad' => 'Functionality Description',
 	'IdAccion' => 'Id Action',
 	'Gestión de permisos' => 'Permission Management'
 	)

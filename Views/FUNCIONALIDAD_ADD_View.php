@@ -22,21 +22,21 @@ class FUNCIONALIDAD_ADD {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Funcionalidad'];?>
+							<?php echo $strings['IdFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="15" size="20" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'15') && comprobarTexto(this,'15')"/>
+						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Nombre Funcionalidad'];?>
+							<?php echo $strings['NombreFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NombreFuncionalidad" name="NombreFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') && comprobarAlfabetico(this,'30')"/>
+						<td class="formThTd"><input type="text" id="NombreFuncionalidad" name="NombreFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="70" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarAlfabetico(this,'60')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Descripción Funcionalidad'];?>
+							<?php echo $strings['DescripFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="DescripFuncionalidad" name="DescripFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'50') && comprobarTexto(this,'50')"/>
+						<td class="formThTd"><textarea id="DescripFuncionalidad" name="DescripFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" cols="50" rows="3" value="" maxlength="100"  required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100') && comprobarTexto(this,'100')"/></textarea>
 					</tr>
 					
 					<tr>

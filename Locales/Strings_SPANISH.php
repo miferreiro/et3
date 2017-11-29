@@ -108,6 +108,8 @@ array(
 	'NombreGrupo' => 'Nombre Grupo',
 	'DescripGrupo' => 'Descripción Grupo',
 	'IdFuncionalidad' => 'Id Funcionalidad',
+	'NombreFuncionalidad' => 'Nombre Funcionalidad',
+	'DescripFuncionalidad' => 'Descripción Funcionalidad',
 	'IdAccion' => 'Id Accion',
 	'Gestión de permisos' => 'Gestión de permisos'
 	)

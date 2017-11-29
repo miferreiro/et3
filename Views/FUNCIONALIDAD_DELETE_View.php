@@ -23,7 +23,7 @@ class FUNCIONALIDAD_DELETE {
 			<table>
 				<tr>
 					<th>
-						<?php echo $strings['ID Funcionalidad'];?>
+						<?php echo $strings['IdFuncionalidad'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdFuncionalidad']?>
@@ -32,7 +32,7 @@ class FUNCIONALIDAD_DELETE {
 
 				<tr>
 					<th>
-						<?php echo $strings['Nombre Funcionalidad'];?>
+						<?php echo $strings['NombreFuncionalidad'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['NombreFuncionalidad']?>
@@ -41,7 +41,7 @@ class FUNCIONALIDAD_DELETE {
 				
 				<tr>
 					<th>
-						<?php echo $strings['Descripción Funcionalidad'];?>
+						<?php echo $strings['DescripFuncionalidad'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['DescripFuncionalidad']?>
