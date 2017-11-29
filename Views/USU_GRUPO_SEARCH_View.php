@@ -40,7 +40,7 @@ class USU_GRUPO_SEARCH {
 						<td colspan="2">
 							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>
 			</form>
-						<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post" style="display:inline">
+						<form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="post" style="display:inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 						</td>
