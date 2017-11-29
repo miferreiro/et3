@@ -140,6 +140,14 @@
             $dependencias = array_fill_keys($keys , $result);
         }
         
+        $sql = "SELECT * FROM PERMISO WHERE (IdGrupo= '$this->IdGrupo')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows != 0 ) {
+            $result = $resultado->fetch_array();
+            $keys = array('PERMISO');
+            $dependencias = array_fill_keys($keys , $result);
+        }
+        
         return $dependencias;
 	} // fin del metodo RellenaDatos()
 
