@@ -7,13 +7,15 @@
 */
 class GRUPO_DELETE {
 
-	function __construct( $valores ) {
+	function __construct( $valores , $dependencias) {
 		$this->valores = $valores;
-		$this->render( $this->valores );
+		$this->dependencias = $dependencias;
+		$this->render( $this->valores, $this->dependencias );
 	}
 
-	function render( $valores ) {
+	function render( $valores, $dependencias ) {
 		$this->valores = $valores;
+		$this->dependencias = $dependencias;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -50,6 +52,16 @@ class GRUPO_DELETE {
 				</tr>
 				
 			</table>
+            <?php
+            
+            if($dependencias != null){
+            ?>
+                <h3>Para borrar este grupo tendrá que eliminar a sus integrantes del grupo.</h3>
+            <?php
+               
+            }
+            else{
+                ?>
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
@@ -64,7 +76,9 @@ class GRUPO_DELETE {
 			</form>
 		</div>
 <?php
+            }
 		include '../Views/Footer.php';
+            
 	}
 }
 

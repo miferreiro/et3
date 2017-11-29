@@ -174,8 +174,9 @@ class USUARIO_DELETE {
 			</form>
 		</div>
 <?php
+            }
 		include '../Views/Footer.php';
-                }
+                
             }
         
 	}
