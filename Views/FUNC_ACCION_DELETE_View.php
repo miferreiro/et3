@@ -6,13 +6,15 @@
 */
 class FUNC_ACCION_DELETE {
 
-	function __construct( $valores ) {
+	function __construct( $valores, $dependencias ) {
 		$this->valores = $valores;
-		$this->render( $this->valores );
+		$this->dependencias = $dependencias;
+		$this->render( $this->valores, $this->dependencias );
 	}
 
-	function render( $valores ) {
+	function render( $valores, $dependencias) {
 		$this->valores = $valores;
+		$this->dependencias = $dependencias;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -40,6 +42,23 @@ class FUNC_ACCION_DELETE {
 				</tr>
 				
 			</table>
+            
+            <?php
+            
+            if($dependencias != null){
+                if(array_key_exists('PERMISO', $dependencias)){
+            ?>
+                    <td>PERMISO</td>
+                    <td><?php echo $dependencias['PERMISO']['IdGrupo'] ?></td>
+				    <td><?php echo $dependencias['PERMISO']['IdFuncionalidad'] ?></td>
+				    <td><?php echo $dependencias['PERMISO']['IdAccion'] ?></td>
+            <?php
+                }
+                
+            }
+            else{
+            
+            ?>
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
@@ -53,6 +72,7 @@ class FUNC_ACCION_DELETE {
 			</form>
 		</div>
 <?php
+                }
 		include '../Views/Footer.php';
 	}
 }

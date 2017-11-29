@@ -7,6 +7,7 @@
 
         var $IdFuncionalidad; //declaración de la variable IdFuncionalidad, forma parte de la clave
         var $IdAccion;//Declaración de la variable IdAccion, forma parte de la clave.
+        var $dependencias;//declaracion de la variable dependencias.
         
         
         
@@ -52,7 +53,7 @@
 		if ( ( $this->IdFuncionalidad <> '' && $this->IdAccion <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM FUNC_ACCION WHERE (  IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' AND  IdAccion COLLATE utf8_bin = '$this->IdAccion' )";
+			$sql = "SELECT * FROM FUNC_ACCION WHERE (  IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' &&  IdAccion COLLATE utf8_bin = '$this->IdAccion' )";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -87,14 +88,14 @@
 	       // se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' AND IdAccion COLLATE utf8_bin = '$this->IdAccion' )";
+		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' && IdAccion COLLATE utf8_bin = '$this->IdAccion' )";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM FUNC_ACCION WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' AND IdAccion COLLATE utf8_bin = '$this->IdAccion' )";
+			$sql = "DELETE FROM FUNC_ACCION WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' && IdAccion COLLATE utf8_bin = '$this->IdAccion' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -109,7 +110,7 @@
 	   // en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' AND IdAccion COLLATE utf8_bin = '$this->IdAccion')";
+		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' && IdAccion COLLATE utf8_bin = '$this->IdAccion')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -119,12 +120,32 @@
 		}
 	} // fin del metodo RellenaDatos()
         
+        // funcion RellenaDatos()
+	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
+	// en el atributo de la clase
+	function dependencias() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias = null;
+
+		$sql = "SELECT * FROM PERMISO WHERE (IdFuncionalidad = '$this->IdFuncionalidad' && IdAccion = '$this->IdAccion')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $keys = array('PERMISO');
+            $dependencias = array_fill_keys($keys , $result);
+        }
+        
+        }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
+        
           // funcion EDIT()
 	    // Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
 	   // si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' AND IdAccion COLLATE utf8_bin = '$this->IdAccion')";
+		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' && IdAccion COLLATE utf8_bin = '$this->IdAccion')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
@@ -133,7 +154,7 @@
 				$sql = "UPDATE FUNC_ACCION SET 
 					IdFuncionalidad = '$this->IdFuncionalidad',
                       IdAccion='$this->IdAccion'
-				WHERE ( IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad'  AND IdAccion COLLATE utf8_bin = '$this->IdAccion'
+				WHERE ( IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad'  && IdAccion COLLATE utf8_bin = '$this->IdAccion'
 				)";
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
