@@ -74,7 +74,7 @@
             
                 $usuario = "SELECT * FROM USUARIO WHERE (login= '$this->login')";
             
-                 $result=$this->mysqli->query($ususario);
+                 $result=$this->mysqli->query($usuario);
             
                 if(!$result){
                     
