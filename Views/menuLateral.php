@@ -1,7 +1,6 @@
 <!--Creado el 8 de noviembre del 2017 por de3t7q/-->
 <!--Contiene la vista del menu lateral-->
     <script type="text/javascript" src="../Views/js/desplegarMenu.js"></script> 
-	<link href="https://fonts.googleapis.com/css?family=Raleway:200,400,600" rel="stylesheet" type="text/css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript">
 	</script>
 	<link href="../Views/css/estiloFinal.css" rel="stylesheet" type="text/css">
@@ -36,18 +35,18 @@
 						</li>
 
 					</ul>
+
+					
+				</li>
+
+				<li>
+                     
 					<ul>
 						<li>
 							<a href="../Controllers/FUNC_ACCION_CONTROLLER.php"><?php echo $strings['Gestion de funcionalidades']; ?></a>
 						</li>
 
 					</ul>
-					
-				</li>
-
-
-				<li>
-					<!-- <a href=""><?php echo $strings['Mostrar todos']; ?></a> -->
 				</li>
 
 
