@@ -22,7 +22,7 @@ class FUNC_ACCION_SHOWCURRENT {
 		<table class="tablaDatos">
 			<tr>
 				<th>
-					<?php echo $strings['ID Funcionalidad'];?>
+					<?php echo $strings['IdFuncionalidad'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['IdFuncionalidad'] ?>
@@ -31,7 +31,7 @@ class FUNC_ACCION_SHOWCURRENT {
 	
 			<tr>
 				<th>
-					<?php echo $strings['ID Acción'];?>
+					<?php echo $strings['IdAccion'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['IdAccion'] ?>

@@ -22,15 +22,15 @@ class FUNC_ACCION_ADD {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Funcionalidad'];?>
+							<?php echo $strings['IdFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="15" size="20" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'15') && comprobarTexto(this,'15')"/>
+						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Acción'];?>
+							<?php echo $strings['IdAccion'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') && comprobarAlfabetico(this,'30')"/>
+						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'6')"/>
 					</tr>
 					
 					<tr>

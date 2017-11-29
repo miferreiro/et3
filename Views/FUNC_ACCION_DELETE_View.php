@@ -23,7 +23,7 @@ class FUNC_ACCION_DELETE {
 			<table>
 				<tr>
 					<th>
-						<?php echo $strings['ID Funcionalidad'];?>
+						<?php echo $strings['IdFuncionalidad'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdFuncionalidad']?>
@@ -32,7 +32,7 @@ class FUNC_ACCION_DELETE {
 
 				<tr>
 					<th>
-						<?php echo $strings['ID Acción'];?>
+						<?php echo $strings['IdAccion'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdAccion']?>

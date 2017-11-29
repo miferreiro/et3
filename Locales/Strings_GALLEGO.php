@@ -103,8 +103,8 @@ array(
 	'IdGrupo' => 'IdGrupo',
 	'NombreGrupo' => 'Nome Grupo',
 	'DescripGrupo' => 'Descripción Grupo',
-	'IdFuncionalidad' => 'IdFuncionalidad',
-	'IdAccion' => 'IdAccion'
+	'IdFuncionalidad' => 'Id Funcionalidade',
+	'IdAccion' => 'Id Accion'
 	)
 ;
 

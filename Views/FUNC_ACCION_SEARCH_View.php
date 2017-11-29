@@ -23,16 +23,16 @@ class FUNC_ACCION_SEARCH {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Funcionalidad'];?>
+							<?php echo $strings['IdFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="15" size="20" onBlur="comprobarLongitud(this,'15') && comprobarTexto(this,'15')"/>
+						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
 
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['ID Acción'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur="comprobarLongitud(this,'30') && comprobarTexto(this,'30') && comprobarAlfabetico(this,'30')"/>
+						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
 					
 					<tr>

@@ -13,7 +13,6 @@ include '../Models/FUNC_ACCION_MODEL.php';
 include '../Views/FUNC_ACCION_SHOWALL_View.php';
 include '../Views/FUNC_ACCION_SEARCH_View.php';
 include '../Views/FUNC_ACCION_ADD_View.php';
-include '../Views/FUNC_ACCION_EDIT_View.php';
 include '../Views/FUNC_ACCION_DELETE_View.php';
 include '../Views/FUNC_ACCION_SHOWCURRENT_View.php';
 include '../Views/MESSAGE_View.php';
