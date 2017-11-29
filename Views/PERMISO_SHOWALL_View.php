@@ -21,7 +21,7 @@ class PERMISO_SHOWALL {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Gestión de permisos'];?>
 			</h2>
 			<table>
 				<caption style="margin-bottom:10px;">
