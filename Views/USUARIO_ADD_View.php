@@ -51,12 +51,7 @@ class USUARIO_ADD {
 						</th>
 						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
 					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Teléfono'];?>
-						</th>
-						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="13" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'11') && comprobarTexto(this,'11') && comprobarTelf(this)"/>
-					</tr>
+
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Correo electrónico'];?>
@@ -68,6 +63,12 @@ class USUARIO_ADD {
 							<?php echo $strings['Direccion'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="direc" name="direc" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="70" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')" required/>
+					</tr>
+					<tr>
+						<th class="formThTd">
+							<?php echo $strings['Teléfono'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="13" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'11') && comprobarTexto(this,'11') && comprobarTelf(this)"/>
 					</tr>
 					<tr>
 						<td colspan="2">
