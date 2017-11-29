@@ -19,24 +19,25 @@ class PERMISO_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD_PERMISOS" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd()">
+			<form name="ADD_PERMISOS" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" >
 				<table>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>					</tr>
-					<tr>
+						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="6" size="10" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6') "/>					
+				    </tr>
+					    <tr>
 						<th class="formThTd">
 							<?php echo $strings['IdFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
+						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="6" size="10" required oonBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6') "/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdAccion'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarEntero(this,0,99)"/>
+						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6') "/>
 					</tr>
 					
 					<tr>

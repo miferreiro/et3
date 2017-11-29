@@ -20,24 +20,24 @@ class PERMISO_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
+			<form id="SEARCH" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarEntero(this,0,99)"/>					</tr>
+						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="6" size="10" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6') "/>					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarEntero(this,0,99)"/>
+						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="6" size="10" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6') "/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdAccion'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarEntero(this,0,99)"/>
+						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="6" size="10" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6') "/>
 					</tr>
 					
 					<tr>
