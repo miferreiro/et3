@@ -10,7 +10,7 @@ class USUARIO_DELETE {
 	function __construct( $valores, $dependencias ) {
 		$this->valores = $valores;
 		$this->dependencias = $dependencias;
-		$this->render( $this->valores );
+		$this->render( $this->valores, $this->dependencias);
 	}
 
 	function render( $valores, $dependencias ) {
@@ -93,14 +93,14 @@ class USUARIO_DELETE {
             <?php
             
             if($dependencias != null){
-                if(array_key_exists(USU_GRUPO, $dependencias)){
+                if(array_key_exists('USU_GRUPO', $dependencias)){
             ?>
                     <td>USU_GRUPO</td>
                     <td><?php echo $dependencias['USU_GRUPO']['login'] ?></td>
 				    <td><?php echo $dependencias['USU_GRUPO']['IdGrupo'] ?></td>
             <?php
                 }
-                if(array_key_exists(ENTREGA, $dependencias)){
+                if(array_key_exists('ENTREGA', $dependencias)){
             ?>
                     <td>ENTREGA</td>
                     <td><?php echo $dependencias['ENTREGA']['login'] ?></td>
@@ -110,7 +110,7 @@ class USUARIO_DELETE {
 				    <td><?php echo $dependencias['ENTREGA']['Ruta'] ?></td>
             <?php
                 }
-                if(array_key_exists(ASIGNAC_QA, $dependencias)){
+                if(array_key_exists('ASIGNAC_QA', $dependencias)){
             ?>
                     <td>ASIGNAC_QA</td>
                     <td><?php echo $dependencias['ASIGNAC_QA']['IdTrabajo'] ?></td>
@@ -119,7 +119,7 @@ class USUARIO_DELETE {
 				    <td><?php echo $dependencias['ASIGNAC_QA']['AliasEvaluado'] ?></td>
             <?php
                 }
-                if(array_key_exists(ASIGNAC_QA2, $dependencias)){
+                if(array_key_exists('ASIGNAC_QA2', $dependencias)){
             ?>
                     <td>ASIGNAC_QA</td>
                     <td><?php echo $dependencias['ASIGNAC_QA']['IdTrabajo'] ?></td>
@@ -128,7 +128,7 @@ class USUARIO_DELETE {
 				    <td><?php echo $dependencias['ASIGNAC_QA']['AliasEvaluado'] ?></td>
             <?php
                 }
-                if(array_key_exists(NOTA_TRABAJO, $dependencias)){
+                if(array_key_exists('NOTA_TRABAJO', $dependencias)){
             ?>
                     <td>NOTA_TRABAJO</td>
                     <td><?php echo $dependencias['NOTA_TRABAJO']['login'] ?></td>
@@ -136,7 +136,7 @@ class USUARIO_DELETE {
 				    <td><?php echo $dependencias['NOTA_TRABAJO']['NotaTrabajo'] ?></td>
             <?php
                 }
-                if(array_key_exists(EVALUACION, $dependencias)){
+                if(array_key_exists('EVALUACION', $dependencias)){
             ?>
                     <td>EVALUACIÓN</td>
                     <td><?php echo $dependencias['EVALUACION']['IdTrabajo'] ?></td>
@@ -179,6 +179,6 @@ class USUARIO_DELETE {
             }
         
 	}
-}
+
 
 ?>

@@ -193,42 +193,48 @@ class USUARIO_MODEL{ //declaración de la clase
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
             $result = $resultado->fetch_array();
-            $dependencias[USU_GRUPO]= $result;
+            $keys = array('USU_GRUPO');
+            $dependencias = array_fill_keys($keys , $result);
         }
         
         $sql = "SELECT * FROM ENTREGA WHERE (login = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
             $result = $resultado->fetch_array();
-            $dependencias[ENTREGA] = $result;
+            $keys = array('ENTREGA');
+            $dependencias = array_fill_keys($keys , $result);
         }
         
         $sql = "SELECT * FROM ASIGNAC_QA WHERE (LoginEvaluador = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
             $result = $resultado->fetch_array();
-            $dependencias[ASIGNAC_QA]= $result;
+            $keys = array('ASIGNAC_QA');
+            $dependencias = array_fill_keys($keys , $result);
         }
 		
         $sql = "SELECT * FROM ASIGNAC_QA WHERE (LoginEvaluado = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
             $result = $resultado->fetch_array();
-            $dependencias[ASIGNAC_QA2] = $result;
+            $keys = array('ASIGNAC_QA2');
+            $dependencias = array_fill_keys($keys , $result);
         }
         
         $sql = "SELECT * FROM NOTA_TRABAJO WHERE (login = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
             $result = $resultado->fetch_array();
-            $dependencias[NOTA_TRABAJO] = $result;
+            $keys = array('NOTA_TRABAJO');
+            $dependencias = array_fill_keys($keys , $result);
         }
         
         $sql = "SELECT * FROM EVALUACION WHERE (LoginEvaluador = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
             $result = $resultado->fetch_array();
-            $dependencias[EVALUACION] = $result;
+            $keys = array('EVALUACION');
+            $dependencias = array_fill_keys($keys , $result);
         }
         
         return $dependencias;
