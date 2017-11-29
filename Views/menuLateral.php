@@ -73,5 +73,16 @@
 						</li>
 					</ul>
 			</li>
+				<li>
+				<a href="#" class="primerNivel"><?php echo $strings['Gestión de permisos']; ?></a> 
+					<ul class="submenu">
+						<li>
+							<a href="../Controllers/PERMISO_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
+						</li>
+						<li>
+							<a href="../Controllers/PERMISO_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
+						</li>
+					</ul>
+			</li>
 		</ul>
 	</nav>
