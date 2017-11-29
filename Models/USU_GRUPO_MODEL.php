@@ -35,7 +35,7 @@ function ADD()
         else{
             
             if($result->num_rows == 0){
-                return "No puedes insertar un usuario debido a que no existe, debes insertar previamente un usuario";
+                return "No puedes insertar este usuario debido a que no existe, debes insertar previamente un usuario";
             }
         }
         
@@ -50,7 +50,7 @@ function ADD()
         else{
                 if($result->num_rows == 0){
                     
-                    return "No puedes insertar un grupo debido a que no existe, debes insertar previamente un grupo";
+                    return "No puedes insertar este grupo debido a que no existe, debes insertar previamente un grupo";
                 }    
         
         }

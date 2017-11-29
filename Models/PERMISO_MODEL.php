@@ -27,6 +27,48 @@ function ADD()
 {
     if (($this->IdFuncionalidad <> '' && $this->IdAccion <> '' && $this->IdGrupo <> '')){ // si los atributos clave de la entidad no estan vacíos'
 		
+        $grupo = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+        
+        $result=$this->mysqli->query($grupo);
+        
+        if(!$result){
+           return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+        }
+        else{
+            if($result->num_rows == 0){
+                 return "No puedes insertar este grupo debido a que no existe, debes insertar previamente un grupo";
+            }
+            
+        }
+        
+        $accion = "SELECT * FROM ACCION WHERE (IdAccion = '$this->IdAccion')";
+        $result=$this->mysqli->query($accion);
+        
+          if(!$result){
+           return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+        }
+        
+        else{
+              if($result->num_rows == 0){
+                 return "No puedes insertar este id de accion debido a que no existe, debes insertar previamente una accion";
+            }
+        }
+        
+        $funcionalidad = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
+        $result=$this->mysqli->query($funcionalidad);
+        
+          if(!$result){
+           return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+        }
+        else{
+             if($result->num_rows == 0){
+                 return "No puedes insertar este id de funcionalidad debido a que no existe, debes insertar previamente una funcionalidad";
+            }
+        }
+        
+        
+        
+        
 		// construimos el sql para buscar esa clave en la tabla
         $sql = "SELECT * FROM PERMISO WHERE (IdFuncionalidad = '$this->IdFuncionalidad' && IdAccion = '$this->IdAccion' && IdGrupo = '$this->IdGrupo')";
 

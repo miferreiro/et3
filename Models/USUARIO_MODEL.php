@@ -78,7 +78,7 @@ class USUARIO_MODEL{ //declaración de la clase
 	//existe ya en la tabla
 	function ADD() {
 		if ( ( $this->login <> '' ) ) { // si el atributo clave de la entidad no esta vacio
-
+            
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM USUARIO WHERE (  login = '$this->login')";
 

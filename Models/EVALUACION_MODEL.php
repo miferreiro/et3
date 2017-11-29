@@ -80,7 +80,43 @@ class EVALUACION{ //declaración de la clase
 	// de los atributos del objeto. Comprueba si la clave esta vacia y si 
 	//existe ya en la tabla
 	function ADD() {
-		if ( ( $this->IdTrabajo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
+		if ( ( $this->IdTrabajo <> '' && $this->LoginEvaluador <> '' && $this->AliasEvaluado <> '' && $this->IdHistoria <> '' ) ) { // si el atributo clave de la entidad no esta vacio
+            
+            $usuarios="SELECT * FROM USUARIO WHERE (login ='$this->LoginEvaluador')";
+            
+            $result = $this->mysqli->query($usuarios);
+            
+            if(!$result){
+              return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+                
+            }
+            else{
+                    if($result->num_rows == 0){
+                        return 'no puedes insertar un login evaluador, debes insertar previamente un usuario.'
+                    }
+                
+            }
+            
+            $trabajo= "SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
+            
+            $result = $this->mysqli->query($trabajo);
+            
+             
+            if(!$result){
+              return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+                
+            }
+            
+            
+            else{
+                      if($result->num_rows == 0){
+                          
+                        return 'no puedes insertar un id de trabajo, debes insertar previamente un trabajo.'
+                    }
+            }
+            
+                
+
 
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM EVALUACION WHERE (  IdTrabajo = '$this->IdTrabajo' && IdAccion = '$this->LoginEvaluador' && IdAccion = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";

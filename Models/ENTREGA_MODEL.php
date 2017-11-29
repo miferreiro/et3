@@ -83,7 +83,7 @@
             
                 else{
                     if($result->num_rows == 0){
-                        return "No puedes añadir la entrega debido a que no se añadio un trabajo";
+                        return "No puedes añadir la entrega debido a que no se añadio un ususario";
                     }
                 }
             
