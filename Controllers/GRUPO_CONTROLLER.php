@@ -55,8 +55,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 			//Variable que almacena el relleno de los datos utilizando el IdGrupo
 			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
+            $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);
 			//Crea una vista delete para ver la tupla
-			new GRUPO_DELETE( $valores );
+			new GRUPO_DELETE( $valores, $dependencias);
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos

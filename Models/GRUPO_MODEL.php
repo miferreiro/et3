@@ -8,6 +8,7 @@
         var $IdGrupo; //es la clave de la tabla GRUPO.
         var $NombreGrupo;//Declaracion de la variable NombreGrupo
         var $DescripGrupo;//Declaracion de la variable DescripGrupo
+        var $dependencias;
             
         function __construct($IdGrupo,$NombreGrupo,$DescripGrupo){
             //Asignamos valores a los atributos de la clase
@@ -124,7 +125,24 @@
 		}
 	} // fin del metodo RellenaDatos()
         
+        // funcion RellenaDatos()
+	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
+	// en el atributo de la clase
+	function dependencias() { // se construye la sentencia de busqueda de la tupla
         
+        $dependencias = null;
+
+		$sql = "SELECT * FROM USU_GRUPO WHERE (IdGrupo= '$this->IdGrupo')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows != 0 ) {
+            $result = $resultado->fetch_array();
+            $keys = array('USU_GRUPO');
+            $dependencias = array_fill_keys($keys , $result);
+        }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
+
 		
         // funcion RellenaShowCurrent()
         // Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
