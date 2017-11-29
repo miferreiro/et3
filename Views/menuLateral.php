@@ -63,7 +63,7 @@
 					</ul>
 			</li>
 			<li>
-				<a href="#" class="primerNivel"><?php echo $strings['Gestion de aciones']; ?></a> 
+				<a href="#" class="primerNivel"><?php echo $strings['Gestion de acciones']; ?></a> 
 					<ul class="submenu">
 						<li>
 							<a href="../Controllers/FUNC_ACCION_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
