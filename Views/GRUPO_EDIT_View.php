@@ -27,20 +27,20 @@ class GRUPO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['IdGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $valores['IdGrupo'] ?>" maxlength="6" size="10"  readonly onBlur="" required/>
+						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $valores['IdGrupo'] ?>" maxlength="6" size="10"  readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')" required/>
 					</tr>
 
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['NombreGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['NombreGrupo'] ?>" maxlength="60" size="65" required onBlur=""/>
+						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['NombreGrupo'] ?>" maxlength="60" size="65" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'60') && comprobarAlfabetico(this,'60')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['DescripGrupo'];?>
 						</th>
-						<td class="formThTd"><textarea cols="50" rows="3" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['DescripGrupo'] ?>" maxlength="100"  required onBlur=""/></textarea>
+						<td class="formThTd"><textarea cols="50" rows="3" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="100"  required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100')"/><?php echo $this->valores['DescripGrupo'] ?></textarea>
 					</tr>
 					
 					<tr>
