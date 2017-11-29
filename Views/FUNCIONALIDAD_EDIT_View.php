@@ -39,7 +39,7 @@ class FUNCIONALIDAD_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['DescripFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><textarea id="DescripFuncionalidad" name="DescripFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['DescripFuncionalidad']?>" maxlength="100" cols="50" rows="3" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100') && comprobarTexto(this,'100') && comprobarAlfabetico(this,'100')"/>
+						<td class="formThTd"><textarea id="DescripFuncionalidad" name="DescripFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['DescripFuncionalidad']?>" maxlength="100" cols="50" rows="3" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100') && comprobarTexto(this,'100') && comprobarAlfabetico(this,'100')"/></textarea>
 					</tr>
 					
 					<tr>
