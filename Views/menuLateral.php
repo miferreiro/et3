@@ -34,12 +34,15 @@
 						<li>
 							<a href="../Controllers/USU_GRUPO_CONTROLLER.php"><?php echo $strings['Gestion de usuarios-grupo']; ?></a>
 						</li>
-						
+
+					</ul>
+					<ul>
 						<li>
-							<!-- <a href="../Controllers/USUARIO_CONTROLLER.php"><?php echo $strings['Mostrar todos']; ?></a> -->
+							<a href="../Controllers/FUNC_ACCION_CONTROLLER.php"><?php echo $strings['Gestion de funcionalidades']; ?></a>
 						</li>
 
 					</ul>
+					
 				</li>
 
 

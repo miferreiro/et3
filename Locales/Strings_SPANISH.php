@@ -97,6 +97,7 @@ array(
 	'Seleccione una nueva foto personal si desea cambiarla, en caso contrario, no es necesario seleccionarla de nuevo.' => 'Seleccione una nueva foto personal si desea cambiarla, en caso contrario, no es necesario seleccionarla de nuevo.',
 	'Modificar' => 'Modificar',
 	'Eliminar' => 'Eliminar',
+	'Gestion de funcionalidades' => 'Gestión de funcionalidades',
 	'Ver en detalle' => 'Ver en detalle',
 	'Gestion de usuarios' => 'Gestión de usuarios',
 	'Gestion de grupo' => 'Gestión de grupo',

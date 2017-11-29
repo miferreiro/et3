@@ -46,6 +46,7 @@ array(
 	'fotopersonal' => 'Foto persoal',
 	'Sexo' => 'Sexo',
 	'sexo' => 'Sexo',
+	'Gestion de funcionalidades' => 'Xestión de funcionalidades',
 	'¿Está seguro de que quiere borrar esta tupla de la tabla?'=>'¿Está seguro de que quere borrar esta tupla da táboa?',
 	'Error en la consulta sobre la base de datos' => 'Error na consulta sobre a base de datos',
 	'No se ha podido conectar con la base de datos' => 'Non se ha podido conectar coa base de datos',

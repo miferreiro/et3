@@ -31,6 +31,7 @@ array(
 	'DNI' => 'DNI',
 	'Nombre' => 'Name',
 	'nombre' => 'name',
+	'Gestion de funcionalidades' => 'Functionality management',
 	'Apellidos' => 'Surnames',
 	'apellidos' => 'Surnames',
 	'Teléfono' => 'Telephone',
