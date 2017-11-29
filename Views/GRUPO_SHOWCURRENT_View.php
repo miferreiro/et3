@@ -26,7 +26,7 @@ class GRUPO_SHOWCURRENT {
 			</h2>
 			<table>
 
-				<td>
+				<tr>
 <?php
 					foreach ( $lista as $atributo ) {
 ?>
@@ -36,9 +36,9 @@ class GRUPO_SHOWCURRENT {
 <?php
 					}
 ?>
-				</td>
+				</tr>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+				while ( $fila = mysqli_fetch_array( $datos ) ) {
 ?>
 				<tr>
 <?php

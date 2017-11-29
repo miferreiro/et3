@@ -120,8 +120,8 @@
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else { // si existe se devuelve la tupla resultado
-			$result = $resultado->fetch_array();
-			return $result;
+			
+			return $resultado;
 		}
 	} // fin del metodo RellenaDatos()
         
@@ -154,8 +154,7 @@
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else { // si existe se devuelve la tupla resultado
-			$result = $resultado->fetch_array();
-			return $result;
+			return $resultado;
 		}
 	} // fin del metodo RellenaShowCurrent()		
 		
