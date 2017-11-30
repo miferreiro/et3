@@ -18,7 +18,7 @@ class FUNC_ACCION_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/FUNC_ACCION_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd()">
+			<form name="ADD" action="../Controllers/FUNC_ACCION_CONTROLLER.php" method="post" enctype="multipart/form-data" >
 				<table>
 					<tr>
 						<th class="formThTd">
