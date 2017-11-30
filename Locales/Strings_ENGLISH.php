@@ -110,6 +110,11 @@ array(
 	'DescripFuncionalidad' => 'Functionality Description',
 	'IdAccion' => 'Id Action',
 	'Gestión de permisos' => 'Permission Management',
+	'No puedes insertar este usuario debido a que no existe, debes insertar previamente un usuario' =>
+	'You can not insert this user because it does not exist, you must previously insert a user',
+	'Non podes inserir este grupo porque non existe, debes inserir un grupo previamente' =>
+	'You can not insert this group because it does not exist, you must previously insert a group',
+	'Ya existe en la base de datos' => 'It already exists in the database',
 	'Mostrar todos' => 'Mostrar todos',
 	'Buscador' => 'Search'
 	)

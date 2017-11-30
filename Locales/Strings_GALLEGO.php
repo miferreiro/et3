@@ -111,6 +111,11 @@ array(
 	'IdAccion' => 'Id Accion',
 	'Gestión de permisos' => 'Xestión de permisos',
 	'Mostrar todos' => 'Mostrar todos',
+	'No puedes insertar este usuario debido a que no existe, debes insertar previamente un usuario' =>
+	'Non podes inserir este usuario porque non existe, debes inserir un usuario previamente',
+	'No puedes insertar este grupo debido a que no existe, debes insertar previamente un grupo' =>
+	'Non podes inserir este grupo porque non existe, debes inserir un grupo previamente',
+	'Ya existe en la base de datos' => 'Xa existe na base de datos',
 	'Buscador' => 'Buscador'
 	)
 ;
