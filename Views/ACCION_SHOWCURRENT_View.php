@@ -23,7 +23,7 @@ class ACCION_SHOWCURRENT {
 		<table class="tablaDatos">
 			<tr>
 				<th>
-					<?php echo $strings['ID Acción'];?>
+					<?php echo $strings['IdAccion'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['IdAccion'] ?>
@@ -32,7 +32,7 @@ class ACCION_SHOWCURRENT {
 	
 			<tr>
 				<th>
-					<?php echo $strings['Nombre Acción'];?>
+					<?php echo $strings['NombreAccion'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['NombreAccion'] ?>
@@ -40,7 +40,7 @@ class ACCION_SHOWCURRENT {
 			</tr>
 			<tr>
 				<th>
-					<?php echo $strings['Descripción Acción'];?>
+					<?php echo $strings['DescripAccion'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['DescripAccion'] ?>

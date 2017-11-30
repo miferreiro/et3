@@ -161,11 +161,9 @@
             $keys = array('PERMISO');
             $dependencias = array_fill_keys($keys , $result);
         }
-        
-        }
-        
+
         return $dependencias;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo Dependencias()
         
           // funcion EDIT()
 	    // Se comprueba que la tupla a modificar exista en base al valor de su clave primaria

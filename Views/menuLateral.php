@@ -66,10 +66,10 @@
 				<a href="#" class="primerNivel"><?php echo $strings['Gestion de acciones']; ?></a> 
 					<ul class="submenu">
 						<li>
-							<a href="../Controllers/FUNC_ACCION_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
+							<a href="../Controllers/ACCION_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 						</li>
 						<li>
-							<a href="../Controllers/FUNC_ACCION_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
+							<a href="../Controllers/ACCION_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
 						</li>
 					</ul>
 			</li>

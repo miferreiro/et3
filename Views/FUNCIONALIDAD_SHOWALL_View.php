@@ -74,7 +74,7 @@ class FUNCIONALIDAD_SHOWALL {
 				}
 ?>
 			</table>
-			<form action='../Controllers/FUNCIONALIDAD_ACCION_CONTROLLER.php' method="post">
+			<form action='../Controllers/FUNCIONALIDAD_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

@@ -38,7 +38,7 @@ class FUNCIONALIDAD_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['DescripFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><textarea id="DescripFuncionalidad" name="DescripFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" cols="50" rows="3" value="" maxlength="100"  onBlur="comprobarLongitud(this,'100') && comprobarTexto(this,'100') && comprobarAlfabetico(this,'100')"/></textarea>
+						<td class="formThTd"><textarea id="DescripFuncionalidad" name="DescripFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" cols="50" rows="3" value="" maxlength="100"  onBlur="comprobarLongitud(this,'100')"/></textarea>
 					</tr>
 					
 					<tr>

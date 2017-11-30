@@ -108,7 +108,9 @@ array(
 	'IdFuncionalidad' => 'Functionality Id',
 	'NombreFuncionalidad' => 'Functionality Name',
 	'DescripFuncionalidad' => 'Functionality Description',
-	'IdAccion' => 'Id Action',
+	'IdAccion' => 'Action Id',
+	'NombreAccion' => 'Action Name',
+	'DescripAccion' => 'Action Description',
 	'Gestión de permisos' => 'Permission Management',
 	'No puedes insertar este usuario debido a que no existe, debes insertar previamente un usuario' =>
 	'You can not insert this user because it does not exist, you must previously insert a user',

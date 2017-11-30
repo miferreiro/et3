@@ -22,7 +22,7 @@ class FUNCIONALIDAD_SHOWCURRENT {
 		<table class="tablaDatos">
 			<tr>
 				<th>
-					<?php echo $strings['ID Funcionalidad'];?>
+					<?php echo $strings['IdFuncionalidad'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['IdFuncionalidad'] ?>
@@ -31,7 +31,7 @@ class FUNCIONALIDAD_SHOWCURRENT {
 	
 			<tr>
 				<th>
-					<?php echo $strings['Nombre Funcionalidad'];?>
+					<?php echo $strings['NombreFuncionalidad'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['NombreFuncionalidad'] ?>
@@ -39,7 +39,7 @@ class FUNCIONALIDAD_SHOWCURRENT {
 			</tr>
 			<tr>
 				<th>
-					<?php echo $strings['Descripción Funcionalidad'];?>
+					<?php echo $strings['DescripFuncionalidad'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['DescripFuncionalidad'] ?>

@@ -57,7 +57,7 @@
 		if ( ( $this->IdFuncionalidad <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM FUNCIONALIDAD WHERE (  IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad')";
+			$sql = "SELECT * FROM FUNCIONALIDAD WHERE (  IdFuncionalidad  = '$this->IdFuncionalidad')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -94,14 +94,14 @@
 	    // se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad')";
+		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM FUNCIONALIDAD WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad' )";
+			$sql = "DELETE FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -117,7 +117,7 @@
 	   // en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad')";
+		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -150,7 +150,7 @@
 	   // si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad')";
+		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
@@ -160,7 +160,7 @@
 					IdFuncionalidad = '$this->IdFuncionalidad',
 					 NombreFuncionalidad='$this->NombreFuncionalidad',
                       DescripFuncionalidad='$this->DescripFuncionalidad'
-				WHERE ( IdFuncionalidad COLLATE utf8_bin = '$this->IdFuncionalidad'
+				WHERE ( IdFuncionalidad = '$this->IdFuncionalidad'
 				)";
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion

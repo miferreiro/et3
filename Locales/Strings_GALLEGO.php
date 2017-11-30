@@ -108,7 +108,9 @@ array(
 	'IdFuncionalidad' => 'Id Funcionalidade',
 	'NombreFuncionalidad' => 'Nome Funcionalidade',
 	'DescripFuncionalidad' => 'Descripción Funcionalidade',
-	'IdAccion' => 'Id Accion',
+	'IdAccion' => 'Id Acción',
+	'NombreAccion' => 'Nome Acción',
+	'DescripAccion' => 'Descripción Acción',
 	'Gestión de permisos' => 'Xestión de permisos',
 	'Mostrar todos' => 'Mostrar todos',
 	'No puedes insertar este usuario debido a que no existe, debes insertar previamente un usuario' =>

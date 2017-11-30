@@ -26,7 +26,7 @@ class ACCION_DELETE {
 			<table>
 				<tr>
 					<th>
-						<?php echo $strings['ID Acción'];?>
+						<?php echo $strings['IdAccion'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdAccion']?>
@@ -35,7 +35,7 @@ class ACCION_DELETE {
 
 				<tr>
 					<th>
-						<?php echo $strings['Nombre Acción'];?>
+						<?php echo $strings['NombreAccion'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['NombreAccion']?>
@@ -44,7 +44,7 @@ class ACCION_DELETE {
 				
 				<tr>
 					<th>
-						<?php echo $strings['Descripción Acción'];?>
+						<?php echo $strings['DescripAccion'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['DescripAccion']?>
