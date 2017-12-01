@@ -82,7 +82,7 @@ class EVALUACION{ //declaración de la clase
 	function ADD() {
 		if ( ( $this->IdTrabajo <> '' && $this->LoginEvaluador <> '' && $this->AliasEvaluado <> '' && $this->IdHistoria <> '' ) ) { // si el atributo clave de la entidad no esta vacio
             
-            $usuarios="SELECT * FROM USUARIO WHERE (login ='$this->LoginEvaluador')";
+           $usuarios="SELECT * FROM USUARIO WHERE (login ='$this->LoginEvaluador')";
             
             $result = $this->mysqli->query($usuarios);
             
@@ -92,7 +92,7 @@ class EVALUACION{ //declaración de la clase
             }
             else{
                     if($result->num_rows == 0){
-                        return 'no puedes insertar un login evaluador, debes insertar previamente un usuario.'
+                        return 'no puedes insertar un login evaluador, debes insertar previamente un usuario.';
                     }
                 
             }

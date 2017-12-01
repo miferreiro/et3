@@ -21,15 +21,56 @@ function get_data_form() {
     $IdTrabajo = $_REQUEST['IdTrabajo'];
     $Alias = $_REQUEST['Alias'];
     $Horas = $_REQUEST['Horas'];
-    $Ruta= $_REQUEST['Ruta'];
+   // $Ruta= $_REQUEST['Ruta'];
+    if(isset($_FILES['Ruta']['name'])){
+                    $nombreRuta = $_FILES['Ruta']['name'];
+        }else{
+                    $nombreRuta = null;
+        }
+    if(isset($_FILES['Ruta']['type'])){
+                    $tipoRuta = $_FILES['Ruta']['type'];
+            }else{
+                    $tipoRuta = null;
+                }
+     if(isset($_FILES['Ruta']['tmp_name'])){
+                    $nombreTempRuta = $_FILES['Ruta']['tmp_name'];
+                }else{
+                    $nombreTempRuta = null;
+                }
+    if(isset($_FILES['Ruta']['size'])){
+                    $tamanhoRuta = $_FILES['Ruta']['size']; 
+                }else{
+                    $tamanhoRuta = null;
+                }
+                        
+
+    if($nombreRuta != null){
+
+                    $ruta = '../Files/';
+                    $extension = substr($tipoRuta, 6);
+                    $rutapersonal = $ruta . $login . ".". $extension;
+                   //NOTA CAMBIAR LOS PERMISOS A 777
+                    move_uploaded_file($nombreTempFoto, $rutapersonal);
+                    
+    }else{
+    if(isset($_POST['ruta2'])){
+                        $rutapersonal=$_POST['ruta2'];
+                }else{
+
+                    $rutapersonal=null;
+                }
+                }
+    
+    
+    
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
 
-	$EVALUACION = new EVALUACION(
+	$ENTREGA = new ENTREGA_MODEL(
 		$login,
         $IdTrabajo,
         $Alias,
         $Horas,
-        $Ruta
+        $rutapersonal
 	);
 	//Devuelve el valor del objecto model creado
 	return $ENTREGA;
@@ -47,7 +88,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ENTREGA = get_data_form();//Variable que almacena los datos recogidos
 			$respuesta = $ENTREGA->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
-			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
 		break;
@@ -66,7 +107,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $ENTREGA>DELETE();
 			//crea una vista mensaje con la respuesta.
-			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
 		break;
@@ -85,7 +126,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $ENTREGA->EDIT();
 			//crea una vista mensaje con la respuesta
-			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
 		//Fin del bloque
 		break;

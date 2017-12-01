@@ -49,9 +49,9 @@ class ENTREGA_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Ruta'];?><!--se muestra el campo Ruta-->
 						</th>
-						<td class="formThTd"><input type="text" id="Ruta" name="Ruta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Ruta']?>"  maxlength="60" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
+						<td class="formThTd"><input type="file" id="Ruta" name="Ruta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Ruta']?>"  maxlength="60" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
 					</tr>
-					
+					<input type="file" id="ruta2" name="ruta2" value="<?php echo $this->valores['Ruta']?>"/>
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button><!--boton para confirmar borrado-->

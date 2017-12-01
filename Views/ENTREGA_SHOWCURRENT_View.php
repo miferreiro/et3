@@ -67,7 +67,7 @@
 						<?php echo $strings['Ruta'];?><!--se muestra el campo Ruta -->
 					</th>
 					<td>
-						<?php echo $this->valores['Ruta']?><!--se muestra el valor del campo Ruta -->
+						<a href="<?php echo $this->valores['Ruta']?>"><?php echo $this->valores['Ruta']?></a><!--se muestra el valor del campo Ruta -->
 					</td>
 				</tr>
                 
