@@ -25,6 +25,7 @@ function get_data_form(){
 	$NombreTrabajo = $_REQUEST['NombreTrabajo'];
 	$FechaIniTrabajo = $_REQUEST['FechaIniTrabajo'];
 	$FechaFinTrabajo = $_REQUEST['FechaFinTrabajo'];
+    $PorcentajeNota = $_REQUEST['PorcentajeNota'];
 	$action= $_REQUEST['action'];
 	
 	$TRABAJO = new TRABAJO(
@@ -32,6 +33,7 @@ function get_data_form(){
 		$NombreTrabajo,
 		$FechaIniTrabajo,
 		$FechaFinTrabajo
+        $PorcentajeNota
 	);
 	
 	return $TRABAJO;
@@ -54,7 +56,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '');
+			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');
 			$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ]);
 			new TRABAJO_DELETE( $valores );
 		} else {
@@ -65,7 +67,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
-			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '');
+			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');
 			$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] );
 			new TRABAJO_EDIT( $valores );
 		} else {
@@ -80,23 +82,23 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			$TRABAJO = get_data_form();
 			$datos = $TRABAJO->SEARCH();
-			$lista = array( 'IdTrabajo','NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );
+			$lista = array( 'IdTrabajo','NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo','PorcentajeNota' );
 			new TRABAJO_SHOWALL( $lista, $datos );
 		}
 		break;
     case 'SHOWCURRENT':
-		$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '');
+		$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');
 		$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] );
 		new TRABAJO_SHOWCURRENT( $valores );
 		break;
 	default:
 		if ( !$_POST ) {
-			$TRABAJO = new TRABAJO( '', '', '', '');
+			$TRABAJO = new TRABAJO( '', '', '', '','');
 		} else {
 			$TRABAJO = get_data_form();
 		}
 		$datos = $TRABAJO->SEARCH();
-		$lista = array( 'IdTrabajo','NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );
+		$lista = array( 'IdTrabajo','NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo','PorcentajeNota' );
 		new TRABAJO_SHOWALL( $lista, $datos );
 }
 

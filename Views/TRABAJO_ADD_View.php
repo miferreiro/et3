@@ -47,6 +47,16 @@ class TRABAJO_ADD {
 						<td class="formThTd"><input type="text" id="FechaFinTrabajo" name="FechaFinTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" class="tcal tcalInput" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'50') && comprobarTexto(this,'50')"/>
 					</tr>
 					
+                      <tr>
+						<th class="formThTd">
+							<?php echo $strings['Porcentaje de Nota'];?>
+						</th>
+						<td class="formThTd"><input type="number" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" class="tcal tcalInput" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
+					</tr>
+                    
+                    
+                    
+                    
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>

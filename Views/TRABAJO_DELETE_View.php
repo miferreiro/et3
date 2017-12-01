@@ -57,6 +57,16 @@ class TRABAJO_DELETE {
 						<?php echo $this->valores['FechaFinTrabajo']?>
 					</td>
 				</tr>
+                
+                
+                   <tr>
+					<th>
+						<?php echo $strings['Porcentaje Nota'];?>
+					</th>
+					<td>
+						<?php echo $this->valores['PorcentajeNota']?>
+					</td>
+				</tr>
 				
 			</table>
 			<p style="text-align:center;">
@@ -67,6 +77,7 @@ class TRABAJO_DELETE {
 				<input type="hidden" name="NombreTrabajo" value="<?php echo $this->valores['NombreTrabajo'] ?>" />
 				<input type="hidden" name="FechaIniTrabajo" value="<?php echo $this->valores['FechaIniTrabajo'] ?>" />
 				<input type="hidden" name="FechaFinTrabajo" value="<?php echo $this->valores['FechaFinTrabajo'] ?>" />
+                <input type="hidden" name="PorcentajeNota" value="<?php echo $this->valores['PorcentajeNota'] ?>" />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
 			<form action='../Controllers/TRABAJO_CONTROLLER.php' method="post" style="display: inline">

@@ -55,6 +55,16 @@ class TRABAJO_SHOWCURRENT {
 					<?php echo $this->lista['FechaFinTrabajo'] ?>
 				</td>
 			</tr>
+            
+            
+             <tr>
+				<th>
+					<?php echo $strings['Porcentaje Nota'];?>
+				</th>
+				<td>
+					<?php echo $this->lista['PorcentajeNota'] ?>
+				</td>
+			</tr>
 			
 			<caption style="margin-top:10px;" align="bottom">
 				<form action='../Controllers/TRABAJO_CONTROLLER.php' method="post">

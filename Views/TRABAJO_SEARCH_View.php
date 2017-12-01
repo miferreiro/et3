@@ -48,6 +48,15 @@ class TRABAJO_SEARCH {
 						</th>
 						<td class="formThTd"><input type="text" id="FechaFinTrabajo" name="FechaFinTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" onBlur="comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
 					</tr>
+                    
+                      <tr>
+						<th class="formThTd">
+							<?php echo $strings['Porcentaje Nota'];?>
+						</th>
+						<td class="formThTd"><input type="number" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
+					</tr>
+                    
+                    
 					
 					<tr>
 						<td colspan="2">

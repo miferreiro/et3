@@ -7,14 +7,15 @@ class TRABAJO{
     var $NombreTrabajo;//declaración de la variable NombreTrabajo
     var $FechaIniTrabajo;//declaracion de la variable FechaIniTrabajo
     var $FechaFinTrabajo;//declaracion de la variable FechaFinTrabajo
-
+    var $PorcentajeNota; //declaracion de la variable PorcentajeNota
     //constructor de la clase
-    function __construct($IdTrabajo,$NombreTrabajo,$FechaIniTrabajo,$FechaFinTrabajo){
+    function __construct($IdTrabajo,$NombreTrabajo,$FechaIniTrabajo,$FechaFinTrabajo,$PocentajeNota){
         //Asignamos valores a los atributos de la clase
         $this->$IdTrabajo=$IdTrabajo;
         $this->NombreTrabajo=$NombreTrabajo;
         $this->FechaIniTrabajo=$FechaIniTrabajo;
         $this->FechaFinTrabajo=$FechaFinTrabajo;
+        $this->PorcentajeNota = $PorcentajeNota;
         
           // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -32,14 +33,16 @@ class TRABAJO{
 		$sql = "select IdTrabajo,
                         NombreTrabajo,
                         FechaIniTrabajo,
-                        FechaFinTrabajo
+                        FechaFinTrabajo,
+                        PorcentajeNota
        			from TRABAJO
     			where 
     				(
 					(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
                     (BINARY NombreTrabajo LIKE '%$this->NombreTrabajo%') &&
                     (BINARY FechaIniTrabajo LIKE '%$this->FechaIniTrabajo%') &&
-                    (BINARY FechaFinTrabajo LIKE '%$this->FechaFinTrabajo%')
+                    (BINARY FechaFinTrabajo LIKE '%$this->FechaFinTrabajo%') &&
+                    (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -70,12 +73,14 @@ class TRABAJO{
 							    IdTrabajo,
                                 NombreTrabajo,
                                 FechaIniTrabajo, 
-                                FechaFinTrabajo) 
+                                FechaFinTrabajo,
+                                PorcentajeNota) 
 								VALUES(
 								'$this->IdTrabajo',
 								'$this->NombreTrabajo',
 								'$this->FechaIniTrabajo',
-								'$this->FechaFinTrabajo'
+								'$this->FechaFinTrabajo',
+                                '$this->PorcentajeNota'
 								)";
                 }
                     else{
@@ -147,6 +152,7 @@ class TRABAJO{
 					 NombreTrabajo='$this->NombreTrabajo',
                      FechaIniTrabajo='$this->FechaIniTrabajo',
                      FechaFinTrabajo='$this->FechaFinTrabajo'
+                     PorcentajeNota='$this->PorcentajeNota'
 				WHERE ( IdTrabajo COLLATE utf8_bin = '$this->IdTrabajo'
 				)";
             
