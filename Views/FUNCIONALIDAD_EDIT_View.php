@@ -6,12 +6,14 @@
 */
 class FUNCIONALIDAD_EDIT {
 
-	function __construct( $valores ) {
+	function __construct( $valores, $datos ) {
 		$this->valores = $valores;
-		$this->render( $this->valores );
+		$this->datos = $datos;
+		$this->render( $this->valores , $this->datos );
 	}
 
-	function render( $valores ) {
+	function render( $valores, $datos ) {
+		$this->datos = $datos;
 		$this->valores = $valores;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
@@ -42,7 +44,32 @@ class FUNCIONALIDAD_EDIT {
 						<td class="formThTd"><textarea id="DescripFuncionalidad" name="DescripFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="100" cols="50" rows="3" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100')"/><?php echo $this->valores['DescripFuncionalidad']?>
 						</textarea>
 					</tr>
+					<tr>
+					<th class="formThTd">
+						<?php echo $strings['NombreAccion'];?>
+					</th>
+					<td class="formThTd">
+					<select id="IdAccion" multiple  size="1" name="IdAccion[]">
+					<option value="">--Elige opción--</option>
+<?php
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+?>
+
+			    <option value="<?php echo $fila['IdAccion'];?> ">	
+<?php 
+							echo $fila['NombreAccion'];
+
+?>
+				</option>		
+<?php
 					
+?>
+					</select>
+<?php
+				}
+?>					
+					</td>
+					</tr>
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>

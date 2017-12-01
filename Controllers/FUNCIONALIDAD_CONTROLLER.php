@@ -43,7 +43,12 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
-			new FUNCIONALIDAD_ADD();
+			//Variable que recoge un objecto model con solo el idgrupo
+			$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');
+			//Variable que almacena el relleno de los datos utilizando el IdGrupo
+			$valores = $FUNCIONALIDAD->RellenaSelect();
+			//Crea una vista add para ver la tupla
+			new FUNCIONALIDAD_ADD( $valores );
 		} else {
 			$FUNCIONALIDAD = get_data_form();
 			$respuesta = $FUNCIONALIDAD->ADD();
@@ -66,7 +71,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			$FUNCIONALIDAD = new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '');
 			$valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ] );
-			new FUNCIONALIDAD_EDIT( $valores );
+			$datos = $FUNCIONALIDAD->RellenaSelect();
+			new FUNCIONALIDAD_EDIT( $valores, $datos );
 		} else {
 			$FUNCIONALIDAD = get_data_form();
 			$respuesta = $FUNCIONALIDAD->EDIT();
