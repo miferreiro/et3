@@ -7,13 +7,15 @@
 */
 class USUARIO_EDIT {
 
-	function __construct( $valores ) {
+	function __construct( $valores,$datos ) {
 		$this->valores = $valores;
-		$this->render( $this->valores );
+		$datos->datos = $datos;
+		$this->render( $this->valores, $this->datos);
 	}
 
-	function render( $valores ) {
-		$this->valores = $valores;
+	function render( $valores, $datos) {
+		$this->datos = $datos;
+ 		$this->valores = $valores;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		?>
@@ -72,6 +74,31 @@ class USUARIO_EDIT {
 						</th>
 						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Telefono']?>" maxlength="11" size="13" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'11') && comprobarTexto(this,'11') && comprobarTelf(this)"/>
 					</tr>
+					<tr>
+					<th class="formThTd">
+						<?php echo $strings['NombreGrupo'];?>
+					</th>
+					<td class="formThTd">
+					<select id="IdGrupo" multiple size="2" name="IdGrupo[]">
+					<option value="">--Elige opción--</option>
+<?php
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+?>
+
+			    <option value="<?php echo $fila['IdGrupo'];?>">	
+<?php 
+							echo $fila['NombreGrupo'];
+
+?>
+				</option>		
+					
+<?php
+				}
+?>					
+				</select>
+					</td>
+					</tr>	
+					
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>

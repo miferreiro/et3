@@ -144,7 +144,18 @@
         
         return $dependencias;
 	} // fin del metodo RellenaDatos()
-       
+		
+		
+    function RellenaSelect() { // se construye la sentencia de busqueda de la tupla
+
+		$sql = "SELECT * FROM ACCION";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else { // si existe se devuelve la tupla resultado
+			return $resultado;
+		}
+	} // fin del metodo RellenaSelect()	
          // funcion EDIT()
 	    // Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
 	   // si existe se modifica

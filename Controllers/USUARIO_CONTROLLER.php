@@ -46,12 +46,18 @@ function get_data_form() {
 //Si la variable action no tiene contenido le asignamos ''
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
 	$_REQUEST[ 'action' ] = '';
+	
 }
 //Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-			new USUARIO_ADD();
+						//Variable que recoge un objecto model con solo el idgrupo
+			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');
+			//Variable que almacena el relleno de los datos utilizando el IdGrupo
+			$valores = $USUARIO->RellenaSelect();
+			//Crea una vista add para ver la tupla
+			new USUARIO_ADD( $valores );
 		} else {//Si recive datos los recoge y mediante las funcionalidad de USUARIO_MODEL inserta los datos
 			$USUARIO = get_data_form();//Variable que almacena los datos recogidos
 			$respuesta = $USUARIO->ADD();//Variable que almacena la respuesta de la inserción
@@ -87,8 +93,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
+			$datos = $USUARIO->RellenaSelect();
 			//Muestra la vista del formulario editar
-			new USUARIO_EDIT( $valores );
+			new USUARIO_EDIT( $valores,$datos);
 			//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
