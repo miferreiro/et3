@@ -75,9 +75,14 @@
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
 			<form action="../Controllers/ENTREGA_CONTROLLER.php" method="post" style="display: inline">
-				<input type="hidden" name="" value="<?php echo $this->valores['login'] ?>" />
+				<input type="hidden" name="login" value="<?php echo $this->valores['login'] ?>" />
                 
-                <input type="hidden" name="" value="<?php echo $this->valores['IdTrabajo'] ?>" />
+                <input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo'] ?>" />
+                <input type="hidden" name="Alias" value="<?php echo $this->valores['Alias'] ?>" />
+                
+                <input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo'] ?>" />
+                
+                <input type="hidden" name="Horas" value="<?php echo $this->valores['Horas'] ?>" />
                 
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>"><!--boton para conformar el borrado -->
 			</form>
