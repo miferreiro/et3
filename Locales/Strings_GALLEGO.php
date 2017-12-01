@@ -98,10 +98,11 @@ array(
 	'Seleccione una nueva foto personal si desea cambiarla, en caso contrario, no es necesario seleccionarla de nuevo.'=> 'Seleccione unha nova foto persoal se quere cambiala, en caso contrario, non é necesario volver a seleccionala.',
 	'Modificar' => 'Modificar',
 	'Eliminar' => 'Eliminar',
+	'Gestion de acciones' => 'Xestión de acciones',
 	'Ver en detalle' => 'Ver en detalle',
 	'Gestion de usuarios' => 'Xestión de usuarios',
 	'Gestion de grupo' => 'Xestión de grupo',
-	'Gestion de grupo' => 'Xestión de usuarios-grupo',
+	'Gestion de usuarios-grupo' => 'Xestión de usuarios-grupo',
 	'IdGrupo' => 'IdGrupo',
 	'NombreGrupo' => 'Nome Grupo',
 	'DescripGrupo' => 'Descripción Grupo',
@@ -118,7 +119,13 @@ array(
 	'No puedes insertar este grupo debido a que no existe, debes insertar previamente un grupo' =>
 	'Non podes inserir este grupo porque non existe, debes inserir un grupo previamente',
 	'Ya existe en la base de datos' => 'Xa existe na base de datos',
-	'Buscador' => 'Buscador'
+	'Buscador' => 'Buscador',
+	'No hay entregas para realizar la asignación' => 'Non hay entregas para realizar a asignación',
+	'ET' => 'ET',
+	'Número de QAs' => 'Número de QAs',
+	'ASIGNACIÓN DE QAs' => 'ASIGNACIÓN DE QAs',
+	'Asignacion generada con exito' => 'Asignacion xerada con exito',
+	'Gestión de QAs' => 'Xestión de QAs'
 	)
 ;
 

@@ -120,7 +120,13 @@ array(
 	'No puedes insertar este grupo debido a que no existe, debes insertar previamente un grupo' =>
 	'No puedes insertar este grupo debido a que no existe, debes insertar previamente un grupo',
 	'Ya existe en la base de datos' => 'Ya existe en la base de datos',
-	'Buscador' => 'Buscador'
+	'Buscador' => 'Buscador',
+	'No hay entregas para realizar la asignación' => 'No hay entregas para realizar la asignación',
+	'ET' => 'ET',
+	'Número de QAs' => 'Número de QAs',
+	'ASIGNACIÓN DE QAs' => 'ASIGNACIÓN DE QAs',
+	'Asignacion generada con exito' => 'Asignacion generada con exito',
+	'Gestión de QAs' => 'Gestión de QAs'
 	)
 ;
 

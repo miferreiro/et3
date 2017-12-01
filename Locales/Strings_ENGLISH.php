@@ -98,6 +98,7 @@ array(
 	'Seleccione una nueva foto personal si desea cambiarla, en caso contrario, no es necesario seleccionarla de nuevo.' => 'Select a new personal picture for change, otherwise, you do not need to reselect.',
 	'Modificar' => 'Edit',
 	'Eliminar' => 'Delete',
+	'Gestion de acciones' => 'Actions Management',
 	'Ver en detalle' => 'See details',
 	'Gestion de usuarios' => 'User Management',
 	'Gestion de grupo' => 'Group Management',
@@ -118,7 +119,13 @@ array(
 	'You can not insert this group because it does not exist, you must previously insert a group',
 	'Ya existe en la base de datos' => 'It already exists in the database',
 	'Mostrar todos' => 'Mostrar todos',
-	'Buscador' => 'Search'
+	'Buscador' => 'Search',
+	'No hay entregas para realizar la asignación' => 'No deliveries to perform the assignment',
+	'ET' => 'ET',
+	'Número de QAs' => 'Number of QAs',
+	'ASIGNACIÓN DE QAs' => 'Allocation of QAs',
+	'Asignacion generada con exito' => 'Successfully generated assignment',
+	'Gestión de QAs' => 'QAs Management'
 	)
 ;
 
