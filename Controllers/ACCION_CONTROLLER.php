@@ -83,6 +83,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new ACCION_SHOWALL( $lista, $datos );
 		}
 		break;
+	case 'SHOWCURRENT':
+		$ACCION= new ACCION( $_REQUEST[ 'IdAccion' ], '', '');
+		$valores = $ACCION->RellenaDatos( $_REQUEST[ 'IdAccion' ] );
+		new ACCION_SHOWCURRENT( $valores );
+		break;
 	default:
 		if ( !$_POST ) {
 			$ACCION = new ACCION( '', '', '');
