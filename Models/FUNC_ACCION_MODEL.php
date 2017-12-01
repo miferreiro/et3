@@ -10,7 +10,6 @@
         var $dependencias;//declaracion de la variable dependencias.
         
         
-        
             function __construct($IdFuncionalidad,$IdAccion){
                 //Asignamos valores a las variables.
                 $this->IdFuncionalidad=$IdFuncionalidad;

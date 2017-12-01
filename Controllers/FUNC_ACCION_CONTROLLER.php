@@ -22,7 +22,6 @@ function get_data_form(){
 	
 	$IdFuncionalidad = $_REQUEST['IdFuncionalidad'];
 	$IdAccion = $_REQUEST['IdAccion'];
-	$action= $_REQUEST['action'];
 	
 	$FUNC_ACCION = new FUNC_ACCION(
 		$IdFuncionalidad,
