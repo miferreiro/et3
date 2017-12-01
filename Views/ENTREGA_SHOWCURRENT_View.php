@@ -14,7 +14,7 @@
             
         }
         
-        public function mostrar(){
+        public function mostrar($valores){
             $this->valores = $valores;
 		    include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		    include '../Views/Header.php';

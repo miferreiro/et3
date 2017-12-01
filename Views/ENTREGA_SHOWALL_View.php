@@ -2,7 +2,7 @@
     //Se muestra una tabla SHOWALL conto todas las entregas y iconos para añadir,insertar,borrar,buscar y buscar en detalle.
     //Fecha de creación:28/11/2017
 
-class USU_GRUPO_SHOWALL {
+class ENTREGA_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -52,9 +52,16 @@ class USU_GRUPO_SHOWALL {
 ?>
 					<td>
 <?php 
-
+                            if($atributo == 'Ruta'){
+                                ?>
+                        
+                                <a href="<?php echo $fila[$atributo] ?>"><?php echo $fila[$atributo] ?></a>
+                        
+                                <?php
+                            }
+                        else
 							echo $fila[ $atributo ];//se muestra el valor de todos los campos
-?>
+?>                      
 					</td>
 <?php
 					}

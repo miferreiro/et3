@@ -5,7 +5,7 @@
 class ENTREGA_EDIT {
 
 	function __construct($valores) {
-		$this->render();
+		$this->render($valores);
 	}
 
 	function render($valores) {
@@ -51,7 +51,7 @@ class ENTREGA_EDIT {
 						</th>
 						<td class="formThTd"><input type="file" id="Ruta" name="Ruta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Ruta']?>"  maxlength="60" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
 					</tr>
-					<input type="file" id="ruta2" name="ruta2" value="<?php echo $this->valores['Ruta']?>"/>
+					<input type="hidden" id="ruta2" name="ruta2" value="<?php echo $this->valores['Ruta']?>"/>
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button><!--boton para confirmar borrado-->

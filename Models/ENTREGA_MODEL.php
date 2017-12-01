@@ -59,9 +59,12 @@
 	// de los atributos del objeto. Comprueba si la clave esta vacia y si 
 	//existe ya en la tabla
 	function ADD() {
-		if ( ( $this->login <> '' $this->IdTrabajo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
+		if ( ( $this->login <> '' && $this->IdTrabajo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
             
-            $trabajo = "SELECT * FROM TRABAJO WHERE ( IdTrabajo='$this->IdTrabajo')";
+            
+            
+        
+         /*  $trabajo = "SELECT * FROM TRABAJO WHERE ( IdTrabajo='$this->IdTrabajo')";
                     $result=$this->mysqli->query($trabajo);
                 if(!$result){
                     return "No se ha podido conectar a la base de datos";
@@ -71,7 +74,8 @@
                         return "No puedes añadir la entrega debido a que no se añadio un trabajo";
                     }
                 }
-            
+                */
+        /*    
                 $usuario = "SELECT * FROM USUARIO WHERE (login= '$this->login')";
             
                  $result=$this->mysqli->query($usuario);
@@ -86,6 +90,24 @@
                         return "No puedes añadir la entrega debido a que no se añadio un ususario";
                     }
                 }
+                
+            */
+            
+            $usuario = "SELECT * FROM USUARIO WHERE (login= '$this->login')";
+            
+                 $result=$this->mysqli->query($usuario);
+            
+                if(!$result){
+                    
+                      return "No se ha podido conectar a la base de datos";
+                }
+            
+                else{
+                    if($result->num_rows == 1){
+                        return "No puedes añadir la entrega debido a que añadiste una, modificala o borrala";
+                    }
+                }
+            
             
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM ENTREGA WHERE (  login = '$this->login' && IdTrabajo = '$this->IdTrabajo')";
@@ -95,7 +117,7 @@
 			} else { // si la ejecución de la query no da error
                 if ($result->num_rows == 0){ // miramos si el resultado de la consulta es vacio
                     //hacemos la inserción en la base de datos
-					$sql = "INSERT INTO GRUPO (
+					$sql = "INSERT INTO ENTREGA (
 							    login,
                                 IdTrabajo,
                                 Alias,
@@ -114,7 +136,7 @@
                     }
                 }
 					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
-						return 'Error en la inserción';
+						return $sql;
 					} else { //si no da error en la insercion devolvemos mensaje de exito
 						return 'Inserción realizada con éxito'; //operacion de insertado correcta
 					}
@@ -177,7 +199,7 @@
 					login = '$this->login',
 					 IdTrabajo='$this->IdTrabajo',
                      Alias='$this->Alias',
-                     Hora='$this->Hora',
+                     Horas='$this->Horas',
                      Ruta='$this->Ruta'
 				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
 				)";

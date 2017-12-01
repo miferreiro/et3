@@ -47,7 +47,7 @@ class ENTREGA_ADD {
 						<th class="formThTd">
 							<?php echo $strings['Ruta'];?><!--se muestra el campo Ruta-->
 						</th>
-						<td class="formThTd"><input type="file" id="Ruta" name="Ruta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
+						<td class="formThTd"><input type="file" id="Ruta" name="Ruta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')" />
 					</tr>
 					
 					<tr>

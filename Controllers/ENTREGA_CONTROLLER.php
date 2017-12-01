@@ -22,7 +22,38 @@ function get_data_form() {
     $Alias = $_REQUEST['Alias'];
     $Horas = $_REQUEST['Horas'];
    // $Ruta= $_REQUEST['Ruta'];
-    if(isset($_FILES['Ruta']['name'])){
+    
+    	if ( isset( $_FILES[ 'Ruta' ][ 'name' ] ) ) {
+		$nombreRuta = $_FILES[ 'Ruta' ][ 'name' ];
+	} else {
+		$nombreRuta = null;
+	}
+
+	if ( isset( $_FILES[ 'Ruta' ][ 'tmp_name' ] ) ) {
+		$nombreTempRuta = $_FILES[ 'Ruta' ][ 'tmp_name' ];
+	} else {
+		$nombreTempRuta = null;
+	}
+
+
+	if ( $nombreRuta != null ) {
+		$dir_subida = '../Files/';
+		$rutapersonal = $dir_subida . $nombreRuta;
+		move_uploaded_file( $nombreTempRuta, $rutapersonal );
+	}
+   else{
+    if(isset($_POST['ruta2'])){
+                        $rutapersonal=$_POST['ruta2'];
+                }else{
+
+                    $rutapersonal=null;
+                }
+                }
+    
+    
+    
+    /*
+   if(isset($_FILES['Ruta']['name'])){
                     $nombreRuta = $_FILES['Ruta']['name'];
         }else{
                     $nombreRuta = null;
@@ -47,10 +78,10 @@ function get_data_form() {
     if($nombreRuta != null){
 
                     $ruta = '../Files/';
-                    $extension = substr($tipoRuta, 6);
+                    $extension = substr($tipoRuta, -3,3);
                     $rutapersonal = $ruta . $login . ".". $extension;
                    //NOTA CAMBIAR LOS PERMISOS A 777
-                    move_uploaded_file($nombreTempFoto, $rutapersonal);
+                    move_uploaded_file($nombreTempRuta, $rutapersonal);
                     
     }else{
     if(isset($_POST['ruta2'])){
@@ -60,8 +91,34 @@ function get_data_form() {
                     $rutapersonal=null;
                 }
                 }
+    */
     
-    
+   /* 
+     $nombre =  $_FILES['Ruta']['name'];            //nombre con el que lo subió el usuario
+            $tipo =  $_FILES['Ruta']['type'];            //tipo de archivo (jpg,gif,rar,txt,etc)
+            $tamano = $_FILES['Ruta']['size'];            //tamaño del archivo en Kb; 1024Kb = 1Mb
+            $error = $_FILES['Ruta']['error'];            //si apareció algún error en la subida
+            $nombre_temporal = $_FILES['Ruta']['tmp_name'];    //Nombre temporal que se le asigna al archivo cuando sube a tu servidor
+ 
+            $nuevo_nombre = 'EL Archivo';
+                
+                // $ruta = '../Files/';
+                    //$extension = substr($tipoRuta, -3,3);
+                   // $rutapersonal = $ruta . $login . ".". $extension;
+ 
+//Reviso que el archivo sea del tipo ZIP o RAR; y que pese menos de 5Mb
+                    if (!((strpos($tipo, "rar") || strpos($tipo, "zip")) && ($tamano< 5120))) { 
+        echo "El tipo de archivo o el tamaño no es correcto.";
+}else{ 
+       //Verifico que pueda mover el archivo y cambiarle el nombre. El archivo se guardará donde esta la pagina
+    if (move_uploaded_file(FILES['Ruta']['tmp_name'], $nuevo_nombre)){ 
+           echo "El archivo subió!!."; 
+       }else{ 
+           echo "Error al subir el archivo. Inténtelo nuevamente."; 
+       } 
+} 
+
+   */
     
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
 
@@ -95,7 +152,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			//Variable que recoge un objecto model.
-			$ENTREGA = new ENTREGA( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '','', '');
+			$ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '','', '');
 			//Variable que almacena el relleno de los datos.
 			$valores = $ENTREGA->RellenaDatos();
 			//Crea una vista delete para ver la tupla
@@ -105,7 +162,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena los datos recogidos de los atributos
 			$ENTREGA = get_data_form();
 			//Variable que almacena la respuesta de realizar el borrado
-			$respuesta = $ENTREGA>DELETE();
+			$respuesta = $ENTREGA->DELETE();
 			//crea una vista mensaje con la respuesta.
 			new MESSAGE( $respuesta, '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
@@ -114,7 +171,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			//Variable que almacena un objeto model 
-			$ENTREGA = new ENTREGA($_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ],'', '', '');
+			$ENTREGA = new ENTREGA_MODEL($_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ],'', '', '');
 			//Variable que almacena los datos de los atibutos rellenados 
 			$valores = $ENTREGA->RellenaDatos();
 			//Muestra la vista del formulario editar
@@ -140,7 +197,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el resultado de la busqueda
 			$datos = $ENTREGA->SEARCH();
 			//Variable que almacena array con el CorrectoA de los atributos
-			$lista = array('login','IdTrabjo','Alias','Horas','Ruta');
+			$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new ENTREGA_SHOWALL( $lista, $datos );
 		}
@@ -148,7 +205,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 		//Variable que almacena un objeto model
-		$ENTREGA = new ENTREGA( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '', '','');
+		$ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '', '','');
 		//Variable que almacena los valores rellenados 
 		$valores = $ENTREGA->RellenaDatos();
 		//Creación de la vista showcurrent
@@ -157,7 +214,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default: //Caso que se ejecuta por defecto
 		if ( !$_POST ) {//Si no se han recibido datos 
-			$ENTREGA = new ENTREGA( '','', '', '', '');
+			$ENTREGA = new ENTREGA_MODEL( '','', '', '', '');
 		//Si se reciben datos
 		} else {
 			$ENTREGA = get_data_form();
@@ -165,7 +222,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los datos de la busqueda
 		$datos = $ENTREGA->SEARCH();
 		//Variable que almacena array con el CorrectoA de los atributos
-		$lista = array('login','IdTrabjo','Alias','Horas','Ruta');
+		$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new ENTREGA_SHOWALL( $lista, $datos );
 }
