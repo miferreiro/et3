@@ -63,6 +63,10 @@ class EVALUACION_SHOWALL {
 					<td>
 						<form action="../Controllers/EVALUACION_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
+                            <input type="hidden" name="LoginEvaluador" value="<?php echo $fila['LoginEvaluador']; ?>">
+                            <input type="hidden" name="AliasEvaluado" value="<?php echo $fila['AliasEvaluado']; ?>">
+                            <input type="hidden" name="IdHistoria" value="<?php echo $fila['IdHistoria']; ?>">
+                            
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 					<td>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>

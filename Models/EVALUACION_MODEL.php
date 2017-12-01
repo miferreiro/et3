@@ -97,7 +97,7 @@ class EVALUACION{ //declaración de la clase
                 
             }
             
-            $trabajo= "SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
+     /*       $trabajo= "SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
             
             $result = $this->mysqli->query($trabajo);
             
@@ -111,15 +111,15 @@ class EVALUACION{ //declaración de la clase
             else{
                       if($result->num_rows == 0){
                           
-                        return 'no puedes insertar un id de trabajo, debes insertar previamente un trabajo.'
+                        return 'no puedes insertar un id de trabajo, debes insertar previamente un trabajo.';
                     }
             }
             
                 
-
+*/
 
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM EVALUACION WHERE (  IdTrabajo = '$this->IdTrabajo' && IdAccion = '$this->LoginEvaluador' && IdAccion = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
+			$sql = "SELECT * FROM EVALUACION WHERE (  IdTrabajo = '$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' && AliasEvaluado = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -175,14 +175,14 @@ class EVALUACION{ //declaración de la clase
 	// se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo' && IdAccion = '$this->LoginEvaluador' && IdAccion = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
+		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' && AliasEvaluado = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo' && IdAccion = '$this->LoginEvaluador' && IdAccion = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
+			$sql = "DELETE FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' && AliasEvaluado = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -197,7 +197,7 @@ class EVALUACION{ //declaración de la clase
 	// en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo' && IdAccion = '$this->LoginEvaluador' && IdAccion = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
+		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' && AliasEvaluado = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -212,7 +212,7 @@ class EVALUACION{ //declaración de la clase
 	// si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo' && IdAccion = '$this->LoginEvaluador' && IdAccion = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
+		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' && AliasEvaluado = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
@@ -226,9 +226,9 @@ class EVALUACION{ //declaración de la clase
 					CorrectoA = '$this->CorrectoA',
 					ComenIncorrectoA = '$this->ComenIncorrectoA',
                     CorrectoP = '$this->CorrectoP',
-                    ComentIncorrectoP ='$this->ComenIncorrectoP',
+                    ComentIncorrectoP ='$this->ComentIncorrectoP',
 					OK = '$this->OK'
-				WHERE ( IdTrabajo = '$this->IdTrabajo' && IdAccion = '$this->LoginEvaluador' && IdAccion = '$this->AliasEvaluado' && 
+				WHERE ( IdTrabajo = '$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' && AliasEvaluado = '$this->AliasEvaluado' && 
                 IdHistoria = '$this->IdHistoria'
 				)";
             

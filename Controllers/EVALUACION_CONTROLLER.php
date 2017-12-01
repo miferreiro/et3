@@ -86,7 +86,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena un objeto model con el LoginEvaluador
 			$EVALUACION = new EVALUACION($_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ], '', '', '', '','');
 			//Variable que almacena los datos de los atibutos rellenados a traves de LoginEvaluador
-			$valores = $EVALUACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ] );
+			$valores = $EVALUACION->RellenaDatos();
 			//Muestra la vista del formulario editar
 			new EVALUACION_EDIT( $valores );
 			//Si se reciben valores

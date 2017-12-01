@@ -7,13 +7,13 @@
 */
 class EVALUACION_SHOWCURRENT {
 
-	function __construct( $lista ) {
-		$this->lista = $lista;
-		$this->render( $this->lista );
+	function __construct( $valores ) {
+		$this->render($valores);
+		
 	}
 
-	function render( $lista ) {
-		$this->lista = $lista;
+	function render( $valores) {
+		$this->valores = $valores;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
