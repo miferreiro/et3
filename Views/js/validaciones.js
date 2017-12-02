@@ -18,8 +18,22 @@ atributo['apellidos'] = '<?php echo $strings["apellidos"]?>';
 atributo['telefono'] = '<?php echo $strings["telefono"]?>';
 atributo['email'] = '<?php echo $strings["email"]?>';
 atributo['FechaNacimiento'] = '<?php echo $strings["FechaNacimiento"]?>';
-atributo['fotopersonal'] = '<?php echo $strings["fotopersonal"]?>';
+atributo['direc'] = '<?php echo $strings["Direccion"]?>';
 atributo['sexo'] = '<?php echo $strings["sexo"]?>';
+
+
+// function hayEspacio(campo): Comprueba que no tenga espacios el campo
+ function sinEspacio(campo) {
+ 	//Comprueba si hay algun espacio
+	if (/[\s]/.test(campo.value)) {
+		//mensaje multidioma
+		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede tener espacios "];?>');
+		campo.focus();
+		return false;
+	}
+	return true;//Devuelve "true"
+ }
+
 
 /*
 		function comprobarVacio(campo): realiza una comprobación de si el campo es vacío o está compuesto de espacios en blanco.
@@ -310,27 +324,37 @@ function comprobarAdd() {
 	if (!comprobarVacio(login)) {
 		return false;
 	} else {
-		/*Comprobamos su longitud, si es mayor que 15, retorna false*/
-		if (!comprobarLongitud(login, 9)) {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(login)) {
 			return false;
 		} else {
-			/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(login, 9)) {
+			/*Comprobamos su longitud, si es mayor que 15, retorna false*/
+			if (!comprobarLongitud(login, 9)) {
 				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(login, 9)) {
+					return false;
+				}
 			}
-		}
+		}	
 	}
 	/*Comprueba si password es vacio, retorna false*/
 	if (!comprobarVacio(pwd)) {
 		return false;
 	} else {
-		/*Comprueba su longitud, si es mayor que 20, retorna false*/
-		if (!comprobarLongitud(pwd, 20)) {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(pwd)) {
 			return false;
 		} else {
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(pwd, 20)) {
+			/*Comprueba su longitud, si es mayor que 20, retorna false*/
+			if (!comprobarLongitud(pwd, 20)) {
 				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(pwd, 20)) {
+					return false;
+				}
 			}
 		}
 	}
@@ -587,19 +611,22 @@ function comprobarEdit() {
 	direccion = document.forms['EDIT'].elements[6];
 	telefono = document.forms['EDIT'].elements[7];
 
-
-
 	/*Comprueba si login es vacio, retorna false*/
 	if (!comprobarVacio(login)) {
 		return false;
 	} else {
-		/*Comprobamos su longitud, si es mayor que 15, retorna false*/
-		if (!comprobarLongitud(login, 9)) {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(login)) {
 			return false;
 		} else {
-			/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(login, 9)) {
+			/*Comprobamos su longitud, si es mayor que 15, retorna false*/
+			if (!comprobarLongitud(login, 9)) {
 				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(login, 9)) {
+					return false;
+				}
 			}
 		}
 	}
@@ -607,13 +634,18 @@ function comprobarEdit() {
 	if (!comprobarVacio(pwd)) {
 		return false;
 	} else {
-		/*Comprueba su longitud, si es mayor que 128, retorna false*/
-		if (!comprobarLongitud(pwd, 128)) {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(pwd)) {
 			return false;
 		} else {
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(pwd, 128)) {
+			/*Comprueba su longitud, si es mayor que 128, retorna false*/
+			if (!comprobarLongitud(pwd, 128)) {
 				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(pwd, 128)) {
+					return false;
+				}
 			}
 		}
 	}
