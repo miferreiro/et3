@@ -7,6 +7,7 @@
 	Función: contiene todas las características del header
 */
 	include_once '../Functions/Authentication.php';
+    include_once '../Functions/AuthenticationAdmin.php';
 	if (!isset($_SESSION['idioma'])) {
 		$_SESSION['idioma'] = 'SPANISH';
 
@@ -62,11 +63,13 @@
 </header>
 <div id = 'main'>   
 <?php
-
-	if (IsAuthenticated()){
+if (IsAuthenticated()){
+	if (IsAuthenticatedadmin()){
 		include '../Views/admin_menuLateral.php';
+	}else{
+		include '../Views/users_menuLateral.php';
 	}
-
+}
 ?>  
 <article>
 
