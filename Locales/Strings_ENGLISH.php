@@ -35,7 +35,7 @@ array(
 	'Gestion de funcionalidades/acciones' => 'Functionality/actions management',
 	'Gestion de aciones' => 'Actions management',
 	'Gestion de entregas' => 'Delivery management',
-	'Gestion de entregas' => 'Story management',
+	'Gestion de historias' => 'Story management',
 	'Gestion de trabajos' => 'Work management',
 	'Gestion de evaluaciones' => 'Evaluations management',
 	'Apellidos' => 'Surnames',
@@ -122,7 +122,7 @@ array(
 	'Non podes inserir este grupo porque non existe, debes inserir un grupo previamente' =>
 	'You can not insert this group because it does not exist, you must previously insert a group',
 	'Ya existe en la base de datos' => 'It already exists in the database',
-	'Mostrar todos' => 'Mostrar todos',
+	'Mostrar todos' => 'Show all',
 	'Buscador' => 'Search',
 	'No hay entregas para realizar la asignación' => 'No deliveries to perform the assignment',
 	'ET' => 'ET',
@@ -130,7 +130,14 @@ array(
 	'ASIGNACIÓN DE QAs' => 'Allocation of QAs',
 	'Asignacion generada con exito' => 'Successfully generated assignment',
 	'Gestión de QAs' => 'QAs Management',
-	' no puede tener espacios ' => ' Cannot have spaces '
+	' no puede tener espacios ' => ' Cannot have spaces ',
+	'Elige' => 'Choose'
+	
+	
+	
+	
+	
+	
 	)
 ;
 

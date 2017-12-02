@@ -13,13 +13,13 @@ var atributo = new Array();/*Array que sirve para poder traducir el nombre de lo
 atributo['login'] = '<?php echo $strings["Usuario"]?>';
 atributo['password'] = '<?php echo $strings["password"]?>';
 atributo['DNI'] = '<?php echo $strings["DNI"]?>';
-atributo['nombre'] = '<?php echo $strings["nombre"]?>';
-atributo['apellidos'] = '<?php echo $strings["apellidos"]?>';
-atributo['telefono'] = '<?php echo $strings["telefono"]?>';
+atributo['nombre'] = '<?php echo $strings["Nombre"]?>';
+atributo['apellidos'] = '<?php echo $strings["Apellidos"]?>';
+atributo['telefono'] = '<?php echo $strings["Teléfono"]?>';
 atributo['email'] = '<?php echo $strings["email"]?>';
 atributo['FechaNacimiento'] = '<?php echo $strings["FechaNacimiento"]?>';
 atributo['direc'] = '<?php echo $strings["Direccion"]?>';
-atributo['sexo'] = '<?php echo $strings["sexo"]?>';
+atributo['sexo'] = '<?php echo $strings["Sexo"]?>';
 
 
 // function hayEspacio(campo): Comprueba que no tenga espacios el campo

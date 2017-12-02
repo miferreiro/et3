@@ -80,7 +80,7 @@ class USUARIO_EDIT {
 					</th>
 					<td class="formThTd">
 					<select id="IdGrupo" multiple size="2" name="IdGrupo[]">
-					<option value="">--Elige opción--</option>
+					<option value=""><?php echo $strings['Elige'];?></option>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>

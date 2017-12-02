@@ -50,7 +50,7 @@ array(
 	'Gestion de funcionalidades/acciones' => 'Xestión de funcionalidades/accións',
 	'Gestion de aciones' => 'Xestión de accións',
 	'Gestion de entregas' => 'Xestión de entregas',
-	'Gestion de entregas' => 'Xestión de historia',
+	'Gestion de historias' => 'Xestión de historia',
 	'Gestion de trabajos' => 'Xestión de traballos',
 	'Gestion de evaluaciones' => 'Xestión de evaluacions',
 	'¿Está seguro de que quiere borrar esta tupla de la tabla?'=>'¿Está seguro de que quere borrar esta tupla da táboa?',
@@ -130,7 +130,8 @@ array(
 	'ASIGNACIÓN DE QAs' => 'ASIGNACIÓN DE QAs',
 	'Asignacion generada con exito' => 'Asignacion xerada con exito',
 	'Gestión de QAs' => 'Xestión de QAs',
-	' no puede tener espacios ' => ' non pode conter espacios '
+	' no puede tener espacios ' => ' non pode conter espacios ',
+	'Elige' => 'Escolle'
 	)
 ;
 

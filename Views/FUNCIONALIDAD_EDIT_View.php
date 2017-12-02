@@ -1,4 +1,4 @@
-<?php
+'Elige' => 'Choose''Elige' => 'Choose''Elige' => 'Choose'<?php echo $strings['Elige'];?><?php echo $strings['Elige'];?><?php echo $strings['Elige'];?><?php echo $strings['Elige'];?><?php echo $strings['Elige'];?><?php echo $strings['Elige'];?><?php
 /*  Archivo php
 	Nombre: FUNCIONALIDAD_EDIT_View.php
 	Fecha de creación: 26/11/2017 
