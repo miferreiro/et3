@@ -24,27 +24,27 @@ class EVALUACION_SEARCH {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Trabajo'];?>
+							<?php echo $strings['IdTrabajo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
 
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Login evaluador'];?>
+							<?php echo $strings['LoginEvaluador'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="LoginEvaluador" name="LoginEvaluador" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="34" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarAlfabetico(this,'9')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Alias evaluado'];?>
+							<?php echo $strings['AliasEvaluado'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="AliasEvaluado" name="AliasEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarAlfabetico(this,'9')"/>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Historia'];?>
+							<?php echo $strings['IdHistoria'];?>
 						</th>
 						<td class="formThTd"><input type="number" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
 					</tr>
@@ -58,7 +58,7 @@ class EVALUACION_SEARCH {
                     
                     <tr>
 						<th class="formThTd">
-							<?php echo $strings['Comentario incorrecto A'];?>
+							<?php echo $strings['ComenIncorrectoA'];?>
 						</th>
                         <td class="formThTd"><texarea type="text" id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" size="300" onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300') && comprobarAlfabetico(this,'300')"></texarea>
 					</tr>
@@ -72,7 +72,7 @@ class EVALUACION_SEARCH {
                     
                     <tr>
 						<th class="formThTd">
-							<?php echo $strings['Comentario incorrecto P'];?>
+							<?php echo $strings['ComentIncorrectoP'];?>
 						</th>
                         <td class="formThTd"><textarea type="text" id="ComentIncorrectoP" name="ComentIncorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" size="300" onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300') && comprobarAlfabetico(this,'300')"></textarea>
 					</tr>

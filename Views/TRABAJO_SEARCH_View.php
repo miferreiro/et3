@@ -24,34 +24,34 @@ class TRABAJO_SEARCH {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Trabajo'];?>
+							<?php echo $strings['IdTrabajo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
 
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Nombre Trabajo'];?>
+							<?php echo $strings['NombreTrabajo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="NombreTrabajo" name="NombreTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="60" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarAlfabetico(this,'60')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Fecha inicio trabajo'];?>
+							<?php echo $strings['FechaIniTrabajo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="FechaIniTrabajo" name="FechaIniTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" onBlur="comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
-							<?php echo $strings['Fecha fin trabajo'];?>
+							<?php echo $strings['FechaFinTrabajo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="FechaFinTrabajo" name="FechaFinTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" onBlur="comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
 					</tr>
                     
                       <tr>
 						<th class="formThTd">
-							<?php echo $strings['Porcentaje Nota'];?>
+							<?php echo $strings['PorcentajeNota'];?>
 						</th>
 						<td class="formThTd"><input type="number" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
 					</tr>

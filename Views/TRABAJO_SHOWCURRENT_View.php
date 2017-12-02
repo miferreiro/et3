@@ -23,7 +23,7 @@ class TRABAJO_SHOWCURRENT {
 		<table class="tablaDatos">
 			<tr>
 				<th>
-					<?php echo $strings['ID Trabajo'];?>
+					<?php echo $strings['IdTrabajo'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['IdTrabajo'] ?>
@@ -32,7 +32,7 @@ class TRABAJO_SHOWCURRENT {
 	
 			<tr>
 				<th>
-					<?php echo $strings['Nombre Trabajo'];?>
+					<?php echo $strings['NombreTrabajo'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['NombreTrabajo'] ?>
@@ -40,7 +40,7 @@ class TRABAJO_SHOWCURRENT {
 			</tr>
 			<tr>
 				<th>
-					<?php echo $strings['Fecha inicio trabajo'];?>
+					<?php echo $strings['FechaIniTrabajo'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['FechaIniTrabajo'] ?>
@@ -49,7 +49,7 @@ class TRABAJO_SHOWCURRENT {
             
             <tr>
 				<th>
-					<?php echo $strings['Fecha fin trabajo'];?>
+					<?php echo $strings['FechaFinTrabajo'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['FechaFinTrabajo'] ?>
@@ -59,7 +59,7 @@ class TRABAJO_SHOWCURRENT {
             
              <tr>
 				<th>
-					<?php echo $strings['Porcentaje Nota'];?>
+					<?php echo $strings['PorcentajeNota'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['PorcentajeNota'] ?>

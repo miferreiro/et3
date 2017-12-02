@@ -33,7 +33,7 @@ class HISTORIA_ADD {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Texto historia'];?>
+							<?php echo $strings['TextoHistoria'];?>
 						</th>
 						<td class="formThTd"><textarea id="TextoHistoria" name="TextoHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" size="300" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'300')">
 						</textarea>

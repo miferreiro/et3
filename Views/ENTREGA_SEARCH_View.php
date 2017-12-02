@@ -13,7 +13,7 @@ class ENTREGA_SEARCH {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['Formulario de Busqueda'];?>
+				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
 			<form name="SEARCH" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarSearch()">
 				<table>

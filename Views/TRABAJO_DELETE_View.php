@@ -24,7 +24,7 @@ class TRABAJO_DELETE {
 			<table>
 				<tr>
 					<th>
-						<?php echo $strings['ID Trabajo'];?>
+						<?php echo $strings['IdTrabajo'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdTrabajo']?>
@@ -33,7 +33,7 @@ class TRABAJO_DELETE {
 
 				<tr>
 					<th>
-						<?php echo $strings['Nombre Trabajo'];?>
+						<?php echo $strings['NombreTrabajo'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['NombreTrabajo']?>
@@ -42,7 +42,7 @@ class TRABAJO_DELETE {
 				
 				<tr>
 					<th>
-						<?php echo $strings['Fecha inicio trabajo'];?>
+						<?php echo $strings['FechaIniTrabajo'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['FechaIniTrabajo']?>
@@ -51,7 +51,7 @@ class TRABAJO_DELETE {
                 
                 <tr>
 					<th>
-						<?php echo $strings['Fecha fin trabajo'];?>
+						<?php echo $strings['FechaFinTrabajo'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['FechaFinTrabajo']?>
@@ -61,7 +61,7 @@ class TRABAJO_DELETE {
                 
                    <tr>
 					<th>
-						<?php echo $strings['Porcentaje Nota'];?>
+						<?php echo $strings['PorcentajeNota'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['PorcentajeNota']?>

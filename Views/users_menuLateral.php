@@ -12,10 +12,10 @@
 				<a href="#" class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a> 
 					<ul class="submenu">
 						<li>
-							<a href="../Controllers/ENTREGA_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
+							<a href="../Controllers/ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 						</li>
 						<li>
-							<a href="../Controllers/ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
+							<a href="../Controllers/ENTREGA_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
 						</li>
 					</ul>
 			</li>

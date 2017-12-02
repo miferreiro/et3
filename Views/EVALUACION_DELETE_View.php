@@ -24,7 +24,7 @@ class EVALUACION_DELETE {
 			<table>
 				<tr>
 					<th>
-						<?php echo $strings['ID Trabajo'];?>
+						<?php echo $strings['IdTrabajo'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdTrabajo']?>
@@ -33,7 +33,7 @@ class EVALUACION_DELETE {
 
 				<tr>
 					<th>
-						<?php echo $strings['Login Evaluador'];?>
+						<?php echo $strings['LoginEvaluador'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['LoginEvaluador']?>
@@ -42,7 +42,7 @@ class EVALUACION_DELETE {
 				
 				<tr>
 					<th>
-						<?php echo $strings['Alias Evaluado'];?>
+						<?php echo $strings['AliasEvaluado'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['AliasEvaluado']?>
@@ -51,7 +51,7 @@ class EVALUACION_DELETE {
                 
                 <tr>
 					<th>
-						<?php echo $strings['ID Historia'];?>
+						<?php echo $strings['IdHistoria'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdHistoria']?>
@@ -69,7 +69,7 @@ class EVALUACION_DELETE {
                 
                 <tr>
 					<th>
-						<?php echo $strings['Comentario incorrecto A'];?>
+						<?php echo $strings['ComenIncorrectoA'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['ComenIncorrectoA']?>
@@ -87,7 +87,7 @@ class EVALUACION_DELETE {
                 
                 <tr>
 					<th>
-						<?php echo $strings['Comentario incorrecto P'];?>
+						<?php echo $strings['ComentIncorrectoP'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['ComentIncorrectoP']?>

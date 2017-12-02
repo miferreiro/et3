@@ -22,7 +22,7 @@
         ?>
     <div class="seccion">
 			<h2>
-				<?php echo $strings['Tabla SHOWCURRENT'];?>
+				<?php echo $strings['Vista detallada'];?>
 			</h2>
 			<table>
 				<tr>

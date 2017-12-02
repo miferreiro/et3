@@ -25,27 +25,27 @@ class EVALUACION_EDIT {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Trabajo'];?>
+							<?php echo $strings['IdTrabajo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdTrabajo']?>" maxlength="6" size="6"  readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')" required/>
 					</tr>
 
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Login Evaluador'];?>
+							<?php echo $strings['LoginEvaluador'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="LoginEvaluador" name="LoginEvaluador" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['LoginEvaluador']?>" maxlength="9" size="9" readonly required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarAlfabetico(this,'9')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Alias Evaluado'];?>
+							<?php echo $strings['AliasEvaluado'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="AliasEvaluado" name="AliasEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['AliasEvaluado']?>" maxlength="9" size="9" required readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarAlfabetico(this,'9')"/>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
-							<?php echo $strings['ID Historia'];?>
+							<?php echo $strings['IdHistoria'];?>
 						</th>
 						<td class="formThTd"><input type="number" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdHistoria']?>" maxlength="2" size="2" required  readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarInt(this,'2')"/>
 					</tr>
@@ -59,7 +59,7 @@ class EVALUACION_EDIT {
                 
                     <tr>
 						<th class="formThTd">
-							<?php echo $strings['Comentario incorrecto A'];?>
+							<?php echo $strings['ComenIncorrectoA'];?>
 						</th>
                         <td class="formThTd"><textarea type="text" id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['ComenIncorrectoA']?>" required maxlength="300" size="300" onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300')"></textarea>
 					</tr>
@@ -73,7 +73,7 @@ class EVALUACION_EDIT {
                     
                     <tr>
 						<th class="formThTd">
-							<?php echo $strings['Comentario incorrecto P'];?>
+							<?php echo $strings['ComentIncorrectoP'];?>
 						</th>
                         <td class="formThTd"><textarea type="text" id="ComentIncorrectoP" name="ComentIncorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>"  value="<?php echo $this->valores['ComentIncorrectoP']?>" maxlength="300" size="300" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'300') && comprobarTexto(this,'300')"></textarea>
 					</tr>
