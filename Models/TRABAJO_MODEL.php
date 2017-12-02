@@ -9,13 +9,13 @@ class TRABAJO{
     var $FechaFinTrabajo;//declaracion de la variable FechaFinTrabajo
     var $PorcentajeNota; //declaracion de la variable PorcentajeNota
     //constructor de la clase
-    function __construct($IdTrabajo,$NombreTrabajo,$FechaIniTrabajo,$FechaFinTrabajo,$PocentajeNota){
+    function __construct($IdTrabajo,$NombreTrabajo,$FechaIniTrabajo,$FechaFinTrabajo,$PorcentajeNota){
         //Asignamos valores a los atributos de la clase
-        $this->$IdTrabajo=$IdTrabajo;
+        $this->IdTrabajo=$IdTrabajo;
         $this->NombreTrabajo=$NombreTrabajo;
         $this->FechaIniTrabajo=$FechaIniTrabajo;
         $this->FechaFinTrabajo=$FechaFinTrabajo;
-        $this->PorcentajeNota = $PorcentajeNota;
+        $this->PorcentajeNota=$PorcentajeNota;
         
           // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -62,7 +62,7 @@ class TRABAJO{
 		if ( ( $this->IdTrabajo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM TRABAJO WHERE (  IdTrabajo COLLATE utf8_bin = '$this->IdTrabajo')";
+			$sql = "SELECT * FROM TRABAJO WHERE (  IdTrabajo  = '$this->IdTrabajo')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -103,14 +103,14 @@ class TRABAJO{
 	    // se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM TRABAJO WHERE (IdTrabajo COLLATE utf8_bin = '$this->IdTrabajo')";
+		$sql = "SELECT * FROM TRABAJO WHERE (IdTrabajo  = '$this->IdTrabajo')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM TRABAJO WHERE (IdTrabajo COLLATE utf8_bin = '$this->IdTrabajo' )";
+			$sql = "DELETE FROM TRABAJO WHERE (IdTrabajo  = '$this->IdTrabajo' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -125,7 +125,7 @@ class TRABAJO{
 	   // en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM TRABAJO WHERE (IdTrabajo COLLATE utf8_bin = '$this->IdTrabajo')";
+		$sql = "SELECT * FROM TRABAJO WHERE (IdTrabajo  = '$this->IdTrabajo')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -141,7 +141,7 @@ class TRABAJO{
 	  // si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM TRABAJO WHERE (IdTrabajo COLLATE utf8_bin = '$this->IdTrabajo')";
+		$sql = "SELECT * FROM TRABAJO WHERE (IdTrabajo  = '$this->IdTrabajo')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
@@ -151,9 +151,9 @@ class TRABAJO{
 					IdTrabajo = '$this->IdTrabajo',
 					 NombreTrabajo='$this->NombreTrabajo',
                      FechaIniTrabajo='$this->FechaIniTrabajo',
-                     FechaFinTrabajo='$this->FechaFinTrabajo'
+                     FechaFinTrabajo='$this->FechaFinTrabajo',
                      PorcentajeNota='$this->PorcentajeNota'
-				WHERE ( IdTrabajo COLLATE utf8_bin = '$this->IdTrabajo'
+				WHERE ( IdTrabajo  = '$this->IdTrabajo'
 				)";
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion

@@ -32,7 +32,7 @@ function get_data_form(){
 		$IdTrabajo,
 		$NombreTrabajo,
 		$FechaIniTrabajo,
-		$FechaFinTrabajo
+		$FechaFinTrabajo,
         $PorcentajeNota
 	);
 	
@@ -93,10 +93,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default:
 		if ( !$_POST ) {
-			$TRABAJO = new TRABAJO( '', '', '', '','');
-		} else {
-			$TRABAJO = get_data_form();
-		}
+			$TRABAJO = new TRABAJO('','','','','');
+		} 
+        //else {
+		//	$TRABAJO = get_data_form();
+		//}
 		$datos = $TRABAJO->SEARCH();
 		$lista = array( 'IdTrabajo','NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo','PorcentajeNota' );
 		new TRABAJO_SHOWALL( $lista, $datos );
