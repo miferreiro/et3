@@ -70,11 +70,12 @@ class ACCION_DELETE {
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
-			<form action="../Controllers/ACCION_CONTROLLER.php" method="post" style="display: inline">
+			<form action="../Controllers/ACCION_CONTROLLER.php" method="POST" style="display: inline">
 				<input type="hidden" name="IdAccion" value="<?php echo $this->valores['IdAccion'] ?>" />
 				<input type="hidden" name="NombreAccion" value="<?php echo $this->valores['NombreAccion'] ?>" />
 				<input type="hidden" name="DescripAccion" value="<?php echo $this->valores['DescripAccion'] ?>" />
-				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
+				
+				<button type="submit" id="DELETE" name="action" value="DELETE"><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/ACCION_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
