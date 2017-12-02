@@ -64,7 +64,7 @@
 <?php
 
 	if (IsAuthenticated()){
-		include '../Views/users_menuLateral.php';
+		include '../Views/admin_menuLateral.php';
 	}
 
 ?>  
