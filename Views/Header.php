@@ -22,7 +22,7 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="../Views/tcal/tcal.css" hreflang="es">
 	<script language="JavaScript" type="text/javascript" src="../Views/tcal/tcal.js"></script>
 	<?php include '../Views/js/validaciones.js' ?>
-	<title>ET2</title>
+	<title>ET3</title>
 </head>
 <body>
  <header>
@@ -64,11 +64,9 @@
 <?php
 
 	if (IsAuthenticated()){
-		include '../Views/menuLateral.php';
-	}
-	else{
 		include '../Views/users_menuLateral.php';
 	}
+
 ?>  
 <article>
 
