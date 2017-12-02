@@ -53,10 +53,23 @@ function get_data_form2() {
 	} else {
 		$nombreTempRuta = null;
 	}
-
+   
+    if (!file_exists("../Files/$login")){ 
+              mkdir("../Files/$login", 0777);
+    }
+    
+        
+   /* }else{ 
+    echo "El fichero no existe"; 
+    } */
+    
+    
+    
+   
+    
 
 	if ( $nombreRuta != null ) {
-		$dir_subida = '../Files/';
+		$dir_subida = '../Files/'.$login.'/';
 		$rutapersonal = $dir_subida . $nombreRuta;
 		move_uploaded_file( $nombreTempRuta, $rutapersonal );
 	}
@@ -120,9 +133,12 @@ function get_data_form() {
 		$nombreTempRuta = null;
 	}
 
+     if (!file_exists("../Files/$login")){ 
+              mkdir("../Files/$login", 0777);
+    }
 
 	if ( $nombreRuta != null ) {
-		$dir_subida = '../Files/';
+		$dir_subida = '../Files/'.$login.'/';
 		$rutapersonal = $dir_subida . $nombreRuta;
 		move_uploaded_file( $nombreTempRuta, $rutapersonal );
 	}
