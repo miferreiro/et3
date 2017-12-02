@@ -9,13 +9,13 @@ class USUARIO_EDIT {
 
 	function __construct( $valores,$datos ) {
 		$this->valores = $valores;
-		$datos->datos = $datos;
+		$this->datos = $datos;
 		$this->render( $this->valores, $this->datos);
 	}
 
 	function render( $valores, $datos) {
-		$this->datos = $datos;
  		$this->valores = $valores;
+		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		?>

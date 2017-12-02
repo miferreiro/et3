@@ -45,7 +45,7 @@ class FUNCIONALIDAD_ADD {
 						<?php echo $strings['NombreAccion'];?>
 					</th>
 					<td class="formThTd">
-					<select id="IdAccion" multiple size="1" name="IdAccion[]">
+					<select id="IdAccion" multiple size="2" name="IdAccion[]">
 					<option value="">--Elige opción--</option>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -60,10 +60,11 @@ class FUNCIONALIDAD_ADD {
 <?php
 					
 ?>
-					</select>
+					
 <?php
 				}
 ?>					
+				</select>
 					</td>
 					</tr>
 					<tr>

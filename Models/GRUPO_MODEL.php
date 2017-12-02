@@ -124,8 +124,20 @@
 			return $resultado;
 		}
 	} // fin del metodo RellenaDatos()
-        
-        // funcion RellenaDatos()
+	// funcion RellenaDatos()
+	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
+	// en el atributo de la clase
+	function RellenaSelect() { // se construye la sentencia de busqueda de la tupla
+
+		$sql = "SELECT A.IdAccion,A.NombreAccion,F.IdFuncionalidad,F.NombreFuncionalidad FROM FUNC_ACCION FA, FUNCIONALIDAD F, ACCION A, GRUPO G, PERMISO P WHERE(FA.IdFuncionalidad = F.IdFuncionalidad && FA.IdAccion = A.IdAccion && P.IdFuncionalidad = FA.IdFuncionalidad && P.IdAccion = FA.IdAccion && P.IdGrupo = '$this->IdGrupo') ";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else { // si existe se devuelve la tupla resultado
+			$result = $resultado->fetch_array();
+			return $result;
+		}
+	} // fin del metodo RellenaDatos()
 	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	// en el atributo de la clase
 	function dependencias() { // se construye la sentencia de busqueda de la tupla

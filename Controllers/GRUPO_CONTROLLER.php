@@ -40,7 +40,12 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-			new GRUPO_ADD();
+								//Variable que recoge un objecto model con solo el idgrupo
+			$GRUPOS = new GRUPO( '', '', '');
+			//Variable que almacena el relleno de los datos utilizando el IdGrupo
+			$valores = $GRUPOS->RellenaSelect();
+			//Crea una vista add para ver la tupla
+			new GRUPO_ADD( $valores );
 		} else {//Si recive datos los recoge y mediante las funcionalidad de GRUPO inserta los datos
 			$GRUPOS = get_data_form();//Variable que almacena los datos recogidos
 			$respuesta = $GRUPOS->ADD();//Variable que almacena la respuesta de la inserción
@@ -78,8 +83,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de IdGrupo
 			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
+			$datos = $GRUPOS->RellenaSelect();
 			//Muestra la vista del formulario editar
-			new GRUPO_EDIT( $valores );
+			new GRUPO_EDIT( $valores,$datos );
 			//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
