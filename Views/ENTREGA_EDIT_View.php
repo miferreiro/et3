@@ -23,19 +23,19 @@ class ENTREGA_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['login'];?><!--se muestra el campo login sin poder modififcarlo-->
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" value="<?php echo $this->valores['login']?>" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')" readonly/>
+						<td class="formThTd"><input type="text" id="login" name="login" value="<?php echo $this->valores['login']?>" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="9" size="9"  onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')" readonly/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdTrabajo'];?><!--se muestra el campo IdTrabajo sin poder modificarlo-->
 						</th>
-						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdTrabajo']?>"  maxlength="6" size="6" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6') && comprobarAlfabetico(this,'6')" readonly/>
+						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdTrabajo']?>"  maxlength="6" size="6" onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6') && comprobarAlfabetico(this,'6')" readonly/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Alias'];?><!--se muestra el campo Alias-->
 						</th>
-						<td class="formThTd"><input type="text" id="Alias" name="Alias" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Alias']?>"  maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+						<td class="formThTd"><input type="text" id="Alias" name="Alias" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Alias']?>"  maxlength="9" size="9" readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
                     
                     <tr>

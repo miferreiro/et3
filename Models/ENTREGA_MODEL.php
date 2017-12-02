@@ -53,6 +53,20 @@
 		}
 	} // fin metodo SEARCH
         
+    function buscarAlias(){
+        $sql = "select Alias
+       			from ENTREGA
+    			where 
+    				(Alias = '$this->Alias')";
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+    }
+        
         
     //Metodo ADD()
 	//Inserta en la tabla  de la bd  los valores
@@ -93,7 +107,7 @@
                 
             */
             
-            $usuario = "SELECT * FROM USUARIO WHERE (login= '$this->login')";
+            $usuario = "SELECT * FROM ENTREGA WHERE (login= '$this->login')";
             
                  $result=$this->mysqli->query($usuario);
             

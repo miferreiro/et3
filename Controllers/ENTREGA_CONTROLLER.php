@@ -14,14 +14,33 @@ include '../Views/ENTREGA_DELETE_View.php'; //incluye la vista delete
 include '../Views/ENTREGA_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
+function aleatorio(){
+        $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; //posibles caracteres a usar
+        $numerodeletras=10; //numero de letras para generar el texto
+        $cadena = ""; //variable para almacenar la cadena generada
+        for($i=0;$i<$numerodeletras;$i++)
+        {       
+            $cadena .= substr($caracteres,rand(0,strlen($caracteres)),1); /*Extraemos 1 caracter de los caracteres 
+                entre el rango 0 a Numero de letras que tiene la cadena */
+        }
+        return $cadena;
+        
+        
+    }
 
-function get_data_form() {
-
+function get_data_form2() {
+    
+  
+    
 	$login = $_REQUEST['login'];
     $IdTrabajo = $_REQUEST['IdTrabajo'];
-    $Alias = $_REQUEST['Alias'];
+    
+    $Alias = aleatorio();
+  
+    
+    
     $Horas = $_REQUEST['Horas'];
-   // $Ruta= $_REQUEST['Ruta'];
+  
     
     	if ( isset( $_FILES[ 'Ruta' ][ 'name' ] ) ) {
 		$nombreRuta = $_FILES[ 'Ruta' ][ 'name' ];
@@ -51,39 +70,63 @@ function get_data_form() {
                 }
     
     
+	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
+
+	$ENTREGA = new ENTREGA_MODEL(
+		$login,
+        $IdTrabajo,
+        $Alias,
+        $Horas,
+        $rutapersonal
+	);
+	//Devuelve el valor del objecto model creado
     
-    /*
-   if(isset($_FILES['Ruta']['name'])){
-                    $nombreRuta = $_FILES['Ruta']['name'];
-        }else{
-                    $nombreRuta = null;
+      $buscar=$ENTREGA->buscarAlias();
+    
+    
+        while($Alias == $buscar){
+            $Alias = aleatorio();
         }
-    if(isset($_FILES['Ruta']['type'])){
-                    $tipoRuta = $_FILES['Ruta']['type'];
-            }else{
-                    $tipoRuta = null;
-                }
-     if(isset($_FILES['Ruta']['tmp_name'])){
-                    $nombreTempRuta = $_FILES['Ruta']['tmp_name'];
-                }else{
-                    $nombreTempRuta = null;
-                }
-    if(isset($_FILES['Ruta']['size'])){
-                    $tamanhoRuta = $_FILES['Ruta']['size']; 
-                }else{
-                    $tamanhoRuta = null;
-                }
-                        
+    
+    
+   $ENTREGA = new ENTREGA_MODEL(
+		$login,
+        $IdTrabajo,
+        $Alias,
+        $Horas,
+        $rutapersonal
+	);
+    
+	return $ENTREGA;
+}
+function get_data_form() {
+    
+    
+	$login = $_REQUEST['login'];
+    $IdTrabajo = $_REQUEST['IdTrabajo'];
+    $Alias = $_REQUEST['Alias'];
+    $Horas = $_REQUEST['Horas'];
+  
+    
+    	if ( isset( $_FILES[ 'Ruta' ][ 'name' ] ) ) {
+		$nombreRuta = $_FILES[ 'Ruta' ][ 'name' ];
+	} else {
+		$nombreRuta = null;
+	}
 
-    if($nombreRuta != null){
+	if ( isset( $_FILES[ 'Ruta' ][ 'tmp_name' ] ) ) {
+		$nombreTempRuta = $_FILES[ 'Ruta' ][ 'tmp_name' ];
+	} else {
+		$nombreTempRuta = null;
+	}
 
-                    $ruta = '../Files/';
-                    $extension = substr($tipoRuta, -3,3);
-                    $rutapersonal = $ruta . $login . ".". $extension;
-                   //NOTA CAMBIAR LOS PERMISOS A 777
-                    move_uploaded_file($nombreTempRuta, $rutapersonal);
-                    
-    }else{
+
+	if ( $nombreRuta != null ) {
+		$dir_subida = '../Files/';
+		$rutapersonal = $dir_subida . $nombreRuta;
+		move_uploaded_file( $nombreTempRuta, $rutapersonal );
+	}
+   else{
     if(isset($_POST['ruta2'])){
                         $rutapersonal=$_POST['ruta2'];
                 }else{
@@ -91,34 +134,7 @@ function get_data_form() {
                     $rutapersonal=null;
                 }
                 }
-    */
-    
-   /* 
-     $nombre =  $_FILES['Ruta']['name'];            //nombre con el que lo subió el usuario
-            $tipo =  $_FILES['Ruta']['type'];            //tipo de archivo (jpg,gif,rar,txt,etc)
-            $tamano = $_FILES['Ruta']['size'];            //tamaño del archivo en Kb; 1024Kb = 1Mb
-            $error = $_FILES['Ruta']['error'];            //si apareció algún error en la subida
-            $nombre_temporal = $_FILES['Ruta']['tmp_name'];    //Nombre temporal que se le asigna al archivo cuando sube a tu servidor
  
-            $nuevo_nombre = 'EL Archivo';
-                
-                // $ruta = '../Files/';
-                    //$extension = substr($tipoRuta, -3,3);
-                   // $rutapersonal = $ruta . $login . ".". $extension;
- 
-//Reviso que el archivo sea del tipo ZIP o RAR; y que pese menos de 5Mb
-                    if (!((strpos($tipo, "rar") || strpos($tipo, "zip")) && ($tamano< 5120))) { 
-        echo "El tipo de archivo o el tamaño no es correcto.";
-}else{ 
-       //Verifico que pueda mover el archivo y cambiarle el nombre. El archivo se guardará donde esta la pagina
-    if (move_uploaded_file(FILES['Ruta']['tmp_name'], $nuevo_nombre)){ 
-           echo "El archivo subió!!."; 
-       }else{ 
-           echo "Error al subir el archivo. Inténtelo nuevamente."; 
-       } 
-} 
-
-   */
     
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
 
@@ -132,6 +148,7 @@ function get_data_form() {
 	//Devuelve el valor del objecto model creado
 	return $ENTREGA;
 }
+
 //Si la variable action no tiene contenido le asignamos ''
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
 	$_REQUEST[ 'action' ] = '';
@@ -142,7 +159,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			new ENTREGA_ADD();
 		} else {//Si recibe datos los recoge y mediante la clase ENTREGA_MODEL inserta los datos
-			$ENTREGA = get_data_form();//Variable que almacena los datos recogidos
+			$ENTREGA = get_data_form2();//Variable que almacena los datos recogidos
 			$respuesta = $ENTREGA->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
 			new MESSAGE( $respuesta, '../Controllers/ENTREGA_CONTROLLER.php' );
