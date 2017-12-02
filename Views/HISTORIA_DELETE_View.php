@@ -57,9 +57,9 @@ class HISTORIA_DELETE {
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
 			<form action="../Controllers/HISTORIA_CONTROLLER.php" method="post" style="display: inline">
-				<input type="hidden" name="IdTrabajo" value="<?php echo $valores2['IdTrabajo'] ?>" />
-				<input type="hidden" name="IdHistoria" value="<?php echo $valores2['IdHistoria'] ?>" />
-				<input type="hidden" name="TextoHistoria" value="<?php echo $valores2['TextoHistoria'] ?>" />
+				<input type="hidden" name="IdTrabajo" value="<?php echo $valores['IdTrabajo'] ?>" />
+				<input type="hidden" name="IdHistoria" value="<?php echo $valores['IdHistoria'] ?>" />
+				<input type="hidden" name="TextoHistoria" value="<?php echo $valores['TextoHistoria'] ?>" />
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
 			<form action='../Controllers/HISTORIA_CONTROLLER.php' method="post" style="display: inline">
