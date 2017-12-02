@@ -1,4 +1,4 @@
-'Elige' => 'Choose''Elige' => 'Choose''Elige' => 'Choose'<?php echo $strings['Elige'];?><?php echo $strings['Elige'];?><?php echo $strings['Elige'];?><?php echo $strings['Elige'];?><?php echo $strings['Elige'];?><?php echo $strings['Elige'];?><?php
+<?php
 /*  Archivo php
 	Nombre: FUNCIONALIDAD_EDIT_View.php
 	Fecha de creación: 26/11/2017 
@@ -50,7 +50,7 @@ class FUNCIONALIDAD_EDIT {
 					</th>
 					<td class="formThTd">
 					<select id="IdAccion" multiple  size="2" name="IdAccion[]">
-					<option value="">--Elige opción--</option>
+					<option value=""><?php echo $strings['Elige'];?></option>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>

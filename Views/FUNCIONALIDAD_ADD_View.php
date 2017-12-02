@@ -46,7 +46,7 @@ class FUNCIONALIDAD_ADD {
 					</th>
 					<td class="formThTd">
 					<select id="IdAccion" multiple size="2" name="IdAccion[]">
-					<option value="">--Elige opción--</option>
+					<option value=""><?php echo $strings['Elige'];?></option>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
