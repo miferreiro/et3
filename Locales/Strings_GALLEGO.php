@@ -125,7 +125,8 @@ array(
 	'Número de QAs' => 'Número de QAs',
 	'ASIGNACIÓN DE QAs' => 'ASIGNACIÓN DE QAs',
 	'Asignacion generada con exito' => 'Asignacion xerada con exito',
-	'Gestión de QAs' => 'Xestión de QAs'
+	'Gestión de QAs' => 'Xestión de QAs',
+	' no puede tener espacios ' => ' non pode conter espacios '
 	)
 ;
 

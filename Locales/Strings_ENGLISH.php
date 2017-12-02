@@ -125,7 +125,8 @@ array(
 	'Número de QAs' => 'Number of QAs',
 	'ASIGNACIÓN DE QAs' => 'Allocation of QAs',
 	'Asignacion generada con exito' => 'Successfully generated assignment',
-	'Gestión de QAs' => 'QAs Management'
+	'Gestión de QAs' => 'QAs Management',
+	' no puede tener espacios ' => ' Cannot have spaces '
 	)
 ;
 

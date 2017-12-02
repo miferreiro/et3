@@ -27,13 +27,13 @@ class USUARIO_ADD {
 						<th class="formThTd">
 							<?php echo $strings['Usuario'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="11" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="10" required onBlur="comprobarVacio(this) && sinEspacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Contraseña'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="20" size="25" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'20') && comprobarTexto(this,'20')"/>
+						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="20" size="25" required onBlur="comprobarVacio(this) && sinEspacio(this) && comprobarLongitud(this,'20') && comprobarTexto(this,'20')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
