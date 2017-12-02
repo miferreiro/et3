@@ -132,8 +132,24 @@ array(
 	'Asignacion generada con exito' => 'Asignacion generada con exito',
 	'Gestión de QAs' => 'Gestión de QAs',
 	' no puede tener espacios ' => ' no puede tener espacios ',
-	'Elige' => 'Elige'
-
+	'Elige' => 'Elige',
+	'IdTrabajo' => 'IdTrabajo',
+	'Alias' => 'Alias',
+	'Horas' => 'Horas',
+	'Ruta' => 'Ruta',
+	'IdHistoria' => 'IdHistoria',
+	'TextoHistoria' => 'TextoHistoria',
+	'NombreTrabajo' => 'NombreTrabajo',
+	'FechaIniTrabajo' => 'FechaIniTrabajo',
+	'FechaFinTrabajo' => 'FechaFinTrabajo',
+	'PorcentajeNota' => 'PorcentajeNota',
+	'LoginEvaluador' => 'LoginEvaluador',
+	'AliasEvaluado' => 'AliasEvaluado',
+	'CorrectoA' => 'CorrectoA',
+	'ComenIncorrectoA' => 'ComenIncorrectoA',
+	'CorrectoP' => 'CorrectoP',
+	'ComentIncorrectoP' => 'ComentIncorrectoP',
+	'OK' => 'OK'
 	)
 ;
 

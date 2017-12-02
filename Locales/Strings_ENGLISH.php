@@ -131,7 +131,24 @@ array(
 	'Asignacion generada con exito' => 'Successfully generated assignment',
 	'Gestión de QAs' => 'QAs Management',
 	' no puede tener espacios ' => ' Cannot have spaces ',
-	'Elige' => 'Choose'
+	'Elige' => 'Choose',
+	'IdTrabajo' => 'IdTrabajo',
+	'Alias' => 'Alias',
+	'Horas' => 'Horas',
+	'Ruta' => 'Ruta',
+	'IdHistoria' => 'IdHistoria',
+	'TextoHistoria' => 'TextoHistoria',
+	'NombreTrabajo' => 'NombreTrabajo',
+	'FechaIniTrabajo' => 'FechaIniTrabajo',
+	'FechaFinTrabajo' => 'FechaFinTrabajo',
+	'PorcentajeNota' => 'PorcentajeNota',
+	'LoginEvaluador' => 'LoginEvaluador',
+	'AliasEvaluado' => 'AliasEvaluado',
+	'CorrectoA' => 'CorrectoA',
+	'ComenIncorrectoA' => 'ComenIncorrectoA',
+	'CorrectoP' => 'CorrectoP',
+	'ComentIncorrectoP' => 'ComentIncorrectoP',
+	'OK' => 'OK'
 	
 	
 	
