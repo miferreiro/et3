@@ -45,7 +45,7 @@ class PERMISO_ADD {
 							}
 							for ($i=0; $i < count($Funcionalidades); $i++) {
 						?>
-								<option value="<?php echo $Funcionalidades[$i][0] . "," . $Funcionalidades[$i][2]; ?>"><?php echo $Funcionalidades[$i][1]; ?></option>
+								<option value="<?php echo $Funcionalidades[$i][0] . "," . $Funcionalidades[$i][2]; ?>"><?php echo $Funcionalidades[$i][1]."_".$Funcionalidades[$i][3]; ?></option>
 						<?php
 							}
 						?>    
