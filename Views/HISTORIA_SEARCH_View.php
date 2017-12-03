@@ -35,13 +35,13 @@ class HISTORIA_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['TextoHistoria'];?>
 						</th>
-						<td class="formThTd"><textarea id="TextoHistoria" name="TextoHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" size="300" required onBlur="comprobarLongitud(this,'300')">
+						<td class="formThTd"><textarea id="TextoHistoria" name="TextoHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="50" rows="7"  required onBlur="comprobarLongitud(this,'300')">
 						</textarea>
 					</tr>
 					
 					<tr>
 						<td colspan="2">
-							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
+							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
 						<form action='../Controllers/HISTORIA_CONTROLLER.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

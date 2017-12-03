@@ -36,9 +36,9 @@ class HISTORIA_EDIT {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Texto Historia'];?>
+							<?php echo $strings['TextoHistoria'];?>
 						</th>
-						<td class="formThTd"><textarea id="TextoHistoria" name="TextoHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>"  value="<?php echo $this->valores['TextoHistoria'] ?>" maxlength="300" size="300"  required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100')" ></textarea>
+						<td class="formThTd"><textarea id="TextoHistoria" name="TextoHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"  required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100')" ><?php echo $this->valores['TextoHistoria'] ?></textarea>
 					</tr>
 					
 					<tr>
