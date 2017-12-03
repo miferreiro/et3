@@ -8,6 +8,7 @@ class TRABAJO{
     var $FechaIniTrabajo;//declaracion de la variable FechaIniTrabajo
     var $FechaFinTrabajo;//declaracion de la variable FechaFinTrabajo
     var $PorcentajeNota; //declaracion de la variable PorcentajeNota
+    var $dependencias;
     //constructor de la clase
     function __construct($IdTrabajo,$NombreTrabajo,$FechaIniTrabajo,$FechaFinTrabajo,$PorcentajeNota){
         //Asignamos valores a los atributos de la clase
@@ -134,6 +135,40 @@ class TRABAJO{
 			return $result;
 		}
 	} // fin del metodo RellenaDatos()
+    
+    
+    function dependencias() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias = null;
+
+		$sql = "SELECT * FROM ENTREGA WHERE (IdTrabajo = '$this->IdTrabajo')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $keys = array('ENTREGA');
+            $dependencias = array_fill_keys($keys , $result);
+        }
+    
+        $sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $keys = array('HISTORIA');
+            $dependencias = array_fill_keys($keys , $result);
+        }
+    
+        $sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $keys = array('EVALUACION');
+            $dependencias = array_fill_keys($keys , $result);
+        }
+    
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
+
         
         
         // funcion EDIT()
