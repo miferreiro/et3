@@ -8,17 +8,13 @@
 class GRUPO_SHOWCURRENT {
 
 
-	function __construct( $lista, $datos, $datos2) {
-		$this->lista = $lista;
+	function __construct($datos) {	
 		$this->datos = $datos;
-		$this->datos2 = $datos2;
-		$this->render($this->lista,$this->datos,$this->datos2);
+		$this->render($this->datos);
 	}
 	
-	function render($lista,$datos,$datos2){
-		$this->lista = $lista;
+	function render($datos){
 		$this->datos = $datos;
-		$this->datos2 = $datos2;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -32,7 +28,7 @@ class GRUPO_SHOWCURRENT {
 						<?php echo $strings['IdGrupo'];?>
 					</th>
 					<td>
-						<?php echo $this->datos2['IdGrupo']?>
+						<?php echo $this->datos['IdGrupo']?>
 					</td>
 				</tr>
 				<tr>
@@ -40,7 +36,7 @@ class GRUPO_SHOWCURRENT {
 						<?php echo $strings['NombreGrupo'];?>
 					</th>
 					<td>
-						<?php echo $this->datos2['NombreGrupo']?>
+						<?php echo $this->datos['NombreGrupo']?>
 					</td>
 				</tr>
 				<tr>
@@ -48,7 +44,7 @@ class GRUPO_SHOWCURRENT {
 						<?php echo $strings['DescripGrupo'];?>
 					</th>
 					<td>
-						<?php echo $this->datos2['DescripGrupo']?>
+						<?php echo $this->datos['DescripGrupo']?>
 					</td>
 				</tr>
 	
@@ -56,42 +52,7 @@ class GRUPO_SHOWCURRENT {
 			<br>
 			<br>
 			
-			<table>
-
-				<tr>
-<?php
-					foreach ( $lista as $atributo ) {
-?>
-					<th>
-						<?php echo $strings[$atributo]?>
-					</th>
-<?php
-					}
-?>
-				</tr>
-<?php
-				while ( $fila = mysqli_fetch_array( $datos ) ) {
-?>
-				<tr>
-<?php
-					foreach ( $lista as $atributo ) {
-?>
-					<td>
-<?php 
-							echo $fila[ $atributo ];
-
-?>
-					</td>
-<?php
-					}
-?>
-						</form>
-
-				</tr>
-<?php
-				}
-?>
-			</table>
+			
 			<form action='../Controllers/GRUPO_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>

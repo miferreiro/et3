@@ -29,7 +29,7 @@ class MESSAGE { // declaración de la función
 		<br>
 		<br>
 
-		<form action='<?php $this->ruta?>'>
+		<form action='<?php echo $this->ruta?>'>
 			<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo strings['Atras']?>"/></button>
 		</form>
 

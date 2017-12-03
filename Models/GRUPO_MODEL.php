@@ -22,8 +22,21 @@
 		      $this->mysqli = ConectarBD();
         }//fin del constructor
         
-        
-        
+    //Devuelve el número de tuplas que hay el la tabla grupo
+    function NumRows(){
+    	//Variable que almacena una sentencia sql
+    	$sql = "SELECT * FROM GRUPO";
+    	//Variable que almacena el resultado de una query sql
+        $resultado = $this->mysqli->query( $sql );
+			$cont = 0;//Variable que almacena un contador de tuplas
+			//Caragamos las tuplas resultado de la consulta en un array
+			while($datos = mysqli_fetch_row ($resultado)){
+				//Incrementa contador de vueltas
+				$cont++;
+			}
+			//Devuelve el número de tuplas
+			return $cont;
+    }   
 	//funcion SEARCH: hace una búsqueda en la tabla con
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
@@ -169,7 +182,7 @@
 	   // en el atributo de la clase
 	function RellenaShowCurrent() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM USU_GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 

@@ -40,14 +40,11 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-								//Variable que recoge un objecto model con solo el idgrupo
-			$GRUPOS = new GRUPO( '', '', '');
-			//Variable que almacena el relleno de los datos utilizando el IdGrupo
-			$valores = $GRUPOS->RellenaSelect();
-			//Crea una vista add para ver la tupla
-			new GRUPO_ADD( $valores );
+			//Crea una nueva vista del formulario añadir
+			new GRUPO_ADD();
 		} else {//Si recive datos los recoge y mediante las funcionalidad de GRUPO inserta los datos
 			$GRUPOS = get_data_form();//Variable que almacena los datos recogidos
+			$GRUPOS->IdGrupo = $GRUPOS->NumRows() + 1;
 			$respuesta = $GRUPOS->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
 			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
@@ -58,14 +55,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			//Variable que recoge un objecto model con solo el idgrupo
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
-			//Variable que almacena el relleno de los datos utilizando el IdGrupo
-			$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
-			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
-            $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);
-			//Variable que almacena array con el nombre de los atributos
-			$lista = array( 'login', 'IdGrupo');
+			//Variable que almacena los datos de los atibutos rellenados a traves de IdGrupo
+			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
 			//Crea una vista delete para ver la tupla
-			new GRUPO_DELETE( $valores, $valores2, $lista, $dependencias);
+			new GRUPO_DELETE( $valores );
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -83,9 +76,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de IdGrupo
 			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
-			$datos = $GRUPOS->RellenaSelect();
 			//Muestra la vista del formulario editar
-			new GRUPO_EDIT( $valores,$datos );
+			new GRUPO_EDIT( $valores );
 			//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
@@ -107,7 +99,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el resultado de la busqueda
 			$datos = $GRUPOS->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
-			$lista = array( 'IdGrupo','NombreGrupo','DescripGrupo');
+			$lista = array( 'NombreGrupo','DescripGrupo');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new GRUPO_SHOWALL( $lista, $datos );
 		}
@@ -117,13 +109,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena un objeto model con el IdGrupo
 		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 		//Variable que almacena los valores rellenados a traves de IdGrupo
-		$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
-		//Variable que almacena los valores rellenados a traves de IdGrupo
-		$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
-		//Variable que almacena array con el nombre de los atributos
-		$lista = array( 'login', 'IdGrupo');
+		$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
 		//Creación de la vista showcurrent
-		new GRUPO_SHOWCURRENT( $lista, $valores, $valores2 );
+		new GRUPO_SHOWCURRENT($valores);
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
@@ -136,7 +124,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los datos de la busqueda
 		$datos = $GRUPOS->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
-		$lista = array( 'IdGrupo','NombreGrupo','DescripGrupo');
+		$lista = array( 'NombreGrupo','DescripGrupo');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new GRUPO_SHOWALL( $lista, $datos );
 }
