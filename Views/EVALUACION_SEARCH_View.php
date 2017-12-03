@@ -46,14 +46,14 @@ class EVALUACION_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['IdHistoria'];?>
 						</th>
-						<td class="formThTd"><input type="number" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
+						<td class="formThTd"><input type="text" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarLongitud(this,'2')"/>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['CorrectoA'];?>
 						</th>
-						<td class="formThTd"><input type="number" id="CorrectoA" name="CorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="1" size="1" onBlur="comprobarLongitud(this,'1') && comprobarTexto(this,'1')"/>
+						<td class="formThTd"><input type="text" id="CorrectoA" name="CorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="1" size="1" onBlur="comprobarLongitud(this,'1') && comprobarTexto(this,'1')"/>
 					</tr>
                     
                     <tr>
@@ -67,7 +67,7 @@ class EVALUACION_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['CorrectoP'];?>
 						</th>
-						<td class="formThTd"><input type="number" id="CorrectoP" name="CorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="1" size="1" onBlur="comprobarLongitud(this,'1') && comprobarTexto(this,'1')"/>
+						<td class="formThTd"><input type="text" id="CorrectoP" name="CorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="1" size="1" onBlur="comprobarLongitud(this,'1') && comprobarTexto(this,'1')  && comprobarEntero(this,0,1)"/>
 					</tr>
                     
                     <tr>
@@ -81,7 +81,7 @@ class EVALUACION_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['OK'];?>
 						</th>
-						<td class="formThTd"><input type="number" id="OK" name="OK" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="1" size="1" onBlur="comprobarLongitud(this,'1') && comprobarTexto(this,'1')"/>
+						<td class="formThTd"><input type="text" id="OK" name="OK" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="1" size="1" onBlur="comprobarLongitud(this,'1') && comprobarTexto(this,'1')  && comprobarEntero(this,0,1)"/>
 					</tr>
 					
 					<tr>

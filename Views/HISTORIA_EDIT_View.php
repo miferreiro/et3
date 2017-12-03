@@ -32,7 +32,7 @@ class HISTORIA_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['IdHistoria'];?>
 						</th>
-						<td class="formThTd"><input type="number" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdHistoria'] ?>" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'60') "/>
+						<td class="formThTd"><input type="text" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdHistoria'] ?>" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'60') "/>
 					</tr>
 					<tr>
 						<th class="formThTd">
