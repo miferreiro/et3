@@ -27,6 +27,7 @@ array(
 	'Usuario' => 'User',
 	'login' => 'login',
 	'Contraseña' => 'Password',
+    'No puedes añadir la entrega debido a que no se añadio un trabajo' => 'You can not add the delivery because a job was not added',
 	'password' => 'password',
 	'DNI' => 'DNI',
 	'Nombre' => 'Name',
@@ -148,7 +149,14 @@ array(
 	'ComenIncorrectoA' => 'CommentIncorrectA',
 	'CorrectoP' => 'CorrectP',
 	'ComentIncorrectoP' => 'CommentIncorrectP',
-	'OK' => 'OK'
+	'OK' => 'OK',
+    'No puedes insertar este grupo debido a que no existe, debes insertar previamente un grupo' => 'You can not insert this group because it does not exist, you must previously insert a group',
+    'No puedes añadir la entrega debido a que no se añadio un usuario' => 'You can not add the delivery because a user was not added',
+     'no puedes insertar un login evaluador, debes insertar previamente un usuario.' => 'you can not insert an appraiser login, you must previously insert a user.',
+     'No puedes insertar una evaluacion debido a que este alias no existe' => 'You can not insert an evaluation because this alias does not exist',
+    'No puedes insertar este id de accion debido a que no existe, debes insertar previamente una accion' => 'You can not insert this action id because it does not exist, you must previously insert an action',
+    'No puedes insertar este id de funcionalidad debido a que no existe, debes insertar previamente una funcionalidad' => 'You can not insert this id of functionality because it does not exist, you must previously insert a functionality',
+    'No puedes añadir una historia debido a que no se añadio un trabajo' => 'You can not add a story because a job was not added'
 	
 	
 	

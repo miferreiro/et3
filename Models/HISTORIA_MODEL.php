@@ -55,6 +55,18 @@
 	function ADD() {
 		if ( ( $this->IdTrabajo <> '' && $this->IdHistoria <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
+            $trabajo="SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
+            
+                   $result=$this->mysqli->query($trabajo);
+                if(!$result){
+                    return "No se ha podido conectar a la base de datos";
+                }
+                else{
+                    if($result->num_rows == 0){
+                        return "No puedes añadir una historia debido a que no se añadio un trabajo";
+                    }
+                }
+            
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM HISTORIA WHERE (  IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria')";
 

@@ -50,7 +50,7 @@
 	//existe ya en la tabla
 	function ADD() {
 		if ( ( $this->IdFuncionalidad <> '' && $this->IdAccion <> '' ) ) { // si el atributo clave de la entidad no esta vacio
-            
+        /*
         $accion = "SELECT * FROM ACCION WHERE (IdAccion = '$this->IdAccion')";
         $result=$this->mysqli->query($accion);
         
@@ -77,6 +77,7 @@
                  return "No puedes insertar este id de funcionalidad debido a que no existe, debes insertar previamente una funcionalidad";
                 }
             }
+        */
 
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM FUNC_ACCION WHERE (  IdFuncionalidad = '$this->IdFuncionalidad' &&  IdAccion = '$this->IdAccion' )";

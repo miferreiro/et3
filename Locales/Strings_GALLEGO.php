@@ -148,7 +148,16 @@ array(
 	'ComenIncorrectoA' => 'ComenIncorrectoA',
 	'CorrectoP' => 'CorrectoP',
 	'ComentIncorrectoP' => 'ComentIncorrectoP',
-	'OK' => 'OK'
+	'OK' => 'OK',
+    'No puedes añadir la entrega debido a que no se añadio un trabajo' => 'Non podes engadir a tarefa debido a que non se engadiu un traballo',
+    'No puedes añadir la entrega debido a que no se añadio un usuario' => 'Non podes engadir a tarefa debido a que non se engadiu un usuario',
+    'no puedes insertar un login evaluador, debes insertar previamente un usuario.' => 'non podes inserir un login evaluador, desbes insertar previamente un usuario.',
+    'no puedes insertar un id de trabajo, debes insertar previamente un trabajo.' => 'non podes inserir un id de traballo, debes insertar previamente un traballo.',
+    'No puedes insertar una evaluacion debido a que este alias no existe' => 'Non podes inserir unha evaluacion debido a que o alias este non existe.',
+    'No puedes insertar este id de accion debido a que no existe, debes insertar previamente una accion' => 'Non podes inserir este id de acción debido a que non existe, debes inserir previamente unha acción',
+    'No puedes insertar este id de funcionalidad debido a que no existe, debes insertar previamente una funcionalidad' => 'Non podes inserir este id de funcionalidade debido a que non existe, debes inserir previamente unha funcionalidade',
+    'No puedes añadir una historia debido a que no se añadio un trabajo' => 'Non podes engadir unha historia debido a que non se engadiu un traballo'
+    
 	)
 ;
 

@@ -62,6 +62,14 @@ class FUNCIONALIDAD_DELETE {
 				    <td><?php echo $dependencias['FUNC_ACCION']['IdAccion'] ?></td>
             <?php
                 }
+                
+                 if(array_key_exists('PERMISO', $dependencias)){
+            ?>
+                    <td>FUNC_ACCION</td>
+                    <td><?php echo $dependencias['PERMISO']['IdFuncionalidad'] ?></td>
+				    <td><?php echo $dependencias['PERMISO']['IdAccion'] ?></td>
+            <?php
+                }
 
                 }
             else{

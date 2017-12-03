@@ -78,7 +78,7 @@
             
             
         
-         /*  $trabajo = "SELECT * FROM TRABAJO WHERE ( IdTrabajo='$this->IdTrabajo')";
+          $trabajo = "SELECT * FROM TRABAJO WHERE ( IdTrabajo='$this->IdTrabajo')";
                     $result=$this->mysqli->query($trabajo);
                 if(!$result){
                     return "No se ha podido conectar a la base de datos";
@@ -88,8 +88,8 @@
                         return "No puedes añadir la entrega debido a que no se añadio un trabajo";
                     }
                 }
-                */
-        /*    
+                
+            
                 $usuario = "SELECT * FROM USUARIO WHERE (login= '$this->login')";
             
                  $result=$this->mysqli->query($usuario);
@@ -101,11 +101,11 @@
             
                 else{
                     if($result->num_rows == 0){
-                        return "No puedes añadir la entrega debido a que no se añadio un ususario";
+                        return "No puedes añadir la entrega debido a que no se añadio un usuario";
                     }
                 }
                 
-            */
+            
             
             $usuario = "SELECT * FROM ENTREGA WHERE (login= '$this->login')";
             

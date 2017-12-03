@@ -97,7 +97,7 @@ class EVALUACION{ //declaración de la clase
                 
             }
             
-     /*       $trabajo= "SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
+            $trabajo= "SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
             
             $result = $this->mysqli->query($trabajo);
             
@@ -115,8 +115,18 @@ class EVALUACION{ //declaración de la clase
                     }
             }
             
-                
-*/
+              $al="SELECT * FROM ENTREGA WHERE (Alias = '$this->AliasEvaluado')";
+            
+                   $result=$this->mysqli->query($al);
+                if(!$result){
+                    return "No se ha podido conectar a la base de datos";
+                }
+                else{
+                    if($result->num_rows == 0){
+                        return "No puedes insertar una evaluacion debido a que este alias no existe";
+                    }
+                }   
+
 
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM EVALUACION WHERE (  IdTrabajo = '$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' && AliasEvaluado = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";

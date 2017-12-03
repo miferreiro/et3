@@ -25,7 +25,7 @@ function ADD()
 {
     if (($this->login <> '' && $this->IdGrupo <> '')){ // si el atributo clave de la entidad no esta vacío'
         
-        $usuario="SELECT * FROM USUARIO WHERE (login = '$this->login')";
+      /*  $usuario="SELECT * FROM USUARIO WHERE (login = '$this->login')";
         
         $result=$this->mysqli->query($usuario);
         
@@ -54,6 +54,7 @@ function ADD()
                 }    
         
         }
+        */
 		
 		// construimos el sql para buscar esa clave en la tabla
         $sql = "SELECT * FROM USU_GRUPO WHERE (login = '$this->login' && IdGrupo = '$this->IdGrupo')";

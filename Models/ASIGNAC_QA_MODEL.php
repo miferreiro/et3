@@ -49,6 +49,44 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 	}
 
 	function ADD(){
+        $usuario = "SELECT login FROM USUARIO WHERE (login = '$this->LoginEvluador')";
+        
+               $result=$this->mysqli->query($usuario);
+                if(!$result){
+                    return "No se ha podido conectar a la base de datos";
+                }
+                else{
+                    if($result->num_rows == 0){
+                        return "No puedes asignar una qa debido a que no se añadio este este usuario con este login";
+                    }
+                }
+        
+          $trabajo="SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
+            
+                   $result=$this->mysqli->query($trabajo);
+                if(!$result){
+                    return "No se ha podido conectar a la base de datos";
+                }
+                else{
+                    if($result->num_rows == 0){
+                        return "No puedes asignar una qa debido a que no se añadio un trabajo";
+                    }
+                }
+        
+        
+           $al="SELECT * FROM ENTREGA WHERE (Alias = '$this->Alias')";
+            
+                   $result=$this->mysqli->query($al);
+                if(!$result){
+                    return "No se ha podido conectar a la base de datos";
+                }
+                else{
+                    if($result->num_rows == 0){
+                        return "No puedes asignar una qa debido a que este alias no existe";
+                    }
+                }
+        
+        
 			//Variable que almacena sentencia sql
 			$sql = "INSERT INTO ASIGNAC_QA (
 									  IdTrabajo,

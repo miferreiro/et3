@@ -140,6 +140,14 @@ class ACCION{
             $dependencias = array_fill_keys($keys , $result);
         }
         
+        $sql = "SELECT * FROM PERMISO WHERE (IdAccion = '$this->IdAccion')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $result = $resultado->fetch_array();
+            $keys = array('PERMISO');
+            $dependencias = array_fill_keys($keys , $result);
+        }
+        
         return $dependencias;
 	} // fin del metodo RellenaDatos()
         

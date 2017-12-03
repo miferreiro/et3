@@ -41,6 +41,7 @@ function ADD()
             
         }
         
+        
         $accion = "SELECT * FROM ACCION WHERE (IdAccion = '$this->IdAccion')";
         $result=$this->mysqli->query($accion);
         
