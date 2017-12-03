@@ -16,6 +16,7 @@ class USUARIO_MODEL{ //declaración de la clase
 	var $Telefono; // declaración del atributo Telefono
 	var $mysqli; // declaración del atributo manejador de la bd
     var $dependencias;//declaración del atributo dependencias
+	var $Grupos;
 
 	//Constructor de la clase
 
@@ -163,11 +164,13 @@ class USUARIO_MODEL{ //declaración de la clase
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 
-		if ( $result->num_rows == 1 ) {
+		if ( $result->num_rows >= 1 ) {
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM USUARIO WHERE (login = '$this->login' )";
+			$sql2 = "DELETE FROM USU_GRUPO WHERE (login = '$this->login' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
+			$this->mysqli->query( $sql2 );
 			// se devuelve el mensaje de borrado correcto
 			return "Borrado correctamente";
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe
