@@ -28,6 +28,7 @@ function get_data_form() {
 	$correo = $_REQUEST[ 'email' ]; //Variable que almacena el valor de correo
 	$direccion = $_REQUEST[ 'direc' ]; //Variable que almacena el valor de direccion
 	$telefono = $_REQUEST[ 'telefono' ]; //Variable que almacena el valor de telefono
+	$Grupos = $_REQUEST[ 'IdGrupo' ];
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
 
 	$USUARIO = new USUARIO_MODEL(
@@ -38,7 +39,8 @@ function get_data_form() {
 		$apellidos,
 		$correo,
 		$direccion,
-		$telefono
+		$telefono,
+		$Grupos
 	);
 	//Devuelve el valor del objecto model creado
 	return $USUARIO;
@@ -65,7 +67,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			//Variable que recoge un objecto model con solo el login
-			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
+			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 			//Variable que almacena el relleno de los datos utilizando el login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			
@@ -86,7 +88,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			//Variable que almacena un objeto model con el login
-			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
+			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			$datos = $USUARIO->RellenaSelect();
@@ -97,7 +99,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena los datos recogidos
 			$USUARIO = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
-			$respuesta = $USUARIO->EDIT();
+			$respuesta = $USUARIO->EDIT($_REQUEST['IdGrupo']);
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
 			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
 		}
@@ -121,7 +123,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 		//Variable que almacena un objeto model con el login
-		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
+		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 		//Variable que almacena los valores rellenados a traves de login
 		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		//Creación de la vista showcurrent
@@ -130,7 +132,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default: //Caso que se ejecuta por defecto
 		if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');
+			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '','');
 		//Si se reciben datos
 		} else {
 			$USUARIO = get_data_form();

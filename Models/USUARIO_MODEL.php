@@ -20,7 +20,7 @@ class USUARIO_MODEL{ //declaración de la clase
 
 	//Constructor de la clase
 
-	function __construct($login,$password,$DNI,$Nombre,$Apellidos,$Correo,$Direccion,$Telefono) {
+	function __construct($login,$password,$DNI,$Nombre,$Apellidos,$Correo,$Direccion,$Telefono,$Grupos) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->login = $login;
         $this->password=$password;
@@ -30,6 +30,7 @@ class USUARIO_MODEL{ //declaración de la clase
         $this->Correo = $Correo;
         $this->Direccion=$Direccion;
 		$this->Telefono = $Telefono;
+		$this->Grupos=$Grupos;		
 		
         
 		// incluimos la funcion de acceso a la bd
@@ -269,10 +270,13 @@ class USUARIO_MODEL{ //declaración de la clase
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
 		$sql = "SELECT * FROM USUARIO WHERE (login = '$this->login')";
+		$Grup = $this->Grupos;
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
-		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
+		if ( $result->num_rows == 1 ) {
+			// se construye la sentencia de modificacion en base a los atributos de la clase
+			if ( count($Grup) == 0){
 			     //modificamos los atributos de la tabla USUARIO
 				$sql = "UPDATE USUARIO SET 
 					login = '$this->login',
@@ -285,7 +289,6 @@ class USUARIO_MODEL{ //declaración de la clase
 					Telefono = '$this->Telefono'
 				WHERE ( login = '$this->login'
 				)";
-            
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
@@ -293,8 +296,31 @@ class USUARIO_MODEL{ //declaración de la clase
 				return 'Modificado correctamente';
 			}
 
-		} else // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
-			return 'No existe en la base de datos';
+		} else{
+				$cont=0;	  
+				for ($i=0;$i<count($Grup);$i++){
+				 $sqli[$i] = "INSERT INTO USU_GRUPO
+										(login,IdGrupo)
+										VALUES
+										('$this->login',
+										 '$Grup[$i]'
+										)";
+				if ( !( $resultado = $this->mysqli->query( $sqli[$i] ) ) ) {
+				
+			     }else{
+				$cont=$cont+1;
+				}	
+				}
+								// si hay un problema con la query se envia un mensaje de error en la modificacion
+			if ( $cont!= (count($Grup))) {
+				return 'Error en la modificación';
+			} else { // si no hay problemas con la modificación se indica que se ha modificado
+				return 'Modificado correctamente';
+			}
+			}
+		} // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
+		            else
+				return 'No existe en la base de datos';		
 	} // fin del metodo EDIT
 
 

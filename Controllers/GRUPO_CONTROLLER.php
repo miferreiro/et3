@@ -23,7 +23,7 @@ function get_data_form() {
 	$IdGrupo = $_REQUEST[ 'IdGrupo' ]; //Variable que almacena el valor de idGrupo
 	$NombreGrupo = $_REQUEST[ 'NombreGrupo' ]; //Variable que almacena el valor de NomnbreGrupo
 	$DescripGrupo = $_REQUEST[ 'DescripGrupo' ]; //Variable que almacena el valor de DescripGrupo
-	$
+
 
 	$GRUPOS = new GRUPO(
 		$IdGrupo,

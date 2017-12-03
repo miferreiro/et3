@@ -79,10 +79,10 @@ class USUARIO_EDIT {
 						<?php echo $strings['NombreGrupo'];?>
 					</th>
 					<td class="formThTd">
-					<select id="IdGrupo" multiple size="2" name="IdGrupo[]">
-					<option value=""><?php echo $strings['Elige'];?></option>
+					<select id="IdGrupo[]" multiple size="2" name="IdGrupo[]">
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+					if($fila['IdGrupo']!='00001A'){
 ?>
 
 			    <option value="<?php echo $fila['IdGrupo'];?>">	
@@ -93,6 +93,7 @@ class USUARIO_EDIT {
 				</option>		
 					
 <?php
+					}
 				}
 ?>					
 				</select>
