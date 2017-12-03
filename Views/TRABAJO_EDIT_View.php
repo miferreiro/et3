@@ -54,7 +54,7 @@ class TRABAJO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['PorcentajeNota'];?>
 						</th>
-						<td class="formThTd"><input type="number" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['PorcentajeNota']?>" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
+						<td class="formThTd"><input type="text" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['PorcentajeNota']?>" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
 					</tr>
                     
                     
