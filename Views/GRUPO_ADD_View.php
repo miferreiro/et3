@@ -6,13 +6,11 @@
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir un grupo a la base de datos
 */
 class GRUPO_ADD {
-	function __construct($datos) {
-		$this->datos = $datos;
-		$this->render($this->datos);
+	function __construct() {
+		$this->render();
 	}
 
-	function render($datos) {
-		$this->datos = $datos;
+	function render() {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -22,12 +20,6 @@ class GRUPO_ADD {
 			</h2>
 			<form name="ADD" action="../Controllers/GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
 				<table>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['IdGrupo'];?>
-						</th>
-						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
-					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['NombreGrupo'];?>
@@ -40,31 +32,9 @@ class GRUPO_ADD {
 						</th>
 						<td class="formThTd"><textarea cols="50" rows="3" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="100" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100')"/>
 						</textarea>
+						<input type="hidden" id="IdGrupo" name="IdGrupo" value="" readonly />
 					</tr>
-					<tr>
-					<th class="formThTd">
-						<?php echo $strings['NombreFuncionalidad'];?>
-					</th>
-					<td class="formThTd">
-					<select id="IdFuncionalidad" multiple size="2" name="IdFuncionalidad[]">
-					<option value=""><?php echo $strings['Elige']?></option>
-<?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
-?>
-
-			    <option value="<?php echo $fila['IdFuncionalidad'];?>">	
-<?php 
-							echo $fila['NombreFuncionalidad'];
-
-?>
-				</option>		
-					
-<?php
-				}
-?>					
-				</select>
-					</td>
-					</tr>	
+						
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>

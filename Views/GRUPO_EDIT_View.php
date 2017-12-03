@@ -7,15 +7,14 @@
 */
 class GRUPO_EDIT {
 
-	function __construct( $valores,$datos ) {
+	function __construct( $valores ) {
 		$this->valores = $valores;
-		$this->datos = $datos;
-		$this->render( $this->valores, $this->datos);
+		
+		$this->render( $this->valores );
 	}
 
-	function render( $valores, $datos) {
+	function render( $valores ) {
  		$this->valores = $valores;
-		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		?>
@@ -44,38 +43,14 @@ class GRUPO_EDIT {
 						</th>
 						<td class="formThTd"><textarea cols="50" rows="3" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="100"  required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100')"/><?php echo $this->valores['DescripGrupo'] ?></textarea>
 					</tr>
-					<tr>
-					<th class="formThTd">
-						<?php echo $strings['NombreFuncionalidad'];?>
-					</th>
-					<td class="formThTd">
-					<select id="IdFuncionalidad" multiple size="2" name="IdFuncionalidad[]">
-					<option value=""><?php echo $strings['Elige'];?></option>
-<?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
-?>
-
-			    <option value="<?php echo $fila['IdFuncionalidad'];?>">	
-<?php 
-							echo $fila['NombreFuncionalidad'];
-
-?>
-				</option>		
 					
-<?php
-				}
-?>					
-				</select>
-					</td>
-					</tr>	
-					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
-			</form>
-			<form action='../Controllers/GRUPO_CONTROLLER.php' style="display: inline">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
-			</form>
-			</tr>
+					</form>
+					<form action='../Controllers/GRUPO_CONTROLLER.php' style="display: inline">
+						<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+					</form>
+				</tr>
 
 			</table>
 		</div>

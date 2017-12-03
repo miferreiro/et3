@@ -42,11 +42,23 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
-			new PERMISO_ADD();
+			$PERMISO = new PERMISO_MODEL( '', '', '');
+			$Grupo = $PERMISO->recuperarGrupo($_REQUEST['IdGrupo']);
+			$Funcionalidades = $PERMISO->recuperarFuncionalidades();
+			new PERMISO_ADD($Grupo,$Funcionalidades);
 		} else {
 			$PERMISO = get_data_form();
-			$respuesta = $PERMISO->ADD();
-			new MESSAGE( $respuesta, '../Controllers/PERMISO_CONTROLLER.php' );
+			if($PERMISO->IdFuncionalidad == ""){
+				new MESSAGE( 'Error: Funcionalidad no existente', '../Controllers/GRUPO_CONTROLLER.php' );
+			} else {
+				$porciones = explode(",", $_REQUEST['IdFuncionalidad']);
+				$PERMISO->IdFuncionalidad = $porciones[0];
+				if(strlen($_REQUEST['IdFuncionalidad'] > 0)){
+					$PERMISO->IdAccion = $porciones[1];
+				}
+				$respuesta = $PERMISO->ADD();
+				new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
+			}
 		}
 		break;
 	case 'DELETE':
