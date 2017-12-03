@@ -45,14 +45,28 @@ class ENTREGA_EDIT {
 						<td class="formThTd"><input type="number" id="Horas" name="Horas" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Horas']?>"  maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
 					</tr>
                     
-                    <tr>
+                  <!--  <tr>
 						<th class="formThTd">
-							<?php echo $strings['Ruta'];?><!--se muestra el campo Ruta-->
+							<?php //echo $strings['Ruta'];?>
 						</th>
-						<td class="formThTd"><input type="file" id="Ruta" name="Ruta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Ruta']?>"  maxlength="60" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
+						<td class="formThTd"><input type="file" id="Ruta" name="Ruta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php //echo $this->valores['Ruta']?>"  maxlength="60" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
 					</tr>
 					<input type="hidden" id="ruta2" name="ruta2" value="<?php echo $this->valores['Ruta']?>"/>
-					<tr>
+					<tr>-->
+                <tr>
+                    <th class="formThTd">
+							<?php echo $strings['Ruta'];?>
+						</th>
+						<td class="formThTd">
+							<a href="<?php echo $this->valores['Ruta']?>" alt="<?php echo $strings['Ruta'];?>">
+								<?php echo $this->valores['Ruta']?></a>
+							<p style="font-size: 12px"><?php echo $strings['Seleccione una nueva foto personal si desea cambiarla, en caso contrario, no es necesario seleccionarla de nuevo.'];?></p>
+					
+							<input type="file" id="Ruta" name="Ruta" value="<?php echo $this->valores['Ruta']?>"   />
+                            
+                </tr>
+                    <input type="hidden" id="ruta2" name="ruta2" value="<?php echo $this->valores['Ruta']?>"/>
+                    
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button><!--boton para confirmar borrado-->
 			</form>

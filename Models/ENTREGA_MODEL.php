@@ -209,6 +209,7 @@
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
 			
+            if($this->Ruta <> null){
 				$sql = "UPDATE ENTREGA SET 
 					login = '$this->login',
 					 IdTrabajo='$this->IdTrabajo',
@@ -217,6 +218,16 @@
                      Ruta='$this->Ruta'
 				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
 				)";
+            }
+            else{
+                $sql = "UPDATE ENTREGA SET 
+					login = '$this->login',
+					 IdTrabajo='$this->IdTrabajo',
+                     Alias='$this->Alias',
+                     Horas='$this->Horas'
+				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
+				)";
+            }
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
