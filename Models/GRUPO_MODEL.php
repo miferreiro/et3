@@ -182,7 +182,7 @@
 	   // en el atributo de la clase
 	function RellenaShowCurrent() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+		$sql = "SELECT * FROM USU_GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 

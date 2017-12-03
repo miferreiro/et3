@@ -7,13 +7,11 @@
 */
 class USUARIO_ADD {
 
-	function __construct($datos) {
-		$this->datos = $datos;
-		$this->render($this->datos);
+	function __construct() {
+		$this->render();
 	}
 
-	function render($datos) {
-		$this->datos = $datos;
+	function render() {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -72,31 +70,6 @@ class USUARIO_ADD {
 						</th>
 						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="13" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'11') && comprobarTexto(this,'11') && comprobarTelf(this)"/>
 					</tr>
-					<tr>
-					<th class="formThTd">
-						<?php echo $strings['NombreGrupo'];?>
-					</th>
-					<td class="formThTd">
-					<select id="IdGrupo" multiple size="2" name="IdGrupo[]">
-					<option value=""><?php echo $strings['Elige'];?></option>
-<?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
-?>
-
-			    <option value="<?php echo $fila['IdGrupo'];?>">	
-<?php 
-							echo $fila['NombreGrupo'];
-
-?>
-				</option>		
-					
-<?php
-				}
-?>					
-				</select>
-					</td>
-					</tr>	
-					
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>

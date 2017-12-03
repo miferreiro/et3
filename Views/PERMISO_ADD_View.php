@@ -26,7 +26,7 @@ class PERMISO_ADD {
 							<?php echo $strings['NombreGrupo'];?>
 						</th>
 						<td class="formThTd">
-							<input type="text" id="NombreGrupo" name="NombreGrupo" maxlength="60" size="60" required value="<?php echo $Grupo[0][1] ?>" onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60') " readonly />	
+							<input type="text" id="IdGrupo" name="IdGrupo" maxlength="60" size="60" required value="<?php echo $Grupo[0][1] ?>" onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60') " readonly />	
 							<input type="hidden" id="IdGrupo" name="IdGrupo" value="<?php echo $Grupo[0][0]; ?>" maxlength="2" size="2" required readonly />				
 				    </tr>
 					<tr>

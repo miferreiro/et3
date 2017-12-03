@@ -52,12 +52,8 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-						//Variable que recoge un objecto model con solo el idgrupo
-			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');
-			//Variable que almacena el relleno de los datos utilizando el IdGrupo
-			$valores = $USUARIO->RellenaSelect();
 			//Crea una vista add para ver la tupla
-			new USUARIO_ADD( $valores );
+			new USUARIO_ADD();
 		} else {//Si recive datos los recoge y mediante las funcionalidad de USUARIO_MODEL inserta los datos
 			$USUARIO = get_data_form();//Variable que almacena los datos recogidos
 			$respuesta = $USUARIO->ADD();//Variable que almacena la respuesta de la inserción
