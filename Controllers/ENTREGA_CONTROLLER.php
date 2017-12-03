@@ -56,7 +56,7 @@ function get_data_form2() {
    
     if (!file_exists("../Files/$login")){ 
               mkdir("../Files/$login", 0777);
-    }
+   }
     
         
    /* }else{ 
@@ -134,7 +134,7 @@ function get_data_form() {
 	}
 
      if (!file_exists("../Files/$login")){ 
-              mkdir("../Files/$login", 0777);
+              mkdir('../Files/'.$login.'/', 0777);
     }
 
 	if ( $nombreRuta != null ) {
