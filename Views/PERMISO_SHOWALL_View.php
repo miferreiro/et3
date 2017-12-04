@@ -27,7 +27,7 @@ class PERMISO_SHOWALL {
 				<caption style="margin-bottom:10px;">
 					<form action='../Controllers/PERMISO_CONTROLLER.php'>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
-						
+						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
 				</caption>
 				<tr>
@@ -40,7 +40,9 @@ class PERMISO_SHOWALL {
 <?php
 					}
 ?>
-					
+					<th colspan="3" >
+						<?php echo $strings['Opciones']?>
+					</th>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -63,7 +65,10 @@ class PERMISO_SHOWALL {
 							<input type="hidden" name="IdGrupo" value="<?php echo $fila['IdGrupo']; ?>">
 							<input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
 							<input type="hidden" name="IdAccion" value="<?php echo $fila['IdAccion']; ?>">
-				
+					<td>
+								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+					<td>
+								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>
 
 				</tr>
