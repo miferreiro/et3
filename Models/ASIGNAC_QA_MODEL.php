@@ -136,6 +136,114 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 			return "Asignacion generada con exito";
 	}
 	
+	function DELETE() {
+		// se construye la sentencia sql de busqueda con los atributos de la clase
+		$sql = "SELECT * FROM ASIGNAC_QA
+						 WHERE (
+						 		IdTrabajo = '$this->IdTrabajo' &&
+						 		LoginEvaluador = '$this->LoginEvaluador' &&
+						 		AliasEvaluado = '$this->AliasEvaluado'
+								)";
+		// se ejecuta la query
+		$result = $this->mysqli->query( $sql );
+		// si existe una tupla con ese valor de clave
+
+		if ( $result->num_rows == 1 ) {
+			// se construye la sentencia sql de borrado
+			$sql = "DELETE FROM ASIGNAC_QA
+							 WHERE (
+							 		IdTrabajo = '$this->IdTrabajo' &&
+							 		LoginEvaluador = '$this->LoginEvaluador' &&
+							 		AliasEvaluado = '$this->AliasEvaluado'
+									)";
+			// se ejecuta la query
+			$this->mysqli->query( $sql );
+			// se devuelve el mensaje de borrado correcto
+			return "Borrado correctamente";
+		} // si no existe el login a borrar se devuelve el mensaje de que no existe
+		else
+			return "No existe";
+	} // fin metodo DELETE
+  
+        // funcion RellenaDatos()
+        // Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
+	   // en el atributo de la clase
+	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
+
+		// se construye la sentencia sql de busqueda con los atributos de la clase
+		$sql = "SELECT * FROM ASIGNAC_QA
+						 WHERE (
+						 		IdTrabajo = '$this->IdTrabajo' &&
+						 		LoginEvaluador = '$this->LoginEvaluador' &&
+						 		AliasEvaluado = '$this->AliasEvaluado'
+								)";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else { // si existe se devuelve la tupla resultado
+			$result = $resultado->fetch_array();
+			return $result;
+		}
+	} // fin del metodo RellenaDatos()
+    
+        //funcion SEARCH: hace una búsqueda en la tabla con
+	//los datos proporcionados. Si van vacios devuelve todos
+	function SEARCH() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		// se construye la sentencia sql de busqueda con los atributos de la clase
+		$sql = "SELECT * FROM ASIGNAC_QA
+						 WHERE (
+						 		(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
+                    			(BINARY LoginEvaluador LIKE '%$this->LoginEvaluador%') &&
+                    			(BINARY AliasEvaluado LIKE '%$this->AliasEvaluado%')
+								)";
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	} // fin metodo SEARCH
+        
+        
+        // funcion EDIT()
+	   // Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
+	  // si existe se modifica
+	function EDIT() {
+		// se construye la sentencia de busqueda de la tupla en la bd
+		$sql = "SELECT * FROM ASIGNAC_QA
+						 WHERE (
+						 		IdTrabajo = '$this->IdTrabajo' &&
+						 		LoginEvaluador = '$this->LoginEvaluador' &&
+						 		AliasEvaluado = '$this->AliasEvaluado'
+								)";
+		// se ejecuta la query
+		$result = $this->mysqli->query( $sql );
+		// si el numero de filas es igual a uno es que lo encuentra
+		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
+			
+				$sql = "UPDATE ASIGNAC_QA SET 
+					 IdTrabajo = '$this->IdTrabajo',
+					 LoginEvaluador = '$this->LoginEvaluador',
+                     LoginEvaluado = '$this->LoginEvaluado',
+                     AliasEvaluado = '$this->AliasEvaluado'
+				WHERE (
+						 IdTrabajo  = '$this->IdTrabajo' &&
+						 LoginEvaluador = '$this->LoginEvaluador' &&
+						 AliasEvaluado = '$this->AliasEvaluado'
+					  )";
+            
+			// si hay un problema con la query se envia un mensaje de error en la modificacion
+			if ( !( $result = $this->mysqli->query( $sql ) ) ) {
+				return 'Error en la modificación';
+			} else { // si no hay problemas con la modificación se indica que se ha modificado
+				return 'Modificado correctamente';
+			}
+
+		} else // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
+			return 'No existe en la base de datos';
+	} // fin del metodo EDIT
 
 } //fin de clase
 
