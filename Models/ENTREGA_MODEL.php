@@ -278,8 +278,8 @@
 				)";
                     
                 }
-                else{
-                     $sql2= "INSERT INTO NOTA_TRABAJO (
+                //else{
+                   /*  $sql2= "INSERT INTO NOTA_TRABAJO (
 							    login,
                                 IdTrabajo,
                                 NotaTrabajo) 
@@ -289,17 +289,17 @@
                                 ''
 								)";
                 }
-                
+                */
+           // }
             }
-            
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
 			}
            
-            if(!$this->mysqli->query( $sql2 ) ){
+          /*  if(!$this->mysqli->query( $sql2 ) ){
                 return "Error en la inserción";
-            }
+            }*/
             else { // si no hay problemas con la modificación se indica que se ha modificado
 				return 'Modificado correctamente';
 			}
