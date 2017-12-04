@@ -11,7 +11,32 @@ session_start(); //solicito trabajar con la session
 include '../Models/ASIGNAC_QA_MODEL.php'; //incluye el contendio del asignacion de qa
 include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Views/ASIGNAC_QA_View.php'; //incluye la vista de asignación qa
+include '../Views/ASIGNAC_QA_ADD_View.php'; //incluye la vista ADD
+include '../Views/ASIGNAC_QA_DELETE_View.php'; //incluye la vista de DELETE
+include '../Views/ASIGNAC_QA_EDIT_View.php'; //incluye la vista de EDIT
+include '../Views/ASIGNAC_QA_SEARCH_View.php'; //incluye la vista de SEARCH
+include '../Views/ASIGNAC_QA_SHOWCURRENT_View.php'; //incluye la vista de asignación qa
+include '../Views/ASIGNAC_QA_SHOWALL_View.php'; //incluye la vista de asignación qa
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
+
+function get_data_form(){
+	
+	
+	$IdTrabajo = $_REQUEST['IdTrabajo'];
+	$LoginEvaluador = $_REQUEST['LoginEvaluador'];
+	$LoginEvaluado = $_REQUEST['LoginEvaluado'];
+	$AliasEvaluado = $_REQUEST['AliasEvaluado'];
+	$action= $_REQUEST['action'];
+	
+	$ASIGNACION = new ASIGNAC_QA_MODEL(
+		$IdTrabajo,
+		$LoginEvaluador,
+		$LoginEvaluado,
+		$AliasEvaluado
+	);
+	
+	return $ASIGNACION;
+}
 
 //Si la variable action no tiene contenido le asignamos ''
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
@@ -91,9 +116,66 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//new MESSAGE( 'Asignacion generada con exito', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 		//Finaliza el bloque
 		break;
-	default: //Caso que se ejecuta por defecto
+	case 'ADD':
+		if ( !$_POST ) {
+			new ASIGNAC_QA_ADD();
+		} else {
+			$ASIGNACION = get_data_form();
+			$respuesta = $ASIGNACION->ADD();
+			new MESSAGE( $respuesta, '../Controllers/ACCION_CONTROLLER.php' );
+		}
+		break;
+	case 'DELETE':
+		if ( !$_POST ) {
+			$ASIGNACION = new ASIGNAC_QA_MODEL( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], '', $_REQUEST['AliasEvaluado']);
+			$valores = $ASIGNACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
+			new ASIGNAC_QA_DELETE( $valores );
+		} else {
+			$ASIGNACION = get_data_form();
+			$respuesta = $ASIGNACION->DELETE();
+			new MESSAGE( $respuesta, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+		}
+		break;
+	case 'EDIT':
+		if ( !$_POST ) {
+			$ASIGNACION = new ASIGNAC_QA_MODEL( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], '', $_REQUEST['AliasEvaluado']);
+			$valores = $ASIGNACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
+			new ASIGNAC_QA_EDIT( $valores );
+		} else {
+			$ASIGNACION = get_data_form();
+			$respuesta = $ASIGNACION->EDIT();
+			new MESSAGE( $respuesta, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+		}
+		break;
+	case 'SEARCH':
+		if ( !$_POST ) {
+			new ASIGNAC_QA_SEARCH();
+		} else {
+			$ASIGNACION = get_data_form();
+			$datos = $ASIGNACION->SEARCH();
+			$lista = array( 'IdTrabajo','LoginEvaluador','LoginEvaluado', 'AliasEvaluado' );
+			new ASIGNAC_QA_SHOWALL( $lista, $datos );
+		}
+		break;
+	case 'SHOWCURRENT':
+		$ASIGNACION = new ASIGNAC_QA_MODEL( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], '', $_REQUEST['AliasEvaluado']);
+		$valores = $ASIGNACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
+		new ASIGNAC_QA_SHOWCURRENT( $valores );
+		break;
+	default:
+		if ( !$_POST ) {
+			$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
+		} else {
+			$ASIGNACION = get_data_form();
+		}
+		$datos = $ASIGNACION->SEARCH();
+		$lista = array( 'IdTrabajo','LoginEvaluador','LoginEvaluado', 'AliasEvaluado' );
+		new ASIGNAC_QA_SHOWALL( $lista, $datos );
+
+
+	//default: //Caso que se ejecuta por defecto
 		//Creacion de la vista inicio 
-		new ASIGNAC_QA();
+		//new ASIGNAC_QA();
 }
 
 ?>
