@@ -133,6 +133,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 
 			//ejecutamos la consulta
 			$this->mysqli->query( $sql );
+			return "Asignacion generada con exito";
 	}
 	
 
