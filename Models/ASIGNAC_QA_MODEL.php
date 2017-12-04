@@ -80,7 +80,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 	}
 
 	function ADD(){
-        $usuario = "SELECT login FROM USUARIO WHERE (login = '$this->LoginEvluador')";
+        $usuario = "SELECT login FROM USUARIO WHERE (login = '$this->LoginEvaluador')";
         
                $result=$this->mysqli->query($usuario);
                 if(!$result){
