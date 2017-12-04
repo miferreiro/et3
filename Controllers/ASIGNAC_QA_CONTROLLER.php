@@ -71,6 +71,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Finaliza el bloque
 		break;
 	case 'GENERAR'://Caso generar QA
+		if ( !$_POST ) {
+			new ASIGNAC_QA();
+		} else {
+
 		//Variable que almacena un nuevo objecto model
 		$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
 		if ($ASIGNACION->DevolverArray($_REQUEST['ET']) == null) {
@@ -115,6 +119,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		new MESSAGE( $resultado, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 		//new MESSAGE( 'Asignacion generada con exito', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 		//Finaliza el bloque
+	}
 		break;
 	case 'ADD':
 		if ( !$_POST ) {
