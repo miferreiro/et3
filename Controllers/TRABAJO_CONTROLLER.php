@@ -95,9 +95,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			$TRABAJO = new TRABAJO('','','','','');
 		} 
-        //else {
-		//	$TRABAJO = get_data_form();
-		//}
+        else {
+			$TRABAJO = get_data_form();
+		}
 		$datos = $TRABAJO->SEARCH();
 		$lista = array( 'IdTrabajo','NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo','PorcentajeNota' );
 		new TRABAJO_SHOWALL( $lista, $datos );

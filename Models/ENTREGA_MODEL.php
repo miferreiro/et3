@@ -125,7 +125,7 @@
             
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM ENTREGA WHERE (  login = '$this->login' && IdTrabajo = '$this->IdTrabajo')";
-
+            $vacio='';
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
 			} else { // si la ejecución de la query no da error
@@ -144,14 +144,30 @@
                                 '$this->Horas',
                                 '$this->Ruta'
 								)";
+                    
+                    $sql2= "INSERT INTO NOTA_TRABAJO (
+							    login,
+                                IdTrabajo,
+                                NotaTrabajo) 
+								VALUES(
+								'$this->login',
+								'$this->IdTrabajo',
+                                '$vacio'
+								)";
                 }
                     else{
                         return 'Ya existe la entrega introducida en la base de datos'; // ya existe
                     }
                 }
-					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
-						return $sql;
-					} else { //si no da error en la insercion devolvemos mensaje de exito
+					if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
+						return "Error en la inserción";
+					}
+            
+                    if(!$this->mysqli->query( $sql2 ) ){
+                        return "Error en la inserción";
+                    }
+            
+                    else { //si no da error en la insercion devolvemos mensaje de exito
 						return 'Inserción realizada con éxito'; //operacion de insertado correcta
 					}
 
@@ -204,8 +220,10 @@
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
 		$sql = "SELECT * FROM ENTREGA WHERE (login = '$this->login' AND IdTrabajo = '$this->IdTrabajo')";
+        $sql2="SELECT * FROM NOTA_TRABAJO WHERE (login = '$this->login' AND IdTrabajo = '$this->IdTrabajo')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
+        $result2 = $this->mysqli->query( $sql2 );
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
 			
@@ -218,6 +236,29 @@
                      Ruta='$this->Ruta'
 				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
 				)";
+                
+                if($result2->num_rows == 1){
+                    $sql2 = "UPDATE ENTREGA SET 
+				     login = '$this->login',
+					 IdTrabajo='$this->IdTrabajo',
+                     NotaTrabajo=''
+				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
+				)";
+                    
+                }
+                else{
+                     $sql2= "INSERT INTO NOTA_TRABAJO (
+							    login,
+                                IdTrabajo,
+                                NotaTrabajo) 
+								VALUES(
+								'$this->login',
+								'$this->IdTrabajo',
+                                ''
+								)";
+                }
+                
+
             }
             else{
                 $sql = "UPDATE ENTREGA SET 
@@ -227,12 +268,39 @@
                      Horas='$this->Horas'
 				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
 				)";
+                
+                 if($result2->num_rows == 1){
+                    $sql2 = "UPDATE ENTREGA SET 
+				     login = '$this->login',
+					 IdTrabajo='$this->IdTrabajo',
+                     NotaTrabajo=''
+				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
+				)";
+                    
+                }
+                else{
+                     $sql2= "INSERT INTO NOTA_TRABAJO (
+							    login,
+                                IdTrabajo,
+                                NotaTrabajo) 
+								VALUES(
+								'$this->login',
+								'$this->IdTrabajo',
+                                ''
+								)";
+                }
+                
             }
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
-			} else { // si no hay problemas con la modificación se indica que se ha modificado
+			}
+           
+            if(!$this->mysqli->query( $sql2 ) ){
+                return "Error en la inserción";
+            }
+            else { // si no hay problemas con la modificación se indica que se ha modificado
 				return 'Modificado correctamente';
 			}
 

@@ -78,7 +78,8 @@ class TRABAJO_DELETE {
 				<input type="hidden" name="FechaIniTrabajo" value="<?php echo $this->valores['FechaIniTrabajo'] ?>" />
 				<input type="hidden" name="FechaFinTrabajo" value="<?php echo $this->valores['FechaFinTrabajo'] ?>" />
                 <input type="hidden" name="PorcentajeNota" value="<?php echo $this->valores['PorcentajeNota'] ?>" />
-				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
+				<!--<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php //echo $strings['Confirmar'] ?>">-->
+                <button type="submit" id="DELETE" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/TRABAJO_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
