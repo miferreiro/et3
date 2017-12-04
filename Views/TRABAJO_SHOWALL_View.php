@@ -52,9 +52,18 @@ class TRABAJO_SHOWALL {
 					foreach ( $lista as $atributo ) {
 ?>
 					<td>
-<?php 
-							echo $fila[ $atributo ];
+<?php 				if ( $atributo == 'FechaIniTrabajo' ) {
+						$fila[ $atributo ] = date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
+					} 
+					if ( $atributo == 'FechaFinTrabajo' ) {
+							$fila[ $atributo ] = date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
+					} 
+					
+						echo $fila[ $atributo ];
+							
 
+					
+				
 ?>
 					</td>
 <?php

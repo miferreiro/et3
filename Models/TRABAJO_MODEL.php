@@ -41,8 +41,8 @@ class TRABAJO{
     				(
 					(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
                     (BINARY NombreTrabajo LIKE '%$this->NombreTrabajo%') &&
-                    (BINARY FechaIniTrabajo LIKE '%$this->FechaIniTrabajo%') &&
-                    (BINARY FechaFinTrabajo LIKE '%$this->FechaFinTrabajo%') &&
+                    (BINARY DATE_FORMAT(FechaIniTrabajo,'%d/%m/%Y') LIKE '%$this->FechaIniTrabajo%') &&
+                    (BINARY DATE_FORMAT(FechaFinTrabajo,'%d/%m/%Y') LIKE '%$this->FechaFinTrabajo%') &&
                     (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
@@ -79,8 +79,8 @@ class TRABAJO{
 								VALUES(
 								'$this->IdTrabajo',
 								'$this->NombreTrabajo',
-								'$this->FechaIniTrabajo',
-								'$this->FechaFinTrabajo',
+								STR_TO_DATE(REPLACE('$this->FechaIniTrabajo','/','.') ,GET_FORMAT(date,'EUR')),
+								STR_TO_DATE(REPLACE('$this->FechaFinTrabajo','/','.') ,GET_FORMAT(date,'EUR')),
                                 '$this->PorcentajeNota'
 								)";
                 }
@@ -132,6 +132,8 @@ class TRABAJO{
 			return 'No existe en la base de datos'; // 
 		} else { // si existe se devuelve la tupla resultado
 			$result = $resultado->fetch_array();
+			$result[ 'FechaIniTrabajo' ] = date( "d/m/Y", strtotime( $result[ 'FechaIniTrabajo' ] ) );
+			$result[ 'FechaFinTrabajo' ] = date( "d/m/Y", strtotime( $result[ 'FechaFinTrabajo' ] ) );
 			return $result;
 		}
 	} // fin del metodo RellenaDatos()
@@ -185,8 +187,8 @@ class TRABAJO{
 				$sql = "UPDATE TRABAJO SET 
 					IdTrabajo = '$this->IdTrabajo',
 					 NombreTrabajo='$this->NombreTrabajo',
-                     FechaIniTrabajo='$this->FechaIniTrabajo',
-                     FechaFinTrabajo='$this->FechaFinTrabajo',
+					 FechaIniTrabajo = STR_TO_DATE(REPLACE('$this->FechaIniTrabajo','/','.') ,GET_FORMAT(date,'EUR')),
+					 FechaFinTrabajo = STR_TO_DATE(REPLACE('$this->FechaFinTrabajo','/','.') ,GET_FORMAT(date,'EUR')),
                      PorcentajeNota='$this->PorcentajeNota'
 				WHERE ( IdTrabajo  = '$this->IdTrabajo'
 				)";
