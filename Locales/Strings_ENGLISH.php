@@ -54,6 +54,7 @@ array(
 	'fotopersonal' => 'Personal photo',
 	'Sexo' => 'Sex',
 	'sexo' => 'Sex',
+	'¿Está seguro de que quiere borrar este grupo de la tabla, así como sus permisos y desasignar sus usuarios?'=>'Are you sure you want to delete this group from the table, as well as your permissions and unassign your users?',
 	'¿Está seguro de que quiere borrar esta tupla de la tabla?'=>'Are you sure you want to delete this tuple from the table?',
 	'Error en la consulta sobre la base de datos' => 'Error in the query on the database',
 	'No se ha podido conectar con la base de datos' => 'Unable to connect to the database',

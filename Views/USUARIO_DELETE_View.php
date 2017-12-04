@@ -151,8 +151,13 @@ class USUARIO_DELETE {
                 }
             
                 
-                }
-            else{
+                ?>
+                <br><br>
+                <form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+				</form>
+             <?php
+            }else{
               ?>  
             
 			<p style="text-align:center;">

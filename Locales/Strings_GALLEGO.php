@@ -53,6 +53,7 @@ array(
 	'Gestion de historias' => 'Xestión de historia',
 	'Gestion de trabajos' => 'Xestión de traballos',
 	'Gestion de evaluaciones' => 'Xestión de evaluacions',
+	'¿Está seguro de que quiere borrar este grupo de la tabla, así como sus permisos y desasignar sus usuarios?'=>'¿Está seguro de que quere borrar este grupo da táboa, así como os seus permisos e desasignar os seus usuarios?',
 	'¿Está seguro de que quiere borrar esta tupla de la tabla?'=>'¿Está seguro de que quere borrar esta tupla da táboa?',
 	'Error en la consulta sobre la base de datos' => 'Error na consulta sobre a base de datos',
 	'No se ha podido conectar con la base de datos' => 'Non se ha podido conectar coa base de datos',
