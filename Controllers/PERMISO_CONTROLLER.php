@@ -98,7 +98,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$PERMISO = get_data_form();
 		}
 		$datos = $PERMISO->SEARCH();
-		$lista = array( 'IdGrupo','IdFuncionalidad','IdAccion' );
+		$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
 		new PERMISO_SHOWALL( $lista, $datos );
 }
 

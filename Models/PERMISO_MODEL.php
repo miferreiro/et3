@@ -110,16 +110,19 @@ function ADD()
 //los datos proporcionados. Si van vacios devuelve todos
 function SEARCH()
 { 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-    $sql = "select IdFuncionalidad,
-                    IdAccion,
-                    IdGrupo
-       			from PERMISO
-    			where 
-    				(
-    				(IdFuncionalidad LIKE '%$this->IdFuncionalidad%') &&
-                    (IdAccion LIKE '%$this->IdAccion%') &&
-                    (IdGrupo LIKE '%$this->IdGrupo%')
-    				)";
+     $sql = "SELECT P.IdGrupo,G.NombreGrupo,P.IdFuncionalidad,F.NombreFuncionalidad,P.IdAccion,A.NombreAccion
+                     FROM PERMISO P,GRUPO G,FUNCIONALIDAD F,FUNC_ACCION FA,ACCION A 
+                     WHERE (
+                            G.IdGrupo = P.IdGrupo &&
+                            F.IdFuncionalidad = P.IdFuncionalidad &&
+                            A.IdAccion = P.IdAccion &&
+                            F.IdFuncionalidad = FA.IdFuncionalidad &&
+                            A.IdAccion = FA.IdAccion &&
+                            P.IdFuncionalidad LIKE '%$this->IdFuncionalidad%' &&
+                            P.IdAccion LIKE '%$this->IdAccion%' &&
+                            P.IdGrupo LIKE '%$this->IdGrupo%'
+                           )";
+
     // si se produce un error en la busqueda m&&amos el mensaje de error en la consulta
     if (!($resultado = $this->mysqli->query($sql))){
 		return 'Error en la consulta sobre la base de datos, revise los campos introducidos';
