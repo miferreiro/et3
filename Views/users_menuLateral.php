@@ -30,6 +30,22 @@
 						</li>
 					</ul>
 			</li>
+            <li>
+                    
+                    <a href="#" class="primerNivel"><?php echo $strings['Gestion de notas']; ?></a> 
+					<ul class="submenu">
+						<li>
+							<a href="../Controllers/NOTAS_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Correción entregas']; ?></a>
+						</li>
+                        <li>
+				            <a href="../Controllers/NOTAS_CONTROLLER2.php" class="segundoNivel"><?php echo $strings['Correción QAs'];  ?></a>
+						</li>
+                        
+					</ul>
+                    
+                    
+                    
+            </li>
 		</ul>
 	</ul>
 </nav>

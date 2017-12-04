@@ -49,6 +49,36 @@ class NOTAS_MODEL{ //declaración de la clase
 			return $resultado;
 		}
 	} // fin metodo SEARCH
+    
+    function RellenaDatosShowCurrent() { // se construye la sentencia de busqueda de la tupla
+
+		$sql = "SELECT E.IdTrabajo,IdHistoria,CorrectoP,ComentIncorrectoP,OK FROM EVALUACION E,ENTREGA ET WHERE 
+        ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$this->IdTrabajo' && Alias = AliasEvaluado && login='$this->login')";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado
+            
+            
+			return $resultado;
+		}
+	} // fin del metodo RellenaDatosShowCurrent()
+    
+     function RellenaDatosShowCurrent2() { // se construye la sentencia de busqueda de la tupla
+
+		$sql = "SELECT E.IdTrabajo,IdHistoria,CorrectoA,ComenIncorrectoA,CorrectoP,ComentIncorrectoP,OK FROM EVALUACION E,ENTREGA ET WHERE 
+        ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$this->IdTrabajo' && LoginEvaluador='$this->login')";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado
+            
+            
+			return $resultado;
+		}
+	} // fin del metodo RellenaDatos()
+    
+    
 
 
 	//Metodo ADD()
@@ -140,6 +170,9 @@ class NOTAS_MODEL{ //declaración de la clase
 			return $result;
 		}
 	} // fin del metodo RellenaDatos()
+    
+    
+    
 
 	// funcion EDIT()
 	// Se comprueba que la tupla a modificar exista en base al valor de su clave primaria

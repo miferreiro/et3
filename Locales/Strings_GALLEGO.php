@@ -24,7 +24,6 @@ array(
 	'Tabla de borrado' => 'Táboa de borrado',
 	'Tabla de datos' => 'Táboa de datos',
 	'Vista detallada' => 'Vista detallada',
-	'El usuario no tiene los permisos necesarios' => 'O usuario non ten os permisos necesarios',
 	'Usuario' => 'Usuario',
 	'login' => 'Usuario',
 	'Contraseña' => 'Contrasinal',
@@ -161,7 +160,11 @@ array(
     'No puedes añadir una historia debido a que no se añadio un trabajo' => 'Non podes engadir unha historia debido a que non se engadiu un traballo',
 	'LoginEvaluado' => 'LoginEvaluado',
     'Nota del Trabajo' => 'Nota do Traballo',
-    'NotaTrabajo' => 'NotaTraballo'
+    'NotaTrabajo' => 'NotaTraballo',
+    'Gestion de notas' => 'Xestión de notas',
+    'Correción entregas' => 'Correción entregas',
+    'Correción QAs' => 'Correción QAs'
+    
 	)
 ;
 

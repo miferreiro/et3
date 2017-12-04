@@ -22,7 +22,6 @@ array(
 	'Formulario de modificación' => 'Edit form',
 	'Formulario de inserción'=> 'Add form', 
 	'Tabla de borrado' => 'Table deleted',
-	'El usuario no tiene los permisos necesarios' => 'The user does not have the necessary permits',
 	'Tabla de datos' => 'Data table',
 	'Vista detallada' => 'Detailed view',
 	'Usuario' => 'User',
@@ -161,7 +160,10 @@ array(
     'No puedes añadir una historia debido a que no se añadio un trabajo' => 'You can not add a story because a job was not added',
 	'LoginEvaluado' => 'LoginEvaluated',
 	'Nota del Trabajo' => 'Work note',
-    'NotaTrabajo' => 'WorkNote'
+    'NotaTrabajo' => 'WorkNote',
+    'Gestion de notas' => 'Management of Notes',
+    'Correción entregas' => 'Correction of deliveries',
+    'Correción QAs' => 'Correction of QAs'
 	
 	
 	

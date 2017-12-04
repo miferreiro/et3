@@ -7,11 +7,13 @@ session_start(); //solicito trabajar con la session
 
 include '../Models/NOTAS_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Views/NOTAS_SHOWALL_View.php'; //incluye la vista del showall
+include '../Views/NOTAS_SHOWALL2_View.php'; //incluye la vista del showall para el caso de los usuarios
 include '../Views/NOTAS_SEARCH_View.php'; //incluye la vista search
 include '../Views/NOTAS_ADD_View.php'; //incluye la vista add
 include '../Views/NOTAS_EDIT_View.php'; //incluye la vista edit
 include '../Views/NOTAS_DELETE_View.php'; //incluye la vista delete
 include '../Views/NOTAS_SHOWCURRENT_View.php'; //incluye la vista showcurrent
+include '../Views/NOTAS_SHOWCURRENT2_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 
@@ -30,6 +32,9 @@ function get_data_form() {
 	//Devuelve el valor del objecto model creado
 	return $NOTAS;
 }
+
+if($_SESSION['login']=="admin"){
+
 //Si la variable action no tiene contenido le asignamos ''
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
 	$_REQUEST[ 'action' ] = '';
@@ -105,7 +110,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 		//Variable que almacena un objeto model con el login
-		$NOTAS = new NOTAS_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST['login'], '');
+		$NOTAS = new NOTAS_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST['login'],'');
 		//Variable que almacena los valores rellenados a traves de login
 		$valores = $NOTAS->RellenaDatos();
 		//Creación de la vista showcurrent
@@ -125,6 +130,52 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array('IdTrabajo','login','NotaTrabajo');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new NOTAS_SHOWALL( $lista, $datos );
+        
+}
+    
+    
+    
+}
+else{
+    if ( !isset( $_REQUEST[ 'action' ] ) ) {
+	$_REQUEST[ 'action' ] = '';
+	
+}
+//Estructura de control, que realiza un determinado caso dependiendo del valor action
+switch ( $_REQUEST[ 'action' ] ) {
+	
+	case 'SHOWCURRENT'://Caso showcurrent
+		if ( !$_POST ) {//Si no se han recibido datos 
+			$NOTAS = new NOTAS_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST['login'], '');
+		//Si se reciben datos
+		} else {
+			$NOTAS = get_data_form();
+		}
+        
+		//Variable que almacena los datos de la busqueda
+		$datos = $NOTAS->RellenaDatosShowCurrent();
+		//Variable que almacena array con el nombre de los atributos
+       
+		$lista = array('IdTrabajo','IdHistoria','CorrectoP','ComentIncorrectoP','OK');
+        new NOTAS_SHOWCURRENT2( $lista,$datos );
+        
+		break;
+	default: //Caso que se ejecuta por defecto
+		if ( !$_POST ) {//Si no se han recibido datos 
+			$NOTAS = new NOTAS_MODEL('',$_SESSION['login'],'');
+		//Si se reciben datos
+		} else {
+			$NOTAS = get_data_form();
+		}
+		//Variable que almacena los datos de la busqueda
+		$datos = $NOTAS->SEARCH();
+         
+		//Variable que almacena array con el nombre de los atributos
+		$lista = array('IdTrabajo','login');
+		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		new NOTAS_SHOWALL2( $lista, $datos );
+        
+}
 }
 
 ?>
