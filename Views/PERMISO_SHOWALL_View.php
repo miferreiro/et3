@@ -1,9 +1,7 @@
 <?php
-/*  Archivo php
-	Nombre: PERMISOS_SHOWALL_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+/* 
+	Fecha de creación: 4/12/2017 
+	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar mostrar los permisos que existen
 */
 class PERMISO_SHOWALL {
 
@@ -27,7 +25,6 @@ class PERMISO_SHOWALL {
 				<caption style="margin-bottom:10px;">
 					<form action='../Controllers/PERMISO_CONTROLLER.php'>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
-						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
 				</caption>
 				<tr>
@@ -40,9 +37,6 @@ class PERMISO_SHOWALL {
 <?php
 					}
 ?>
-					<th colspan="3" >
-						<?php echo $strings['Opciones']?>
-					</th>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -60,16 +54,6 @@ class PERMISO_SHOWALL {
 <?php
 					}
 ?>
-					<td>
-						<form action="../Controllers/PERMISO_CONTROLLER.php" method="GET" style="display:inline" >
-							<input type="hidden" name="IdGrupo" value="<?php echo $fila['IdGrupo']; ?>">
-							<input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
-							<input type="hidden" name="IdAccion" value="<?php echo $fila['IdAccion']; ?>">
-					<td>
-								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
-					<td>
-								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
-						</form>
 
 				</tr>
 <?php
