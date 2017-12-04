@@ -19,7 +19,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 		$this->IdTrabajo = $IdTrabajo;
 		$this->LoginEvaluador = $LoginEvaluador;
         $this->LoginEvaluado = $LoginEvaluado;
-        $this->AliasEvaluado=$AliasEvaluado;
+        $this->AliasEvaluado = $AliasEvaluado;
 		
 		// incluimos la funcion de acceso a la bd
 		include_once '../Functions/BdAdmin.php';
@@ -27,6 +27,37 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 		$this->mysqli = ConectarBD();
 
 	} // fin del constructor
+
+	function DevolverQAs(){
+		//Consulta que recupera la tabla trabajo
+		$sql = "select IdTrabajo,
+					   LoginEvaluador,
+					   AliasEvaluado
+					   from ASIGNAC_QA";
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) { return null; }
+		//Caragamos las tuplas resultado de la consulta en un array
+		while($datos = mysqli_fetch_row ($resultado)){
+			//Variable que almacena el array de las tuplas resultado de la query
+			$miarray[] = $datos;
+		}
+		return $miarray;		
+	}
+
+	function DevolverHistorias($Id){
+		//Consulta que recupera la tabla trabajo
+		$sql = "select IdHistoria
+					   from HISTORIA
+					   where IdTrabajo = '$Id'";
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) { return null; }
+		//Caragamos las tuplas resultado de la consulta en un array
+		while($datos = mysqli_fetch_row ($resultado)){
+			//Variable que almacena el array de las tuplas resultado de la query
+			$miarray[] = $datos;
+		}
+		return $miarray;	
+	}
 
 	function DevolverArray($Entrega){
 		//Consulta que recupera la tabla trabajo

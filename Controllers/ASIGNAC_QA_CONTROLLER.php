@@ -8,7 +8,8 @@
 */
 session_start(); //solicito trabajar con la session
 
-include '../Models/ASIGNAC_QA_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/ASIGNAC_QA_MODEL.php'; //incluye el contendio del asignacion de qa
+include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Views/ASIGNAC_QA_View.php'; //incluye la vista de asignación qa
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
@@ -18,6 +19,30 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 }
 //Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
+	case 'HISTORIAS'://Caso generar QA
+		//Variable que almacena un nuevo objecto model
+		$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
+		//Variable que almacena el array de las tuplas de entrega.
+		$QAs = $ASIGNACION->DevolverQAs();
+		//Bucle que recorre todos los qua
+		for ($i=0; $i < count($QAs); $i++) { 	
+			//Variable que recoge el array de historias asociados al id trabajo
+			$HISTORIAS = $ASIGNACION->DevolverHistorias($QAs[$i][0]);
+			//Bucle que recorre las historias
+			for ($j=0; $j < count($HISTORIAS); $j++) { 
+				$IdTrabajo = $QAs[$i][0];//Variable que almacena $IdTrabajo
+				$LoginEvaluador = $QAs[$i][1];//Variable que almacena $LoginEvaluador
+				$AliasEvaluado = $QAs[$i][2];//Variable que almacena $AliasEvaluado
+				$IdHistoria = $HISTORIAS[$j][0];//Variable que almacena IdHistoria
+				//Variable que almacena el mensaje de retorno de la sentencia
+				$mensaje=$EVALUACION->ADD();//Añadimos los datos a la tabla
+				}
+			}
+		//crea una vista mensaje con la respuesta y la dirección de vuelta
+			new MESSAGE( $mensaje, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+		//new MESSAGE( 'Asignacion generada con exito', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+		//Finaliza el bloque
+		break;
 	case 'GENERAR'://Caso generar QA
 		//Variable que almacena un nuevo objecto model
 		$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
