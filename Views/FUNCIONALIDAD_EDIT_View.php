@@ -22,7 +22,7 @@ class FUNCIONALIDAD_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/FUNCIONALIDAD_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEdit()">
+			<form name="EDIT" action="../Controllers/FUNCIONALIDAD_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -49,28 +49,26 @@ class FUNCIONALIDAD_EDIT {
 						<?php echo $strings['NombreAccion'];?>
 					</th>
 					<td class="formThTd">
-					<select id="IdAccion" multiple  size="2" name="IdAccion[]">
-					<option value=""><?php echo $strings['Elige'];?></option>
+					<select id="IdAccion[]" multiple size="2" name="IdAccion[]">
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+
 ?>
 
-			    <option value="<?php echo $fila['IdAccion'];?> ">	
+			    <option value="<?php echo $fila['IdAccion'];?>">	
 <?php 
 							echo $fila['NombreAccion'];
 
 ?>
 				</option>		
-<?php
-					
-?>
 					
 <?php
+					
 				}
 ?>					
-					</select>
-					</td>
+				</select>
 					</tr>
+					
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>

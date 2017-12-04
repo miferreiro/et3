@@ -13,11 +13,12 @@
         
         
         
-            function __construct($IdFuncionalidad,$NombreFuncionalidad,$DescripFuncionalidad){
+            function __construct($IdFuncionalidad,$NombreFuncionalidad,$DescripFuncionalidad,$Acciones){
                 //Asignamos valores a los atibutos de la clase.
                 $this->IdFuncionalidad=$IdFuncionalidad;
                 $this->NombreFuncionalidad=$NombreFuncionalidad;
                 $this->DescripFuncionalidad=$DescripFuncionalidad;
+				$this->Acciones=$Acciones;
                 
                  // incluimos la funcion de acceso a la bd
 		              include_once '../Functions/BdAdmin.php';
@@ -102,8 +103,12 @@
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad' )";
+			$sql2 = "DELETE FROM FUNC_ACCION WHERE (IdFuncionalidad = '$this->IdFuncionalidad' )";
+			$sql3= "DELETE FROM PERMISO WHERE (IdFuncionalidad = '$this->IdFuncionalidad' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
+			$this->mysqli->query( $sql2 );
+			$this->mysqli->query( $sql3 );
 			// se devuelve el mensaje de borrado correcto
 			return "Borrado correctamente";
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe
@@ -169,21 +174,23 @@
          // funcion EDIT()
 	    // Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
 	   // si existe se modifica
-	function EDIT() {
+		function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
+		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (idFuncionalidad = '$this->IdFuncionalidad')";
+		$Acc = $this->Acciones;
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
-		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
-			
+		if ( $result->num_rows == 1 ) {
+			// se construye la sentencia de modificacion en base a los atributos de la clase
+			if ( count($Acc) == 0){
+			     //modificamos los atributos de la tabla USUARIO
 				$sql = "UPDATE FUNCIONALIDAD SET 
 					IdFuncionalidad = '$this->IdFuncionalidad',
-					 NombreFuncionalidad='$this->NombreFuncionalidad',
-                      DescripFuncionalidad='$this->DescripFuncionalidad'
+                    NombreFuncionalidad='$this->NombreFuncionalidad',
+					DescripFuncionalidad = '$this->DescripFuncionalidad'
 				WHERE ( IdFuncionalidad = '$this->IdFuncionalidad'
 				)";
-            
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
@@ -191,10 +198,34 @@
 				return 'Modificado correctamente';
 			}
 
-		} else // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
-			return 'No existe en la base de datos';
+		} else{
+				$cont=0;	  
+				for ($i=0;$i<count($Acc);$i++){
+				 $sqli[$i] = "INSERT INTO FUNC_ACCION
+										(IdFuncionalidad,IdAccion)
+										VALUES
+										('$this->IdFuncionalidad',
+										 '$Acc[$i]'
+										)";
+				if ( !( $resultado = $this->mysqli->query( $sqli[$i] ) ) ) {
+				
+			     }else{
+				$cont=$cont+1;
+				}	
+				}
+								// si hay un problema con la query se envia un mensaje de error en la modificacion
+			if ( $cont!= (count($Acc))) {
+				return 'Error en la modificación';
+			} else { // si no hay problemas con la modificación se indica que se ha modificado
+				return 'Modificado correctamente';
+			}
+			}
+		} // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
+		            else
+				return 'No existe en la base de datos';		
 	} // fin del metodo EDIT
-        
+
+
         
                       
         
