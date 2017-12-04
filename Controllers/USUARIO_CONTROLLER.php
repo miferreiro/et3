@@ -28,7 +28,7 @@ function get_data_form() {
 	$correo = $_REQUEST[ 'email' ]; //Variable que almacena el valor de correo
 	$direccion = $_REQUEST[ 'direc' ]; //Variable que almacena el valor de direccion
 	$telefono = $_REQUEST[ 'telefono' ]; //Variable que almacena el valor de telefono
-	$Grupos = $_REQUEST[ 'IdGrupo' ];
+	$Grupos = null;
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
 
 	$USUARIO = new USUARIO_MODEL(
@@ -54,8 +54,14 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
+			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$PERMISO = $USUARIO->comprobarPermisosAñadir();
+			if($PERMISO=='true'){
 			//Crea una vista add para ver la tupla
 			new USUARIO_ADD();
+			}else{
+			new MESSAGE( $PERMISO, '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 		} else {//Si recive datos los recoge y mediante las funcionalidad de USUARIO_MODEL inserta los datos
 			$USUARIO = get_data_form();//Variable que almacena los datos recogidos
 			$respuesta = $USUARIO->ADD();//Variable que almacena la respuesta de la inserción

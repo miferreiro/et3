@@ -22,6 +22,7 @@ array(
 	'Formulario de modificación' => 'Edit form',
 	'Formulario de inserción'=> 'Add form', 
 	'Tabla de borrado' => 'Table deleted',
+	'El usuario no tiene los permisos necesarios' => 'The user does not have the necessary permits',
 	'Tabla de datos' => 'Data table',
 	'Vista detallada' => 'Detailed view',
 	'Usuario' => 'User',

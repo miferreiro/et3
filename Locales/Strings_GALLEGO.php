@@ -24,6 +24,7 @@ array(
 	'Tabla de borrado' => 'Táboa de borrado',
 	'Tabla de datos' => 'Táboa de datos',
 	'Vista detallada' => 'Vista detallada',
+	'El usuario no tiene los permisos necesarios' => 'O usuario non ten os permisos necesarios',
 	'Usuario' => 'Usuario',
 	'login' => 'Usuario',
 	'Contraseña' => 'Contrasinal',

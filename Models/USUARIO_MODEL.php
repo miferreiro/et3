@@ -376,7 +376,15 @@ class USUARIO_MODEL{ //declaración de la clase
 			}
 		}
 	} //fin metodo login
-    
+   function comprobarPermisosAñadir(){
+	   $sql = "SELECT * FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo &&( (P.IdGrupo=G.IdGrupo && P.IdFuncionalidad = F.IdFuncionalidad && P.IdAccion = A.IdAccion && A.NombreAccion = 'ADD' && F.NombreFuncionalidad = 'Gestión de usuarios') || G.NombreGrupo= 'Administracion') )";
+	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
+	   if ( $resultado->num_rows == 0 ) {//miramos si el numero de filas es 0
+			return 'El usuario no tiene los permisos necesarios';
+		} else {//si no es 0, el usuario existe
+            return true;
+		}
+   }
 } //fin de clase
 
 ?>
