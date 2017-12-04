@@ -158,8 +158,9 @@ array(
     'No puedes insertar este id de accion debido a que no existe, debes insertar previamente una accion' => 'You can not insert this action id because it does not exist, you must previously insert an action',
     'No puedes insertar este id de funcionalidad debido a que no existe, debes insertar previamente una funcionalidad' => 'You can not insert this id of functionality because it does not exist, you must previously insert a functionality',
     'No puedes añadir una historia debido a que no se añadio un trabajo' => 'You can not add a story because a job was not added',
-	'LoginEvaluado' => 'LoginEvaluated'
-	
+	'LoginEvaluado' => 'LoginEvaluated',
+	'Nota del Trabajo' => 'Work note',
+    'NotaTrabajo' => 'WorkNote'
 	
 	
 	
