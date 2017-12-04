@@ -24,12 +24,14 @@ function get_data_form(){
 	$IdFuncionalidad = $_REQUEST['IdFuncionalidad'];
 	$NombreFuncionalidad = $_REQUEST['NombreFuncionalidad'];
 	$DescripFuncionalidad = $_REQUEST['DescripFuncionalidad'];
+	$Acciones = null;
 	$action= $_REQUEST['action'];
 	
 	$FUNCIONALIDAD = new FUNCIONALIDAD(
 		$IdFuncionalidad,
 		$NombreFuncionalidad,
-		$DescripFuncionalidad
+		$DescripFuncionalidad,
+		$Acciones
 	);
 	
 	return $FUNCIONALIDAD;
@@ -43,12 +45,8 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
-			//Variable que recoge un objecto model con solo el idgrupo
-			$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');
-			//Variable que almacena el relleno de los datos utilizando el IdGrupo
-			$valores = $FUNCIONALIDAD->RellenaSelect();
 			//Crea una vista add para ver la tupla
-			new FUNCIONALIDAD_ADD( $valores );
+			new FUNCIONALIDAD_ADD();
 		} else {
 			$FUNCIONALIDAD = get_data_form();
 			$respuesta = $FUNCIONALIDAD->ADD();
@@ -57,7 +55,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$FUNCIONALIDAD = new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '');
+			$FUNCIONALIDAD = new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
 			$valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ]);
 			$dependencias = $FUNCIONALIDAD->dependencias( $_REQUEST[ 'IdFuncionalidad' ]);
 			new FUNCIONALIDAD_DELETE( $valores, $dependencias );
@@ -69,13 +67,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
-			$FUNCIONALIDAD = new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '');
+			$FUNCIONALIDAD = new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
 			$valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ] );
 			$datos = $FUNCIONALIDAD->RellenaSelect();
 			new FUNCIONALIDAD_EDIT( $valores, $datos );
 		} else {
 			$FUNCIONALIDAD = get_data_form();
-			$respuesta = $FUNCIONALIDAD->EDIT();
+			$respuesta = $FUNCIONALIDAD->EDIT($_REQUEST['IdAccion']);
 			new MESSAGE( $respuesta, '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );
 		}
 		break;
@@ -91,13 +89,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 		
 	case 'SHOWCURRENT':
-		$FUNCIONALIDAD= new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '');
+		$FUNCIONALIDAD= new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
 		$valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ] );
 		new FUNCIONALIDAD_SHOWCURRENT( $valores );
 		break;
 	default:
 		if ( !$_POST ) {
-			$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');
+			$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '','');
 		} else {
 			$FUNCIONALIDAD = get_data_form();
 		}

@@ -46,7 +46,7 @@ array(
 	'fotopersonal' => 'Foto personal',
 	'Sexo' => 'Sexo',
 	'sexo' => 'Sexo',
-	'¿Está seguro de que quiere borrar este grupo de la tabla, así como sus permisos y desasignar sus usuarios?'=>'¿Está seguro de que quere borrar este grupo da táboa, así como os seus permisos e desasignar os seus usuarios?',
+	'¿Está seguro de que quiere borrar este grupo de la tabla, así como sus permisos y desasignar sus usuarios?'=>'¿Está seguro de que quiere borrar este grupo de la tabla, así como sus permisos y desasignar sus usuarios?',
 	'¿Está seguro de que quiere borrar esta tupla de la tabla?'=>'¿Está seguro de que quiere borrar esta tupla de la tabla?',
 	'Error en la consulta sobre la base de datos' => 'Error en la consulta sobre la base de datos',
 	'No se ha podido conectar con la base de datos' => 'No se ha podido conectar con la base de datos',

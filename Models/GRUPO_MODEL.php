@@ -10,11 +10,12 @@
         var $DescripGrupo;//Declaracion de la variable DescripGrupo
         var $dependencias;
             
-        function __construct($IdGrupo,$NombreGrupo,$DescripGrupo){
+        function __construct($IdGrupo,$NombreGrupo,$DescripGrupo,$Funcs){
             //Asignamos valores a los atributos de la clase
             $this->IdGrupo=$IdGrupo;
             $this->NombreGrupo=$NombreGrupo;
             $this->DescripGrupo=$DescripGrupo;
+			$this->Funcs=$Funcs;
             
             // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -114,8 +115,13 @@
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo' )";
+			$sql2 = "DELETE FROM USU_GRUPO WHERE (IdGrupo = '$this->IdGrupo' )";
+			$sql3 = "DELETE FROM PERMISO WHERE (IdGrupo = '$this->IdGrupo' )";
+			
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
+			$this->mysqli->query( $sql2 );
+			$this->mysqli->query( $sql3 );
 			// se devuelve el mensaje de borrado correcto
 			return "Borrado correctamente";
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe
@@ -194,21 +200,23 @@
         // funcion EDIT()
 	   // Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
 	  // si existe se modifica
-	function EDIT() {
+function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
 		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+		$Funcs= $this->Funcs;
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
-		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
-			
+		if ( $result->num_rows == 1 ) {
+			// se construye la sentencia de modificacion en base a los atributos de la clase
+			if ( count($Funcs) == 0){
+			     //modificamos los atributos de la tabla USUARIO
 				$sql = "UPDATE GRUPO SET 
-					IdGrupo = '$this->IdGrupo',
-					 NombreGrupo='$this->NombreGrupo',
-                     DescripGrupo='$this->DescripGrupo'
+					IdGrupo= '$this->IdGrupo',
+                    NombreGrupo='$this->NombreGrupo',
+					DescripGrupo = '$this->DescripGrupo'
 				WHERE ( IdGrupo = '$this->IdGrupo'
 				)";
-            
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
@@ -216,8 +224,31 @@
 				return 'Modificado correctamente';
 			}
 
-		} else // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
-			return 'No existe en la base de datos';
+		} else{
+				$cont=0;	  
+				for ($i=0;$i<count($Funcs);$i++){
+				 $sqli[$i] = "INSERT INTO PERMISO
+										(IdGrupo,IdFuncionalidad)
+										VALUES
+										('$this->IdGrupo',
+										 '$Funcs[$i]'
+										)";
+				if ( !( $resultado = $this->mysqli->query( $sqli[$i] ) ) ) {
+				
+			     }else{
+				$cont=$cont+1;
+				}	
+				}
+								// si hay un problema con la query se envia un mensaje de error en la modificacion
+			if ( $cont!= (count($Funcs))) {
+				return 'Error en la modificación';
+			} else { // si no hay problemas con la modificación se indica que se ha modificado
+				return 'Modificado correctamente';
+			}
+			}
+		} // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
+		            else
+				return 'No existe en la base de datos';		
 	} // fin del metodo EDIT
 
             

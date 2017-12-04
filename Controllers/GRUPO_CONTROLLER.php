@@ -23,12 +23,13 @@ function get_data_form() {
 	$IdGrupo = $_REQUEST[ 'IdGrupo' ]; //Variable que almacena el valor de idGrupo
 	$NombreGrupo = $_REQUEST[ 'NombreGrupo' ]; //Variable que almacena el valor de NomnbreGrupo
 	$DescripGrupo = $_REQUEST[ 'DescripGrupo' ]; //Variable que almacena el valor de DescripGrupo
-
+    $Funcs = null;
 
 	$GRUPOS = new GRUPO(
 		$IdGrupo,
 		$NombreGrupo,
-		$DescripGrupo
+		$DescripGrupo,
+		$Funcs
 	);
 	//Devuelve el valor del objecto model creado
 	return $GRUPOS;
@@ -55,7 +56,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			//Variable que recoge un objecto model con solo el idgrupo
-			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
+			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
 			//Variable que almacena el relleno de los datos utilizando el IdGrupo
 			$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
 			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
@@ -77,20 +78,21 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-			//Variable que almacena un objeto model con el IdGrupo
-			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
-			//Variable que almacena los datos de los atibutos rellenados a traves de IdGrupo
+			//Variable que almacena un objeto model con el login
+			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '', '');
+			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
+			$datos = $GRUPOS->RellenaSelect();
 			//Muestra la vista del formulario editar
-			new GRUPO_EDIT( $valores );
+			new GRUPO_EDIT( $valores,$datos);
 			//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
 			$GRUPOS = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
-			$respuesta = $GRUPOS->EDIT();
+			$respuesta = $GRUPOS->EDIT($_REQUEST['IdFuncionalidad']);
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
 		}
 		//Fin del bloque
 		break;
@@ -112,7 +114,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 		//Variable que almacena un objeto model con el IdGrupo
-		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
+		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
 		//Variable que almacena los valores rellenados a traves de IdGrupo
 		$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
 		//Variable que almacena los valores rellenados a traves de IdGrupo
@@ -125,7 +127,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default: //Caso que se ejecuta por defecto
 		if ( !$_POST ) {//Si no se han recibido datos 
-			$GRUPOS = new GRUPO( '', '', '');
+			$GRUPOS = new GRUPO( '', '', '','');
 		//Si se reciben datos
 		} else {
 			$GRUPOS = get_data_form();

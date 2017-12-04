@@ -96,11 +96,9 @@ class GRUPO_DELETE {
 			</table>
             <?php
             
-            if($dependencias != null){
                 
                 if(array_key_exists('USU_GRUPO', $dependencias)){
             ?>
-                <h3>Para borrar este grupo tendrá que eliminar a sus integrantes del grupo.</h3>
             <?php
                 }
             
@@ -113,15 +111,12 @@ class GRUPO_DELETE {
             <?php
                 }
 				?>
-				<form action='../Controllers/GRUPO_CONTROLLER.php' method="post" style="display: inline">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
-				</form>
 			<?php
-            }
-            else{
+            
+
                 ?>
 			<p style="text-align:center;">
-				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
+				<?php echo $strings['¿Está seguro de que quiere borrar este grupo de la tabla, así como sus permisos y desasignar sus usuarios?'];?>
 			</p>
 			<form action="../Controllers/GRUPO_CONTROLLER.php" method="post" style="display: inline">
 				<input type="hidden" name="IdGrupo" value=<?php echo $valores2['IdGrupo'] ?> />
@@ -134,10 +129,9 @@ class GRUPO_DELETE {
 			</form>
 		</div>
 <?php
-            }
-		include '../Views/Footer.php';
             
+		include '../Views/Footer.php';
+         }   
 	}
-}
 
 ?>

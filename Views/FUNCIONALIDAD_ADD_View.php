@@ -6,13 +6,11 @@
 */
 class FUNCIONALIDAD_ADD {
 
-	function __construct($datos) {
-		$this->datos = $datos;
-		$this->render($this->datos);
+	function __construct() {
+		$this->render();
 	}
 
-	function render($datos) {
-		$this->datos = $datos;
+	function render() {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -39,33 +37,6 @@ class FUNCIONALIDAD_ADD {
 							<?php echo $strings['DescripFuncionalidad'];?>
 						</th>
 						<td class="formThTd"><textarea id="DescripFuncionalidad" name="DescripFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" cols="50" rows="3" maxlength="100"  required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100')"/></textarea>
-					</tr>
-					<tr>
-					<th class="formThTd">
-						<?php echo $strings['NombreAccion'];?>
-					</th>
-					<td class="formThTd">
-					<select id="IdAccion" multiple size="2" name="IdAccion[]">
-					<option value=""><?php echo $strings['Elige'];?></option>
-<?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
-?>
-
-			    <option value="<?php echo $fila['IdAccion'];?> ">	
-<?php 
-							echo $fila['NombreAccion'];
-
-?>
-				</option>		
-<?php
-					
-?>
-					
-<?php
-				}
-?>					
-				</select>
-					</td>
 					</tr>
 					<tr>
 						<td colspan="2">
