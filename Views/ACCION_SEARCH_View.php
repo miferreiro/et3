@@ -20,7 +20,7 @@ class ACCION_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" action="../Controllers/ACCION_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearch()">
+			<form id="SEARCH" action="../Controllers/ACCION_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchAccion()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -39,7 +39,7 @@ class ACCION_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['DescripAccion'];?>
 						</th>
-						<td class="formThTd"><textarea id="DescripAccion" name="DescripAccion" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="100" cols="50" rows="3" onBlur="comprobarLongitud(this,'100')"/></textarea>
+						<td class="formThTd"><textarea id="DescripAccion" name="DescripAccion" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="100" cols="50" rows="3" onBlur="comprobarLongitud(this,'100') && comprobarTexto(this,'100')" /></textarea>
 					</tr>
 					
 					<tr>

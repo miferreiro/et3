@@ -21,7 +21,7 @@ class ACCION_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/ACCION_CONTROLLER.php" method="post" enctype="multipart/form-data">
+			<form name="EDIT" action="../Controllers/ACCION_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="ComprobarEditAccion()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -40,7 +40,7 @@ class ACCION_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['DescripAccion'];?>
 						</th>
-						<td class="formThTd"><textarea id="DescripAccion" name="DescripAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" cols="50" rows="3" maxlength="100"  required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100')"/><?php echo $this->valores['DescripAccion']?></textarea>
+						<td class="formThTd"><textarea id="DescripAccion" name="DescripAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" cols="50" rows="3" maxlength="100"  required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100') && comprobarTexto(this,'100')"/><?php echo $this->valores['DescripAccion']?></textarea>
 					</tr>
 					
 					<tr>

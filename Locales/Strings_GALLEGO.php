@@ -53,6 +53,7 @@ array(
 	'Gestion de historias' => 'Xestión de historia',
 	'Gestion de trabajos' => 'Xestión de traballos',
 	'Gestion de evaluaciones' => 'Xestión de evaluacions',
+	'¿Está seguro de que quiere borrar este grupo de la tabla, así como sus permisos y desasignar sus usuarios?'=>'¿Está seguro de que quere borrar este grupo da táboa, así como os seus permisos e desasignar os seus usuarios?',
 	'¿Está seguro de que quiere borrar esta tupla de la tabla?'=>'¿Está seguro de que quere borrar esta tupla da táboa?',
 	'Error en la consulta sobre la base de datos' => 'Error na consulta sobre a base de datos',
 	'No se ha podido conectar con la base de datos' => 'Non se ha podido conectar coa base de datos',
@@ -156,7 +157,8 @@ array(
     'No puedes insertar una evaluacion debido a que este alias no existe' => 'Non podes inserir unha evaluacion debido a que o alias este non existe.',
     'No puedes insertar este id de accion debido a que no existe, debes insertar previamente una accion' => 'Non podes inserir este id de acción debido a que non existe, debes inserir previamente unha acción',
     'No puedes insertar este id de funcionalidad debido a que no existe, debes insertar previamente una funcionalidad' => 'Non podes inserir este id de funcionalidade debido a que non existe, debes inserir previamente unha funcionalidade',
-    'No puedes añadir una historia debido a que no se añadio un trabajo' => 'Non podes engadir unha historia debido a que non se engadiu un traballo'
+    'No puedes añadir una historia debido a que no se añadio un trabajo' => 'Non podes engadir unha historia debido a que non se engadiu un traballo',
+	'LoginEvaluado' => 'LoginEvaluado'
     
 	)
 ;

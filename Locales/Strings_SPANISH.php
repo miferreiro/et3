@@ -46,6 +46,7 @@ array(
 	'fotopersonal' => 'Foto personal',
 	'Sexo' => 'Sexo',
 	'sexo' => 'Sexo',
+	'¿Está seguro de que quiere borrar este grupo de la tabla, así como sus permisos y desasignar sus usuarios?'=>'¿Está seguro de que quere borrar este grupo da táboa, así como os seus permisos e desasignar os seus usuarios?',
 	'¿Está seguro de que quiere borrar esta tupla de la tabla?'=>'¿Está seguro de que quiere borrar esta tupla de la tabla?',
 	'Error en la consulta sobre la base de datos' => 'Error en la consulta sobre la base de datos',
 	'No se ha podido conectar con la base de datos' => 'No se ha podido conectar con la base de datos',
@@ -157,7 +158,8 @@ array(
     'No puedes insertar una evaluacion debido a que este alias no existe' => 'No puedes insertar una evaluacion debido a que este alias no existe',
     'No puedes insertar este id de accion debido a que no existe, debes insertar previamente una accion' => 'No puedes insertar este id de accion debido a que no existe, debes insertar previamente una accion',
     'No puedes insertar este id de funcionalidad debido a que no existe, debes insertar previamente una funcionalidad' => 'No puedes insertar este id de funcionalidad debido a que no existe, debes insertar previamente una funcionalidad',
-    'No puedes añadir una historia debido a que no se añadio un trabajo' => 'No puedes añadir una historia debido a que no se añadio un trabajo'
+    'No puedes añadir una historia debido a que no se añadio un trabajo' => 'No puedes añadir una historia debido a que no se añadio un trabajo',
+	'LoginEvaluado' => 'LoginEvaluado'
 	)
 ;
 

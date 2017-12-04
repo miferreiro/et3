@@ -21,7 +21,7 @@ class TRABAJO_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/TRABAJO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEdit()">
+			<form name="EDIT" action="../Controllers/TRABAJO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditTrabajo()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -40,21 +40,21 @@ class TRABAJO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['FechaIniTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaIniTrabajo" name="FechaIniTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['FechaIniTrabajo']?>" maxlength="50" size="60" required  class="tcal tcalInput" onBlur="comprobarVacio(this) && comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
+						<td class="formThTd"><input type="text" id="FechaIniTrabajo" name="FechaIniTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['FechaIniTrabajo']?>"  size="60" required  class="tcal" readonly onBlur=""/>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['FechaFinTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaFinTrabajo" name="FechaFinTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['FechaFinTrabajo']?>" maxlength="50" size="60" required  class="tcal tcalInput" onBlur="comprobarVacio(this) && comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
+						<td class="formThTd"><input type="text" id="FechaFinTrabajo" name="FechaFinTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['FechaFinTrabajo']?>" size="60" required  class="tcal" readonly onBlur=""/>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['PorcentajeNota'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['PorcentajeNota']?>" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
+						<td class="formThTd"><input type="text" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['PorcentajeNota']?>" maxlength="2" size="2" required onBlur="comprobarVacio(document.forms['EDIT'].elements[2]) && comprobarVacio(document.forms['EDIT'].elements[3]) && comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2') && comprobarEntero(this,'0','100')"/>
 					</tr>
                     
                     

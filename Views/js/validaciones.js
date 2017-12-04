@@ -1,15 +1,15 @@
-<script type = "text/javascript" >
-/*  Archivo javaScript
-	Nombre: validaciones.js
-	Autor: 	fta875
-	Fecha de creación: 26/9/2017 
-	Función: el objetivo principal de este fichero es validar los distintos campos de los formularios, permitiendo así que los datos cumplan los
-	requisitos y formatos necesarios para ser válidos. Además se incluyen las funciones asociadas a mostrar el mensaje de error cuando los datos
-	son incorrectos
-*/
+<script type="text/javascript" >
+	/*  Archivo javaScript
+		Nombre: validaciones.js
+		Autor: 	fta875
+		Fecha de creación: 26/9/2017 
+		Función: el objetivo principal de este fichero es validar los distintos campos de los formularios, permitiendo así que los datos cumplan los
+		requisitos y formatos necesarios para ser válidos. Además se incluyen las funciones asociadas a mostrar el mensaje de error cuando los datos
+		son incorrectos
+	*/
 
-
-var atributo = new Array();/*Array que sirve para poder traducir el nombre de los atributos de los campos del formulario */
+var atributo = new Array(); /*Array que sirve para poder traducir el nombre de los atributos de los campos del formulario */
+//GESTION DE USUARIOS
 atributo['login'] = '<?php echo $strings["Usuario"]?>';
 atributo['password'] = '<?php echo $strings["password"]?>';
 atributo['DNI'] = '<?php echo $strings["DNI"]?>';
@@ -20,19 +20,54 @@ atributo['email'] = '<?php echo $strings["email"]?>';
 atributo['FechaNacimiento'] = '<?php echo $strings["FechaNacimiento"]?>';
 atributo['direc'] = '<?php echo $strings["Direccion"]?>';
 atributo['sexo'] = '<?php echo $strings["Sexo"]?>';
+//GESTION DE GRUPOS DE USUARIO
+atributo['NombreGrupo'] = '<?php echo $strings["NombreGrupo"]?>';
+atributo['DescripGrupo'] = '<?php echo $strings["DescripGrupo"]?>';
 
+//GESTION DE FUNCIONALIDADES
+atributo['IdFuncionalidad'] = '<?php echo $strings["IdFuncionalidad"]?>';
+atributo['NombreFuncionalidad'] = '<?php echo $strings["NombreFuncionalidad"]?>';
+atributo['DescripFuncionalidad'] = '<?php echo $strings["DescripFuncionalidad"]?>';
+//GESTIÓN DE ACCIONES
+atributo['IdAccion'] = '<?php echo $strings["IdAccion"]?>';
+atributo['NombreAccion'] = '<?php echo $strings["NombreAccion"]?>';
+atributo['DescripAccion'] = '<?php echo $strings["DescripAccion"]?>';
+//GESTION DE TRABAJO
+atributo['IdTrabajo'] = '<?php echo $strings["IdTrabajo"]?>';
+atributo['NombreTrabajo'] = '<?php echo $strings["NombreTrabajo"]?>';
+atributo['FechaIniTrabajo'] = '<?php echo $strings["FechaIniTrabajo"]?>';
+atributo['FechaFinTrabajo'] = '<?php echo $strings["FechaFinTrabajo"]?>';
+atributo['PorcentajeNota'] = '<?php echo $strings["PorcentajeNota"]?>';
+//GESTION ENTREGA
+atributo['Horas'] = '<?php echo $strings["Horas"]?>';
+atributo['Ruta'] = '<?php echo $strings["Ruta"]?>';
+atributo['Alias'] = '<?php echo $strings["Alias"]?>';
+//GESTION HISTORIA
+atributo['IdHistoria'] = '<?php echo $strings["IdHistoria"]?>';
+atributo['TextoHistoria'] = '<?php echo $strings["TextoHistoria"]?>';
+//GESTION EVALUACION
+
+atributo['LoginEvaluador'] = '<?php echo $strings["LoginEvaluador"]?>';
+atributo['AliasEvaluado'] = '<?php echo $strings["AliasEvaluado"]?>';
+atributo['CorrectoA'] = '<?php echo $strings["CorrectoA"]?>';
+atributo['CorrectoP'] = '<?php echo $strings["CorrectoP"]?>';
+atributo['ComenIncorrectoA'] = '<?php echo $strings["ComenIncorrectoA"]?>';
+atributo['ComentIncorrectoP'] = '<?php echo $strings["ComentIncorrectoP"]?>';
+atributo['OK'] = '<?php echo $strings["OK"]?>';
+//GESTION ASIGNAC_QA
+atributo['LoginEvaluado'] = '<?php echo $strings["LoginEvaluado"]?>';
 
 // function hayEspacio(campo): Comprueba que no tenga espacios el campo
- function sinEspacio(campo) {
- 	//Comprueba si hay algun espacio
+function sinEspacio(campo) {
+	//Comprueba si hay algun espacio
 	if (/[\s]/.test(campo.value)) {
 		//mensaje multidioma
 		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede tener espacios "];?>');
 		campo.focus();
 		return false;
 	}
-	return true;//Devuelve "true"
- }
+	return true; //Devuelve "true"
+}
 
 
 /*
@@ -53,7 +88,7 @@ function comprobarVacio(campo) {
 function comprobarLongitud(campo, size) {
 	/*Si el campo tiene mayor longitud que size, se manda un aviso de error llamando a la función msgError y se retorna false */
 	if (campo.value.length > size) {
-		msgError('<?php echo $strings["Longitud incorrecta. El atributo "];?>' +atributo[campo.name] + '<?php echo $strings[" puede tener una longitud máxima de "];?>' + size + '<?php echo $strings[" y es de "];?>' + campo.value.length);
+		msgError('<?php echo $strings["Longitud incorrecta. El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" puede tener una longitud máxima de "];?>' + size + '<?php echo $strings[" y es de "];?>' + campo.value.length);
 		campo.focus();
 		return false;
 	}
@@ -294,10 +329,62 @@ function msgError(msg) {
 	abrirVentana();
 	return true;
 }
+
+/*
+	function comprobarLogin():valida todos los campos del formulario login antes de realizar el submit
+*/
+function comprobarLogin() {
+
+	var login; /*variable que representa el elemento login del formulario de login */
+	var pwd; /*variable que representa el elemento password del formulario de login */
+
+	login = document.forms['Form'].elements[0];
+	pwd = document.forms['Form'].elements[1];
+
+	/*Comprueba si el login es vacio, retorna false*/
+	if (!comprobarVacio(login)) {
+		return false;
+	} else {
+		/*Comprobamos su longitud, si es mayor que 9, retorna false*/
+		if (!comprobarLongitud(login, 9)) {
+			return false;
+		} else {
+			/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(login, 9)) {
+				return false;
+			}
+		}
+		/*Comprueba si la password es vacio, retorna false*/
+		if (!comprobarVacio(pwd)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 20, retorna false*/
+			if (!comprobarLongitud(pwd, 20)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(pwd, 20)) {
+					return false;
+				}
+			}
+		}
+
+	}
+
+	encriptar();
+
+	return true;
+}
+/*
+	function encriptar(): encripta en md5 el valor del campo password
+*/
+function encriptar() {
+	document.getElementById('password').value = hex_md5(document.getElementById('password').value); //cambia el valor del campo password introducido por el usuario, 																							   //por el valor de la password encriptada
+}
 /*
 	function comprobarAdd():valida todos los campos del formulario add antes de realizar el submit
 */
-function comprobarAdd() {
+function comprobarAddUsuario() {
 
 	var login; /*variable que representa el elemento login del formulario add */
 	var pwd; /*variable que representa el elemento password del formulario add */
@@ -306,7 +393,7 @@ function comprobarAdd() {
 	var apellidosuser; /*variable que representa el elemento apellidosuser del formulario add */
 	var telefono; /*variable que representa el elemento telefono del formulario add */
 	var emailuser; /*variable que representa el elemento emailuser del formulario add */
-    var direccion /*variable que representa el elemento direccion del formulario add */
+	var direccion /*variable que representa el elemento direccion del formulario add */
 
 
 	login = document.forms['ADD'].elements[0];
@@ -337,7 +424,7 @@ function comprobarAdd() {
 					return false;
 				}
 			}
-		}	
+		}
 	}
 	/*Comprueba si password es vacio, retorna false*/
 	if (!comprobarVacio(pwd)) {
@@ -447,7 +534,7 @@ function comprobarAdd() {
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(direccion, 60)) {
 				return false;
-			} 
+			}
 		}
 	}
 
@@ -477,7 +564,7 @@ function comprobarAdd() {
 /*
 	function comprobarSearch():valida todos los campos del formulario search antes de realizar el submit
 */
-function comprobarSearch() {
+function comprobarSearchUsuario() {
 
 
 	var login; /*variable que representa el elemento login del formulario search*/
@@ -564,20 +651,20 @@ function comprobarSearch() {
 			return false;
 		}
 	}
-	
 
-		/*Comprueba su longitud, si es mayor que 60, retorna false*/
+
+	/*Comprueba su longitud, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(direccion, 60)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(direccion, 60)) {
 			return false;
-		} else {
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(direccion, 60)) {
-				return false;
-			} 
 		}
-	
-	
-		/*Comprueba la longitud que tiene telefono, si es mayor que 11, retorna false*/
+	}
+
+
+	/*Comprueba la longitud que tiene telefono, si es mayor que 11, retorna false*/
 	if (!comprobarLongitud(telefono, 11)) {
 		return false;
 	} else {
@@ -591,7 +678,7 @@ function comprobarSearch() {
 /*
 	function comprobarEdit():valida todos los campos del formulario edit antes de realizar el submit
 */
-function comprobarEdit() {
+function comprobarEditUsuario() {
 
 	var login; /*variable que representa el elemento login del formulario edit */
 	var pwd; /*variable que representa el elemento password del formulario edit */
@@ -728,8 +815,8 @@ function comprobarEdit() {
 			}
 		}
 	}
-	
-		/*Comprueba si direccion es vacio, retorna false*/
+
+	/*Comprueba si direccion es vacio, retorna false*/
 	if (!comprobarVacio(direccion)) {
 		return false;
 	} else {
@@ -740,10 +827,10 @@ function comprobarEdit() {
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(direccion, 60)) {
 				return false;
-			} 
+			}
 		}
 	}
-	
+
 	/*Comprueba si telelefono es vacio, retorna false*/
 	if (!comprobarVacio(telefono)) {
 		return false;
@@ -769,55 +856,433 @@ function comprobarEdit() {
 
 }
 /*
-	function comprobarLogin():valida todos los campos del formulario login antes de realizar el submit
+	function comprobarSearchAccion: alida todos los campos del formulario search antes de realizar el submit
 */
-function comprobarLogin() {
+function comprobarSearchAccion() {
 
-	var login; /*variable que representa el elemento login del formulario de login */
-	var pwd; /*variable que representa el elemento password del formulario de login */
+	var IdAccion; /*variable que representa el elemento IdAccion del formulario search de gestión de accion*/
+	var NombreAccion; /*variable que representa el elemento NombreAccion del formulario search de gestión de accion*/
+	var DescripAccion; /*variable que representa el elemento DescripAccion del formulario search de gestión de accion*/
 
-	login = document.forms['Form'].elements[0];
-	pwd = document.forms['Form'].elements[1];
+	IdAccion = document.forms['SEARCH'].elements[0];
+	NombreAccion = document.forms['SEARCH'].elements[1];
+	DescripAccion = document.forms['SEARCH'].elements[2];
 
-	/*Comprueba si el login es vacio, retorna false*/
-	if (!comprobarVacio(login)) {
+	/*Comprueba su longitud, si es mayor que 6, retorna false*/
+	if (!comprobarLongitud(IdAccion, 6)) {
 		return false;
 	} else {
-		/*Comprobamos su longitud, si es mayor que 9, retorna false*/
-		if (!comprobarLongitud(login, 9)) {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(IdAccion, 6)) {
 			return false;
-		} else {
-			/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(login, 9)) {
-				return false;
-			}
 		}
-		/*Comprueba si la password es vacio, retorna false*/
-		if (!comprobarVacio(pwd)) {
-			return false;
-		} else {
-			/*Comprueba su longitud, si es mayor que 20, retorna false*/
-			if (!comprobarLongitud(pwd, 20)) {
-				return false;
-			} else {
-				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-				if (!comprobarTexto(pwd, 20)) {
-					return false;
-				}
-			}
-		}
-
 	}
-
-	encriptar();
+	/*Comprueba su longitud, si es mayor que 60, retorna false*/
+	if (!comprobarLongitud(NombreAccion, 60)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(NombreAccion, 60)) {
+			return false;
+		} else {
+			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+			if (!comprobarAlfabetico(NombreAccion, 60)) {
+				return false;
+			}
+		}
+	}
+	/*Comprueba su longitud, si es mayor que 100, retorna false*/
+	if (!comprobarLongitud(DescripAccion, 100)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(DescripAccion, 100)) {
+			return false;
+		}
+	}
 
 	return true;
 }
 /*
-	function encriptar(): encripta en md5 el valor del campo password
+	function comprobarEditAccion: alida todos los campos del formulario edit antes de realizar el submit
 */
-function encriptar() {
-	document.getElementById('password').value = hex_md5(document.getElementById('password').value);//cambia el valor del campo password introducido por el usuario, 																							   //por el valor de la password encriptada
+function comprobarEditAccion() {
+
+	var IdAccion; /*variable que representa el elemento IdAccion del formulario edit de gestión de accion*/
+	var NombreAccion; /*variable que representa el elemento NombreAccion del formulario edit de gestión de accion*/
+	var DescripAccion; /*variable que representa el elemento DescripAccion del formulario edit de gestión de accion*/
+
+	IdAccion = document.forms['EDIT'].elements[0];
+	NombreAccion = document.forms['EDIT'].elements[1];
+	DescripAccion = document.forms['EDIT'].elements[2];
+
+
+	/*Comprueba si IdAccion es vacio, retorna false*/
+	if (!comprobarVacio(IdAccion)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdAccion)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdAccion, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdAccion, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si NombreAccion es vacio, retorna false*/
+	if (!comprobarVacio(NombreAccion)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(NombreAccion)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 128, retorna false*/
+			if (!comprobarLongitud(NombreAccion, 60)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(NombreAccion, 60)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si DescripAccion es vacio, retorna false*/
+	if (!comprobarVacio(DescripAccion)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 100, retorna false*/
+		if (!comprobarLongitud(DescripAccion, 100)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(DescripAccion, 100)) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+
 }
+/*
+	function comprobarAddAccion: alida todos los campos del formulario add antes de realizar el submit
+*/
+function comprobarAddAccion() {
+
+	var IdAccion; /*variable que representa el elemento IdAccion del formulario add de gestión de accion*/
+	var NombreAccion; /*variable que representa el elemento NombreAccion del formulario add de gestión de accion*/
+	var DescripAccion; /*variable que representa el elemento DescripAccion del formulario add de gestión de accion*/
+
+	IdAccion = document.forms['ADD'].elements[0];
+	NombreAccion = document.forms['ADD'].elements[1];
+	DescripAccion = document.forms['ADD'].elements[2];
+
+
+	/*Comprueba si IdAccion es vacio, retorna false*/
+	if (!comprobarVacio(IdAccion)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdAccion)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdAccion, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdAccion, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si NombreAccion es vacio, retorna false*/
+	if (!comprobarVacio(NombreAccion)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(NombreAccion)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 128, retorna false*/
+			if (!comprobarLongitud(NombreAccion, 60)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(NombreAccion, 60)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si DescripAccion es vacio, retorna false*/
+	if (!comprobarVacio(DescripAccion)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 100, retorna false*/
+		if (!comprobarLongitud(DescripAccion, 100)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(DescripAccion, 100)) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+
+}
+/*
+	function comprobarAddTrabajo: alida todos los campos del formulario add antes de realizar el submit
+*/
+function comprobarAddTrabajo() {
+
+
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario add */
+	var NombreTrabajo; /*variable que representa el elemento NombreTrabajo del formulario add */
+	var FechaIniTrabajo; /*variable que representa el elemento fechaIniYrabajo del formulario add */
+	var FechaFinTrabajo; /*variable que representa el elemento fechaFinTrabajo del formulario add */
+	var PorcentajeNota; /*variable que representa el elemento PorcentajeNota del formulario add */
+
+
+	IdTrabajo = document.forms['ADD'].elements[0];
+	NombreTrabajo = document.forms['ADD'].elements[1];
+	FechaIniTrabajo = document.forms['ADD'].elements[2];
+	FechaFinTrabajo = document.forms['ADD'].elements[3];
+	PorcentajeNota = document.forms['ADD'].elements[4];
+
+
+	/*Comprueba si IdTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(IdTrabajo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdTrabajo)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si NombreTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(NombreTrabajo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(NombreTrabajo)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 60, retorna false*/
+			if (!comprobarLongitud(NombreTrabajo, 60)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(NombreTrabajo, 60)) {
+					return false;
+				}
+			}
+		}
+	}
+
+	/*Comprueba si FechaIniTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(FechaIniTrabajo)) {
+		return false;
+	}
+	/*Comprueba si FechaFinTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(FechaFinTrabajo)) {
+		return false;
+	}
+
+	/*Comprueba si PorcentajeNota es vacio, retorna false*/
+	if (!comprobarVacio(PorcentajeNota)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 2, retorna false*/
+		if (!comprobarLongitud(PorcentajeNota, '2')) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(PorcentajeNota, '2')) {
+				return false;
+			} else {
+				/*Comprueba que sea un numero entero y este entre 0 y 100*/
+				if (!comprobarEntero(PorcentajeNota, '0', '100')) {
+					return false;
+
+				}
+			}
+		}
+	}
+
+	return true;
+
+}
+/*
+	function comprobarEditAccion: alida todos los campos del formulario edit antes de realizar el submit
+*/
+function comprobarEditTrabajo() {
+
+
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario add */
+	var NombreTrabajo; /*variable que representa el elemento NombreTrabajo del formulario add */
+	var FechaIniTrabajo; /*variable que representa el elemento fechaIniYrabajo del formulario add */
+	var FechaFinTrabajo; /*variable que representa el elemento fechaFinTrabajo del formulario add */
+	var PorcentajeNota; /*variable que representa el elemento PorcentajeNota del formulario add */
+
+
+	IdTrabajo = document.forms['EDIT'].elements[0];
+	NombreTrabajo = document.forms['EDIT'].elements[1];
+	FechaIniTrabajo = document.forms['EDIT'].elements[2];
+	FechaFinTrabajo = document.forms['EDIT'].elements[3];
+	PorcentajeNota = document.forms['EDIT'].elements[4];
+
+
+	/*Comprueba si IdTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(IdTrabajo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdTrabajo)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si NombreTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(NombreTrabajo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(NombreTrabajo)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 60, retorna false*/
+			if (!comprobarLongitud(NombreTrabajo, 60)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(NombreTrabajo, 60)) {
+					return false;
+				}
+			}
+		}
+	}
+
+	/*Comprueba si FechaIniTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(FechaIniTrabajo)) {
+		return false;
+	}
+	/*Comprueba si FechaFinTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(FechaFinTrabajo)) {
+		return false;
+	}
+
+	/*Comprueba si PorcentajeNota es vacio, retorna false*/
+	if (!comprobarVacio(PorcentajeNota)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 2, retorna false*/
+		if (!comprobarLongitud(PorcentajeNota, '2')) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(PorcentajeNota, '2')) {
+				return false;
+			} else {
+				/*Comprueba que sea un numero entero y este entre 0 y 100*/
+				if (!comprobarEntero(PorcentajeNota, '0', '100')) {
+					return false;
+
+				}
+			}
+		}
+	}
+
+	return true;
+
+}
+/*
+	function comprobarSearchAccion: alida todos los campos del formulario edit antes de realizar el submit
+*/
+function comprobarSearchTrabajo() {
+
+
+
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario add */
+	var NombreTrabajo; /*variable que representa el elemento NombreTrabajo del formulario add */
+	var FechaIniTrabajo; /*variable que representa el elemento fechaIniYrabajo del formulario add */
+	var FechaFinTrabajo; /*variable que representa el elemento fechaFinTrabajo del formulario add */
+	var PorcentajeNota; /*variable que representa el elemento PorcentajeNota del formulario add */
+
+
+	IdTrabajo = document.forms['SEARCH'].elements[0];
+	NombreTrabajo = document.forms['SEARCH'].elements[1];
+	FechaIniTrabajo = document.forms['SEARCH'].elements[2];
+	FechaFinTrabajo = document.forms['SEARCH'].elements[3];
+	PorcentajeNota = document.forms['SEARCH'].elements[4];
+
+
+
+
+	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+	if (!comprobarLongitud(IdTrabajo, 6)) {
+		return false;
+	} else {
+		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(IdTrabajo, 6)) {
+			return false;
+		}
+	}
+
+
+
+	/*Comprueba su longitud, si es mayor que 60, retorna false*/
+	if (!comprobarLongitud(NombreTrabajo, 60)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(NombreTrabajo, 60)) {
+			return false;
+		}
+	}
+
+	//Comprobamos que tenga un formato válido
+	if (!comprobarCampoNumFormSearch(PorcentajeNota, '2', '0', '100')) {
+		return false;
+	}
+
+	return true;
+
+}
+
+
+
+
 
 </script>
