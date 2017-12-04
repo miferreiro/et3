@@ -105,7 +105,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
                 }
         
         
-           $al="SELECT * FROM ENTREGA WHERE (Alias = '$this->Alias')";
+           $al="SELECT * FROM ENTREGA WHERE (Alias = '$this->AliasEvaluado')";
             
                    $result=$this->mysqli->query($al);
                 if(!$result){

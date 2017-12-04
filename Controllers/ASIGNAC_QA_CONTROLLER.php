@@ -79,15 +79,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 					$AliasEvaluado=$miarray[$cont][2];//Variable que almacena $AliasEvaluado
 					//Creamos un nuevo objecto Asignacion Model para instanciar las variables
 					$ASIGNACION = new ASIGNAC_QA_MODEL($IdTrabajo,$LoginEvaluador,$LoginEvaluado,$AliasEvaluado);
-					
-					$ASIGNACION->ADD();//Añadimos los datos a la tabla
+
+					$resultado = $ASIGNACION->ADD();//Añadimos los datos a la tabla
 					$veces[$cont]++; //Incrementamos la posición del trabajo
 					$cont++;//Incrementamos posición del array
 					
 				}
 			}
 		//crea una vista mensaje con la respuesta y la dirección de vuelta
-		new MESSAGE( 'Asignacion generada con exito', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+		new MESSAGE( $resultado, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+		//new MESSAGE( 'Asignacion generada con exito', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 		//Finaliza el bloque
 		break;
 	default: //Caso que se ejecuta por defecto
