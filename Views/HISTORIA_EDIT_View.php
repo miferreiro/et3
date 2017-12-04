@@ -19,7 +19,7 @@ class HISTORIA_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/HISTORIA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
+			<form name="EDIT" action="../Controllers/HISTORIA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="comprobarEditHistoria()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -32,13 +32,13 @@ class HISTORIA_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['IdHistoria'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdHistoria'] ?>" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'60') "/>
+						<td class="formThTd"><input type="text" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdHistoria'] ?>" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2') && comprobarEntero(this,'0','99')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['TextoHistoria'];?>
 						</th>
-						<td class="formThTd"><textarea id="TextoHistoria" name="TextoHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"  required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100')" ><?php echo $this->valores['TextoHistoria'] ?></textarea>
+						<td class="formThTd"><textarea id="TextoHistoria" name="TextoHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"  required onBlur="comprobarVacio(this) && comprobarLongitud(this,'300') && comprobarTexto(this,'300')" ><?php echo $this->valores['TextoHistoria'] ?></textarea>
 					</tr>
 					
 					<tr>

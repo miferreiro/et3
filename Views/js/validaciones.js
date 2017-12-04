@@ -856,7 +856,7 @@ function comprobarEditUsuario() {
 
 }
 /*
-	function comprobarSearchAccion: alida todos los campos del formulario search antes de realizar el submit
+	function comprobarSearchAccion: valida todos los campos del formulario search antes de realizar el submit
 */
 function comprobarSearchAccion() {
 
@@ -904,7 +904,7 @@ function comprobarSearchAccion() {
 	return true;
 }
 /*
-	function comprobarEditAccion: alida todos los campos del formulario edit antes de realizar el submit
+	function comprobarEditAccion: valida todos los campos del formulario edit antes de realizar el submit
 */
 function comprobarEditAccion() {
 
@@ -974,7 +974,7 @@ function comprobarEditAccion() {
 
 }
 /*
-	function comprobarAddAccion: alida todos los campos del formulario add antes de realizar el submit
+	function comprobarAddAccion: valida todos los campos del formulario add antes de realizar el submit
 */
 function comprobarAddAccion() {
 
@@ -1014,7 +1014,7 @@ function comprobarAddAccion() {
 		if (!sinEspacio(NombreAccion)) {
 			return false;
 		} else {
-			/*Comprueba su longitud, si es mayor que 128, retorna false*/
+			/*Comprueba su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreAccion, 60)) {
 				return false;
 			} else {
@@ -1044,7 +1044,7 @@ function comprobarAddAccion() {
 
 }
 /*
-	function comprobarAddTrabajo: alida todos los campos del formulario add antes de realizar el submit
+	function comprobarAddTrabajo: valida todos los campos del formulario add antes de realizar el submit
 */
 function comprobarAddTrabajo() {
 
@@ -1116,15 +1116,15 @@ function comprobarAddTrabajo() {
 		return false;
 	} else {
 		/*Comprueba su longitud, si es mayor que 2, retorna false*/
-		if (!comprobarLongitud(PorcentajeNota, '2')) {
+		if (!comprobarLongitud(PorcentajeNota, 2)) {
 			return false;
 		} else {
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(PorcentajeNota, '2')) {
+			if (!comprobarTexto(PorcentajeNota, 2)) {
 				return false;
 			} else {
 				/*Comprueba que sea un numero entero y este entre 0 y 100*/
-				if (!comprobarEntero(PorcentajeNota, '0', '100')) {
+				if (!comprobarEntero(PorcentajeNota, 0, 100)) {
 					return false;
 
 				}
@@ -1136,16 +1136,16 @@ function comprobarAddTrabajo() {
 
 }
 /*
-	function comprobarEditAccion: alida todos los campos del formulario edit antes de realizar el submit
+	function comprobarEditAccion: valida todos los campos del formulario edit antes de realizar el submit
 */
 function comprobarEditTrabajo() {
 
 
-	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario add */
-	var NombreTrabajo; /*variable que representa el elemento NombreTrabajo del formulario add */
-	var FechaIniTrabajo; /*variable que representa el elemento fechaIniYrabajo del formulario add */
-	var FechaFinTrabajo; /*variable que representa el elemento fechaFinTrabajo del formulario add */
-	var PorcentajeNota; /*variable que representa el elemento PorcentajeNota del formulario add */
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario edit */
+	var NombreTrabajo; /*variable que representa el elemento NombreTrabajo del formulario edit */
+	var FechaIniTrabajo; /*variable que representa el elemento fechaIniYrabajo del formulario edit */
+	var FechaFinTrabajo; /*variable que representa el elemento fechaFinTrabajo del formulario edit */
+	var PorcentajeNota; /*variable que representa el elemento PorcentajeNota del formulario edit */
 
 
 	IdTrabajo = document.forms['EDIT'].elements[0];
@@ -1208,15 +1208,15 @@ function comprobarEditTrabajo() {
 		return false;
 	} else {
 		/*Comprueba su longitud, si es mayor que 2, retorna false*/
-		if (!comprobarLongitud(PorcentajeNota, '2')) {
+		if (!comprobarLongitud(PorcentajeNota, 2)) {
 			return false;
 		} else {
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(PorcentajeNota, '2')) {
+			if (!comprobarTexto(PorcentajeNota, 2)) {
 				return false;
 			} else {
 				/*Comprueba que sea un numero entero y este entre 0 y 100*/
-				if (!comprobarEntero(PorcentajeNota, '0', '100')) {
+				if (!comprobarEntero(PorcentajeNota, 0, 100)) {
 					return false;
 
 				}
@@ -1228,17 +1228,17 @@ function comprobarEditTrabajo() {
 
 }
 /*
-	function comprobarSearchAccion: alida todos los campos del formulario edit antes de realizar el submit
+	function comprobarSearchAccion: valida todos los campos del formulario edit antes de realizar el submit
 */
 function comprobarSearchTrabajo() {
 
 
 
-	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario add */
-	var NombreTrabajo; /*variable que representa el elemento NombreTrabajo del formulario add */
-	var FechaIniTrabajo; /*variable que representa el elemento fechaIniYrabajo del formulario add */
-	var FechaFinTrabajo; /*variable que representa el elemento fechaFinTrabajo del formulario add */
-	var PorcentajeNota; /*variable que representa el elemento PorcentajeNota del formulario add */
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario search */
+	var NombreTrabajo; /*variable que representa el elemento NombreTrabajo del formulario search */
+	var FechaIniTrabajo; /*variable que representa el elemento fechaIniYrabajo del formulario search */
+	var FechaFinTrabajo; /*variable que representa el elemento fechaFinTrabajo del formulario search */
+	var PorcentajeNota; /*variable que representa el elemento PorcentajeNota del formulario search */
 
 
 	IdTrabajo = document.forms['SEARCH'].elements[0];
@@ -1273,16 +1273,1379 @@ function comprobarSearchTrabajo() {
 	}
 
 	//Comprobamos que tenga un formato válido
-	if (!comprobarCampoNumFormSearch(PorcentajeNota, '2', '0', '100')) {
+	if (!comprobarCampoNumFormSearch(PorcentajeNota, 2, 0, 100)) {
 		return false;
 	}
 
 	return true;
 
 }
+/*
+	function comprobarAddEntrega: valida todos los campos del formulario add antes de realizar el submit
+*/
+function comprobarAddEntrega() {
+
+	var login; /*variable que representa el elemento login del formulario add de gestión de accion*/
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario add de gestión de accion*/
+	var Horas; /*variable que representa el elemento Horas del formulario add de gestión de accion*/
+	var Ruta; /*variable que representa el elemento Ruta del formulario add de gestión de accion*/
+	login = document.forms['ADD'].elements[0];
+	IdTrabajo = document.forms['ADD'].elements[1];
+	Horas = document.forms['ADD'].elements[2];
+	Ruta = document.forms['ADD'].elements[3];
+
+	/*Comprueba si login es vacio, retorna false*/
+	if (!comprobarVacio(login)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(login)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(login, 9)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(login, 9)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si IdTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(IdTrabajo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdTrabajo)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si Horas es vacio, retorna false*/
+	if (!comprobarVacio(Horas)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 2, retorna false*/
+		if (!comprobarLongitud(Horas, 2)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(Horas, 2)) {
+				return false;
+			} else {
+				//Comprueba si es un numero entero y esta entre 0 y 99
+				if (!comprobarEntero(Horas, 0, 99)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si Ruta es vacio, retorna false*/
+	if (!comprobarVacio(Ruta)) {
+		return false;
+	}
+
+	return true;
+
+}
+/*
+	function comprobarEditEntrega: valdia todos los campos del formulario Edit antes de realizar el submit
+*/
+function comprobarEditEntrega() {
+	var login; /*variable que representa el elemento login del formulario edit de gestión de entrega*/
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario edit de gestión de entrega*/
+	var Alias; /*variable que representa el elemento Alias del formulario edit de gestión de entrega*/
+	var Horas; /*variable que representa el elemento Horas del formulario edit de gestión de entrega*/
+	var Ruta; /*variable que representa el elemento Ruta del formulario edit de gestión de entrega*/
+	login = document.forms['EDIT'].elements[0];
+	IdTrabajo = document.forms['EDIT'].elements[1];
+	Alias = document.forms['EDIT'].elemens[2];
+	Horas = document.forms['EDIT'].elements[3];
+	Ruta = document.forms['EDIT'].elements[4];
+
+	/*Comprueba si login es vacio, retorna false*/
+	if (!comprobarVacio(login)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(login)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(login, 9)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(login, 9)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si IdTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(IdTrabajo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdTrabajo)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si Alias es vacio, retorna false*/
+	if (!comprobarVacio(Alias)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(Alias)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 9, retorna false*/
+			if (!comprobarLongitud(Alias, 9)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(Alias, 9)) {
+					return false;
+				}
+			}
+		}
+	}
+
+	/*Comprueba si Horas es vacio, retorna false*/
+	if (!comprobarVacio(Horas)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 2, retorna false*/
+		if (!comprobarLongitud(Horas, '2')) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(Horas, '2')) {
+				return false;
+			} else {
+				/*Comprueba que sea un numero entero y este entre 0 y 99*/
+				if (!comprobarEntero(Horas, '0', '99')) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si Ruta es vacio, retorna false*/
+	if (!comprobarVacio(Ruta)) {
+		return false;
+	}
+
+	return true;
+}
+/*
+	function comprobarSearchEntrega: valida todos los campos del formulario Seach antes de realizar el submit
+*/
+function comprobarSearchEntrega() {
+	var login; /*variable que representa el elemento login del formulario search de gestión de entrega*/
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario search de gestión de entrega*/
+	var Alias; /*variable que representa el elemento Alias del formulario search de gestión de entrega*/
+	var Horas; /*variable que representa el elemento Horas del formulario search de gestión de entrega*/
+	var Ruta; /*variable que representa el elemento Ruta del formulario search de gestión de entrega*/
+	login = document.forms['SEARCH'].elements[0];
+	IdTrabajo = document.forms['SEARCH'].elements[1];
+	Alias = document.forms['SEARCH'].elemens[2];
+	Horas = document.forms['SEARCH'].elements[3];
+	Ruta = document.forms['SEARCH'].elements[4];
+
+
+	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+	if (!comprobarLongitud(login, 9)) {
+		return false;
+	} else {
+		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(login, 9)) {
+			return false;
+		}
+	}
+
+
+
+	/*Comprueba su longitud, si es mayor que 6, retorna false*/
+	if (!comprobarLongitud(IdTrabajo, 6)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(IdTrabajo, 6)) {
+			return false;
+		}
+	}
+
+
+
+	/*Comprueba su longitud, si es mayor que 9, retorna false*/
+	if (!comprobarLongitud(Alias, 9)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(Alias, 9)) {
+			return false;
+		}
+	}
+
+	//Comprobamos que tenga un formato válido
+	if (!comprobarCampoNumFormSearch(Horas, 2, 0, 99)) {
+		return false;
+	}
+
+	/*Comprueba si Ruta es vacio, retorna false*/
+	if (!comprobarVacio(Ruta)) {
+		return false;
+	}
+
+	return true;
+}
+/*
+	function comprobarAddHistoria: valida todos los campos del formulario add antes de realizar el submit
+*/
+function comprobarAddHistoria() {
+
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario add de gestión de historia*/
+	var IdHistoria; /*variable que representa el elemento IdHistoria del formulario add de gestión de historia*/
+	var TextoHistoria; /*variable que representa el elemento TextoHistoria del formulario add de gestión de historia*/
+
+	IdTrabajo = document.forms['ADD'].elements[0];
+	IdHistoria = document.forms['ADD'].elements[1];
+	TextoHistoria = document.forms['ADD'].elements[2];
+
+
+	/*Comprueba si IdTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(IdTrabajo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdTrabajo)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si IdHistoria es vacio, retorna false*/
+	if (!comprobarVacio(IdHistoria)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdHistoria)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 2, retorna false*/
+			if (!comprobarLongitud(IdHistoria, 2)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdHistoria, 2)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 99*/
+					if (!comprobarEntero(IdHistoria, 0, 99)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+	/*Comprueba si TextoHistoria es vacio, retorna false*/
+	if (!comprobarVacio(TextoHistoria)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 300, retorna false*/
+		if (!comprobarLongitud(TextoHistoria, 300)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(TextoHistoria, 300)) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+
+}
+/*
+	function comprobarEditHistoria: valida todos los campos del formulario edit antes de realizar el submit
+*/
+function comprobarEditHistoria() {
+
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario edit de gestión de historia*/
+	var IdHistoria; /*variable que representa el elemento IdHistoria del formulario edit de gestión de historia*/
+	var TextoHistoria; /*variable que representa el elemento TextoHistoria del formulario edit de gestión de historia*/
+
+	IdTrabajo = document.forms['EDIT'].elements[0];
+	IdHistoria = document.forms['EDIT'].elements[1];
+	TextoHistoria = document.forms['EDIT'].elements[2];
+
+
+	/*Comprueba si IdTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(IdTrabajo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdTrabajo)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si IdHistoria es vacio, retorna false*/
+	if (!comprobarVacio(IdHistoria)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdHistoria)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 2, retorna false*/
+			if (!comprobarLongitud(IdHistoria, 2)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdHistoria, 2)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 99*/
+					if (!comprobarEntero(IdHistoria, 0, 99)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+	/*Comprueba si TextoHistoria es vacio, retorna false*/
+	if (!comprobarVacio(TextoHistoria)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 300, retorna false*/
+		if (!comprobarLongitud(TextoHistoria, 300)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(TextoHistoria, 300)) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+/*
+	function comprobarSearchHistoria: valida todos los campos del formulario search antes de realizar el submit
+*/
+function comprobarSearchHistoria() {
+
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario search de gestión de historia*/
+	var IdHistoria; /*variable que representa el elemento IdHistoria del formulario search de gestión de historia*/
+	var TextoHistoria; /*variable que representa el elemento TextoHistoria del formulario search de gestión de historia*/
+
+	IdTrabajo = document.forms['SEARCH'].elements[0];
+	IdHistoria = document.forms['SEARCH'].elements[1];
+	TextoHistoria = document.forms['SEARCH'].elements[2];
+
+
+
+	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+	if (!comprobarLongitud(IdTrabajo, 6)) {
+		return false;
+	} else {
+		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(IdTrabajo, 6)) {
+			return false;
+		}
+	}
+
+	//Comprobamos que tenga un formato válido
+	if (!comprobarCampoNumFormSearch(IdHistoria, 2, 0, 99)) {
+		return false;
+	}
+
+
+	/*Comprueba su longitud, si es mayor que 300, retorna false*/
+	if (!comprobarLongitud(TextoHistoria, 300)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(TextoHistoria, 300)) {
+			return false;
+		}
+	}
+
+	return true;
+
+}
+/*
+	function comprobarAddHistoria: valida todos los campos del formulario add antes de realizar el submit
+*/
+function comprobarAddEvaluacion() {
+
+
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario add de gestión de evaluacion*/
+	var LoginEvaluador; /*variable que representa el elemento LoginEvaluador del formulario add de gestión de evaluacion*/
+	var AliasEvaluado; /*variable que representa el elemento AliasEvaluado del formulario add de gestión de evaluacion*/
+	var IdHistoria; /*variable que representa el elemento IdHistoria del formulario add de gestión de evaluacion*/
+	var CorrectoA; /*variable que representa el elemento CorrectoA del formulario add de gestión de evaluacion*/
+	var ComenIncorrectoA; /*variable que representa el elemento ComenIncorrectoA del formulario add de gestión de evaluacion*/
+	var CorrectoP; /*variable que representa el elemento CorrectoP del formulario add de gestión de evaluacion*/
+	var ComentIncorrectoP; /*variable que representa el elemento ComentIncorrectoP del formulario add de gestión de evaluacion*/
+	var OK; /*variable que representa el elemento OK del formulario add de gestión de evaluacion*/
+	IdTrabajo = document.forms['ADD'].elements[0];
+	LoginEvaluador = document.forms['ADD'].elements[1];
+	AliasEvaluado = document.forms['ADD'].elements[2];
+	IdHistoria = document.forms['ADD'].elements[3];
+	CorrectoA = document.forms['ADD'].elements[4];
+	ComenIncorrectoA = document.forms['ADD'].elements[5];
+	CorrectoP = document.forms['ADD'].elements[6];
+	ComentIncorrectoP = document.forms['ADD'].elements[7];
+	OK = document.forms['ADD'].elements[8];
+
+	/*Comprueba si IdTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(IdTrabajo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdTrabajo)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si LoginEvaluador es vacio, retorna false*/
+	if (!comprobarVacio(LoginEvaluador)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(LoginEvaluador)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 9, retorna false*/
+			if (!comprobarLongitud(LoginEvaluador, 9)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(LoginEvaluador, 9)) {
+					return false;
+				} else {
+					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+					if (!comprobarAlfabetico(LoginEvaluador, 9)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+	/*Comprueba si AliasEvaluado es vacio, retorna false*/
+	if (!comprobarVacio(AliasEvaluado)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 9, retorna false*/
+		if (!comprobarLongitud(AliasEvaluado, 9)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(AliasEvaluado, 9)) {
+				return false;
+			}
+		}
+	}
+
+
+	/*Comprueba si IdHistoria es vacio, retorna false*/
+	if (!comprobarVacio(IdHistoria)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdHistoria)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 2, retorna false*/
+			if (!comprobarLongitud(IdHistoria, 2)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdHistoria, 2)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 99*/
+					if (!comprobarEntero(IdHistoria, 0, 99)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+
+	/*Comprueba si CorrectoA es vacio, retorna false*/
+	if (!comprobarVacio(CorrectoA)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(CorrectoA)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 1, retorna false*/
+			if (!comprobarLongitud(CorrectoA, 1)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(CorrectoA, 1)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 1*/
+					if (!comprobarEntero(CorrectoA, 0, 1)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+	/*Comprueba si ComenIncorrectoA es vacio, retorna false*/
+	if (!comprobarVacio(ComenIncorrectoA)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 300, retorna false*/
+		if (!comprobarLongitud(ComenIncorrectoA, 300)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(ComenIncorrectoA, 300)) {
+				return false;
+			}
+		}
+	}
+
+
+
+	/*Comprueba si CorrectoP es vacio, retorna false*/
+	if (!comprobarVacio(CorrectoP)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(CorrectoP)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 1, retorna false*/
+			if (!comprobarLongitud(CorrectoP, 1)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(CorrectoP, 1)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 1*/
+					if (!comprobarEntero(CorrectoP, 0, 1)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+	/*Comprueba si ComentIncorrectoP es vacio, retorna false*/
+	if (!comprobarVacio(ComentIncorrectoP)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 300, retorna false*/
+		if (!comprobarLongitud(ComentIncorrectoP, 300)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(ComentIncorrectoP, 300)) {
+				return false;
+			}
+		}
+	}
+	/*Comprueba si OK es vacio, retorna false*/
+	if (!comprobarVacio(OK)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(OK)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 1, retorna false*/
+			if (!comprobarLongitud(OK, 1)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(OK, 1)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 1*/
+					if (!comprobarEntero(OK, 0, 1)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+	return true;
+
+}
+/*
+	function comprobarEditHistoria: valida todos los campos del formulario edit antes de realizar el submit
+*/
+function comprobarEditEvaluacion() {
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario edit de gestión de evaluacion*/
+	var LoginEvaluador; /*variable que representa el elemento LoginEvaluador del formulario edit de gestión de evaluacion*/
+	var AliasEvaluado; /*variable que representa el elemento AliasEvaluado del formulario edit de gestión de evaluacion*/
+	var IdHistoria; /*variable que representa el elemento IdHistoria del formulario edit de gestión de evaluacion*/
+	var CorrectoA; /*variable que representa el elemento CorrectoA del formulario edit de gestión de evaluacion*/
+	var ComenIncorrectoA; /*variable que representa el elemento ComenIncorrectoA del formulario edit de gestión de evaluacion*/
+	var CorrectoP; /*variable que representa el elemento CorrectoP del formulario edit de gestión de evaluacion*/
+	var ComentIncorrectoP; /*variable que representa el elemento ComentIncorrectoP del formulario edit de gestión de evaluacion*/
+	var OK; /*variable que representa el elemento OK del formulario edit de gestión de evaluacion*/
+	IdTrabajo = document.forms['EDIT'].elements[0];
+	LoginEvaluador = document.forms['EDIT'].elements[1];
+	AliasEvaluado = document.forms['EDIT'].elements[2];
+	IdHistoria = document.forms['EDIT'].elements[3];
+	CorrectoA = document.forms['EDIT'].elements[4];
+	ComenIncorrectoA = document.forms['EDIT'].elements[5];
+	CorrectoP = document.forms['EDIT'].elements[6];
+	ComentIncorrectoP = document.forms['EDIT'].elements[7];
+	OK = document.forms['EDIT'].elements[8];
+
+	/*Comprueba si IdTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(IdTrabajo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdTrabajo)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si LoginEvaluador es vacio, retorna false*/
+	if (!comprobarVacio(LoginEvaluador)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(LoginEvaluador)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 9, retorna false*/
+			if (!comprobarLongitud(LoginEvaluador, 9)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(LoginEvaluador, 9)) {
+					return false;
+				} else {
+					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+					if (!comprobarAlfabetico(LoginEvaluador, 9)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+	/*Comprueba si AliasEvaluado es vacio, retorna false*/
+	if (!comprobarVacio(AliasEvaluado)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 9, retorna false*/
+		if (!comprobarLongitud(AliasEvaluado, 9)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(AliasEvaluado, 9)) {
+				return false;
+			}
+		}
+	}
+
+
+	/*Comprueba si IdHistoria es vacio, retorna false*/
+	if (!comprobarVacio(IdHistoria)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdHistoria)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 2, retorna false*/
+			if (!comprobarLongitud(IdHistoria, 2)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdHistoria, 2)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 99*/
+					if (!comprobarEntero(IdHistoria, 0, 99)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+
+	/*Comprueba si CorrectoA es vacio, retorna false*/
+	if (!comprobarVacio(CorrectoA)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(CorrectoA)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 1, retorna false*/
+			if (!comprobarLongitud(CorrectoA, 1)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(CorrectoA, 1)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 1*/
+					if (!comprobarEntero(CorrectoA, 0, 1)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+	/*Comprueba si ComenIncorrectoA es vacio, retorna false*/
+	if (!comprobarVacio(ComenIncorrectoA)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 300, retorna false*/
+		if (!comprobarLongitud(ComenIncorrectoA, 300)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(ComenIncorrectoA, 300)) {
+				return false;
+			}
+		}
+	}
+
+
+
+	/*Comprueba si CorrectoP es vacio, retorna false*/
+	if (!comprobarVacio(CorrectoP)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(CorrectoP)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 1, retorna false*/
+			if (!comprobarLongitud(CorrectoP, 1)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(CorrectoP, 1)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 1*/
+					if (!comprobarEntero(CorrectoP, 0, 1)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+	/*Comprueba si ComentIncorrectoP es vacio, retorna false*/
+	if (!comprobarVacio(ComentIncorrectoP)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 300, retorna false*/
+		if (!comprobarLongitud(ComentIncorrectoP, 300)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(ComentIncorrectoP, 300)) {
+				return false;
+			}
+		}
+	}
+	/*Comprueba si OK es vacio, retorna false*/
+	if (!comprobarVacio(OK)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(OK)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 1, retorna false*/
+			if (!comprobarLongitud(OK, 1)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(OK, 1)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 1*/
+					if (!comprobarEntero(OK, 0, 1)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+	return true;
+}
+/*
+	function comprobarSearchHistoria: valida todos los campos del formulario search antes de realizar el submit
+*/
+function comprobarSearchEvaluacion() {
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario search de gestión de evaluacion*/
+	var LoginEvaluador; /*variable que representa el elemento LoginEvaluador del formulario search de gestión de evaluacion*/
+	var AliasEvaluado; /*variable que representa el elemento AliasEvaluado del formulario search de gestión de evaluacion*/
+	var IdHistoria; /*variable que representa el elemento IdHistoria del formulario search de gestión de evaluacion*/
+	var CorrectoA; /*variable que representa el elemento CorrectoA del formulario search de gestión de evaluacion*/
+	var ComenIncorrectoA; /*variable que representa el elemento ComenIncorrectoA del formulario search de gestión de evaluacion*/
+	var CorrectoP; /*variable que representa el elemento CorrectoP del formulario search de gestión de evaluacion*/
+	var ComentIncorrectoP; /*variable que representa el elemento ComentIncorrectoP del formulario search de gestión de evaluacion*/
+	var OK; /*variable que representa el elemento OK del formulario search de gestión de evaluacion*/
+	IdTrabajo = document.forms['SEARCH'].elements[0];
+	LoginEvaluador = document.forms['SEARCH'].elements[1];
+	AliasEvaluado = document.forms['SEARCH'].elements[2];
+	IdHistoria = document.forms['SEARCH'].elements[3];
+	CorrectoA = document.forms['SEARCH'].elements[4];
+	ComenIncorrectoA = document.forms['SEARCH'].elements[5];
+	CorrectoP = document.forms['SEARCH'].elements[6];
+	ComentIncorrectoP = document.forms['SEARCH'].elements[7];
+	OK = document.forms['SEARCH'].elements[8];
+
+
+	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+	if (!comprobarLongitud(IdTrabajo, 6)) {
+		return false;
+	} else {
+		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(IdTrabajo, 6)) {
+			return false;
+		}
+	}
+
+
+
+	/*Comprueba su longitud, si es mayor que 9, retorna false*/
+	if (!comprobarLongitud(LoginEvaluador, 9)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(LoginEvaluador, 9)) {
+			return false;
+		} else {
+			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+			if (!comprobarAlfabetico(LoginEvaluador, 9)) {
+				return false;
+			}
+		}
+	}
 
 
 
 
+	/*Comprueba su longitud, si es mayor que 9, retorna false*/
+	if (!comprobarLongitud(AliasEvaluado, 9)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(AliasEvaluado, 9)) {
+			return false;
+		}
+	}
 
+	//Comprobamos que tenga un formato válido
+	if (!comprobarCampoNumFormSearch(IdHistoria, 2, 0, 99)) {
+		return false;
+	}
+
+	//Comprobamos que tenga un formato válido
+	if (!comprobarCampoNumFormSearch(CorrectoA, 1, 0, 1)) {
+		return false;
+	}
+
+
+
+
+	/*Comprueba su longitud, si es mayor que 300, retorna false*/
+	if (!comprobarLongitud(ComenIncorrectoA, 300)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(ComenIncorrectoA, 300)) {
+			return false;
+		}
+	}
+
+	//Comprobamos que tenga un formato válido
+	if (!comprobarCampoNumFormSearch(CorrectoP, 1, 0, 1)) {
+		return false;
+	}
+
+
+
+
+	/*Comprueba su longitud, si es mayor que 300, retorna false*/
+	if (!comprobarLongitud(ComentIncorrectoP, 300)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(ComentIncorrectoP, 300)) {
+			return false;
+		}
+	}
+	//Comprobamos que tenga un formato válido
+	if (!comprobarCampoNumFormSearch(OK, 1, 0, 1)) {
+		return false;
+	}
+	/*Comprueba si OK es vacio, retorna false*/
+
+}
+/*
+	function comprobarAddGrupo: valida todos los campos del formulario add antes de realizar el submit
+*/
+function comprobarAddGrupo() {
+
+
+	//var IdGrupo; /*variable que representa el elemento IdGrupo del formulario add de gestión de grupo*/
+	var NombreGrupo; /*variable que representa el elemento NombreGrupo del formulario add de gestión de grupo*/
+	var DescripGrupo; /*variable que representa el elemento DescripGrupo del formulario add de gestión de grupo*/
+
+	NombreGrupo = document.forms['ADD'].elements[0];
+	DescripGrupo = document.forms['ADD'].elements[1];
+	//IdGrupo = document.forms['ADD'].elements[2];
+
+
+	/*Comprueba si NombreGrupo es vacio, retorna false*/
+	if (!comprobarVacio(NombreGrupo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(NombreGrupo)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 60, retorna false*/
+			if (!comprobarLongitud(NombreGrupo, 60)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(NombreGrupo, 60)) {
+					return false;
+				} else {
+					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+					if (!comprobarAlfabetico(NombreGrupo, 60)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+	/*Comprueba si DescripGrupo es vacio, retorna false*/
+	if (!comprobarVacio(DescripGrupo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(DescripGrupo)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 100, retorna false*/
+			if (!comprobarLongitud(DescripGrupo, 100)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(DescripGrupo, 100)) {
+					return false;
+				}
+
+			}
+		}
+	}
+
+
+	return true;
+
+}
+/*
+	function comprobarEditGrupo: valida todos los campos del formulario edit antes de realizar el submit
+*/
+function comprobarEditGrupo() {
+
+	var IdGrupo; /*variable que representa el elemento IdGrupo del formulario edit de gestión de grupo*/
+	var NombreGrupo; /*variable que representa el elemento NombreGrupo del formulario edit de gestión de grupo*/
+	var DescripGrupo; /*variable que representa el elemento DescripGrupo del formulario edit de gestión de grupo*/
+	IdGrupo = document.forms['EDIT'].elements[0];
+	NombreGrupo = document.forms['EDIT'].elements[1];
+	DescripGrupo = document.forms['EDIT'].elements[2];
+
+
+	/*Comprueba si IdGrupo es vacio, retorna false*/
+	if (!comprobarVacio(IdGrupo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdGrupo)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdGrupo, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdGrupo, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si NombreGrupo es vacio, retorna false*/
+	if (!comprobarVacio(NombreGrupo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(NombreGrupo)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 60, retorna false*/
+			if (!comprobarLongitud(NombreGrupo, 60)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(NombreGrupo, 60)) {
+					return false;
+				} else {
+					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+					if (!comprobarAlfabetico(NombreGrupo, 60)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+	/*Comprueba si DescripGrupo es vacio, retorna false*/
+	if (!comprobarVacio(DescripGrupo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(DescripGrupo)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 100, retorna false*/
+			if (!comprobarLongitud(DescripGrupo, 100)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(DescripGrupo, 100)) {
+					return false;
+				}
+
+			}
+		}
+	}
+
+
+	return true;
+
+}
+/*
+	function comprobarSearchGrupo: valida todos los campos del formulario search antes de realizar el submit
+*/
+function comprobarSearchGrupo() {
+
+	var IdGrupo; /*variable que representa el elemento IdGrupo del formulario search de gestión de grupo*/
+	var NombreGrupo; /*variable que representa el elemento NombreGrupo del formulario search de gestión de grupo*/
+	var DescripGrupo; /*variable que representa el elemento DescripGrupo del formulario search de gestión de grupo*/
+	IdGrupo = document.forms['SEARCH'].elements[0];
+	NombreGrupo = document.forms['SEARCH'].elements[1];
+	DescripGrupo = document.forms['SEARCH'].elements[2];
+
+
+
+	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+	if (!comprobarLongitud(IdGrupo, 6)) {
+		return false;
+	} else {
+		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(IdGrupo, 6)) {
+			return false;
+		}
+	}
+
+
+	/*Comprobamos su longitud, si es mayor que 60, retorna false*/
+	if (!comprobarLongitud(NombreGrupo, 60)) {
+		return false;
+	} else {
+		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(NombreGrupo, 60)) {
+			return false;
+		} else {
+			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+			if (!comprobarAlfabetico(NombreGrupo, 60)) {
+				return false;
+			}
+		}
+	}
+
+
+
+	/*Comprueba su longitud, si es mayor que 100, retorna false*/
+	if (!comprobarLongitud(DescripGrupo, 100)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(DescripGrupo, 100)) {
+			return false;
+		}
+
+	}
+
+
+
+
+	return true;
+} 
+/*
+	function comprobarSearchFuncionalidad: valida todos los campos del formulario search antes de realizar el submit
+*/
+function comprobarSearchFuncionalidad() {
+
+	var IdFuncionalidad; /*variable que representa el elemento IdFuncionalidad del formulario search de gestión de funcinalidad*/
+	var NombreFuncionalidad; /*variable que representa el elemento NombreAccion del formulario search de gestión de funcionalidad*/
+	var DescripFuncionalidad; /*variable que representa el elemento DescripAccion del formulario search de gestión de funcionalidad*/
+
+	IdFuncionalidad = document.forms['SEARCH'].elements[0];
+	NombreFuncionalidad = document.forms['SEARCH'].elements[1];
+	DescripFuncionalidad = document.forms['SEARCH'].elements[2];
+
+	/*Comprueba su longitud, si es mayor que 6, retorna false*/
+	if (!comprobarLongitud(IdFuncionalidad, 6)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(IdFuncionalidad, 6)) {
+			return false;
+		}
+	}
+	/*Comprueba su longitud, si es mayor que 60, retorna false*/
+	if (!comprobarLongitud(NombreFuncionalidad, 60)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(NombreFuncionalidad, 60)) {
+			return false;
+		} else {
+			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+			if (!comprobarAlfabetico(NombreFuncionalidad, 60)) {
+				return false;
+			}
+		}
+	}
+	/*Comprueba su longitud, si es mayor que 100, retorna false*/
+	if (!comprobarLongitud(DescripFuncionalidad, 100)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(DescripFuncionalidad, 100)) {
+			return false;
+		}
+	}
+
+	return true;
+}
+/*
+	function comprobarEditFuncionalidad: valida todos los campos del formulario edit antes de realizar el submit
+*/
+function comprobarEditFuncionalidad() {
+
+	var IdFuncionalidad; /*variable que representa el elemento IdFuncionalidad del formulario edit de gestión de funcionalidad*/
+	var NombreFuncionalidad; /*variable que representa el elemento NombreFuncionalidad del formulario edit de gestión de funcionalidad*/
+	var DescripFuncionalidad; /*variable que representa el elemento DescripFuncionalidad del formulario edit de gestión de funcionalidad*/
+
+	IdFuncionalidad = document.forms['EDIT'].elements[0];
+	NombreFuncionalidad = document.forms['EDIT'].elements[1];
+	DescripFuncionalidad = document.forms['EDIT'].elements[2];
+
+
+	/*Comprueba si IdAccion es vacio, retorna false*/
+	if (!comprobarVacio(IdFuncionalidad)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdFuncionalidad)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdFuncionalidad, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdFuncionalidad, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si NombreAccion es vacio, retorna false*/
+	if (!comprobarVacio(NombreFuncionalidad)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(NombreFuncionalidad)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 128, retorna false*/
+			if (!comprobarLongitud(NombreFuncionalidad, 60)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(NombreFuncionalidad, 60)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si DescripFuncionalidad es vacio, retorna false*/
+	if (!comprobarVacio(DescripFuncionalidad)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 100, retorna false*/
+		if (!comprobarLongitud(DescripFuncionalidad, 100)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(DescripFuncionalidad, 100)) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+
+}
+/*
+	function comprobarAddFuncionalidad: valida todos los campos del formulario add antes de realizar el submit
+*/
+function comprobarAddFuncionalidad() {
+
+	var IdFuncionalidad; /*variable que representa el elemento IdFuncionalidad del formulario add de gestión de funcionalidad*/
+	var NombreFuncionalidad; /*variable que representa el elemento NombreFuncionalidad del formulario add de gestión de funcionalidad*/
+	var DescripFuncionalidad; /*variable que representa el elemento DescripFuncionalidad del formulario add de gestión de funcionalidad*/
+
+	IdFuncionalidad = document.forms['ADD'].elements[0];
+	NombreFuncionalidad = document.forms['ADD'].elements[1];
+	DescripFuncionalidad = document.forms['ADD'].elements[2];
+
+
+	/*Comprueba si IdFuncionalidad es vacio, retorna false*/
+	if (!comprobarVacio(IdFuncionalidad)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdFuncionalidad)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdFuncionalidad, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdFuncionalidad, 6)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si NombreFuncionalidad es vacio, retorna false*/
+	if (!comprobarVacio(NombreFuncionalidad)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(NombreFuncionalidad)) {
+			return false;
+		} else {
+			/*Comprueba su longitud, si es mayor que 60, retorna false*/
+			if (!comprobarLongitud(NombreFuncionalidad, 60)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(NombreAccion, 60)) {
+					return false;
+				}
+			}
+		}
+	}
+	/*Comprueba si DescripFuncionalidad es vacio, retorna false*/
+	if (!comprobarVacio(DescripFuncionalidad)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 100, retorna false*/
+		if (!comprobarLongitud(DescripFuncionalidad, 100)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(DescripFuncionalidad, 100)) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+
+}
 </script>

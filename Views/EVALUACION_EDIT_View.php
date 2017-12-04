@@ -21,7 +21,7 @@ class EVALUACION_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/EVALUACION_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEdit()">
+			<form name="EDIT" action="../Controllers/EVALUACION_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditEvaluacion()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -47,7 +47,7 @@ class EVALUACION_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['IdHistoria'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdHistoria']?>" maxlength="2" size="2" required  readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarInt(this,'2')"/>
+						<td class="formThTd"><input type="text" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['IdHistoria']?>" maxlength="2" size="2" required  readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarEntero(this,'2','0','99')"/>
 					</tr>
                     
                     <tr>
@@ -61,14 +61,14 @@ class EVALUACION_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['ComenIncorrectoA'];?>
 						</th>
-                        <td class="formThTd"><textarea type="text" id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" required maxlength="300" cols="50" rows="7" onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300')"><?php echo $this->valores['ComenIncorrectoA']?></textarea>
+                        <td class="formThTd"><textarea type="text" id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" required maxlength="300" cols="50" rows="7" onBlur="comprobarVacio(this) && comprobarLongitud(this,'300') && comprobarTexto(this,'300')"><?php echo $this->valores['ComenIncorrectoA']?></textarea>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['CorrectoP'];?>
 						</th>
-                        <td class="formThTd"><input type="text" id="CorrectoP" name="CorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['CorrectoP']?>" maxlength="1" size="1" onBlur="comprobarLongitud(this,'1') && comprobarTexto(this,'1')  && comprobarEntero(this,0,1)" />
+                        <td class="formThTd"><input type="text" id="CorrectoP" name="CorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['CorrectoP']?>" maxlength="1" size="1" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'1') && comprobarTexto(this,'1')  && comprobarEntero(this,0,1)" />
 					</tr>
                     
                     <tr>
@@ -82,7 +82,7 @@ class EVALUACION_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['OK'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="OK" name="OK" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['OK']?>" maxlength="50" size="60" required onBlur="comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')  && comprobarEntero(this,0,1)"/>
+						<td class="formThTd"><input type="text" id="OK" name="OK" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['OK']?>" maxlength="1" size="1" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'1') && comprobarTexto(this,'1') && comprobarAlfabetico(this,'1')  && comprobarEntero(this,0,1)"/>
 					</tr>
 					
 					<tr>

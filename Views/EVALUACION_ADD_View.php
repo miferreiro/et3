@@ -14,12 +14,12 @@ class EVALUACION_ADD {
 	function render() {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
-?>
+		?>
 		<div class="seccion">
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/EVALUACION_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd()">
+			<form name="ADD" action="../Controllers/EVALUACION_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddEvaluacion()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -39,12 +39,12 @@ class EVALUACION_ADD {
 						</th>
 						<td class="formThTd"><input type="text" id="AliasEvaluado" name="AliasEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
-                    
-                    <tr>
+
+					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdHistoria'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarInt(this,'2')"/>
+						<td class="formThTd"><input type="text" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2') comprobarEntero(this,'2','0','99')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -56,44 +56,44 @@ class EVALUACION_ADD {
 						<th class="formThTd">
 							<?php echo $strings['ComenIncorrectoA'];?>
 						</th>
-                        <td class="formThTd"><textarea  id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="50" rows="7" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'300') && comprobarTexto(this,'300')"></textarea>
-                            
+						<td class="formThTd"><textarea id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="50" rows="7" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'300') && comprobarTexto(this,'300')"></textarea>
+
 					</tr>
-                    
-                    <tr>
+
+					<tr>
 						<th class="formThTd">
 							<?php echo $strings['CorrectoP'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="CorrectoP" name="CorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="1" size="1" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'1') && comprobarTexto(this,'1')  && comprobarEntero(this,0,1)"/>
 					</tr>
-                    
-                    <tr>
+
+					<tr>
 						<th class="formThTd">
 							<?php echo $strings['ComentIncorrectoP'];?>
 						</th>
-                        <td class="formThTd"><textarea  id="ComentIncorrectoP" name="ComentIncorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="50" rows="7" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'300') && comprobarTexto(this,'300')"></textarea>
+						<td class="formThTd"><textarea id="ComentIncorrectoP" name="ComentIncorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="50" rows="7" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'300') && comprobarTexto(this,'300')"></textarea>
 					</tr>
-                    
-                    <tr>
+
+					<tr>
 						<th class="formThTd">
 							<?php echo $strings['OK'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="OK" name="OK" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="1" size="1" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'1') && comprobarTexto(this,'1')  && comprobarEntero(this,0,1)"/>
 					</tr>
-					
-					
+
+
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
-						<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post" style="display: inline">
-							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
-						</form>
-					</tr>
-				</table>
+			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post" style="display: inline">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			</form>
+			</tr>
+			</table>
 		</div>
-<?php
+		<?php
 		include '../Views/Footer.php';
 		}
 		}
-?>
+		?>

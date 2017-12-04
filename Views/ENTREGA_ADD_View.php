@@ -16,7 +16,7 @@ class ENTREGA_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarAdd()"><!--Formulario para añadir una entrega -->
+			<form name="ADD" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarAddEntrega()"><!--Formulario para añadir una entrega -->
 				<table>
 				<tr>
 						<th class="formThTd">
@@ -41,7 +41,7 @@ class ENTREGA_ADD {
 						<th class="formThTd">
 							<?php echo $strings['Horas'];?><!--se muestra el campo Horas-->
 						</th>
-						<td class="formThTd"><input type="text" id="Horas" name="Horas" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
+						<td class="formThTd"><input type="text" id="Horas" name="Horas" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2') && comprobarEntero(this,'0','99')"/>
 					</tr>
                     
                     <tr>
@@ -53,7 +53,7 @@ class ENTREGA_ADD {
 					
 					<tr>
 						<td colspan="2">
-							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button><!--boton para confirmar el añadido de la entrega -->
+							<button type="submit" name="action" value="ADD" onfocus="comprobarVacio(document.forms['ADD'].elements[3])"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button><!--boton para confirmar el añadido de la entrega -->
 			</form>
 						<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post" style="display: inline"><!--formulario para volver atra-->
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

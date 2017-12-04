@@ -15,7 +15,7 @@ class ENTREGA_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form name="SEARCH" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarSearch()">
+			<form name="SEARCH" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarSearchEntrega()">
 				<table>
 				<tr>
 						<th class="formThTd">
@@ -40,7 +40,7 @@ class ENTREGA_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['Horas'];?><!--se muestra el campo Horas-->
 						</th>
-						<td class="formThTd"><input type="text" id="Horas" name="Horas" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2"  onBlur=" comprobarLongitud(this,'2') && comprobarTexto(this,'2')"/>
+						<td class="formThTd"><input type="text" id="Horas" name="Horas" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2"  onBlur="comprobarCampoNumFormSearch(Horas, '2', '0', '99')"/>
 					</tr>
                     
                     <tr>
