@@ -34,8 +34,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$LoginEvaluador = $QAs[$i][1];//Variable que almacena $LoginEvaluador
 				$AliasEvaluado = $QAs[$i][2];//Variable que almacena $AliasEvaluado
 				$IdHistoria = $HISTORIAS[$j][0];//Variable que almacena IdHistoria
+				
+				$EVALUACION = new EVALUACION($IdTrabajo,$LoginEvaluador,$AliasEvaluado,$IdHistoria,'1', ' ', '1', ' ', '1');
 				//Variable que almacena el mensaje de retorno de la sentencia
-				$mensaje=$EVALUACION->ADD();//Añadimos los datos a la tabla
+				$mensaje = $EVALUACION->ADD();//Añadimos los datos a la tabla
 				}
 			}
 		//crea una vista mensaje con la respuesta y la dirección de vuelta
