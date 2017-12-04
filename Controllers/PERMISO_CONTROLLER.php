@@ -23,17 +23,49 @@ function get_data_form(){
 	$IdGrupo = $_REQUEST['IdGrupo'];
 	$IdFuncionalidad = $_REQUEST['IdFuncionalidad'];
 	$IdAccion = $_REQUEST['IdAccion'];
+
+	$NombreGrupo = $_REQUEST['NombreGrupo'];
+	$NombreFuncionalidad = $_REQUEST['NombreFuncionalidad'];
+	$NombreAccion = $_REQUEST['NombreAccion'];
+
 	$action= $_REQUEST['action'];
 	
 	$PERMISO = new PERMISO_MODEL(
 		$IdGrupo,
 		$IdFuncionalidad,
-		$IdAccion
+		$IdAccion,
+
+		$NombreGrupo,
+		$NombreFuncionalidad,
+		$NombreAccion
 	);
 	
 	return $PERMISO;
 }
 
+if ( !isset( $_REQUEST[ 'IdGrupo' ] ) ) {
+	$_REQUEST[ 'IdGrupo' ] = '';
+}
+
+if ( !isset( $_REQUEST[ 'IdFuncionalidad' ] ) ) {
+	$_REQUEST[ 'IdFuncionalidad' ] = '';
+}
+
+if ( !isset( $_REQUEST[ 'IdAccion' ] ) ) {
+	$_REQUEST[ 'IdAccion' ] = '';
+}
+
+if ( !isset( $_REQUEST[ 'NombreGrupo' ] ) ) {
+	$_REQUEST[ 'NombreGrupo' ] = '';
+}
+
+if ( !isset( $_REQUEST[ 'NombreFuncionalidad' ] ) ) {
+	$_REQUEST[ 'NombreFuncionalidad' ] = '';
+}
+
+if ( !isset( $_REQUEST[ 'NombreAccion' ] ) ) {
+	$_REQUEST[ 'NombreAccion' ] = '';
+}
 
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
 	$_REQUEST[ 'action' ] = '';
@@ -42,7 +74,7 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
-			$PERMISO = new PERMISO_MODEL( '', '', '');
+			$PERMISO = new PERMISO_MODEL( '', '', '', '', '', '');
 			$Grupo = $PERMISO->recuperarGrupo($_REQUEST['IdGrupo']);
 			$Funcionalidades = $PERMISO->recuperarFuncionalidades();
 			new PERMISO_ADD($Grupo,$Funcionalidades);
@@ -77,8 +109,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new PERMISO_SEARCH();
 		} else {
 			$PERMISO = get_data_form();
-			$datos = $PERMISO->SEARCH();
-			$lista = array( 'IdGrupo','IdFuncionalidad','IdAccion' );
+			$datos = $PERMISO->SEARCH2();
+			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
 			new PERMISO_SHOWALL( $lista, $datos );
 		}
 		break;
@@ -93,7 +125,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default:
 		if ( !$_POST ) {
-			$PERMISO = new PERMISO_MODEL( '', '', '');
+			$PERMISO = new PERMISO_MODEL( '', '', '', '', '', '');
 		} else {
 			$PERMISO = get_data_form();
 		}

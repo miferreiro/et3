@@ -9,13 +9,21 @@
         var $IdAccion;
         var $IdGrupo;
         
+        var $NombreGrupo;
+        var $NombreFuncionalidad;
+        var $NombreAccion;
+
         var $mysqli;
-        public function __construct($IdGrupo, $IdFuncionalidad, $IdAccion){
+        public function __construct($IdGrupo, $IdFuncionalidad, $IdAccion, $NombreGrupo, $NombreFuncionalidad, $NombreAccion){
             $this->IdFuncionalidad = $IdFuncionalidad;
             $this->IdAccion = $IdAccion;
             $this->IdGrupo = $IdGrupo;
            
+            $this->NombreGrupo = $NombreGrupo;
+            $this->NombreFuncionalidad = $NombreFuncionalidad;
+            $this->NombreAccion = $NombreAccion;
             
+
             $this->mysqli=ConectarBD();
         }
    
@@ -132,6 +140,29 @@ function SEARCH()
 	}
 } // fin metodo SEARCH
 
+function SEARCH2()
+{   // construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+     $sql = "SELECT P.IdGrupo,G.NombreGrupo,P.IdFuncionalidad,F.NombreFuncionalidad,P.IdAccion,A.NombreAccion
+                     FROM PERMISO P,GRUPO G,FUNCIONALIDAD F,FUNC_ACCION FA,ACCION A 
+                     WHERE (
+                            G.IdGrupo = P.IdGrupo &&
+                            F.IdFuncionalidad = P.IdFuncionalidad &&
+                            A.IdAccion = P.IdAccion &&
+                            F.IdFuncionalidad = FA.IdFuncionalidad &&
+                            A.IdAccion = FA.IdAccion &&
+                            F.NombreFuncionalidad LIKE '%$this->NombreFuncionalidad%' &&
+                            A.NombreAccion LIKE '%$this->NombreAccion%' &&
+                            G.NombreGrupo LIKE '%$this->NombreGrupo%'
+                           )";
+
+    // si se produce un error en la busqueda m&&amos el mensaje de error en la consulta
+    if (!($resultado = $this->mysqli->query($sql))){
+        return 'Error en la consulta sobre la base de datos, revise los campos introducidos';
+    }
+    else{ // si la busqueda es correcta devolvemos el recordset resultado
+        return $resultado;
+    }
+} // fin metodo SEARCH
     // funcion EDIT()
 // Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
 // si existe se modifica
