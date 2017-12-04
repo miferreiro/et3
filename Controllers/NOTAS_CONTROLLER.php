@@ -61,8 +61,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
 			$NOTAS = get_data_form();
-             var_dump($NOTAS);
-            exit;
+           
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $NOTAS->DELETE();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
