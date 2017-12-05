@@ -376,60 +376,12 @@ class USUARIO_MODEL{ //declaración de la clase
 			}
 		}
 	} //fin metodo login
-   function comprobarPermisosAñadir(){
-	   $sql = "SELECT * FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo &&( (P.IdGrupo=G.IdGrupo && P.IdFuncionalidad = F.IdFuncionalidad && P.IdAccion = A.IdAccion && A.NombreAccion = 'ADD' && F.NombreFuncionalidad = 'Gestión de usuarios') || G.NombreGrupo= 'Administracion') )";
+   function comprobarPermisos(){
+	   $sql = "SELECT DISTINCT F.NombreFuncionalidad, A.NombreAccion, F.IdFuncionalidad, A.IdAccion FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo && P.IdGrupo=G.IdGrupo) ORDER BY F.NombreFuncionalidad,A.NombreAccion";
 	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
-	   if ( $resultado->num_rows == 0 ) {//miramos si el numero de filas es 0
-			return 'El usuario no tiene los permisos necesarios';
-		} else {//si no es 0, el usuario existe
-            return true;
-		}
-   }
-   function comprobarPermisosBuscar(){
-	   $sql = "SELECT * FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo &&( (P.IdGrupo=G.IdGrupo && P.IdFuncionalidad = F.IdFuncionalidad && P.IdAccion = A.IdAccion && A.NombreAccion = 'SEARCH' && F.NombreFuncionalidad = 'Gestión de usuarios') || G.NombreGrupo= 'Administracion') )";
-	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
-	   if ( $resultado->num_rows == 0 ) {//miramos si el numero de filas es 0
-			return 'El usuario no tiene los permisos necesarios';
-		} else {//si no es 0, el usuario existe
-            return true;
-		}
-   }
-   function comprobarPermisosEditar(){
-	   $sql = "SELECT * FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo &&( (P.IdGrupo=G.IdGrupo && P.IdFuncionalidad = F.IdFuncionalidad && P.IdAccion = A.IdAccion && A.NombreAccion = 'EDIT' && F.NombreFuncionalidad = 'Gestión de usuarios') || G.NombreGrupo= 'Administracion') )";
-	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
-	   if ( $resultado->num_rows == 0 ) {//miramos si el numero de filas es 0
-			return 'El usuario no tiene los permisos necesarios';
-		} else {//si no es 0, el usuario existe
-            return true;
-		}
-   }
-   function comprobarPermisosBorrar(){
-	   $sql = "SELECT * FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo &&( (P.IdGrupo=G.IdGrupo && P.IdFuncionalidad = F.IdFuncionalidad && P.IdAccion = A.IdAccion && A.NombreAccion = 'DELETE' && F.NombreFuncionalidad = 'Gestión de usuarios') || G.NombreGrupo= 'Administracion') )";
-	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
-	   if ( $resultado->num_rows == 0 ) {//miramos si el numero de filas es 0
-			return 'El usuario no tiene los permisos necesarios';
-		} else {//si no es 0, el usuario existe
-            return true;
-		}
-   }
-   function comprobarPermisosShowall(){
-	   $sql = "SELECT * FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo &&( (P.IdGrupo=G.IdGrupo && P.IdFuncionalidad = F.IdFuncionalidad && P.IdAccion = A.IdAccion && A.NombreAccion = 'SHOWALL' && F.NombreFuncionalidad = 'Gestión de usuarios') || G.NombreGrupo= 'Administracion') )";
-	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
-	   if ( $resultado->num_rows == 0 ) {//miramos si el numero de filas es 0
-			return 'El usuario no tiene los permisos necesarios';
-		} else {//si no es 0, el usuario existe
-            return true;
-		}
-   }
-   function comprobarPermisosShowcurrent(){
-	   $sql = "SELECT * FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo &&( (P.IdGrupo=G.IdGrupo && P.IdFuncionalidad = F.IdFuncionalidad && P.IdAccion = A.IdAccion && A.NombreAccion = 'SHOWCURRENT' && F.NombreFuncionalidad = 'Gestión de usuarios') || G.NombreGrupo= 'Administracion') )";
-	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
-	   if ( $resultado->num_rows == 0 ) {//miramos si el numero de filas es 0
-			return 'El usuario no tiene los permisos necesarios';
-		} else {//si no es 0, el usuario existe
-            return true;
-		}
-   }
+       return $resultado;
+	    
+    }
 } //fin de clase
 
 ?>
