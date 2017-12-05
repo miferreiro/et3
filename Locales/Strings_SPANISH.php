@@ -25,6 +25,7 @@ array(
 	'Tabla de datos' => 'Tabla de datos',
 	'Vista detallada' => 'Vista detallada',
 	'Usuario' => 'Usuario',
+    'El usuario no tiene los permisos necesarios' => 'El usuario no tiene los permisos necesarios',
 	'login' => 'Usuario',
 	'Contraseña' => 'Contraseña',
 	'password' => 'Contraseña',

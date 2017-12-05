@@ -9,12 +9,14 @@
 session_start(); //solicito trabajar con la session
 
 include '../Models/GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Views/GRUPO_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/GRUPO_SEARCH_View.php'; //incluye la vista search
 include '../Views/GRUPO_ADD_View.php'; //incluye la vista add
 include '../Views/GRUPO_EDIT_View.php'; //incluye la vista edit
 include '../Views/GRUPO_DELETE_View.php'; //incluye la vista delete
 include '../Views/GRUPO_SHOWCURRENT_View.php'; //incluye la vista showcurrent
+include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 
@@ -43,7 +45,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			//Crea una nueva vista del formulario añadir
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
+		$PERMISO = $USUARIO->gruposPermisosShowall();
+		if($PERMISO=='true'){
 			new GRUPO_ADD();
+		}else{
+			new MESSAGE( $PERMISO, '../Controllers/GRUPO_CONTROLLER.php' );
+		}
 		} else {//Si recive datos los recoge y mediante las funcionalidad de GRUPO inserta los datos
 			$GRUPOS = get_data_form();//Variable que almacena los datos recogidos
 			$GRUPOS->IdGrupo = $GRUPOS->NumRows() + 1;
@@ -55,6 +63,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
+		$PERMISO = $USUARIO->gruposPermisosShowall();
+		if($PERMISO=='true'){
 			//Variable que recoge un objecto model con solo el idgrupo
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
 			//Variable que almacena el relleno de los datos utilizando el IdGrupo
@@ -65,6 +76,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$lista = array( 'login', 'IdGrupo');
 			//Crea una vista delete para ver la tupla
 			new GRUPO_DELETE( $valores, $valores2, $lista, $dependencias);
+		}else{
+			new MESSAGE( $PERMISO, '../Controllers/GRUPO_CONTROLLER.php' );
+		}
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -78,6 +92,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
+		$PERMISO = $USUARIO->gruposPermisosShowall();
+		if($PERMISO=='true'){
 			//Variable que almacena un objeto model con el login
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
@@ -85,6 +102,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$datos = $GRUPOS->RellenaSelect();
 			//Muestra la vista del formulario editar
 			new GRUPO_EDIT( $valores,$datos);
+		}else{
+			new MESSAGE( $PERMISO, '../Controllers/GRUPO_CONTROLLER.php' );
+		}
 			//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
@@ -92,13 +112,19 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $GRUPOS->EDIT($_REQUEST['IdFuncionalidad']);
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
 		}
 		//Fin del bloque
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
+		$PERMISO = $USUARIO->gruposPermisosShowall();
+		if($PERMISO=='true'){
 			new GRUPO_SEARCH();
+		}else{
+			new MESSAGE( $PERMISO, '../Controllers/GRUPO_CONTROLLER.php' );
+		}
 		//Si se reciben datos	
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -113,6 +139,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
+		$PERMISO = $USUARIO->gruposPermisosShowall();
+		if($PERMISO=='true'){
 		//Variable que almacena un objeto model con el IdGrupo
 		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
 		//Variable que almacena los valores rellenados a traves de IdGrupo
@@ -123,9 +152,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'login', 'IdGrupo');
 		//Creación de la vista showcurrent
 		new GRUPO_SHOWCURRENT( $lista, $valores, $valores2 );
+		}else{
+			new MESSAGE( $PERMISO, '../Controllers/GRUPO_CONTROLLER.php' );
+		}
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
+		$PERMISO = $USUARIO->gruposPermisosShowall();
+		if($PERMISO=='true'){
 		if ( !$_POST ) {//Si no se han recibido datos 
 			$GRUPOS = new GRUPO( '', '', '','');
 		//Si se reciben datos
@@ -138,6 +173,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'NombreGrupo','DescripGrupo');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new GRUPO_SHOWALL( $lista, $datos );
+		}else{
+		 new USUARIO_DEFAULT();
+		}
 }
 
 ?>

@@ -26,6 +26,7 @@ array(
 	'Vista detallada' => 'Vista detallada',
 	'Usuario' => 'Usuario',
 	'login' => 'Usuario',
+    'El usuario no tiene los permisos necesarios' => 'O usuario non ten os permisos necesarios',
 	'Contraseña' => 'Contrasinal',
 	'password' => 'Contrasinal',
 	'DNI' => 'DNI',

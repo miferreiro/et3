@@ -15,6 +15,7 @@ include '../Views/USUARIO_ADD_View.php'; //incluye la vista add
 include '../Views/USUARIO_EDIT_View.php'; //incluye la vista edit
 include '../Views/USUARIO_DELETE_View.php'; //incluye la vista delete
 include '../Views/USUARIO_SHOWCURRENT_View.php'; //incluye la vista showcurrent
+include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 
@@ -72,6 +73,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
+			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$PERMISO = $USUARIO->comprobarPermisosBorrar();
+			if($PERMISO=='true'){
 			//Variable que recoge un objecto model con solo el login
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 			//Variable que almacena el relleno de los datos utilizando el login
@@ -80,6 +84,9 @@ switch ( $_REQUEST[ 'action' ] ) {
             $dependencias = $USUARIO->dependencias($_REQUEST['login']);
             //Crea una vista delete para ver la tupla
 			new USUARIO_DELETE( $valores, $dependencias );
+			}else{
+			new MESSAGE( $PERMISO, '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -93,6 +100,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
+			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$PERMISO = $USUARIO->comprobarPermisosEditar();
+			if($PERMISO=='true'){
 			//Variable que almacena un objeto model con el login
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
@@ -100,6 +110,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$datos = $USUARIO->RellenaSelect();
 			//Muestra la vista del formulario editar
 			new USUARIO_EDIT( $valores,$datos);
+			}else{
+			new MESSAGE( $PERMISO, '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 			//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
@@ -113,7 +126,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
+			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$PERMISO = $USUARIO->comprobarPermisosBuscar();
+			if($PERMISO=='true'){
 			new USUARIO_SEARCH();
+			}else{
+			new MESSAGE( $PERMISO, '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 		//Si se reciben datos	
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -128,15 +147,24 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
+		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');			
+		$PERMISO = $USUARIO->comprobarPermisosShowcurrent();
+		if($PERMISO=='true'){
 		//Variable que almacena un objeto model con el login
 		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 		//Variable que almacena los valores rellenados a traves de login
 		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		//Creación de la vista showcurrent
 		new USUARIO_SHOWCURRENT( $valores );
+		}else{
+			new MESSAGE( $PERMISO, '../Controllers/USUARIO_CONTROLLER.php' );
+		}
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
+		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');			
+		$PERMISO = $USUARIO->comprobarPermisosShowall();
+		if($PERMISO=='true'){
 		if ( !$_POST ) {//Si no se han recibido datos 
 			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '','');
 		//Si se reciben datos
@@ -149,6 +177,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new USUARIO_SHOWALL( $lista, $datos );
+		}else{
+		 new USUARIO_DEFAULT();
+		}
 }
 
 ?>

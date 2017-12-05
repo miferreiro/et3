@@ -250,10 +250,6 @@ function EDIT() {
 		            else
 				return 'No existe en la base de datos';		
 	} // fin del metodo EDIT
-
-            
+             
     }
-
-
-
 ?>

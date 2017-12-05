@@ -55,7 +55,6 @@ class ACCION_DELETE {
             
             <?php
             
-            if($dependencias != null){
                 if(array_key_exists('FUNC_ACCION', $dependencias)){
             ?>
                     <td>FUNC_ACCION</td>
@@ -71,8 +70,7 @@ class ACCION_DELETE {
             <?php
                 }
 
-                }
-            else{
+         
               ?>  
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
@@ -89,7 +87,7 @@ class ACCION_DELETE {
 			</form>
 		</div>
 <?php
-            }
+            
 		include '../Views/Footer.php';
 	}
 }
