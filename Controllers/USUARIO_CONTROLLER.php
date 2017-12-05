@@ -59,14 +59,18 @@ switch ( $_REQUEST[ 'action' ] ) {
             $cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='4'){
-				if($fila['IdAccion']=='4'){
+			if($fila['IdGrupo']=='00000A'){
+			   $cont=$cont+1;
+			}else{
+			if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdAccion']=='0'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
 				}
 			   }
+			 }
 			}
-			if($cont==1){
+			if($cont>=1){
 			new USUARIO_ADD();
 			}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
@@ -82,8 +86,21 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
-			$PERMISO = $USUARIO->comprobarPermisosBorrar();
-			if($PERMISO=='true'){
+			$cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdGrupo']=='00000A'){
+			   $cont=$cont+1;
+			}else{
+			if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdAccion']=='1'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			 }
+			}
+			if($cont>=1){
 			//Variable que recoge un objecto model con solo el login
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 			//Variable que almacena el relleno de los datos utilizando el login
@@ -93,7 +110,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             //Crea una vista delete para ver la tupla
 			new USUARIO_DELETE( $valores, $dependencias );
 			}else{
-			new MESSAGE( $PERMISO, '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
 			//Si recibe valores ejecuta el borrado
 		} else {
@@ -109,8 +126,21 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
-			$PERMISO = $USUARIO->comprobarPermisosEditar();
-			if($PERMISO=='true'){
+			$cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdGrupo']=='00000A'){
+			   $cont=$cont+1;
+			}else{
+			if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdAccion']=='2'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			 }
+			}
+			if($cont>=1){
 			//Variable que almacena un objeto model con el login
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
@@ -119,7 +149,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Muestra la vista del formulario editar
 			new USUARIO_EDIT( $valores,$datos);
 			}else{
-			new MESSAGE( $PERMISO, '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
 			//Si se reciben valores
 		} else {
@@ -135,11 +165,24 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
 			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
-			$PERMISO = $USUARIO->comprobarPermisosBuscar();
-			if($PERMISO=='true'){
+			$cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdGrupo']=='00000A'){
+			   $cont=$cont+1;
+			}else{
+			if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdAccion']=='3'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			 }
+			}
+			if($cont>=1){
 			new USUARIO_SEARCH();
 			}else{
-			new MESSAGE( $PERMISO, '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
 		//Si se reciben datos	
 		} else {
@@ -156,8 +199,21 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');			
-		$PERMISO = $USUARIO->comprobarPermisos($_REQUEST['action']);
-		if($PERMISO=='true'){
+			$cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdGrupo']=='00000A'){
+			   $cont=$cont+1;
+			}else{
+			if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdAccion']=='4'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			 }
+			}
+			if($cont>=1){
 		//Variable que almacena un objeto model con el login
 		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 		//Variable que almacena los valores rellenados a traves de login
@@ -165,11 +221,27 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Creación de la vista showcurrent
 		new USUARIO_SHOWCURRENT( $valores );
 		}else{
-			new MESSAGE( $PERMISO, '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 		}
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
+		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+		$cont=0;
+		$PERMISO = $USUARIO->comprobarPermisos();
+		while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+	    if($fila['IdGrupo']=='00000A'){
+			   $cont=$cont+1;
+	    }else{
+			if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdAccion']=='5'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			 }
+			}
+			if($cont>=1){
 		if ( !$_POST ) {//Si no se han recibido datos 
 			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '','');
 		//Si se reciben datos
@@ -183,6 +255,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new USUARIO_SHOWALL( $lista, $datos );
 
+   }else{
+				new USUARIO_DEFAULT();
+			}
 }
 
 ?>
