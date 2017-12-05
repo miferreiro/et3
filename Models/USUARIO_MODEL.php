@@ -127,7 +127,7 @@ class USUARIO_MODEL{ //declaración de la clase
 										(login,IdGrupo)
 										VALUES
 										('$this->login',
-										 '00001A'
+										 'ALUMNOS'
 										)";
 						}
 
@@ -430,6 +430,181 @@ class USUARIO_MODEL{ //declaración de la clase
             return true;
 		}
    }
+	
+	//Comprueba que la Bd esté vacia, es decir sin grupos.
+	function comprobarBdIncial(){
+		
+		$sql = "SELECT * FROM GRUPO U";
+		
+		$resultado = $this->mysqli->query($sql); //hacemos la consulta en la base de datos
+		
+		if($resultado->nums_rows == 0){//miramos si el numero de filas es 0
+			return true;
+		}else{
+			return false;
+		}
+	
+	}
+	
+	
+	function primerUsuario(){
+		
+		$sqlInicial = "UPDATE GRUPO SET 
+					IdGrupo = 'ADMIN',
+                    NombreGrupo='Administracion',
+					DescripGrupo = 'Grupo que tendra todos los permisos'";
+		
+		$sqlInicial .= "UPDATE GRUPO SET 
+					IdGrupo = 'ALUMNOS',
+                    NombreGrupo='ALUMNOS',
+					DescripGrupo = 'Grupo que tendra los permisos de alumnos'";
+		
+		$sqlInicial .= "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('GestionUsuaios','GestionUsuarios','GestionUsuarios')";
+		$sqlInicial .= "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('GestionGrupos','GestionGrupos','GestionGrupos')";
+		$sqlInicial .= "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('GestionUsuaios','GestionUsuarios','GestionUsuarios')";
+		$sqlInicial .= "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('GestionFuncionalidades','GestionFuncionalidades','GestionFuncionalidades')";	
+		$sqlInicial = "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('GestionAccion','GestionAccion','GestionAccion')";
+		
+		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','ADD')";
+		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','EDIT')";
+		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','DELETE')";
+		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','SHOWALL')";
+		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','SHOWCURRENT')";
+		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','SEARCH')";
+		
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','ADD')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','EDIT')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','SEARCH')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','DELETE')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','SHOWCURRENT')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','SHOWALL')";
+		
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','ADD')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','EDIT')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','SEARCH')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','DELETE')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','SHOWCURRENT')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','SHOWALL')";
+		
+			
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','ADD')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','EDIT')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','SEARCH')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','DELETE')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','SHOWCURRENT')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','SHOWALL')";
+		
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','ADD')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','EDIT')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','SEARCH')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','DELETE')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','SHOWCURRENT')";
+		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','SHOWALL')";
+		
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion)VALUES('ADMIN','GestionUsuarios','ADD')";
+		$sqlInicial .= " INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionUsuarios','EDIT')";
+		$sqlInicial .= " INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionUsuarios','SEARCH')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionUsuarios','SHOWALL')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionUsuarios','SHOWCURRENT')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionUsuarios','DELETE')";
+		
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','ADD')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','EDIT')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','SEARCH')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','DELETE')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','SHOWCURRENT')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','SHOWALL')";
+	
+			
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','ADD')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','EDIT')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','SEARCH')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','DELETE')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','SHOWCURRENT')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','SHOWALL')";
+	
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','ADD')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','EDIT')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','SEARCH')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','DELETE')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','SHOWCURRENT')";
+		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','SHOWALL')";
+		
+			
+		if(!$result = $this->mysqli->query( $sqlInicial ) ){
+			return 'No se ha podido conectar con la base de datos';
+		}
+		
+		
+		
+		if ( ( $this->login <> '' ) ) { // si el atributo clave de la entidad no esta vacio
+            
+			// construimos el sql para buscar esa clave en la tabla
+			$sql = "SELECT * FROM USUARIO WHERE (  login = '$this->login')";
+
+			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
+				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+			} else { // si la ejecución de la query no da error
+
+				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe el login)
+					// construimos el sql para buscar esa clave candidata en la tabla
+					$sql = "SELECT * FROM USUARIO WHERE (DNI = '$this->DNI')";
+					
+					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el dni)
+						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
+						return 'Ya existe un usuario con el DNI introducido en la base de datos';// ya existe
+						
+					} else {
+						// construimos el sql para buscar esa clave candidata en la tabla
+						$sql = "SELECT * FROM USUARIO WHERE  (Correo = '$this->Correo')";
+
+						if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el Correo)
+							// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
+							return 'Ya existe un usuario con el Correo introducido en la base de datos';// ya existe
+							
+						} else { //si ninguna de las claves candidatas son iguales, insertamos el usuario
+                            //insertamos un usuario
+							$sql = "INSERT INTO USUARIO (
+							     login,
+                                 password,
+							     DNI,
+					             Nombre,
+					             Apellidos,
+                                 Correo,
+                                 Direccion,
+					             Telefono) 
+								VALUES(
+								'$this->login',
+                                '$this->password',
+								'$this->DNI',
+								'$this->Nombre',
+								'$this->Apellidos',
+								'$this->Correo',
+								'$this->Direccion',
+								'$this->Telefono'
+								)";
+							$sql2 = "INSERT INTO USU_GRUPO
+										(login,IdGrupo)
+										VALUES
+										('$this->login',
+										 'ADMIN'
+										)";
+						}
+
+					}
+					if ( !$this->mysqli->query( $sql ) || !$this->mysqli->query( $sql2 ) ) { // si da error en la ejecución del insert devolvemos mensaje
+						return 'Error en la inserción';
+					} else { //si no da error en la insercion devolvemos mensaje de exito
+						return 'Inserción realizada con éxito'; //operacion de insertado correcta
+					}
+
+				} else // si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
+					return 'Ya existe el usuario introducido en la base de datos'; // ya existe
+			}
+		} else { // si el atributo clave de la bd es vacio solicitamos un valor en un mensaje
+			return 'Introduzca un valor'; // introduzca un valor para el usuario
+		}
+	}
 } //fin de clase
 
 ?>
