@@ -56,24 +56,25 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+				new USUARIO_ADD();
+			}else{
             $cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdGrupo']=='00000A'){
-			   $cont=$cont+1;
-			}else{
 			if($fila['IdFuncionalidad']=='1'){
 				if($fila['IdAccion']=='0'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
 				}
-			   }
-			 }
+			   } 
 			}
-			if($cont>=1){
+			if($cont==1){
 			new USUARIO_ADD();
 			}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 			}
 		} else {//Si recive datos los recoge y mediante las funcionalidad de USUARIO_MODEL inserta los datos
 			$USUARIO = get_data_form();//Variable que almacena los datos recogidos
@@ -86,21 +87,28 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+			//Variable que recoge un objecto model con solo el login
+			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+			//Variable que almacena el relleno de los datos utilizando el login
+			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
+			
+            $dependencias = $USUARIO->dependencias($_REQUEST['login']);
+            //Crea una vista delete para ver la tupla
+			new USUARIO_DELETE( $valores, $dependencias );
+			}else{
 			$cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdGrupo']=='00000A'){
-			   $cont=$cont+1;
-			}else{
 			if($fila['IdFuncionalidad']=='1'){
 				if($fila['IdAccion']=='1'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
 				}
-			   }
-			 }
+			  }
 			}
-			if($cont>=1){
+			if($cont==1){
 			//Variable que recoge un objecto model con solo el login
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 			//Variable que almacena el relleno de los datos utilizando el login
@@ -111,6 +119,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new USUARIO_DELETE( $valores, $dependencias );
 			}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 			}
 			//Si recibe valores ejecuta el borrado
 		} else {
@@ -126,19 +135,26 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+						//Variable que almacena un objeto model con el login
+			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+			//Variable que almacena los datos de los atibutos rellenados a traves de login
+			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
+			$datos = $USUARIO->RellenaSelect();
+			//Muestra la vista del formulario editar
+			new USUARIO_EDIT( $valores,$datos);
+			}else{
 			$cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdGrupo']=='00000A'){
-			   $cont=$cont+1;
-			}else{
+
 			if($fila['IdFuncionalidad']=='1'){
 				if($fila['IdAccion']=='2'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
 				}
 			   }
-			 }
 			}
 			if($cont>=1){
 			//Variable que almacena un objeto model con el login
@@ -150,6 +166,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new USUARIO_EDIT( $valores,$datos);
 			}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 			}
 			//Si se reciben valores
 		} else {
@@ -165,24 +182,26 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
 			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+				new USUARIO_SEARCH();
+			}else{
 			$cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdGrupo']=='00000A'){
-			   $cont=$cont+1;
-			}else{
+
 			if($fila['IdFuncionalidad']=='1'){
 				if($fila['IdAccion']=='3'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
 				}
 			   }
-			 }
 			}
 			if($cont>=1){
 			new USUARIO_SEARCH();
 			}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 			}
 		//Si se reciben datos	
 		} else {
@@ -198,20 +217,26 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');			
+		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+					//Variable que almacena un objeto model con el login
+		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+		//Variable que almacena los valores rellenados a traves de login
+		           $valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
+		           //Creación de la vista showcurrent
+		           new USUARIO_SHOWCURRENT( $valores );
+			}else{
 			$cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdGrupo']=='00000A'){
-			   $cont=$cont+1;
-			}else{
+	
 			if($fila['IdFuncionalidad']=='1'){
 				if($fila['IdAccion']=='4'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
 				}
 			   }
-			 }
 			}
 			if($cont>=1){
 		//Variable que almacena un objeto model con el login
@@ -223,23 +248,36 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 		}
+		}
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
 		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+		$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+				if ( !$_POST ) {//Si no se han recibido datos 
+			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '','');
+		//Si se reciben datos
+		} else {
+			$USUARIO = get_data_form();
+		}
+		//Variable que almacena los datos de la busqueda
+		$datos = $USUARIO->SEARCH();
+		//Variable que almacena array con el nombre de los atributos
+		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
+		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		new USUARIO_SHOWALL( $lista, $datos );
+			}else{
 		$cont=0;
 		$PERMISO = $USUARIO->comprobarPermisos();
 		while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-	    if($fila['IdGrupo']=='00000A'){
-			   $cont=$cont+1;
-	    }else{
+
 			if($fila['IdFuncionalidad']=='1'){
 				if($fila['IdAccion']=='5'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
 				}
 			   }
-			 }
 			}
 			if($cont>=1){
 		if ( !$_POST ) {//Si no se han recibido datos 
@@ -257,6 +295,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
    }else{
 				new USUARIO_DEFAULT();
+			}
 			}
 }
 

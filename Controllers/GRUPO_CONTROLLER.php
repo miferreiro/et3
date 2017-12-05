@@ -45,13 +45,27 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			//Crea una nueva vista del formulario añadir
-		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
-		$PERMISO = $USUARIO->gruposPermisosShowall();
-		if($PERMISO=='true'){
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+				new GRUPO_ADD();
+			}else{
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='2'){
+				if($fila['IdAccion']=='0'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 			new GRUPO_ADD();
 		}else{
-			new MESSAGE( $PERMISO, '../Controllers/GRUPO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 		}
+			}
 		} else {//Si recive datos los recoge y mediante las funcionalidad de GRUPO inserta los datos
 			$GRUPOS = get_data_form();//Variable que almacena los datos recogidos
 			$GRUPOS->IdGrupo = $GRUPOS->NumRows() + 1;
@@ -63,9 +77,31 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
-		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
-		$PERMISO = $USUARIO->gruposPermisosShowall();
-		if($PERMISO=='true'){
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+			//Variable que recoge un objecto model con solo el idgrupo
+			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
+			//Variable que almacena el relleno de los datos utilizando el IdGrupo
+			$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
+			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
+            $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);
+			//Variable que almacena array con el nombre de los atributos
+			$lista = array( 'login', 'IdGrupo');
+			//Crea una vista delete para ver la tupla
+			new GRUPO_DELETE( $valores, $valores2, $lista, $dependencias);
+			}else{
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='2'){
+				if($fila['IdAccion']=='1'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 			//Variable que recoge un objecto model con solo el idgrupo
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
 			//Variable que almacena el relleno de los datos utilizando el IdGrupo
@@ -77,9 +113,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Crea una vista delete para ver la tupla
 			new GRUPO_DELETE( $valores, $valores2, $lista, $dependencias);
 		}else{
-			new MESSAGE( $PERMISO, '../Controllers/GRUPO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 		}
-			//Si recibe valores ejecuta el borrado
+			}//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
 			$GRUPOS = get_data_form();
@@ -92,9 +128,28 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
-		$PERMISO = $USUARIO->gruposPermisosShowall();
-		if($PERMISO=='true'){
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+			//Variable que almacena un objeto model con el login
+			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '', '');
+			//Variable que almacena los datos de los atibutos rellenados a traves de login
+			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
+			$datos = $GRUPOS->RellenaSelect();
+			//Muestra la vista del formulario editar
+			new GRUPO_EDIT( $valores,$datos);
+			}else{
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='2'){
+				if($fila['IdAccion']=='2'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 			//Variable que almacena un objeto model con el login
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
@@ -103,9 +158,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Muestra la vista del formulario editar
 			new GRUPO_EDIT( $valores,$datos);
 		}else{
-			new MESSAGE( $PERMISO, '../Controllers/GRUPO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 		}
-			//Si se reciben valores
+			}//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
 			$GRUPOS = get_data_form();
@@ -118,13 +173,27 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
-		$PERMISO = $USUARIO->gruposPermisosShowall();
-		if($PERMISO=='true'){
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+            new GRUPO_SEARCH();
+			}else{
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='2'){
+				if($fila['IdAccion']=='3'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 			new GRUPO_SEARCH();
 		}else{
-			new MESSAGE( $PERMISO, '../Controllers/GRUPO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 		}
+			}
 		//Si se reciben datos	
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -139,9 +208,31 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
-		$PERMISO = $USUARIO->gruposPermisosShowall();
-		if($PERMISO=='true'){
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+		//Variable que almacena un objeto model con el IdGrupo
+		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
+		//Variable que almacena los valores rellenados a traves de IdGrupo
+		$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
+		//Variable que almacena los valores rellenados a traves de IdGrupo
+		$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
+		//Variable que almacena array con el nombre de los atributos
+		$lista = array( 'login', 'IdGrupo');
+		//Creación de la vista showcurrent
+		new GRUPO_SHOWCURRENT( $lista, $valores, $valores2 );
+			}else{
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='2'){
+				if($fila['IdAccion']=='4'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 		//Variable que almacena un objeto model con el IdGrupo
 		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
 		//Variable que almacena los valores rellenados a traves de IdGrupo
@@ -153,14 +244,40 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Creación de la vista showcurrent
 		new GRUPO_SHOWCURRENT( $lista, $valores, $valores2 );
 		}else{
-			new MESSAGE( $PERMISO, '../Controllers/GRUPO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 		}
+			}
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '');			
-		$PERMISO = $USUARIO->gruposPermisosShowall();
-		if($PERMISO=='true'){
+				$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+		$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+				if ( !$_POST ) {//Si no se han recibido datos 
+			$USUARIO = new GRUPO_MODEL( '', '', '', '');
+		//Si se reciben datos
+		} else {
+			$USUARIO = get_data_form();
+		}
+		//Variable que almacena los datos de la busqueda
+		$datos = $USUARIO->SEARCH();
+		//Variable que almacena array con el nombre de los atributos
+		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
+		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		new GRUPO_SHOWALL( $lista, $datos );
+			}else{
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='2'){
+				if($fila['IdAccion']=='5'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 		if ( !$_POST ) {//Si no se han recibido datos 
 			$GRUPOS = new GRUPO( '', '', '','');
 		//Si se reciben datos
@@ -176,6 +293,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}else{
 		 new USUARIO_DEFAULT();
 		}
+			}
 }
 
 ?>

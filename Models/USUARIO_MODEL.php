@@ -377,12 +377,24 @@ class USUARIO_MODEL{ //declaración de la clase
 		}
 	} //fin metodo login
    function comprobarPermisos(){
-	   $sql = "SELECT DISTINCT G.IdGrupo, F.NombreFuncionalidad, A.NombreAccion, F.IdFuncionalidad, A.IdAccion FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo && (P.IdGrupo=G.IdGrupo||G.IdGrupo='00000A')) ORDER BY G.IdGrupo,F.IdFuncionalidad,A.IdAccion";
+	   $sql = "SELECT DISTINCT P.IdGrupo, P.IdFuncionalidad, P.IdAccion FROM PERMISO P, USU_GRUPO U WHERE U.login = '$this->login' && (U.IdGrupo = P.IdGrupo || P.IdGrupo ='0000A')";
 	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
        return $resultado;
 
    }
-  
+   function comprobarAdmin(){
+		
+		$sql = "SELECT * FROM USU_GRUPO WHERE login = '$this->login' && IdGrupo = '00000A'";
+		
+		$resultado = $this->mysqli->query($sql); //hacemos la consulta en la base de datos
+		
+		if($resultado->num_rows == 0){//miramos si el numero de filas es 0
+			return false;
+		}else{
+			return true;
+		}
+	
+   }
 	
 	//Comprueba que la Bd esté vacia, es decir sin grupos.
 	function comprobarBdIncial(){
