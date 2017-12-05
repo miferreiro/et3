@@ -23,9 +23,9 @@ else{
 
 	//Si no existe el login en la base de datos
 	if ($respuesta == 'true'){
-		$inicializacion = $usuario->ComprobarBdInicial();
-		if($incializacion){
-			$usuario->primerUsuario();
+	 ;
+		if($usuario->comprobarBdIncial()){
+			$respuesta = $usuario->primerUsuario();
 		}else{
 			$respuesta = $usuario->ADD();
 		}

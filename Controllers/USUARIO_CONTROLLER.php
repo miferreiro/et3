@@ -56,12 +56,20 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
-			$PERMISO = $USUARIO->comprobarPermisosAñadir();
-			if($PERMISO=='true'){
-			//Crea una vista add para ver la tupla
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='4'){
+				if($fila['IdAccion']=='4'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 			new USUARIO_ADD();
 			}else{
-			new MESSAGE( $PERMISO, '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
 		} else {//Si recive datos los recoge y mediante las funcionalidad de USUARIO_MODEL inserta los datos
 			$USUARIO = get_data_form();//Variable que almacena los datos recogidos
@@ -148,7 +156,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');			
-		$PERMISO = $USUARIO->comprobarPermisosShowcurrent();
+		$PERMISO = $USUARIO->comprobarPermisos($_REQUEST['action']);
 		if($PERMISO=='true'){
 		//Variable que almacena un objeto model con el login
 		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
@@ -162,9 +170,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');			
-		$PERMISO = $USUARIO->comprobarPermisosShowall();
-		if($PERMISO=='true'){
 		if ( !$_POST ) {//Si no se han recibido datos 
 			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '','');
 		//Si se reciben datos
@@ -177,9 +182,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new USUARIO_SHOWALL( $lista, $datos );
-		}else{
-		 new USUARIO_DEFAULT();
-		}
+
 }
 
 ?>

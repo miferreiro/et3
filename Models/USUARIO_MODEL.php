@@ -376,8 +376,8 @@ class USUARIO_MODEL{ //declaración de la clase
 			}
 		}
 	} //fin metodo login
-   function comprobarPermisosAñadir(){
-	   $sql = "SELECT * FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo &&( (P.IdGrupo=G.IdGrupo && P.IdFuncionalidad = F.IdFuncionalidad && P.IdAccion = A.IdAccion && A.NombreAccion = 'ADD' && F.NombreFuncionalidad = 'Gestión de usuarios') || G.NombreGrupo= 'Administracion') )";
+   function comprobarPermisos(){
+	   $sql = "SELECT DISTINCT F.NombreFuncionalidad, A.NombreAccion, F.IdFuncionalidad, A.IdAccion FROM USU_GRUPO U, GRUPO G, PERMISO P,FUNCIONALIDAD F, ACCION A WHERE (U.login = '$this->login' && U.IdGrupo = G.IdGrupo && P.IdGrupo=G.IdGrupo) ORDER BY F.NombreFuncionalidad,A.NombreAccion";
 	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
 	   if ( $resultado->num_rows == 0 ) {//miramos si el numero de filas es 0
 			return 'El usuario no tiene los permisos necesarios';
@@ -438,7 +438,7 @@ class USUARIO_MODEL{ //declaración de la clase
 		
 		$resultado = $this->mysqli->query($sql); //hacemos la consulta en la base de datos
 		
-		if($resultado->nums_rows == 0){//miramos si el numero de filas es 0
+		if($resultado->num_rows == 0){//miramos si el numero de filas es 0
 			return true;
 		}else{
 			return false;
@@ -448,94 +448,315 @@ class USUARIO_MODEL{ //declaración de la clase
 	
 	
 	function primerUsuario(){
+		$sqlInicial = "INSERT INTO GRUPO (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('ADMIN','Administracion','Grupo que tendra todos los permisos')";
+
 		
-		$sqlInicial = "UPDATE GRUPO SET 
-					IdGrupo = 'ADMIN',
-                    NombreGrupo='Administracion',
-					DescripGrupo = 'Grupo que tendra todos los permisos'";
-		
-		$sqlInicial .= "UPDATE GRUPO SET 
-					IdGrupo = 'ALUMNOS',
-                    NombreGrupo='ALUMNOS',
-					DescripGrupo = 'Grupo que tendra los permisos de alumnos'";
-		
-		$sqlInicial .= "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('GestionUsuaios','GestionUsuarios','GestionUsuarios')";
-		$sqlInicial .= "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('GestionGrupos','GestionGrupos','GestionGrupos')";
-		$sqlInicial .= "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('GestionUsuaios','GestionUsuarios','GestionUsuarios')";
-		$sqlInicial .= "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('GestionFuncionalidades','GestionFuncionalidades','GestionFuncionalidades')";	
-		$sqlInicial = "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('GestionAccion','GestionAccion','GestionAccion')";
-		
-		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','ADD')";
-		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','EDIT')";
-		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','DELETE')";
-		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','SHOWALL')";
-		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','SHOWCURRENT')";
-		$sqlInicial .= "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','SEARCH')";
-		
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','ADD')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','EDIT')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','SEARCH')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','DELETE')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','SHOWCURRENT')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionUsuarios','SHOWALL')";
-		
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','ADD')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','EDIT')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','SEARCH')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','DELETE')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','SHOWCURRENT')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionGrupos','SHOWALL')";
-		
-			
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','ADD')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','EDIT')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','SEARCH')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','DELETE')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','SHOWCURRENT')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionFuncionalidades','SHOWALL')";
-		
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','ADD')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','EDIT')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','SEARCH')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','DELETE')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','SHOWCURRENT')";
-		$sqlInicial .= "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('GestionAccion','SHOWALL')";
-		
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion)VALUES('ADMIN','GestionUsuarios','ADD')";
-		$sqlInicial .= " INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionUsuarios','EDIT')";
-		$sqlInicial .= " INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionUsuarios','SEARCH')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionUsuarios','SHOWALL')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionUsuarios','SHOWCURRENT')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionUsuarios','DELETE')";
-		
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','ADD')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','EDIT')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','SEARCH')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','DELETE')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','SHOWCURRENT')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionGrupos','SHOWALL')";
-	
-			
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','ADD')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','EDIT')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','SEARCH')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','DELETE')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','SHOWCURRENT')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionFuncionalidades','SHOWALL')";
-	
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','ADD')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','EDIT')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','SEARCH')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','DELETE')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','SHOWCURRENT')";
-		$sqlInicial .= "INSERT INTO PERMISOS (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','GestionAccion','SHOWALL')";
-		
-			
-		if(!$result = $this->mysqli->query( $sqlInicial ) ){
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
 			return 'No se ha podido conectar con la base de datos';
 		}
+
+$sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('ALUMNOS','ALUMNOS','Grupo que tendra todos los permisos de alumnos')";
+
 		
-		
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('1','GestionUsuarios','GestionUsuarios')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('2','GestionGrupos','GestionGrupos')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('3','GestionFuncionalidades','GestionFuncionalidades')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('4','GestionAccion','GestionAccion')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+
+		$sqlInicial = "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ADD','ADD','ADD')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('EDIT','EDIT','EDIT')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('DELETE','DELETE','DELETE')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('ALL','SHOWALL','SHOWALL')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('SHOW','SHOWCURRENT','SHOWCURRENT')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('SEARCH','SEARCH','SEARCH')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','ADD')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','EDIT')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','SEARCH')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','DELETE')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','SHOW')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','ALL')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','ADD')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','EDIT')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','SEARCH')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','DELETE')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','SHOW')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','ALL')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','ADD')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','EDIT')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','SEARCH')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','DELETE')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','SHOW')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','ALL')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','ADD')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','EDIT')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','SEARCH')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','DELETE')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','SHOW')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','ALL')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion)VALUES('ADMIN','1','ADD')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = " INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','1','EDIT')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = " INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','1','SEARCH')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','1','SALL')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','1','SHOW')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','1','DELETE')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','2','ADD')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','2','EDIT')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','2','SEARCH')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','2','DELETE')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','2','SHOW')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','2','ALL')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','3','ADD')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','3','EDIT')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','3','SEARCH')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','3','DELETE')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','3','SHOW')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','3','ALL')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','4','ADD')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','4','EDIT')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','4','SEARCH')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','4','DELETE')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','4','SHOW')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+
+		$sqlInicial = "INSERT INTO PERMISO (IdGrupo,IdFuncionalidad,IdAccion) VALUES('ADMIN','4','ALL')";
+
+
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos AQUI ';
+		}
 		
 		if ( ( $this->login <> '' ) ) { // si el atributo clave de la entidad no esta vacio
             
@@ -605,6 +826,10 @@ class USUARIO_MODEL{ //declaración de la clase
 			return 'Introduzca un valor'; // introduzca un valor para el usuario
 		}
 	}
+
+	    
+    
+
 } //fin de clase
 
 ?>
