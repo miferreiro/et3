@@ -69,6 +69,12 @@
 						<li>
 							<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['ASIGNACIÓN DE QAs']; ?></a>
 						</li>
+						<li>
+							<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=GENERAR" class="segundoNivel"><?php echo $strings['GENERACIÓN DE QAs']; ?></a>
+						</li>
+						<li>
+							<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=HISTORIAS" class="segundoNivel"><?php echo $strings['GENERACIÓN DE HISTORIAS EVALUACIÓN']; ?></a>
+						</li>
 					</ul>
 			</li>
 			<li>
