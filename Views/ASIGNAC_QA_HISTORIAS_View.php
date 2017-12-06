@@ -7,11 +7,11 @@
 */
 class ASIGNAC_QA_HISTORIAS {
 
-	function __construct() {
-		$this->render();
+	function __construct($valores) {
+		$this->render($valores);
 	}
 
-	function render() {
+	function render($QA) {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -23,15 +23,18 @@ class ASIGNAC_QA_HISTORIAS {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['ET'];?>
+							<?php echo $strings['QA'];?>
 						</th>
 						<td class="formThTd">
 							<select name="IdTrabajo">						        
-								<option value="ET1">1</option>
-						        <option value="ET2">2</option>
-						        <option value="ET3">3</option>
-						        <option value="ET4">4</option>
-						        <option value="ET5">5</option>
+								<?php
+								//Bucle que recorre las posibles et para generer qas
+								for ($i=0; $i < count($QA); $i++) { 
+								?>
+								<option value="<?php echo $QA[$i][0] ?>"><?php echo $QA[$i][1] ?></option>
+						        <?php
+						        }
+						        ?>
 							</select>
 					</tr>
 
