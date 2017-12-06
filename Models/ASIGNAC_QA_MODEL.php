@@ -92,7 +92,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
                 }
                 else{
                     if($result->num_rows == 0){
-                        return "No puedes asignar una qa debido a que no se añadio este este usuario con este login";
+                        return "No puedes asignar una qa debido a que no se añadiu este usuario con este login";
                     }
                 }
         
