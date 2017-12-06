@@ -98,6 +98,21 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 			return $miarray;
 	}
 
+	function DevolverQA(){
+		$sql = "SELECT IdTrabajo,NombreTrabajo FROM `TRABAJO` WHERE (BINARY IdTrabajo LIKE 'QA%')"; 
+		//variable que almacena el resultado de la query
+			$resultado = $this->mysqli->query( $sql );
+			if ( $resultado->num_rows == 0 ) { return null; }
+			
+			//Caragamos las tuplas resultado de la consulta en un array
+			while($datos = mysqli_fetch_row ($resultado)){
+				//Variable que almacena el array de las tuplas resultado de la query
+				$miarray[] = $datos;
+			}
+			//devuelve el array
+			return $miarray;
+	}
+
 	function ADD(){
         $usuario = "SELECT login FROM USUARIO WHERE (login = '$this->LoginEvaluador')";
         

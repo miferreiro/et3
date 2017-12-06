@@ -48,8 +48,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'HISTORIAS'://Caso generar HISTORIAS
 		//Si no se reciben parametros crea un vista de generar historias
 		if ( !$_POST ) {
+			//Variable que almacena un nuevo objecto model
+			$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
+			//Variable que almacena el array de las tuplas de entrega.
+			$QA = $ASIGNACION->DevolverQA();
 			//Creación vista para generación de qas
-			new ASIGNAC_QA_HISTORIAS();
+			new ASIGNAC_QA_HISTORIAS($QA);
 		//Si se reciben parametros
 		} else {
 		//Variable que almacena el mensaje por defecto
@@ -63,7 +67,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Si no hay historias pero hay QAs cambia el mensaje de salida
 		if (count($HISTORIAS) <= 0 && count($QAs) != 0) {
 			//mensaje
-			$mensaje = 'No se enentra la asignacion de QAs';
+			$mensaje = 'No se encuentran las historias de la QA';
 		}
 		//Bucle que recorre todos los qua
 		for ($i=0; $i < count($QAs); $i++) { 	
