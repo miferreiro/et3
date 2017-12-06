@@ -10,11 +10,10 @@
 session_start();//solicito trabajar con la sesión
 
 include '../Models/PERMISO_MODEL.php';
-include '../Views/PERMISO_SHOWALL_View.php';
+include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Views/PERMISO_SEARCH_View.php';
-include '../Views/PERMISO_ADD_View.php';
-include '../Views/PERMISO_DELETE_View.php';
-include '../Views/PERMISO_SHOWCURRENT_View.php';
+include '../Views/PERMISO_SHOWALL_View.php';
+include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php';
 
 function get_data_form(){
@@ -72,41 +71,30 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 }
 
 switch ( $_REQUEST[ 'action' ] ) {
-	case 'ADD':
-		if ( !$_POST ) {
-			$PERMISO = new PERMISO_MODEL( '', '', '', '', '', '');
-			$Grupo = $PERMISO->recuperarGrupo($_REQUEST['IdGrupo']);
-			$Funcionalidades = $PERMISO->recuperarFuncionalidades();
-			new PERMISO_ADD($Grupo,$Funcionalidades);
-		} else {
-			$PERMISO = get_data_form();
-			if($PERMISO->IdFuncionalidad == ""){
-				new MESSAGE( 'Error: Funcionalidad no existente', '../Controllers/GRUPO_CONTROLLER.php' );
-			} else {
-				$porciones = explode(",", $_REQUEST['IdFuncionalidad']);
-				$PERMISO->IdFuncionalidad = $porciones[0];
-				if(strlen($_REQUEST['IdFuncionalidad'] > 0)){
-					$PERMISO->IdAccion = $porciones[1];
-				}
-				$respuesta = $PERMISO->ADD();
-				new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
-			}
-		}
-		break;
-	case 'DELETE':
-		if ( !$_POST ) {
-			$PERMISO = new PERMISO_MODEL( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ] );
-			$valores = $PERMISO->RellenaDatos( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ]  );
-			new PERMISO_DELETE( $valores );
-		} else {
-			$PERMISO = get_data_form();
-			$respuesta = $PERMISO->DELETE();
-			new MESSAGE( $respuesta, '../Controllers/PERMISO_CONTROLLER.php' );
-		}
-		break;
 	case 'SEARCH':
 		if ( !$_POST ) {
+			//Crea una nueva vista del formulario añadir
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+				new PERMISO_SEARCH();
+			}else{
+            $cont=0;
+			$ACL = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $ACL) ) {
+			if($fila['IdFuncionalidad']=='3'){
+				if($fila['IdAccion']=='3'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 			new PERMISO_SEARCH();
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/PERMISO_CONTROLLER.php' );
+		}
+			};
 		} else {
 			$PERMISO = get_data_form();
 			$datos = $PERMISO->SEARCH2();
@@ -114,16 +102,36 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new PERMISO_SHOWALL( $lista, $datos );
 		}
 		break;
-	case 'SHOWCURRENT'://Caso showcurrent
-		//Variable que almacena un objeto model con el IdGrupo
-		$PERMISO = new PERMISO_MODEL( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ] );
-		//Variable que almacena los valores rellenados a traves de IdGrupo
-		$valores = $PERMISO->RellenaDatos( $_REQUEST[ 'IdGrupo' ], $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ]  );
-		//Creación de la vista showcurrent
-		new PERMISO_SHOWCURRENT( $valores );
-		//Final del bloque
-		break;
 	default:
+
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+		$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+				if ( !$_POST ) {//Si no se han recibido datos 
+			$USUARIO = new PERMISO_MODEL( '', '', '', '','','');
+		//Si se reciben datos
+		} else {
+			$USUARIO = get_data_form();
+		}
+		//Variable que almacena los datos de la busqueda
+		$datos = $USUARIO->SEARCH();
+		//Variable que almacena array con el nombre de los atributos
+		$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion');
+		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		new PERMISO_SHOWALL( $lista, $datos );
+			}else{
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+            $cont=0;
+			$ACL = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $ACL ) ) {
+			if($fila['IdFuncionalidad']=='3'){
+				if($fila['IdAccion']=='5'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 		if ( !$_POST ) {
 			$PERMISO = new PERMISO_MODEL( '', '', '', '', '', '');
 		} else {
@@ -132,7 +140,14 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $PERMISO->SEARCH();
 		$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
 		new PERMISO_SHOWALL( $lista, $datos );
+		}else{
+		 new USUARIO_DEFAULT();
+		}
+			}
+
+		
 }
 
 
 ?>
+

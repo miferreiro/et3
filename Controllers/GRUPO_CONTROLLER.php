@@ -254,7 +254,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 				if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIO = new GRUPO_MODEL( '', '', '', '');
+			$USUARIO = new GRUPO( '', '', '', '');
 		//Si se reciben datos
 		} else {
 			$USUARIO = get_data_form();
@@ -262,7 +262,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los datos de la busqueda
 		$datos = $USUARIO->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
-		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
+		$lista = array('NombreGrupo','DescripGrupo');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new GRUPO_SHOWALL( $lista, $datos );
 			}else{

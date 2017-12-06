@@ -10,12 +10,14 @@
 session_start();//solicito trabajar con la sesión
 
 include '../Models/FUNCIONALIDAD_MODEL.php';
+include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Views/FUNCIONALIDAD_SHOWALL_View.php';
 include '../Views/FUNCIONALIDAD_SEARCH_View.php';
 include '../Views/FUNCIONALIDAD_ADD_View.php';
 include '../Views/FUNCIONALIDAD_EDIT_View.php';
 include '../Views/FUNCIONALIDAD_DELETE_View.php';
 include '../Views/FUNCIONALIDAD_SHOWCURRENT_View.php';
+include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php';
 
 function get_data_form(){
@@ -45,8 +47,28 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
-			//Crea una vista add para ver la tupla
+			//Crea una nueva vista del formulario añadir
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+				new FUNCIONALIDAD_ADD();
+			}else{
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='4'){
+				if($fila['IdAccion']=='0'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 			new FUNCIONALIDAD_ADD();
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );
+		}
+			}
 		} else {
 			$FUNCIONALIDAD = get_data_form();
 			$respuesta = $FUNCIONALIDAD->ADD();
@@ -55,10 +77,35 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
+			//Crea una nueva vista del formulario borrar
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
 			$FUNCIONALIDAD = new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
 			$valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ]);
 			$dependencias = $FUNCIONALIDAD->dependencias( $_REQUEST[ 'IdFuncionalidad' ]);
 			new FUNCIONALIDAD_DELETE( $valores, $dependencias );
+			}else{
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='4'){
+				if($fila['IdAccion']=='1'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
+			$FUNCIONALIDAD = new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
+			$valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ]);
+			$dependencias = $FUNCIONALIDAD->dependencias( $_REQUEST[ 'IdFuncionalidad' ]);
+			new FUNCIONALIDAD_DELETE( $valores, $dependencias );
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );
+		}
+			}
+
 		} else {
 			$FUNCIONALIDAD = get_data_form();
 			$respuesta = $FUNCIONALIDAD->DELETE();
@@ -67,10 +114,33 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
+						//Crea una nueva vista del formulario editar
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
 			$FUNCIONALIDAD = new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
 			$valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ] );
-			$datos = $FUNCIONALIDAD->RellenaSelect();
-			new FUNCIONALIDAD_EDIT( $valores, $datos );
+			new FUNCIONALIDAD_EDIT( $valores );
+			}else{
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='4'){
+				if($fila['IdAccion']=='2'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
+			$FUNCIONALIDAD = new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
+			$valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ] );
+			new FUNCIONALIDAD_EDIT( $valores );
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );
+		}
+			}
+
 		} else {
 			$FUNCIONALIDAD = get_data_form();
 			$respuesta = $FUNCIONALIDAD->EDIT($_REQUEST['IdAccion']);
@@ -79,7 +149,27 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH':
 		if ( !$_POST ) {
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+				new FUNCIONALIDAD_SEARCH();
+			}else{
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='4'){
+				if($fila['IdAccion']=='3'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
 			new FUNCIONALIDAD_SEARCH();
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );
+		}
+			}
 		} else {
 			$FUNCIONALIDAD = get_data_form();
 			$datos = $FUNCIONALIDAD->SEARCH();
@@ -89,9 +179,31 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 		
 	case 'SHOWCURRENT':
-		$FUNCIONALIDAD= new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
-		$valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ] );
-		new FUNCIONALIDAD_SHOWCURRENT( $valores );
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+			$FUNCIONALIDAD= new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
+		    $valores = $ACCION->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ] );
+		    new FUNCIONALIDAD_SHOWCURRENT( $valores );
+			}else{
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='4'){
+				if($fila['IdAccion']=='4'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
+		    $FUNCIONALIDAD= new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
+		    $valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ] );
+		    new FUNCIONALIDAD_SHOWCURRENT( $valores );
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );
+		}
+			}
 		break;
 	default:
 		if ( !$_POST ) {
