@@ -29,11 +29,12 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 	} // fin del constructor
 
 	function DevolverQAs(){
-		//Consulta que recupera la tabla trabajo
+		//Consulta que recupera la tabla ASIGNAC_QA
 		$sql = "select IdTrabajo,
 					   LoginEvaluador,
 					   AliasEvaluado
-					   from ASIGNAC_QA";
+					   from ASIGNAC_QA
+					   where IdTrabajo = '$this->IdTrabajo'";
 		$resultado = $this->mysqli->query( $sql );
 		if ( $resultado->num_rows == 0 ) { return null; }
 		//Caragamos las tuplas resultado de la consulta en un array
@@ -59,6 +60,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 		return $miarray;	
 	}
 
+	//Función de devuelve el array con todas las entregas pertenecientes al trabajo que se pasa como parametro
 	function DevolverArray($Entrega){
 		//Consulta que recupera la tabla trabajo
 			$sql = "select ENTREGA.IdTrabajo,
@@ -66,16 +68,18 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 						   Alias
 						   from ENTREGA,TRABAJO
 						   where ENTREGA.IdTrabajo = TRABAJO.IdTrabajo
-						   AND (BINARY NombreTrabajo LIKE '$Entrega%')
+						   AND ENTREGA.IdTrabajo = '$Entrega'
 						   order by login";
+			//variable que almacena el resultado de la query
 			$resultado = $this->mysqli->query( $sql );
 			if ( $resultado->num_rows == 0 ) { return null; }
+			
 			//Caragamos las tuplas resultado de la consulta en un array
 			while($datos = mysqli_fetch_row ($resultado)){
 				//Variable que almacena el array de las tuplas resultado de la query
 				$miarray[] = $datos;
 			}
-
+			//devuelve el array
 			return $miarray;
 	}
 
