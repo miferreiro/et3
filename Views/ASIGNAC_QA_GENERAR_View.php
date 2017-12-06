@@ -7,11 +7,11 @@
 */
 class ASIGNAC_QA_GENERAR {
 
-	function __construct() {
-		$this->render();
+	function __construct($valores) {
+		$this->render($valores);
 	}
 
-	function render() {
+	function render($ET) {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -26,12 +26,15 @@ class ASIGNAC_QA_GENERAR {
 							<?php echo $strings['ET'];?>
 						</th>
 						<td class="formThTd">
-							<select name="ET">						        
-								<option value="ET1">1</option>
-						        <option value="ET2">2</option>
-						        <option value="ET3">3</option>
-						        <option value="ET4">4</option>
-						        <option value="ET5">5</option>
+							<select name="IdTrabajo">						        
+								<?php
+								//Bucle que recorre las posibles et para generer qas
+								for ($i=0; $i < count($ET); $i++) { 
+								?>
+								<option value="<?php echo $ET[$i][0] ?>"><?php echo $ET[$i][1] ?></option>
+						        <?php
+						        }
+						        ?>
 							</select>
 					</tr>
 					<tr>

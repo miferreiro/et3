@@ -65,8 +65,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//mensaje
 			$mensaje = 'No se enentra la asignacion de QAs';
 		}
-		echo count($QAs);
-		echo count($HISTORIAS);
 		//Bucle que recorre todos los qua
 		for ($i=0; $i < count($QAs); $i++) { 	
 			//Bucle que recorre las historias
@@ -90,19 +88,25 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'GENERAR'://Caso generar QA
 		//Si no se reciben parametros
 		if ( !$_POST ) {
+			//Variable que almacena un nuevo objecto model
+			$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
+			//Variable que almacena el array de las tuplas de entrega.
+			$ET = $ASIGNACION->DevolverET();
 			//Creación de una nueva vista para generar QAs
-			new ASIGNAC_QA_GENERAR();
+			new ASIGNAC_QA_GENERAR($ET);
 		//Si se reciben parámetros
 		} else {
 		//Variable que almacena un nuevo objecto model
-		$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
+		$ASIGNACION = new ASIGNAC_QA_MODEL($_REQUEST['IdTrabajo'], '', '', '');
 		//Si no se encuentra la ET que se desea generar, muestra un mensaje y no se realiza
-		if ($ASIGNACION->DevolverArray($_REQUEST['ET']) == null) {
+		if ($ASIGNACION->DevolverArray($_REQUEST['IdTrabajo']) == null) {
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
 			new MESSAGE( 'No hay entregas para realizar la asignación', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 		}
 		//Variable que almacena el array de las tuplas de entrega.
-		$miarray = $ASIGNACION->DevolverArray($_REQUEST['ET']);
+		$miarray = $ASIGNACION->DevolverArray($_REQUEST['IdTrabajo']);
+		//Variable que guarda el nombre de la QA
+		$NombreQA = "QA" . substr($_REQUEST['IdTrabajo'], 2);
 		//Bucle que llena las posiciones de cada trabajo, que nos sirve para ver que tengan el número deseado
 		for ($i=0; $i < count($miarray); $i++) { $veces[] = 0; }
 		//Variable que almacena el número de la posición del array en el que estamos
@@ -124,7 +128,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						if($cont == count($miarray)){ $cont = 0; }
 					}
 					
-					$IdTrabajo=$miarray[$cont][0];//Variable que almacena $IdTrabajo
+					$IdTrabajo=$NombreQA;//Variable que almacena $IdTrabajo
 					$LoginEvaluador=$miarray[$i][1];//Variable que almacena $LoginEvaluador
 					$LoginEvaluado=$miarray[$cont][1];//Variable que almacena $LoginEvaluado
 					$AliasEvaluado=$miarray[$cont][2];//Variable que almacena $AliasEvaluado
