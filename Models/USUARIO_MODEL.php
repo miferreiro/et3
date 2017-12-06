@@ -478,7 +478,157 @@ $sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('00
 			return 'No se ha podido conectar con la base de datos';
 		}
 
-		
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','0')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','1')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','2')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','3')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','4')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','5')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','0')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','1')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','2')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','3')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','4')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','5')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','0')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','1')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','2')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','3')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','4')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','5')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','0')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','1')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','2')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','3')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','4')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','5')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','0')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','1')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','2')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','3')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','4')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','5')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }
 		if ( ( $this->login <> '' ) ) { // si el atributo clave de la entidad no esta vacio
             
 			// construimos el sql para buscar esa clave en la tabla
@@ -529,7 +679,7 @@ $sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('00
 										(login,IdGrupo)
 										VALUES
 										('$this->login',
-										 'ADMIN'
+										 '00000A'
 										)";
 						}
 
