@@ -171,7 +171,9 @@ array(
 	'GENERACIÓN AUTOMÁTICA DE QAs' => 'Automatic QAs generation',
 	'No puedes asignar una qa debido a que este alias no existe' => 'You cannot assign a QA because this alias does not exist',
 	'No puedes asignar una qa debido a que no se añadio un trabajo' => 'You can´t assign a QA because you don´t add a job',
-	'No puedes asignar una qa debido a que no se añadiu este usuario con este login' => 'You cannot assign a QA because this user is not added with this login'
+	'No puedes asignar una qa debido a que no se añadiu este usuario con este login' => 'You cannot assign a QA because this user is not added with this login',
+	'No se encuentra la asignacion de QAs' => 'Not found the assignment of QAs',
+	'No se encuentran las historias de la QA' => 'There are No stories of QA'
 	
 	
 	

@@ -57,7 +57,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Si se reciben parametros
 		} else {
 		//Variable que almacena el mensaje por defecto
-		$mensaje = 'No se enentra la asignacion de QAs';
+		$mensaje = 'No se encuentra la asignacion de QAs';
 		//Variable que almacena un nuevo objecto model
 		$ASIGNACION = new ASIGNAC_QA_MODEL($_REQUEST['IdTrabajo'], '', '', '');
 		//Variable que almacena el array de las tuplas de entrega.
