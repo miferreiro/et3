@@ -1,6 +1,6 @@
 <?php
 /*  Archivo php
-	Nombre: ASIGNAC_QA_View.php
+	Nombre: ASIGNAC_QA_GENERAR_View.php
 	Autor: 	fta875
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
@@ -17,7 +17,7 @@ class ASIGNAC_QA_GENERAR {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['ASIGNACIÓN DE QAs'];?>
+				<?php echo $strings['GENERACIÓN AUTOMÁTICA DE QAs'];?>
 			</h2>
 			<form name="ASIGNAC_QA" action="../Controllers/ASIGNAC_QA_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<table>

@@ -164,8 +164,14 @@ array(
     'NotaTrabajo' => 'WorkNote',
     'Gestion de notas' => 'Management of Notes',
     'Correción entregas' => 'Correction of deliveries',
-    'Correción QAs' => 'Correction of QAs'
-	
+    'Correción QAs' => 'Correction of QAs',
+	'GENERACIÓN DE QAs' => 'QAs generation',
+	'GENERACIÓN DE HISTORIAS EVALUACIÓN' => 'Generation of stories evaluation',
+	'GENERACIÓN AUTOMÁTICA DE HISTORIAS' => 'Automatic story Generation',
+	'GENERACIÓN AUTOMÁTICA DE QAs' => 'Automatic QAs generation',
+	'No puedes asignar una qa debido a que este alias no existe' => 'You cannot assign a QA because this alias does not exist',
+	'No puedes asignar una qa debido a que no se añadio un trabajo' => 'You can´t assign a QA because you don´t add a job',
+	'No puedes asignar una qa debido a que no se añadiu este usuario con este login' => 'You cannot assign a QA because this user is not added with this login'
 	
 	
 	

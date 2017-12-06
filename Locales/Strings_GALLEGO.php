@@ -164,7 +164,14 @@ array(
     'NotaTrabajo' => 'NotaTraballo',
     'Gestion de notas' => 'Xestión de notas',
     'Correción entregas' => 'Correción entregas',
-    'Correción QAs' => 'Correción QAs'
+    'Correción QAs' => 'Correción QAs',
+    'GENERACIÓN DE QAs' => 'XERACIÓN DE QAs',
+	'GENERACIÓN DE HISTORIAS EVALUACIÓN' => 'XERACIÓN DE HISTORIAS EVALUACIÓN',
+	'GENERACIÓN AUTOMÁTICA DE HISTORIAS' => 'XERACIÓN AUTOMÁTICA DE HISTORIAS',
+	'GENERACIÓN AUTOMÁTICA DE QAs' => 'XERACIÓN AUTOMÁTICA DE QAs',
+	'No puedes asignar una qa debido a que este alias no existe' => 'Non podes asignar unha qa debido a que este alias non existe',
+	'No puedes asignar una qa debido a que no se añadio un trabajo' => 'Non podes asignar unha qa debido a que non se añadiu un traballo',
+	'No puedes asignar una qa debido a que no se añadiu este usuario con este login' => 'Non podes asignar unha qa debido a que non se añadiu este usuario con este login'
     
 	)
 ;

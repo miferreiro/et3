@@ -17,7 +17,7 @@ class ASIGNAC_QA_HISTORIAS {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['ASIGNACIÓN DE QAs'];?>
+				<?php echo $strings['GENERACIÓN AUTOMÁTICA DE HISTORIAS'];?>
 			</h2>
 			<form name="ASIGNAC_QA" action="../Controllers/ASIGNAC_QA_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<table>
