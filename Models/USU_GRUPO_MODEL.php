@@ -2,7 +2,7 @@
 <!--Fecha: 23-11-2017 Autor: fwnbmw Dedicados: 20 minutos-->
 
 <?php
- include '../Functions/BdAdmin.php';
+ include_once '../Functions/BdAdmin.php';
 
     class USU_GRUPO{
         var $login;
@@ -111,35 +111,6 @@ function SEARCH()
 	}
 } // fin metodo SEARCH
 
-    // funcion EDIT()
-// Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
-// si existe se modifica
-function EDIT()
-{
-	// se construye la sentencia de busqueda de la tupla en la bd
-    $sql = "SELECT * FROM USU_GRUPO WHERE (login = '$this->login' && IdGrupo = '$this->IdGrupo')";
-    // se ejecuta la query
-    $result = $this->mysqli->query($sql);
-    // si el numero de filas es igual a uno es que lo encuentra
-    if ($result->num_rows == 1)
-    {	// se construye la sentencia de modificacion en base a los atributos de la clase
-		$sql = "UPDATE USU_GRUPO SET 
-                    login = '$this->login',
-                    IdGrupo = '$this->IdGrupo'
-				WHERE ( login = '$this->login' && IdGrupo = '$this->IdGrupo'
-				)";
-		// si hay un problema con la query se envia un mensaje de error en la modificacion
-        if (!($resultado = $this->mysqli->query($sql))){
-			return 'Error en la modificación, login ya en uso'; 
-		}
-		else{ // si no hay problemas con la modificación se indica que se ha modificado
-			return 'Modificado correctamente';
-		}
-    }
-    else // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
-    	return 'No existe en la base de datos';
-} // fin del metodo EDIT
-
     // funcion DELETE()
 // comprueba que exista el valor de clave por el que se va a borrar,si existe se ejecuta el borrado, sino
 // se manda un mensaje de que ese valor de clave no existe
@@ -198,5 +169,16 @@ function RellenaDatos($login, $IdGrupo)
 		}
 	
    }
+		
+	function RellenaShowCurrent() { // se construye la sentencia de busqueda de la tupla
+
+		$sql = "SELECT NombreGrupo,IdGrupo FROM GRUPO WHERE ( IdGrupo NOT IN (SELECT IdGrupo FROM USU_GRUPO WHERE login='$this->login'))";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else { // si existe se devuelve la tupla resultado
+			return $resultado;
+		}
+	} // fin del metodo RellenaShowCurrent()
     }
 ?>

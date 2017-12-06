@@ -9,6 +9,7 @@
 session_start(); //solicito trabajar con la session
 
 include '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/USU_GRUPO_MODEL.php';//incluye el contendio del modelo usuarios grupo
 include '../Views/USUARIO_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/USUARIO_SEARCH_View.php'; //incluye la vista search
 include '../Views/USUARIO_ADD_View.php'; //incluye la vista add
@@ -55,7 +56,7 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 				new USUARIO_ADD();
@@ -86,7 +87,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
-			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 			//Variable que recoge un objecto model con solo el login
@@ -134,7 +135,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 						//Variable que almacena un objeto model con el login
@@ -181,7 +182,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-			$USUARIO = new USUARIO_MODEL( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 				new USUARIO_SEARCH();
@@ -217,7 +218,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ],'');
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 					//Variable que almacena un objeto model con el login
@@ -252,7 +253,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-		$USER = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+		$USER = new USU_GRUPO(  $_SESSION[ 'login' ],'');
 		$ADMIN = $USER->comprobarAdmin();
 			if($ADMIN == true){
 				if ( !$_POST ) {//Si no se han recibido datos 

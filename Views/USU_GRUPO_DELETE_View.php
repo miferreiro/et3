@@ -50,6 +50,7 @@ class USU_GRUPO_DELETE {
 				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
 			</form>
 			<form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="post" style="display: inline">
+				<input type="hidden" name="login" value="<?php echo $this->valores['login'] ?>">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>

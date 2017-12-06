@@ -100,7 +100,7 @@ $GESTEVAL=false;
 					}
 		if($EDIT==true || $SHOW==true || $DELETE==true){
 ?>
-					<th colspan="3" >
+					<th colspan="4" >
 						<?php echo $strings['Opciones']?>
 					</th>
 <?php } ?>
@@ -135,6 +135,11 @@ $GESTEVAL=false;
 							<?php if($SHOW==true){ ?>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 							<?php } ?>
+						</form>
+				    <td>
+						<form action="../Controllers/USU_GRUPO_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
+							<button type="submit" ><img src="../Views/icon/atras.png" width="20" height="20"/></button>
 						</form>
 
 				</tr>

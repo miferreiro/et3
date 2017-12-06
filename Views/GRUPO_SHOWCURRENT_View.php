@@ -85,7 +85,6 @@ class GRUPO_SHOWCURRENT {
 <?php
 					}
 ?>
-						</form>
 
 				</tr>
 <?php

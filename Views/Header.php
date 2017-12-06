@@ -40,7 +40,6 @@
 		<p style="font-size:20px; ">
 <?php
 			echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>';
-		    echo $GESTUSU;
 ?>	
 			<a href="../Functions/Desconectar.php" style="text-decoration:none"> <img src="../Views/icon/desconexion.png" width="32" height="32" alt="<?php echo $strings['Desconectarse']?>" style="float:right;"></a>
 	

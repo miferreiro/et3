@@ -7,11 +7,15 @@
 */
 class USU_GRUPO_ADD {
 
-	function __construct() {
-		$this->render();
+	function __construct($valores,$grupos) {
+		$this->grupos = $grupos;
+		$this->valores = $valores;
+		$this->render($this->grupos,$this->valores);
 	}
 
-	function render() {
+	function render($valores,$grupos) { 
+		$this->grupos = $grupos;
+		$this->valores = $valores;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -19,27 +23,47 @@ class USU_GRUPO_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/USU_GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" >
+				<caption style="margin-bottom:10px;">
+					<form action='../Controllers/USU_GRUPO_CONTROLLER.php'>
+						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+					</form>
+				</caption>
 				<table>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Usuario'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="11" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['login']?>" maxlength="9" size="11" required readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
 
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6') "/>
+                  <td>
+                   <select id="IdGrupo" name="IdGrupo">
+<?php
+				while ( $fila = mysqli_fetch_array( $grupos ) ) {
+?>
+				<option value="<?php echo $fila[ 'IdGrupo' ]?>">
+
+<?php 
+			echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+?>		
+               							
+
+               </option>
+	
+<?php } ?>					
+					</select>
+				</td>
 					</tr>
-					
 					<tr>
-						<td colspan="2">
-							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
-			</form>
+					<td colspan="2">
+
 						<form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="post" style="display: inline">
+							<input type="hidden" name="login" value="<?php echo $this->valores['login'] ?>">
+							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>
