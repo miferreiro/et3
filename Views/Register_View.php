@@ -19,7 +19,7 @@ class Register {
 			<h2>
 				<?php echo $strings['Registro']; ?>
 			</h2>
-			<form name="ADD" action='../Controllers/Registro_Controller.php' method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd();">
+			<form name="ADD" action='../Controllers/Registro_Controller.php' method="post" enctype="multipart/form-data" onsubmit="return comprobarAddUsuario()">
 				<table>
 					<tr>
 						<th class="formThTd">
