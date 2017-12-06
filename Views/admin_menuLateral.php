@@ -8,6 +8,7 @@
 <nav>
 	<ul class="menu">
 				<ul class ="menu">
+	<?php //if($GESTUSU==true){ ?>
 			<li>
 				<a href="#" class="primerNivel"><?php echo $strings['Gestion de usuarios']; ?></a> 
 					<ul class="submenu">
@@ -19,6 +20,7 @@
 						</li>
 					</ul>
 			</li>
+<?php //} ?>
 			<li>
 				<a href="#" class="primerNivel"><?php echo $strings['Gestion de grupo']; ?></a> 
 					<ul class="submenu">

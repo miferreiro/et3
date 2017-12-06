@@ -252,8 +252,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-		$USUARIO = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
-		$ADMIN = $USUARIO->comprobarAdmin();
+		$USER = new USUARIO_MODEL(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+		$ADMIN = $USER->comprobarAdmin();
 			if($ADMIN == true){
 				if ( !$_POST ) {//Si no se han recibido datos 
 			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '','');
@@ -266,10 +266,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new USUARIO_SHOWALL( $lista, $datos );
+		$PERMISO = $USER->comprobarPermisos();
+		new USUARIO_SHOWALL( $lista, $datos, $PERMISO);
 			}else{
 		$cont=0;
-		$PERMISO = $USUARIO->comprobarPermisos();
+		$PERMISO = $USER->comprobarPermisos();
 		while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
 
 			if($fila['IdFuncionalidad']=='1'){
@@ -290,8 +291,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $USUARIO->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
+		$PERMISO = $USER->comprobarPermisos();
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new USUARIO_SHOWALL( $lista, $datos );
+		new USUARIO_SHOWALL( $lista, $datos, $PERMISO);
 
    }else{
 				new USUARIO_DEFAULT();

@@ -382,6 +382,7 @@ class USUARIO_MODEL{ //declaración de la clase
        return $resultado;
 
    }
+
    function comprobarAdmin(){
 		
 		$sql = "SELECT * FROM USU_GRUPO WHERE login = '$this->login' && IdGrupo = '00000A'";
