@@ -1228,7 +1228,7 @@ function comprobarEditTrabajo() {
 
 }
 /*
-	function comprobarSearchAccion: valida todos los campos del formulario edit antes de realizar el submit
+	function comprobarSearchAccion: valida todos los campos del formulario search antes de realizar el submit
 */
 function comprobarSearchTrabajo() {
 
@@ -2648,4 +2648,5 @@ function comprobarAddFuncionalidad() {
 	return true;
 
 }
+
 </script>

@@ -53,7 +53,7 @@ class TRABAJO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['PorcentajeNota'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarCampoNumFormSearch(this,'2','0','100')"/>
+						<td class="formThTd"><input type="text" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" onBlur="comprobarCampoNumFormSearch(this,2,0,100)"/>
 					</tr>
                  		<tr>
 						<td colspan="2">

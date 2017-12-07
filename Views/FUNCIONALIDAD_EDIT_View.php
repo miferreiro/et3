@@ -20,7 +20,7 @@ class FUNCIONALIDAD_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/FUNCIONALIDAD_CONTROLLER.php" method="post" enctype="multipart/form-data">
+			<form name="EDIT" action="../Controllers/FUNCIONALIDAD_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit = "comprobarEditFuncionalidad()">
 				<table>
 					<tr>
 						<th class="formThTd">

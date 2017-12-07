@@ -18,7 +18,7 @@ class FUNCIONALIDAD_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/FUNCIONALIDAD_CONTROLLER.php" method="post" enctype="multipart/form-data" >
+			<form name="ADD" action="../Controllers/FUNCIONALIDAD_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="comprobarAddFuncionalidad()">
 				<table>
 					<tr>
 						<th class="formThTd">

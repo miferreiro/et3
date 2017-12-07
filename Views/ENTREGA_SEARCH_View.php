@@ -40,7 +40,7 @@ class ENTREGA_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['Horas'];?><!--se muestra el campo Horas-->
 						</th>
-						<td class="formThTd"><input type="text" id="Horas" name="Horas" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2"  onBlur="comprobarCampoNumFormSearch(Horas, '2', '0', '99')"/>
+						<td class="formThTd"><input type="text" id="Horas" name="Horas" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2"  onBlur="comprobarCampoNumFormSearch(Horas, 2, 0, 99)"/>
 					</tr>
                     
                     <tr>

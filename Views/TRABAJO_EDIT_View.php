@@ -40,21 +40,21 @@ class TRABAJO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['FechaIniTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaIniTrabajo" name="FechaIniTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['FechaIniTrabajo']?>"  size="60" required  class="tcal" readonly onBlur=""/>
+						<td class="formThTd"><input type="text" id="FechaIniTrabajo" name="FechaIniTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['FechaIniTrabajo']?>"  size="20" required  class="tcal" readonly onBlur=""/>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['FechaFinTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaFinTrabajo" name="FechaFinTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['FechaFinTrabajo']?>" size="60" required  class="tcal" readonly onBlur=""/>
+						<td class="formThTd"><input type="text" id="FechaFinTrabajo" name="FechaFinTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['FechaFinTrabajo']?>" size="20" required  class="tcal" readonly onBlur=""/>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['PorcentajeNota'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['PorcentajeNota']?>" maxlength="2" size="2" required onBlur="comprobarVacio(document.forms['EDIT'].elements[2]) && comprobarVacio(document.forms['EDIT'].elements[3]) && comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2') && comprobarEntero(this,'0','100')"/>
+						<td class="formThTd"><input type="text" id="PorcentajeNota" name="PorcentajeNota" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['PorcentajeNota']?>" maxlength="2" size="2" required onBlur="comprobarVacio(document.forms['EDIT'].elements[2]) && comprobarVacio(document.forms['EDIT'].elements[3]) && comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2') && comprobarEntero(this,0,100)"/>
 					</tr>
                     
                     
