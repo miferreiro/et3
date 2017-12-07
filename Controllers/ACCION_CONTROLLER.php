@@ -217,8 +217,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $ACCION->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array('IdAccion','NombreAccion','DescripAccion');
+		$PERMISO = $USUARIO->comprobarPermisos();
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new ACCION_SHOWALL( $lista, $datos );
+		new ACCION_SHOWALL( $lista, $datos,$PERMISO,true);
 			}else{
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
             $cont=0;
@@ -242,8 +243,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $ACCION->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'IdAccion','NombreAccion','DescripAccion');
+		$PERMISO = $USUARIO->comprobarPermisos();
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new ACCION_SHOWALL( $lista, $datos );
+		new ACCION_SHOWALL( $lista, $datos,$PERMISO,false);
 		}else{
 		 new USUARIO_DEFAULT();
 		}
