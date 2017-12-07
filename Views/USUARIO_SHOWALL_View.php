@@ -25,6 +25,7 @@ $EDIT=false;
 $SEARCH=false;	
 $DELETE=false;	
 $SHOW=false;
+$ASIGN=false;
 $GESTUSU=false;
 $GESTGRUP=false;
 $GESTFUNC=false;
@@ -37,23 +38,10 @@ $GESTTRAB=false;
 $GESTEVAL=false;		
 		
 		
-		while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+	while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
 
-		 if($fila['IdFuncionalidad']=='1'){
+	 if($fila['IdFuncionalidad']=='1'){
 				$GESTUSU=true;
-			   }
-		 if($fila['IdFuncionalidad']=='2'){
-				$GESTGRUP=true;
-			   }
-		 if($fila['IdFuncionalidad']=='3'){
-				$GESTPERM=true;
-			   }
-		 if($fila['IdFuncionalidad']=='4'){
-				$GESTFUNC=true;
-			   }
-		 if($fila['IdFuncionalidad']=='5'){
-				$GESTACC=true;
-			   }
 		 if($fila['IdAccion']=='0'){
 			    $ADD=true;	
 			   }
@@ -69,6 +57,23 @@ $GESTEVAL=false;
 		 if($fila['IdAccion']=='4'){
 			    $SHOW=true;	
 			   }
+		 if($fila['IdAccion']=='6'){
+			    $ASIGN=true;	
+			   }
+			   }
+	 if($fila['IdFuncionalidad']=='2'){
+				$GESTGRUP=true;
+			   }
+	 if($fila['IdFuncionalidad']=='3'){
+				$GESTPERM=true;
+			   }
+	 if($fila['IdFuncionalidad']=='4'){
+				$GESTFUNC=true;
+			   }
+	 if($fila['IdFuncionalidad']=='5'){
+				$GESTACC=true;
+			   }
+
 			}
 	include '../Views/Header.php';			
 ?>
@@ -98,7 +103,7 @@ $GESTEVAL=false;
 					</th>
 <?php
 					}
-		if($EDIT==true || $SHOW==true || $DELETE==true){
+		if($EDIT==true || $SHOW==true || $DELETE==true || $ASIGN==true){
 ?>
 					<th colspan="4" >
 						<?php echo $strings['Opciones']?>
@@ -137,11 +142,12 @@ $GESTEVAL=false;
 							<?php } ?>
 						</form>
 				    <td>
+							<?php if($ASIGN==true){ ?>
 						<form action="../Controllers/USU_GRUPO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
-							<button type="submit" ><img src="../Views/icon/atras.png" width="20" height="20"/></button>
+							<button type="submit" ><img src="../Views/icon/cambioGrupo.png" width="20" height="20"/></button>
 						</form>
-
+							<?php } ?>
 				</tr>
 <?php
 				}

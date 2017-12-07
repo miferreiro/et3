@@ -479,6 +479,11 @@ $sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('00
 			return 'No se ha podido conectar con la base de datos';
 		}
 
+		$sqlInicial = "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('6','ASIGN','ASIGN')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
+		
 		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','0')";
         if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
             return 'No se ha podido conectar con la base de datos';
@@ -509,6 +514,11 @@ $sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('00
             return 'No se ha podido conectar con la base de datos';
         }
 
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('1','6')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }		
+		
         $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','0')";
         if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
             return 'No se ha podido conectar con la base de datos';
@@ -539,7 +549,10 @@ $sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('00
             return 'No se ha podido conectar con la base de datos';
         }
 
-
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('2','6')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }		
 
         $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','0')";
         if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
@@ -571,6 +584,11 @@ $sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('00
             return 'No se ha podido conectar con la base de datos';
         }
 
+		$sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('3','6')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }		
+		
         $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','0')";
         if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
             return 'No se ha podido conectar con la base de datos';
@@ -601,6 +619,11 @@ $sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('00
             return 'No se ha podido conectar con la base de datos';
         }
 
+	    $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('4','6')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }		
+		
         $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','0')";
         if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
             return 'No se ha podido conectar con la base de datos';
@@ -630,6 +653,12 @@ $sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('00
         if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
             return 'No se ha podido conectar con la base de datos';
         }
+
+        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','6')";
+        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+            return 'No se ha podido conectar con la base de datos';
+        }		
+		
 		if ( ( $this->login <> '' ) ) { // si el atributo clave de la entidad no esta vacio
             
 			// construimos el sql para buscar esa clave en la tabla
