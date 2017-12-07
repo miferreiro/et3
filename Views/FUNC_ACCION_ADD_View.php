@@ -6,11 +6,11 @@
 */
 class FUNC_ACCION_ADD {
 
-	function __construct() {
-		$this->render();
+	function __construct($valores,$acciones) {
+		$this->render($valores,$acciones);
 	}
 
-	function render() {
+	function render($valores,$acciones) {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -22,22 +22,34 @@ class FUNC_ACCION_ADD {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['IdFuncionalidad'];?>
+							<?php echo $strings['NombreFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdFuncionalidad" name="IdFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
+						<td class="formThTd"><input type="text" id="NombreFuncionalidad" name="NombreFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $valores[0][1]?>" maxlength="60" size="60" onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'6')" readonly/>
+						<input type="hidden" name="IdFuncionalidad" value="<?php echo $valores[0][0];?>">
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['IdAccion'];?>
+							<?php echo $strings['NombreAccion'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdAccion" name="IdAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
+						<td class="formThTd">
+							<select name="IdAccion">						        
+								<?php
+								//Bucle que recorre las posibles et para generer qas
+								for ($i=0; $i < count($acciones); $i++) { 
+								?>
+								<option value="<?php echo $acciones[$i][0] ?>"><?php echo $acciones[$i][1] ?></option>
+						        <?php
+						        }
+						        ?>
+							</select>
 					</tr>
-					
+					<input type="hidden" name="IdFuncionalidad" value="<?php echo $valores[0][0];?>">
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
 						<form action='../Controllers/FUNC_ACCION_CONTROLLER.php' method="post" style="display: inline">
+							<input type="hidden" name="IdFuncionalidad" value="<?php echo $valores[0][0];?>">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>
