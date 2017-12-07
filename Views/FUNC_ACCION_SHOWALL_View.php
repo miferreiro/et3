@@ -6,13 +6,13 @@
 */
 class FUNC_ACCION_SHOWALL {
 
-	function __construct( $lista, $datos) {
+	function __construct( $lista, $datos, $name) {
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+		$this->render($this->lista,$this->datos,$name);
 	}
 	
-	function render($lista,$datos){
+	function render($lista,$datos,$name){
 		$this->lista = $lista;
 		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
@@ -23,12 +23,6 @@ class FUNC_ACCION_SHOWALL {
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
 			<table>
-				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/FUNC_ACCION_CONTROLLER.php'>
-						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
-						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
-					</form>
-				</caption>
 				<tr>
 <?php
 					foreach ( $lista as $atributo ) {
@@ -53,8 +47,9 @@ class FUNC_ACCION_SHOWALL {
 					<td>
 <?php 
 							echo $fila[ $atributo ];
-
-?>
+							$log=$fila['IdFuncionalidad'];
+							
+?>						
 					</td>
 <?php
 					}
@@ -64,16 +59,22 @@ class FUNC_ACCION_SHOWALL {
 						    <input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
 							<input type="hidden" name="IdAccion" value="<?php echo $fila['IdAccion']; ?>">
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
-					<td>
-								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+					
 						</form>
 
 				</tr>
 <?php
 				}
 ?>
+			<caption style="margin-bottom:10px;">
+					<form action='../Controllers/FUNC_ACCION_CONTROLLER.php'>
+						<input type="hidden" name="IdFuncionalidad" value="<?php echo $name[0][0];?>">
+						<input type="hidden" name="NombreFuncionalidad" value="<?php echo $name[0][1];?>">
+						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+					</form>
+				</caption>
 			</table>
-			<form action='../Controllers/FUNC_ACCION_CONTROLLER.php' method="post">
+			<form action='../Controllers/FUNCIONALIDAD_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

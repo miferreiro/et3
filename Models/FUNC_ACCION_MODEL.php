@@ -23,17 +23,52 @@
             }//fin del constructor.
             
         
+    function DevolverAcciones(){
+		//Consulta que recupera la tabla ASIGNAC_QA
+		$sql = "select IdAccion,
+					   NombreAccion
+					   from ACCION";
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) { return null; }
+		//Caragamos las tuplas resultado de la consulta en un array
+		while($datos = mysqli_fetch_row ($resultado)){
+			//Variable que almacena el array de las tuplas resultado de la query
+			$miarray[] = $datos;
+		}
+		return $miarray;		
+	}
+
+	function DevolverDatosFuncionalidad($Id){
+		//Consulta que recupera la tabla ASIGNAC_QA
+		$sql = "select IdFuncionalidad,
+					   NombreFuncionalidad
+					   from FUNCIONALIDAD
+					   where IdFuncionalidad = '$Id'";
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) { return null; }
+		//Caragamos las tuplas resultado de la consulta en un array
+		while($datos = mysqli_fetch_row ($resultado)){
+			//Variable que almacena el array de las tuplas resultado de la query
+			$miarray[] = $datos;
+		}
+		return $miarray;		
+	}
+
            //funcion SEARCH: hace una búsqueda en la tabla con
         //los datos proporcionados. Si van vacios devuelve todos
 	   function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "select IdFuncionalidad,
-                        IdAccion
-       			from FUNC_ACCION
+		$sql = "select  A.NombreAccion,
+						F.NombreFuncionalidad,
+						FA.IdFuncionalidad,
+                        FA.IdAccion
+       			from FUNC_ACCION FA,ACCION A,FUNCIONALIDAD F
     			where 
     				(
-					(BINARY IdFuncionalidad LIKE '%$this->IdFuncionalidad%') &&
-                    (BINARY IdAccion LIKE '%$this->IdAccion%')
+    				FA.IdFuncionalidad = F.IdFuncionalidad &&
+    				FA.IdAccion = A.IdAccion &&
+					(BINARY FA.IdFuncionalidad LIKE '%$this->IdFuncionalidad%') &&
+                    (BINARY FA.IdAccion LIKE '%$this->IdAccion%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -137,7 +172,18 @@
 	   // en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdFuncionalidad = '$this->IdFuncionalidad' && IdAccion = '$this->IdAccion')";
+		$sql = "select  A.NombreAccion,
+						F.NombreFuncionalidad,
+						FA.IdFuncionalidad,
+                        FA.IdAccion
+       			from FUNC_ACCION FA,ACCION A,FUNCIONALIDAD F
+    			where 
+    				(
+    				FA.IdFuncionalidad = F.IdFuncionalidad &&
+    				FA.IdAccion = A.IdAccion &&
+					FA.IdFuncionalidad = '$this->IdFuncionalidad' &&
+                    FA.IdAccion = '$this->IdAccion'
+    				)";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
