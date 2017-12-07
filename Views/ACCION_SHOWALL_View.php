@@ -93,7 +93,7 @@ $GESTEVAL=false;
 			</h2>
 			<table>
 				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/USUARIO_CONTROLLER.php'>
+					<form action='../Controllers/ACCION_CONTROLLER.php'>
 
 <?php if($SEARCH==true){  ?>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	

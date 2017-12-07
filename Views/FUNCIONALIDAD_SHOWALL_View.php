@@ -6,16 +6,84 @@
 */
 class FUNCIONALIDAD_SHOWALL {
 
-	function __construct( $lista, $datos) {
+	function __construct( $lista, $datos, $PERMISO,$admin) {
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+		$this->PERMISO = $PERMISO;
+		$this->admin = $admin;
+		$this->render($this->lista,$this->datos,$this->PERMISO,$this->admin);
 	}
 	
-	function render($lista,$datos){
+	function render($lista,$datos,$PERMISO,$admin){
 		$this->lista = $lista;
 		$this->datos = $datos;
+		$this->PERMISO = $PERMISO;
+		$this->admin = $admin;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		
+$ADD=false;	
+$EDIT=false;	
+$SEARCH=false;	
+$DELETE=false;	
+$SHOW=false;
+$ASIGN=false;
+$GESTUSU=false;
+$GESTGRUP=false;
+$GESTFUNC=false;
+$GESTACC=false;
+$GESTPERM=false;		
+$GESTQAS=false;		
+$GESTENTR=false;		
+$GESTHIST=false;
+$GESTTRAB=false;		
+$GESTEVAL=false;		
+		
+	if($admin==true){
+			    $ADD=true;	
+			    $DELETE=true;				   
+			    $EDIT=true;	
+			    $SEARCH=true;	
+			    $SHOW=true;	
+			    $ASIGN=true;	
+	}	
+	while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+
+	 if($fila['IdFuncionalidad']=='1'){
+				$GESTUSU=true;
+			   }
+	 if($fila['IdFuncionalidad']=='2'){
+				$GESTGRUP=true;
+			   }
+	 if($fila['IdFuncionalidad']=='3'){
+				$GESTPERM=true;
+			   }
+	 if($fila['IdFuncionalidad']=='4'){
+				$GESTFUNC=true;
+		 if($fila['IdAccion']=='0'){
+			    $ADD=true;	
+			   }
+		 if($fila['IdAccion']=='1'){
+			    $DELETE=true;	
+			   }
+		 if($fila['IdAccion']=='2'){
+			    $EDIT=true;	
+			   }
+		 if($fila['IdAccion']=='3'){
+			    $SEARCH=true;	
+			   }
+		 if($fila['IdAccion']=='4'){
+			    $SHOW=true;	
+			   }
+		 if($fila['IdAccion']=='6'){
+			    $ASIGN=true;	
+			   }
+			   }
+	 if($fila['IdFuncionalidad']=='5'){
+				$GESTACC=true;
+			   }
+
+			}		
+	
 		include '../Views/Header.php';
 ?>
 		<div class="seccion">
@@ -25,8 +93,13 @@ class FUNCIONALIDAD_SHOWALL {
 			<table>
 				<caption style="margin-bottom:10px;">
 					<form action='../Controllers/FUNCIONALIDAD_CONTROLLER.php'>
-						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+
+<?php if($SEARCH==true){  ?>
+						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
+<?php }
+		if($ADD==true){  ?>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+<?php } ?>
 					</form>
 				</caption>
 				<tr>
@@ -38,10 +111,12 @@ class FUNCIONALIDAD_SHOWALL {
 					</th>
 <?php
 					}
+		if($EDIT==true || $SHOW==true || $DELETE==true || $ASIGN==true){
 ?>
 					<th colspan="4" >
 						<?php echo $strings['Opciones']?>
 					</th>
+<?php } ?>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -61,18 +136,26 @@ class FUNCIONALIDAD_SHOWALL {
 ?>
 					<td>
 						<form action="../Controllers/FUNCIONALIDAD_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
+							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
+							<?php if($EDIT==true){ ?>
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+						    <?php } ?>
 					<td>
+							<?php if($DELETE==true){ ?>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+							<?php } ?>
 					<td>
+							<?php if($SHOW==true){ ?>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+							<?php } ?>
 						</form>
-
+				    <td>
+							<?php if($ASIGN==true){ ?>
 						<form action="../Controllers/FUNC_ACCION_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
-								<button type="submit" name="action" value="SHOWALL" ><img src="../Views/icon/accion.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20" /></button>
+							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
+							<button type="submit" ><img src="../Views/icon/cambioGrupo.png" width="20" height="20"/></button>
 						</form>
+							<?php } ?>
 
 				</tr>
 <?php
