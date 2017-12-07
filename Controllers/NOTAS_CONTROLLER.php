@@ -33,7 +33,7 @@ function get_data_form() {
 	return $NOTAS;
 }
 
-if($_SESSION['login']=="admin"){
+
 
 //Si la variable action no tiene contenido le asignamos ''
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
@@ -131,51 +131,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new NOTAS_SHOWALL( $lista, $datos );
         
-}
-    
-    
-    
-}
-else{
-    if ( !isset( $_REQUEST[ 'action' ] ) ) {
-	$_REQUEST[ 'action' ] = '';
-	
-}
-//Estructura de control, que realiza un determinado caso dependiendo del valor action
-switch ( $_REQUEST[ 'action' ] ) {
-	
-	case 'SHOWCURRENT'://Caso showcurrent
-		if ( !$_POST ) {//Si no se han recibido datos 
-			$NOTAS = new NOTAS_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST['login'], '');
-		//Si se reciben datos
-		} else {
-			$NOTAS = get_data_form();
-		}
-        
-		//Variable que almacena los datos de la busqueda
-		$datos = $NOTAS->RellenaDatosShowCurrent();
-		//Variable que almacena array con el nombre de los atributos
-       
-		$lista = array('IdTrabajo','IdHistoria','CorrectoP','ComentIncorrectoP','OK');
-        new NOTAS_SHOWCURRENT2( $lista,$datos );
-        
-		break;
-	default: //Caso que se ejecuta por defecto
-		if ( !$_POST ) {//Si no se han recibido datos 
-			$NOTAS = new NOTAS_MODEL('',$_SESSION['login'],'');
-		//Si se reciben datos
-		} else {
-			$NOTAS = get_data_form();
-		}
-		//Variable que almacena los datos de la busqueda
-		$datos = $NOTAS->SEARCH();
-         
-		//Variable que almacena array con el nombre de los atributos
-		$lista = array('IdTrabajo','login');
-		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new NOTAS_SHOWALL2( $lista, $datos );
-        
-}
 }
 
 ?>
