@@ -63,7 +63,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				    $acciones= $FUNC_ACCION->DevolverAcciones();
 					new FUNC_ACCION_ADD($_REQUEST['IdFuncionalidad'],$acciones);
 				} else {
-					new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/FUNC_ACCION_CONTROLLER.php' );
+					new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );
 				}
 			}
 		} else { // si existe dolar POST
