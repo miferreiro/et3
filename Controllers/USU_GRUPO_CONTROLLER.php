@@ -40,12 +40,14 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) { // si no existe dolar POST  se muestra la vista ADD de USU_GRUPO
 			$USU_GRUPO = new USU_GRUPO( $_REQUEST['login'], '');
 			$grupos= $USU_GRUPO->RellenaShowCurrent();
-			$valores=$USU_GRUPO->SEARCH();
-			new USU_GRUPO_ADD($valores,$grupos);
+			//$valores=$USU_GRUPO->SEARCH();
+			//new USU_GRUPO_ADD($valores,$grupos);
+			
+			new USU_GRUPO_ADD($_REQUEST['login'],$grupos);
 		} else { // si existe dolar POST
 			$USU_GRUPO = get_data_form();// se pasa a la variable USU_GRUPO un objeto del modelo USU_GRUPO
 			$respuesta = $USU_GRUPO->ADD();//obtenemos la respuesta que viene del método ADD() de la clase USU_GRUPO
-			new MESSAGE( $respuesta, '../Controllers/USU_GRUPO_CONTROLLER.php' );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
+			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 		}
 		break;
 	case 'DELETE': //se hace este case en el caso de que queramos eliminar
@@ -56,12 +58,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {//si existe dolar POST
 			$USU_GRUPO = get_data_form(); // se le pasa a la variable $USU el login y IdGrupo a eliminar
 			$respuesta = $USU_GRUPO->DELETE(); // con el método DELETE de USU_GRUPO se elimna ese login y IdGrupo de la base de datos.
-			new MESSAGE( $respuesta, '../Controllers/USU_GRUPO_CONTROLLER.php' );// se muestar en una vista un mensaje después del borrado.
+			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );// se muestar en una vista un mensaje después del borrado.
 		}
 		break;
 	default: // por defecto aparecerá la vista SHOWALL.
 		if ( !$_POST ) {//si ni existe deolar POST
-			$USU_GRUPO = new USU_GRUPO( $_REQUEST['login'], '');//se crea una instancia de la clase USU_GRUPO con parametros vacíos para que nos coga todas las tuplas de la base de datos.
+			$USU_GRUPO = new USU_GRUPO( '', '');//se crea una instancia de la clase USU_GRUPO con parametros vacíos para que nos coga todas las tuplas de la base de datos.
 		} else {//si existe dolar POST
 			$USU_GRUPO = new USU_GRUPO( $_REQUEST['login'], '');;//a la variable USU_GRUPO se le pasa el login y IdGrupo vacío.
 		}

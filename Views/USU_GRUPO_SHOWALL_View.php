@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*  Archivo php
 	Nombre: USUARIOS_GRUPO_SHOWALL_View.php
 	Autor: 	fta875
@@ -69,12 +69,12 @@ class USU_GRUPO_SHOWALL {
 <?php
 				}
 ?>
-			</table>
-			<form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="post">
+				<caption style="margin-bottom:10px;"><form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="get">
 				<input type="hidden" name="login" value="<?php echo $log;?>">
 				<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>				
 				
-			</form>
+			</form></table>
+			
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>

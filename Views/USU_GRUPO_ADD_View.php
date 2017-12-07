@@ -7,15 +7,15 @@
 */
 class USU_GRUPO_ADD {
 
-	function __construct($valores,$grupos) {
+	function __construct($login,$grupos) {
 		$this->grupos = $grupos;
-		$this->valores = $valores;
-		$this->render($this->grupos,$this->valores);
+		$this->login = $login;
+		$this->render($this->grupos,$this->login);
 	}
 
-	function render($valores,$grupos) { 
+	function render($grupos,$login) { 
 		$this->grupos = $grupos;
-		$this->valores = $valores;
+		$this->login = $login;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -23,17 +23,14 @@ class USU_GRUPO_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/USU_GRUPO_CONTROLLER.php'>
-						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
-					</form>
-				</caption>
+
+			<form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="post" style="display: inline">
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Usuario'];?>
+							<?php echo $strings['Login'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['login']?>" maxlength="9" size="11" required readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->login ?>" maxlength="9" size="11" required readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
 
 					<tr>
@@ -43,7 +40,7 @@ class USU_GRUPO_ADD {
                   <td>
                    <select id="IdGrupo" name="IdGrupo">
 <?php
-				while ( $fila = mysqli_fetch_array( $grupos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->grupos ) ) {
 ?>
 				<option value="<?php echo $fila[ 'IdGrupo' ]?>">
 
@@ -61,8 +58,8 @@ class USU_GRUPO_ADD {
 					<tr>
 					<td colspan="2">
 
-						<form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="post" style="display: inline">
-							<input type="hidden" name="login" value="<?php echo $this->valores['login'] ?>">
+						
+						<!--	<input type="hidden" name="login" value="<?php echo $this->login  ?>">-->
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
