@@ -127,7 +127,7 @@ class USUARIO_MODEL{ //declaración de la clase
 										(login,IdGrupo)
 										VALUES
 										('$this->login',
-										 'ALUMNOS'
+										 '00001A'
 										)";
 						}
 
@@ -421,7 +421,7 @@ class USUARIO_MODEL{ //declaración de la clase
 			return 'No se ha podido conectar con la base de datos';
 		}
 
-$sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('00001A','ALUMNOS','Grupo que tendra todos los permisos de alumnos')";
+        $sqlInicial = "INSERT INTO GRUPO  (IdGrupo,NombreGrupo,DescripGrupo) VALUES ('00001A','ALUMNOS','Grupo que tendra todos los permisos de alumnos')";
 
 		
 		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
