@@ -268,7 +268,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		$PERMISO = $USER->comprobarPermisos();
-		new USUARIO_SHOWALL( $lista, $datos, $PERMISO);
+		new USUARIO_SHOWALL( $lista, $datos, $PERMISO,true);
 			}else{
 		$cont=0;
 		$PERMISO = $USER->comprobarPermisos();
@@ -294,7 +294,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
 		$PERMISO = $USER->comprobarPermisos();
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new USUARIO_SHOWALL( $lista, $datos, $PERMISO);
+		new USUARIO_SHOWALL( $lista, $datos, $PERMISO,false);
 
    }else{
 				new USUARIO_DEFAULT();

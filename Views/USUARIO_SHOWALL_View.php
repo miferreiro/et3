@@ -7,17 +7,19 @@
 */
 class USUARIO_SHOWALL {
 
-	function __construct( $lista, $datos, $PERMISO) {
+	function __construct( $lista, $datos, $PERMISO,$admin) {
 		$this->lista = $lista;
 		$this->datos = $datos;
 		$this->PERMISO = $PERMISO;
-		$this->render($this->lista,$this->datos,$this->PERMISO);
+		$this->admin = $admin;
+		$this->render($this->lista,$this->datos,$this->PERMISO,$this->admin);
 	}
 	
-	function render($lista,$datos,$PERMISO){
+	function render($lista,$datos,$PERMISO,$admin){
 		$this->lista = $lista;
 		$this->datos = $datos;
 		$this->PERMISO = $PERMISO;
+		$this->admin = $admin;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 
 $ADD=false;	
@@ -37,7 +39,14 @@ $GESTHIST=false;
 $GESTTRAB=false;		
 $GESTEVAL=false;		
 		
-		
+	if($admin==true){
+			    $ADD=true;	
+			    $DELETE=true;				   
+			    $EDIT=true;	
+			    $SEARCH=true;	
+			    $SHOW=true;	
+			    $ASIGN=true;	
+	}	
 	while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
 
 	 if($fila['IdFuncionalidad']=='1'){
