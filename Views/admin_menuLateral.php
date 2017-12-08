@@ -42,6 +42,12 @@
 			<li>
 				<a href="../Controllers/ENTREGA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a> 
 			</li>
+            <li>
+				<a href="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Correcion entregas']; ?></a> 
+			</li>
+            <li>
+				<a href="../Controllers/CORRECION_QA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Correcion QAs']; ?></a> 
+			</li>
 			<li>
 				<a href="../Controllers/HISTORIA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de historias']; ?></a> 
 			</li>
