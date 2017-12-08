@@ -50,6 +50,7 @@ class PERMISO_ADD {
 			</form>
 						<form action='../Controllers/PERMISO_CONTROLLER.php' method="post" style="display: inline">
 							<input type="hidden" name="IdGrupo" value="<?php echo $valores[0][0];?>">
+							<input type="hidden" name="action" value="ASSIGN">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>

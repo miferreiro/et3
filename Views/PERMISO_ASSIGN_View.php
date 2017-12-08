@@ -3,7 +3,7 @@
 	Fecha de creación: 4/12/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar mostrar los permisos que existen
 */
-class PERMISO_SHOWALL {
+class PERMISO_ASSIGN {
 
 	function __construct( $lista, $datos, $DatosGrupo) {
 		$this->lista = $lista;
@@ -48,17 +48,26 @@ class PERMISO_SHOWALL {
 <?php
 					}
 ?>
+					<td>
+						<form action="../Controllers/PERMISO_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="IdGrupo" value="<?php echo $fila['IdGrupo']; ?>">
+							<input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
+							<input type="hidden" name="IdAccion" value="<?php echo $fila['IdAccion']; ?>">
+								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+						</form>
 				</tr>
 <?php
 				}
 ?>
 			<caption style="margin-bottom:10px;">
 					<form action='../Controllers/PERMISO_CONTROLLER.php'>
-						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+						<input type="hidden" name="IdGrupo" value="<?php echo $DatosGrupo[0][0]?>">
+						<input type="hidden" name="NombreGrupo" value="<?php echo $DatosGrupo[0][1]?>">
+						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="BUSCAR" /></button>
 					</form>
 				</caption>
 			</table>
-			<form action='../Controllers/PERMISO_CONTROLLER.php' method="post">
+			<form action='../Controllers/GRUPO_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

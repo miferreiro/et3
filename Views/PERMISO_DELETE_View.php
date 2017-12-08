@@ -61,6 +61,7 @@ class PERMISO_DELETE {
 			</form>
 			<form action='../Controllers/PERMISO_CONTROLLER.php' method="post" style="display: inline">
 				<input type="hidden" name="IdGrupo" value=<?php echo $valores['IdGrupo'] ?> />
+				<input type="hidden" name="action" value="ASSIGN">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>
