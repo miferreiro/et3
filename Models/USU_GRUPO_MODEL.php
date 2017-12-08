@@ -99,8 +99,7 @@ function SEARCH()
        			from USU_GRUPO
     			where 
     				(
-    				(login LIKE '%$this->login%') &&
-                    (IdGrupo LIKE '%$this->IdGrupo%')
+    				(login LIKE '$this->login')
     				)";
     // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
     if (!($resultado = $this->mysqli->query($sql))){

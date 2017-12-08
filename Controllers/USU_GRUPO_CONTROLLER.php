@@ -115,7 +115,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		$datos = $USU_GRUPO->SEARCH();//con el método SEARCH en este caso buscamos todos los valores que hay en la base de datos.
 		$lista = array(  'login','IdGrupo' );
-		new USU_GRUPO_SHOWALL( $lista, $datos );// se muestra la vista SHOWALL.
+		new USU_GRUPO_SHOWALL( $lista, $datos ,$_REQUEST['login']);// se muestra la vista SHOWALL.
 			}else{
 		$cont=0;
 		$PERMISO = $USER->comprobarPermisos();
@@ -136,7 +136,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		$datos = $USU_GRUPO->SEARCH();//con el método SEARCH en este caso buscamos todos los valores que hay en la base de datos.
 		$lista = array(  'login','IdGrupo' );
-		new USU_GRUPO_SHOWALL( $lista, $datos );// se muestra la vista SHOWALL.
+		new USU_GRUPO_SHOWALL( $lista, $datos ,$_REQUEST['login']);// se muestra la vista SHOWALL.
 }else{
 			new USUARIO_DEFAULT();	
 			}

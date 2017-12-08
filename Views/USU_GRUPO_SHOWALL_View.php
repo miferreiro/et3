@@ -7,16 +7,18 @@
 */
 class USU_GRUPO_SHOWALL {
 
-	function __construct( $lista, $datos) {
+	function __construct( $lista, $datos,$login) {
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+		$this->login = $login;
+		$this->render($this->lista,$this->datos,$this->login);
 		
 	}
 	
-	function render($lista,$datos){
+	function render($lista,$datos,$login){
 		$this->lista = $lista;
 		$this->datos = $datos;
+		$this->login = $login;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -50,7 +52,7 @@ class USU_GRUPO_SHOWALL {
 <?php 
                             
 							echo $fila[ $atributo ];
-						    $log=$fila['login'];
+						    //$log=$fila['login'];
 ?>
 					</td>
 <?php
@@ -70,7 +72,7 @@ class USU_GRUPO_SHOWALL {
 				}
 ?>
 				<caption style="margin-bottom:10px;"><form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="get">
-				<input type="hidden" name="login" value="<?php echo $log;?>">
+				<input type="hidden" name="login" value="<?php echo $this->login;?>">
 				<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>				
 				
 			</form></table>
