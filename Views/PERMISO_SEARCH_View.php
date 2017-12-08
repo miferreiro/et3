@@ -43,7 +43,7 @@ class PERMISO_SEARCH {
 					
 					<tr>
 						<td colspan="2">
-							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" />
+							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Confirmar formulario']?>" />
 							</button>
 			</form>
 						<form action='../Controllers/PERMISO_CONTROLLER.php' method="post" style="display:inline">

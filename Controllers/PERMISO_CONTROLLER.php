@@ -14,6 +14,7 @@ include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuar
 include '../Views/PERMISO_SEARCH_View.php';
 include '../Views/PERMISO_SHOWALL_View.php';
 include '../Views/PERMISO_ADD_View.php';
+include '../Views/PERMISO_ASSIGN_View.php';
 include '../Views/PERMISO_DELETE_View.php';
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php';
@@ -105,7 +106,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else { // si existe dolar POST
 			$PERMISO = get_data_form();// se pasa a la variable USU_GRUPO un objeto del modelo USU_GRUPO
 			if($_REQUEST['IdFuncionalidad'] == ','){
-				$at = "?IdGrupo=".$_REQUEST['IdGrupo'];
+				$at = "?IdGrupo=".$_REQUEST['IdGrupo']."&action=ASSIGN";
 				new MESSAGE( 'No hay funcionalidad-accion disponible', "../Controllers/GRUPO_CONTROLLER.php" . $at );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 			}
 			else{
@@ -115,7 +116,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 					$PERMISO->IdAccion = $Porciones[1];
 				}
 				$respuesta = $PERMISO->ADD();//obtenemos la respuesta que viene del método ADD() de la clase USU_GRUPO
-				$at = "?IdGrupo=".$_REQUEST['IdGrupo'];
+				$at = "?IdGrupo=".$_REQUEST['IdGrupo']."&action=ASSIGN";
 				new MESSAGE( $respuesta, "../Controllers/PERMISO_CONTROLLER.php" . $at );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 			}
 		}
@@ -151,13 +152,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else { // si existe dolar POST
 			$PERMISO = get_data_form();// se pasa a la variable USU_GRUPO un objeto del modelo USU_GRUPO
 			if($_REQUEST['IdFuncionalidad'] == ','){
-				$at = "?IdGrupo=".$_REQUEST['IdGrupo'];
+				$at = "?IdGrupo=".$_REQUEST['IdGrupo']."&action=ASSIGN";
 				new MESSAGE( 'No hay funcionalidad-accion disponible', "../Controllers/GRUPO_CONTROLLER.php" . $at );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 			}
 			else{
 				$PERMISO = get_data_form();
 				$respuesta = $PERMISO->DELETE();//obtenemos la respuesta que viene del método ADD() de la clase USU_GRUPO
-				$at = "?IdGrupo=".$_REQUEST['IdGrupo'];
+				$at = "?IdGrupo=".$_REQUEST['IdGrupo']."&action=ASSIGN";
 				new MESSAGE( $respuesta, "../Controllers/PERMISO_CONTROLLER.php" . $at );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 			}
 		}
@@ -170,18 +171,18 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($ADMIN == true){
 				new PERMISO_SEARCH();
 			}else{
-            $cont=0;
-			$ACL = $USUARIO->comprobarPermisos();
-			while ( $fila = mysqli_fetch_array( $ACL) ) {
-			if($fila['IdFuncionalidad']=='3'){
-				if($fila['IdAccion']=='3'){
-			    //Crea una vista add para ver la tupla
-			     $cont=$cont+1;
+	            $cont=0;
+				$ACL = $USUARIO->comprobarPermisos();
+				while ( $fila = mysqli_fetch_array( $ACL) ) {
+				if($fila['IdFuncionalidad']=='3'){
+					if($fila['IdAccion']=='3'){
+				    //Crea una vista add para ver la tupla
+				     $cont=$cont+1;
+					}
+				   }
 				}
-			   }
-			}
-			if($cont==1){
-			new PERMISO_SEARCH();
+				if($cont==1){
+				new PERMISO_SEARCH();
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/PERMISO_CONTROLLER.php' );
 		}
@@ -189,11 +190,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			$PERMISO = get_data_form();
 			$datos = $PERMISO->SEARCH2();
+			$DatosGrupo= $PERMISO->recuperarGrupo('');
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
-			new PERMISO_SHOWALL( $lista, $datos );
+			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo );
 		}
 		break;
-	default:
+	case 'ASSIGN':
 		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
 		$ADMIN = $USUARIO->comprobarAdmin();
 		if($ADMIN == true){
@@ -209,6 +211,50 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+			new PERMISO_ASSIGN( $lista, $datos, $DatosGrupo );
+		}else{
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+            $cont=0;
+			$ACL = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $ACL ) ) {
+			if($fila['IdFuncionalidad']=='3'){
+				if($fila['IdAccion']=='5'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+		if($cont==1){
+			if ( !$_POST ) {
+				$PERMISO = new PERMISO_MODEL( $_REQUEST['IdGrupo'], '', '', '', '', '');
+			} else {
+				$PERMISO = new PERMISO_MODEL( $_REQUEST['IdGrupo'], '', '', '', '', '');
+			}
+			$datos = $PERMISO->SEARCH();
+			$DatosGrupo= $PERMISO->recuperarGrupo($_REQUEST['IdGrupo']);
+			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
+			new PERMISO_ASSIGN( $lista, $datos, $DatosGrupo );
+		}else{
+		 	new USUARIO_DEFAULT();
+		}
+	}											
+	break;
+	default:
+		$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+		$ADMIN = $USUARIO->comprobarAdmin();
+		if($ADMIN == true){
+			if ( !$_POST ) {//Si no se han recibido datos 
+				$PERMISO = new PERMISO_MODEL('', '', '', '','','');
+				//Si se reciben datos
+			} else {
+				$PERMISO = new PERMISO_MODEL('', '', '', '','','');
+			}
+			//Variable que almacena los datos de la busqueda
+			$datos = $PERMISO->SEARCH2();
+			//Variable que almacena array con el nombre de los atributos
+			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion');
+			$DatosGrupo= $PERMISO->recuperarGrupo('');
+			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo );
 		}else{
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
@@ -222,16 +268,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 				}
 			   }
 			}
-			if($cont==1){
-		if ( !$_POST ) {
-			$PERMISO = new PERMISO_MODEL( $_REQUEST['IdGrupo'], '', '', '', '', '');
-		} else {
-			$PERMISO = new PERMISO_MODEL( $_REQUEST['IdGrupo'], '', '', '', '', '');
-		}
-		$datos = $PERMISO->SEARCH();
-		$DatosGrupo= $PERMISO->recuperarGrupo($_REQUEST['IdGrupo']);
-		$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
-		new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo );
+		if($cont==1){
+			if ( !$_POST ) {
+				$PERMISO = new PERMISO_MODEL( '', '', '', '', '', '');
+			} else {
+				$PERMISO = new PERMISO_MODEL( '', '', '', '', '', '');
+			}
+			$datos = $PERMISO->SEARCH2();
+			$DatosGrupo= $PERMISO->recuperarGrupo('');
+			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
+			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo );
 		}else{
 		 	new USUARIO_DEFAULT();
 		}
