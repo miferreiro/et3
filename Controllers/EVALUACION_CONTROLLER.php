@@ -9,13 +9,19 @@
 session_start(); //solicito trabajar con la session
 
 include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Views/EVALUACION_SHOWALL_View.php'; //incluye la vista del showall
+include '../Views/ENTREGA_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/EVALUACION_SEARCH_View.php'; //incluye la vista search
 include '../Views/EVALUACION_ADD_View.php'; //incluye la vista add
 include '../Views/EVALUACION_EDIT_View.php'; //incluye la vista edit
 include '../Views/EVALUACION_DELETE_View.php'; //incluye la vista delete
 include '../Views/EVALUACION_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
+include '../Views/EVALUACION_USUARIO_SHOWALL.php'; //incluye la vista del showall
+include '../Views/ENTREGA_USUARIO_SHOWALL.php'; //incluye la vista del showall
+include '../Views/EVALUACION_USUARIO_EDIT.php'; //incluye la vista del showall
 
 
 function get_data_form() {
@@ -84,12 +90,25 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			//Variable que almacena un objeto model con el LoginEvaluador
-			$EVALUACION = new EVALUACION($_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ], '', '', '', '','');
-			//Variable que almacena los datos de los atibutos rellenados a traves de LoginEvaluador
-			$valores = $EVALUACION->RellenaDatos();
-			//Muestra la vista del formulario editar
-			new EVALUACION_EDIT( $valores );
-			//Si se reciben valores
+            $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+            $ADMIN = $USUARIO->comprobarAdmin();
+            if($ADMIN == true){
+
+                $EVALUACION = new EVALUACION($_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ], '', '', '', '','');
+                    //Variable que almacena los datos de los atibutos rellenados a traves de LoginEvaluador
+                $valores = $EVALUACION->RellenaDatos();
+                //Muestra la vista del formulario editar
+                new EVALUACION_EDIT( $valores );
+                //Si se reciben valores
+
+                    }
+            else{
+               $EVALUACION = new EVALUACION($_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ], '', '', '', '','');
+                //Variable que almacena los datos de los atibutos rellenados a traves de LoginEvaluador
+                $valores = $EVALUACION->RellenaDatos();
+                //Muestra la vista del formulario editar
+                new EVALUACION_USUARIO_EDIT( $valores );
+            }
 		} else {
 			//Variable que almacena los datos recogidos
 			$EVALUACION = get_data_form();
@@ -125,12 +144,51 @@ switch ( $_REQUEST[ 'action' ] ) {
 		new EVALUACION_SHOWCURRENT( $valores );
 		//Final del bloque
 		break;
-	default: //Caso que se ejecuta por defecto
-		if ( !$_POST ) {//Si no se han recibido datos 
-			$EVALUACION = new EVALUACION( '','', '', '', '', '', '', '', '');
+        
+    case 'MOSTRAR_USER':
+    if ( !$_POST ) {//Si no se han recibido datos 
+        
+            $EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],'', '', '', '', '', '', '');
+        
 		//Si se reciben datos
-		} else {
-			$EVALUACION = get_data_form();
+  } else {
+                
+       $EVALUACION = get_data_form();
+}
+		//Variable que almacena los datos de la busqueda
+		$datos = $EVALUACION->SEARCH();
+		//Variable que almacena array con el CorrectoA de los atributos
+		$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
+		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		new EVALUACION_USUARIO_SHOWALL( $lista, $datos );
+    break;
+        
+        
+    
+	default: //Caso que se ejecuta por defecto
+    if ( !$_POST ) {//Si no se han recibido datos 
+        
+              $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+              $ADMIN = $USUARIO->comprobarAdmin();
+          
+            if($ADMIN == true){
+                  
+               
+                	 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
+            }
+            else{
+                $ENTREGA = new ENTREGA_MODEL( '','', '', '', '');
+                $datos=$ENTREGA->entregasUsu($_SESSION['login']);
+                //Variable que almacena array con el CorrectoA de los atributos
+		        $lista = array('login','IdTrabajo','Alias','Horas','Ruta');
+		       //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		       new ENTREGA_USUARIO_SHOWALL( $lista, $datos );
+            }
+		
+		//Si se reciben datos
+  } else {
+                
+       $EVALUACION = get_data_form();
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $EVALUACION->SEARCH();
