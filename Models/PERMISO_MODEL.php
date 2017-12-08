@@ -31,6 +31,76 @@
 //existe ya en la tabla
 
 
+function ADD() {
+        if ( ( $this->IdGrupo <> '' && $this->IdFuncionalidad <> '' && $this->IdAccion <> '' ) ) { // si el atributo clave de la entidad no esta vacio
+
+            // construimos el sql para buscar esa clave en la tabla
+            $sql = "SELECT * FROM PERMISO 
+                             WHERE ( 
+                                    IdGrupo = '$this->IdGrupo' &&
+                                    IdFuncionalidad = '$this->IdFuncionalidad' &&
+                                    IdAccion = '$this->IdAccion'
+                                    )";
+
+            if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
+                return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+            } else { // si la ejecución de la query no da error
+                if ($result->num_rows == 0){ // miramos si el resultado de la consulta es vacio
+                    //hacemos la inserción en la base de datos
+                    $sql = "INSERT INTO PERMISO (
+                                IdGrupo,
+                                IdFuncionalidad,
+                                IdAccion) 
+                                VALUES(
+                                '$this->IdGrupo',
+                                '$this->IdFuncionalidad',
+                                '$this->IdAccion'
+                                )";
+                }
+                    else{
+                        return 'Ya existe la acción introducida en la base de datos'; // ya existe
+                    }
+                    }
+                    if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
+                        return 'Error en la inserción';
+                    } else { //si no da error en la insercion devolvemos mensaje de exito
+                        return 'Inserción realizada con éxito'; //operacion de insertado correcta
+                    }
+
+                } else // si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
+                    return 'Introduzca un valor'; // ya existe
+    
+    } // fin del metodo ADD
+
+function DELETE() {
+        // se construye la sentencia sql de busqueda con los atributos de la clase
+        $sql = "SELECT * FROM PERMISO 
+                         WHERE (
+                                IdGrupo = '$this->IdGrupo' &&
+                                IdFuncionalidad = '$this->IdFuncionalidad' &&
+                                IdAccion = '$this->IdAccion'
+                                )";
+        // se ejecuta la query
+        $result = $this->mysqli->query( $sql );
+        // si existe una tupla con ese valor de clave
+
+        if ( $result->num_rows == 1 ) {
+            // se construye la sentencia sql de borrado
+            $sql = "DELETE FROM PERMISO 
+                           WHERE (
+                                  IdGrupo = '$this->IdGrupo' &&
+                                  IdFuncionalidad = '$this->IdFuncionalidad' &&
+                                  IdAccion = '$this->IdAccion' 
+                                 )";
+            // se ejecuta la query
+            $this->mysqli->query( $sql );
+            // se devuelve el mensaje de borrado correcto
+            return "Borrado correctamente";
+        } // si no existe el login a borrar se devuelve el mensaje de que no existe
+        else
+            return "No existe";
+    } // fin metodo DELETE
+
  //funcion SEARCH: hace una búsqueda en la tabla con
 //los datos proporcionados. Si van vacios devuelve todos
 function SEARCH()
@@ -43,9 +113,7 @@ function SEARCH()
                             A.IdAccion = P.IdAccion &&
                             F.IdFuncionalidad = FA.IdFuncionalidad &&
                             A.IdAccion = FA.IdAccion &&
-                            P.IdFuncionalidad LIKE '%$this->IdFuncionalidad%' &&
-                            P.IdAccion LIKE '%$this->IdAccion%' &&
-                            P.IdGrupo LIKE '%$this->IdGrupo%'
+                            P.IdGrupo LIKE '$this->IdGrupo'
                            )";
 
     // si se produce un error en la busqueda m&&amos el mensaje de error en la consulta
@@ -86,9 +154,20 @@ function SEARCH2()
 // funcion RellenaDatos()
 // Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 // en el atributo de la clase
-function RellenaDatos($IdGrupo, $IdFuncionalidad, $IdAccion)
+function RellenaDatos()
 {	// se construye la sentencia de busqueda de la tupla
-    $sql = "SELECT * FROM PERMISO WHERE (IdFuncionalidad = '$this->IdFuncionalidad' && IdAccion = '$this->IdAccion' && IdGrupo = '$this->IdGrupo')";
+    $sql = "SELECT P.IdGrupo,G.NombreGrupo,P.IdFuncionalidad,F.NombreFuncionalidad,P.IdAccion,A.NombreAccion
+                     FROM PERMISO P,GRUPO G,FUNCIONALIDAD F,FUNC_ACCION FA,ACCION A 
+                     WHERE (
+                            G.IdGrupo = P.IdGrupo &&
+                            F.IdFuncionalidad = P.IdFuncionalidad &&
+                            A.IdAccion = P.IdAccion &&
+                            F.IdFuncionalidad = FA.IdFuncionalidad &&
+                            A.IdAccion = FA.IdAccion &&
+                            G.IdGrupo = '$this->IdGrupo' &&
+                            F.IdFuncionalidad = '$this->IdFuncionalidad' &&
+                            A.IdAccion = '$this->IdAccion'
+                           )";
     // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
     if (!($resultado = $this->mysqli->query($sql))){
 		return 'No existe en la base de datos'; // 
