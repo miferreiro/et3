@@ -204,6 +204,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		//Si se reciben datos	
 		} else {
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$PERMISO = $USUARIO->comprobarPermisos();	
+			$ADMIN = $USUARIO->comprobarAdmin();
 			//Variable que almacena los datos recogidos de los atributos
 			$USUARIO = get_data_form();
 			//Variable que almacena el resultado de la busqueda
@@ -211,7 +214,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			new USUARIO_SHOWALL( $lista, $datos );
+			if($ADMIN == true){
+				new USUARIO_SHOWALL( $lista, $datos,$PERMISO,true );
+			}else{
+				new USUARIO_SHOWALL( $lista, $datos,$PERMISO,false );
+			}
+			
 		}
 		//Final del bloque
 		break;

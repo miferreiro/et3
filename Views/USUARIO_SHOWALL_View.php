@@ -7,7 +7,7 @@
 */
 class USUARIO_SHOWALL {
 
-	function __construct( $lista, $datos, $PERMISO,$admin) {
+	function __construct( $lista, $datos, $PERMISO, $admin) {
 		$this->lista = $lista;
 		$this->datos = $datos;
 		$this->PERMISO = $PERMISO;
