@@ -38,6 +38,58 @@ class EVALUACION{ //declaración de la clase
 		$this->mysqli = ConectarBD();
 
 	} // fin del constructor
+    
+     function mostrarEntregas($nombre){
+        
+    
+    $sql = "SELECT DISTINCT login,E.IdTrabajo FROM ENTREGA ET,EVALUACION E WHERE  ET.Alias=E.AliasEvaluado AND login='$nombre'";
+          
+    if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado
+            
+           
+			return $resultado;
+		}
+        
+    }
+
+    function mostrarCorrecion1($IdTrabajo,$nombre){
+        
+        
+       
+        $sql = "SELECT DISTINCT E.IdTrabajo,IdHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET WHERE 
+        ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$IdTrabajo' && Alias = AliasEvaluado && login='$nombre')";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		
+    if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado
+            
+            
+			return $resultado;
+		}
+    }
+    
+
+   function mostrarCorrecion2($IdTrabajo,$nombre){
+        
+        
+       
+       $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,E.IdTrabajo,IdHistoria,OK FROM EVALUACION E,ENTREGA ET WHERE 
+        ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$IdTrabajo' && LoginEvaluador='$nombre')";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado
+            
+            
+			return $resultado;
+		}
+    
+
+
+}
 
 	//funcion SEARCH: hace una búsqueda en la tabla con
 	//los datos proporcionados. Si van vacios devuelve todos

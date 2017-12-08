@@ -173,7 +173,9 @@ array(
 	'No puedes asignar una qa debido a que no se añadio un trabajo' => 'Non podes asignar unha qa debido a que non se añadiu un traballo',
 	'No puedes asignar una qa debido a que no se añadiu este usuario con este login' => 'Non podes asignar unha qa debido a que non se añadiu este usuario con este login',
 	'No se encuentra la asignacion de QAs' => 'Non se encontran as asignacions das QAs',
-	'No se encuentran las historias de la QA' => 'Non se encontran as historias da QA'
+	'No se encuentran las historias de la QA' => 'Non se encontran as historias da QA',
+    'Correcion entregas' => 'Correcion tarefas',
+    'Correcion QAs' =>  'Correcion QAs'
     
 	)
 ;
