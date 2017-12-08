@@ -30,7 +30,6 @@ function get_data_form() {
 	$correo = $_REQUEST[ 'email' ]; //Variable que almacena el valor de correo
 	$direccion = $_REQUEST[ 'direc' ]; //Variable que almacena el valor de direccion
 	$telefono = $_REQUEST[ 'telefono' ]; //Variable que almacena el valor de telefono
-	$Grupos = null;
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
 
 	$USUARIO = new USUARIO_MODEL(
@@ -41,8 +40,7 @@ function get_data_form() {
 		$apellidos,
 		$correo,
 		$direccion,
-		$telefono,
-		$Grupos
+		$telefono
 	);
 	//Devuelve el valor del objecto model creado
 	return $USUARIO;
@@ -91,7 +89,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 			//Variable que recoge un objecto model con solo el login
-			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena el relleno de los datos utilizando el login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			
@@ -111,7 +109,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			if($cont==1){
 			//Variable que recoge un objecto model con solo el login
-			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena el relleno de los datos utilizando el login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			
@@ -139,7 +137,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 						//Variable que almacena un objeto model con el login
-			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			$datos = $USUARIO->RellenaSelect();
@@ -159,7 +157,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			if($cont>=1){
 			//Variable que almacena un objeto model con el login
-			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			$datos = $USUARIO->RellenaSelect();
@@ -174,7 +172,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena los datos recogidos
 			$USUARIO = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
-			$respuesta = $USUARIO->EDIT($_REQUEST['IdGrupo']);
+			$respuesta = $USUARIO->EDIT();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
 			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
 		}
@@ -222,7 +220,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 					//Variable que almacena un objeto model con el login
-		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
 		           $valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		           //Creación de la vista showcurrent
@@ -241,7 +239,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			if($cont>=1){
 		//Variable que almacena un objeto model con el login
-		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
 		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		//Creación de la vista showcurrent
@@ -257,7 +255,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$ADMIN = $USER->comprobarAdmin();
 			if($ADMIN == true){
 				if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '','');
+			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');
 		//Si se reciben datos
 		} else {
 			$USUARIO = get_data_form();
@@ -283,7 +281,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			if($cont>=1){
 		if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '','');
+			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');
 		//Si se reciben datos
 		} else {
 			$USUARIO = get_data_form();

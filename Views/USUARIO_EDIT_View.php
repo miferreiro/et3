@@ -75,32 +75,6 @@ class USUARIO_EDIT {
 						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Telefono']?>" maxlength="11" size="12" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'11') && comprobarTexto(this,'11') && comprobarTelf(this)"/>
 					</tr>
 					<tr>
-					<th class="formThTd">
-						<?php echo $strings['NombreGrupo'];?>
-					</th>
-					<td class="formThTd">
-					<select id="IdGrupo[]" multiple size="2" name="IdGrupo[]">
-<?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
-					if($fila['IdGrupo']!='00001A'){
-?>
-
-			    <option value="<?php echo $fila['IdGrupo'];?>">	
-<?php 
-							echo $fila['NombreGrupo'];
-
-?>
-				</option>		
-					
-<?php
-					}
-				}
-?>					
-				</select>
-					</td>
-					</tr>	
-					
-					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
