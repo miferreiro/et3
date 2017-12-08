@@ -67,7 +67,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		} else {//Si recive datos los recoge y mediante las funcionalidad de GRUPO inserta los datos
 			$GRUPOS = get_data_form();//Variable que almacena los datos recogidos
-			$GRUPOS->IdGrupo = $GRUPOS->NumRows() + 1;
+			//$GRUPOS->IdGrupo = $GRUPOS->NumRows() + 1;
 			$respuesta = $GRUPOS->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
 			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );

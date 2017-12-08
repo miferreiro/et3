@@ -22,6 +22,12 @@ class GRUPO_ADD {
 				<table>
 					<tr>
 						<th class="formThTd">
+							<?php echo $strings['IdGrupo'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="IdGrupo" name="IdGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6') && comprobarAlfabetico(this,'6')"/>
+					</tr>
+					<tr>
+						<th class="formThTd">
 							<?php echo $strings['NombreGrupo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="60" size="65" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarAlfabetico(this,'60')"/>
@@ -32,7 +38,7 @@ class GRUPO_ADD {
 						</th>
 						<td class="formThTd"><textarea cols="50" rows="3" id="DescripGrupo" name="DescripGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="100" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100') && comprobarTexto(this, '100')"/>
 						</textarea>
-						<input type="hidden" id="IdGrupo" name="IdGrupo" value="" readonly />
+						
 					</tr>
 						
 					<tr>
