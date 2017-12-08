@@ -10,12 +10,11 @@
         var $DescripGrupo;//Declaracion de la variable DescripGrupo
         var $dependencias;
             
-        function __construct($IdGrupo,$NombreGrupo,$DescripGrupo,$Funcs){
+        function __construct($IdGrupo,$NombreGrupo,$DescripGrupo){
             //Asignamos valores a los atributos de la clase
             $this->IdGrupo=$IdGrupo;
             $this->NombreGrupo=$NombreGrupo;
             $this->DescripGrupo=$DescripGrupo;
-			$this->Funcs=$Funcs;
             
             // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -203,13 +202,12 @@
 function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
 		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
-		$Funcs= $this->Funcs;
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia de modificacion en base a los atributos de la clase
-			if ( count($Funcs) == 0){
+		
 			     //modificamos los atributos de la tabla USUARIO
 				$sql = "UPDATE GRUPO SET 
 					IdGrupo= '$this->IdGrupo',
@@ -224,28 +222,9 @@ function EDIT() {
 				return 'Modificado correctamente';
 			}
 
-		} else{
-				$cont=0;	  
-				for ($i=0;$i<count($Funcs);$i++){
-				 $sqli[$i] = "INSERT INTO PERMISO
-										(IdGrupo,IdFuncionalidad)
-										VALUES
-										('$this->IdGrupo',
-										 '$Funcs[$i]'
-										)";
-				if ( !( $resultado = $this->mysqli->query( $sqli[$i] ) ) ) {
-				
-			     }else{
-				$cont=$cont+1;
-				}	
-				}
-								// si hay un problema con la query se envia un mensaje de error en la modificacion
-			if ( $cont!= (count($Funcs))) {
-				return 'Error en la modificación';
-			} else { // si no hay problemas con la modificación se indica que se ha modificado
-				return 'Modificado correctamente';
-			}
-			}
+	
+		
+			
 		} // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
 		            else
 				return 'No existe en la base de datos';		

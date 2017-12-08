@@ -25,13 +25,12 @@ function get_data_form() {
 	$IdGrupo = $_REQUEST[ 'IdGrupo' ]; //Variable que almacena el valor de idGrupo
 	$NombreGrupo = $_REQUEST[ 'NombreGrupo' ]; //Variable que almacena el valor de NomnbreGrupo
 	$DescripGrupo = $_REQUEST[ 'DescripGrupo' ]; //Variable que almacena el valor de DescripGrupo
-    $Funcs = null;
+ 
 
 	$GRUPOS = new GRUPO(
 		$IdGrupo,
 		$NombreGrupo,
-		$DescripGrupo,
-		$Funcs
+		$DescripGrupo
 	);
 	//Devuelve el valor del objecto model creado
 	return $GRUPOS;
@@ -81,7 +80,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 			//Variable que recoge un objecto model con solo el idgrupo
-			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
+			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 			//Variable que almacena el relleno de los datos utilizando el IdGrupo
 			$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
 			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
@@ -103,7 +102,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			if($cont==1){
 			//Variable que recoge un objecto model con solo el idgrupo
-			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
+			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 			//Variable que almacena el relleno de los datos utilizando el IdGrupo
 			$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
 			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
@@ -132,7 +131,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 			//Variable que almacena un objeto model con el login
-			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '', '');
+			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
 			$datos = $GRUPOS->RellenaSelect();
@@ -151,7 +150,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			if($cont==1){
 			//Variable que almacena un objeto model con el login
-			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '', '');
+			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
 			$datos = $GRUPOS->RellenaSelect();
@@ -165,7 +164,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena los datos recogidos
 			$GRUPOS = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
-			$respuesta = $GRUPOS->EDIT($_REQUEST['IdFuncionalidad']);
+			$respuesta = $GRUPOS->EDIT();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
 			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
 		}
@@ -212,7 +211,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 		//Variable que almacena un objeto model con el IdGrupo
-		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
+		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 		//Variable que almacena los valores rellenados a traves de IdGrupo
 		$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
 		//Variable que almacena los valores rellenados a traves de IdGrupo
@@ -234,7 +233,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			if($cont==1){
 		//Variable que almacena un objeto model con el IdGrupo
-		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '','');
+		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 		//Variable que almacena los valores rellenados a traves de IdGrupo
 		$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
 		//Variable que almacena los valores rellenados a traves de IdGrupo
