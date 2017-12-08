@@ -10,42 +10,14 @@
 				<ul class ="menu">
 		
 			<li>
-				<a href="#" class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a> 
-					<ul class="submenu">
-						<li>
-							<a href="../Controllers/ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
-						</li>
-						<li>
-							<a href="../Controllers/ENTREGA_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
-						</li>
-					</ul>
+				<a href="../Controllers/ENTREGA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a> 
 			</li>
 			<li>
-				<a href="#" class="primerNivel"><?php echo $strings['Gestion de evaluaciones']; ?></a> 
-					<ul class="submenu">
-						<li>
-							<a href="../Controllers/EVALUACION_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
-						</li>
-						<li>
-							<a href="../Controllers/EVALUACION_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
-						</li>
-					</ul>
+				<a href="../Controllers/EVALUACION_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de evaluaciones']; ?></a> 
 			</li>
             <li>
                     
-                    <a href="#" class="primerNivel"><?php echo $strings['Gestion de notas']; ?></a> 
-					<ul class="submenu">
-						<li>
-							<a href="../Controllers/NOTAS_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Correción entregas']; ?></a>
-						</li>
-                        <li>
-				            <a href="../Controllers/NOTAS_CONTROLLER2.php" class="segundoNivel"><?php echo $strings['Correción QAs'];  ?></a>
-						</li>
-                        
-					</ul>
-                    
-                    
-                    
+                    <a href="../Controllers/NOTAS_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de notas']; ?></a>     
             </li>
 		</ul>
 	</ul>
