@@ -36,6 +36,9 @@
 						</li>
 					</ul>
 			</li>
+            <li>
+				<a href="../Controllers/NOTAS_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de notas']; ?></a> 
+			</li>
 			<li>
 				<a href="../Controllers/ENTREGA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a> 
 			</li>
@@ -47,12 +50,6 @@
 			</li>
 			<li>
 				<a href="../Controllers/EVALUACION_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de evaluaciones']; ?></a> 
-			</li>
-            <li>
-				<a href="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Correcion entregas']; ?></a> 
-			</li>
-            <li>
-				<a href="../Controllers/CORRECION_QA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Correcion QAs']; ?></a> 
 			</li>
 		</ul>
 	</ul>
