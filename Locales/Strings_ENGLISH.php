@@ -175,7 +175,8 @@ array(
 	'No se encuentra la asignacion de QAs' => 'Not found the assignment of QAs',
 	'No se encuentran las historias de la QA' => 'There are No stories of QA',
     'Correcion entregas' => 'Delivery correction',
-     'Correcion QAs' => 'QAs correction'
+     'Correcion QAs' => 'QAs correction',
+    'Seleccione un nuevo archivo si desea cambiarlo, en caso contrario, no es necesario seleccionarlo de nuevo.' =>  'Select a new file if you want to change it, otherwise it is not necessary to select it again.'
 	
 	
 	

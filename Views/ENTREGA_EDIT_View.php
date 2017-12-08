@@ -60,7 +60,7 @@ class ENTREGA_EDIT {
 						<td class="formThTd">
 							<a href="<?php echo $this->valores['Ruta']?>" alt="<?php echo $strings['Ruta'];?>">
 								<?php echo $this->valores['Ruta']?></a>
-							<p style="font-size: 12px"><?php echo $strings['Seleccione una nueva foto personal si desea cambiarla, en caso contrario, no es necesario seleccionarla de nuevo.'];?></p>
+							<p style="font-size: 12px"><?php echo $strings['Seleccione un nuevo archivo si desea cambiarlo, en caso contrario, no es necesario seleccionarlo de nuevo.'];?></p>
 					
 							<input type="file" id="Ruta" name="Ruta" value="<?php echo $this->valores['Ruta']?>"   />
                             
