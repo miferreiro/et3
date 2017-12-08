@@ -96,10 +96,15 @@ $GESTEVAL=false;
 
 <?php if($SEARCH==true){  ?>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
-<?php }
-		if($ADD==true){  ?>
+<?php
+	 }
+
+		if($ADD == true){  
+?>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
-<?php } ?>
+<?php 
+		}
+?>
 					</form>
 				</caption>
 				<tr>
@@ -136,7 +141,8 @@ $GESTEVAL=false;
 ?>
 					<td>
 						<form action="../Controllers/FUNCIONALIDAD_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
+							
+							<input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
 							<?php if($EDIT==true){ ?>
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 						    <?php } ?>
@@ -152,8 +158,8 @@ $GESTEVAL=false;
 				    <td>
 							<?php if($ASIGN==true){ ?>
 						<form action="../Controllers/FUNC_ACCION_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
-							<button type="submit" ><img src="../Views/icon/cambioGrupo.png" width="20" height="20"/></button>
+							<input type="hidden" name="IdFuncionalidad" value="<?php echo $fila['IdFuncionalidad']; ?>">
+							<button type="submit" ><img src="../Views/icon/accion.png" width="20" height="20"/></button>
 						</form>
 							<?php } ?>
 

@@ -183,7 +183,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 			$FUNCIONALIDAD= new FUNCIONALIDAD( $_REQUEST[ 'IdFuncionalidad' ], '', '','');
-		    $valores = $ACCION->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ] );
+		    $valores = $FUNCIONALIDAD->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ] );
 		    new FUNCIONALIDAD_SHOWCURRENT( $valores );
 			}else{
             $cont=0;
@@ -206,14 +206,52 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		break;
 	default:
-		if ( !$_POST ) {
-			$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '','');
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+		$ADMIN = $USUARIO->comprobarAdmin();
+			if($ADMIN == true){
+				if ( !$_POST ) {//Si no se han recibido datos 
+			$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '', '');
+		//Si se reciben datos
 		} else {
 			$FUNCIONALIDAD = get_data_form();
 		}
+		//Variable que almacena los datos de la busqueda
 		$datos = $FUNCIONALIDAD->SEARCH();
+		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'IdFuncionalidad','NombreFuncionalidad','DescripFuncionalidad' );
-		new FUNCIONALIDAD_SHOWALL( $lista, $datos );
+		$PERMISO = $USUARIO->comprobarPermisos();
+		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		new FUNCIONALIDAD_SHOWALL( $lista, $datos,$PERMISO,true);
+			}else{
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+            $cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='3'){
+				if($fila['IdAccion']=='5'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont==1){
+		if ( !$_POST ) {//Si no se han recibido datos 
+			$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '','');
+		//Si se reciben datos
+		} else {
+			$FUNCIONALIDAD = get_data_form();
+		}
+		//Variable que almacena los datos de la busqueda
+		$datos = $FUNCIONALIDAD->SEARCH();
+		//Variable que almacena array con el nombre de los atributos
+		$lista = array( 'IdFuncionalidad','NombreFuncionalidad','DescripFuncionalidad' );
+		$PERMISO = $USUARIO->comprobarPermisos();
+		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		new FUNCIONALIDAD_SHOWALL( $lista, $datos,$PERMISO,false);
+		}else{
+		 new USUARIO_DEFAULT();
+		}
+			}
 }
 
 ?>
