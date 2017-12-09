@@ -61,13 +61,14 @@ switch ( $_REQUEST[ 'action' ] ) {
 			    $grupos= $USU_GRUPO->RellenaShowCurrent();
 				new USU_GRUPO_ADD($_REQUEST['login'],$grupos);
 			}else{
-			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
 			}
 		} else { // si existe dolar POST
 			$USU_GRUPO = get_data_form();// se pasa a la variable USU_GRUPO un objeto del modelo USU_GRUPO
 			$respuesta = $USU_GRUPO->ADD();//obtenemos la respuesta que viene del método ADD() de la clase USU_GRUPO
-			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
+			$aux = "?login=".$_REQUEST['login'];
+			new MESSAGE( $respuesta, '../Controllers/USU_GRUPO_CONTROLLER.php'.$aux );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 		}
 		break;
 	case 'DELETE': //se hace este case en el caso de que queramos eliminar
@@ -101,7 +102,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {//si existe dolar POST
 			$USU_GRUPO = get_data_form(); // se le pasa a la variable $USU el login y IdGrupo a eliminar
 			$respuesta = $USU_GRUPO->DELETE(); // con el método DELETE de USU_GRUPO se elimna ese login y IdGrupo de la base de datos.
-			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );// se muestar en una vista un mensaje después del borrado.
+			$aux = "?login=".$_REQUEST['login'];
+			new MESSAGE( $respuesta, '../Controllers/USU_GRUPO_CONTROLLER.php'.$aux );// se muestar en una vista un mensaje después del borrado.
 		}
 		break;
 	default: // por defecto aparecerá la vista SHOWALL.

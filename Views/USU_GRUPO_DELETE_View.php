@@ -30,16 +30,14 @@ class USU_GRUPO_DELETE {
 						<?php echo $this->valores['login']?>
 					</td>
 				</tr>
-
 				<tr>
 					<th>
-						<?php echo $strings['IdGrupo'];?>
+						<?php echo $strings['NombreGrupo'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['IdGrupo']?>
+						<?php echo $this->valores['NombreGrupo']?>
 					</td>
 				</tr>
-
 			</table>
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>

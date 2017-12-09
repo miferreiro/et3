@@ -137,7 +137,7 @@ function DELETE()
 // en el atributo de la clase
 function RellenaDatos($login, $IdGrupo)
 {	// se construye la sentencia de busqueda de la tupla
-    $sql = "SELECT * FROM USU_GRUPO WHERE (login = '$this->login' && IdGrupo = '$this->IdGrupo')";
+    $sql = "SELECT U.login,U.IdGrupo,G.NombreGrupo FROM USU_GRUPO U,GRUPO G WHERE (U.login = '$this->login' && U.IdGrupo = '$this->IdGrupo' && U.IdGrupo LIKE G.IdGrupo)";
     // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
     if (!($resultado = $this->mysqli->query($sql))){
 		return 'No existe en la base de datos'; // 
