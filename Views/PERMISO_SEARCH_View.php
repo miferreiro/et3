@@ -20,25 +20,25 @@ class PERMISO_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
+			<form id="SEARCH" name= "SEARCH" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" onSubmit="comprobarSearchPermisos()">
 				<table>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['NombreGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur=""/>					
+						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarAlfabetico(this,'60')"/>					
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['NombreFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NombreFuncionalidad" name="NombreFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur=""/>
+						<td class="formThTd"><input type="text" id="NombreFuncionalidad" name="NombreFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarAlfabetico(this,'60')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['NombreAccion'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NombreAccion" name="NombreAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur=""/>
+						<td class="formThTd"><input type="text" id="NombreAccion" name="NombreAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarAlfabetico(this,'60')"/>
 					</tr>
 					
 					<tr>

@@ -94,12 +94,12 @@ function ADD()
 //los datos proporcionados. Si van vacios devuelve todos
 function SEARCH()
 { 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-    $sql = "select login,
-                    IdGrupo
-       			from USU_GRUPO
+    $sql = "select U.login,
+                    U.IdGrupo,G.NombreGrupo
+       			from USU_GRUPO U, GRUPO G
     			where 
     				(
-    				(login LIKE '$this->login')
+    				U.login LIKE '$this->login' && G.IdGrupo LIKE U.IdGrupo
     				)";
     // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
     if (!($resultado = $this->mysqli->query($sql))){

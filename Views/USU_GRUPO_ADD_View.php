@@ -35,7 +35,7 @@ class USU_GRUPO_ADD {
 
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['IdGrupo'];?>
+							<?php echo $strings['NombreGrupo'];?>
 						</th>
                   <td>
                    <select id="IdGrupo" name="IdGrupo">
@@ -45,7 +45,8 @@ class USU_GRUPO_ADD {
 				<option value="<?php echo $fila[ 'IdGrupo' ]?>">
 
 <?php 
-			echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					echo $fila['NombreGrupo'];
 ?>		
                							
 

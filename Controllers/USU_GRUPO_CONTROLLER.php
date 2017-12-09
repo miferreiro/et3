@@ -114,7 +114,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$USU_GRUPO = new USU_GRUPO( $_REQUEST['login'], '');;//a la variable USU_GRUPO se le pasa el login y IdGrupo vacío.
 		}
 		$datos = $USU_GRUPO->SEARCH();//con el método SEARCH en este caso buscamos todos los valores que hay en la base de datos.
-		$lista = array(  'login','IdGrupo' );
+		$lista = array(  'login','NombreGrupo' );
 		new USU_GRUPO_SHOWALL( $lista, $datos ,$_REQUEST['login']);// se muestra la vista SHOWALL.
 			}else{
 		$cont=0;
@@ -135,7 +135,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$USU_GRUPO = new USU_GRUPO( $_REQUEST['login'], '');;//a la variable USU_GRUPO se le pasa el login y IdGrupo vacío.
 		}
 		$datos = $USU_GRUPO->SEARCH();//con el método SEARCH en este caso buscamos todos los valores que hay en la base de datos.
-		$lista = array(  'login','IdGrupo' );
+		$lista = array(  'login','NombreGrupo' );
 		new USU_GRUPO_SHOWALL( $lista, $datos ,$_REQUEST['login']);// se muestra la vista SHOWALL.
 }else{
 			new USUARIO_DEFAULT();	

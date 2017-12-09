@@ -2263,14 +2263,35 @@ function comprobarSearchEvaluacion() {
 function comprobarAddGrupo() {
 
 
-	//var IdGrupo; /*variable que representa el elemento IdGrupo del formulario add de gestión de grupo*/
+	var IdGrupo; /*variable que representa el elemento IdGrupo del formulario add de gestión de grupo*/
 	var NombreGrupo; /*variable que representa el elemento NombreGrupo del formulario add de gestión de grupo*/
 	var DescripGrupo; /*variable que representa el elemento DescripGrupo del formulario add de gestión de grupo*/
-
-	NombreGrupo = document.forms['ADD'].elements[0];
-	DescripGrupo = document.forms['ADD'].elements[1];
-	//IdGrupo = document.forms['ADD'].elements[2];
-
+	
+	IdGrupo = document.forms['ADD'].elements[0];
+	NombreGrupo = document.forms['ADD'].elements[1];
+	DescripGrupo = document.forms['ADD'].elements[2];
+	
+	
+	/*Comprueba si NombreGrupo es vacio, retorna false*/
+	if (!comprobarVacio(IdGrupo)) {
+		return false;
+	} else {
+		//Comprobamos que no hay espacio s intermedios
+		if (!sinEspacio(IdGrupo)) {
+			return false;
+		} else {
+			/*Comprobamos su longitud, si es mayor que 60, retorna false*/
+			if (!comprobarLongitud(IdGrupo, 60)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdGrupo, 60)) {
+					return false;
+				} 
+			}
+		}
+	}
+	
 
 	/*Comprueba si NombreGrupo es vacio, retorna false*/
 	if (!comprobarVacio(NombreGrupo)) {
@@ -2300,10 +2321,7 @@ function comprobarAddGrupo() {
 	if (!comprobarVacio(DescripGrupo)) {
 		return false;
 	} else {
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(DescripGrupo)) {
-			return false;
-		} else {
+
 			/*Comprueba su longitud, si es mayor que 100, retorna false*/
 			if (!comprobarLongitud(DescripGrupo, 100)) {
 				return false;
@@ -2315,7 +2333,7 @@ function comprobarAddGrupo() {
 
 			}
 		}
-	}
+
 
 
 	return true;
@@ -2381,10 +2399,6 @@ function comprobarEditGrupo() {
 	if (!comprobarVacio(DescripGrupo)) {
 		return false;
 	} else {
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(DescripGrupo)) {
-			return false;
-		} else {
 			/*Comprueba su longitud, si es mayor que 100, retorna false*/
 			if (!comprobarLongitud(DescripGrupo, 100)) {
 				return false;
@@ -2396,7 +2410,7 @@ function comprobarEditGrupo() {
 
 			}
 		}
-	}
+	
 
 
 	return true;
@@ -2647,6 +2661,67 @@ function comprobarAddFuncionalidad() {
 
 	return true;
 
+}
+
+/*
+	function comprobarSearchPermisos: valida todos los campos del formulario search antes de realizar el submit
+*/
+function comprobarSearchPermisos() {
+
+	var NombreGrupo; /*variable que representa el elemento NombreGrupo del formulario search de gestión de permisos*/
+	var NombreFuncionalidad; /*variable que representa el elemento NombreAccion del formulario search de gestión de permisos*/
+	var NombreAccion; /*variable que representa el elemento NombreAccion del formulario search de gestión de permisos*/
+
+	NombreGrupo = document.forms['SEARCH'].elements[0];
+	NombreFuncionalidad = document.forms['SEARCH'].elements[1];
+	NombreAccion = document.forms['SEARCH'].elements[2];
+
+	/*Comprueba su longitud, si es mayor que 60, retorna false*/
+	if (!comprobarLongitud(NombreGrupo, 60)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(NombreGrupo, 60)) {
+			return false;
+		} else {
+			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+			if (!comprobarAlfabetico(NombreGrupo, 60)) {
+				return false;
+			}
+		}
+	}
+
+	/*Comprueba su longitud, si es mayor que 60, retorna false*/
+	if (!comprobarLongitud(NombreFuncionalidad, 60)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(NombreFuncionalidad, 60)) {
+			return false;
+		} else {
+			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+			if (!comprobarAlfabetico(NombreFuncionalidad, 60)) {
+				return false;
+			}
+		}
+	}
+
+	/*Comprueba su longitud, si es mayor que 60, retorna false*/
+	if (!comprobarLongitud(NombreAccion, 60)) {
+		return false;
+	} else {
+		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		if (!comprobarTexto(NombreAccion, 60)) {
+			return false;
+		} else {
+			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+			if (!comprobarAlfabetico(NombreAccion, 60)) {
+				return false;
+			}
+		}
+	}
+
+	return true;
 }
 
 </script>
