@@ -39,14 +39,14 @@ class TRABAJO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['FechaIniTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaIniTrabajo" name="FechaIniTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" onBlur="" readonly/>
+						<td class="formThTd"><input type="text" id="FechaIniTrabajo" class="tcal" name="FechaIniTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" onBlur="" readonly/>
 					</tr>
                     
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['FechaFinTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaFinTrabajo" name="FechaFinTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" onBlur="" readonly/>
+						<td class="formThTd"><input type="text" id="FechaFinTrabajo" class="tcal" name="FechaFinTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" onBlur="" readonly/>
 					</tr>
                     
                       <tr>
