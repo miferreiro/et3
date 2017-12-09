@@ -146,8 +146,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		break;
 	case 'SEARCH':
+		
+		$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
 		if ( !$_POST ) {
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 				new ACCION_SEARCH();
@@ -169,10 +171,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 			}
 		} else {
+			$PERMISO = $USUARIO->comprobarPermisos();
 			$ACCION = get_data_form();
 			$datos = $ACCION->SEARCH();
 			$lista = array( 'IdAccion','NombreAccion','DescripAccion' );
-			new ACCION_SHOWALL( $lista, $datos );
+			new ACCION_SHOWALL( $lista, $datos,$PERMISO,true );
 		}
 		break;
 	case 'SHOWCURRENT':
