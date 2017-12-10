@@ -10,12 +10,12 @@
 session_start();//solicito trabajar con la sesión
 
 include '../Models/HISTORIA_MODEL.php';
-include '../Views/HISTORIA_SHOWALL_View.php';
-include '../Views/HISTORIA_SEARCH_View.php';
-include '../Views/HISTORIA_ADD_View.php';
-include '../Views/HISTORIA_EDIT_View.php';
-include '../Views/HISTORIA_DELETE_View.php';
-include '../Views/HISTORIA_SHOWCURRENT_View.php';
+include '../Views/HISTORIA/HISTORIA_SHOWALL_View.php';
+include '../Views/HISTORIA/HISTORIA_SEARCH_View.php';
+include '../Views/HISTORIA/HISTORIA_ADD_View.php';
+include '../Views/HISTORIA/HISTORIA_EDIT_View.php';
+include '../Views/HISTORIA/HISTORIA_DELETE_View.php';
+include '../Views/HISTORIA/HISTORIA_SHOWCURRENT_View.php';
 include '../Views/MESSAGE_View.php';
 
 function get_data_form(){

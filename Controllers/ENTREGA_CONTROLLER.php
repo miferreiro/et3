@@ -6,13 +6,13 @@
 session_start(); //solicito trabajar con la session
 
 include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Views/ENTREGA_SHOWALL_View.php'; //incluye la vista del showall
-include '../Views/ENTREGA_USU_SHOWALL.php'; //incluye la vista del showall
-include '../Views/ENTREGA_SEARCH_View.php'; //incluye la vista search
-include '../Views/ENTREGA_ADD_View.php'; //incluye la vista add
-include '../Views/ENTREGA_EDIT_View.php'; //incluye la vista edit
-include '../Views/ENTREGA_DELETE_View.php'; //incluye la vista delete
-include '../Views/ENTREGA_SHOWCURRENT_View.php'; //incluye la vista showcurrent
+include '../Views/ENTREGA/ENTREGA_SHOWALL_View.php'; //incluye la vista del showall
+include '../Views/ENTREGA/ENTREGA_USU_SHOWALL.php'; //incluye la vista del showall
+include '../Views/ENTREGA/ENTREGA_SEARCH_View.php'; //incluye la vista search
+include '../Views/ENTREGA/ENTREGA_ADD_View.php'; //incluye la vista add
+include '../Views/ENTREGA/ENTREGA_EDIT_View.php'; //incluye la vista edit
+include '../Views/ENTREGA/ENTREGA_DELETE_View.php'; //incluye la vista delete
+include '../Views/ENTREGA/ENTREGA_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
 function aleatorio(){

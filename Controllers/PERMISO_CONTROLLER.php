@@ -11,11 +11,11 @@ session_start();//solicito trabajar con la sesión
 
 include '../Models/PERMISO_MODEL.php';
 include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Views/PERMISO_SEARCH_View.php';
-include '../Views/PERMISO_SHOWALL_View.php';
-include '../Views/PERMISO_ADD_View.php';
-include '../Views/PERMISO_ASSIGN_View.php';
-include '../Views/PERMISO_DELETE_View.php';
+include '../Views/PERMISO/PERMISO_SEARCH_View.php';
+include '../Views/PERMISO/PERMISO_SHOWALL_View.php';
+include '../Views/PERMISO/PERMISO_ADD_View.php';
+include '../Views/PERMISO/PERMISO_ASSIGN_View.php';
+include '../Views/PERMISO/PERMISO_DELETE_View.php';
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php';
 

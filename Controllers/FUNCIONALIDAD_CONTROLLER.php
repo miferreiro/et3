@@ -11,12 +11,12 @@ session_start(); //solicito trabajar con la sesión
 
 include '../Models/FUNCIONALIDAD_MODEL.php';
 include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Views/FUNCIONALIDAD_SHOWALL_View.php';
-include '../Views/FUNCIONALIDAD_SEARCH_View.php';
-include '../Views/FUNCIONALIDAD_ADD_View.php';
-include '../Views/FUNCIONALIDAD_EDIT_View.php';
-include '../Views/FUNCIONALIDAD_DELETE_View.php';
-include '../Views/FUNCIONALIDAD_SHOWCURRENT_View.php';
+include '../Views/FUNCIONALIDAD/FUNCIONALIDAD_SHOWALL_View.php';
+include '../Views/FUNCIONALIDAD/FUNCIONALIDAD_SEARCH_View.php';
+include '../Views/FUNCIONALIDAD/FUNCIONALIDAD_ADD_View.php';
+include '../Views/FUNCIONALIDAD/FUNCIONALIDAD_EDIT_View.php';
+include '../Views/FUNCIONALIDAD/FUNCIONALIDAD_DELETE_View.php';
+include '../Views/FUNCIONALIDAD/FUNCIONALIDAD_SHOWCURRENT_View.php';
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php';
 

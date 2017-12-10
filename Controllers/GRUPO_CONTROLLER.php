@@ -10,12 +10,12 @@ session_start(); //solicito trabajar con la session
 
 include '../Models/GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Views/GRUPO_SHOWALL_View.php'; //incluye la vista del showall
-include '../Views/GRUPO_SEARCH_View.php'; //incluye la vista search
-include '../Views/GRUPO_ADD_View.php'; //incluye la vista add
-include '../Views/GRUPO_EDIT_View.php'; //incluye la vista edit
-include '../Views/GRUPO_DELETE_View.php'; //incluye la vista delete
-include '../Views/GRUPO_SHOWCURRENT_View.php'; //incluye la vista showcurrent
+include '../Views/GRUPO/GRUPO_SHOWALL_View.php'; //incluye la vista del showall
+include '../Views/GRUPO/GRUPO_SEARCH_View.php'; //incluye la vista search
+include '../Views/GRUPO/GRUPO_ADD_View.php'; //incluye la vista add
+include '../Views/GRUPO/GRUPO_EDIT_View.php'; //incluye la vista edit
+include '../Views/GRUPO/GRUPO_DELETE_View.php'; //incluye la vista delete
+include '../Views/GRUPO/GRUPO_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 

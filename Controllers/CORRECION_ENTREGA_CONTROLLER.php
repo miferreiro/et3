@@ -3,8 +3,8 @@
 session_start();//solicito trabajar con la sesión
 
 include '../Models/EVALUACION_MODEL.php';
-include '../Views/CORRECION_ENTREGA_View.php'; 
-include '../Views/CORRECION_ENTREGA_RESULTADO_View.php'; 
+include '../Views/CORRECION/CORRECION_ENTREGA_View.php'; 
+include '../Views/CORRECION/CORRECION_ENTREGA_RESULTADO_View.php'; 
 
 if(!isset($_REQUEST['action'])){
     

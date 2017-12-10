@@ -9,11 +9,11 @@
 session_start();//solicito trabajar con la session
 //incluimos las vistas asociadas para este controlador y el modelo adecuado
 include '../Models/USU_GRUPO_MODEL.php';
-include '../Views/USU_GRUPO_SHOWALL_View.php';
-include '../Views/USU_GRUPO_SEARCH_View.php';
-include '../Views/USU_GRUPO_ADD_View.php';
-include '../Views/USU_GRUPO_DELETE_View.php';
-include '../Views/USU_GRUPO_SHOWCURRENT_View.php';
+include '../Views/USU_GRUPO/USU_GRUPO_SHOWALL_View.php';
+include '../Views/USU_GRUPO/USU_GRUPO_SEARCH_View.php';
+include '../Views/USU_GRUPO/USU_GRUPO_ADD_View.php';
+include '../Views/USU_GRUPO/USU_GRUPO_DELETE_View.php';
+include '../Views/USU_GRUPO/USU_GRUPO_SHOWCURRENT_View.php';
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php';
 

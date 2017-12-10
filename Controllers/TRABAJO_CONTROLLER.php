@@ -10,12 +10,12 @@
 session_start();//solicito trabajar con la sesión
 
 include '../Models/TRABAJO_MODEL.php';
-include '../Views/TRABAJO_SHOWALL_View.php';
-include '../Views/TRABAJO_SEARCH_View.php';
-include '../Views/TRABAJO_ADD_View.php';
-include '../Views/TRABAJO_EDIT_View.php';
-include '../Views/TRABAJO_DELETE_View.php';
-include '../Views/TRABAJO_SHOWCURRENT_View.php';
+include '../Views/TRABAJO/TRABAJO_SHOWALL_View.php';
+include '../Views/TRABAJO/TRABAJO_SEARCH_View.php';
+include '../Views/TRABAJO/TRABAJO_ADD_View.php';
+include '../Views/TRABAJO/TRABAJO_EDIT_View.php';
+include '../Views/TRABAJO/TRABAJO_DELETE_View.php';
+include '../Views/TRABAJO/TRABAJO_SHOWCURRENT_View.php';
 include '../Views/MESSAGE_View.php';
 
 function get_data_form(){

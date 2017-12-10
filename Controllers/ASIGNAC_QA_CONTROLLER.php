@@ -10,14 +10,14 @@ session_start(); //solicito trabajar con la session
 
 include '../Models/ASIGNAC_QA_MODEL.php'; //incluye el contendio del asignacion de qa
 include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Views/ASIGNAC_QA_GENERAR_View.php'; //incluye la vista de asignación qa
-include '../Views/ASIGNAC_QA_HISTORIAS_View.php'; //incluye la vista de asignación qa
-include '../Views/ASIGNAC_QA_ADD_View.php'; //incluye la vista ADD
-include '../Views/ASIGNAC_QA_DELETE_View.php'; //incluye la vista de DELETE
-include '../Views/ASIGNAC_QA_EDIT_View.php'; //incluye la vista de EDIT
-include '../Views/ASIGNAC_QA_SEARCH_View.php'; //incluye la vista de SEARCH
-include '../Views/ASIGNAC_QA_SHOWCURRENT_View.php'; //incluye la vista de asignación qa
-include '../Views/ASIGNAC_QA_SHOWALL_View.php'; //incluye la vista de asignación qa
+include '../Views/ASIGNAC_QA/ASIGNAC_QA_GENERAR_View.php'; //incluye la vista de asignación qa
+include '../Views/ASIGNAC_QA/ASIGNAC_QA_HISTORIAS_View.php'; //incluye la vista de asignación qa
+include '../Views/ASIGNAC_QA/ASIGNAC_QA_ADD_View.php'; //incluye la vista ADD
+include '../Views/ASIGNAC_QA/ASIGNAC_QA_DELETE_View.php'; //incluye la vista de DELETE
+include '../Views/ASIGNAC_QA/ASIGNAC_QA_EDIT_View.php'; //incluye la vista de EDIT
+include '../Views/ASIGNAC_QA/ASIGNAC_QA_SEARCH_View.php'; //incluye la vista de SEARCH
+include '../Views/ASIGNAC_QA/ASIGNAC_QA_SHOWCURRENT_View.php'; //incluye la vista de asignación qa
+include '../Views/ASIGNAC_QA/ASIGNAC_QA_SHOWALL_View.php'; //incluye la vista de asignación qa
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 function get_data_form(){

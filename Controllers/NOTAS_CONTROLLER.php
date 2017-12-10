@@ -6,14 +6,14 @@
 session_start(); //solicito trabajar con la session
 
 include '../Models/NOTAS_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Views/NOTAS_SHOWALL_View.php'; //incluye la vista del showall
-include '../Views/NOTAS_SHOWALL2_View.php'; //incluye la vista del showall para el caso de los usuarios
-include '../Views/NOTAS_SEARCH_View.php'; //incluye la vista search
-include '../Views/NOTAS_ADD_View.php'; //incluye la vista add
-include '../Views/NOTAS_EDIT_View.php'; //incluye la vista edit
-include '../Views/NOTAS_DELETE_View.php'; //incluye la vista delete
-include '../Views/NOTAS_SHOWCURRENT_View.php'; //incluye la vista showcurrent
-include '../Views/NOTAS_SHOWCURRENT2_View.php'; //incluye la vista showcurrent
+include '../Views/NOTAS/NOTAS_SHOWALL_View.php'; //incluye la vista del showall
+include '../Views/NOTAS/NOTAS_SHOWALL2_View.php'; //incluye la vista del showall para el caso de los usuarios
+include '../Views/NOTAS/NOTAS_SEARCH_View.php'; //incluye la vista search
+include '../Views/NOTAS/NOTAS_ADD_View.php'; //incluye la vista add
+include '../Views/NOTAS/NOTAS_EDIT_View.php'; //incluye la vista edit
+include '../Views/NOTAS/NOTAS_DELETE_View.php'; //incluye la vista delete
+include '../Views/NOTAS/NOTAS_SHOWCURRENT_View.php'; //incluye la vista showcurrent
+include '../Views/NOTAS/NOTAS_SHOWCURRENT2_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 
