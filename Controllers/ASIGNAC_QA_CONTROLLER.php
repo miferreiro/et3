@@ -86,7 +86,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$AliasEvaluado = $QAs[$i][2];//Variable que almacena $AliasEvaluado
 				$IdHistoria = $HISTORIAS[$j][0];//Variable que almacena IdHistoria
 				//Variable que almacena un nuevo objecto Evaluación
-				$EVALUACION = new EVALUACION($IdTrabajo,$LoginEvaluador,$AliasEvaluado,$IdHistoria,'1', ' ', '1', ' ', '1');
+				$EVALUACION = new EVALUACION($IdTrabajo,$LoginEvaluador,$AliasEvaluado,$IdHistoria,'2', ' ', '2', ' ', '2');
 				//Variable que almacena el mensaje de retorno de la sentencia
 				$mensaje = $EVALUACION->ADD();//Añadimos los datos a la tabla
 				}
@@ -121,6 +121,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		//Variable que almacena el array de las tuplas de entrega.
 		$miarray = $TRABAJO->DevolverArray($_REQUEST['IdTrabajo']);
+		//Comprobamos que haya un minimo de entregas para generar el número solicitado
+		//Si no hay un minimo enviamos mensaje de que no se puede generar
+		if (count($miarray) <= $_REQUEST['num']) {
+			//crea una vista mensaje con la respuesta y la dirección de vuelta
+			new MESSAGE( 'No hay suficiente número de entregas para asignar el número de QAs solicitado', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+		}
 		//Variable que guarda el nombre de la QA
 		$NombreQA = "QA" . substr($_REQUEST['IdTrabajo'], 2);
 		//Bucle que llena las posiciones de cada trabajo, que nos sirve para ver que tengan el número deseado
