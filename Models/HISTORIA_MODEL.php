@@ -166,9 +166,21 @@
 			return 'No existe en la base de datos';
 	} // fin del metodo EDIT
 
-            
+    
+    function DevolverHistorias($Id){
+		//Consulta que recupera la tabla trabajo
+		$sql = "select IdHistoria
+					   from HISTORIA
+					   where IdTrabajo = '$Id'";
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) { return null; }
+		//Caragamos las tuplas resultado de la consulta en un array
+		while($datos = mysqli_fetch_row ($resultado)){
+			//Variable que almacena el array de las tuplas resultado de la query
+			$miarray[] = $datos;
+		}
+		return $miarray;	
+	}
+           
     }
-
-
-
 ?>
