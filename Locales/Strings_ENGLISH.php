@@ -176,7 +176,9 @@ array(
 	'No se encuentran las historias de la QA' => 'There are No stories of QA',
     'Correcion entregas' => 'Delivery correction',
      'Correcion QAs' => 'QAs correction',
-    'Seleccione un nuevo archivo si desea cambiarlo, en caso contrario, no es necesario seleccionarlo de nuevo.' =>  'Select a new file if you want to change it, otherwise it is not necessary to select it again.'
+    'Seleccione un nuevo archivo si desea cambiarlo, en caso contrario, no es necesario seleccionarlo de nuevo.' =>  'Select a new file if you want to change it, otherwise it is not necessary to select it again.',
+    'No hay suficiente número de entregas para asignar el número de QAs solicitado' => 'There is not enough number of deliveries to allocate or QAs number requested'
+    
 	
 	
 	

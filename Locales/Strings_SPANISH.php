@@ -177,7 +177,8 @@ array(
 	'No se encuentran las historias de la QA' => 'No se encuentran las historias de la QA',
     'Correcion entregas' => 'Correcion entregas',
     'Correcion QAs' =>  'Correcion QAs',
-    'Seleccione un nuevo archivo si desea cambiarlo, en caso contrario, no es necesario seleccionarlo de nuevo.' =>  'Seleccione un nuevo archivo si desea cambiarlo, en caso contrario, no es necesario seleccionarlo de nuevo.'
+    'Seleccione un nuevo archivo si desea cambiarlo, en caso contrario, no es necesario seleccionarlo de nuevo.' =>  'Seleccione un nuevo archivo si desea cambiarlo, en caso contrario, no es necesario seleccionarlo de nuevo.',
+    'No hay suficiente número de entregas para asignar el número de QAs solicitado' => 'No hay suficiente número de entregas para asignar el número de QAs solicitado'
 	)
 ;
 
