@@ -54,7 +54,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             $cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='5'){
+			if($fila['IdFuncionalidad']=='4'){
 				if($fila['IdAccion']=='0'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -87,7 +87,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             $cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='5'){
+			if($fila['IdFuncionalidad']=='4'){
 				if($fila['IdAccion']=='1'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -123,7 +123,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             $cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='5'){
+			if($fila['IdFuncionalidad']=='4'){
 				if($fila['IdAccion']=='2'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -157,7 +157,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             $cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='5'){
+			if($fila['IdFuncionalidad']=='4'){
 				if($fila['IdAccion']=='3'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -189,7 +189,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             $cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='5'){
+			if($fila['IdFuncionalidad']=='4'){
 				if($fila['IdAccion']=='4'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -228,7 +228,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             $cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='5'){
+			if($fila['IdFuncionalidad']=='4'){
 				if($fila['IdAccion']=='5'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;

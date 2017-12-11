@@ -191,17 +191,6 @@ class USUARIO_MODEL{ //declaración de la clase
 		}
 	} // fin del metodo RellenaDatos()
     
-			
-    function RellenaSelect() { // se construye la sentencia de busqueda de la tupla
-
-		$sql = "SELECT * FROM GRUPO";
-		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
-		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'No existe en la base de datos'; // 
-		} else { // si existe se devuelve la tupla resultado
-			return $resultado;
-		}
-	} // fin del metodo RellenaSelect()	
     // funcion RellenaDatos()
 	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	// en el atributo de la clase
@@ -353,28 +342,8 @@ class USUARIO_MODEL{ //declaración de la clase
 			}
 		}
 	} //fin metodo login
-   function comprobarPermisos(){
-	   $sql = "SELECT DISTINCT P.IdGrupo, P.IdFuncionalidad, P.IdAccion FROM PERMISO P, USU_GRUPO U WHERE U.login = '$this->login' && (U.IdGrupo = P.IdGrupo || P.IdGrupo ='0000A')";
-	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
-       return $resultado;
-
-   }
-
-   function comprobarAdmin(){
-		
-		$sql = "SELECT * FROM USU_GRUPO WHERE login = '$this->login' && IdGrupo = '00000A'";
-		
-		$resultado = $this->mysqli->query($sql); //hacemos la consulta en la base de datos
-		
-		if($resultado->num_rows == 0){//miramos si el numero de filas es 0
-			return false;
-		}else{
-			return true;
-		}
 	
-   }
-	
-	//Comprueba que la Bd esté vacia, es decir sin grupos.
+/*	//Comprueba que la Bd esté vacia, es decir sin grupos.
 	function comprobarBdIncial(){
 		
 		$sql = "SELECT * FROM GRUPO U";
@@ -685,7 +654,7 @@ class USUARIO_MODEL{ //declaración de la clase
 		}
 	}
 
-	    
+	    */
     
 
 } //fin de clase
