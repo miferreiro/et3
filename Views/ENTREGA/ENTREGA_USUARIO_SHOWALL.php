@@ -62,6 +62,9 @@ class ENTREGA_USUARIO_SHOWALL {
 						<form action="../Controllers/EVALUACION_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
+                            <input type="hidden" name="Alias" value="<?php echo $fila['Alias']; ?>">
+                            
+                            
 						<td>
 								<button type="submit" name="action" value="MOSTRAR_USER" ><img src="../Views/icon/flecha.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
                                 <!--si pulsas este boton ves la vista SHOWCURRENT-->

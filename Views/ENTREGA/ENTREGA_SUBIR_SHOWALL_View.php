@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class ENTREGA_USU_SHOWALL {
+class ENTREGA_SUBIR_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -67,16 +67,9 @@ class ENTREGA_USU_SHOWALL {
 							<input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
                          
                             <td>
-                                <?php
-                                    if(date('Y-m-d')<$fila['FechaFinTrabajo']){
-                                 ?>
                                 
-                                <button type="submit" name="action" value="SUBIR_ENTREGA" ><img src="../Views/icon/flecha.png"  width="20" height="20" /></button>
+                                <button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 				                
-                                <?php
-                                    }
-                                ?>
-                            
                             </td>
 						</form>
 
@@ -85,7 +78,7 @@ class ENTREGA_USU_SHOWALL {
 				}
 ?>
 			</table>
-			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
+			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

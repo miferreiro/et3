@@ -72,11 +72,9 @@ class EVALUACION{ //declaración de la clase
     }
     
 
-   function mostrarCorrecion2($IdTrabajo,$nombre){
-        
-        
-       
-       $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,E.IdTrabajo,IdHistoria,OK FROM EVALUACION E,ENTREGA ET WHERE 
+  
+      function mostrarCorrecion2($IdTrabajo,$nombre){
+        $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,E.IdTrabajo FROM EVALUACION E,ENTREGA ET WHERE 
         ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$IdTrabajo' && LoginEvaluador='$nombre')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -86,9 +84,22 @@ class EVALUACION{ //declaración de la clase
             
 			return $resultado;
 		}
+}
     
-
-
+ function mostrarCorrecion3($IdTrabajo,$nombre,$alias){
+        
+        
+       
+       $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,E.IdTrabajo,IdHistoria,OK FROM EVALUACION E,ENTREGA ET WHERE 
+        ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$IdTrabajo' && AliasEvaluado='$alias' && LoginEvaluador='$nombre')";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado
+            
+            
+			return $resultado;
+		}
 }
 
 	//funcion SEARCH: hace una búsqueda en la tabla con

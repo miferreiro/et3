@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class CORRECION_QA_RESULTADO {
+class CORRECION_QA_RESULTADOS {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -35,9 +35,6 @@ class CORRECION_QA_RESULTADO {
 <?php
 					}
 ?>
-                    <th colspan="3" >
-						<?php echo $strings['Opciones']?>
-					</th>
 					
 				</tr>
 <?php
@@ -57,15 +54,7 @@ class CORRECION_QA_RESULTADO {
 					}
 ?>
 					<td>
-						<form action="../Controllers/CORRECION_QA_CONTROLLER.php" method="get" style="display:inline" >
-                             <input type="hidden" name="LoginEvaluador" value="<?php echo $fila['LoginEvaluador']; ?>">
-                             <input type="hidden" name="AliasEvaluado" value="<?php echo $fila['AliasEvaluado']; ?>">
-                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
-                            
-							<td>
-                                <button type="submit" name="action" value="RESULTADOS" ><img src="../Views/icon/flecha.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
-                            </td>
-						</form>
+						
 
 				</tr>
 <?php
