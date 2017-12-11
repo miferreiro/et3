@@ -16,6 +16,11 @@ class USUARIO_MODEL{ //declaración de la clase
 	var $Telefono; // declaración del atributo Telefono
 	var $mysqli; // declaración del atributo manejador de la bd
     var $dependencias;//declaración del atributo dependencias
+    var $dependencias2;//declaración del atributo dependencias
+    var $dependencias3;//declaración del atributo dependencias
+    var $dependencias4;//declaración del atributo dependencias
+    var $dependencias5;//declaración del atributo dependencias
+    var $dependencias6;//declaración del atributo dependencias
 	//Constructor de la clase
 
 	function __construct($login,$password,$DNI,$Nombre,$Apellidos,$Correo,$Direccion,$Telefono) {
@@ -201,52 +206,78 @@ class USUARIO_MODEL{ //declaración de la clase
 		$sql = "SELECT * FROM USU_GRUPO WHERE (login = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('USU_GRUPO');
-            $dependencias = array_fill_keys($keys , $result);
+            $dependencias = $resultado;
         }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
+    
+    function dependencias2() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias2 = null;
+
         
         $sql = "SELECT * FROM ENTREGA WHERE (login = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('ENTREGA');
-            $dependencias = array_fill_keys($keys , $result);
+            
+            $dependencias2 = $resultado;
         }
+        
+        return $dependencias2;
+	} // fin del metodo RellenaDatos()
+    
+    function dependencias3() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias3 = null;
         
         $sql = "SELECT * FROM ASIGNAC_QA WHERE (LoginEvaluador = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('ASIGNAC_QA');
-            $dependencias = array_fill_keys($keys , $result);
+        if ( $resultado->num_rows == 1 ) { 
+            $dependencias3 = $resultado;
         }
+        
+        return $dependencias3;
+	} // fin del metodo RellenaDatos()
+    
+    function dependencias4() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias4 = null;
+        
 		
         $sql = "SELECT * FROM ASIGNAC_QA WHERE (LoginEvaluado = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('ASIGNAC_QA2');
-            $dependencias = array_fill_keys($keys , $result);
+            $dependencias4 = $resultado;
         }
+        
+        return $dependencias4;
+	} // fin del metodo RellenaDatos()
+    
+    function dependencias5() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias5 = null;
         
         $sql = "SELECT * FROM NOTA_TRABAJO WHERE (login = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('NOTA_TRABAJO');
-            $dependencias = array_fill_keys($keys , $result);
+            $dependencias5 = $resultado;
         }
+        
+        return $dependencias5;
+	} // fin del metodo RellenaDatos()
+
+    function dependencias6() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias6 = null;
         
         $sql = "SELECT * FROM EVALUACION WHERE (LoginEvaluador = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('EVALUACION');
-            $dependencias = array_fill_keys($keys , $result);
+            $dependencias6 = $resultado;
         }
         
-        return $dependencias;
+        return $dependencias6;
 	} // fin del metodo RellenaDatos()
 
 

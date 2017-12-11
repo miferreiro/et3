@@ -7,15 +7,25 @@
 */
 class USUARIO_DELETE {
 
-	function __construct( $valores, $dependencias ) {
+	function __construct( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6) {
 		$this->valores = $valores;
 		$this->dependencias = $dependencias;
-		$this->render( $this->valores, $this->dependencias);
+		$this->dependencias2 = $dependencias2;
+		$this->dependencias3 = $dependencias3;
+		$this->dependencias4 = $dependencias4;
+		$this->dependencias5 = $dependencias5;
+		$this->dependencias6 = $dependencias6;
+		$this->render( $this->valores, $this->dependencias,$this->dependencias2,$this->dependencias3,$this->dependencias4,$this->dependencias5,$this->dependencias6);
 	}
 
-	function render( $valores, $dependencias ) {
+	function render( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6 ) {
 		$this->valores = $valores;
 		$this->dependencias = $dependencias;
+		$this->dependencias2 = $dependencias2;
+		$this->dependencias3 = $dependencias3;
+		$this->dependencias4 = $dependencias4;
+		$this->dependencias5 = $dependencias5;
+		$this->dependencias6 = $dependencias6;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -89,75 +99,292 @@ class USUARIO_DELETE {
 					</td>
 				</tr>
 			</table>
-            
+        
             <?php
             
             if($dependencias != null){
-                if(array_key_exists('USU_GRUPO', $dependencias)){
-            ?>
-                    <td>USU_GRUPO</td>
-                    <td><?php echo $dependencias['USU_GRUPO']['login'] ?></td>
-				    <td><?php echo $dependencias['USU_GRUPO']['IdGrupo'] ?></td>
-            <?php
-                }
-                if(array_key_exists('ENTREGA', $dependencias)){
-            ?>
-                    <td>ENTREGA</td>
-                    <td><?php echo $dependencias['ENTREGA']['login'] ?></td>
-				    <td><?php echo $dependencias['ENTREGA']['IdTrabajo'] ?></td>
-				    <td><?php echo $dependencias['ENTREGA']['Alias'] ?></td>
-				    <td><?php echo $dependencias['ENTREGA']['Horas'] ?></td>
-				    <td><?php echo $dependencias['ENTREGA']['Ruta'] ?></td>
-            <?php
-                }
-                if(array_key_exists('ASIGNAC_QA', $dependencias)){
-            ?>
-                    <td>ASIGNAC_QA</td>
-                    <td><?php echo $dependencias['ASIGNAC_QA']['IdTrabajo'] ?></td>
-				    <td><?php echo $dependencias['ASIGNAC_QA']['LoginEvaluador'] ?></td>
-				    <td><?php echo $dependencias['ASIGNAC_QA']['LoginEvaluado'] ?></td>
-				    <td><?php echo $dependencias['ASIGNAC_QA']['AliasEvaluado'] ?></td>
-            <?php
-                }
-                if(array_key_exists('ASIGNAC_QA2', $dependencias)){
-            ?>
-                    <td>ASIGNAC_QA</td>
-                    <td><?php echo $dependencias['ASIGNAC_QA']['IdTrabajo'] ?></td>
-				    <td><?php echo $dependencias['ASIGNAC_QA']['LoginEvaluador'] ?></td>
-				    <td><?php echo $dependencias['ASIGNAC_QA']['LoginEvaluado'] ?></td>
-				    <td><?php echo $dependencias['ASIGNAC_QA']['AliasEvaluado'] ?></td>
-            <?php
-                }
-                if(array_key_exists('NOTA_TRABAJO', $dependencias)){
-            ?>
-                    <td>NOTA_TRABAJO</td>
-                    <td><?php echo $dependencias['NOTA_TRABAJO']['login'] ?></td>
-				    <td><?php echo $dependencias['NOTA_TRABAJO']['IdTrabajo'] ?></td>
-				    <td><?php echo $dependencias['NOTA_TRABAJO']['NotaTrabajo'] ?></td>
-            <?php
-                }
-                if(array_key_exists('EVALUACION', $dependencias)){
-            ?>
-                    <td>EVALUACIÓN</td>
-                    <td><?php echo $dependencias['EVALUACION']['IdTrabajo'] ?></td>
-				    <td><?php echo $dependencias['EVALUACION']['LoginEvaluador'] ?></td>
-				    <td><?php echo $dependencias['EVALUACION']['AliasEvaluado'] ?></td>
-				    <td><?php echo $dependencias['EVALUACION']['IdHistoria'] ?></td>
-				    <td><?php echo $dependencias['EVALUACION']['CorrectoA'] ?></td>
-				    <td><?php echo $dependencias['EVALUACION']['CorrectoP'] ?></td>
-				    <td><?php echo $dependencias['EVALUACION']['OK'] ?></td>
-
-            <?php
-                }
             
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
+            ?>
+			<table>
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['login'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['IdGrupo'];
+
+                        ?>
+					</td>
+
+				</tr>
                 
+                <?php
+				}
+            }
                 ?>
-                <br><br>
-                <form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
-				</form>
+                </table>
+            
+            <?php
+            
+            if($dependencias2 != null){
+            
+				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {
+            ?>
+			<table>
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['login'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['IdTrabajo'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['Alias'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['Horas'];
+
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+							
+                        echo $fila['Ruta'];
+
+                        ?>
+					</td>
+
+
+				</tr>
+                
+                <?php
+				}
+            }
+                ?>
+                </table>	
+            
+            <?php
+            
+            if($dependencias3 != null){
+            
+				while ( $fila = mysqli_fetch_array( $dependencias3 ) ) {
+            ?>
+			<table>
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['IdTrabajo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['LoginEvaluador'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['LoginEvaluado'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['AliasEvaluado'];
+
+                        ?>
+					</td>
+
+				</tr>
+                
+                <?php
+				}
+            }
+                ?>
+                </table>	
              <?php
-            }else{
+               
+            
+            if($dependencias4 != null){
+            
+				while ( $fila = mysqli_fetch_array( $dependencias4 ) ) {
+            ?>
+			<table>
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['IdTrabajo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['LoginEvaluador'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['LoginEvaluado'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['AliasEvaluado'];
+
+                        ?>
+					</td>
+
+				</tr>
+                
+                <?php
+				}
+            }
+                ?>
+                </table>
+            
+            <?php
+            
+            if($dependencias5 != null){
+            
+				while ( $fila = mysqli_fetch_array( $dependencias5 ) ) {
+            ?>
+			<table>
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['login'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['IdTrabajo'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['NotaTrabajo'];
+                            
+                        ?>
+					</td>
+				</tr>
+                
+                <?php
+				}
+            }
+                ?>
+                </table>
+            
+            <?php
+            
+            if($dependencias6 != null){
+            
+				while ( $fila = mysqli_fetch_array( $dependencias6 ) ) {
+            ?>
+			<table>
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['IdTrabajo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['LoginEvaluador'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['AliasEvaluado'];
+
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['IdHistoria'];
+                            
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['CorrectoA'];
+                            
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['ComenIncorrectoA'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['CorrectoP'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['ComentIncorrectoP'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['OK'];
+                            
+                        ?>
+					</td>
+
+				</tr>
+                </table>
+                <?php
+				}
+            }
+                
+               if($dependencias == null && $dependencias2 == null && $dependencias3 == null && $dependencias4 == null && $dependencias5 == null && $dependencias6 == null ){
+                    
               ?>  
             
 			<p style="text-align:center;">
