@@ -47,7 +47,7 @@ $GESTEVAL=false;
 	 if($fila['IdFuncionalidad']=='2'){
 				$GESTGRUP=true;
 			   }
-	 if($fila['IdFuncionalidad']=='3'){
+	 if($fila['IdFuncionalidad']=='5'){
 				$GESTPERM=true;
 
 		 if($fila['IdAccion']=='3'){
@@ -55,10 +55,10 @@ $GESTEVAL=false;
 			   }
 
 			   }
-	 if($fila['IdFuncionalidad']=='4'){
+	 if($fila['IdFuncionalidad']=='3'){
 				$GESTFUNC=true;
 			   }
-	 if($fila['IdFuncionalidad']=='5'){
+	 if($fila['IdFuncionalidad']=='4'){
 				$GESTACC=true;
 			   }
 
