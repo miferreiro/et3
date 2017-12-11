@@ -11,6 +11,8 @@ session_start();//solicito trabajar con la sesión
 
 include '../Models/FUNC_ACCION_MODEL.php';
 include '../Models/USU_GRUPO_MODEL.php';
+include '../Models/ACCION_MODEL.php';
+include '../Models/FUNCIONALIDAD_MODEL.php';
 include '../Views/FUNC_ACCION/FUNC_ACCION_SHOWALL_View.php';
 include '../Views/FUNC_ACCION/FUNC_ACCION_SEARCH_View.php';
 include '../Views/FUNC_ACCION/FUNC_ACCION_ADD_View.php';
@@ -45,8 +47,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 				$FUNC_ACCION = new FUNC_ACCION( $_REQUEST['IdFuncionalidad'], '');
-			    $acciones= $FUNC_ACCION->DevolverAcciones();
-				$DatosFuncionalidad = $FUNC_ACCION->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);
+			    $ACCION = new ACCION( '', '', '');
+			    $acciones= $ACCION->DevolverAcciones();
+				$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');
+				$DatosFuncionalidad = $FUNCIONALIDAD->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);
 				new FUNC_ACCION_ADD($DatosFuncionalidad,$acciones);
 			}else{
 	            $cont=0;
@@ -61,7 +65,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 				}
 				if($cont==1){
 					$FUNC_ACCION = new FUNC_ACCION( $_REQUEST['IdFuncionalidad'], '');
-				    $acciones= $FUNC_ACCION->DevolverAcciones();
+				    $ACCION = new ACCION( '', '', '');
+			    	$acciones= $ACCION->DevolverAcciones();
+					$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');
+					$DatosFuncionalidad = $FUNCIONALIDAD->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);
 					new FUNC_ACCION_ADD($_REQUEST['IdFuncionalidad'],$acciones);
 				} else {
 					new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );
@@ -120,7 +127,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$FUNC_ACCION = new FUNC_ACCION( $_REQUEST['IdFuncionalidad'], '');
 				//$FUNC_ACCION = get_data_form();
 			}
-			$DatosFuncionalidad = $FUNC_ACCION->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);
+			$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');
+			$DatosFuncionalidad = $FUNCIONALIDAD->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);
 			$datos = $FUNC_ACCION->SEARCH();
 			$lista = array( 'NombreFuncionalidad','NombreAccion' );
 			new FUNC_ACCION_SHOWALL( $lista, $datos, $DatosFuncionalidad );
@@ -144,7 +152,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 					//a la variable USU_GRUPO se le pasa el login y IdGrupo vacío.
 					$FUNC_ACCION = new FUNC_ACCION($_REQUEST['IdFuncionalidad'],'');
 				}
-				$DatosFuncionalidad = $FUNC_ACCION->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);
+				$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');
+				$DatosFuncionalidad = $FUNCIONALIDAD->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);
 
 				$datos = $FUNC_ACCION->SEARCH();//con el método SEARCH en este caso buscamos todos los valores que hay en la base de datos.
 				$lista = array( 'NombreFuncionalidad','NombreAccion' );

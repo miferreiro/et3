@@ -181,7 +181,22 @@ class ACCION{
 			return 'No existe en la base de datos';
 	} // fin del metodo EDIT
 
-            
+    
+	function DevolverAcciones(){
+		//Consulta que recupera la tabla ASIGNAC_QA
+		$sql = "select IdAccion,
+					   NombreAccion
+					   from ACCION";
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) { return null; }
+		//Caragamos las tuplas resultado de la consulta en un array
+		while($datos = mysqli_fetch_row ($resultado)){
+			//Variable que almacena el array de las tuplas resultado de la query
+			$miarray[] = $datos;
+		}
+		return $miarray;		
+	}
+          
     }
 
 
