@@ -229,6 +229,24 @@ function EDIT() {
 		            else
 				return 'No existe en la base de datos';		
 	} // fin del metodo EDIT
-             
+    
+	//Recupera los datos de grupo
+function recuperarGrupo($id){
+    //Variable que almacena la query
+    $sql = "SELECT GRUPO.IdGrupo,NombreGrupo 
+            FROM GRUPO
+            WHERE IdGrupo = '$id'";
+    //Variable que almacena el resultado de la query
+    $resultado = $this->mysqli->query( $sql );
+    if ( $resultado->num_rows == 0 ) { return null; }
+    //Caragamos las tuplas resultado de la consulta en un array
+    while($datos = mysqli_fetch_row ($resultado)){
+    //Variable que almacena el array de las tuplas resultado de la query
+        $miarray[] = $datos;
+    }
+    //Devuelve el array con el grupo
+    return $miarray;
+}
+            
     }
 ?>

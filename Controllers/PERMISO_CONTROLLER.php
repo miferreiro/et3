@@ -10,7 +10,9 @@
 session_start();//solicito trabajar con la sesión
 
 include '../Models/PERMISO_MODEL.php';
-include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios_grupo
+include '../Models/GRUPO_MODEL.php'; //incluye el contendio del modelo de grupo
+include '../Models/FUNCIONALIDAD_MODEL.php'; //incluye el contendio del modelo funcionalidad
 include '../Views/PERMISO/PERMISO_SEARCH_View.php';
 include '../Views/PERMISO/PERMISO_SHOWALL_View.php';
 include '../Views/PERMISO/PERMISO_ADD_View.php';
@@ -79,9 +81,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
 			$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
+				$GRUPO = new GRUPO( '', '', '');
 				$PERMISO = new PERMISO_MODEL( $_REQUEST['IdGrupo'], '', '', '', '', '');
-			    $DatosGrupo= $PERMISO->recuperarGrupo($_REQUEST['IdGrupo']);
-				$Funcionalidad_accion= $PERMISO->recuperarFuncionalidades();
+				$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');
+
+			    $DatosGrupo= $GRUPO->recuperarGrupo($_REQUEST['IdGrupo']);
+				$Funcionalidad_accion= $FUNCIONALIDAD->recuperarFuncionalidades();
+				
 				new PERMISO_ADD($DatosGrupo,$Funcionalidad_accion);
 			}else{
 	            $cont=0;
@@ -95,9 +101,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 				   } 
 				}
 				if($cont==1){
+					$GRUPO = new GRUPO( '', '', '');
 					$PERMISO = new PERMISO_MODEL( $_REQUEST['IdGrupo'], '', '', '', '', '');
-				    $DatosGrupo= $PERMISO->recuperarGrupo($_REQUEST['IdGrupo']);
-					$Funcionalidad_accion= $PERMISO->recuperarFuncionalidades();
+					$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');
+				    $DatosGrupo= $GRUPO->recuperarGrupo($_REQUEST['IdGrupo']);
+					$Funcionalidad_accion= $FUNCIONALIDAD->recuperarFuncionalidades();
 					new PERMISO_ADD($_REQUEST['IdGrupo'],$Funcionalidad_accion);
 				} else {
 					new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
@@ -207,7 +215,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			//Variable que almacena los datos de la busqueda
 			$datos = $PERMISO->SEARCH();
-			$DatosGrupo= $PERMISO->recuperarGrupo($_REQUEST['IdGrupo']);
+			$GRUPO = new GRUPO( '', '', '');
+			$DatosGrupo= $GRUPO->recuperarGrupo($_REQUEST['IdGrupo']);
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
@@ -231,7 +240,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$PERMISO = new PERMISO_MODEL( $_REQUEST['IdGrupo'], '', '', '', '', '');
 			}
 			$datos = $PERMISO->SEARCH();
-			$DatosGrupo= $PERMISO->recuperarGrupo($_REQUEST['IdGrupo']);
+			$GRUPO = new GRUPO( '', '', '');
+			$DatosGrupo= $GRUPO->recuperarGrupo($_REQUEST['IdGrupo']);
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
 			new PERMISO_ASSIGN( $lista, $datos, $DatosGrupo );
 		}else{
@@ -249,11 +259,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 			} else {
 				$PERMISO = new PERMISO_MODEL('', '', '', '','','');
 			}
+			$GRUPO = new GRUPO( '', '', '');
 			//Variable que almacena los datos de la busqueda
 			$datos = $PERMISO->SEARCH2();
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion');
-			$DatosGrupo= $PERMISO->recuperarGrupo('');
+			$DatosGrupo= $GRUPO->recuperarGrupo('');
 			$ACL = $USUARIO->comprobarPermisos();
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo, $ACL ,true);
@@ -276,7 +287,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$PERMISO = new PERMISO_MODEL( '', '', '', '', '', '');
 			}
 			$datos = $PERMISO->SEARCH2();
-			$DatosGrupo= $PERMISO->recuperarGrupo('');
+			$GRUPO = new GRUPO( '', '', '');
+			$DatosGrupo= $GRUPO->recuperarGrupo($_REQUEST['IdGrupo']);
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
 			$ACL = $USUARIO->comprobarPermisos();
 			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo,$ACL,false);

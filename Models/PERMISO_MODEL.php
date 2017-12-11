@@ -178,42 +178,8 @@ function RellenaDatos()
 	}
 } // fin del metodo RellenaDatos()
 
-//Recupera todas funcionalidades que hay en la base de datos
-function recuperarFuncionalidades(){
-    //Variable que almacena la query
-    $sql = "SELECT F.IdFuncionalidad,NombreFuncionalidad,A.IdAccion,NombreAccion 
-            FROM FUNCIONALIDAD F,ACCION A,FUNC_ACCION FA
-            WHERE F.IdFuncionalidad = FA.IdFuncionalidad &&
-                  A.IdAccion = FA.IdAccion ";
-    //Variable que almacena el resultado de la query
-    $resultado = $this->mysqli->query( $sql );
-    //Si no hay tuplas devuelve null
-    if ( $resultado->num_rows == 0 ) { return null; }
-    //Caragamos las tuplas resultado de la consulta en un array
-    while($datos = mysqli_fetch_row ($resultado)){
-    //Variable que almacena el array de las tuplas resultado de la query
-        $miarray[] = $datos;
-    }
-    //retorna un array con las funcionalidades
-    return $miarray;
-}//Fin de recuperarFuncionalidades
 
-//Recupera los datos de grupo
-function recuperarGrupo($id){
-    //Variable que almacena la query
-    $sql = "SELECT GRUPO.IdGrupo,NombreGrupo 
-            FROM GRUPO
-            WHERE IdGrupo = '$id'";
-    //Variable que almacena el resultado de la query
-    $resultado = $this->mysqli->query( $sql );
-    if ( $resultado->num_rows == 0 ) { return null; }
-    //Caragamos las tuplas resultado de la consulta en un array
-    while($datos = mysqli_fetch_row ($resultado)){
-    //Variable que almacena el array de las tuplas resultado de la query
-        $miarray[] = $datos;
-    }
-    //Devuelve el array con el grupo
-    return $miarray;
-}
+
+
     }
 ?>
