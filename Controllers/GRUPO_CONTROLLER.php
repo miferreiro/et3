@@ -249,21 +249,22 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-				$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');
 		$ADMIN = $USUARIO->comprobarAdmin();
 			if($ADMIN == true){
 				if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIO = new GRUPO( '', '', '', '');
+			$GRUPOS = new GRUPO( '', '', '', '');
 		//Si se reciben datos
 		} else {
-			$USUARIO = get_data_form();
+			$GRUPOS= get_data_form();
 		}
 		//Variable que almacena los datos de la busqueda
-		$datos = $USUARIO->SEARCH();
+		$datos = $GRUPOS->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array('NombreGrupo','DescripGrupo');
+		$PERMISO = $USUARIO->comprobarPermisos();
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new GRUPO_SHOWALL( $lista, $datos );
+		new GRUPO_SHOWALL( $lista, $datos,$PERMISO,true );
 			}else{
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
             $cont=0;
@@ -287,8 +288,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $GRUPOS->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'NombreGrupo','DescripGrupo');
+		$PERMISO = $USUARIO->comprobarPermisos();
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new GRUPO_SHOWALL( $lista, $datos );
+		new GRUPO_SHOWALL( $lista, $datos,$PERMISO,false );
 		}else{
 		 new USUARIO_DEFAULT();
 		}

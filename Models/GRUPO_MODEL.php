@@ -106,7 +106,7 @@
 	    // se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo' && (IdGrupo <> '00000A' && IdGrupo <> '00001A'))";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave

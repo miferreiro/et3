@@ -32,6 +32,9 @@ class PERMISO_ASSIGN {
 <?php
 					}
 ?>
+					<th >
+						<?php echo $strings['Opciones']?>
+					</th>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {

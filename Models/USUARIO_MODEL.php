@@ -424,7 +424,10 @@ class USUARIO_MODEL{ //declaración de la clase
 		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
 			return 'No se ha podido conectar con la base de datos';
 		}
-
+		$sqlInicial = "INSERT INTO FUNCIONALIDAD (IdFuncionalidad,NombreFuncionalidad,DescripFuncionalidad) VALUES('5','GestionPermisos','GestionPermisos')";
+		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
+			return 'No se ha podido conectar con la base de datos';
+		}
 
 		$sqlInicial = "INSERT INTO ACCION (IdAccion,NombreAccion,DescripAccion) VALUES('0','ADD','ADD')";
 		if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
@@ -600,28 +603,9 @@ class USUARIO_MODEL{ //declaración de la clase
         if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
             return 'No se ha podido conectar con la base de datos';
         }		
-		
-        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','0')";
-        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
-            return 'No se ha podido conectar con la base de datos';
-        }
 
-        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','1')";
-        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
-            return 'No se ha podido conectar con la base de datos';
-        }
-
-        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','2')";
-        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
-            return 'No se ha podido conectar con la base de datos';
-        }
 
         $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','3')";
-        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
-            return 'No se ha podido conectar con la base de datos';
-        }
-
-        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','4')";
         if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
             return 'No se ha podido conectar con la base de datos';
         }
@@ -630,11 +614,7 @@ class USUARIO_MODEL{ //declaración de la clase
         if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
             return 'No se ha podido conectar con la base de datos';
         }
-
-        $sqlInicial = "INSERT INTO FUNC_ACCION (IdFuncionalidad,IdAccion) VALUES('5','6')";
-        if ( !$result = $this->mysqli->query( $sqlInicial ) ) {
-            return 'No se ha podido conectar con la base de datos';
-        }		
+	
 		
 		if ( ( $this->login <> '' ) ) { // si el atributo clave de la entidad no esta vacio
             

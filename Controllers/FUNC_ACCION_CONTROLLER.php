@@ -16,6 +16,7 @@ include '../Views/FUNC_ACCION/FUNC_ACCION_SEARCH_View.php';
 include '../Views/FUNC_ACCION/FUNC_ACCION_ADD_View.php';
 include '../Views/FUNC_ACCION/FUNC_ACCION_DELETE_View.php';
 include '../Views/FUNC_ACCION/FUNC_ACCION_SHOWCURRENT_View.php';
+include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php';
 
 function get_data_form(){
@@ -51,7 +52,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	            $cont=0;
 				$PERMISO = $USUARIO->comprobarPermisos();
 				while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-				if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdFuncionalidad']=='3'){
 					if($fila['IdAccion']=='6'){
 				    //Crea una vista add para ver la tupla
 				     $cont=$cont+1;
@@ -85,7 +86,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	            $cont=0;
 				$PERMISO = $USUARIO->comprobarPermisos();
 				while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-				if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdFuncionalidad']=='3'){
 					if($fila['IdAccion']=='6'){
 				    //Crea una vista add para ver la tupla
 				     $cont=$cont+1;
@@ -109,16 +110,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new MESSAGE( $respuesta, "../Controllers/FUNC_ACCION_CONTROLLER.php" . $at );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 		}
 		break;
-	case 'SEARCH':
-		if ( !$_POST ) {
-			new FUNC_ACCION_SEARCH();
-		} else {
-			$FUNC_ACCION = get_data_form();
-			$datos = $FUNC_ACCION->SEARCH();
-			$lista = array( 'IdFuncionalidad','IdAccion' );
-			new FUNC_ACCION_SHOWALL( $lista, $datos );
-		}
-		break;
 	default:
 		$USER = new USU_GRUPO(  $_SESSION[ 'login' ],'');
 		$ADMIN = $USER->comprobarAdmin();
@@ -138,7 +129,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$PERMISO = $USER->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
 
-			if($fila['IdFuncionalidad']=='1'){
+			if($fila['IdFuncionalidad']=='3'){
 				if($fila['IdAccion']=='6'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -159,7 +150,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$lista = array( 'NombreFuncionalidad','NombreAccion' );
 				new FUNC_ACCION_SHOWALL( $lista, $datos, $DatosFuncionalidad );// se muestra la vista SHOWALL.
 			}else{
-				//new FUNCIONALIDAD_SHOWALL();	
+				new USUARIO_DEFAULT();
 			}
 		}
 	}

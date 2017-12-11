@@ -184,7 +184,7 @@ function recuperarFuncionalidades(){
     $sql = "SELECT F.IdFuncionalidad,NombreFuncionalidad,A.IdAccion,NombreAccion 
             FROM FUNCIONALIDAD F,ACCION A,FUNC_ACCION FA
             WHERE F.IdFuncionalidad = FA.IdFuncionalidad &&
-                  A.IdAccion = FA.IdAccion";
+                  A.IdAccion = FA.IdAccion ";
     //Variable que almacena el resultado de la query
     $resultado = $this->mysqli->query( $sql );
     //Si no hay tuplas devuelve null

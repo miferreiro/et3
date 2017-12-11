@@ -5,17 +5,65 @@
 */
 class PERMISO_SHOWALL {
 
-	function __construct( $lista, $datos, $DatosGrupo) {
+	function __construct( $lista, $datos, $DatosGrupo,$PERMISO,$admin) {
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->render($this->lista,$this->datos,$DatosGrupo);
+		$this->PERMISO = $PERMISO;
+		$this->admin = $admin;
+		$this->DatosGrupo = $DatosGrupo;
+		$this->render($this->lista,$this->datos,$this->DatosGrupo,$this->PERMISO,$this->admin);
 	}
 	
-	function render($lista,$datos,$DatosGrupo){
+	function render($lista,$datos,$DatosGrupo,$PERMISO,$admin){
 		$this->lista = $lista;
 		$this->datos = $datos;
+		$this->DatosGrupo = $DatosGrupo;
+		$this->PERMISO = $PERMISO;
+		$this->admin = $admin;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+
+	
+$SEARCH=false;	
+$GESTUSU=false;
+$GESTGRUP=false;
+$GESTFUNC=false;
+$GESTACC=false;
+$GESTPERM=false;		
+$GESTQAS=false;		
+$GESTENTR=false;		
+$GESTHIST=false;
+$GESTTRAB=false;		
+$GESTEVAL=false;		
+		
+	if($admin==true){
+
+			    $SEARCH=true;			
+	}	
+	while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+
+	 if($fila['IdFuncionalidad']=='1'){
+				$GESTUSU=true;
+			   }
+	 if($fila['IdFuncionalidad']=='2'){
+				$GESTGRUP=true;
+			   }
+	 if($fila['IdFuncionalidad']=='3'){
+				$GESTPERM=true;
+
+		 if($fila['IdAccion']=='3'){
+			    $SEARCH=true;	
+			   }
+
+			   }
+	 if($fila['IdFuncionalidad']=='4'){
+				$GESTFUNC=true;
+			   }
+	 if($fila['IdFuncionalidad']=='5'){
+				$GESTACC=true;
+			   }
+
+			}
+	include '../Views/Header.php';			
 ?>
 		<div class="seccion">
 			<h2>
@@ -54,7 +102,9 @@ class PERMISO_SHOWALL {
 ?>
 			<caption style="margin-bottom:10px;">
 					<form action='../Controllers/PERMISO_CONTROLLER.php'>
-						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+<?php if($SEARCH==true){  ?>
+						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
+<?php } ?>
 					</form>
 				</caption>
 			</table>

@@ -87,7 +87,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	            $cont=0;
 				$PERMISO = $USUARIO->comprobarPermisos();
 				while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-				if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdFuncionalidad']=='2'){
 					if($fila['IdAccion']=='6'){
 				    //Crea una vista add para ver la tupla
 				     $cont=$cont+1;
@@ -134,7 +134,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	            $cont=0;
 				$PERMISO = $USUARIO->comprobarPermisos();
 				while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-				if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdFuncionalidad']=='2'){
 					if($fila['IdAccion']=='6'){
 				    //Crea una vista add para ver la tupla
 				     $cont=$cont+1;
@@ -174,7 +174,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	            $cont=0;
 				$ACL = $USUARIO->comprobarPermisos();
 				while ( $fila = mysqli_fetch_array( $ACL) ) {
-				if($fila['IdFuncionalidad']=='3'){
+				if($fila['IdFuncionalidad']=='5'){
 					if($fila['IdAccion']=='3'){
 				    //Crea una vista add para ver la tupla
 				     $cont=$cont+1;
@@ -217,8 +217,8 @@ switch ( $_REQUEST[ 'action' ] ) {
             $cont=0;
 			$ACL = $USUARIO->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $ACL ) ) {
-			if($fila['IdFuncionalidad']=='3'){
-				if($fila['IdAccion']=='5'){
+			if($fila['IdFuncionalidad']=='2'){
+				if($fila['IdAccion']=='6'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
 				}
@@ -254,14 +254,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion');
 			$DatosGrupo= $PERMISO->recuperarGrupo('');
+			$ACL = $USUARIO->comprobarPermisos();
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo );
+			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo, $ACL ,true);
 		}else{
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
             $cont=0;
 			$ACL = $USUARIO->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $ACL ) ) {
-			if($fila['IdFuncionalidad']=='3'){
+			if($fila['IdFuncionalidad']=='5'){
 				if($fila['IdAccion']=='5'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -277,7 +278,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$datos = $PERMISO->SEARCH2();
 			$DatosGrupo= $PERMISO->recuperarGrupo('');
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
-			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo );
+			$ACL = $USUARIO->comprobarPermisos();
+			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo,$ACL,false);
 		}else{
 		 	new USUARIO_DEFAULT();
 		}
