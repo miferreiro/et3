@@ -213,6 +213,7 @@ class TRABAJO{
 						   from ENTREGA,TRABAJO
 						   where ENTREGA.IdTrabajo = TRABAJO.IdTrabajo
 						   AND ENTREGA.IdTrabajo = '$Entrega'
+						   AND Ruta != ''
 						   order by login";
 			//variable que almacena el resultado de la query
 			$resultado = $this->mysqli->query( $sql );
