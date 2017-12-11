@@ -204,7 +204,62 @@ class TRABAJO{
 			return 'No existe en la base de datos';
 	} // fin del metodo EDIT
 
-            
+    //Función de devuelve el array con todas las entregas pertenecientes al trabajo que se pasa como parametro
+	function DevolverArray($Entrega){
+		//Consulta que recupera la tabla trabajo
+			$sql = "select ENTREGA.IdTrabajo,
+						   login,
+						   Alias
+						   from ENTREGA,TRABAJO
+						   where ENTREGA.IdTrabajo = TRABAJO.IdTrabajo
+						   AND ENTREGA.IdTrabajo = '$Entrega'
+						   AND Ruta != ''
+						   order by login";
+			//variable que almacena el resultado de la query
+			$resultado = $this->mysqli->query( $sql );
+			if ( $resultado->num_rows == 0 ) { return null; }
+			
+			//Caragamos las tuplas resultado de la consulta en un array
+			while($datos = mysqli_fetch_row ($resultado)){
+				//Variable que almacena el array de las tuplas resultado de la query
+				$miarray[] = $datos;
+			}
+			//devuelve el array
+			return $miarray;
+	}
+
+	function DevolverET(){
+		$sql = "SELECT IdTrabajo,NombreTrabajo FROM `TRABAJO` WHERE (BINARY IdTrabajo LIKE 'ET%')"; 
+		//variable que almacena el resultado de la query
+			$resultado = $this->mysqli->query( $sql );
+			if ( $resultado->num_rows == 0 ) { return null; }
+			
+			//Caragamos las tuplas resultado de la consulta en un array
+			while($datos = mysqli_fetch_row ($resultado)){
+				//Variable que almacena el array de las tuplas resultado de la query
+				$miarray[] = $datos;
+			}
+			//devuelve el array
+			return $miarray;
+	}
+
+	function DevolverQA(){
+		$sql = "SELECT IdTrabajo,NombreTrabajo FROM `TRABAJO` WHERE (BINARY IdTrabajo LIKE 'QA%')"; 
+		//variable que almacena el resultado de la query
+			$resultado = $this->mysqli->query( $sql );
+			if ( $resultado->num_rows == 0 ) { return null; }
+			
+			//Caragamos las tuplas resultado de la consulta en un array
+			while($datos = mysqli_fetch_row ($resultado)){
+				//Variable que almacena el array de las tuplas resultado de la query
+				$miarray[] = $datos;
+			}
+			//devuelve el array
+			return $miarray;
+	}
+
+
+          
     }
 
 

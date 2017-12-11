@@ -6,8 +6,10 @@
 session_start(); //solicito trabajar con la session
 
 include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Views/ENTREGA/ENTREGA_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_USU_SHOWALL.php'; //incluye la vista del showall
+include '../Views/ENTREGA/ENTREGA_SUBIR_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_SEARCH_View.php'; //incluye la vista search
 include '../Views/ENTREGA/ENTREGA_ADD_View.php'; //incluye la vista add
 include '../Views/ENTREGA/ENTREGA_EDIT_View.php'; //incluye la vista edit
@@ -15,6 +17,8 @@ include '../Views/ENTREGA/ENTREGA_DELETE_View.php'; //incluye la vista delete
 include '../Views/ENTREGA/ENTREGA_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
+
+
 function aleatorio(){
         $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; //posibles caracteres a usar
         $numerodeletras=10; //numero de letras para generar el texto
@@ -207,7 +211,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena un objeto model 
             
             
-			$ENTREGA = new ENTREGA_MODEL($_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ],'', '', '');
+			$ENTREGA = new ENTREGA_MODEL($_SESSION[ 'login' ], $_REQUEST[ 'IdTrabajo' ],'', '', '');
 			//Variable que almacena los datos de los atibutos rellenados 
 			$valores = $ENTREGA->RellenaDatos();
 			//Muestra la vista del formulario editar
@@ -248,6 +252,17 @@ switch ( $_REQUEST[ 'action' ] ) {
 		new ENTREGA_SHOWCURRENT( $valores );
 		//Final del bloque
 		break;
+        
+    case 'SUBIR_ENTREGA':
+        
+          $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],'','','');
+          $datos=$ENTREGA->SEARCH();
+          $lista = array('login','IdTrabajo','Alias','Horas','Ruta');
+          new ENTREGA_SUBIR_SHOWALL( $lista, $datos );
+        
+        
+        break;
+        
 	default: //Caso que se ejecuta por defecto
 		if ( !$_POST ) {//Si no se han recibido datos 
             
@@ -260,9 +275,9 @@ switch ( $_REQUEST[ 'action' ] ) {
             }
             
                else{
-                     $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],'', '', '', '');
-                     $datos=$ENTREGA->entregasLogin($_SESSION['login']);
-                     $lista = array('IdTrabajo','login','Alias','Ruta','FechaIniTrabajo','FechaFinTrabajo');
+                    $ENTREGA = new TRABAJO('','','','','');
+                     $datos=$ENTREGA->SEARCH();
+                     $lista = array('IdTrabajo','NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo','PorcentajeNota');
 		             new ENTREGA_USU_SHOWALL( $lista, $datos );
                }
 		//Si se reciben datos

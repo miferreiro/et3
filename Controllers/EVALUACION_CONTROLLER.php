@@ -148,7 +148,7 @@ switch ( $_REQUEST[ 'action' ] ) {
     case 'MOSTRAR_USER':
     if ( !$_POST ) {//Si no se han recibido datos 
         
-            $EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],'', '', '', '', '', '', '');
+            $EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['Alias'], '', '', '', '', '', '');
         
 		//Si se reciben datos
   } else {

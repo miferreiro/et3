@@ -95,12 +95,8 @@ class GRUPO_DELETE {
 				
 			</table>
             <?php
-            
-                
-                if(array_key_exists('USU_GRUPO', $dependencias)){
-            ?>
-            <?php
-                }
+                 if($dependencias != null){
+               
             
                 if(array_key_exists('PERMISO', $dependencias)){
             ?>
@@ -111,12 +107,18 @@ class GRUPO_DELETE {
             <?php
                 }
 				?>
-			<?php
-            
+			
+            <p style="text-align:center;">
+				<?php echo $strings['Debe borrar antes todas las dependencias de este grupo antes de eliminarlo.'];?>
+			</p>
+            <?php
+                 }
+          
+            else{
 
                 ?>
 			<p style="text-align:center;">
-				<?php echo $strings['¿Está seguro de que quiere borrar este grupo de la tabla, así como sus permisos y desasignar sus usuarios?'];?>
+				<?php echo $strings['¿Está seguro de que quiere borrar este grupo de la tabla?'];?>
 			</p>
 			<form action="../Controllers/GRUPO_CONTROLLER.php" method="post" style="display: inline">
 				<input type="hidden" name="IdGrupo" value=<?php echo $valores2['IdGrupo'] ?> />
@@ -131,7 +133,8 @@ class GRUPO_DELETE {
 <?php
             
 		include '../Views/Footer.php';
-         }   
+         }
+     }
 	}
 
 ?>

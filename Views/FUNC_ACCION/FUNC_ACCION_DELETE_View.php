@@ -41,6 +41,25 @@ class FUNC_ACCION_DELETE {
 				
 			</table>
             
+            <?php
+            if($dependencias != null){
+            
+                if(array_key_exists('PERMISO', $dependencias)){
+            ?>
+                    <td>FUNC_ACCION</td>
+                    <td><?php echo $dependencias['PERMISO']['IdGrupo'] ?></td>
+                    <td><?php echo $dependencias['PERMISO']['IdFuncionalidad'] ?></td>
+				    <td><?php echo $dependencias['PERMISO']['IdAccion'] ?></td>
+            <?php
+                }
+            
+            }
+        
+            else{
+                
+           
+              ?>  
+            
             
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?']; ?>
@@ -59,6 +78,7 @@ class FUNC_ACCION_DELETE {
 <?php
           
 		include '../Views/Footer.php';
+            }
 	}
 }
 

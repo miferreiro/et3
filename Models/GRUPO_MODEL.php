@@ -114,13 +114,8 @@
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo' )";
-			$sql2 = "DELETE FROM USU_GRUPO WHERE (IdGrupo = '$this->IdGrupo' )";
-			$sql3 = "DELETE FROM PERMISO WHERE (IdGrupo = '$this->IdGrupo' )";
-			
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
-			$this->mysqli->query( $sql2 );
-			$this->mysqli->query( $sql3 );
 			// se devuelve el mensaje de borrado correcto
 			return "Borrado correctamente";
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe

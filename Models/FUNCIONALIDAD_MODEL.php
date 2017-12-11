@@ -101,12 +101,8 @@ class FUNCIONALIDAD {
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad' )";
-			$sql2 = "DELETE FROM FUNC_ACCION WHERE (IdFuncionalidad = '$this->IdFuncionalidad' )";
-			$sql3 = "DELETE FROM PERMISO WHERE (IdFuncionalidad = '$this->IdFuncionalidad' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
-			$this->mysqli->query( $sql2 );
-			$this->mysqli->query( $sql3 );
 			// se devuelve el mensaje de borrado correcto
 			return "Borrado correctamente";
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe
@@ -142,16 +138,6 @@ class FUNCIONALIDAD {
 		if ( $resultado->num_rows == 1 ) {
 			$result = $resultado->fetch_array();
 			$keys = array( 'FUNC_ACCION' );
-			$dependencias = array_fill_keys( $keys, $result );
-		}
-
-
-
-		$sql = "SELECT * FROM PERMISO WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
-		$resultado = $this->mysqli->query( $sql );
-		if ( $resultado->num_rows == 1 ) {
-			$result = $resultado->fetch_array();
-			$keys = array( 'PERMISO' );
 			$dependencias = array_fill_keys( $keys, $result );
 		}
 
