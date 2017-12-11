@@ -51,7 +51,22 @@ class FUNCIONALIDAD_DELETE {
 				</tr>
 				
 			</table>
-
+             <?php
+            
+            if($dependencias != null){
+            
+                if(array_key_exists('FUNC_ACCION', $dependencias)){
+            ?>
+                    <td>FUNC_ACCION</td>
+                    <td><?php echo $dependencias['FUNC_ACCION']['IdFuncionalidad'] ?></td>
+				    <td><?php echo $dependencias['FUNC_ACCION']['IdAccion'] ?></td>
+            <?php
+                }
+            
+            }
+        
+            else{
+                ?>
             <br>   
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
@@ -69,6 +84,7 @@ class FUNCIONALIDAD_DELETE {
 <?php
             
 		include '../Views/Footer.php';
+            }
 	}
 }
 
