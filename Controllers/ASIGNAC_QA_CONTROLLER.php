@@ -68,8 +68,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$QAs = $ASIGNACION->DevolverQAs();
 		//Variable que almacena un nuevo objeto de historias model
 		$HISTORIA = new HISTORIA_MODEL( '', '', '');
+		//Variable que guarda el nombre de la QA
+		$NombreET = "ET" . substr($_REQUEST['IdTrabajo'], 2);
 		//Variable que recoge el array de historias asociados al id trabajo
-		$HISTORIAS = $HISTORIA->DevolverHistorias($_REQUEST['IdTrabajo']);
+		$HISTORIAS = $HISTORIA->DevolverHistorias($NombreET);
 		//Si no hay historias pero hay QAs cambia el mensaje de salida
 		if (count($HISTORIAS) <= 0 && count($QAs) != 0) {
 			//mensaje
