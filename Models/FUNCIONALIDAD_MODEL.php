@@ -200,6 +200,21 @@ class FUNCIONALIDAD {
 			return 'No existe en la base de datos';
 	} // fin del metodo EDIT
 
+function DevolverDatosFuncionalidad($Id){
+		//Consulta que recupera la tabla ASIGNAC_QA
+		$sql = "select IdFuncionalidad,
+					   NombreFuncionalidad
+					   from FUNCIONALIDAD
+					   where IdFuncionalidad = '$Id'";
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) { return null; }
+		//Caragamos las tuplas resultado de la consulta en un array
+		while($datos = mysqli_fetch_row ($resultado)){
+			//Variable que almacena el array de las tuplas resultado de la query
+			$miarray[] = $datos;
+		}
+		return $miarray;		
+	}
 
 	//Recupera todas funcionalidades que hay en la base de datos
 function recuperarFuncionalidades(){

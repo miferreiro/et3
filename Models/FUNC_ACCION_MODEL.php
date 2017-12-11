@@ -21,38 +21,7 @@
 		              $this->mysqli = ConectarBD();
                 
             }//fin del constructor.
-            
-        
-    function DevolverAcciones(){
-		//Consulta que recupera la tabla ASIGNAC_QA
-		$sql = "select IdAccion,
-					   NombreAccion
-					   from ACCION";
-		$resultado = $this->mysqli->query( $sql );
-		if ( $resultado->num_rows == 0 ) { return null; }
-		//Caragamos las tuplas resultado de la consulta en un array
-		while($datos = mysqli_fetch_row ($resultado)){
-			//Variable que almacena el array de las tuplas resultado de la query
-			$miarray[] = $datos;
-		}
-		return $miarray;		
-	}
 
-	function DevolverDatosFuncionalidad($Id){
-		//Consulta que recupera la tabla ASIGNAC_QA
-		$sql = "select IdFuncionalidad,
-					   NombreFuncionalidad
-					   from FUNCIONALIDAD
-					   where IdFuncionalidad = '$Id'";
-		$resultado = $this->mysqli->query( $sql );
-		if ( $resultado->num_rows == 0 ) { return null; }
-		//Caragamos las tuplas resultado de la consulta en un array
-		while($datos = mysqli_fetch_row ($resultado)){
-			//Variable que almacena el array de las tuplas resultado de la query
-			$miarray[] = $datos;
-		}
-		return $miarray;		
-	}
 
            //funcion SEARCH: hace una búsqueda en la tabla con
         //los datos proporcionados. Si van vacios devuelve todos
