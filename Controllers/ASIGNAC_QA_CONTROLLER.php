@@ -10,6 +10,8 @@ session_start(); //solicito trabajar con la session
 
 include '../Models/ASIGNAC_QA_MODEL.php'; //incluye el contendio del asignacion de qa
 include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/HISTORIA_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Views/ASIGNAC_QA/ASIGNAC_QA_GENERAR_View.php'; //incluye la vista de asignación qa
 include '../Views/ASIGNAC_QA/ASIGNAC_QA_HISTORIAS_View.php'; //incluye la vista de asignación qa
 include '../Views/ASIGNAC_QA/ASIGNAC_QA_ADD_View.php'; //incluye la vista ADD
@@ -50,8 +52,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			//Variable que almacena un nuevo objecto model
 			$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
+			//Variable que almacena un nuevo objecto model
+			$TRABAJO = new TRABAJO('', '', '', '', '');
 			//Variable que almacena el array de las tuplas de entrega.
-			$QA = $ASIGNACION->DevolverQA();
+			$QA = $TRABAJO->DevolverQA();
 			//Creación vista para generación de qas
 			new ASIGNAC_QA_HISTORIAS($QA);
 		//Si se reciben parametros
@@ -62,8 +66,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$ASIGNACION = new ASIGNAC_QA_MODEL($_REQUEST['IdTrabajo'], '', '', '');
 		//Variable que almacena el array de las tuplas de entrega.
 		$QAs = $ASIGNACION->DevolverQAs();
+		//Variable que almacena un nuevo objeto de historias model
+		$HISTORIA = new HISTORIA_MODEL( '', '', '');
 		//Variable que recoge el array de historias asociados al id trabajo
-		$HISTORIAS = $ASIGNACION->DevolverHistorias($_REQUEST['IdTrabajo']);
+		$HISTORIAS = $HISTORIA->DevolverHistorias($_REQUEST['IdTrabajo']);
 		//Si no hay historias pero hay QAs cambia el mensaje de salida
 		if (count($HISTORIAS) <= 0 && count($QAs) != 0) {
 			//mensaje
@@ -94,21 +100,25 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			//Variable que almacena un nuevo objecto model
 			$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
+			//Variable que almacena un nuevo objecto model
+			$TRABAJO = new TRABAJO('', '', '', '', '');
 			//Variable que almacena el array de las tuplas de entrega.
-			$ET = $ASIGNACION->DevolverET();
+			$ET = $TRABAJO->DevolverET();
 			//Creación de una nueva vista para generar QAs
 			new ASIGNAC_QA_GENERAR($ET);
 		//Si se reciben parámetros
 		} else {
 		//Variable que almacena un nuevo objecto model
 		$ASIGNACION = new ASIGNAC_QA_MODEL($_REQUEST['IdTrabajo'], '', '', '');
+		//Variable que almacena un nuevo objecto model
+		$TRABAJO = new TRABAJO($_REQUEST['IdTrabajo'], '', '', '', '');
 		//Si no se encuentra la ET que se desea generar, muestra un mensaje y no se realiza
-		if ($ASIGNACION->DevolverArray($_REQUEST['IdTrabajo']) == null) {
+		if ($TRABAJO->DevolverArray($_REQUEST['IdTrabajo']) == null) {
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
 			new MESSAGE( 'No hay entregas para realizar la asignación', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 		}
 		//Variable que almacena el array de las tuplas de entrega.
-		$miarray = $ASIGNACION->DevolverArray($_REQUEST['IdTrabajo']);
+		$miarray = $TRABAJO->DevolverArray($_REQUEST['IdTrabajo']);
 		//Variable que guarda el nombre de la QA
 		$NombreQA = "QA" . substr($_REQUEST['IdTrabajo'], 2);
 		//Bucle que llena las posiciones de cada trabajo, que nos sirve para ver que tengan el número deseado
