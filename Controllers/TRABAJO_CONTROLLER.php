@@ -58,7 +58,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');
 			$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ]);
-			new TRABAJO_DELETE( $valores );
+			$dependencias = $TRABAJO->dependencias( $_REQUEST[ 'IdTrabajo' ]);
+			$dependencias2 = $TRABAJO->dependencias2( $_REQUEST[ 'IdTrabajo' ]);
+			$dependencias3 = $TRABAJO->dependencias3( $_REQUEST[ 'IdTrabajo' ]);
+			$dependencias4 = $TRABAJO->dependencias4( $_REQUEST[ 'IdTrabajo' ]);
+			$dependencias5 = $TRABAJO->dependencias5( $_REQUEST[ 'IdTrabajo' ]);
+			new TRABAJO_DELETE( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5 );
 		} else {
 			$TRABAJO = get_data_form();
 			$respuesta = $TRABAJO->DELETE();

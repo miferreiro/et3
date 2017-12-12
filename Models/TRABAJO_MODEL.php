@@ -9,6 +9,10 @@ class TRABAJO{
     var $FechaFinTrabajo;//declaracion de la variable FechaFinTrabajo
     var $PorcentajeNota; //declaracion de la variable PorcentajeNota
     var $dependencias;
+    var $dependencias2;
+    var $dependencias3;
+    var $dependencias4;
+    var $dependencias5;
     //constructor de la clase
     function __construct($IdTrabajo,$NombreTrabajo,$FechaIniTrabajo,$FechaFinTrabajo,$PorcentajeNota){
         //Asignamos valores a los atributos de la clase
@@ -143,34 +147,66 @@ class TRABAJO{
         
         $dependencias = null;
 
-		$sql = "SELECT * FROM ENTREGA WHERE (IdTrabajo = '$this->IdTrabajo')";
+		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('ENTREGA');
-            $dependencias = array_fill_keys($keys , $result);
+            $dependencias = $resultado;
         }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
     
-        $sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo')";
+    function dependencias2() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias2 = null;
+
+		$sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('HISTORIA');
-            $dependencias = array_fill_keys($keys , $result);
+            $dependencias = $resultado;
         }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
     
-        $sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo')";
+    function dependencias3() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias3 = null;
+
+		$sql = "SELECT * FROM NOTA_TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('EVALUACION');
-            $dependencias = array_fill_keys($keys , $result);
+            $dependencias = $resultado;
         }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
     
+    function dependencias4() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias4 = null;
+
+		$sql = "SELECT * FROM ASIGNAC_QA WHERE (IdTrabajo = '$this->IdTrabajo')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $dependencias = $resultado;
+        }
         
         return $dependencias;
 	} // fin del metodo RellenaDatos()
 
+    function dependencias5() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias5 = null;
+
+		$sql = "SELECT * FROM ENTREGA WHERE (IdTrabajo = '$this->IdTrabajo')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 1 ) {
+            $dependencias = $resultado;
+        }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
         
         
         // funcion EDIT()

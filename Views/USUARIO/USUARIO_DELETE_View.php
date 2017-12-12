@@ -103,10 +103,14 @@ class USUARIO_DELETE {
             <?php
             
             if($dependencias != null){
+            ?>
             
+            <table>
+                
+            <?php
 				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
-			<table>
+			
             <tr>
 
 				    <td>
@@ -127,17 +131,19 @@ class USUARIO_DELETE {
                 
                 <?php
 				}
-            }
                 ?>
                 </table>
-            
             <?php
+            }
+                
             
             if($dependencias2 != null){
-            
+            ?>
+            <table>
+            <?php
 				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {
             ?>
-			<table>
+			
             <tr>
 
 				    <td>
@@ -180,105 +186,118 @@ class USUARIO_DELETE {
                 
                 <?php
 				}
-            }
-                ?>
-                </table>	
-            
-            <?php
-            
-            if($dependencias3 != null){
-            
-				while ( $fila = mysqli_fetch_array( $dependencias3 ) ) {
-            ?>
-			<table>
-            <tr>
-
-				    <td>
-                        <?php 
-				        echo $fila['IdTrabajo'];
-                            
-                        ?>
-					</td>
-                    <td>
-                        <?php 
-							
-                        echo $fila['LoginEvaluador'];
-
-                        ?>
-					</td>
-                    <td>
-                        <?php 
-				        echo $fila['LoginEvaluado'];
-                            
-                        ?>
-					</td>
-                    <td>
-                        <?php 
-							
-                        echo $fila['AliasEvaluado'];
-
-                        ?>
-					</td>
-
-				</tr>
-                
-                <?php
-				}
-            }
-                ?>
-                </table>	
-             <?php
-               
-            
-            if($dependencias4 != null){
-            
-				while ( $fila = mysqli_fetch_array( $dependencias4 ) ) {
-            ?>
-			<table>
-            <tr>
-
-				    <td>
-                        <?php 
-				        echo $fila['IdTrabajo'];
-                            
-                        ?>
-					</td>
-                    <td>
-                        <?php 
-							
-                        echo $fila['LoginEvaluador'];
-
-                        ?>
-					</td>
-                    <td>
-                        <?php 
-				        echo $fila['LoginEvaluado'];
-                            
-                        ?>
-					</td>
-                    <td>
-                        <?php 
-							
-                        echo $fila['AliasEvaluado'];
-
-                        ?>
-					</td>
-
-				</tr>
-                
-                <?php
-				}
-            }
                 ?>
                 </table>
-            
             <?php
+            }
+                
+            
+            if($dependencias3 != null){
+            ?>
+            
+            <table>
+                
+            <?php
+				while ( $fila = mysqli_fetch_array( $dependencias3 ) ) {
+            ?>
+			
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['IdTrabajo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['LoginEvaluador'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['LoginEvaluado'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['AliasEvaluado'];
+
+                        ?>
+					</td>
+
+				</tr>
+                
+                <?php
+				}
+                ?>
+                </table>
+            <?php
+                    
+            }
+                
+            
+            if($dependencias4 != null){
+            ?>
+            
+            <table>
+                
+            <?php
+				while ( $fila = mysqli_fetch_array( $dependencias4 ) ) {
+            ?>
+			
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['IdTrabajo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['LoginEvaluador'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['LoginEvaluado'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['AliasEvaluado'];
+
+                        ?>
+					</td>
+
+				</tr>
+                
+                <?php
+				}
+                ?>
+                </table>
+            <?php
+            }
+                
             
             if($dependencias5 != null){
+            ?>
             
+            <table>
+                
+            <?php
 				while ( $fila = mysqli_fetch_array( $dependencias5 ) ) {
             ?>
-			<table>
+			
             <tr>
 
 				    <td>
@@ -304,17 +323,21 @@ class USUARIO_DELETE {
                 
                 <?php
 				}
-            }
                 ?>
                 </table>
-            
-            <?php
+                <?php
+            }
+                
             
             if($dependencias6 != null){
+            ?>
             
+            <table>
+                
+            <?php
 				while ( $fila = mysqli_fetch_array( $dependencias6 ) ) {
             ?>
-			<table>
+			
             <tr>
 
 				    <td>
@@ -378,9 +401,12 @@ class USUARIO_DELETE {
 					</td>
 
 				</tr>
-                </table>
+                
                 <?php
 				}
+                ?>
+                </table>
+                <?php
             }
                 
                if($dependencias == null && $dependencias2 == null && $dependencias3 == null && $dependencias4 == null && $dependencias5 == null && $dependencias6 == null ){
