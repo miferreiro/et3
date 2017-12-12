@@ -68,10 +68,6 @@ function get_data_form2() {
     echo "El fichero no existe"; 
     } */
     
-    
-    
-   
-    
 
 	if ( $nombreRuta != null ) {
 		$dir_subida = '../Files/'.$login.'/';
@@ -117,6 +113,7 @@ function get_data_form2() {
     
 	return $ENTREGA;
 }
+
 function get_data_form() {
     
     
@@ -178,7 +175,27 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-			new ENTREGA_ADD();
+            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $ENTREGA->comprobarAdmin();
+			if($ADMIN == true){
+				new ENTREGA_ADD();
+			}else{
+            $cont=0;
+			$PERMISO = $ENTREGA->comprobarPermisos();
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdAccion']=='0'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   } 
+			}
+			if($cont==1){
+			new USUARIO_ADD();
+			}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
+			}
+			}
 		} else {//Si recibe datos los recoge y mediante la clase ENTREGA_MODEL inserta los datos
 			$ENTREGA = get_data_form2();//Variable que almacena los datos recogidos
 			$respuesta = $ENTREGA->ADD();//Variable que almacena la respuesta de la inserción
@@ -189,13 +206,38 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
+            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $ENTREGA->comprobarAdmin();
+			if($ADMIN == true){
 			//Variable que recoge un objecto model.
 			$ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '','', '');
 			//Variable que almacena el relleno de los datos.
 			$valores = $ENTREGA->RellenaDatos();
+            //Crea una vista delete para ver la tupla
+			new ENTREGA_DELETE($valores);
+			}else{
+			$cont=0;
+			$PERMISO = $ENTREGA->comprobarPermisos();
+						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdAccion']=='1'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			  }
+			}
+			if($cont==1){
+			//Variable que recoge un objecto model.
+			$ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '','', '');
+            //Variable que almacena el relleno de los datos.
+			$valores = $ENTREGA->RellenaDatos();
 			//Crea una vista delete para ver la tupla
 			new ENTREGA_DELETE( $valores );
 			//Si recibe valores ejecuta el borrado
+			}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
+			}
+			}
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
 			$ENTREGA = get_data_form();
@@ -229,9 +271,46 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
+            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $ENTREGA->comprobarAdmin();
+			if($ADMIN == true){
+				new ENTREGA_SEARCH();
+			}else{
+			$cont=0;
+			$PERMISO = $ENTREGA->comprobarPermisos();
+            while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+
+			if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdAccion']=='3'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont>=1){
 			new ENTREGA_SEARCH();
+			}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			}
+			}
 		//Si se reciben datos	
 		} else {
+            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$PERMISO = $ENTREGA->comprobarPermisos();	
+			$ADMIN = $ENTREGA->comprobarAdmin();
+			//Variable que almacena los datos recogidos de los atributos
+			$ENTREGA = get_data_form();
+			//Variable que almacena el resultado de la busqueda
+			$datos = $ENTREGA->SEARCH();
+			//Variable que almacena array con el nombre de los atributos
+			$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
+			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+			if($ADMIN == true){
+				new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,true );
+			}else{
+				new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,false );
+			}  
+            /*
 			//Variable que almacena los datos recogidos de los atributos
 			$ENTREGA = get_data_form();
 			//Variable que almacena el resultado de la busqueda
@@ -240,35 +319,80 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new ENTREGA_SHOWALL( $lista, $datos );
+            */
 		}
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		//Variable que almacena un objeto model
-		$ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '', '','');
-		//Variable que almacena los valores rellenados 
-		$valores = $ENTREGA->RellenaDatos();
+        $ENTREGA = new USU_GRUPO(  $_SESSION[ 'login' ],'');
+			$ADMIN = $ENTREGA->comprobarAdmin();
+			if($ADMIN == true){
+					//Variable que almacena un objeto model
+		          $ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '', '','');
+		         //Variable que almacena los valores rellenados 
+		          $valores = $ENTREGA->RellenaDatos();
+                    //Creación de la vista showcurrent
+		          new ENTREGA_SHOWCURRENT( $valores );
+			}else{
+			$cont=0;
+			$PERMISO = $USUARIO->comprobarPermisos();
+						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+	
+			if($fila['IdFuncionalidad']=='1'){
+				if($fila['IdAccion']=='4'){
+			    //Crea una vista add para ver la tupla
+			     $cont=$cont+1;
+				}
+			   }
+			}
+			if($cont>=1){
+		//Variable que almacena un objeto model con el login
+		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
+		//Variable que almacena los valores rellenados a traves de login
+		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		//Creación de la vista showcurrent
-		new ENTREGA_SHOWCURRENT( $valores );
-		//Final del bloque
+		new USUARIO_SHOWCURRENT( $valores );
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+		}
+		}
 		break;
         
     case 'SUBIR_ENTREGA':
+           $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+           $PERMISO = $USUARIO->comprobarPermisos();
         
           $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],'','','');
-          $datos=$ENTREGA->SEARCH();
-          $lista = array('login','IdTrabajo','Alias','Horas','Ruta');
-          new ENTREGA_SUBIR_SHOWALL( $lista, $datos );
+          $respuesta=$ENTREGA->comprobarCreacion();
         
+        if($respuesta == false){
+              $alias = aleatorio();
+              $comprobar=$ENTREGA->buscarAlias($alias);
+             
+              while($comprobar == true){
+                 $alias = aleatorio();
+                $buscar=buscarAlias($Alias_Usuario);
+            }
+                  $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],$alias,'','');
+                   $ENTREGA->ADD();
+         }
+          
+                  
+         $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],'','','');
+         $datos=$ENTREGA->SEARCH();
+       // var_dump($datos);
+        //exit;
+          $lista = array('login','IdTrabajo','Alias','Horas','Ruta');
+          new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,false );
         
         break;
         
 	default: //Caso que se ejecuta por defecto
+         $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
+         $PERMISO = $ENTREGA->comprobarPermisos();
+         $ADMIN = $ENTREGA->comprobarAdmin();
+        
 		if ( !$_POST ) {//Si no se han recibido datos 
-            
-              
-              $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
-              $ADMIN = $USUARIO->comprobarAdmin();
           
               if($ADMIN == true){
                   $ENTREGA = new ENTREGA_MODEL( '','', '', '', '');
@@ -290,7 +414,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena array con el CorrectoA de los atributos
 		$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new ENTREGA_SHOWALL( $lista, $datos );
+		new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,true );
 }
 
 ?>

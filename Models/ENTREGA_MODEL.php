@@ -53,19 +53,41 @@
 		}
 	} // fin metodo SEARCH
         
-    function buscarAlias(){
+    function aleatorio(){
+        $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; //posibles caracteres a usar
+        $numerodeletras=10; //numero de letras para generar el texto
+        $cadena = ""; //variable para almacenar la cadena generada
+        for($i=0;$i<$numerodeletras;$i++)
+        {       
+            $cadena .= substr($caracteres,rand(0,strlen($caracteres)),1); /*Extraemos 1 caracter de los caracteres 
+                entre el rango 0 a Numero de letras que tiene la cadena */
+        }
+        return $cadena;
+        
+        
+    }
+        
+     function buscarAlias($Alias_Usuario){
         $sql = "select Alias
        			from ENTREGA
     			where 
-    				(Alias = '$this->Alias')";
+    				(Alias = '$Alias_Usuario')";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
 		} else { // si la busqueda es correcta devolvemos el recordset resultado
 
-			return $resultado;
+			if($resultado->num_rows == 1){
+                return true;
+            }
+            else
+                return false;
 		}
+         return false;
     }
+    
+    
+
         
     function entregasUsu($nombre){
         
@@ -99,7 +121,7 @@
 	function ADD() {
 		if ( ( $this->login <> '' && $this->IdTrabajo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
             
-            
+         
             
         
           $trabajo = "SELECT * FROM TRABAJO WHERE ( IdTrabajo='$this->IdTrabajo')";
@@ -129,27 +151,10 @@
                     }
                 }
                 
-            
-            
-            $usuario = "SELECT * FROM ENTREGA WHERE (login= '$this->login')";
-            
-                 $result=$this->mysqli->query($usuario);
-            
-                if(!$result){
-                    
-                      return "No se ha podido conectar a la base de datos";
-                }
-            
-                else{
-                    if($result->num_rows == 1){
-                        return "No puedes añadir la entrega debido a que añadiste una, modificala o borrala";
-                    }
-                }
-            
-            
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM ENTREGA WHERE (  login = '$this->login' && IdTrabajo = '$this->IdTrabajo')";
             $vacio='';
+            
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
 			} else { // si la ejecución de la query no da error
@@ -169,15 +174,16 @@
                                 '$this->Ruta'
 								)";
                     
-                    $sql2= "INSERT INTO NOTA_TRABAJO (
+                $sql2 = "INSERT INTO NOTA_TRABAJO (
 							    login,
                                 IdTrabajo,
                                 NotaTrabajo) 
 								VALUES(
 								'$this->login',
 								'$this->IdTrabajo',
-                                '$vacio'
+                                ''
 								)";
+                   
                 }
                     else{
                         return 'Ya existe la entrega introducida en la base de datos'; // ya existe
@@ -186,11 +192,10 @@
 					if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
 						return "Error en la inserción";
 					}
-            
-                    if(!$this->mysqli->query( $sql2 ) ){
-                        return "Error en la inserción";
-                    }
-            
+            	   if ( !$this->mysqli->query( $sql2 )) { // si da error en la ejecución del insert devolvemos mensaje
+						return "Error en la inserción";
+					}
+                    
                     else { //si no da error en la insercion devolvemos mensaje de exito
 						return 'Inserción realizada con éxito'; //operacion de insertado correcta
 					}
@@ -199,6 +204,25 @@
 					return 'Inserta un valor'; // ya existe
     
 	} // fin del metodo ADD
+        
+    function comprobarCreacion(){
+        $sql = "SELECT * FROM ENTREGA WHERE login='$this->login' AND IdTrabajo='$this->IdTrabajo'";
+        
+         if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		}
+            else{
+                if($resultado->num_rows == 1){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+        
+        
+        
+    }
 
          // funcion DELETE()
 	    // comprueba que exista el valor de clave por el que se va a borrar,si existe se ejecuta el borrado, sino
@@ -244,10 +268,9 @@
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
 		$sql = "SELECT * FROM ENTREGA WHERE (login = '$this->login' AND IdTrabajo = '$this->IdTrabajo')";
-        $sql2="SELECT * FROM NOTA_TRABAJO WHERE (login = '$this->login' AND IdTrabajo = '$this->IdTrabajo')";
+        
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
-        $result2 = $this->mysqli->query( $sql2 );
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
 			
@@ -260,28 +283,6 @@
                      Ruta='$this->Ruta'
 				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
 				)";
-                
-                if($result2->num_rows == 1){
-                    $sql2 = "UPDATE ENTREGA SET 
-				     login = '$this->login',
-					 IdTrabajo='$this->IdTrabajo',
-                     NotaTrabajo=''
-				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
-				)";
-                    
-                }
-                else{
-                     $sql2= "INSERT INTO NOTA_TRABAJO (
-							    login,
-                                IdTrabajo,
-                                NotaTrabajo) 
-								VALUES(
-								'$this->login',
-								'$this->IdTrabajo',
-                                ''
-								)";
-                }
-                
 
             }
             else{
@@ -292,16 +293,6 @@
                      Horas='$this->Horas'
 				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
 				)";
-                
-                 if($result2->num_rows == 1){
-                    $sql2 = "UPDATE ENTREGA SET 
-				     login = '$this->login',
-					 IdTrabajo='$this->IdTrabajo',
-                     NotaTrabajo=''
-				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
-				)";
-                    
-                }
                 //else{
                    /*  $sql2= "INSERT INTO NOTA_TRABAJO (
 							    login,
