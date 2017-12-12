@@ -178,7 +178,10 @@ array(
      'Correcion QAs' => 'QAs correction',
     'Seleccione un nuevo archivo si desea cambiarlo, en caso contrario, no es necesario seleccionarlo de nuevo.' =>  'Select a new file if you want to change it, otherwise it is not necessary to select it again.',
     'No hay suficiente número de entregas para asignar el número de QAs solicitado' => 'There is not enough number of deliveries to allocate or QAs number requested',
-    'No hay funcionalidad-accion disponible' => 'No functionality-Action available'
+    'No hay funcionalidad-accion disponible' => 'No functionality-Action available',
+    'Debe borrar antes los usuarios de este grupo' => 'You must delete the users of this group first',
+    'Debe borrar antes los permisos de este grupo' => 'You must delete the permissions of this group first'
+    
     
 	
 	

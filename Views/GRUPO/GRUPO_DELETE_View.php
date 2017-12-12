@@ -7,19 +7,21 @@
 */
 class GRUPO_DELETE {
 
-	function __construct( $valores, $valores2 , $lista, $dependencias) {
+	function __construct( $valores, $valores2 , $lista, $dependencias, $dependencias2) {
 		$this->valores = $valores;
 		$this->valores2 = $valores2;
 		$this->lista = $lista;
 		$this->dependencias = $dependencias;
-		$this->render( $this->valores, $this->valores2, $this->lista , $this->dependencias );
+		$this->dependencias2 = $dependencias2;
+		$this->render( $this->valores, $this->valores2, $this->lista , $this->dependencias, $this->dependencias2 );
 	}
 
-	function render( $valores, $valores2, $lista, $dependencias ) {
+	function render( $valores, $valores2, $lista, $dependencias, $dependencias2 ) {
 		$this->valores = $valores;
 		$this->valores2 = $valores2;
 		$this->lista = $lista;
 		$this->dependencias = $dependencias;
+		$this->dependencias2 = $dependencias2;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -94,27 +96,57 @@ class GRUPO_DELETE {
 ?>
 				
 			</table>
-            <?php
-                 if($dependencias != null){
-               
+            <br>
             
-                if(array_key_exists('PERMISO', $dependencias)){
-            ?>
-                    <td>PERMISO</td>
-                    <td><?php echo $dependencias['PERMISO']['IdGrupo'] ?></td>
-				    <td><?php echo $dependencias['PERMISO']['IdFuncionalidad'] ?></td>
-				    <td><?php echo $dependencias['PERMISO']['IdAccion'] ?></td>
-            <?php
-                }
-				?>
-			
-            <p style="text-align:center;">
-				<?php echo $strings['Debe borrar antes todas las dependencias de este grupo antes de eliminarlo.'];?>
+             <?php
+            
+            if($dependencias != null){
+                ?>
+            <br>
+            <br>
+                <p style="text-align:center;">
+				<?php echo $strings['Debe borrar antes los permisos de este grupo'];?>
 			</p>
             <?php
-                 }
-          
-            else{
+				while ( $fila = mysqli_fetch_array( $dependencias) ) {
+            ?>
+			<table>
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['IdGrupo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['IdFuncionalidad'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['IdAccion'];
+                            
+                        ?>
+					</td>
+				</tr>
+                </table>
+                <br>
+                <br>
+                <?php
+                    
+				}
+            }
+        
+            if($dependencias2 != null){
+                
+                 echo $strings['Debe borrar antes los usuarios de este grupo'];
+            }
+                 
+            if($dependencias == null && $dependencias2 == null){
 
                 ?>
 			<p style="text-align:center;">

@@ -156,21 +156,24 @@
 	function dependencias() { // se construye la sentencia de busqueda de la tupla
         
         $dependencias = null;
-
-		$sql = "SELECT * FROM USU_GRUPO WHERE (IdGrupo= '$this->IdGrupo')";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows != 0 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('USU_GRUPO');
-            $dependencias = array_fill_keys($keys , $result);
-        }
         
         $sql = "SELECT * FROM PERMISO WHERE (IdGrupo= '$this->IdGrupo')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows != 0 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('PERMISO');
-            $dependencias = array_fill_keys($keys , $result);
+            $dependencias = $resultado;
+        }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
+        
+        function dependencias2() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias = null;
+        
+        $sql = "SELECT * FROM USU_GRUPO WHERE (IdGrupo= '$this->IdGrupo')";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows != 0 ) {
+            $dependencias = $resultado;
         }
         
         return $dependencias;

@@ -85,10 +85,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
 			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
             $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);
+            $dependencias2 = $GRUPOS->dependencias2($_REQUEST['IdGrupo']);
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'login', 'IdGrupo');
 			//Crea una vista delete para ver la tupla
-			new GRUPO_DELETE( $valores, $valores2, $lista, $dependencias);
+			new GRUPO_DELETE( $valores, $valores2, $lista, $dependencias, $dependencias2);
 			}else{
             $cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
@@ -110,7 +111,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'login', 'IdGrupo');
 			//Crea una vista delete para ver la tupla
-			new GRUPO_DELETE( $valores, $valores2, $lista, $dependencias);
+			new GRUPO_DELETE( $valores, $valores2, $lista, $dependencias, $dependencias2);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 		}
