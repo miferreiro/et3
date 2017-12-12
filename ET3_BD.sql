@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.6.6deb4
 -- https://www.phpmyadmin.net/
 --
@@ -133,7 +133,7 @@ CREATE TABLE `TRABAJO` (
 CREATE TABLE `EVALUACION` (
   `IdTrabajo` varchar(6) COLLATE latin1_spanish_ci NOT NULL,
   `LoginEvaluador` varchar(9) COLLATE latin1_spanish_ci NOT NULL,
-  `AliasEvaluado` varchar(9) COLLATE latin1_spanish_ci NOT NULL,
+  `AliasEvaluado` varchar(6) COLLATE latin1_spanish_ci NOT NULL,
   `IdHistoria` int(2) NOT NULL,
   `CorrectoA` tinyint(1) NOT NULL,
   `ComenIncorrectoA` varchar(300) COLLATE latin1_spanish_ci NOT NULL,
@@ -190,7 +190,7 @@ CREATE TABLE `ASIGNAC_QA` (
 CREATE TABLE `ENTREGA` (
   `login` varchar(9) COLLATE latin1_spanish_ci NOT NULL,
   `IdTrabajo` varchar(6) COLLATE latin1_spanish_ci NOT NULL,
-  `Alias` varchar(9) COLLATE latin1_spanish_ci NOT NULL,
+  `Alias` varchar(6) COLLATE latin1_spanish_ci NOT NULL,
   `Horas` int(2) DEFAULT NULL,
   `Ruta` varchar(60) COLLATE latin1_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -292,6 +292,95 @@ ALTER TABLE `FUNC_ACCION`
 ALTER TABLE `PERMISO`
   ADD PRIMARY KEY (`IdGrupo`,`IdFuncionalidad`,`IdAccion`);
 
+  
+  
+  --         INSERTS
+  
+  INSERT INTO `ACCION` (`IdAccion`, `NombreAccion`, `DescripAccion`) VALUES
+('0', 'ADD', 'ADD'),
+('1', 'DELETE', 'DELETE'),
+('2', 'EDIT', 'EDIT'),
+('3', 'SEARCH', 'SEARCH'),
+('4', 'SHOWCURRENT', 'SHOWCURRENT'),
+('5', 'SHOWALL', 'SHOWALL'),
+('6', 'ASIGN', 'ASIGN');
+  
+  
+  
+ INSERT INTO `FUNCIONALIDAD` (`IdFuncionalidad`, `NombreFuncionalidad`, `DescripFuncionalidad`) VALUES
+('1', 'GestionUsuarios', 'GestionUsuarios'),
+('2', 'GestionGrupos', 'GestionGrupos'),
+('3', 'GestionFuncionalidades', 'GestionFuncionalidades'),
+('4', 'GestionAccion', 'GestionAccion'),
+('5', 'GestionPermisos', 'GestionPermisos');
+
+
+
+
+INSERT INTO `FUNC_ACCION` (`IdFuncionalidad`, `IdAccion`) VALUES
+('1', '0'),
+('1', '1'),
+('1', '2'),
+('1', '3'),
+('1', '4'),
+('1', '5'),
+('1', '6'),
+('2', '0'),
+('2', '1'),
+('2', '2'),
+('2', '3'),
+('2', '4'),
+('2', '5'),
+('2', '6'),
+('3', '0'),
+('3', '1'),
+('3', '2'),
+('3', '3'),
+('3', '4'),
+('3', '5'),
+('3', '6'),
+('4', '0'),
+('4', '1'),
+('4', '2'),
+('4', '3');
+
+
+
+INSERT INTO `GRUPO` (`IdGrupo`, `NombreGrupo`, `DescripGrupo`) VALUES
+('00000A', 'Administracion', 'Grupo que tendra todos los permisos'),
+('00001A', 'ALUMNOS', 'Grupo que tendra todos los permisos de alumnos');
+ 
+
+
+INSERT INTO `USUARIO` (`login`, `password`, `DNI`, `Nombre`, `Apellidos`, `Correo`, `Direccion`, `Telefono`) VALUES
+('a', '0cc175b9c0f1b6a831c399e269772661', '50307657X', 'a', 'a', 'aa@a.aa', 'a', '34988251515'),
+('admin', '21232f297a57a5a743894a0e4a801fc3', '44656257D', 'admin', 'admin', 'admin@admin.admin', 'admin', '988252515'),
+('b', '92eb5ffee6ae2fec3ad71c777531578f', '86309999S', 'b', 'b', 'b@b.bb', 'b', '988252515'),
+('c', '4a8a08f09d37b73795649038408b5f33', '90011482Q', 'c', 'c', 'cc@c.cc', 'c', '988252515'),
+('d', '8277e0910d750195b448797616e091ad', '86309999S', 'd', 'd', 'd@d.dd', 'd', '34998343433'),
+('e', 'e1671797c52e15f763380b45e841ec32', '71028847V', 'e', 'e', 'e@ee.e', 'e', '988222222'),
+('f', '8fa14cdd754f91cc6554c9e71929cce7', '86309999S', 'f', 'f', 'ff@ff.ff', 'f', '988222222');
+ 
+ 
+
+INSERT INTO `USU_GRUPO` (`login`, `IdGrupo`) VALUES
+('a', '00001A'),
+('admin', '00000A'),
+('b', '00001A'),
+('c', '00001A'),
+('d', '00001A'),
+('e', '00001A'),
+('f', '00001A');
+
+INSERT INTO `TRABAJO` (`IdTrabajo`, `NombreTrabajo`, `FechaIniTrabajo`, `FechaFinTrabajo`, `PorcentajeNota`) VALUES
+('ET1', 'ET1', '2017-12-08', '2017-12-10', '22'),
+('QA1', 'QA1', '2017-12-05', '2017-12-11', '22');
+
+INSERT INTO `HISTORIA` (`IdTrabajo`, `IdHistoria`, `TextoHistoria`) VALUES
+('ET1', 0, 'SDA'),('ET1', 1, 'ASDADA');
+  
+
+  
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
