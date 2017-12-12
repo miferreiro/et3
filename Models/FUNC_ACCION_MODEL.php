@@ -172,9 +172,7 @@
 		$sql = "SELECT * FROM PERMISO WHERE (IdFuncionalidad = '$this->IdFuncionalidad' && IdAccion = '$this->IdAccion')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('PERMISO');
-            $dependencias = array_fill_keys($keys , $result);
+            $dependencias = $resultado;
         }
 
         return $dependencias;

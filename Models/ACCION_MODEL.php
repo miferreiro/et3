@@ -7,6 +7,7 @@ class ACCION{
     var $IdAccion;//clave de la tabla de ACCION
     var $NombreAccion;//declaración de la variable NombreAccion
     var $DescripAccion;//declaracion de la variable DescripAccion
+    var $dependencias;//variable de dependencias de borrado.
 
     //constructor de la clase
     function __construct($IdAccion,$NombreAccion,$DescripAccion){
@@ -135,9 +136,7 @@ class ACCION{
 		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdAccion = '$this->IdAccion')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows == 1 ) {
-            $result = $resultado->fetch_array();
-            $keys = array('FUNC_ACCION');
-            $dependencias = array_fill_keys($keys , $result);
+            $dependencias = $resultado;
         }
         
         return $dependencias;
