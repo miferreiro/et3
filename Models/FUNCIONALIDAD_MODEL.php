@@ -136,9 +136,7 @@ class FUNCIONALIDAD {
 		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
 		$resultado = $this->mysqli->query( $sql );
 		if ( $resultado->num_rows == 1 ) {
-			$result = $resultado->fetch_array();
-			$keys = array( 'FUNC_ACCION' );
-			$dependencias = array_fill_keys( $keys, $result );
+			$dependencias = $resultado;
 		}
 
 		return $dependencias;

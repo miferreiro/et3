@@ -240,7 +240,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ACCION = new ACCION( '', '', '','');
 		//Si se reciben datos
 		} else {
-			$GACCION = get_data_form();
+			$ACCION = get_data_form();
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $ACCION->SEARCH();

@@ -51,19 +51,39 @@ class FUNCIONALIDAD_DELETE {
 				</tr>
 				
 			</table>
-             <?php
+              <?php
             
             if($dependencias != null){
             
-                if(array_key_exists('FUNC_ACCION', $dependencias)){
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
-                    <td>FUNC_ACCION</td>
-                    <td><?php echo $dependencias['FUNC_ACCION']['IdFuncionalidad'] ?></td>
-				    <td><?php echo $dependencias['FUNC_ACCION']['IdAccion'] ?></td>
-            <?php
-                }
-            
+			<table>
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['IdFuncionalidad'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['IdAccion'];
+
+                        ?>
+					</td>
+
+				</tr>
+                </table>
+                <?php
+				}
             }
+                
+                
+                
+            
+            
         
             else{
                 ?>

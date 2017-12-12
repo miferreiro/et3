@@ -88,7 +88,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($ADMIN == true){
 				$FUNC_ACCION = new FUNC_ACCION( $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ] ); //en $USU se le pasará un login y un IdGrupo elegido en la vista de SHOWALL.
 				$valores = $FUNC_ACCION->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ]);//con el método RellenaDatos pasaremos el valor de login y de IdGrupo
-				new FUNC_ACCION_DELETE( $valores ); //se muestra la vista DELETE con el login y el IdGrupo.
+                $dependencias = $FUNC_ACCION->dependencias($_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ]);
+				new FUNC_ACCION_DELETE( $valores, $dependencias ); //se muestra la vista DELETE con el login y el IdGrupo.
 			}else{
 	            $cont=0;
 				$PERMISO = $USUARIO->comprobarPermisos();
@@ -103,7 +104,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 				if($cont==1){
 					$FUNC_ACCION = new FUNC_ACCION( $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ] ); //en $USU se le pasará un login y un IdGrupo elegido en la vista de SHOWALL.
 					$valores = $FUNC_ACCION->RellenaDatos( $_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ]);//con el método RellenaDatos pasaremos el valor de login y de IdGrupo
-					new FUNC_ACCION_DELETE( $valores ); //se muestra la vista DELETE con el login y el IdGrupo.
+                    $dependencias = $FUNC_ACCION->dependencias($_REQUEST[ 'IdFuncionalidad' ], $_REQUEST[ 'IdAccion' ]);
+					new FUNC_ACCION_DELETE( $valores, $dependencias ); //se muestra la vista DELETE con el login y el IdGrupo.
 				}else{
 				
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', "../Controllers/FUNCIONALIDAD_CONTROLLER.php" );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.

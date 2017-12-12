@@ -6,13 +6,15 @@
 */
 class FUNC_ACCION_DELETE {
 
-	function __construct( $valores ) {
+	function __construct( $valores, $dependencias ) {
 		$this->valores = $valores;
-		$this->render( $this->valores );
+		$this->dependencias = $dependencias;
+		$this->render( $this->valores, $this->dependencias );
 	}
 
-	function render( $valores ) {
+	function render( $valores, $dependencias ) {
 		$this->valores = $valores;
+		$this->dependencias = $dependencias;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -42,17 +44,32 @@ class FUNC_ACCION_DELETE {
 			</table>
             
             <?php
+            
             if($dependencias != null){
             
-                if(array_key_exists('PERMISO', $dependencias)){
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
-                    <td>FUNC_ACCION</td>
-                    <td><?php echo $dependencias['PERMISO']['IdGrupo'] ?></td>
-                    <td><?php echo $dependencias['PERMISO']['IdFuncionalidad'] ?></td>
-				    <td><?php echo $dependencias['PERMISO']['IdAccion'] ?></td>
-            <?php
-                }
-            
+			<table>
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['IdFuncionalidad'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['IdAccion'];
+
+                        ?>
+					</td>
+
+				</tr>
+                </table>
+                <?php
+				}
             }
         
             else{
