@@ -63,10 +63,7 @@
 </header>
 <div id = 'main'>   
 <?php
-if (IsAuthenticated()){
 		include '../Views/admin_menuLateral.php';
-
-}
 ?>  
 <article>
 

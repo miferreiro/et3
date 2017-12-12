@@ -23,13 +23,7 @@ else{
 
 	//Si no existe el login en la base de datos
 	if ($respuesta == 'true'){
-	 ;
-		if($usuario->comprobarBdIncial()){
-			$respuesta = $usuario->primerUsuario();
-		}else{
 			$respuesta = $usuario->ADD();
-		}
-		
 		//Incluye la vista mensaje
 		include '../Views/MESSAGE_View.php';
 		new MESSAGE($respuesta, '../index.php');
