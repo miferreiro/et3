@@ -18,6 +18,7 @@ array(
 	'Elija sexo' => 'Choose sex',
 	'Hombre' => 'Man',
 	'Mujer' => 'Woman',
+	'Añadir' => 'Add',
 	'Formulario de búsqueda' => 'Search form',
 	'Formulario de modificación' => 'Edit form',	
 	'El usuario no tiene los permisos necesarios' => 'The user does not have the necessary permits',

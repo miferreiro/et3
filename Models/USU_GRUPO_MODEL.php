@@ -150,7 +150,7 @@ function RellenaDatos($login, $IdGrupo)
     
 		
    function comprobarPermisos(){
-	   $sql = "SELECT DISTINCT P.IdGrupo, P.IdFuncionalidad, P.IdAccion FROM PERMISO P, USU_GRUPO U WHERE U.login = '$this->login' && (U.IdGrupo = P.IdGrupo || P.IdGrupo ='0000A')";
+	   $sql = "SELECT DISTINCT P.IdGrupo, P.IdFuncionalidad, P.IdAccion FROM PERMISO P, USU_GRUPO U WHERE U.login = '$this->login' && (U.IdGrupo = P.IdGrupo || P.IdGrupo ='00000A')";
 	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
        return $resultado;
 
