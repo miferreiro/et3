@@ -10,12 +10,14 @@
 session_start();//solicito trabajar con la sesión
 
 include '../Models/HISTORIA_MODEL.php';
+include '../Functions/permisosAcc.php';
 include '../Views/HISTORIA/HISTORIA_SHOWALL_View.php';
 include '../Views/HISTORIA/HISTORIA_SEARCH_View.php';
 include '../Views/HISTORIA/HISTORIA_ADD_View.php';
 include '../Views/HISTORIA/HISTORIA_EDIT_View.php';
 include '../Views/HISTORIA/HISTORIA_DELETE_View.php';
 include '../Views/HISTORIA/HISTORIA_SHOWCURRENT_View.php';
+include '../Views/DEFAULT_View.php';
 include '../Views/MESSAGE_View.php';
 
 function get_data_form(){
@@ -43,7 +45,11 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
+			if(permisosAcc($_SESSION['login'],10,0)==true){			
 			new HISTORIA_ADD();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {
 			$HISTORIA = get_data_form();
 			$respuesta = $HISTORIA->ADD();
@@ -52,9 +58,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
+			if(permisosAcc($_SESSION['login'],10,1)==true){
 			$HISTORIA = new HISTORIA_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ], '');
 			$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ]);
 			new HISTORIA_DELETE( $valores);
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {
 			$HISTORIA = get_data_form();
 			$respuesta = $HISTORIA->DELETE();
@@ -63,9 +73,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
+			if(permisosAcc($_SESSION['login'],10,2)==true){
 			$HISTORIA = new HISTORIA_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ], '');
 			$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] ,$_REQUEST[ 'IdHistoria' ]);
 			new HISTORIA_EDIT( $valores );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {
 			$HISTORIA = get_data_form();
 			$respuesta = $HISTORIA->EDIT();
@@ -74,7 +88,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH':
 		if ( !$_POST ) {
+			if(permisosAcc($_SESSION['login'],10,3)==true){
 			new HISTORIA_SEARCH();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {
 			$HISTORIA = get_data_form();
 			$datos = $HISTORIA->SEARCH();
@@ -83,11 +101,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		break;
 	case 'SHOWCURRENT':
+	if(permisosAcc($_SESSION['login'],10,4)==true){
 		$HISTORIA= new HISTORIA_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ], '');
 		$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] ,$_REQUEST[ 'IdHistoria' ]);
 		new HISTORIA_SHOWCURRENT( $valores );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		break;
 	default:
+	if(permisosAcc($_SESSION['login'],10,5)==true){
 		if ( !$_POST ) {
 			$HISTORIA = new HISTORIA_MODEL( '', '', '');
 		} else {
@@ -96,6 +119,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $HISTORIA->SEARCH();
 		$lista = array( 'IdTrabajo','IdHistoria','TextoHistoria' );
 		new HISTORIA_SHOWALL( $lista, $datos );
+			}else{
+				new USUARIO_DEFAULT();
+			}
 }
 
 ?>

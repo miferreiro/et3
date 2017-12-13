@@ -12,6 +12,7 @@ include '../Models/ASIGNAC_QA_MODEL.php'; //incluye el contendio del asignacion 
 include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/HISTORIA_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Functions/permisosAcc.php';
 include '../Views/ASIGNAC_QA/ASIGNAC_QA_GENERAR_View.php'; //incluye la vista de asignación qa
 include '../Views/ASIGNAC_QA/ASIGNAC_QA_HISTORIAS_View.php'; //incluye la vista de asignación qa
 include '../Views/ASIGNAC_QA/ASIGNAC_QA_ADD_View.php'; //incluye la vista ADD
@@ -20,6 +21,7 @@ include '../Views/ASIGNAC_QA/ASIGNAC_QA_EDIT_View.php'; //incluye la vista de ED
 include '../Views/ASIGNAC_QA/ASIGNAC_QA_SEARCH_View.php'; //incluye la vista de SEARCH
 include '../Views/ASIGNAC_QA/ASIGNAC_QA_SHOWCURRENT_View.php'; //incluye la vista de asignación qa
 include '../Views/ASIGNAC_QA/ASIGNAC_QA_SHOWALL_View.php'; //incluye la vista de asignación qa
+include '../Views/DEFAULT_View.php';
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 function get_data_form(){
@@ -171,7 +173,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'ADD':
 		if ( !$_POST ) {
+			if(permisosAcc($_SESSION['login'],6,0)==true){
 			new ASIGNAC_QA_ADD();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {
 			$ASIGNACION = get_data_form();
 			$respuesta = $ASIGNACION->ADD();
@@ -180,9 +186,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
+			if(permisosAcc($_SESSION['login'],6,1)==true){
 			$ASIGNACION = new ASIGNAC_QA_MODEL( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], '', $_REQUEST['AliasEvaluado']);
 			$valores = $ASIGNACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
 			new ASIGNAC_QA_DELETE( $valores );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {
 			$ASIGNACION = get_data_form();
 			$respuesta = $ASIGNACION->DELETE();
@@ -191,9 +201,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
+			if(permisosAcc($_SESSION['login'],6,2)==true){
 			$ASIGNACION = new ASIGNAC_QA_MODEL( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], '', $_REQUEST['AliasEvaluado']);
 			$valores = $ASIGNACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
 			new ASIGNAC_QA_EDIT( $valores );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {
 			$ASIGNACION = get_data_form();
 			$respuesta = $ASIGNACION->EDIT();
@@ -202,7 +216,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH':
 		if ( !$_POST ) {
+			if(permisosAcc($_SESSION['login'],6,3)==true){
 			new ASIGNAC_QA_SEARCH();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {
 			$ASIGNACION = get_data_form();
 			$datos = $ASIGNACION->SEARCH();
@@ -211,11 +229,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		break;
 	case 'SHOWCURRENT':
+		if(permisosAcc($_SESSION['login'],6,4)==true){
 		$ASIGNACION = new ASIGNAC_QA_MODEL( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], '', $_REQUEST['AliasEvaluado']);
 		$valores = $ASIGNACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
 		new ASIGNAC_QA_SHOWCURRENT( $valores );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		break;
 	default:
+	if(permisosAcc($_SESSION['login'],6,5)==true){
 		if ( !$_POST ) {
 			$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
 		} else {
@@ -225,7 +248,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'IdTrabajo','LoginEvaluador','LoginEvaluado', 'AliasEvaluado' );
 		new ASIGNAC_QA_SHOWALL( $lista, $datos );
 
-
+			}else{
+				new USUARIO_DEFAULT();
+			}
 	//default: //Caso que se ejecuta por defecto
 		//Creacion de la vista inicio 
 		//new ASIGNAC_QA();

@@ -7,6 +7,7 @@ session_start(); //solicito trabajar con la session
 
 include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Functions/permisosAcc.php';
 include '../Views/ENTREGA/ENTREGA_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_USU_SHOWALL.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_SUBIR_SHOWALL_View.php'; //incluye la vista del showall
@@ -16,6 +17,7 @@ include '../Views/ENTREGA/ENTREGA_EDIT_View.php'; //incluye la vista edit
 include '../Views/ENTREGA/ENTREGA_DELETE_View.php'; //incluye la vista delete
 include '../Views/ENTREGA/ENTREGA_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
+include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
 
 
@@ -183,7 +185,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             $cont=0;
 			$PERMISO = $ENTREGA->comprobarPermisos();
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='1'){
+			if($fila['IdFuncionalidad']=='8'){
 				if($fila['IdAccion']=='0'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -219,7 +221,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$cont=0;
 			$PERMISO = $ENTREGA->comprobarPermisos();
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='1'){
+			if($fila['IdFuncionalidad']=='8'){
 				if($fila['IdAccion']=='1'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -251,13 +253,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			//Variable que almacena un objeto model 
-            
+			if(permisosAcc($_SESSION['login'],8,2)==true){	            
             
 			$ENTREGA = new ENTREGA_MODEL($_SESSION[ 'login' ], $_REQUEST[ 'IdTrabajo' ],'', '', '');
 			//Variable que almacena los datos de los atibutos rellenados 
 			$valores = $ENTREGA->RellenaDatos();
 			//Muestra la vista del formulario editar
 			new ENTREGA_EDIT( $valores );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 			//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
@@ -280,7 +285,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$PERMISO = $ENTREGA->comprobarPermisos();
             while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
 
-			if($fila['IdFuncionalidad']=='1'){
+			if($fila['IdFuncionalidad']=='8'){
 				if($fila['IdAccion']=='3'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -338,7 +343,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$PERMISO = $USUARIO->comprobarPermisos();
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
 	
-			if($fila['IdFuncionalidad']=='1'){
+			if($fila['IdFuncionalidad']=='8'){
 				if($fila['IdAccion']=='4'){
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
@@ -391,7 +396,7 @@ switch ( $_REQUEST[ 'action' ] ) {
          $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
          $PERMISO = $ENTREGA->comprobarPermisos();
          $ADMIN = $ENTREGA->comprobarAdmin();
-        
+	if(permisosAcc($_SESSION['login'],8,5)==true){        
 		if ( !$_POST ) {//Si no se han recibido datos 
           
               if($ADMIN == true){
@@ -415,6 +420,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,true );
+			}else{
+				new USUARIO_DEFAULT();
+			}
 }
 
 ?>

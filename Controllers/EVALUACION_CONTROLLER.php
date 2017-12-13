@@ -1,3 +1,4 @@
+
 <?php
 /*
 	Archivo php
@@ -59,7 +60,11 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
+			if(permisosAcc($_SESSION['login'],12,0)==true){
 			new EVALUACION_ADD();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {//Si recive datos los recoge y mediante las funcionalidad de EVALUACION_MODEL inserta los datos
 			$EVALUACION = get_data_form();//Variable que almacena los datos recogidos
 			$respuesta = $EVALUACION->ADD();//Variable que almacena la respuesta de la inserción
@@ -70,12 +75,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
+			if(permisosAcc($_SESSION['login'],12,1)==true){
 			//Variable que recoge un objecto model con solo el LoginEvaluador
 			$EVALUACION = new EVALUACION( $_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ], '', '', '', '','');
 			//Variable que almacena el relleno de los datos utilizando el LoginEvaluador
 			$valores = $EVALUACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ]);
 			//Crea una vista delete para ver la tupla
 			new EVALUACION_DELETE( $valores );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -89,6 +98,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
+			if(permisosAcc($_SESSION['login'],12,2)==true){
 			//Variable que almacena un objeto model con el LoginEvaluador
             $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
             $ADMIN = $USUARIO->comprobarAdmin();
@@ -109,6 +119,9 @@ switch ( $_REQUEST[ 'action' ] ) {
                 //Muestra la vista del formulario editar
                 new EVALUACION_USUARIO_EDIT( $valores );
             }
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {
 			//Variable que almacena los datos recogidos
 			$EVALUACION = get_data_form();
@@ -121,7 +134,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
+			if(permisosAcc($_SESSION['login'],12,3)==true){
 			new EVALUACION_SEARCH();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		//Si se reciben datos	
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -136,12 +153,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
+		if(permisosAcc($_SESSION['login'],12,4)==true){
 		//Variable que almacena un objeto model con el LoginEvaluador
 		$EVALUACION = new EVALUACION( $_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ], '', '', '', '','');
 		//Variable que almacena los valores rellenados a traves de LoginEvaluador
 		$valores = $EVALUACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ] );
 		//Creación de la vista showcurrent
 		new EVALUACION_SHOWCURRENT( $valores );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		//Final del bloque
 		break;
         
@@ -166,6 +187,7 @@ switch ( $_REQUEST[ 'action' ] ) {
         
     
 	default: //Caso que se ejecuta por defecto
+	if(permisosAcc($_SESSION['login'],12,5)==true){
     if ( !$_POST ) {//Si no se han recibido datos 
         
               $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
@@ -196,6 +218,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA','CorrectoP','ComentIncorrectoP','OK');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new EVALUACION_SHOWALL( $lista, $datos );
+			}else{
+				new USUARIO_DEFAULT();
+			}		
 }
 
 ?>

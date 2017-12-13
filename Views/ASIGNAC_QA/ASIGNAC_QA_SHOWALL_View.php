@@ -18,6 +18,7 @@ class ASIGNAC_QA_SHOWALL {
 		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
+        include_once '../Functions/permisosAcc.php';
 ?>
 		<div class="seccion">
 			<h2>
@@ -26,8 +27,13 @@ class ASIGNAC_QA_SHOWALL {
 			<table>
 				<caption style="margin-bottom:10px;">
 					<form action='../Controllers/ASIGNAC_QA_CONTROLLER.php'>
+<?php if(permisosAcc($_SESSION['login'],6,3)==true){ ?>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+<?php }
+	  if(permisosAcc($_SESSION['login'],6,0)==true){ 
+		?>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+<?php } ?>
 					</form>
 				</caption>
 				<tr>
@@ -39,10 +45,12 @@ class ASIGNAC_QA_SHOWALL {
 					</th>
 <?php
 					}
+		if((permisosAcc($_SESSION['login'],6,1)==true)||(permisosAcc($_SESSION['login'],6,2)==true)||        (permisosAcc($_SESSION['login'],6,4)==true)){ 
 ?>
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
 					</th>
+<?php } ?>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -65,12 +73,17 @@ class ASIGNAC_QA_SHOWALL {
 							<input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
 							<input type="hidden" name="LoginEvaluador" value="<?php echo $fila['LoginEvaluador']; ?>">
 							<input type="hidden" name="AliasEvaluado" value="<?php echo $fila['AliasEvaluado']; ?>">
-
+<?php         if(permisosAcc($_SESSION['login'],6,2)==true){ ?>
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+<?php } ?>
 					<td>
+<?php         if(permisosAcc($_SESSION['login'],6,1)==true){ ?>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+<?php } ?>
 					<td>
+<?php         if(permisosAcc($_SESSION['login'],6,4)==true){ ?>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+<?php } ?>
 						</form>
 
 				</tr>

@@ -6,6 +6,7 @@
 session_start(); //solicito trabajar con la session
 
 include '../Models/NOTAS_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Functions/permisosAcc.php';
 include '../Views/NOTAS/NOTAS_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/NOTAS/NOTAS_SHOWALL2_View.php'; //incluye la vista del showall para el caso de los usuarios
 include '../Views/NOTAS/NOTAS_SEARCH_View.php'; //incluye la vista search
@@ -14,6 +15,7 @@ include '../Views/NOTAS/NOTAS_EDIT_View.php'; //incluye la vista edit
 include '../Views/NOTAS/NOTAS_DELETE_View.php'; //incluye la vista delete
 include '../Views/NOTAS/NOTAS_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/NOTAS/NOTAS_SHOWCURRENT2_View.php'; //incluye la vista showcurrent
+include '../Views/DEFAULT_View.php';
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 
@@ -44,8 +46,12 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
+			if(permisosAcc($_SESSION['login'],7,0)==true){
 			//Crea una vista add para ver la tupla
 			new NOTAS_ADD();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de NOTAS_MODEL inserta los datos
 			$NOTAS = get_data_form();//Variable que almacena los datos recogidos
 			$respuesta = $NOTAS->ADD();//Variable que almacena la respuesta de la inserción
@@ -56,12 +62,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
+			if(permisosAcc($_SESSION['login'],7,1)==true){
 			//Variable que recoge un objecto model
 			$NOTAS = new NOTAS_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'login' ],'');
 			//Variable que almacena el relleno de los datos
 			$valores = $NOTAS->RellenaDatos();
             //Crea una vista delete para ver la tupla
 			new NOTAS_DELETE($valores);
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 			//Si recibe valores ejecuta el borrado
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -76,11 +86,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
+			if(permisosAcc($_SESSION['login'],7,2)==true){
 			//Variable que almacena un objeto model
 			$NOTAS = new NOTAS_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'login' ],'');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $NOTAS->RellenaDatos();
 			new NOTAS_EDIT($valores);
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 			//Si se reciben valores
 		} else {
 			//Variable que almacena los datos recogidos
@@ -94,7 +108,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
+			if(permisosAcc($_SESSION['login'],7,3)==true){
 			new NOTAS_SEARCH();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
 		//Si se reciben datos	
 		} else {
 			//Variable que almacena los datos recogidos de los atributos
@@ -109,15 +127,20 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
+		if(permisosAcc($_SESSION['login'],7,4)==true){
 		//Variable que almacena un objeto model con el login
 		$NOTAS = new NOTAS_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST['login'],'');
 		//Variable que almacena los valores rellenados a traves de login
 		$valores = $NOTAS->RellenaDatos();
 		//Creación de la vista showcurrent
 		new NOTAS_SHOWCURRENT( $valores );
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+		}
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
+		if(permisosAcc($_SESSION['login'],7,5)==true){
 		if ( !$_POST ) {//Si no se han recibido datos 
 			$NOTAS = new NOTAS_MODEL('', '', '');
 		//Si se reciben datos
@@ -130,7 +153,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array('IdTrabajo','login','NotaTrabajo');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new NOTAS_SHOWALL( $lista, $datos );
-        
+			}else{
+				new USUARIO_DEFAULT();
+			}
 }
 
 ?>

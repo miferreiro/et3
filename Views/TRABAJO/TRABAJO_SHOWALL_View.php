@@ -45,7 +45,7 @@ class TRABAJO_SHOWALL {
 					</th>
 <?php
 					}
-		if((permisosAcc($_SESSION['login'],5,1)==true)||(permisosAcc($_SESSION['login'],5,2)==true)||        (permisosAcc($_SESSION['login'],5,4)==true)){ 
+		if((permisosAcc($_SESSION['login'],11,1)==true)||(permisosAcc($_SESSION['login'],11,2)==true)||        (permisosAcc($_SESSION['login'],11,4)==true)){ 
 ?>
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
@@ -80,15 +80,15 @@ class TRABAJO_SHOWALL {
 					<td>
 						<form action="../Controllers/TRABAJO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
-<?php         if(permisosAcc($_SESSION['login'],5,2)==true){ ?>
+<?php         if(permisosAcc($_SESSION['login'],11,2)==true){ ?>
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 <?php } ?>
 					<td>
-<?php         if(permisosAcc($_SESSION['login'],5,1)==true){ ?>
+<?php         if(permisosAcc($_SESSION['login'],11,1)==true){ ?>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
 <?php } ?>
 					<td>
-<?php         if(permisosAcc($_SESSION['login'],5,4)==true){ ?>
+<?php         if(permisosAcc($_SESSION['login'],11,4)==true){ ?>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 <?php } ?>
 						</form>

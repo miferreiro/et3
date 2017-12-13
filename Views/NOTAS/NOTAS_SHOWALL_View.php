@@ -14,8 +14,7 @@ class NOTAS_SHOWALL {
 	function render($lista,$datos){
 		$this->lista = $lista;
 		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';e '../Views/Header.php';        include_once '../Functions/permisosAcc.php';
 ?>
 		<div class="seccion">
 			<h2>
@@ -24,8 +23,13 @@ class NOTAS_SHOWALL {
 			<table>
 				<caption style="margin-bottom:10px;">
 					<form action='../Controllers/NOTAS_CONTROLLER.php'>
+<?php if(permisosAcc($_SESSION['login'],7,3)==true){ ?>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+<?php }
+	  if(permisosAcc($_SESSION['login'],7,0)==true){ 
+		?>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+<?php } ?>
 					</form>
 				</caption>
 				<tr>
@@ -37,10 +41,12 @@ class NOTAS_SHOWALL {
 					</th>
 <?php
 					}
+		if((permisosAcc($_SESSION['login'],7,1)==true)||(permisosAcc($_SESSION['login'],7,2)==true)||        (permisosAcc($_SESSION['login'],7,4)==true)){ 
 ?>
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
 					</th>
+<?php } ?>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -62,12 +68,17 @@ class NOTAS_SHOWALL {
 						<form action="../Controllers/NOTAS_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
                             <input type="hidden" name=IdTrabajo value="<?php echo $fila['IdTrabajo']; ?>">
-                            
+<?php         if(permisosAcc($_SESSION['login'],7,2)==true){ ?>
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+<?php } ?>
 					<td>
+<?php         if(permisosAcc($_SESSION['login'],7,1)==true){ ?>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+<?php } ?>
 					<td>
+<?php         if(permisosAcc($_SESSION['login'],7,4)==true){ ?>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+<?php } ?>
 						</form>
 
 				</tr>

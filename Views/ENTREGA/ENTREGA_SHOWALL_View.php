@@ -21,8 +21,8 @@ class ENTREGA_SHOWALL {
 		$this->PERMISO = $PERMISO;
 		$this->admin = $admin;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-
-$ADD=false;	
+        include_once '../Functions/permisosAcc.php';
+/*$ADD=false;	
 $EDIT=true;	
 $SEARCH=false;	
 $DELETE=false;	
@@ -83,7 +83,7 @@ $GESTEVAL=false;
 				$GESTACC=true;
 			   }
 
-			}
+			}*/
 	include '../Views/Header.php';			
 ?>
 
@@ -95,10 +95,11 @@ $GESTEVAL=false;
 				<caption style="margin-bottom:10px;">
 					<form action='../Controllers/ENTREGA_CONTROLLER.php'>
 
-<?php if($SEARCH==true){  ?>
+<?php if(permisosAcc($_SESSION['login'],8,3)==true){ ?>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
 <?php }
-		if($ADD==true){  ?>
+	  if(permisosAcc($_SESSION['login'],8,0)==true){ 
+		?>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 <?php } ?>
 					</form>
@@ -112,7 +113,7 @@ $GESTEVAL=false;
 					</th>
 <?php
 					}
-		if($EDIT==true || $SHOW==true || $DELETE==true || $ASIGN==true){
+		if((permisosAcc($_SESSION['login'],8,1)==true)||(permisosAcc($_SESSION['login'],8,2)==true)||        (permisosAcc($_SESSION['login'],8,4)==true)){ 
 ?>
 					<th colspan="4" >
 						<?php echo $strings['Opciones']?>
@@ -148,19 +149,19 @@ $GESTEVAL=false;
 				            <input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
                             
-							<?php if($EDIT==true){ ?>
+<?php         if(permisosAcc($_SESSION['login'],8,2)==true){ ?>
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button><!--con este boton pulsas para ver la vista EDIT-->
-						    <?php } ?>
+<?php } ?>
 					<td>
-							<?php if($DELETE==true){ ?>
+<?php         if(permisosAcc($_SESSION['login'],8,1)==true){ ?>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
                                 <!--si pulsas este boton ves la vista DELETE-->
-							<?php } ?>
+<?php } ?>
 					<td>
-							<?php if($SHOW==true){ ?>
+<?php         if(permisosAcc($_SESSION['login'],8,4)==true){ ?>
 									<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
                                 <!--si pulsas este boton ves la vista SHOWCURRENT-->
-							<?php } ?>
+<?php } ?>
 						</form>
 				    <td>
 							

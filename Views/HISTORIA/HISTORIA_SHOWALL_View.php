@@ -24,8 +24,13 @@ class HISTORIA_SHOWALL {
 			<table>
 				<caption style="margin-bottom:10px;">
 					<form action='../Controllers/HISTORIA_CONTROLLER.php'>
+<?php if(permisosAcc($_SESSION['login'],10,3)==true){ ?>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+<?php }
+	  if(permisosAcc($_SESSION['login'],10,0)==true){ 
+		?>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+<?php } ?>
 					</form>
 				</caption>
 				<tr>
@@ -37,10 +42,12 @@ class HISTORIA_SHOWALL {
 					</th>
 <?php
 					}
+		if((permisosAcc($_SESSION['login'],10,1)==true)||(permisosAcc($_SESSION['login'],10,2)==true)||        (permisosAcc($_SESSION['login'],10,4)==true)){ 
 ?>
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
 					</th>
+<?php } ?>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -62,11 +69,17 @@ class HISTORIA_SHOWALL {
 						<form action="../Controllers/HISTORIA_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
                             <input type="hidden" name="IdHistoria" value="<?php echo $fila['IdHistoria']; ?>">
+<?php         if(permisosAcc($_SESSION['login'],10,2)==true){ ?>
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+<?php } ?>
 					<td>
+<?php         if(permisosAcc($_SESSION['login'],10,1)==true){ ?>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+<?php } ?>
 					<td>
+<?php         if(permisosAcc($_SESSION['login'],10,4)==true){ ?>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+<?php } ?>
 						</form>
 
 				</tr>
