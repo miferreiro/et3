@@ -255,7 +255,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena un objeto model 
 			if(permisosAcc($_SESSION['login'],8,2)==true){	            
             
-			$ENTREGA = new ENTREGA_MODEL($_SESSION[ 'login' ], $_REQUEST[ 'IdTrabajo' ],'', '', '');
+			$ENTREGA = new ENTREGA_MODEL($_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ],'', '', '');
 			//Variable que almacena los datos de los atibutos rellenados 
 			$valores = $ENTREGA->RellenaDatos();
 			//Muestra la vista del formulario editar
