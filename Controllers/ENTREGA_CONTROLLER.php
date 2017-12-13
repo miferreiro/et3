@@ -97,7 +97,7 @@ function get_data_form2() {
 	);
 	//Devuelve el valor del objecto model creado
     
-      $buscar=$ENTREGA->buscarAlias();
+      $buscar=$ENTREGA->buscarAlias($Alias);
     
     
         while($Alias == $buscar){
