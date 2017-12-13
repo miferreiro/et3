@@ -171,7 +171,7 @@
 
 		$sql = "SELECT * FROM PERMISO WHERE (IdFuncionalidad = '$this->IdFuncionalidad' && IdAccion = '$this->IdAccion')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
         }
 
