@@ -32,8 +32,8 @@ switch($_REQUEST['action']){
         
     default:
         $CORRECION =new EVALUACION('','','','','','','','','');
-        $lista = array('login','IdTrabajo');
-        $datos =$CORRECION->mostrarEntregas($_SESSION['login']);
+        $lista = array('LoginEvaluador','IdTrabajo');
+        $datos =$CORRECION->mostrarQAS($_SESSION['login']);
 
         new CORRECION_QA($lista,$datos);
         

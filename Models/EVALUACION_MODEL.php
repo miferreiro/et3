@@ -39,7 +39,10 @@ class EVALUACION{ //declaración de la clase
 
 	} // fin del constructor
     
-     function mostrarEntregas($nombre){
+ /*****************************************************************************************************/
+    //PARA CORRECCION DE QAS Y ENTREGAS
+     
+ function mostrarEntregas($nombre){
         
     
     $sql = "SELECT DISTINCT login,E.IdTrabajo FROM ENTREGA ET,EVALUACION E WHERE  ET.Alias=E.AliasEvaluado AND login='$nombre'";
@@ -53,6 +56,23 @@ class EVALUACION{ //declaración de la clase
 		}
         
     }
+    
+    function mostrarQAS($nombre){
+        
+    
+    $sql = "SELECT  DISTINCT LoginEvaluador,IdTrabajo FROM EVALUACION  WHERE LoginEvaluador='brais'";
+          
+    if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado
+            
+           
+			return $resultado;
+		}
+        
+    }
+    
+    
     function mostrarCorrecion($IdTrabajo,$nombre){
         
         
@@ -90,8 +110,8 @@ class EVALUACION{ //declaración de la clase
 
   
       function mostrarCorrecion2($IdTrabajo,$nombre){
-        $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,E.IdTrabajo FROM EVALUACION E,ENTREGA ET WHERE 
-        ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$IdTrabajo' && LoginEvaluador='$nombre')";
+        $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,IdTrabajo FROM EVALUACION  WHERE 
+        ( IdTrabajo = '$IdTrabajo' && LoginEvaluador='$nombre')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -106,8 +126,8 @@ class EVALUACION{ //declaración de la clase
         
         
        
-       $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,E.IdTrabajo,IdHistoria,CorrectoP,ComentIncorrectoP,CorrectoA,ComenIncorrectoA,OK FROM EVALUACION E,ENTREGA ET WHERE 
-        ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$IdTrabajo' && AliasEvaluado='$alias' && LoginEvaluador='$nombre')";
+       $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,IdTrabajo,IdHistoria,CorrectoP,ComentIncorrectoP,CorrectoA,ComenIncorrectoA,OK FROM EVALUACION   WHERE 
+        (IdTrabajo = '$IdTrabajo' && AliasEvaluado='$alias' && LoginEvaluador='$nombre')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -118,56 +138,10 @@ class EVALUACION{ //declaración de la clase
 		}
 }
     
-    function notaEntrega($trabajo,$login){
-        $bien = "SELECT COUNT(CorrectoP) FROM EVALUACION E,ENTREGA ET WHERE CorrectoP=1 AND login='$login' AND IdTrabajo='$trabajo' AND AliasEvaluado='Alias'";
-        $historias = "SELECT COUNT(IdHistoria) FROM HISTORIA WHERE IdTrabajo='$trabajo'";
-        if ( !( $good = $this->mysqli->query( $bien ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { // si existe se devuelve la tupla resultado 
-			return $good;
-		}
-         if ( !( $total = $this->mysqli->query( $historias ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { // si existe se devuelve la tupla resultado 
-			return $total;
-		}
-        
-        $nota=(($good*10)/$total);
-               
-        return $nota;
-        
-    }
     
-    function notaQa($trabajo,$login){
-        
-        $bien = "SELECT COUNT(OK) FROM EVALUACION WHERE OK=1 AND IdTrabajo='$trabajo' AND LoginEvaluador='$login' ";
-        $historias="SELECT COUNT(IdHistoria) FROM HISTORIA WHERE IdTrabajo='$trabajo'";
-        $asignadas="SELECT  COUNT(DISTINCT AliasEvaluado) FROM EVALUACION WHERE IdTrabajo='$trabajo' AND LoginEvaluador='$login'";
-        
-         if ( !( $asig = $this->mysqli->query( $asignadas ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { // si existe se devuelve la tupla resultado 
-			return $asig;
-		}
-         if ( !( $history = $this->mysqli->query( $historias ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { // si existe se devuelve la tupla resultado 
-			return $history;
-		}
-         if ( !( $good = $this->mysqli->query( $bien ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { // si existe se devuelve la tupla resultado 
-			return $good;
-		}
-       
-        
-        $total=$asig*$history;
-        
-        $nota=(($good*10)/$total);
-        
-        return $nota;
-        
-    }
+/**************************************************************************************************************************/    
+    
+ 
     
 
 	//funcion SEARCH: hace una búsqueda en la tabla con 
