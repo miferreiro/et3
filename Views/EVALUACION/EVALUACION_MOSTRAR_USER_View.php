@@ -60,9 +60,9 @@ class EVALUACION_MOSTRAR_USER {
 ?>
 					<td>
 						<form action="../Controllers/EVALUACION_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
+							<input type="hidden" name="LoginEvaluado" value="<?php echo $fila['login']; ?>">
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
-                            <input type="hidden" name="Alias" value="<?php echo $fila['Alias']; ?>">
+                            <input type="hidden" name="AliasEvaluado" value="<?php echo $fila['Alias']; ?>">
                             
                             
 						<td>

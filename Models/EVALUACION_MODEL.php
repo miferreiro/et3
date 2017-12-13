@@ -174,28 +174,31 @@ class EVALUACION{ //declaración de la clase
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "select  IdTrabajo,
+		$sql = "select  E.IdTrabajo,
                     LoginEvaluador,
                     AliasEvaluado,
-					IdHistoria,
+					E.IdHistoria,
 					CorrectoA,
 					ComenIncorrectoA,
                     CorrectoP,
                     ComentIncorrectoP,
-					OK
-       			from EVALUACION 
+					OK,
+					TextoHistoria
+       			from EVALUACION E,HISTORIA H
     			where 
     				(
-					(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
+    				H.IdHistoria = E.IdHistoria &&
+					(BINARY E.IdTrabajo LIKE '%$this->IdTrabajo%') &&
 					(BINARY LoginEvaluador LIKE '%$this->LoginEvaluador%') &&
                     (BINARY AliasEvaluado LIKE '%$this->AliasEvaluado%') &&
-    				(BINARY IdHistoria LIKE '%$this->IdHistoria%') &&
+    				(BINARY E.IdHistoria LIKE '%$this->IdHistoria%') &&
 					(BINARY CorrectoA LIKE '%$this->CorrectoA%') &&
 	 				(BINARY ComenIncorrectoA LIKE '%$this->ComenIncorrectoA%') &&
                     (BINARY CorrectoP LIKE '%$this->CorrectoP%') &&
                     (BINARY ComentIncorrectoP LIKE '%$this->ComentIncorrectoP%') &&
 	 				(BINARY OK LIKE '%$this->OK%')
-    				)";
+    				)
+    			ORDER BY AliasEvaluado,E.IdHistoria	";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
