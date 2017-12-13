@@ -256,23 +256,18 @@ que comprueba permisos para cada una de las acciones -->
 						</ul>
 				</li>
 	<?php }
-	if((permisosAcc($_SESSION['login'],5,5)==true)||(permisosAcc($_SESSION['login'],5,0)==true)||        (permisosAcc($_SESSION['login'],5,3)==true)){ ?>
+	if((permisosAcc($_SESSION['login'],5,5)==true)|| (permisosAcc($_SESSION['login'],5,3)==true)){ ?>
 				<li>
 					<a class="primerNivel"><?php echo $strings['Gestión de permisos']; ?></a>
 						<ul class="submenu">
 						<?php if(permisosAcc($_SESSION['login'],5,5)==true){ ?>
 							<li>
-								<a href="../Controllers/GRUPO_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
-							</li>
-						<?php }
-							 if(permisosAcc($_SESSION['login'],5,0)==true){ ?>
-							<li>
-								<a href="../Controllers/GRUPO_CONTROLLER.php?action=ADD" class="segundoNivel"><?php echo $strings['Añadir']; ?></a>
+								<a href="../Controllers/PERMISO_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 							</li>
 						<?php }
 							 if(permisosAcc($_SESSION['login'],5,3)==true){ ?>
 							<li>
-								<a href="../Controllers/GRUPO_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
+								<a href="../Controllers/PERMISO_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
 							</li>
 						<?php } ?>
 						</ul>
