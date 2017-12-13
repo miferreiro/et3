@@ -26,19 +26,19 @@ class PERMISO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['NombreGrupo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarAlfabetico(this,'60')"/>					
+						<td class="formThTd"><input type="text" id="NombreGrupo" name="NombreGrupo" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>					
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['NombreFuncionalidad'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NombreFuncionalidad" name="NombreFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarAlfabetico(this,'60')"/>
+						<td class="formThTd"><input type="text" id="NombreFuncionalidad" name="NombreFuncionalidad" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60') "/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['NombreAccion'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NombreAccion" name="NombreAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60') && comprobarAlfabetico(this,'60')"/>
+						<td class="formThTd"><input type="text" id="NombreAccion" name="NombreAccion" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="60" size="61" onBlur="comprobarLongitud(this,'60') && comprobarTexto(this,'60') "/>
 					</tr>
 					
 					<tr>
