@@ -182,10 +182,8 @@ class USUARIO_MODEL{ //declaración de la clase
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM USUARIO WHERE (login = '$this->login' )";
-			$sql2 = "DELETE FROM USU_GRUPO WHERE (login = '$this->login' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
-			$this->mysqli->query( $sql2 );
 			// se devuelve el mensaje de borrado correcto
 			return "Borrado correctamente";
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe
