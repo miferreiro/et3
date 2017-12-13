@@ -52,6 +52,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'HISTORIAS'://Caso generar HISTORIAS
 		//Si no se reciben parametros crea un vista de generar historias
 		if ( !$_POST ) {
+			if(permisosAcc($_SESSION['login'],6,9)==true){			
 			//Variable que almacena un nuevo objecto model
 			$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
 			//Variable que almacena un nuevo objecto model
@@ -60,6 +61,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$QA = $TRABAJO->DevolverQA();
 			//Creación vista para generación de qas
 			new ASIGNAC_QA_HISTORIAS($QA);
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}				
 		//Si se reciben parametros
 		} else {
 		//Variable que almacena el mensaje por defecto
@@ -102,6 +106,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'GENERAR'://Caso generar QA
 		//Si no se reciben parametros
 		if ( !$_POST ) {
+			if(permisosAcc($_SESSION['login'],6,8)==true){
 			//Variable que almacena un nuevo objecto model
 			$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
 			//Variable que almacena un nuevo objecto model
@@ -110,6 +115,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ET = $TRABAJO->DevolverET();
 			//Creación de una nueva vista para generar QAs
 			new ASIGNAC_QA_GENERAR($ET);
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}	
 		//Si se reciben parámetros
 		} else {
 		//Variable que almacena un nuevo objecto model

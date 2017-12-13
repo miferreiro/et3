@@ -5,19 +5,19 @@
 */
 class PERMISO_SHOWALL {
 
-	function __construct( $lista, $datos, $DatosGrupo,$PERMISO,$admin) {
+	function __construct( $lista, $datos/*, $DatosGrupo*/,$PERMISO,$admin) {
 		$this->lista = $lista;
 		$this->datos = $datos;
 		$this->PERMISO = $PERMISO;
 		$this->admin = $admin;
-		$this->DatosGrupo = $DatosGrupo;
-		$this->render($this->lista,$this->datos,$this->DatosGrupo,$this->PERMISO,$this->admin);
+	/*	$this->DatosGrupo = $DatosGrupo;*/
+		$this->render($this->lista,$this->datos/*,$this->DatosGrupo*/,$this->PERMISO,$this->admin);
 	}
 	
-	function render($lista,$datos,$DatosGrupo,$PERMISO,$admin){
+	function render($lista,$datos/*,$DatosGrupo*/,$PERMISO,$admin){
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->DatosGrupo = $DatosGrupo;
+		/*$this->DatosGrupo = $DatosGrupo;*/
 		$this->PERMISO = $PERMISO;
 		$this->admin = $admin;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';

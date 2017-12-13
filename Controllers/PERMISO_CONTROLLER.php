@@ -198,9 +198,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			$PERMISO = get_data_form();
 			$datos = $PERMISO->SEARCH2();
-			$DatosGrupo= $PERMISO->recuperarGrupo('');
+			/*$DatosGrupo= $PERMISO->recuperarGrupo('');*/
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
-			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo );
+			new PERMISO_SHOWALL( $lista, $datos/*, $DatosGrupo */);
 		}
 		break;
 	case 'ASSIGN':
