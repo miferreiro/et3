@@ -296,28 +296,41 @@ ALTER TABLE `PERMISO`
   
   --         INSERTS
   
-  INSERT INTO `ACCION` (`IdAccion`, `NombreAccion`, `DescripAccion`) VALUES
+INSERT INTO `accion` (`IdAccion`, `NombreAccion`, `DescripAccion`) VALUES
 ('0', 'ADD', 'ADD'),
 ('1', 'DELETE', 'DELETE'),
 ('2', 'EDIT', 'EDIT'),
 ('3', 'SEARCH', 'SEARCH'),
 ('4', 'SHOWCURRENT', 'SHOWCURRENT'),
 ('5', 'SHOWALL', 'SHOWALL'),
-('6', 'ASIGN', 'ASIGN');
+('6', 'ASIGN', 'ASIGN'),
+('7', 'CONSULT', 'CONSULT'),
+('8', 'GENQAS', 'GENQAS'),
+('9', 'GENHIST', 'GENHIST');
+
   
   
   
- INSERT INTO `FUNCIONALIDAD` (`IdFuncionalidad`, `NombreFuncionalidad`, `DescripFuncionalidad`) VALUES
+INSERT INTO `funcionalidad` (`IdFuncionalidad`, `NombreFuncionalidad`, `DescripFuncionalidad`) VALUES
 ('1', 'GestionUsuarios', 'GestionUsuarios'),
+('10', 'Gestion de historias', 'Gestion de historias'),
+('11', 'Gestion de trabajos', 'Gestion de trabajos'),
+('12', 'Gestion de Evaluacion', 'Gestion de Evaluacion'),
+('13', 'Correccion entregas', 'Correccion entregas'),
 ('2', 'GestionGrupos', 'GestionGrupos'),
 ('3', 'GestionFuncionalidades', 'GestionFuncionalidades'),
 ('4', 'GestionAccion', 'GestionAccion'),
-('5', 'GestionPermisos', 'GestionPermisos');
+('5', 'GestionPermisos', 'GestionPermisos'),
+('6', 'Asignacion de QAs', 'Asignacion de QAs'),
+('7', 'Gestion de notas', 'Gestion de notas'),
+('8', 'Gestion de entregas', 'Gestion de entregas'),
+('9', 'Correccion QAs', 'Correccion QAs');
 
 
 
 
-INSERT INTO `FUNC_ACCION` (`IdFuncionalidad`, `IdAccion`) VALUES
+
+INSERT INTO `func_accion` (`IdFuncionalidad`, `IdAccion`) VALUES
 ('1', '0'),
 ('1', '1'),
 ('1', '2'),
@@ -325,6 +338,25 @@ INSERT INTO `FUNC_ACCION` (`IdFuncionalidad`, `IdAccion`) VALUES
 ('1', '4'),
 ('1', '5'),
 ('1', '6'),
+('10', '0'),
+('10', '1'),
+('10', '2'),
+('10', '3'),
+('10', '4'),
+('10', '5'),
+('11', '0'),
+('11', '1'),
+('11', '2'),
+('11', '3'),
+('11', '4'),
+('11', '5'),
+('12', '0'),
+('12', '1'),
+('12', '2'),
+('12', '3'),
+('12', '4'),
+('12', '5'),
+('13', '7'),
 ('2', '0'),
 ('2', '1'),
 ('2', '2'),
@@ -342,8 +374,41 @@ INSERT INTO `FUNC_ACCION` (`IdFuncionalidad`, `IdAccion`) VALUES
 ('4', '0'),
 ('4', '1'),
 ('4', '2'),
-('4', '3');
+('4', '3'),
+('4', '4'),
+('4', '5'),
+('4', '6'),
+('5', '3'),
+('5', '5'),
+('6', '0'),
+('6', '1'),
+('6', '2'),
+('6', '3'),
+('6', '4'),
+('6', '5'),
+('6', '8'),
+('6', '9'),
+('7', '0'),
+('7', '1'),
+('7', '2'),
+('7', '3'),
+('7', '4'),
+('7', '5'),
+('8', '0'),
+('8', '1'),
+('8', '2'),
+('8', '3'),
+('8', '4'),
+('8', '5'),
+('9', '7');
 
+INSERT INTO `permiso` (`IdGrupo`, `IdFuncionalidad`, `IdAccion`) VALUES
+('00001A', '12', '2'),
+('00001A', '12', '5'),
+('00001A', '13', '7'),
+('00001A', '8', '2'),
+('00001A', '8', '5'),
+('00001A', '9', '7');
 
 
 INSERT INTO `GRUPO` (`IdGrupo`, `NombreGrupo`, `DescripGrupo`) VALUES
