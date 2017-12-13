@@ -18,6 +18,7 @@ class TRABAJO_SHOWALL {
 		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
+        include_once '../Functions/permisosAcc.php';
 ?>
 		<div class="seccion">
 			<h2>
@@ -26,8 +27,13 @@ class TRABAJO_SHOWALL {
 			<table>
 				<caption style="margin-bottom:10px;">
 					<form action='../Controllers/TRABAJO_CONTROLLER.php'>
+<?php if(permisosAcc($_SESSION['login'],11,3)==true){ ?>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+<?php }
+	  if(permisosAcc($_SESSION['login'],11,0)==true){ 
+		?>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+<?php } ?>
 					</form>
 				</caption>
 				<tr>
@@ -39,10 +45,12 @@ class TRABAJO_SHOWALL {
 					</th>
 <?php
 					}
+		if((permisosAcc($_SESSION['login'],5,1)==true)||(permisosAcc($_SESSION['login'],5,2)==true)||        (permisosAcc($_SESSION['login'],5,4)==true)){ 
 ?>
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
 					</th>
+<?php } ?>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -72,11 +80,17 @@ class TRABAJO_SHOWALL {
 					<td>
 						<form action="../Controllers/TRABAJO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
+<?php         if(permisosAcc($_SESSION['login'],5,2)==true){ ?>
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+<?php } ?>
 					<td>
+<?php         if(permisosAcc($_SESSION['login'],5,1)==true){ ?>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+<?php } ?>
 					<td>
+<?php         if(permisosAcc($_SESSION['login'],5,4)==true){ ?>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+<?php } ?>
 						</form>
 
 				</tr>

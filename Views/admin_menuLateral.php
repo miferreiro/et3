@@ -6,7 +6,7 @@
 	Función: contiene todas las características del menú lateral
 -->
 <?php 
-include '../Functions/permisosAcc.php';
+include_once '../Functions/permisosAcc.php';
 include '../Functions/permisosFun.php';
  /*include_once '../Models/USU_GRUPO_MODEL.php'; 
 $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
