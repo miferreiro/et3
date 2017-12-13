@@ -149,7 +149,7 @@ class TRABAJO{
 
 		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
         }
         
@@ -162,7 +162,7 @@ class TRABAJO{
 
 		$sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
         }
         
@@ -175,7 +175,7 @@ class TRABAJO{
 
 		$sql = "SELECT * FROM NOTA_TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
         }
         
@@ -188,7 +188,7 @@ class TRABAJO{
 
 		$sql = "SELECT * FROM ASIGNAC_QA WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
         }
         
@@ -201,7 +201,7 @@ class TRABAJO{
 
 		$sql = "SELECT * FROM ENTREGA WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
         }
         
