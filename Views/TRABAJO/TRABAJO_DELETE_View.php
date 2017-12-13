@@ -9,22 +9,22 @@ class TRABAJO_DELETE {
 
 	function __construct( $valores, $dependencias,  $dependencias2,  $dependencias3,  $dependencias4,  $dependencias5 ) {
 		$this->valores = $valores;
-		$this->$dependencias = $dependencias;
-		$this->$dependencias2 = $dependencias2;
-		$this->$dependencias3 = $dependencias3;
-		$this->$dependencias4 = $dependencias4;
-		$this->$dependencias5 = $dependencias5;
+		$this->dependencias = $dependencias;
+		$this->dependencias2 = $dependencias2;
+		$this->dependencias3 = $dependencias3;
+		$this->dependencias4 = $dependencias4;
+		$this->dependencias5 = $dependencias5;
 		
 		$this->render( $this->valores, $this->dependencias, $this->dependencias2, $this->dependencias3, $this->dependencias4, $this->dependencias5);
 	}
 
 	function render( $valores, $dependencias,  $dependencias2,  $dependencias3,  $dependencias4,  $dependencias5 ) {
 		$this->valores = $valores;
-		$this->$dependencias = $dependencias;
-		$this->$dependencias2 = $dependencias2;
-		$this->$dependencias3 = $dependencias3;
-		$this->$dependencias4 = $dependencias4;
-		$this->$dependencias5 = $dependencias5;
+		$this->dependencias = $dependencias;
+		$this->dependencias2 = $dependencias2;
+		$this->dependencias3 = $dependencias3;
+		$this->dependencias4 = $dependencias4;
+		$this->dependencias5 = $dependencias5;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
