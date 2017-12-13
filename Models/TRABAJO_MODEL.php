@@ -163,10 +163,10 @@ class TRABAJO{
 		$sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
-            $dependencias = $resultado;
+            $dependencias2 = $resultado;
         }
         
-        return $dependencias;
+        return $dependencias2;
 	} // fin del metodo RellenaDatos()
     
     function dependencias3() { // se construye la sentencia de busqueda de la tupla
@@ -176,10 +176,10 @@ class TRABAJO{
 		$sql = "SELECT * FROM NOTA_TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
-            $dependencias = $resultado;
+            $dependencias3 = $resultado;
         }
         
-        return $dependencias;
+        return $dependencias3;
 	} // fin del metodo RellenaDatos()
     
     function dependencias4() { // se construye la sentencia de busqueda de la tupla
@@ -189,10 +189,10 @@ class TRABAJO{
 		$sql = "SELECT * FROM ASIGNAC_QA WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
-            $dependencias = $resultado;
+            $dependencias4 = $resultado;
         }
         
-        return $dependencias;
+        return $dependencias4;
 	} // fin del metodo RellenaDatos()
 
     function dependencias5() { // se construye la sentencia de busqueda de la tupla
@@ -202,10 +202,10 @@ class TRABAJO{
 		$sql = "SELECT * FROM ENTREGA WHERE (IdTrabajo = '$this->IdTrabajo')";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
-            $dependencias = $resultado;
+            $dependencias5 = $resultado;
         }
         
-        return $dependencias;
+        return $dependencias5;
 	} // fin del metodo RellenaDatos()
         
         
