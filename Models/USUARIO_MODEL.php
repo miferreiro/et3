@@ -127,19 +127,31 @@ class USUARIO_MODEL{ //declaración de la clase
 								'$this->Direccion',
 								'$this->Telefono'
 								)";
-							$sql2 = "INSERT INTO USU_GRUPO
+							include_once '../Models/USU_GRUPO_MODEL.php';
+							$USU_GRUPO = new USU_GRUPO($this->login,'00001A');
+							$mensaje = $USU_GRUPO->ADD();
+							
+							
+							/*$sql2 = "INSERT INTO USU_GRUPO
 										(login,IdGrupo)
 										VALUES
 										('$this->login',
 										 '00001A'
-										)";
+										)";*/
 						}
 
 					}
 					if ( !$this->mysqli->query( $sql ) || !$this->mysqli->query( $sql2 ) ) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
 					} else { //si no da error en la insercion devolvemos mensaje de exito
-						return 'Inserción realizada con éxito'; //operacion de insertado correcta
+						
+						if($mensaje == 'Inserción realizada con éxito'){
+							return 'Inserción realizada con éxito'; //operacion de insertado correcta
+						}else{
+							return $mensaje;
+						}
+						
+						
 					}
 
 				} else // si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
