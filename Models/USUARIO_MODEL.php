@@ -141,7 +141,7 @@ class USUARIO_MODEL{ //declaración de la clase
 						}
 
 					}
-					if ( !$this->mysqli->query( $sql ) || !$this->mysqli->query( $sql2 ) ) { // si da error en la ejecución del insert devolvemos mensaje
+					if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
 					} else { //si no da error en la insercion devolvemos mensaje de exito
 						
