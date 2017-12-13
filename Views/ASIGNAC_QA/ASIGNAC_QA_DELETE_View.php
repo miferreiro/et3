@@ -7,14 +7,17 @@
 */
 class ASIGNAC_QA_DELETE {
 
-	function __construct( $valores ) {
+	function __construct( $valores, $dependencias, $dependencias2 ) {
 		$this->valores = $valores;
-		$this->render( $this->valores );
+		$this->dependencias = $dependencias;
+		$this->dependencias2 = $dependencias2;
+		$this->render( $this->valores, $this->dependencias, $this->dependencias2 );
 	}
 
-	function render( $valores ) {
+	function render( $valores, $dependencias, $dependencias2 ) {
 		$this->valores = $valores;
-		
+		$this->dependencias = $dependencias;
+		$this->dependencias2 = $dependencias2;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -57,6 +60,175 @@ class ASIGNAC_QA_DELETE {
 				</tr>
 			</table>
             
+            <?php
+            
+            if($dependencias != null){
+            ?>
+            
+            <table>
+                
+            <?php
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
+            ?>
+			
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['IdTrabajo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['LoginEvaluador'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['AliasEvaluado'];
+
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['IdHistoria'];
+                            
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['CorrectoA'];
+                            
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['ComenIncorrectoA'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['CorrectoP'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['ComentIncorrectoP'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['OK'];
+                            
+                        ?>
+					</td>
+
+				</tr>
+                
+                <?php
+				}
+                ?>
+                </table>
+            <?php
+            }
+        
+        
+            
+            if($dependencias2 != null){
+            ?>
+            
+            <table>
+                
+            <?php
+				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {
+            ?>
+			
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['IdTrabajo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['LoginEvaluador'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['AliasEvaluado'];
+
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['IdHistoria'];
+                            
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['CorrectoA'];
+                            
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['ComenIncorrectoA'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['CorrectoP'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['ComentIncorrectoP'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['OK'];
+                            
+                        ?>
+					</td>
+
+				</tr>
+                
+                <?php
+				}
+                ?>
+                </table>
+            <?php
+            }
+            
+            
+            
+            else{
+                
+            ?>
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
@@ -74,7 +246,7 @@ class ASIGNAC_QA_DELETE {
 			</form>
 		</div>
 <?php
-            
+            }
 		include '../Views/Footer.php';
                 
             }

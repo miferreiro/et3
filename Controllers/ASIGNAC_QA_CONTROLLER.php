@@ -197,7 +197,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if(permisosAcc($_SESSION['login'],6,1)==true){
 			$ASIGNACION = new ASIGNAC_QA_MODEL( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], '', $_REQUEST['AliasEvaluado']);
 			$valores = $ASIGNACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
-			new ASIGNAC_QA_DELETE( $valores );
+			$dependencias = $ASIGNACION->dependencias( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
+			$dependencias2 = $ASIGNACION->dependencias2( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
+			new ASIGNAC_QA_DELETE( $valores, $dependencias, $dependencias2 );
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
 			}

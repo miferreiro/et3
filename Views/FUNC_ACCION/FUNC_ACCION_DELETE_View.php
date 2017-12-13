@@ -93,9 +93,9 @@ class FUNC_ACCION_DELETE {
 			</form>
 		</div>
 <?php
-          
-		include '../Views/Footer.php';
             }
+		include '../Views/Footer.php';
+            
 	}
 }
 

@@ -155,6 +155,33 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 		}
 	} // fin del metodo RellenaDatos()
     
+    function dependencias() { // se construye la sentencia de busqueda de la tupla
+
+		$dependencias = null;
+
+		$sql = "SELECT * FROM EVALUACION WHERE (LoginEvaluador = '$this->LoginEvaluador')";
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows >= 1 ) {
+			$dependencias = $resultado;
+		}
+
+		return $dependencias;
+	} // fin del metodo RellenaDatos()
+    
+    function dependencias2() { // se construye la sentencia de busqueda de la tupla
+
+		$dependencias2= null;
+
+		$sql = "SELECT * FROM EVALUACION WHERE (LoginEvaluado = '$this->LoginEvaluado')";
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows >= 1 ) {
+			$dependencias2 = $resultado;
+		}
+
+		return $dependencias2;
+	} // fin del metodo RellenaDatos()
+    
+    
         //funcion SEARCH: hace una búsqueda en la tabla con
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
