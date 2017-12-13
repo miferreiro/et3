@@ -1,15 +1,18 @@
 <?php
 session_start();//solicito trabajar con la sesión
 include '../Models/EVALUACION_MODEL.php';
+include '../Functions/permisosAcc.php';
 include '../Views/CORRECION/CORRECION_QA_View.php'; 
 include '../Views/CORRECION/CORRECION_QA_RESULTADO_View.php'; 
 include '../Views/CORRECION/CORRECION_QA_RESULTADOS_View.php'; 
+include '../Views/DEFAULT_View.php';
 
 if(!isset($_REQUEST['action'])){
     
     $_REQUEST['action'] = '';
 }
 
+if(permisosAcc($_SESSION['login'],9,7)==true){
 switch($_REQUEST['action']){
         
     case 'RESULTADOS':
@@ -36,6 +39,8 @@ switch($_REQUEST['action']){
         
         
 }
-    
+}else{
+	new USUARIO_DEFAULT();
+}    
     
 ?>

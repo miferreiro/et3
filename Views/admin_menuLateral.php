@@ -278,16 +278,20 @@ que comprueba permisos para cada una de las acciones -->
 						</ul>
 				</li>
 	<?php }
-		 if(permisosFun($_SESSION['login'],6)==true){?>
+		 if((permisosAcc($_SESSION['login'],9,7)==true)||(permisosAcc($_SESSION['login'],13,7)==true)){?>
 				<li>
-					<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestión de QAs']; ?></a> 
+					<a class="primerNivel"><?php echo $strings['Consulta de correciones']; ?></a> 
 						<ul class="submenu">
+						<?php if(permisosAcc($_SESSION['login'],9,7)==true){ ?>
 							<li>
-								<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=GENERAR" class="segundoNivel"><?php echo $strings['GENERACIÓN DE QAs']; ?></a>
+								<a href="../Controllers/CORRECION_QA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Correción QAs']; ?></a>
 							</li>
+						<?php }
+							 if(permisosAcc($_SESSION['login'],13,7)==true){ ?>
 							<li>
-								<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=HISTORIAS" class="segundoNivel"><?php echo $strings['GENERACIÓN DE HISTORIAS EVALUACIÓN']; ?></a>
+								<a href="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Correción entregas']; ?></a>
 							</li>
+                        <?php } ?>
 						</ul>
 				</li>
 	 <?php }
@@ -302,11 +306,16 @@ que comprueba permisos para cada una de las acciones -->
 				</li>
 	<?php }
 		  if(permisosFun($_SESSION['login'],9)==true){ ?>
-	            <li>
-					<a href="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Correcion entregas']; ?></a> 
-				</li>
-	            <li>
-					<a href="../Controllers/CORRECION_QA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Correcion QAs']; ?></a> 
+				<li>
+					<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestión de QAs']; ?></a> 
+						<ul class="submenu">
+							<li>
+								<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=GENERAR" class="segundoNivel"><?php echo $strings['GENERACIÓN DE QAs']; ?></a>
+							</li>
+							<li>
+								<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=HISTORIAS" class="segundoNivel"><?php echo $strings['GENERACIÓN DE HISTORIAS EVALUACIÓN']; ?></a>
+							</li>
+						</ul>
 				</li>
 	<?php }
 		 if(permisosFun($_SESSION['login'],10)==true){ ?>
