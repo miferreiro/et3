@@ -170,20 +170,25 @@ switch ( $_REQUEST[ 'action' ] ) {
         
     case 'MOSTRAR_USER':
     if ( !$_POST ) {//Si no se han recibido datos 
+        	$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+            $ADMIN = $USUARIO->comprobarAdmin();
+             if($ADMIN == true){
+            	$EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],'',$_REQUEST['AliasEvaluado'], '', '', '', '', '', '');
+            	$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
+            }
+            else{
+            	$EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['Alias'], '', '', '', '', '', '');
+            	$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
+            }
+            
         
-            $EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['Alias'], '', '', '', '', '', '');
-        
-		//Si se reciben datos
-  } else {
-                
-       $EVALUACION = get_data_form();
-}
 		//Variable que almacena los datos de la busqueda
 		$datos = $EVALUACION->SEARCH();
 		//Variable que almacena array con el CorrectoA de los atributos
-		$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
+		
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new EVALUACION_SHOWALL( $lista, $datos );
+	}
     break;
         
         
