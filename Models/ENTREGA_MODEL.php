@@ -85,21 +85,6 @@
 		}
          return false;
     }
-    
-    
-
-        
-    function entregasUsu($nombre){
-        
-        $sql = "SELECT * FROM ENTREGA WHERE Alias IN (SELECT AliasEvaluado FROM EVALUACION WHERE LoginEvaluador = '$nombre')";
-        if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { // si la busqueda es correcta devolvemos el recordset resultado
-
-			return $resultado;
-		}
-        
-    }
       
     function entregasLogin($nombre){
         $sql ="SELECT T.IdTrabajo,login,Alias,Ruta,FechaIniTrabajo,FechaFinTrabajo FROM ENTREGA ET,TRABAJO T WHERE ET.IdTrabajo=T.IdTrabajo AND login='$nombre'";

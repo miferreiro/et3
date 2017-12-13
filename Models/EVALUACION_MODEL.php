@@ -384,6 +384,39 @@ class EVALUACION{ //declaración de la clase
 			return 'No existe en la base de datos';
 	} // fin del metodo EDIT
 
+	function DevolverEntregas(){
+		$sql = "SELECT DISTINCT login,Alias,Horas,Ruta,E.IdTrabajo,
+   				CorrectoA,ComenIncorrectoA,
+       			CorrectoP,ComentIncorrectoP,OK
+				FROM ENTREGA EN,EVALUACION E
+				WHERE Alias = AliasEvaluado 
+				ORDER BY AliasEvaluado,E.IdHistoria";
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	}
+
+	function entregasUsu($nombre){
+        
+        $sql = "SELECT DISTINCT login,Alias,Horas,Ruta,E.IdTrabajo,
+   				CorrectoA,ComenIncorrectoA,
+       			CorrectoP,ComentIncorrectoP,OK
+				FROM ENTREGA EN,EVALUACION E
+				WHERE Alias = AliasEvaluado &&
+					  LoginEvaluador = '$nombre'
+				ORDER BY AliasEvaluado,E.IdHistoria";
+        if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+        
+    }
+
 } //fin de clase
 
 ?>
