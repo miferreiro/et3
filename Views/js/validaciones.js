@@ -2308,12 +2308,7 @@ function comprobarAddGrupo() {
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreGrupo, 60)) {
 					return false;
-				} else {
-					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-					if (!comprobarAlfabetico(NombreGrupo, 60)) {
-						return false;
-					}
-				}
+				} 
 			}
 		}
 	}
@@ -2386,12 +2381,7 @@ function comprobarEditGrupo() {
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreGrupo, 60)) {
 					return false;
-				} else {
-					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-					if (!comprobarAlfabetico(NombreGrupo, 60)) {
-						return false;
-					}
-				}
+				} 
 			}
 		}
 	}
@@ -2448,11 +2438,6 @@ function comprobarSearchGrupo() {
 		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(NombreGrupo, 60)) {
 			return false;
-		} else {
-			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-			if (!comprobarAlfabetico(NombreGrupo, 60)) {
-				return false;
-			}
 		}
 	}
 

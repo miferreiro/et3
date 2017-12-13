@@ -181,8 +181,14 @@ array(
     'No hay suficiente número de entregas para asignar el número de QAs solicitado' => 'Non hay o suficiente número de entregas para asignar o número de QAs solicitado',
     'No hay funcionalidad-accion disponible' => 'Non hay funcionalidad-accion disponible',
     'Debe borrar antes los usuarios de este grupo' => 'Debe borrar antes os usuarios deste grupo',
-    'Debe borrar antes los permisos de este grupo' => 'Debe borrar antes os usuarios deste grupo'
-    
+    'Debe borrar antes los permisos de este grupo' => 'Debe borrar antes os usuarios deste grupo',
+    '¿Está seguro de que quiere borrar este grupo de la tabla?' => 'Estás seguro de que queres eliminar este grupo da táboa?',
+	'Ya existe el grupo introducido en la base de datos' => 'O grupo xa inserido na base de datos xa existe'
+	
+	
+	
+	
+	
 	)
 ;
 
