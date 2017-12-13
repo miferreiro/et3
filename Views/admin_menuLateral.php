@@ -300,7 +300,7 @@ que comprueba permisos para cada una de las acciones -->
 					<a href="../Controllers/ENTREGA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a> 
 				</li>
 	<?php }
-		  if(permisosFun($_SESSION['login'],9)==true){ ?>
+		  if(permisosFun($_SESSION['login'],6)==true){ ?>
 				<li>
 					<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestión de QAs']; ?></a> 
 						<ul class="submenu">
