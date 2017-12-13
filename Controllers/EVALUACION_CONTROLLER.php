@@ -22,7 +22,7 @@ include '../Views/EVALUACION/EVALUACION_DELETE_View.php'; //incluye la vista del
 include '../Views/EVALUACION/EVALUACION_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 include '../Views/EVALUACION/EVALUACION_USUARIO_SHOWALL.php'; //incluye la vista del showall
-include '../Views/ENTREGA/ENTREGA_USUARIO_SHOWALL.php'; //incluye la vista del showall
+include '../Views/EVALUACION/EVALUACION_MOSTRAR_USER_View.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_USUARIO_EDIT.php'; //incluye la vista del showall
 include '../Views/DEFAULT_View.php';
 
@@ -183,46 +183,34 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena array con el CorrectoA de los atributos
 		$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new EVALUACION_USUARIO_SHOWALL( $lista, $datos );
+		new EVALUACION_SHOWALL( $lista, $datos );
     break;
         
         
     
 	default: //Caso que se ejecuta por defecto
-	if(permisosAcc($_SESSION['login'],12,5)==true){
+	//if(permisosAcc($_SESSION['login'],12,5)==true){
     if ( !$_POST ) {//Si no se han recibido datos 
         
               $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
               $ADMIN = $USUARIO->comprobarAdmin();
           
             if($ADMIN == true){
-                  
-               
-                	 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
+            	 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
+                 $datos=$EVALUACION->DevolverEntregas(); 
+                 $lista = array('login','IdTrabajo','Alias','Horas','Ruta');	
             }
             else{
-                $ENTREGA = new ENTREGA_MODEL( '','', '', '', '');
-                $datos=$ENTREGA->entregasUsu($_SESSION['login']);
+                $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
+                $datos=$EVALUACION->entregasUsu($_SESSION['login']);
                 //Variable que almacena array con el CorrectoA de los atributos
-		        $lista = array('login','IdTrabajo','Alias','Horas','Ruta');
+		        $lista = array('IdTrabajo','Alias','Horas','Ruta');
 		       //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		       new ENTREGA_USUARIO_SHOWALL( $lista, $datos );
-            }
-		
-		//Si se reciben datos
-  } else {
-                
-       $EVALUACION = get_data_form();
-		}
-		//Variable que almacena los datos de la busqueda
-		$datos = $EVALUACION->SEARCH();
-		//Variable que almacena array con el CorrectoA de los atributos
-		$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA','CorrectoP','ComentIncorrectoP','OK');
-		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new EVALUACION_SHOWALL( $lista, $datos );
-			}else{
-				new USUARIO_DEFAULT();
-			}		
+		    }
+		    new EVALUACION_MOSTRAR_USER( $lista, $datos );
+		//}else{
+			//new USUARIO_DEFAULT();
+		}		
 }
 
 ?>
