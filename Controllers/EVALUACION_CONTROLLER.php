@@ -12,6 +12,7 @@ session_start(); //solicito trabajar con la session
 include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Functions/permisosAcc.php';
 include '../Views/EVALUACION/EVALUACION_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_SEARCH_View.php'; //incluye la vista search
@@ -23,6 +24,7 @@ include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 include '../Views/EVALUACION/EVALUACION_USUARIO_SHOWALL.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_USUARIO_SHOWALL.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_USUARIO_EDIT.php'; //incluye la vista del showall
+include '../Views/DEFAULT_View.php';
 
 
 function get_data_form() {

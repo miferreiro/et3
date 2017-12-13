@@ -14,7 +14,8 @@ class NOTAS_SHOWALL {
 	function render($lista,$datos){
 		$this->lista = $lista;
 		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';e '../Views/Header.php';        include_once '../Functions/permisosAcc.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';e '../Views/Header.php';        
+		include_once '../Functions/permisosAcc.php';
 ?>
 		<div class="seccion">
 			<h2>
