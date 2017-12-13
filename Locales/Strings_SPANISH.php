@@ -183,7 +183,8 @@ array(
     'No hay funcionalidad-accion disponible' => 'No hay funcionalidad-accion disponible',
     'Debe borrar antes los usuarios de este grupo' => 'Debe borrar antes los usuarios de este grupo',
     'Debe borrar antes los permisos de este grupo' => 'Debe borrar antes los permisos de este grupo',
-	'¿Está seguro de que quiere borrar este grupo de la tabla?' => '¿Está seguro de que quiere borrar este grupo de la tabla?'
+	'¿Está seguro de que quiere borrar este grupo de la tabla?' => '¿Está seguro de que quiere borrar este grupo de la tabla?',
+	'Ya existe el grupo introducido en la base de datos' => 'Ya existe el grupo introducido en la base de datos'
 	
 	
 	
