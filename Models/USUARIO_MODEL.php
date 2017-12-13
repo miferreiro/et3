@@ -231,7 +231,7 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $sql = "SELECT * FROM ENTREGA WHERE (login = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
+        if ( $resultado->num_rows >= 1 ) {
             
             $dependencias2 = $resultado;
         }
@@ -245,7 +245,7 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $sql = "SELECT * FROM ASIGNAC_QA WHERE (LoginEvaluador = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) { 
+        if ( $resultado->num_rows >= 1 ) { 
             $dependencias3 = $resultado;
         }
         
@@ -259,7 +259,7 @@ class USUARIO_MODEL{ //declaración de la clase
 		
         $sql = "SELECT * FROM ASIGNAC_QA WHERE (LoginEvaluado = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias4 = $resultado;
         }
         
@@ -272,7 +272,7 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $sql = "SELECT * FROM NOTA_TRABAJO WHERE (login = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias5 = $resultado;
         }
         
@@ -285,7 +285,7 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $sql = "SELECT * FROM EVALUACION WHERE (LoginEvaluador = '$this->login')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows == 1 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias6 = $resultado;
         }
         

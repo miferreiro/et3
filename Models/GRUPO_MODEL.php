@@ -172,7 +172,7 @@
         
         $sql = "SELECT * FROM USU_GRUPO WHERE (IdGrupo= '$this->IdGrupo')";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows != 0 ) {
+        if ( $resultado->num_rows >= 0 ) {
             $dependencias = $resultado;
         }
         
