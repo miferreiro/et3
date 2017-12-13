@@ -1,11 +1,9 @@
 <?php
-/*  Archivo php
-	Nombre: ACCION_SHOWALL_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+/* 
+	Fecha de creación: 7/12/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class CORRECION_ENTREGA_RESULTADO {
+class CORRECION_ENTREGAS {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -24,7 +22,6 @@ class CORRECION_ENTREGA_RESULTADO {
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
 			<table>
-				
 				<tr>
 <?php
 					foreach ( $lista as $atributo ) {
@@ -35,15 +32,14 @@ class CORRECION_ENTREGA_RESULTADO {
 <?php
 					}
 ?>
-					
+					<th colspan="3" >
+						<?php echo $strings['Opciones']?>
+					</th>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
-				
-                <tr>
-                   
-                    
+				<tr>
 <?php
 					foreach ( $lista as $atributo ) {
 ?>
@@ -53,20 +49,23 @@ class CORRECION_ENTREGA_RESULTADO {
 
 ?>
 					</td>
-                    
 <?php
 					}
 ?>
 					<td>
+						<form action="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" method="get" style="display:inline" >
+                            <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
+                            <input type="hidden" name="LoginEvaluador" value="<?php echo $fila['LoginEvaluador']; ?>">
+							<td>
+                                <button type="submit" name="action" value="RESULTADOS" ><img src="../Views/icon/flecha.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+                            </td>
+						</form>
 
 				</tr>
 <?php
 				}
 ?>
 			</table>
-			<form action='../Controllers/CORRECION_ENTREGA_CONTROLLER.php' method="post">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
-			</form>
 		</div>
 <?php
 		include '../Views/Footer.php';

@@ -53,13 +53,29 @@ class EVALUACION{ //declaración de la clase
 		}
         
     }
+    function mostrarCorrecion($IdTrabajo,$nombre){
+        
+        
+       
+        $sql = "SELECT DISTINCT LoginEvaluador,E.IdTrabajo FROM EVALUACION E,ENTREGA ET WHERE 
+        ( E.IdTrabajo = '$IdTrabajo' && Alias = AliasEvaluado && login='$nombre')";
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		
+    if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado
+            
+            
+			return $resultado;
+		}
+    }
 
     function mostrarCorrecion1($IdTrabajo,$nombre){
         
         
        
-        $sql = "SELECT DISTINCT E.IdTrabajo,IdHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET WHERE 
-        ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$IdTrabajo' && Alias = AliasEvaluado && login='$nombre')";
+        $sql = "SELECT DISTINCT E.IdTrabajo,IdHistoria,CorrectoP,ComentIncorrectoP,CorrectoA,ComenIncorrectoA FROM EVALUACION E,ENTREGA ET WHERE 
+        ( E.IdTrabajo = '$IdTrabajo' && Alias = AliasEvaluado && LoginEvaluador='$nombre')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -90,7 +106,7 @@ class EVALUACION{ //declaración de la clase
         
         
        
-       $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,E.IdTrabajo,IdHistoria,OK FROM EVALUACION E,ENTREGA ET WHERE 
+       $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,E.IdTrabajo,IdHistoria,CorrectoP,ComentIncorrectoP,CorrectoA,ComenIncorrectoA,OK FROM EVALUACION E,ENTREGA ET WHERE 
         ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$IdTrabajo' && AliasEvaluado='$alias' && LoginEvaluador='$nombre')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -101,8 +117,60 @@ class EVALUACION{ //declaración de la clase
 			return $resultado;
 		}
 }
+    
+    function notaEntrega($trabajo,$login){
+        $bien = "SELECT COUNT(CorrectoP) FROM EVALUACION E,ENTREGA ET WHERE CorrectoP=1 AND login='$login' AND IdTrabajo='$trabajo' AND AliasEvaluado='Alias'";
+        $historias = "SELECT COUNT(IdHistoria) FROM HISTORIA WHERE IdTrabajo='$trabajo'";
+        if ( !( $good = $this->mysqli->query( $bien ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado 
+			return $good;
+		}
+         if ( !( $total = $this->mysqli->query( $historias ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado 
+			return $total;
+		}
+        
+        $nota=(($good*10)/$total);
+               
+        return $nota;
+        
+    }
+    
+    function notaQa($trabajo,$login){
+        
+        $bien = "SELECT COUNT(OK) FROM EVALUACION WHERE OK=1 AND IdTrabajo='$trabajo' AND LoginEvaluador='$login' ";
+        $historias="SELECT COUNT(IdHistoria) FROM HISTORIA WHERE IdTrabajo='$trabajo'";
+        $asignadas="SELECT  COUNT(DISTINCT AliasEvaluado) FROM EVALUACION WHERE IdTrabajo='$trabajo' AND LoginEvaluador='$login'";
+        
+         if ( !( $asig = $this->mysqli->query( $asignadas ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado 
+			return $asig;
+		}
+         if ( !( $history = $this->mysqli->query( $historias ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado 
+			return $history;
+		}
+         if ( !( $good = $this->mysqli->query( $bien ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si existe se devuelve la tupla resultado 
+			return $good;
+		}
+       
+        
+        $total=$asig*$history;
+        
+        $nota=(($good*10)/$total);
+        
+        return $nota;
+        
+    }
+    
 
-	//funcion SEARCH: hace una búsqueda en la tabla con
+	//funcion SEARCH: hace una búsqueda en la tabla con 
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad

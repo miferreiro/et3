@@ -14,7 +14,7 @@ switch($_REQUEST['action']){
         
     case 'RESULTADOS':
         $CORRECION = new EVALUACION('','','','','','','','','');
-        $lista=array('LoginEvaluador','AliasEvaluado','IdTrabajo','IdHistoria','OK');
+        $lista=array('LoginEvaluador','AliasEvaluado','IdTrabajo','IdHistoria','CorrectoP','ComentIncorrectoP','CorrectoA','ComenIncorrectoA','OK');
         $datos =$CORRECION->mostrarCorrecion3($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado']);
         new CORRECION_QA_RESULTADOS($lista,$datos);
         break;
