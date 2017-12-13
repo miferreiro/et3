@@ -53,11 +53,21 @@ class EVALUACION_SHOWALL {
 					</th>
 <?php } ?>
 				</tr>
+				<tr><td></td></tr>
+				<tr></tr>
 <?php
+				$his = -10000;
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
 <?php
+					if ($fila['IdHistoria'] != $his) {
+?>
+						<th colspan="6"><?php echo $fila['TextoHistoria']; ?></th>
+						<tr></tr>
+<?php
+					}
+					$his = $fila['IdHistoria'];
 					foreach ( $lista as $atributo ) {
 ?>
 					<td>
