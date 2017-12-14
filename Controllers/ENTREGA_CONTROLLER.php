@@ -8,6 +8,7 @@ session_start(); //solicito trabajar con la session
 include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Functions/permisosAcc.php';
+include '../Functions/comprobarAdministrador.php';
 include '../Views/ENTREGA/ENTREGA_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_USU_SHOWALL.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_SUBIR_SHOWALL_View.php'; //incluye la vista del showall
@@ -220,7 +221,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}else{
 			$cont=0;
 			$PERMISO = $ENTREGA->comprobarPermisos();
-						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
 			if($fila['IdFuncionalidad']=='8'){
 				if($fila['IdAccion']=='1'){
 			    //Crea una vista add para ver la tupla
@@ -295,7 +296,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($cont>=1){
 			new ENTREGA_SEARCH();
 			}else{
-			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 			}
 			}
 		//Si se reciben datos	
@@ -358,12 +359,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Creación de la vista showcurrent
 		new USUARIO_SHOWCURRENT( $valores );
 		}else{
-			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
 		}
 		break;
         
     case 'SUBIR_ENTREGA':
+		if(permisosAcc($_SESSION['login'],8,10)==true){		
            $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
            $PERMISO = $USUARIO->comprobarPermisos();
         
@@ -389,30 +391,19 @@ switch ( $_REQUEST[ 'action' ] ) {
         //exit;
           $lista = array('login','IdTrabajo','Alias','Horas','Ruta');
           new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,false );
-        
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+		}
         break;
         
 	default: //Caso que se ejecuta por defecto
-         $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
-         $PERMISO = $ENTREGA->comprobarPermisos();
-         $ADMIN = $ENTREGA->comprobarAdmin();
-	if(permisosAcc($_SESSION['login'],8,5)==true){        
+	if(comprobarAdministrador($_SESSION['login'])==true){        
 		if ( !$_POST ) {//Si no se han recibido datos 
-          
-              if($ADMIN == true){
                   $ENTREGA = new ENTREGA_MODEL( '','', '', '', '');
-            }
-            
-               else{
-                    $ENTREGA = new TRABAJO('','','','','');
-                     $datos=$ENTREGA->SEARCH();
-                     $lista = array('IdTrabajo','NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo','PorcentajeNota');
-		             new ENTREGA_USU_SHOWALL( $lista, $datos );
-               }
 		//Si se reciben datos
 		} 
         else {
-			$ENTREGA = get_data_form();
+			      $ENTREGA = get_data_form();
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $ENTREGA->SEARCH();
@@ -421,7 +412,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,true );
 			}else{
-				new USUARIO_DEFAULT();
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
 			}
 }
 

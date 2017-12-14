@@ -7,7 +7,7 @@
 -->
 <?php 
 include_once '../Functions/permisosAcc.php';
-include '../Functions/permisosFun.php';
+include_once '../Functions/comprobarAdministrador.php';
  /*include_once '../Models/USU_GRUPO_MODEL.php'; 
 $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
 $admin = $USUARIO->comprobarAdmin();
@@ -350,14 +350,18 @@ que comprueba permisos para cada una de las acciones -->
 						</ul>
 				</li>
 	<?php }
-		 if((permisosAcc($_SESSION['login'],8,0)==true)||(permisosAcc($_SESSION['login'],8,3)==true) || (permisosAcc($_SESSION['login'],8,5)==true)){?>
+		 if(comprobarAdministrador($_SESSION['login']) || (permisosAcc($_SESSION['login'],8,0)==true)||(permisosAcc($_SESSION['login'],8,3)==true) ){?>
 				<li>
 					<a class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a> 
 						<ul class="submenu">
-						<?php if(permisosAcc($_SESSION['login'],8,5)==true){ ?>
+						<?php if(comprobarAdministrador($_SESSION['login'])==true){ ?>
 							<li>
 								<a href="../Controllers/ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 							</li>
+						<?php }else{ ?>
+							<li>
+								<a href="../Controllers/TRABAJO_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
+							</li>			 
 						<?php }
 							 if(permisosAcc($_SESSION['login'],8,0)==true){ ?>
 							<li>
