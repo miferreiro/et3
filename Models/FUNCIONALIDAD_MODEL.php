@@ -133,7 +133,7 @@ class FUNCIONALIDAD {
 
 		$dependencias = null;
 
-		$sql = "SELECT * FROM FUNC_ACCION WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
+		$sql = "SELECT FA.IdFuncionalidad, IdAccion FROM FUNC_ACCION FA, FUNCIONALIDAD F WHERE FA.IdFuncionalidad = '$this->IdFuncionalidad' AND FA.IdFuncionalidad = F.IdFuncionalidad";
 		$resultado = $this->mysqli->query( $sql );
 		if ( $resultado->num_rows >= 1 ) {
 			$dependencias = $resultado;

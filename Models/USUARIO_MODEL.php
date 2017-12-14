@@ -268,7 +268,7 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $dependencias5 = null;
         
-        $sql = "SELECT NT.login,IdTrabajo,NotaTrabajo FROM NOTA_TRABAJO NT, USUARIO U WHERE NT.login = '$this->login' AND U.login=NT.login;";
+        $sql = "SELECT NT.login,IdTrabajo,NotaTrabajo FROM NOTA_TRABAJO NT, USUARIO U WHERE NT.login = '$this->login' AND U.login=NT.login";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
             $dependencias5 = $resultado;
@@ -281,7 +281,7 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $dependencias6 = null;
         
-        $sql = "SELECT IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, USUARIO U WHERE LoginEvaluador = '$this->login' AND LoginEvaluador = login;";
+        $sql = "SELECT IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, USUARIO U WHERE LoginEvaluador = '$this->login' AND LoginEvaluador = login";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
             $dependencias6 = $resultado;

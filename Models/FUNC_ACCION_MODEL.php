@@ -169,7 +169,7 @@
         
         $dependencias = null;
 
-		$sql = "SELECT * FROM PERMISO WHERE (IdFuncionalidad = '$this->IdFuncionalidad' && IdAccion = '$this->IdAccion')";
+		$sql = "SELECT IdGrupo, P.IdFuncionalidad, P.IdAccion FROM PERMISO P, FUNC_ACCION FA WHERE P.IdFuncionalidad = '$this->IdFuncionalidad' && P.IdAccion = '$this->IdAccion' && P.IdFuncionalidad = FA.IdFuncionalidad && P.IdAccion=FA.IdAccion";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
