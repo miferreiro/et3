@@ -1,4 +1,4 @@
-ï»¿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.6.6deb4
 -- https://www.phpmyadmin.net/
 --
@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 -- Database: `IUET32017`
 --
 -- jrodeiro - 7/10/2017
--- script de creaciÃ³n de la bd, usuario, asignaciÃ³n de privilegios a ese usuario sobre la bd
--- creaciÃ³n de tabla e insert sobre la misma.
+-- script de creación de la bd, usuario, asignación de privilegios a ese usuario sobre la bd
+-- creación de tabla e insert sobre la misma.
 --
 -- CREAR LA BD BORRANDOLA SI YA EXISTIESE
 --
@@ -126,9 +126,9 @@ CREATE TABLE `TRABAJO` (
 --
 -- Table structure for table `EVALUACION`
 --
--- OK : indicaciÃ³n de si esta correcta o no la QA (1 correcto, 0 Incorrecto)
--- CorrectoP : IndicaciÃ³n de si esta correcta la historia de la ET
--- CorrectoA : evaluaciÃ³n de la historia por parte del alumno evaluador de esa historia de esa ET
+-- OK : indicación de si esta correcta o no la QA (1 correcto, 0 Incorrecto)
+-- CorrectoP : Indicación de si esta correcta la historia de la ET
+-- CorrectoA : evaluación de la historia por parte del alumno evaluador de esa historia de esa ET
 
 CREATE TABLE `EVALUACION` (
   `IdTrabajo` varchar(6) COLLATE latin1_spanish_ci NOT NULL,
@@ -307,6 +307,7 @@ INSERT INTO `accion` (`IdAccion`, `NombreAccion`, `DescripAccion`) VALUES
 ('7', 'CONSULT', 'CONSULT'),
 ('8', 'GENQAS', 'GENQAS'),
 ('9', 'GENHIST', 'GENHIST');
+('10', 'SOLOUSU', 'SOLOUSU');
 
   
   
@@ -338,24 +339,43 @@ INSERT INTO `func_accion` (`IdFuncionalidad`, `IdAccion`) VALUES
 ('1', '4'),
 ('1', '5'),
 ('1', '6'),
+('1', '7'),
+('1', '8'),
+('1', '9'),
+('1', '10'),
 ('10', '0'),
 ('10', '1'),
 ('10', '2'),
 ('10', '3'),
 ('10', '4'),
 ('10', '5'),
+('10', '6'),
+('10', '7'),
+('10', '8'),
+('10', '9'),
+('10', '10'),
 ('11', '0'),
 ('11', '1'),
 ('11', '2'),
 ('11', '3'),
 ('11', '4'),
 ('11', '5'),
+('11', '6'),
+('11', '7'),
+('11', '8'),
+('11', '9'),
+('11', '10'),
 ('12', '0'),
 ('12', '1'),
 ('12', '2'),
 ('12', '3'),
 ('12', '4'),
 ('12', '5'),
+('12', '6'),
+('12', '7'),
+('12', '8'),
+('12', '9'),
+('12', '10'),
 ('13', '7'),
 ('2', '0'),
 ('2', '1'),
@@ -364,6 +384,10 @@ INSERT INTO `func_accion` (`IdFuncionalidad`, `IdAccion`) VALUES
 ('2', '4'),
 ('2', '5'),
 ('2', '6'),
+('2', '7'),
+('2', '8'),
+('2', '9'),
+('2', '10'),
 ('3', '0'),
 ('3', '1'),
 ('3', '2'),
@@ -371,6 +395,10 @@ INSERT INTO `func_accion` (`IdFuncionalidad`, `IdAccion`) VALUES
 ('3', '4'),
 ('3', '5'),
 ('3', '6'),
+('3', '7'),
+('3', '8'),
+('3', '9'),
+('3', '10'),
 ('4', '0'),
 ('4', '1'),
 ('4', '2'),
