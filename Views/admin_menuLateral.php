@@ -421,7 +421,7 @@ que comprueba permisos para cada una de las acciones -->
 								<a href="../Controllers/NOTAS_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 							</li>
 						<?php }
-							 if(permisosAcc($_SESSION['login'],openssl_pkcs7_decrypt(),0)==true){ ?>
+							 if(permisosAcc($_SESSION['login'],7,0)==true){ ?>
 							<li>
 								<a href="../Controllers/NOTAS_CONTROLLER.php?action=ADD" class="segundoNivel"><?php echo $strings['Añadir']; ?></a>
 							</li>
