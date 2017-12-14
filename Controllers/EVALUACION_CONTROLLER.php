@@ -21,7 +21,6 @@ include '../Views/EVALUACION/EVALUACION_EDIT_View.php'; //incluye la vista edit
 include '../Views/EVALUACION/EVALUACION_DELETE_View.php'; //incluye la vista delete
 include '../Views/EVALUACION/EVALUACION_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
-include '../Views/EVALUACION/EVALUACION_USUARIO_SHOWALL.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_MOSTRAR_USER_View.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_USUARIO_EDIT.php'; //incluye la vista del showall
 include '../Views/DEFAULT_View.php';
@@ -203,13 +202,13 @@ switch ( $_REQUEST[ 'action' ] ) {
             if($ADMIN == true){
             	 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                  $datos=$EVALUACION->DevolverEntregas(); 
-                 $lista = array('IdTrabajo','login','Alias','IdHistoria','CorrectoA','ComenIncorrectoA');	
+                 $lista = array('IdTrabajo','login','Alias');	
             }
             else{
                 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                 $datos=$EVALUACION->entregasUsu($_SESSION['login']);
                 //Variable que almacena array con el CorrectoA de los atributos
-		        $lista = array('IdTrabajo','login','Alias','IdHistoria','CorrectoA','ComenIncorrectoA');
+		        $lista = array('IdTrabajo','login','Alias');
 		       //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		    }
 		    new EVALUACION_MOSTRAR_USER( $lista, $datos );
