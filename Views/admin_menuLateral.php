@@ -272,51 +272,51 @@ que comprueba permisos para cada una de las acciones -->
 						<?php } ?>
 						</ul>
 				</li>
-
 	<?php }
-		 if((permisosAcc($_SESSION['login'],9,7)==true)||(permisosAcc($_SESSION['login'],13,7)==true)){?>
+	if((permisosAcc($_SESSION['login'],11,5)==true)||(permisosAcc($_SESSION['login'],11,0)==true)||        (permisosAcc($_SESSION['login'],11,3)==true)){ ?>
 				<li>
-					<a class="primerNivel"><?php echo $strings['Consulta de correciones']; ?></a> 
+					<a class="primerNivel"><?php echo $strings['Gestion de trabajos']; ?></a>
 						<ul class="submenu">
-						<?php if(permisosAcc($_SESSION['login'],9,7)==true){ ?>
+						<?php if(permisosAcc($_SESSION['login'],11,5)==true){ ?>
 							<li>
-								<a href="../Controllers/CORRECION_QA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Correción QAs']; ?></a>
+								<a href="../Controllers/TRABAJO_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 							</li>
 						<?php }
-							 if(permisosAcc($_SESSION['login'],13,7)==true){ ?>
+							 if(permisosAcc($_SESSION['login'],11,0)==true){ ?>
 							<li>
-								<a href="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Correción entregas']; ?></a>
-							</li>
-                        <?php } ?>
-						</ul>
-				</li>
-	 <?php }
-		  if(permisosFun($_SESSION['login'],7)==true){ ?>
-	            <li>
-					<a href="../Controllers/NOTAS_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de notas']; ?></a> 
-				</li>
-	<?php }
-		 if((permisosAcc($_SESSION['login'],8,0)==true)||(permisosAcc($_SESSION['login'],8,3)==true) || (permisosAcc($_SESSION['login'],8,5)==true)){?>
-				<li>
-					<a class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a> 
-						<ul class="submenu">
-						<?php if(permisosAcc($_SESSION['login'],8,5)==true){ ?>
-							<li>
-								<a href="../Controllers/ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
+								<a href="../Controllers/TRABAJO_CONTROLLER.php?action=ADD" class="segundoNivel"><?php echo $strings['Añadir']; ?></a>
 							</li>
 						<?php }
-							 if(permisosAcc($_SESSION['login'],8,0)==true){ ?>
+							 if(permisosAcc($_SESSION['login'],11,3)==true){ ?>
 							<li>
-								<a href="../Controllers/ENTREGA_CONTROLLER.php?action=ADD" class="segundoNivel"><?php echo $strings['Añadir']; ?></a>
-							</li>
-						<?php }
-							 if(permisosAcc($_SESSION['login'],8,3)==true){ ?>
-							<li>
-								<a href="../Controllers/ENTREGA_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
+								<a href="../Controllers/TRABAJO_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
 							</li>
 						<?php } ?>
 						</ul>
 				</li>
+	<?php }
+	if((permisosAcc($_SESSION['login'],10,5)==true)||(permisosAcc($_SESSION['login'],10,0)==true)||        (permisosAcc($_SESSION['login'],10,3)==true)){ ?>
+				<li>
+					<a class="primerNivel"><?php echo $strings['Gestion de historias']; ?></a>
+						<ul class="submenu">
+						<?php if(permisosAcc($_SESSION['login'],10,5)==true){ ?>
+							<li>
+								<a href="../Controllers/HISTORIA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
+							</li>
+						<?php }
+							 if(permisosAcc($_SESSION['login'],10,0)==true){ ?>
+							<li>
+								<a href="../Controllers/HISTORIA_CONTROLLER.php?action=ADD" class="segundoNivel"><?php echo $strings['Añadir']; ?></a>
+							</li>
+						<?php }
+							 if(permisosAcc($_SESSION['login'],10,3)==true){ ?>
+							<li>
+								<a href="../Controllers/HISTORIA_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
+							</li>
+						<?php } ?>
+						</ul>
+				</li>
+
 	<?php }
 		 if((permisosAcc($_SESSION['login'],6,0)==true)||(permisosAcc($_SESSION['login'],6,3)==true) || (permisosAcc($_SESSION['login'],6,5)==true) ||(permisosAcc($_SESSION['login'],6,8)==true) ||(permisosAcc($_SESSION['login'],6,9)==true)){?>
 				<li>
@@ -350,54 +350,89 @@ que comprueba permisos para cada una de las acciones -->
 						</ul>
 				</li>
 	<?php }
-	if((permisosAcc($_SESSION['login'],10,5)==true)||(permisosAcc($_SESSION['login'],10,0)==true)||        (permisosAcc($_SESSION['login'],10,3)==true)){ ?>
+		 if((permisosAcc($_SESSION['login'],8,0)==true)||(permisosAcc($_SESSION['login'],8,3)==true) || (permisosAcc($_SESSION['login'],8,5)==true)){?>
 				<li>
-					<a class="primerNivel"><?php echo $strings['Gestion de historias']; ?></a>
+					<a class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a> 
 						<ul class="submenu">
-						<?php if(permisosAcc($_SESSION['login'],10,5)==true){ ?>
+						<?php if(permisosAcc($_SESSION['login'],8,5)==true){ ?>
 							<li>
-								<a href="../Controllers/HISTORIA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
+								<a href="../Controllers/ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 							</li>
 						<?php }
-							 if(permisosAcc($_SESSION['login'],10,0)==true){ ?>
+							 if(permisosAcc($_SESSION['login'],8,0)==true){ ?>
 							<li>
-								<a href="../Controllers/HISTORIA_CONTROLLER.php?action=ADD" class="segundoNivel"><?php echo $strings['Añadir']; ?></a>
+								<a href="../Controllers/ENTREGA_CONTROLLER.php?action=ADD" class="segundoNivel"><?php echo $strings['Añadir']; ?></a>
 							</li>
 						<?php }
-							 if(permisosAcc($_SESSION['login'],10,3)==true){ ?>
+							 if(permisosAcc($_SESSION['login'],8,3)==true){ ?>
 							<li>
-								<a href="../Controllers/HISTORIA_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
+								<a href="../Controllers/ENTREGA_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
+							</li>
+						<?php } ?>
+						</ul>
+				</li>
+
+	<?php }
+	if((permisosAcc($_SESSION['login'],12,5)==true)||(permisosAcc($_SESSION['login'],12,0)==true)||        (permisosAcc($_SESSION['login'],12,3)==true)){ ?>
+				<li>
+					<a class="primerNivel"><?php echo $strings['Gestion de evaluaciones']; ?></a>
+						<ul class="submenu">
+						<?php if(permisosAcc($_SESSION['login'],12,5)==true){ ?>
+							<li>
+								<a href="../Controllers/EVALUACION_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
+							</li>
+						<?php }
+							 if(permisosAcc($_SESSION['login'],12,0)==true){ ?>
+							<li>
+								<a href="../Controllers/EVALUACION_CONTROLLER.php?action=ADD" class="segundoNivel"><?php echo $strings['Añadir']; ?></a>
+							</li>
+						<?php }
+							 if(permisosAcc($_SESSION['login'],12,3)==true){ ?>
+							<li>
+								<a href="../Controllers/EVALUACION_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
 							</li>
 						<?php } ?>
 						</ul>
 				</li>
 	<?php }
-	if((permisosAcc($_SESSION['login'],11,5)==true)||(permisosAcc($_SESSION['login'],11,0)==true)||        (permisosAcc($_SESSION['login'],11,3)==true)){ ?>
+		 if((permisosAcc($_SESSION['login'],9,7)==true)||(permisosAcc($_SESSION['login'],13,7)==true)){?>
 				<li>
-					<a class="primerNivel"><?php echo $strings['Gestion de trabajos']; ?></a>
+					<a class="primerNivel"><?php echo $strings['Consulta de correciones']; ?></a> 
 						<ul class="submenu">
-						<?php if(permisosAcc($_SESSION['login'],11,5)==true){ ?>
+						<?php if(permisosAcc($_SESSION['login'],9,7)==true){ ?>
 							<li>
-								<a href="../Controllers/TRABAJO_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
+								<a href="../Controllers/CORRECION_QA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Correción QAs']; ?></a>
 							</li>
 						<?php }
-							 if(permisosAcc($_SESSION['login'],11,0)==true){ ?>
+							 if(permisosAcc($_SESSION['login'],13,7)==true){ ?>
 							<li>
-								<a href="../Controllers/TRABAJO_CONTROLLER.php?action=ADD" class="segundoNivel"><?php echo $strings['Añadir']; ?></a>
+								<a href="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Correción entregas']; ?></a>
 							</li>
-						<?php }
-							 if(permisosAcc($_SESSION['login'],11,3)==true){ ?>
-							<li>
-								<a href="../Controllers/TRABAJO_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
-							</li>
-						<?php } ?>
+                        <?php } ?>
 						</ul>
 				</li>
 	<?php }
-		 if(permisosFun($_SESSION['login'],12)==true){ ?>
+		 if((permisosAcc($_SESSION['login'],7,0)==true)||(permisosAcc($_SESSION['login'],7,3)==true) || (permisosAcc($_SESSION['login'],7,5)==true)){?>
 				<li>
-					<a href="../Controllers/EVALUACION_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de evaluaciones']; ?></a> 
-				</li>
+					<a class="primerNivel"><?php echo $strings['Gestion de notas']; ?></a> 
+						<ul class="submenu">
+						<?php if(permisosAcc($_SESSION['login'],7,5)==true){ ?>
+							<li>
+								<a href="../Controllers/NOTAS_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
+							</li>
+						<?php }
+							 if(permisosAcc($_SESSION['login'],openssl_pkcs7_decrypt(),0)==true){ ?>
+							<li>
+								<a href="../Controllers/NOTAS_CONTROLLER.php?action=ADD" class="segundoNivel"><?php echo $strings['Añadir']; ?></a>
+							</li>
+						<?php }
+							 if(permisosAcc($_SESSION['login'],7,3)==true){ ?>
+							<li>
+								<a href="../Controllers/NOTAS_CONTROLLER.php?action=SEARCH" class="segundoNivel"><?php echo $strings['Buscador']; ?></a>
+							</li>
+						<?php } ?>
+
+
 	<?php } ?>
 			</ul>
 <?php } ?>

@@ -267,15 +267,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 			} else {
 				$PERMISO = new PERMISO_MODEL('', '', '', '','','');
 			}
-			$GRUPO = new GRUPO( '', '', '');
+			/*$GRUPO = new GRUPO( '', '', '');*/
 			//Variable que almacena los datos de la busqueda
 			$datos = $PERMISO->SEARCH2();
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion');
-			$DatosGrupo= $GRUPO->recuperarGrupo('');
+			/*$DatosGrupo= $GRUPO->recuperarGrupo('');*/
 			$ACL = $USUARIO->comprobarPermisos();
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo, $ACL ,true);
+			new PERMISO_SHOWALL( $lista, $datos, /*$DatosGrupo, */$ACL ,true);
 		}else{
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
             $cont=0;
@@ -295,11 +295,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$PERMISO = new PERMISO_MODEL( '', '', '', '', '', '');
 			}
 			$datos = $PERMISO->SEARCH2();
-			$GRUPO = new GRUPO( '', '', '');
-			$DatosGrupo= $GRUPO->recuperarGrupo($_REQUEST['IdGrupo']);
+			/*$GRUPO = new GRUPO( '', '', '');*/
+			/*$DatosGrupo= $GRUPO->recuperarGrupo($_REQUEST['IdGrupo']);*/
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
 			$ACL = $USUARIO->comprobarPermisos();
-			new PERMISO_SHOWALL( $lista, $datos, $DatosGrupo,$ACL,false);
+			new PERMISO_SHOWALL( $lista, $datos, /*$DatosGrupo,*/$ACL,false);
 		}else{
 		 	new USUARIO_DEFAULT();
 		}
