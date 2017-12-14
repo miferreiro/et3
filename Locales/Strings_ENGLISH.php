@@ -189,7 +189,8 @@ array(
     'Debe borrar antes los usuarios de este grupo' => 'You must delete the users of this group first',
     'Debe borrar antes los permisos de este grupo' => 'You must delete the permissions of this group first',
 	'¿Está seguro de que quiere borrar este grupo de la tabla?' => 'Are you sure you want to delete this group from the table?',
-	'Ya existe el grupo introducido en la base de datos' => 'The group already entered in the database already exists'
+	'Ya existe el grupo introducido en la base de datos' => 'The group already entered in the database already exists',
+	'Debe eliminar antes todas las dependencias para poder borrar este dato.' => 'You must first remove all dependencies in order to delete this data.'
     
 	
 	
