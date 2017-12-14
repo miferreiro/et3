@@ -60,7 +60,7 @@ class EVALUACION{ //declaración de la clase
     function mostrarQAS($nombre){
         
     
-    $sql = "SELECT  DISTINCT LoginEvaluador,IdTrabajo FROM EVALUACION  WHERE LoginEvaluador='brais'";
+    $sql = "SELECT  DISTINCT LoginEvaluador,IdTrabajo FROM EVALUACION  WHERE LoginEvaluador='$nombre'";
           
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';

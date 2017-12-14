@@ -36,7 +36,7 @@ switch($_REQUEST['action']){
         $datos =$CORRECION->mostrarQAS($_SESSION['login']);
 
         new CORRECION_QA($lista,$datos);
-        
+      
         
 }
 }else{
