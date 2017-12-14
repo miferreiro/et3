@@ -97,7 +97,7 @@ class TRABAJO_SHOWALL {
                             <td>
                                 <?php
 	                          if(permisosAcc($_SESSION['login'],8,10)==true){
-                                    if(date('Y-m-d')<$fila['FechaFinTrabajo']){
+                                    if(date('d-m-Y')<$fila['FechaFinTrabajo']){
                                  ?>
                                 
                                 <button type="submit" name="action" value="SUBIR_ENTREGA" ><img src="../Views/icon/flecha.png"  width="20" height="20" /></button>
