@@ -52,6 +52,12 @@ class FUNC_ACCION_DELETE {
 			<table>
             <tr>
 
+                    <td>
+                        <?php 
+				        echo $fila['IdGrupo'];
+                            
+                        ?>
+					</td>
 				    <td>
                         <?php 
 				        echo $fila['IdFuncionalidad'];
