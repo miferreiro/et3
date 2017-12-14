@@ -11,6 +11,8 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
     var $LoginEvaluado; // declaración del atributo LoginEvaluado
     var $AliasEvaluado;//declaración del atributo AliasEvaluado
 	var $mysqli; // declaración del atributo manejador de la bd
+	var $dependencias; // declaración de las dependencias
+	var $dependencias2; // declaración de las dependencias
 
 	//Constructor de la clase
 
@@ -159,7 +161,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 
 		$dependencias = null;
 
-		$sql = "SELECT * FROM EVALUACION WHERE (LoginEvaluador = '$this->LoginEvaluador')";
+		$sql = "SELECT E.IdTrabajo, E.LoginEvaluador, E.AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ASIGNAC_QA QA WHERE E.LoginEvaluador = '$this->LoginEvaluador' AND E.LoginEvaluador = QA.LoginEvaluador";
 		$resultado = $this->mysqli->query( $sql );
 		if ( $resultado->num_rows >= 1 ) {
 			$dependencias = $resultado;
@@ -172,7 +174,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 
 		$dependencias2= null;
 
-		$sql = "SELECT * FROM EVALUACION WHERE (LoginEvaluado = '$this->LoginEvaluado')";
+		$sql = "SELECT E.IdTrabajo, E.LoginEvaluador, E.AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ASIGNAC_QA QA WHERE QA.LoginEvaluado = '$this->LoginEvaluado' AND E.AliasEvaluado = QA.AliasEvaluado";
 		$resultado = $this->mysqli->query( $sql );
 		if ( $resultado->num_rows >= 1 ) {
 			$dependencias2 = $resultado;
