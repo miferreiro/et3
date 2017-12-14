@@ -362,7 +362,7 @@ class EVALUACION{ //declaración de la clase
 	} // fin del metodo EDIT
 
 	function DevolverEntregas(){
-		$sql = "SELECT DISTINCT login,Alias,Horas,Ruta,E.IdTrabajo,
+		$sql = "SELECT DISTINCT login,Alias,IdHistoria,Horas,Ruta,E.IdTrabajo,
    				CorrectoA,ComenIncorrectoA,
        			CorrectoP,ComentIncorrectoP,OK
 				FROM ENTREGA EN,EVALUACION E
