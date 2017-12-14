@@ -203,7 +203,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             if($ADMIN == true){
             	 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                  $datos=$EVALUACION->DevolverEntregas(); 
-                 $lista = array('login','IdTrabajo','Alias','Horas','Ruta');	
+                 $lista = array('IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');	
             }
             else{
                 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
