@@ -200,7 +200,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$datos = $PERMISO->SEARCH2();
 			/*$DatosGrupo= $PERMISO->recuperarGrupo('');*/
 			$lista = array( 'NombreGrupo','NombreFuncionalidad','NombreAccion' );
-			new PERMISO_SHOWALL( $lista, $datos/*, $DatosGrupo */);
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			$ACL = $USUARIO->comprobarPermisos();
+			if($ADMIN == true){
+			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+			new PERMISO_SHOWALL( $lista, $datos,$ACL,true);
+			}else{
+			new PERMISO_SHOWALL( $lista, $datos.$ACL,false );	
+			}
 		}
 		break;
 	case 'ASSIGN':

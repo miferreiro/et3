@@ -202,8 +202,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$datos = $GRUPOS->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'NombreGrupo','DescripGrupo');
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			$ADMIN = $USUARIO->comprobarAdmin();
+			$PERMISO = $USUARIO->comprobarPermisos();
+			if($ADMIN == true){
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			new GRUPO_SHOWALL( $lista, $datos );
+			new GRUPO_SHOWALL( $lista, $datos,$PERMISO,true);
+			}else{
+			new GRUPO_SHOWALL( $lista, $datos.$PERMISO,false );	
+			}
 		}
 		//Final del bloque
 		break;
