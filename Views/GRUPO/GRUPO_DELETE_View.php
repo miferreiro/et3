@@ -142,7 +142,7 @@ class GRUPO_DELETE {
             }
         
                  
-            if($dependencias == null && $dependencias2 == null){
+            else{
 
                 ?>
 			<p style="text-align:center;">
