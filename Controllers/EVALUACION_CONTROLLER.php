@@ -202,13 +202,13 @@ switch ( $_REQUEST[ 'action' ] ) {
             if($ADMIN == true){
             	 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                  $datos=$EVALUACION->DevolverEntregas(); 
-                 $lista = array('IdTrabajo','login','Alias');	
+                 $lista = array('IdTrabajo','Alias');	
             }
             else{
                 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                 $datos=$EVALUACION->entregasUsu($_SESSION['login']);
                 //Variable que almacena array con el CorrectoA de los atributos
-		        $lista = array('IdTrabajo','login','Alias');
+		        $lista = array('IdTrabajo','Alias');
 		       //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		    }
 		    new EVALUACION_MOSTRAR_USER( $lista, $datos );
