@@ -226,7 +226,7 @@ class ASIGNAC_QA_DELETE {
             
             
             
-            else{
+            if($dependencias == null && $dependencias2 == null){
                 
             ?>
 			<p style="text-align:center;">
