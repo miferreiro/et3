@@ -147,7 +147,7 @@ class TRABAJO{
         
         $dependencias = null;
 
-		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo')";
+		$sql = "SELECT E.IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, TRABAJO T WHERE E.IdTrabajo = '$this->IdTrabajo' AND E.IdTrabajo = T.IdTrabajo";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
@@ -160,7 +160,7 @@ class TRABAJO{
         
         $dependencias2 = null;
 
-		$sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo')";
+		$sql = "SELECT H.IdTrabajo, IdHistoria, TextoHistoria FROM HISTORIA H, TRABAJO T WHERE H.IdTrabajo = '$this->IdTrabajo' AND H.IdTrabajo = T.IdTrabajo";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
             $dependencias2 = $resultado;
@@ -173,7 +173,7 @@ class TRABAJO{
         
         $dependencias3 = null;
 
-		$sql = "SELECT * FROM NOTA_TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
+		$sql = "SELECT login, NT.IdTrabajo, NotaTrabajo FROM NOTA_TRABAJO NT, TRABAJO T WHERE NT.IdTrabajo = '$this->IdTrabajo' AND NT.IdTrabajo = T.IdTrabajo";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
             $dependencias3 = $resultado;
@@ -186,7 +186,7 @@ class TRABAJO{
         
         $dependencias4 = null;
 
-		$sql = "SELECT * FROM ASIGNAC_QA WHERE (IdTrabajo = '$this->IdTrabajo')";
+		$sql = "SELECT QA.IdTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, TRABAJO T WHERE QA.IdTrabajo = '$this->IdTrabajo' AND QA.IdTrabajo = T.IdTrabajo";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
             $dependencias4 = $resultado;
@@ -199,7 +199,7 @@ class TRABAJO{
         
         $dependencias5 = null;
 
-		$sql = "SELECT * FROM ENTREGA WHERE (IdTrabajo = '$this->IdTrabajo')";
+		$sql = "SELECT login, E.IdTrabajo, Alias, Horas, Ruta FROM ENTREGA E, TRABAJO T WHERE E.IdTrabajo = '$this->IdTrabajo' AND E.IdTrabajo=T.IdTrabajo";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
             $dependencias5 = $resultado;
