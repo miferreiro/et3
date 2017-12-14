@@ -7,19 +7,19 @@
 */
 class ENTREGA_SHOWALL {
 
-	function __construct( $lista, $datos, $PERMISO, $admin) {
+	function __construct( $lista, $datos/*, $PERMISO, $admin*/) {
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->PERMISO = $PERMISO;
-		$this->admin = $admin;
-		$this->render($this->lista,$this->datos,$this->PERMISO,$this->admin);
+		/*$this->PERMISO = $PERMISO;
+		$this->admin = $admin;*/
+		$this->render($this->lista,$this->datos/*,$this->PERMISO,$this->admin*/);
 	}
 	
-	function render($lista,$datos,$PERMISO,$admin){
+	function render($lista,$datos/*,$PERMISO,$admin*/){
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->PERMISO = $PERMISO;
-		$this->admin = $admin;
+		/*$this->PERMISO = $PERMISO;
+		$this->admin = $admin;*/
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
         include_once '../Functions/permisosAcc.php';
 /*$ADD=false;	

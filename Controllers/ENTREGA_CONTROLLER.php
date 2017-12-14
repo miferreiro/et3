@@ -301,9 +301,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		//Si se reciben datos	
 		} else {
-            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
+           /* $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
 			$PERMISO = $ENTREGA->comprobarPermisos();	
-			$ADMIN = $ENTREGA->comprobarAdmin();
+			$ADMIN = $ENTREGA->comprobarAdmin();*/
 			//Variable que almacena los datos recogidos de los atributos
 			$ENTREGA = get_data_form();
 			//Variable que almacena el resultado de la busqueda
@@ -311,11 +311,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			if($ADMIN == true){
-				new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,true );
-			}else{
-				new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,false );
-			}  
+
+				new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,true */);
+  
             /*
 			//Variable que almacena los datos recogidos de los atributos
 			$ENTREGA = get_data_form();
@@ -390,7 +388,7 @@ switch ( $_REQUEST[ 'action' ] ) {
        // var_dump($datos);
         //exit;
           $lista = array('login','IdTrabajo','Alias','Horas','Ruta');
-          new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,false );
+          new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,false */);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
 		}
@@ -410,7 +408,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena array con el CorrectoA de los atributos
 		$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new ENTREGA_SHOWALL( $lista, $datos,$PERMISO,true );
+		new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,true */);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
 			}
