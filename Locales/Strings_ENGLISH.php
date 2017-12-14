@@ -19,6 +19,7 @@ array(
 	'Hombre' => 'Man',
 	'Mujer' => 'Woman',
 	'Añadir' => 'Add',
+	'No puedes eliminar ese grupo' => 'You can not delete that group',
 	'Formulario de búsqueda' => 'Search form',
 	'Formulario de modificación' => 'Edit form',	
 	'El usuario no tiene los permisos necesarios' => 'The user does not have the necessary permits',

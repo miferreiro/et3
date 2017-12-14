@@ -106,11 +106,13 @@
 	    // se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo' && (IdGrupo <> '00000A' && IdGrupo <> '00001A'))";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
-
+        if($this->IdGrupo == '00000A' || $this->IdGrupo == '00001A'){
+			return 'No puedes eliminar ese grupo';
+		}else{
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo' )";
@@ -121,6 +123,7 @@
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe
 		else
 			return "No existe";
+		}
 	} // fin metodo DELETE
   
         // funcion RellenaDatos()

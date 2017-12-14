@@ -18,6 +18,7 @@ array(
 	'Elija sexo' => 'Elija sexo',
 	'Hombre' => 'Hombre',
 	'Mujer' => 'Mujer',
+	'No puedes eliminar ese grupo' => 'No puedes eliminar ese grupo',
 	'Formulario de búsqueda' => 'Formulario de búsqueda',
 	'Formulario de modificación' => 'Formulario de modificación',
 	'Formulario de inserción'=> 'Formulario de inserción', 
