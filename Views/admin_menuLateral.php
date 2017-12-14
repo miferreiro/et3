@@ -400,7 +400,7 @@ que comprueba permisos para cada una de las acciones -->
 						</ul>
 				</li>
 	<?php }
-		 if((permisosAcc($_SESSION['login'],9,7)==true)||(permisosAcc($_SESSION['login'],13,7)==true)){?>
+		 if(comprobarAdministrador($_SESSION['login']==false) || (permisosAcc($_SESSION['login'],9,7)==true)||(permisosAcc($_SESSION['login'],13,7)==true)){?>
 				<li>
 					<a class="primerNivel"><?php echo $strings['Consulta de correciones']; ?></a> 
 						<ul class="submenu">
