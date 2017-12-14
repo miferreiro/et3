@@ -119,7 +119,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		break;
 	default:
-	if(permisosAcc($_SESSION['login'],11,5)==true){
+	if(permisosAcc($_SESSION['login'],11,5)==true || permisosAcc($_SESSION['login'],8,10)==true){
 		if ( !$_POST ) {
 			$TRABAJO = new TRABAJO('','','','','');
 		} 
