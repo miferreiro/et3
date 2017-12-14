@@ -350,7 +350,7 @@ que comprueba permisos para cada una de las acciones -->
 						</ul>
 				</li>
 	<?php }
-		 if(comprobarAdministrador($_SESSION['login']) || (permisosAcc($_SESSION['login'],8,0)==true)||(permisosAcc($_SESSION['login'],8,3)==true) ){?>
+		 if(comprobarAdministrador($_SESSION['login']) || (permisosAcc($_SESSION['login'],8,0)==true)||(permisosAcc($_SESSION['login'],8,3)==true) || (permisosAcc($_SESSION['login'],8,10)==true)){?>
 				<li>
 					<a class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a> 
 						<ul class="submenu">
@@ -358,7 +358,8 @@ que comprueba permisos para cada una de las acciones -->
 							<li>
 								<a href="../Controllers/ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 							</li>
-						<?php }else{ ?>
+						<?php }else
+		                       if((permisosAcc($_SESSION['login'],8,3)==true)){ ?>
 							<li>
 								<a href="../Controllers/TRABAJO_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 							</li>			 
