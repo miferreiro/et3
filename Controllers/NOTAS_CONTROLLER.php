@@ -6,6 +6,7 @@
 session_start(); //solicito trabajar con la session
 
 include '../Models/NOTAS_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Functions/permisosAcc.php';
 include '../Views/NOTAS/NOTAS_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/NOTAS/NOTAS_SHOWALL2_View.php'; //incluye la vista del showall para el caso de los usuarios
@@ -140,22 +141,89 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-		if(permisosAcc($_SESSION['login'],7,5)==true){
-		if ( !$_POST ) {//Si no se han recibido datos 
-			$NOTAS = new NOTAS_MODEL('', '', '');
+	//if ( !$_POST ) {//Si no se han recibido datos
+              $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+              $ADMIN = $USUARIO->comprobarAdmin();
+          
+              if($ADMIN == true){
+                 $NOTAS = new NOTAS_MODEL('','', '');
+                 $dat=$NOTAS->cogerDatos();
+                 $notas=array();
+                 
+                 while($fila = mysqli_fetch_array($dat)){
+                     
+                     $nota = $NOTAS->calcularNota($fila['login'],$fila['IdTrabajo']);
+                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
+                    
+                     $notaET = $nota * ($porcentaje[0]/100);
+                     
+                     array_push($notas,$notaET);
+                    
+                    
+                     
+                     $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
+                 }
+                  
+                    $NOTAS = new NOTAS_MODEL('','', '');
+                 $dat=$NOTAS->cogerDatosQA();
+                
+                 while($fila = mysqli_fetch_array($dat)){
+                      $nota = $NOTAS->calcularNotaQA($fila['login'],$fila['IdTrabajo']);
+                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
+                     $notaET = $nota * ($porcentaje/100);
+                    array_push($notas,$notaET);
+                    
+                      $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
+                 }
+                  
+                  	$datos = $NOTAS->SEARCH();
+                    //Variable que almacena array con el nombre de los atributos
+                    $lista = array('IdTrabajo','login','NotaTrabajo');
+                    //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+                    new NOTAS_SHOWALL( $lista, $datos, $notas,false );
+                  
+                  
+            }
+            else{
+                
+                  $NOTAS = new NOTAS_MODEL('',$_SESSION['login'], '');
+                 $dat=$NOTAS->cogerDatos();
+                 $notas=array();
+                  
+                 while($fila = mysqli_fetch_array($dat)){
+                     $nota = $NOTAS->calcularNota($fila['login'],$fila['IdTrabajo']);
+                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
+                     $notaET = $nota * ($porcentaje[0]/100);
+                      array_push($notas,$notaET);
+                    
+                     $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
+                 }
+                
+                 $NOTAS = new NOTAS_MODEL('',$_SESSION['login'], '');
+                 $dat=$NOTAS->cogerDatosQA();
+                
+                 while($fila = mysqli_fetch_array($dat)){
+                     $nota = $NOTAS->calcularNotaQA($fila['login'],$fila['IdTrabajo']);
+                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
+                     $notaET = $nota * ($porcentaje[0]/100);
+                      array_push($notas,$notaET);
+                     $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
+                 }
+                
+                 	  $datos = $NOTAS->SEARCH();
+		              //Variable que almacena array con el nombre de los atributos
+		              $lista = array('IdTrabajo','login','NotaTrabajo');
+		              //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		              new NOTAS_SHOWALL( $lista, $datos, $notas,true );
+            }
+           
 		//Si se reciben datos
-		} else {
-			$NOTAS = get_data_form();
-		}
+		//} 
+        //else {
+		//	$NOTAS = get_data_form();
+		//}
 		//Variable que almacena los datos de la busqueda
-		$datos = $NOTAS->SEARCH();
-		//Variable que almacena array con el nombre de los atributos
-		$lista = array('IdTrabajo','login','NotaTrabajo');
-		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new NOTAS_SHOWALL( $lista, $datos );
-			}else{
-				new USUARIO_DEFAULT();
-			}
+	
 }
 
 ?>

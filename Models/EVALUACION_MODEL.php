@@ -265,6 +265,17 @@ class EVALUACION{ //declaración de la clase
                                 '$this->ComentIncorrectoP',
 		                        '$this->OK'
 								)";
+                    
+                    $sql2 ="INSERT INTO NOTA_TRABAJO (
+							    login,
+                                IdTrabajo,
+                                NotaTrabajo) 
+								VALUES(
+                                '$this->LoginEvaluador',
+                                '$this->IdTrabajo',
+		                        ''
+								)";
+                    
                 }
                     else{
                         return 'Ya existe la acción introducida en la base de datos'; // ya existe
@@ -272,7 +283,12 @@ class EVALUACION{ //declaración de la clase
 					}
 					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
-					} else { //si no da error en la insercion devolvemos mensaje de exito
+					} 
+                    if ( !$this->mysqli->query( $sql2 ) ) { // si da error en la ejecución del insert devolvemos mensaje
+						return 'Error en la inserción';
+					} 
+            
+                    else { //si no da error en la insercion devolvemos mensaje de exito
 						return 'Inserción realizada con éxito'; //operacion de insertado correcta
 					}
 

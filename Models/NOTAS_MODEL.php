@@ -50,33 +50,121 @@ class NOTAS_MODEL{ //declaración de la clase
 		}
 	} // fin metodo SEARCH
     
-    function RellenaDatosShowCurrent() { // se construye la sentencia de busqueda de la tupla
-
-		$sql = "SELECT E.IdTrabajo,IdHistoria,CorrectoP,ComentIncorrectoP,OK FROM EVALUACION E,ENTREGA ET WHERE 
-        ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$this->IdTrabajo' && Alias = AliasEvaluado && login='$this->login')";
-		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
-		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { // si existe se devuelve la tupla resultado
-            
-            
-			return $resultado;
-		}
-	} // fin del metodo RellenaDatosShowCurrent()
+  /****************************************************************/
     
-     function RellenaDatosShowCurrent2() { // se construye la sentencia de busqueda de la tupla
-
-		$sql = "SELECT E.IdTrabajo,IdHistoria,CorrectoA,ComenIncorrectoA,CorrectoP,ComentIncorrectoP,OK FROM EVALUACION E,ENTREGA ET WHERE 
-        ( E.IdTrabajo = ET.IdTrabajo && E.IdTrabajo = '$this->IdTrabajo' && LoginEvaluador='$this->login')";
-		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
-		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { // si existe se devuelve la tupla resultado
-            
-            
-			return $resultado;
+    //PARA NOTA DE ENTREGA
+    
+     function calcularNota($login,$trabajo){
+         $sql = "SELECT  IdHistoria,CorrectoP FROM EVALUACION E,NOTA_TRABAJO N,ENTREGA ET WHERE correctoP=1 AND ET.IdTrabajo=N.IdTrabajo AND N.login=ET.login AND Alias=AliasEvaluado AND N.login='$login' AND N.IdTrabajo='$trabajo' GROUP BY IdHistoria";
+         
+         $sql2="SELECT DISTINCT IdHistoria FROM HISTORIA H,NOTA_TRABAJO N WHERE H.IdTrabajo=N.IdTrabajo";
+         
+         $resultado = $this->mysqli->query( $sql );
+         $bien = $resultado->num_rows;
+        
+         $resultado2 = $this->mysqli->query( $sql2 );
+         $total = $resultado2->num_rows;
+    
+         if($total !=0){
+         
+         $nota = ($bien*10)/$total;
+         }
+         else{
+             $nota=0.00;
+         }
+        
+         return $nota;
+        
+    }
+    function porcentajeNota($trabajo){
+         $sql = "SELECT PorcentajeNota FROM NOTA_TRABAJO N,TRABAJO T WHERE N.IdTrabajo=T.IdTrabajo AND N.IdTrabajo='$trabajo'";
+        
+         $resultado = $this->mysqli->query( $sql );
+         $result = $resultado->fetch_array();
+        return $result;
+    }
+    
+    function cogerDatos(){
+        $sql = "SELECT IdTrabajo,login FROM NOTA_TRABAJO WHERE IdTrabajo LIKE '%et%'";
+            if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			         return 'Error en la consulta sobre la base de datos';
+		  } else { // si existe se devuelve la tupla resultado
+           
+            return $resultado;
 		}
-	} // fin del metodo RellenaDatos()
+        
+        
+    }
+    
+    function actualizar($login,$trabajo,$nota){
+       $sql= "UPDATE NOTA_TRABAJO SET 
+					NotaTrabajo = '$nota'
+				WHERE ( login = '$login' AND IdTrabajo = '$trabajo'
+				)";
+          if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			         return 'Error en la consulta sobre la base de datos';
+		  }
+    }
+ 
+    /*****************************************************************************************************************/
+       
+/**********************************************************************************************************************/
+    //Para calcular la nota de QA.
+    
+    
+     function calcularNotaQA($login,$trabajo){
+         
+        $sql = "SELECT  OK FROM EVALUACION E,NOTA_TRABAJO N  WHERE N.IdTrabajo=E.IdTrabajo AND N.IdTrabajo='$trabajo'  AND OK=1 AND LoginEvaluador='$login'";
+        
+         
+        $sql2= "SELECT IdHistoria FROM EVALUACION E,NOTA_TRABAJO N WHERE N.IdTrabajo=E.IdTrabajo AND N.IdTrabajo='$trabajo' AND LoginEvaluador='$login'";
+         
+         
+         $resultado = $this->mysqli->query( $sql );
+         $ok= $resultado->num_rows;
+        
+         $resultado2 = $this->mysqli->query( $sql2 );
+         $total = $resultado2->num_rows;
+    
+         
+         $nota = ($ok*10)/$total;
+         
+        
+         return $nota;
+        
+    }
+    function cogerDatosQA(){
+         $sql = "SELECT IdTrabajo,login FROM NOTA_TRABAJO WHERE IdTrabajo LIKE '%qa%'";
+            if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			         return 'Error en la consulta sobre la base de datos';
+		  } else { // si existe se devuelve la tupla resultado
+           
+            return $resultado;
+		}
+    }
+    
+    
+    
+    
+    
+    
+    
+/***************************************************************************************************************************/
+    
+  //NOTAS PARA USUARIO
+    
+   function notasUsuario($trabajo){
+       $sql = "SELECT PorcentajeNota FROM NOTA_TRABAJO N, TRABAJO T WHERE N.IdTrabajo=T.Idtrabajo AND T.IdTrabajo ='$trabajo'";
+       
+       if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			         return 'Error en la consulta sobre la base de datos';
+		  } else { // si existe se devuelve la tupla resultado
+           
+           $resul = mysqli_fetch_row($resultado);
+            return $resul;
+		}
+       
+   }
     
     
 

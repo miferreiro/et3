@@ -23,15 +23,11 @@ class CORRECION_ENTREGAS {
 			</h2>
 			<table>
 				<tr>
-<?php
-					foreach ( $lista as $atributo ) {
-?>
+
 					<th>
-						<?php echo $strings[$atributo]?>
+						<?php echo $strings['IdTrabajo']?>
 					</th>
-<?php
-					}
-?>
+
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
 					</th>
@@ -41,22 +37,10 @@ class CORRECION_ENTREGAS {
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
-<?php
-					foreach ( $lista as $atributo ) {    
-                        
-?>
-                  
-                    
-					<td>
-<?php 
-							echo $fila[ $atributo ];
 
-?>
-					</td>
-<?php
-					}
-?>
-					<td>
+                    <td><?php echo $fila[1]; ?></td>
+
+					
 						<form action="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" method="get" style="display:inline" >
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
                             <input type="hidden" name="LoginEvaluador" value="<?php echo $fila['LoginEvaluador']; ?>">

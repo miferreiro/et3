@@ -4,16 +4,18 @@
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
 class NOTAS_SHOWALL {
-
-	function __construct( $lista, $datos) {
+        
+	function __construct( $lista, $datos, $notas,$bol) {
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+		$this->notas = $notas;
+		$this->render($this->lista,$this->datos, $this->notas,$bol);
 	}
 	
-	function render($lista,$datos){
+	function render($lista,$datos, $notas,$bol){
 		$this->lista = $lista;
 		$this->datos = $datos;
+		$this->notas = $notas;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		include_once '../Functions/permisosAcc.php';
@@ -43,6 +45,9 @@ class NOTAS_SHOWALL {
 					</th>
 <?php
 					}
+                ?>
+                    <th>NotaET</th>
+                    <?php
 		if((permisosAcc($_SESSION['login'],7,1)==true)||(permisosAcc($_SESSION['login'],7,2)==true)||        (permisosAcc($_SESSION['login'],7,4)==true)){ 
 ?>
 					<th colspan="3" >
@@ -50,7 +55,8 @@ class NOTAS_SHOWALL {
 					</th>
 <?php } ?>
 				</tr>
-<?php
+<?php           $i=0;
+                $suma=0;
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
@@ -63,9 +69,25 @@ class NOTAS_SHOWALL {
 
 ?>
 					</td>
+                  
+                    
+                   
 <?php
 					}
-?>
+                    ?>
+                    
+                    <td>
+                    <?php
+
+                
+                echo $notas[$i];
+                $suma=$suma+$notas[$i];
+                    $i++;
+            
+                ?>
+                    </td>
+                    
+
 					<td>
 						<form action="../Controllers/NOTAS_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
@@ -83,11 +105,25 @@ class NOTAS_SHOWALL {
 <?php } ?>
 						</form>
 
-				</tr>
+				
 <?php
 				}
-?>
+        ?>
+                
+                
+                    </tr>
 			</table>
+
+<?php
+        echo '<br>';
+        
+                if($bol ==true){
+                    echo "Nota final:".$suma;
+                }
+        
+?>
+            
+            
 			<form action='../Controllers/NOTAS_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
