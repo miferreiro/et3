@@ -359,7 +359,7 @@ que comprueba permisos para cada una de las acciones -->
 								<a href="../Controllers/ENTREGA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 							</li>
 						<?php }else
-		                       if((permisosAcc($_SESSION['login'],8,3)==true)){ ?>
+		                       if((permisosAcc($_SESSION['login'],8,10)==true)){ ?>
 							<li>
 								<a href="../Controllers/TRABAJO_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
 							</li>			 
