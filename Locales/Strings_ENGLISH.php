@@ -19,6 +19,7 @@ array(
 	'Hombre' => 'Man',
 	'Mujer' => 'Woman',
 	'Añadir' => 'Add',
+    'Ya existe la acción introducida en la base de datos' => 'The action already entered in the database already exists',
 	'No puedes eliminar ese grupo' => 'You can not delete that group',
 	'Formulario de búsqueda' => 'Search form',
 	'Formulario de modificación' => 'Edit form',	
