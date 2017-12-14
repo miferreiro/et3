@@ -209,7 +209,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                 $datos=$EVALUACION->entregasUsu($_SESSION['login']);
                 //Variable que almacena array con el CorrectoA de los atributos
-		        $lista = array('IdTrabajo','Alias','Horas','Ruta');
+		        $lista = array('IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
 		       //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		    }
 		    new EVALUACION_MOSTRAR_USER( $lista, $datos );
