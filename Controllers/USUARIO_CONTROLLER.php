@@ -120,6 +120,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			
             $dependencias = $USUARIO->dependencias($_REQUEST['login']);
+            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);
+            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);
+            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);
+            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);
+            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);
             //Crea una vista delete para ver la tupla
 			new USUARIO_DELETE( $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6 );
 			}else{

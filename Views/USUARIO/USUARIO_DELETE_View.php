@@ -18,7 +18,7 @@ class USUARIO_DELETE {
 		$this->render( $this->valores, $this->dependencias,$this->dependencias2,$this->dependencias3,$this->dependencias4,$this->dependencias5,$this->dependencias6);
 	}
 
-	function render( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6 ) {
+	function render( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6) {
 		$this->valores = $valores;
 		$this->dependencias = $dependencias;
 		$this->dependencias2 = $dependencias2;
@@ -408,8 +408,9 @@ class USUARIO_DELETE {
                 </table>
                 <?php
             }
+        
                 
-               if($dependencias == null && $dependencias2 == null && $dependencias3 == null && $dependencias4 == null && $dependencias5 == null && $dependencias6 == null ){
+               if($dependencias == null && $dependencias2 == null && $dependencias3 == null && $dependencias4 == null && $dependencias5 == null && $dependencias6 == null )if($dependencias == null && $dependencias2 == null && $dependencias3 == null && $dependencias4 == null && $dependencias5 == null && $dependencias6 == null  ){
                     
               ?>  
             

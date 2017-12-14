@@ -21,6 +21,7 @@ class USUARIO_MODEL{ //declaración de la clase
     var $dependencias4;//declaración del atributo dependencias
     var $dependencias5;//declaración del atributo dependencias
     var $dependencias6;//declaración del atributo dependencias
+    var $dependencias7;//declaración del atributo dependencias
 	//Constructor de la clase
 
 	function __construct($login,$password,$DNI,$Nombre,$Apellidos,$Correo,$Direccion,$Telefono) {
@@ -288,6 +289,19 @@ class USUARIO_MODEL{ //declaración de la clase
         }
         
         return $dependencias6;
+	} // fin del metodo RellenaDatos()
+    
+    function dependencias7() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias7 = null;
+        
+        $sql = "SELECT E.IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, USUARIO U, ENTREGA EN WHERE LoginEvaluado = '$this->login' AND LoginEvaluado = U.login AND AliasEvaluado = Alias";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows >= 1 ) {
+            $dependencias7 = $resultado;
+        }
+        
+        return $dependencias7;
 	} // fin del metodo RellenaDatos()
 
 
