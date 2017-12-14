@@ -162,7 +162,7 @@
         
         $sql = "SELECT P.IdGrupo, IdFuncionalidad, IdAccion FROM PERMISO P, GRUPO G WHERE P.IdGrupo= '$this->IdGrupo' AND P.IdGrupo = G.IdGrupo";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows != 0 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
         }
         
@@ -175,7 +175,7 @@
         
         $sql = "SELECT login, UG.IdGrupo FROM USU_GRUPO UG, GRUPO G WHERE UG.IdGrupo= '$this->IdGrupo' AND UG.IdGrupo = G.IdGrupo";
         $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 0 ) {
+        if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
         }
         

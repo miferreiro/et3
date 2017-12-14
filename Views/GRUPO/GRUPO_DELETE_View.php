@@ -99,6 +99,14 @@ class GRUPO_DELETE {
             <br>
             
              <?php
+        
+       // if($dependencias != null || $dependencias2 !=null){
+        
+            
+            if($dependencias2 != null){
+                
+                 echo $strings['Debe borrar antes los usuarios de este grupo'];
+            }
             
             if($dependencias != null){
                 ?>
@@ -140,8 +148,9 @@ class GRUPO_DELETE {
                     
 				}
             }
-        
-                 
+            
+           
+    //}
             else{
 
                 ?>
