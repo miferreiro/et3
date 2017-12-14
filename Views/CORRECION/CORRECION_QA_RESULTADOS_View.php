@@ -21,7 +21,7 @@ class CORRECION_QA_RESULTADOS {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Ver los resultados de las QAs'];?>
 			</h2>
 			<table>
 				
@@ -40,21 +40,44 @@ class CORRECION_QA_RESULTADOS {
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
-				<tr>
+				
+                <tr>
+                   
+                    
 <?php
 					foreach ( $lista as $atributo ) {
 ?>
+                    
+<?php                    
+                    if($fila[$atributo] == $fila['ComenIncorrectoA'] || $fila[$atributo] == $fila['ComentIncorrectoP']){
+?>
+            
+                        <td><textarea maxlength="300" cols="50" rows="7" readonly>
+<?php                    
+                            
+                           echo $fila[ $atributo ]; 
+?>                       
+                        </textarea></td>
+<?php                       
+                    }
+                        
+                    else{
+                    
+?>                 
+                  
+                    
 					<td>
 <?php 
 							echo $fila[ $atributo ];
 
 ?>
 					</td>
+                    
 <?php
+                    }
 					}
 ?>
 					<td>
-						
 
 				</tr>
 <?php

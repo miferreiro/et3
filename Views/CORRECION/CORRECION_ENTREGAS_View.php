@@ -19,7 +19,7 @@ class CORRECION_ENTREGAS {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Ver los resultados de las entregas'];?>
 			</h2>
 			<table>
 				<tr>
@@ -37,12 +37,16 @@ class CORRECION_ENTREGAS {
 					</th>
 				</tr>
 <?php
+                
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					foreach ( $lista as $atributo ) {    
+                        
 ?>
+                  
+                    
 					<td>
 <?php 
 							echo $fila[ $atributo ];
@@ -63,6 +67,7 @@ class CORRECION_ENTREGAS {
 
 				</tr>
 <?php
+                
 				}
 ?>
 			</table>

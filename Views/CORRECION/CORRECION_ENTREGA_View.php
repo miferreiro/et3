@@ -19,7 +19,7 @@ class CORRECION_ENTREGA {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Ver los resultados de las entregas'];?>
 			</h2>
 			<table>
 				<tr>

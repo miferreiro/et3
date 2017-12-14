@@ -158,16 +158,6 @@
                                 '$this->Horas',
                                 '$this->Ruta'
 								)";
-                    
-                $sql2 = "INSERT INTO NOTA_TRABAJO (
-							    login,
-                                IdTrabajo,
-                                NotaTrabajo) 
-								VALUES(
-								'$this->login',
-								'$this->IdTrabajo',
-                                ''
-								)";
                    
                 }
                     else{
@@ -177,9 +167,7 @@
 					if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
 						return "Error en la inserción";
 					}
-            	   if ( !$this->mysqli->query( $sql2 )) { // si da error en la ejecución del insert devolvemos mensaje
-						return "Error en la inserción";
-					}
+            	
                     
                     else { //si no da error en la insercion devolvemos mensaje de exito
 						return 'Inserción realizada con éxito'; //operacion de insertado correcta

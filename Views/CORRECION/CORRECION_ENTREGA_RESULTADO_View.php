@@ -21,7 +21,7 @@ class CORRECION_ENTREGA_RESULTADO {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Ver los resultados de las entregas'];?>
 			</h2>
 			<table>
 				
@@ -47,6 +47,25 @@ class CORRECION_ENTREGA_RESULTADO {
 <?php
 					foreach ( $lista as $atributo ) {
 ?>
+                    
+<?php                    
+                    if($fila[$atributo] == $fila['ComenIncorrectoA'] || $fila[$atributo] == $fila['ComentIncorrectoP']){
+?>
+            
+                        <td><textarea maxlength="300" cols="50" rows="7" readonly>
+<?php                    
+                            
+                           echo $fila[ $atributo ]; 
+?>                       
+                        </textarea></td>
+<?php                       
+                    }
+                        
+                    else{
+                    
+?>                 
+                  
+                    
 					<td>
 <?php 
 							echo $fila[ $atributo ];
@@ -55,6 +74,7 @@ class CORRECION_ENTREGA_RESULTADO {
 					</td>
                     
 <?php
+                    }
 					}
 ?>
 					<td>

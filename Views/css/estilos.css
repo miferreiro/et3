@@ -99,6 +99,10 @@
 		text-align:justify;
 	}
 	
+    textarea{
+        resize:none;
+    }
+
    .menu {
 		padding: 0;
 		margin: 0;

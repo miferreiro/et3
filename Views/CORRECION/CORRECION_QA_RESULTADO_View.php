@@ -21,7 +21,7 @@ class CORRECION_QA_RESULTADO {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Ver los resultados de las QAs'];?>
 			</h2>
 			<table>
 				
