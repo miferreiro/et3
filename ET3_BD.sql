@@ -306,7 +306,7 @@ INSERT INTO `accion` (`IdAccion`, `NombreAccion`, `DescripAccion`) VALUES
 ('6', 'ASIGN', 'ASIGN'),
 ('7', 'CONSULT', 'CONSULT'),
 ('8', 'GENQAS', 'GENQAS'),
-('9', 'GENHIST', 'GENHIST');
+('9', 'GENHIST', 'GENHIST'),
 ('10', 'SOLOUSU', 'SOLOUSU');
 
   
