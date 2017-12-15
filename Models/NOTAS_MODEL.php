@@ -11,13 +11,13 @@ class NOTAS_MODEL{ //declaración de la clase
     var $NotaTrabajo;//declaracion del atributo NotaTrabajo
 	var $mysqli; // declaración del atributo manejador de la bd
   
-	//Constructor de la clase
-
+	
+    //Constructor de la clase
 	function __construct($IdTrabajo,$login,$NotaTrabajo) {
         //asignación de valores de parámetro a los atributos de la clase
-        $this->IdTrabajo = $IdTrabajo;
-		$this->login = $login;
-        $this->NotaTrabajo = $NotaTrabajo;
+        $this->IdTrabajo = $IdTrabajo;//le asignamos un valor a IdTrabajo
+		$this->login = $login;//le asignamos un valor a login
+        $this->NotaTrabajo = $NotaTrabajo;//le asignamos un valor a NotaTrabajo
 		
         
 		// incluimos la funcion de acceso a la bd
@@ -40,7 +40,7 @@ class NOTAS_MODEL{ //declaración de la clase
 					(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
                     (BINARY login LIKE '%$this->login%') &&
 	 				(BINARY NotaTrabajo LIKE '%$this->NotaTrabajo%')
-    				)";
+    				)";//se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -54,39 +54,42 @@ class NOTAS_MODEL{ //declaración de la clase
     
     //PARA NOTA DE ENTREGA
     
+    //Esta función sirve para calcular la nota en el caso de que sea una ET
      function calcularNota($login,$trabajo){
-         $sql = "SELECT  IdHistoria,CorrectoP FROM EVALUACION E,NOTA_TRABAJO N,ENTREGA ET WHERE correctoP=1 AND ET.IdTrabajo=N.IdTrabajo AND N.login=ET.login AND Alias=AliasEvaluado AND N.login='$login' AND N.IdTrabajo='$trabajo' GROUP BY IdHistoria";
+         $sql = "SELECT  IdHistoria,CorrectoP FROM EVALUACION E,NOTA_TRABAJO N,ENTREGA ET WHERE correctoP=1 AND ET.IdTrabajo=N.IdTrabajo AND N.login=ET.login AND Alias=AliasEvaluado AND N.login='$login' AND N.IdTrabajo='$trabajo' GROUP BY IdHistoria";//Se construye la sentencia sql
          
-         $sql2="SELECT DISTINCT IdHistoria FROM HISTORIA H,NOTA_TRABAJO N WHERE H.IdTrabajo=N.IdTrabajo";
+         $sql2="SELECT DISTINCT IdHistoria FROM HISTORIA H,NOTA_TRABAJO N WHERE H.IdTrabajo=N.IdTrabajo";//Se construye la sentencia sql
          
-         $resultado = $this->mysqli->query( $sql );
-         $bien = $resultado->num_rows;
+         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+         $bien = $resultado->num_rows;//nos devuelve en un entero el número de filas
         
-         $resultado2 = $this->mysqli->query( $sql2 );
-         $total = $resultado2->num_rows;
+         $resultado2 = $this->mysqli->query( $sql2 );//ejecutamos la query
+         $total = $resultado2->num_rows;//devolvemos en un entero el numero de filas
     
-         if($total !=0){
+         if($total !=0){//miramos si el total no es cero
          
-         $nota = ($bien*10)/$total;
+         $nota = ($bien*10)/$total;//calculamos la nota de la ET
          }
          else{
-             $nota=0.00;
+             $nota=0.00;//si el total es 0 , la nota será cero.
          }
         
-         return $nota;
+         return $nota;//devolvemos la nota
         
     }
+    //Esta funcion sirve para calcular el porcentaje de la nota del trabajo
     function porcentajeNota($trabajo){
-         $sql = "SELECT PorcentajeNota FROM NOTA_TRABAJO N,TRABAJO T WHERE N.IdTrabajo=T.IdTrabajo AND N.IdTrabajo='$trabajo'";
+         $sql = "SELECT PorcentajeNota FROM NOTA_TRABAJO N,TRABAJO T WHERE N.IdTrabajo=T.IdTrabajo AND N.IdTrabajo='$trabajo'";//Se construye la sentencia sql
         
-         $resultado = $this->mysqli->query( $sql );
-         $result = $resultado->fetch_array();
+         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+         $result = $resultado->fetch_array();//nos devuelve una tupla con el porcentaje de la nota
         return $result;
     }
     
+    //Esta funcion coge el login y Idtrabajo de todas las entregas
     function cogerDatos(){
-        $sql = "SELECT IdTrabajo,login FROM NOTA_TRABAJO WHERE IdTrabajo LIKE '%et%'";
-            if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+        $sql = "SELECT IdTrabajo,login FROM NOTA_TRABAJO WHERE IdTrabajo LIKE '%et%'";//Se construye la sentencia sql
+            if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {//ejecutamos la query
 			         return 'Error en la consulta sobre la base de datos';
 		  } else { // si existe se devuelve la tupla resultado
            
@@ -96,12 +99,13 @@ class NOTAS_MODEL{ //declaración de la clase
         
     }
     
+    //Esta función sirve para actualizar la nota cada vez que se está evaluando a un ususario
     function actualizar($login,$trabajo,$nota){
        $sql= "UPDATE NOTA_TRABAJO SET 
 					NotaTrabajo = '$nota'
 				WHERE ( login = '$login' AND IdTrabajo = '$trabajo'
-				)";
-          if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+				)";//Se construye la sentencia sql de modificacion
+          if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {//ejecutamos la query
 			         return 'Error en la consulta sobre la base de datos';
 		  }
     }
@@ -111,31 +115,33 @@ class NOTAS_MODEL{ //declaración de la clase
 /**********************************************************************************************************************/
     //Para calcular la nota de QA.
     
-    
+     //Esta función sirve para calcular la nota de una QA
      function calcularNotaQA($login,$trabajo){
          
-        $sql = "SELECT  OK FROM EVALUACION E,NOTA_TRABAJO N  WHERE N.IdTrabajo=E.IdTrabajo AND N.IdTrabajo='$trabajo'  AND OK=1 AND LoginEvaluador='$login'";
+        $sql = "SELECT  OK FROM EVALUACION E,NOTA_TRABAJO N  WHERE N.IdTrabajo=E.IdTrabajo AND N.IdTrabajo='$trabajo'  AND OK=1 AND LoginEvaluador='$login'";//Se construye la sentencia sql
         
          
-        $sql2= "SELECT IdHistoria FROM EVALUACION E,NOTA_TRABAJO N WHERE N.IdTrabajo=E.IdTrabajo AND N.IdTrabajo='$trabajo' AND LoginEvaluador='$login'";
+        $sql2= "SELECT IdHistoria FROM EVALUACION E,NOTA_TRABAJO N WHERE N.IdTrabajo=E.IdTrabajo AND N.IdTrabajo='$trabajo' AND LoginEvaluador='$login'";//Se construye la sentencia sql
          
          
-         $resultado = $this->mysqli->query( $sql );
-         $ok= $resultado->num_rows;
+         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+         $ok= $resultado->num_rows;//nos devuelve el número de filas en entero
         
-         $resultado2 = $this->mysqli->query( $sql2 );
-         $total = $resultado2->num_rows;
+         $resultado2 = $this->mysqli->query( $sql2 );//ejecutamos la query
+         $total = $resultado2->num_rows;//nos devuelve el numero de filas en en entero
     
          
-         $nota = ($ok*10)/$total;
+         $nota = ($ok*10)/$total;//calculamos la nota final
          
         
-         return $nota;
+         return $nota;//nos devuelve la nota de la QA
         
     }
+    
+    //Esta función nos devuelve el IdTrabajo y login donde el IdTrabajo sea una QA
     function cogerDatosQA(){
          $sql = "SELECT IdTrabajo,login FROM NOTA_TRABAJO WHERE IdTrabajo LIKE '%qa%'";
-            if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+            if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {//ejecutamos la query
 			         return 'Error en la consulta sobre la base de datos';
 		  } else { // si existe se devuelve la tupla resultado
            
@@ -153,14 +159,15 @@ class NOTAS_MODEL{ //declaración de la clase
     
   //NOTAS PARA USUARIO
     
+   //Esta función nos devuelve el porcentaje de la nota de un trabajo
    function notasUsuario($trabajo){
        $sql = "SELECT PorcentajeNota FROM NOTA_TRABAJO N, TRABAJO T WHERE N.IdTrabajo=T.Idtrabajo AND T.IdTrabajo ='$trabajo'";
        
-       if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+       if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {//ejecutamos la query
 			         return 'Error en la consulta sobre la base de datos';
 		  } else { // si existe se devuelve la tupla resultado
            
-           $resul = mysqli_fetch_row($resultado);
+           $resul = mysqli_fetch_row($resultado);//nos devuelve el porcentaje de la nota del trabajo
             return $resul;
 		}
        
@@ -177,16 +184,16 @@ class NOTAS_MODEL{ //declaración de la clase
 		if ( ( $this->IdTrabajo <> '' && $this->login <> '' ) ) { // si el atributo clave de la entidad no esta vacio
             
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM NOTA_TRABAJO WHERE (  login = '$this->login'  && IdTrabajo = '$this->IdTrabajo')";
+			$sql = "SELECT * FROM NOTA_TRABAJO WHERE (  login = '$this->login'  && IdTrabajo = '$this->IdTrabajo')";//Se construye la sentencia sql
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
 			} else { // si la ejecución de la query no da error
 
-				 if($result->num_rows ==1){
+				 if($result->num_rows ==1){//miramos si el numero de tuplas es uno
                      return "ya está almacenada esta nota";
                  }
-                    else{
+                    else{//si el numero de tuplas no es uno
 							$sql = "INSERT INTO NOTA_TRABAJO (
 							     login,
                                  IdTrabajo,
@@ -196,7 +203,7 @@ class NOTAS_MODEL{ //declaración de la clase
 								'$this->login',
 								'$this->IdTrabajo',
 								'$this->NotaTrabajo'
-								)";
+								)";//Se construye la sentencia sql de inserción
 							
                         
                     }
@@ -247,9 +254,9 @@ class NOTAS_MODEL{ //declaración de la clase
 	// funcion RellenaDatos()
 	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	// en el atributo de la clase
-	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
+	function RellenaDatos() {
 
-		$sql = "SELECT * FROM NOTA_TRABAJO WHERE (login = '$this->login' AND IdTrabajo = '$this->IdTrabajo')";
+		$sql = "SELECT * FROM NOTA_TRABAJO WHERE (login = '$this->login' AND IdTrabajo = '$this->IdTrabajo')";//Se construye la sentencia sql
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 

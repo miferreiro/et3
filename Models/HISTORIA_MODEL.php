@@ -13,9 +13,9 @@
             
         function __construct($IdTrabajo,$IdHistoria,$TextoHistoria){
             //Asignamos valores a los atributos de la clase
-            $this->IdTrabajo=$IdTrabajo;
-            $this->IdHistoria=$IdHistoria;
-            $this->TextoHistoria=$TextoHistoria;
+            $this->IdTrabajo=$IdTrabajo;//le asignamos un valor a Idtrabajo
+            $this->IdHistoria=$IdHistoria;//le asignamos un valor a IdHistoria
+            $this->TextoHistoria=$TextoHistoria;//le asignamos un valor a TextoHistoria
             
             // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -38,7 +38,7 @@
 					(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
                     (BINARY IdHistoria LIKE '%$this->IdHistoria%') &&
                     (BINARY TextoHistoria LIKE '%$this->TextoHistoria%')
-    				)";
+    				)";//se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -56,7 +56,7 @@
 	function ADD() {
 		if ( ( $this->IdTrabajo <> '' && $this->IdHistoria <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
-            $trabajo="SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
+           /* $trabajo="SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
             
                    $result=$this->mysqli->query($trabajo);
                 if(!$result){
@@ -67,9 +67,10 @@
                         return "No puedes añadir una historia debido a que no se añadio un trabajo";
                     }
                 }
+            */
             
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM HISTORIA WHERE (  IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria')";
+			$sql = "SELECT * FROM HISTORIA WHERE (  IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria')";//se construye la sentencia sql
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -84,9 +85,9 @@
 								'$this->IdTrabajo',
 								'$this->IdHistoria',
 								'$this->TextoHistoria'
-								)";
+								)";//se construye la sentencia sql para inserción
                 }
-                    else{
+                    else{//si el resultado de la consulta no es vacío
                         return 'Ya existe la historia introducida en la base de datos'; // ya existe
                     }
                 }
@@ -106,14 +107,13 @@
 	    // se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria')";
+		$sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria')";//se construye la sentencia sql
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
-
-		if ( $result->num_rows == 1 ) {
+        if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria' )";
+			$sql = "DELETE FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria' )";//se construye la sentencia sql de borrado
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -128,7 +128,7 @@
 	   // en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria')";
+		$sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria')";//se construye la sentencia sql
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -138,25 +138,26 @@
 		}
 	} // fin del metodo RellenaDatos()
         
+        //Esta función sirve para saber si esta tabla tiene dependencias a la hora de borrar
         function dependencias() { // se construye la sentencia de busqueda de la tupla
         
-        $dependencias = null;
+        $dependencias = null;//inicializamos la varriable a null
 
-		$sql = "SELECT E.IdTrabajo,LoginEvaluador, AliasEvaluado, E.IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, HISTORIA H WHERE E.IdHistoria = '$this->IdHistoria' AND E.IdHistoria = H.IdHistoria";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias = $resultado;
+		$sql = "SELECT E.IdTrabajo,LoginEvaluador, AliasEvaluado, E.IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, HISTORIA H WHERE E.IdHistoria = '$this->IdHistoria' AND E.IdHistoria = H.IdHistoria";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//se ejecuta la query
+        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de filas es mayor o igual a uno
+            $dependencias = $resultado;//asignamos todas las dependencias
         }
         
         return $dependencias;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias()
         		
         // funcion EDIT()
 	   // Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
 	  // si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria')";
+		$sql = "SELECT * FROM HISTORIA WHERE (IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria')";//se construye la sentencia sql
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
@@ -167,7 +168,7 @@
 					 IdHistoria='$this->IdHistoria',
                      TextoHistoria='$this->TextoHistoria'
 				WHERE ( IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria'
-				)";
+				)";//se construye la sentencia sql de modificación
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -180,14 +181,14 @@
 			return 'No existe en la base de datos';
 	} // fin del metodo EDIT
 
-    
+    //Esta función nos devuelve todas las historias de un trabajo
     function DevolverHistorias($Id){
 		//Consulta que recupera la tabla trabajo
 		$sql = "select IdHistoria
 					   from HISTORIA
-					   where IdTrabajo = '$Id'";
-		$resultado = $this->mysqli->query( $sql );
-		if ( $resultado->num_rows == 0 ) { return null; }
+					   where IdTrabajo = '$Id'";//se construye la sentencia sql
+		$resultado = $this->mysqli->query( $sql );//se ejecuta la query
+		if ( $resultado->num_rows == 0 ) { return null; }//miramos si el numero de tuplas es 0
 		//Caragamos las tuplas resultado de la consulta en un array
 		while($datos = mysqli_fetch_row ($resultado)){
 			//Variable que almacena el array de las tuplas resultado de la query
