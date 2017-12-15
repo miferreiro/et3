@@ -171,7 +171,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                       $nota = $NOTAS->calcularNotaQA($fila['login'],$fila['IdTrabajo']);
                      $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
                      $notaET = $nota * ($porcentaje/100);
-                    array_push($notas,$notaET);
+                     array_push($notas,$notaET);
                     
                       $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
                  }
@@ -184,7 +184,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                   
                   
             }
-            else{
+            else if(permisosAcc($_SESSION['login'],7,5)==true){
                 
                   $NOTAS = new NOTAS_MODEL('',$_SESSION['login'], '');
                  $dat=$NOTAS->cogerDatos();
@@ -215,7 +215,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		              $lista = array('IdTrabajo','login','NotaTrabajo');
 		              //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		              new NOTAS_SHOWALL( $lista, $datos, $notas,true );
-            }
+            }else{
+				new USUARIO_DEFAULT();				
+			}
            
 		//Si se reciben datos
 		//} 
