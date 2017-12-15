@@ -2,7 +2,7 @@
 
 /*
  Función: modelo de datos definida en una clase que permite interactuar con la base de datos
- Fecha de creación:23/11/2017
+ Fecha de creación:23/11/2017 Autor:Jonatan Couto
 */
 class ASIGNAC_QA_MODEL{ //declaración de la clase
 
@@ -18,10 +18,10 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 
 	function __construct($IdTrabajo,$LoginEvaluador,$LoginEvaluado,$AliasEvaluado) {
 		//asignación de valores de parámetro a los atributos de la clase
-		$this->IdTrabajo = $IdTrabajo;
-		$this->LoginEvaluador = $LoginEvaluador;
-        $this->LoginEvaluado = $LoginEvaluado;
-        $this->AliasEvaluado = $AliasEvaluado;
+		$this->IdTrabajo = $IdTrabajo;//se le asigna un valor a IdTrabajo
+		$this->LoginEvaluador = $LoginEvaluador;//se le asigan un valor a LoginEvaluador
+        $this->LoginEvaluado = $LoginEvaluado;//se le asigna un valor a LoginEvaluado 
+        $this->AliasEvaluado = $AliasEvaluado;//se le asigna un valor a AliasEvaluado
 		
 		// incluimos la funcion de acceso a la bd
 		include_once '../Functions/BdAdmin.php';
@@ -36,9 +36,10 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 					   LoginEvaluador,
 					   AliasEvaluado
 					   from ASIGNAC_QA
-					   where IdTrabajo = '$this->IdTrabajo'";
+					   where IdTrabajo = '$this->IdTrabajo'";//se construye la sentencia sql
+        //se ejecuta la query
 		$resultado = $this->mysqli->query( $sql );
-		if ( $resultado->num_rows == 0 ) { return null; }
+		if ( $resultado->num_rows == 0 ) { return null; }//miramos si el número de filas es 0.
 		//Caragamos las tuplas resultado de la consulta en un array
 		while($datos = mysqli_fetch_row ($resultado)){
 			//Variable que almacena el array de las tuplas resultado de la query
@@ -49,46 +50,9 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 
 	
 
-	
+	//función que sirve para insertar una QA
 	function ADD(){
-        $usuario = "SELECT login FROM USUARIO WHERE (login = '$this->LoginEvaluador')";
-        
-               $result=$this->mysqli->query($usuario);
-                if(!$result){
-                    return "No se ha podido conectar a la base de datos";
-                }
-                else{
-                    if($result->num_rows == 0){
-                        return "No puedes asignar una qa debido a que no se añadiu este usuario con este login";
-                    }
-                }
-        
-          $trabajo="SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
-            
-                   $result=$this->mysqli->query($trabajo);
-                if(!$result){
-                    return "No se ha podido conectar a la base de datos";
-                }
-                else{
-                    if($result->num_rows == 0){
-                        return "No puedes asignar una qa debido a que no se añadio un trabajo";
-                    }
-                }
-        
-        
-           $al="SELECT * FROM ENTREGA WHERE (Alias = '$this->AliasEvaluado')";
-            
-                   $result=$this->mysqli->query($al);
-                if(!$result){
-                    return "No se ha podido conectar a la base de datos";
-                }
-                else{
-                    if($result->num_rows == 0){
-                        return "No puedes asignar una qa debido a que este alias no existe";
-                    }
-                }
-        
-        
+       
 			//Variable que almacena sentencia sql
 			$sql = "INSERT INTO ASIGNAC_QA (
 									  IdTrabajo,
@@ -105,8 +69,9 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 			//ejecutamos la consulta
 			$this->mysqli->query( $sql );
 			return "Asignacion generada con exito";
-	}
+	} //fin del método ADD
 	
+    //función que borra una tupla de una QA
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
 		$sql = "SELECT * FROM ASIGNAC_QA
@@ -117,9 +82,9 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 								)";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
-		// si existe una tupla con ese valor de clave
+		
 
-		if ( $result->num_rows == 1 ) {
+		if ( $result->num_rows == 1 ) {// si existe una tupla con ese valor de clave
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM ASIGNAC_QA
 							 WHERE (
@@ -157,27 +122,30 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 		}
 	} // fin del metodo RellenaDatos()
     
+    //Esta función mira si tiene dependencias a la hora de borrar.
     function dependencias() { // se construye la sentencia de busqueda de la tupla
 
-		$dependencias = null;
+		$dependencias = null; //inicializamos la variable dependencias a null
 
-		$sql = "SELECT E.IdTrabajo, E.LoginEvaluador, E.AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ASIGNAC_QA QA WHERE E.LoginEvaluador = '$this->LoginEvaluador' AND E.LoginEvaluador = QA.LoginEvaluador";
-		$resultado = $this->mysqli->query( $sql );
-		if ( $resultado->num_rows >= 1 ) {
-			$dependencias = $resultado;
+		$sql = "SELECT E.IdTrabajo, E.LoginEvaluador, E.AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ASIGNAC_QA QA WHERE E.LoginEvaluador = '$this->LoginEvaluador' AND E.LoginEvaluador = QA.LoginEvaluador";//se construye la sentencia sql
+		$resultado = $this->mysqli->query( $sql );//se ejecuta la query
+		if ( $resultado->num_rows >= 1 ) {//mira si el número de filas es mayor ó igual a uno
+			$dependencias = $resultado;//le asignamos a la variable dependencias las tablas de las que depende
 		}
 
 		return $dependencias;
 	} // fin del metodo RellenaDatos()
     
+    //Esta función mira si tiene dependencias a la hora de borrar.
     function dependencias2() { // se construye la sentencia de busqueda de la tupla
+     
+	 $dependencias2= null;//inicializamos la variable dependencias2 a null
 
-		$dependencias2= null;
-
-		$sql = "SELECT E.IdTrabajo, E.LoginEvaluador, E.AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ASIGNAC_QA QA WHERE QA.LoginEvaluado = '$this->LoginEvaluado' AND E.AliasEvaluado = QA.AliasEvaluado";
-		$resultado = $this->mysqli->query( $sql );
-		if ( $resultado->num_rows >= 1 ) {
-			$dependencias2 = $resultado;
+		$sql = "SELECT E.IdTrabajo, E.LoginEvaluador, E.AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ASIGNAC_QA QA WHERE QA.LoginEvaluado = '$this->LoginEvaluado' AND E.AliasEvaluado = QA.AliasEvaluado";//se construye la sentencia sql
+     
+		$resultado = $this->mysqli->query( $sql );  //se ejecuta la query
+		if ( $resultado->num_rows >= 1 ) {//miramos si el número de filas es mayor o igual que uno
+			$dependencias2 = $resultado; //le asignamos a la variable dependencias2 las tablas de las que depende
 		}
 
 		return $dependencias2;
@@ -194,7 +162,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 						 		(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
                     			(BINARY LoginEvaluador LIKE '%$this->LoginEvaluador%') &&
                     			(BINARY AliasEvaluado LIKE '%$this->AliasEvaluado%')
-								)";
+								)";//se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -215,9 +183,9 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 						 		IdTrabajo = '$this->IdTrabajo' &&
 						 		LoginEvaluador = '$this->LoginEvaluador' &&
 						 		AliasEvaluado = '$this->AliasEvaluado'
-								)";
-		// se ejecuta la query
-		$result = $this->mysqli->query( $sql );
+								)";//se constrye la sentencia sql
+		
+		$result = $this->mysqli->query( $sql );// se ejecuta la query
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
 			
@@ -230,7 +198,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 						 IdTrabajo  = '$this->IdTrabajo' &&
 						 LoginEvaluador = '$this->LoginEvaluador' &&
 						 AliasEvaluado = '$this->AliasEvaluado'
-					  )";
+					  )";//se construye la sentencia sql
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $result = $this->mysqli->query( $sql ) ) ) {

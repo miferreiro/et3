@@ -1,7 +1,7 @@
 <?php
 
 //modelo de datos definida con una clase que interactúa con el controlador que gestiona las entregas.
-//Fecha de creación:28/11/2017
+//Fecha de creación:28/11/2017 Autor:Brais Santos
     class ENTREGA_MODEL{
         
         //Se definen las vaiables que se utilizarán en esta clase
@@ -14,11 +14,11 @@
         var $dependencias2; //Declaracion de la variable dependencias2
         function __construct($login,$IdTrabajo,$Alias,$Horas,$Ruta){
             //Asignamos valores a los atributos de la clase
-            $this->login=$login;
-            $this->IdTrabajo=$IdTrabajo;
-            $this->Alias=$Alias;
-            $this->Horas=$Horas;
-            $this->Ruta=$Ruta;
+            $this->login=$login;//le asignamos  a login un valor
+            $this->IdTrabajo=$IdTrabajo;//le asignamos a IdTrabajo un valor
+            $this->Alias=$Alias;//se le asigna un valor al alias
+            $this->Horas=$Horas;//se le asigna un valor a horas
+            $this->Ruta=$Ruta;//se le asigna un valor a la ruta
             
             // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -45,7 +45,7 @@
                     (BINARY Alias LIKE '%$this->Alias%') &&
                     (BINARY Horas LIKE '%$this->Horas%') &&
                     (BINARY Ruta LIKE '%$this->Ruta%')
-    				)";
+    				)";// se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -54,7 +54,10 @@
 			return $resultado;
 		}
 	} // fin metodo SEARCH
-
+        
+    //funcion SEARCH: hace una búsqueda en la tabla con
+	//los datos proporcionados. Si van vacios devuelve todos
+    //Se utiliza en case SUBIR_ENTREGA de ENTREGA_CONTROLLER cuando queramos buscar todas las tuplas
 	function SEARCH2() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "select login,
@@ -70,7 +73,7 @@
                     (BINARY Alias LIKE '%$this->Alias%') &&
                     (BINARY Horas LIKE '%$this->Horas%') &&
                     (BINARY Ruta LIKE '%$this->Ruta%')
-    				)";
+    				)";//se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -78,12 +81,14 @@
 
 			return $resultado;
 		}
-	}
+	}//fin de la funcion SEARCH2
+        
+    //esta función sirve para generar las QAs generando una palabra aleatoria
     function aleatorio(){
         $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; //posibles caracteres a usar
         $numerodeletras=10; //numero de letras para generar el texto
         $cadena = ""; //variable para almacenar la cadena generada
-        for($i=0;$i<$numerodeletras;$i++)
+        for($i=0;$i<$numerodeletras;$i++)//se genera una palabra de 10 caracteres
         {       
             $cadena .= substr($caracteres,rand(0,strlen($caracteres)),1); /*Extraemos 1 caracter de los caracteres 
                 entre el rango 0 a Numero de letras que tiene la cadena */
@@ -91,51 +96,37 @@
         return $cadena;
         
         
-    }
+    }//fin de método aleatorio.
         
+    //Esta función sirve para buscar un alias y servirá para comprobar que un alias no se repita    
      function buscarAlias($Alias_Usuario){
         $sql = "select Alias
        			from ENTREGA
     			where 
-    				(Alias = '$Alias_Usuario')";
+    				(Alias = '$Alias_Usuario')";//Se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
 		} else { // si la busqueda es correcta devolvemos el recordset resultado
 
-			if($resultado->num_rows == 1){
+			if($resultado->num_rows == 1){//miramos si el número de filas es igual a uno y si es devolvemos true
                 return true;
             }
-            else
+            else// si no es devolvemos false
                 return false;
 		}
          return false;
     }
-      
-    function entregasLogin($nombre){
-        $sql ="SELECT T.IdTrabajo,login,Alias,Ruta,FechaIniTrabajo,FechaFinTrabajo FROM ENTREGA ET,TRABAJO T WHERE ET.IdTrabajo=T.IdTrabajo AND login='$nombre'";
-        
-        if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { // si la busqueda es correcta devolvemos el recordset resultado
-
-			return $resultado;
-		}
-        
-    }
-        
-        
+           
     //Metodo ADD()
 	//Inserta en la tabla  de la bd  los valores
 	// de los atributos del objeto. Comprueba si la clave esta vacia y si 
 	//existe ya en la tabla
 	function ADD() {
 		if ( ( $this->login <> '' && $this->IdTrabajo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
-            
-         
-            
+              
         
-          $trabajo = "SELECT * FROM TRABAJO WHERE ( IdTrabajo='$this->IdTrabajo')";
+        /*  $trabajo = "SELECT * FROM TRABAJO WHERE ( IdTrabajo='$this->IdTrabajo')";
                     $result=$this->mysqli->query($trabajo);
                 if(!$result){
                     return "No se ha podido conectar a la base de datos";
@@ -161,10 +152,11 @@
                         return "No puedes añadir la entrega debido a que no se añadio un usuario";
                     }
                 }
-                
+                */
+            
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM ENTREGA WHERE (  login = '$this->login' && IdTrabajo = '$this->IdTrabajo')";
-            $vacio='';
+            $vacio='';//inicializamos la variable vacío
             
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -183,7 +175,7 @@
 								'$this->Alias',
                                 '$this->Horas',
                                 '$this->Ruta'
-								)";
+								)";//se contruye la sentencia sql para insertar la entrega
                     
                     
                     $sql2= "INSERT INTO NOTA_TRABAJO (
@@ -195,19 +187,19 @@
 								'$this->login',
 								'$this->IdTrabajo',
 								''
-                                )";
+                                )";//se construye la sentencia sql para insertar la nota del trabajo
                     
                     
                    
                 }
-                    else{
+                    else{//si el número de tuplas no es 0
                         return 'Ya existe la entrega introducida en la base de datos'; // ya existe
                     }
                 }
 					if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
 						return "Error en la inserción";
 					}
-                    if(!$this->mysqli->query( $sql2 )){
+                    if(!$this->mysqli->query( $sql2 )){// si da error en la ejecución del insert devolvemos mensaje
                         return "Error en la inserción";
                     }
                     
@@ -219,18 +211,19 @@
 					return 'Inserta un valor'; // ya existe
     
 	} // fin del metodo ADD
-        
+    
+    //esta función la utiliaremos para comprobar si un usuario ya tiene una entrega ó no
     function comprobarCreacion(){
-        $sql = "SELECT * FROM ENTREGA WHERE login='$this->login' AND IdTrabajo='$this->IdTrabajo'";
+        $sql = "SELECT * FROM ENTREGA WHERE login='$this->login' AND IdTrabajo='$this->IdTrabajo'";//se contruye la sentencia sql
         
-         if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+         if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {//se ejecuta la query y miramos si da error
 			return 'Error en la consulta sobre la base de datos';
 		}
-            else{
-                if($resultado->num_rows == 1){
+            else{// si no error
+                if($resultado->num_rows == 1){//miramos si el número de tuplas es 1
                     return true;
                 }
-                else{
+                else{//si el número de tuplas mo es uno 
                     return false;
                 }
             }
@@ -249,15 +242,15 @@
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 
-		if ( $result->num_rows == 1 ) {
+		if ( $result->num_rows == 1 ) {//miramos si el número de tuplas es uno
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM ENTREGA WHERE (login = '$this->login' AND IdTrabajo = '$this->IdTrabajo' )";
+			$sql = "DELETE FROM ENTREGA WHERE (login = '$this->login' AND IdTrabajo = '$this->IdTrabajo' )";//se construye la sentencia sql
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
 			return "Borrado correctamente";
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe
-		else
+		else//si el número de tuplas no es 0
 			return "No existe";
 	} // fin metodo DELETE
   
@@ -266,7 +259,7 @@
 	   // en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM ENTREGA WHERE (login = '$this->login' AND IdTrabajo = '$this->IdTrabajo')";
+		$sql = "SELECT * FROM ENTREGA WHERE (login = '$this->login' AND IdTrabajo = '$this->IdTrabajo')";//se construye la sentencia sql
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -278,12 +271,12 @@
         
         function dependencias() { // se construye la sentencia de busqueda de la tupla
         
-        $dependencias = null;
+        $dependencias = null;//inicializamos la variable a null
 
-		$sql = "SELECT QA.IdTrabajo, QA.LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, ENTREGA E WHERE QA.LoginEvaluador = '$this->login' AND QA.LoginEvaluador = E.login";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias = $resultado;
+		$sql = "SELECT QA.IdTrabajo, QA.LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, ENTREGA E WHERE QA.LoginEvaluador = '$this->login' AND QA.LoginEvaluador = E.login";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//se ejecuta la query
+        if ( $resultado->num_rows >= 1 ) {//miramos si el número de tuplas es mayor o igual que uno
+            $dependencias = $resultado;//le pasamos a la variable dependencias todas las tablas de las que depende
         }
         
         return $dependencias;
@@ -291,12 +284,12 @@
         
         function dependencias2() { // se construye la sentencia de busqueda de la tupla
         
-        $dependencias2 = null;
+        $dependencias2 = null;//inicializamos la variable a null
 
-		$sql = "SELECT QA.IdTrabajo, QA.LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, ENTREGA E WHERE QA.LoginEvaluado = '$this->login' AND QA.LoginEvaluado = E.login";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias2 = $resultado;
+		$sql = "SELECT QA.IdTrabajo, QA.LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, ENTREGA E WHERE QA.LoginEvaluado = '$this->login' AND QA.LoginEvaluado = E.login";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//se ejecuta la query
+        if ( $resultado->num_rows >= 1 ) {//miramos si el número de tuplas es mayor o igual que uno
+            $dependencias2 = $resultado;//le pasamos a la variable dependencias2 todas las tablas de las que depende
         }
         
         return $dependencias2;
@@ -323,7 +316,7 @@
                      Horas='$this->Horas',
                      Ruta='$this->Ruta'
 				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
-				)";
+				)";//se construye la sentencia sql de modificacion
 
             }
             else{
@@ -333,7 +326,7 @@
                      Alias='$this->Alias',
                      Horas='$this->Horas'
 				WHERE ( login = '$this->login' AND IdTrabajo = '$this->IdTrabajo'
-				)";
+				)";//se construye la sentencia sql de modificacion
                 //else{
                    /*  $sql2= "INSERT INTO NOTA_TRABAJO (
 							    login,
