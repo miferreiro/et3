@@ -15,14 +15,14 @@ class FUNCIONALIDAD {
 
 	function __construct( $IdFuncionalidad, $NombreFuncionalidad, $DescripFuncionalidad ) {
 		//Asignamos valores a los atibutos de la clase.
-		$this->IdFuncionalidad = $IdFuncionalidad;
-		$this->NombreFuncionalidad = $NombreFuncionalidad;
-		$this->DescripFuncionalidad = $DescripFuncionalidad;
+		$this->IdFuncionalidad = $IdFuncionalidad;//le asignamos un valor a IdFuncionalidad
+		$this->NombreFuncionalidad = $NombreFuncionalidad;//le asignamos un valor a NombreFuncionalidad
+		$this->DescripFuncionalidad = $DescripFuncionalidad;//le asignamos un valor a DescripFuncionalidad
 
 		// incluimos la funcion de acceso a la bd
 		include_once '../Functions/BdAdmin.php';
 		// conectamos con la bd y guardamos el manejador en un atributo de la clase
-		$this->mysqli = ConectarBD();
+		$this->mysqli = ConectarBD();//nos conectamos a la base de datos
 	} //fin del constructor.
 
 
@@ -39,7 +39,7 @@ class FUNCIONALIDAD {
 					(BINARY IdFuncionalidad LIKE '%$this->IdFuncionalidad%') &&
                     (BINARY NombreFuncionalidad LIKE '%$this->NombreFuncionalidad%') &&
                     (BINARY DescripFuncionalidad LIKE '%$this->DescripFuncionalidad%')
-    				)";
+    				)";//se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -57,7 +57,7 @@ class FUNCIONALIDAD {
 		if ( ( $this->IdFuncionalidad <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM FUNCIONALIDAD WHERE (  IdFuncionalidad  = '$this->IdFuncionalidad')";
+			$sql = "SELECT * FROM FUNCIONALIDAD WHERE (  IdFuncionalidad  = '$this->IdFuncionalidad')";//se construye la sentencia sql
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -72,7 +72,7 @@ class FUNCIONALIDAD {
 								'$this->IdFuncionalidad',
 								'$this->NombreFuncionalidad',
 								'$this->DescripFuncionalidad'
-								)";
+								)";//se construye la sentencia sql de inserción
 				} else {
 					return 'Ya existe esa funcionalidad  en la base de datos'; // ya existe
 				}
@@ -93,14 +93,14 @@ class FUNCIONALIDAD {
 	// se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
+		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";//se construye la sentencia sql
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad' )";
+			$sql = "DELETE FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad' )";//se construye la sentencia sql de borrado
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -116,7 +116,7 @@ class FUNCIONALIDAD {
 	// en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";
+		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";//se construye la sentencia sql
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -126,17 +126,15 @@ class FUNCIONALIDAD {
 		}
 	} // fin del metodo RellenaDatos()
 
-	// funcion RellenaDatos()
-	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
-	// en el atributo de la clase
+	//esta función sirve para saber si esta tabla depende de alguna otra a la hora de borrar
 	function dependencias() { // se construye la sentencia de busqueda de la tupla
 
-		$dependencias = null;
+		$dependencias = null;//inicializamos la variable a null
 
-		$sql = "SELECT FA.IdFuncionalidad, IdAccion FROM FUNC_ACCION FA, FUNCIONALIDAD F WHERE FA.IdFuncionalidad = '$this->IdFuncionalidad' AND FA.IdFuncionalidad = F.IdFuncionalidad";
-		$resultado = $this->mysqli->query( $sql );
-		if ( $resultado->num_rows >= 1 ) {
-			$dependencias = $resultado;
+		$sql = "SELECT FA.IdFuncionalidad, IdAccion FROM FUNC_ACCION FA, FUNCIONALIDAD F WHERE FA.IdFuncionalidad = '$this->IdFuncionalidad' AND FA.IdFuncionalidad = F.IdFuncionalidad";//se construye la sentencia sql
+		$resultado = $this->mysqli->query( $sql );//se ejecuta la query
+		if ( $resultado->num_rows >= 1 ) {//miramos si el número de filas es mayor ó igual que uno
+			$dependencias = $resultado;//asignamos todas las dependencias
 		}
 
 		return $dependencias;
@@ -147,7 +145,7 @@ class FUNCIONALIDAD {
 	// si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (idFuncionalidad = '$this->IdFuncionalidad')";
+		$sql = "SELECT * FROM FUNCIONALIDAD WHERE (idFuncionalidad = '$this->IdFuncionalidad')";//se construye la sentencia sql
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
@@ -160,7 +158,7 @@ class FUNCIONALIDAD {
                     NombreFuncionalidad='$this->NombreFuncionalidad',
 					DescripFuncionalidad = '$this->DescripFuncionalidad'
 				WHERE ( IdFuncionalidad = '$this->IdFuncionalidad'
-				)";
+				)";//se construye la sentencia sql de modificación
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
@@ -172,15 +170,15 @@ class FUNCIONALIDAD {
 		else
 			return 'No existe en la base de datos';
 	} // fin del metodo EDIT
-
+//esta función sirve ara devolver  los datos referentes a la funcionalidad
 function DevolverDatosFuncionalidad($Id){
 		//Consulta que recupera la tabla ASIGNAC_QA
 		$sql = "select IdFuncionalidad,
 					   NombreFuncionalidad
 					   from FUNCIONALIDAD
-					   where IdFuncionalidad = '$Id'";
-		$resultado = $this->mysqli->query( $sql );
-		if ( $resultado->num_rows == 0 ) { return null; }
+					   where IdFuncionalidad = '$Id'";//se construye la sentencia sql
+		$resultado = $this->mysqli->query( $sql );//se ejecuta la query
+		if ( $resultado->num_rows == 0 ) { return null; }//miramos si el numero de tuplas es 0
 		//Caragamos las tuplas resultado de la consulta en un array
 		while($datos = mysqli_fetch_row ($resultado)){
 			//Variable que almacena el array de las tuplas resultado de la query
@@ -195,11 +193,11 @@ function recuperarFuncionalidades(){
     $sql = "SELECT F.IdFuncionalidad,NombreFuncionalidad,A.IdAccion,NombreAccion 
             FROM FUNCIONALIDAD F,ACCION A,FUNC_ACCION FA
             WHERE F.IdFuncionalidad = FA.IdFuncionalidad &&
-                  A.IdAccion = FA.IdAccion ";
+                  A.IdAccion = FA.IdAccion ";//se construye la sentencia sql
     //Variable que almacena el resultado de la query
     $resultado = $this->mysqli->query( $sql );
     //Si no hay tuplas devuelve null
-    if ( $resultado->num_rows == 0 ) { return null; }
+    if ( $resultado->num_rows == 0 ) { return null; }//miramos si el numero de tuplas es 0
     //Caragamos las tuplas resultado de la consulta en un array
     while($datos = mysqli_fetch_row ($resultado)){
     //Variable que almacena el array de las tuplas resultado de la query
