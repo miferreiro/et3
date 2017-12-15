@@ -1,20 +1,20 @@
 <?php
 
 //modelo de datos definida con una clase que interactúa con el controlador que gestiona el grupo.
-//Fecha de creación:23/11/2017
+//Fecha de creación:23/11/2017 Autor:Brais Santos
     class GRUPO{
         
         //Se definen las vaiables que se utilizarán en esta clase
         var $IdGrupo; //es la clave de la tabla GRUPO.
         var $NombreGrupo;//Declaracion de la variable NombreGrupo
         var $DescripGrupo;//Declaracion de la variable DescripGrupo
-        var $dependencias;
+        var $dependencias;//Declaracion de la variable dependencias
             
         function __construct($IdGrupo,$NombreGrupo,$DescripGrupo){
             //Asignamos valores a los atributos de la clase
-            $this->IdGrupo=$IdGrupo;
-            $this->NombreGrupo=$NombreGrupo;
-            $this->DescripGrupo=$DescripGrupo;
+            $this->IdGrupo=$IdGrupo;//le asignamos un valor a Idgrupo
+            $this->NombreGrupo=$NombreGrupo;//le asignamos un valor a NombreGrupo
+            $this->DescripGrupo=$DescripGrupo;//le asignamos un valor a DescripGrupo
             
             // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -25,7 +25,7 @@
     //Devuelve el número de tuplas que hay el la tabla grupo
     function NumRows(){
     	//Variable que almacena una sentencia sql
-    	$sql = "SELECT * FROM GRUPO";
+    	$sql = "SELECT * FROM GRUPO";//se construye la sentencia sql
     	//Variable que almacena el resultado de una query sql
         $resultado = $this->mysqli->query( $sql );
 			$cont = 0;//Variable que almacena un contador de tuplas
@@ -50,7 +50,7 @@
 					(BINARY IdGrupo LIKE '%$this->IdGrupo%') &&
                     (BINARY NombreGrupo LIKE '%$this->NombreGrupo%') &&
                     (BINARY DescripGrupo LIKE '%$this->DescripGrupo%')
-    				)";
+    				)";//se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -69,7 +69,7 @@
 		if ( ( $this->IdGrupo <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM GRUPO WHERE (  IdGrupo = '$this->IdGrupo')";
+			$sql = "SELECT * FROM GRUPO WHERE (  IdGrupo = '$this->IdGrupo')";//se construye la sentencia sql
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -84,9 +84,9 @@
 								'$this->IdGrupo',
 								'$this->NombreGrupo',
 								'$this->DescripGrupo'
-								)";
+								)";//se construye la sentencia sql de inserción
                 }
-                    else{
+                    else{//si el resultado de la consulta no es vacío
                         return 'Ya existe el grupo introducido en la base de datos'; // ya existe
                     }
                 }
@@ -106,22 +106,22 @@
 	    // se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";//se construye la sentencia sql
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
-        if($this->IdGrupo == '00000A' || $this->IdGrupo == '00001A'){
+        if($this->IdGrupo == '00000A' || $this->IdGrupo == '00001A'){//miramos si los grupos son los 2 creados por defecto
 			return 'No puedes eliminar ese grupo';
 		}else{
-		if ( $result->num_rows == 1 ) {
+		if ( $result->num_rows == 1 ) {//miramos si el numero de filas es uno
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo' )";
+			$sql = "DELETE FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo' )";//se construye la sentencia sql de borrado
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
 			return "Borrado correctamente";
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe
-		else
+		else //si el numeo de filas no es uno
 			return "No existe";
 		}
 	} // fin metodo DELETE
@@ -131,7 +131,7 @@
 	   // en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";//se construye la sentencia sql
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -140,12 +140,13 @@
 			return $resultado;
 		}
 	} // fin del metodo RellenaDatos()
-	// funcion RellenaDatos()
+        
+	// funcion RellenaSelect()
 	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	// en el atributo de la clase
 	function RellenaSelect() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT A.IdAccion,A.NombreAccion,F.IdFuncionalidad,F.NombreFuncionalidad FROM FUNC_ACCION FA, FUNCIONALIDAD F, ACCION A, GRUPO G, PERMISO P WHERE(FA.IdFuncionalidad = F.IdFuncionalidad && FA.IdAccion = A.IdAccion && P.IdFuncionalidad = FA.IdFuncionalidad && P.IdAccion = FA.IdAccion && P.IdGrupo = '$this->IdGrupo') ";
+		$sql = "SELECT A.IdAccion,A.NombreAccion,F.IdFuncionalidad,F.NombreFuncionalidad FROM FUNC_ACCION FA, FUNCIONALIDAD F, ACCION A, GRUPO G, PERMISO P WHERE(FA.IdFuncionalidad = F.IdFuncionalidad && FA.IdAccion = A.IdAccion && P.IdFuncionalidad = FA.IdFuncionalidad && P.IdAccion = FA.IdAccion && P.IdGrupo = '$this->IdGrupo') ";//se construye la sentencia sql
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -153,30 +154,31 @@
 			$result = $resultado->fetch_array();
 			return $result;
 		}
-	} // fin del metodo RellenaDatos()
-	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
-	// en el atributo de la clase
+	} // fin del metodo RellenaSelect()
+        
+	//esta función mira si esta tabla tiene dependencias a la hora de borrar
 	function dependencias() { // se construye la sentencia de busqueda de la tupla
         
-        $dependencias = null;
+        $dependencias = null;//inicializamos la variable a null
         
-        $sql = "SELECT P.IdGrupo, IdFuncionalidad, IdAccion FROM PERMISO P, GRUPO G WHERE P.IdGrupo= '$this->IdGrupo' AND P.IdGrupo = G.IdGrupo";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias = $resultado;
+        $sql = "SELECT P.IdGrupo, IdFuncionalidad, IdAccion FROM PERMISO P, GRUPO G WHERE P.IdGrupo= '$this->IdGrupo' AND P.IdGrupo = G.IdGrupo";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//se ejecuta la query
+        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor que uno
+            $dependencias = $resultado;//le asignamos todas las dependencias
         }
         
         return $dependencias;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias()
         
+        //esta función mira si esta tabla tiene dependencias a la hora de borrar
         function dependencias2() { // se construye la sentencia de busqueda de la tupla
         
-        $dependencias = null;
+        $dependencias = null;//inicializamos la variable a null
         
-        $sql = "SELECT login, UG.IdGrupo FROM USU_GRUPO UG, GRUPO G WHERE UG.IdGrupo= '$this->IdGrupo' AND UG.IdGrupo = G.IdGrupo";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias = $resultado;
+        $sql = "SELECT login, UG.IdGrupo FROM USU_GRUPO UG, GRUPO G WHERE UG.IdGrupo= '$this->IdGrupo' AND UG.IdGrupo = G.IdGrupo";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//se ejecuta la query
+        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
+            $dependencias = $resultado;//le asignamos todas las dependencias
         }
         
         return $dependencias;
@@ -188,7 +190,7 @@
 	   // en el atributo de la clase
 	function RellenaShowCurrent() { // se construye la sentencia de busqueda de la tupla
 
-		$sql = "SELECT * FROM USU_GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+		$sql = "SELECT * FROM USU_GRUPO WHERE (IdGrupo = '$this->IdGrupo')";//se construye la sentencia sql
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -202,7 +204,7 @@
 	  // si existe se modifica
 function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
+		$sql = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";//se construye la sentencia sql
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
@@ -215,7 +217,7 @@ function EDIT() {
                     NombreGrupo='$this->NombreGrupo',
 					DescripGrupo = '$this->DescripGrupo'
 				WHERE ( IdGrupo = '$this->IdGrupo'
-				)";
+				)";//se construye la sentencia sql de modificacion
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
@@ -231,12 +233,12 @@ function EDIT() {
 				return 'No existe en la base de datos';		
 	} // fin del metodo EDIT
     
-	//Recupera los datos de grupo
+	//Esta función recupera los datos de grupo
 function recuperarGrupo($id){
     //Variable que almacena la query
     $sql = "SELECT GRUPO.IdGrupo,NombreGrupo 
             FROM GRUPO
-            WHERE IdGrupo = '$id'";
+            WHERE IdGrupo = '$id'";//se construye la sentencia sql
     //Variable que almacena el resultado de la query
     $resultado = $this->mysqli->query( $sql );
     if ( $resultado->num_rows == 0 ) { return null; }
