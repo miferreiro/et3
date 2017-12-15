@@ -54,7 +54,31 @@
 			return $resultado;
 		}
 	} // fin metodo SEARCH
-        
+
+	function SEARCH2() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		$sql = "select login,
+                        IdTrabajo,
+                        Alias,
+                        Horas,
+                        Ruta
+       			from ENTREGA
+    			where 
+    				(
+					(BINARY login = '$this->login') &&
+                    (BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
+                    (BINARY Alias LIKE '%$this->Alias%') &&
+                    (BINARY Horas LIKE '%$this->Horas%') &&
+                    (BINARY Ruta LIKE '%$this->Ruta%')
+    				)";
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	}
     function aleatorio(){
         $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; //posibles caracteres a usar
         $numerodeletras=10; //numero de letras para generar el texto

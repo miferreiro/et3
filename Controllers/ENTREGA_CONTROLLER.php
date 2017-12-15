@@ -386,7 +386,7 @@ switch ( $_REQUEST[ 'action' ] ) {
           
                   
          $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],'','','');
-         $datos=$ENTREGA->SEARCH();
+         $datos=$ENTREGA->SEARCH2();
        // var_dump($datos);
         //exit;
           $lista = array('login','IdTrabajo','Alias','Horas','Ruta');

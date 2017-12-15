@@ -22,6 +22,7 @@ class ENTREGA_SHOWALL {
 		$this->admin = $admin;*/
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
         include_once '../Functions/permisosAcc.php';
+		include_once '../Functions/comprobarAdministrador.php';
 /*$ADD=false;	
 $EDIT=true;	
 $SEARCH=false;	
@@ -170,9 +171,15 @@ $GESTEVAL=false;
 				}
 ?>
 			</table>
+<?php if((comprobarAdministrador($_SESSION['login']))==false && (permisosAcc($_SESSION['login'],8,10)==true)){ ?>
+			<form action='../Controllers/TRABAJO_CONTROLLER.php' method="post">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			</form>					
+<?php }else{ ?>
 			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
+<?php } ?>
 		</div>
 <?php
 		include '../Views/Footer.php';

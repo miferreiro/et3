@@ -12,6 +12,8 @@ class ENTREGA_EDIT {
         $this->valores=$valores;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
+        include_once '../Functions/permisosAcc.php';
+		include_once '../Functions/comprobarAdministrador.php';
 ?>
 		<div class="seccion">
 			<h2>
@@ -70,10 +72,18 @@ class ENTREGA_EDIT {
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button><!--boton para confirmar borrado-->
 			</form>
-						<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post" style="display: inline">
-							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
-                            <!--boton para volver atras-->
-						</form>
+					
+<?php if((comprobarAdministrador($_SESSION['login']))==false && (permisosAcc($_SESSION['login'],8,10)==true)){ ?>
+			<form action='../Controllers/ENTREGA_CONTROLLER.php?ac' method="post">
+			    <input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo']?>">
+				<button type="submit" name="action" value="SUBIR_ENTREGA" ><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			</form>
+				
+<?php }else{ ?>
+			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			</form>	
+<?php } ?>
 					</tr>
 				</table>
 		</div>

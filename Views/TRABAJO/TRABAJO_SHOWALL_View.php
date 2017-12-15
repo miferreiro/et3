@@ -45,9 +45,9 @@ class TRABAJO_SHOWALL {
 					</th>
 <?php
 					}
-		if((permisosAcc($_SESSION['login'],11,1)==true)||(permisosAcc($_SESSION['login'],11,2)==true)||        (permisosAcc($_SESSION['login'],11,4)==true)){ 
+		if((permisosAcc($_SESSION['login'],11,1)==true)||(permisosAcc($_SESSION['login'],11,2)==true)||        (permisosAcc($_SESSION['login'],11,4)==true) || (permisosAcc($_SESSION['login'],8,10)==true)){ 
 ?>
-					<th colspan="3" >
+					<th colspan="4" >
 						<?php echo $strings['Opciones']?>
 					</th>
 <?php } ?>
