@@ -268,12 +268,21 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			//Si se reciben valores
 		} else {
+	      if(comprobarAdministrador($_SESSION['login'])==true){		
 			//Variable que almacena los datos recogidos
 			$ENTREGA = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $ENTREGA->EDIT();
 			//crea una vista mensaje con la respuesta
 			new MESSAGE( $respuesta, '../Controllers/ENTREGA_CONTROLLER.php' );
+		  }else{
+			//Variable que almacena los datos recogidos
+			$ENTREGA = get_data_form();
+			//Variable que almacena la respuesta de la edición de los datos
+			$respuesta = $ENTREGA->EDIT();
+			//crea una vista mensaje con la respuesta
+			new MESSAGE( $respuesta, '../Controllers/ENTREGA_CONTROLLER.php?IdTrabajo='.$_REQUEST['IdTrabajo'].'&action=SUBIR_ENTREGA&login='.$_REQUEST['login'] ); 
+		  }
 		}
 		//Fin del bloque
 		break;
