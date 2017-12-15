@@ -7,19 +7,17 @@
 	Función: Esta función valida si existen los permisos para la accion de la funcionalidad indicada.
 */
 include_once '../Functions/BdAdmin.php';
-function permisosAcc($login,$funcionalidad,$accion){
-	   $mysqli=ConectarBD();
-	   $sql="SELECT DISTINCT login FROM USU_GRUPO WHERE login='$login' && IdGrupo='00000A' ";
-	   $resultado = $mysqli->query( $sql );
-	if($resultado->num_rows == 0){
-	   $sql1 = "SELECT DISTINCT U.login, P.IdGrupo, P.IdFuncionalidad FROM PERMISO P, USU_GRUPO U WHERE U.login = '$login' && ( (U.IdGrupo = P.IdGrupo && P.IdFuncionalidad = '$funcionalidad' && P.IdAccion = '$accion') )";
-	   $resultado1 = $mysqli->query( $sql1 );
-		if($resultado1->num_rows == 0){//miramos si el numero de filas es 0
-			return false;
-		}else{
-			return true;
-		}
-	}else{
+include_once '../Models/USU_GRUPO_MODEL.php';
+include_once '../Models/PERMISO_MODEL.php';
+
+function permisosAcc( $login, $funcionalidad, $accion ) {
+	$ADMIN = new USU_GRUPO( $login, '' );
+
+	if ( !$ADMIN->comprobarAdmin() ) {
+		$PERMISO = new PERMISO_MODEL( '', $funcionalidad, $accion,'','','' );
+		return $PERMISO->comprobarPermisos( $login );
+
+	} else {
 		return true;
 	}
 } //end of function permisosAcc()

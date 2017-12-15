@@ -178,7 +178,16 @@ function RellenaDatos()
 	}
 } // fin del metodo RellenaDatos()
 
-
+function comprobarPermisos($login){
+	
+	$sql = "SELECT DISTINCT U.login, P.IdGrupo, P.IdFuncionalidad FROM PERMISO P, USU_GRUPO U WHERE U.login = '$login' &&  (U.IdGrupo = P.IdGrupo && P.IdFuncionalidad = '$this->IdFuncionalidad' && P.IdAccion = '$this->IdAccion') ";
+			$resultado = $this->mysqli->query( $sql );
+			if ( $resultado->num_rows == 0 ) { //miramos si el numero de filas es 0
+				return false;
+			} else {
+				return true;
+			}
+}
 
 
     }
