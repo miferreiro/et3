@@ -10,6 +10,8 @@
         var $Alias;//Declaracion de la variable Alias
         var $Horas; //Declaracion de la variable Horas
         var $Ruta; //Declaracion de la variable Ruta
+        var $dependencias; //Declaracion de la variable dependencias
+        var $dependencias2; //Declaracion de la variable dependencias2
         function __construct($login,$IdTrabajo,$Alias,$Horas,$Ruta){
             //Asignamos valores a los atributos de la clase
             $this->login=$login;
@@ -248,6 +250,32 @@
 			$result = $resultado->fetch_array();
 			return $result;
 		}
+	} // fin del metodo RellenaDatos()
+        
+        function dependencias() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias = null;
+
+		$sql = "SELECT QA.IdTrabajo, QA.LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, ENTREGA E WHERE QA.LoginEvaluador = '$this->login' AND QA.LoginEvaluador = E.login";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows >= 1 ) {
+            $dependencias = $resultado;
+        }
+        
+        return $dependencias;
+	} // fin del metodo RellenaDatos()
+        
+        function dependencias2() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias2 = null;
+
+		$sql = "SELECT QA.IdTrabajo, QA.LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, ENTREGA E WHERE QA.LoginEvaluado = '$this->login' AND QA.LoginEvaluado = E.login";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows >= 1 ) {
+            $dependencias2 = $resultado;
+        }
+        
+        return $dependencias2;
 	} // fin del metodo RellenaDatos()
         
         

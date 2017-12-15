@@ -216,8 +216,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '','', '');
 			//Variable que almacena el relleno de los datos.
 			$valores = $ENTREGA->RellenaDatos();
+			$dependencias = $ENTREGA->dependencias();
+			$dependencias2 = $ENTREGA->dependencias2();
             //Crea una vista delete para ver la tupla
-			new ENTREGA_DELETE($valores);
+			new ENTREGA_DELETE($valores, $dependencias, $dependencias2);
 			}else{
 			$cont=0;
 			$PERMISO = $ENTREGA->comprobarPermisos();

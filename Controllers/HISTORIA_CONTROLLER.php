@@ -61,7 +61,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if(permisosAcc($_SESSION['login'],10,1)==true){
 			$HISTORIA = new HISTORIA_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ], '');
 			$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ]);
-			new HISTORIA_DELETE( $valores);
+			$dependencias = $HISTORIA->dependencias( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ]);
+			new HISTORIA_DELETE( $valores, $dependencias);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
 			}

@@ -4,15 +4,18 @@
     class ENTREGA_DELETE{
         
         
-        function __construct($valores){
+        function __construct($valores, $dependencias, $dependencias2){
             
-            $this->mostrar($valores);
+            $this->mostrar($valores, $dependencias, $dependencias2);
+
             
             
         }
         
-        public function mostrar($valores){
+        public function mostrar($valores, $dependencias, $dependencias2){
             $this->valores = $valores;
+            $this->dependencias = $dependencias;
+            $this->dependencias2 = $dependencias2;
 		    include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		    include '../Views/Header.php';
                 
@@ -71,6 +74,136 @@
                 
 				
 			</table>
+        <br>
+            <br>
+        
+            <?php
+            
+            if($dependencias != null || $dependencias2 != null  ){
+                
+                echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
+                ?>
+                <br>
+                <br>
+            <?php
+            
+            
+                
+            
+            if($dependencias != null){
+            ?>
+            
+            <table>
+                    <th>
+                        ASIGNAC_QA
+                    </th>
+            <?php
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
+            ?>
+			
+            <tr>
+                    
+				    <td>
+                        <?php 
+				        echo $fila['IdTrabajo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['LoginEvaluador'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['LoginEvaluado'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['AliasEvaluado'];
+
+                        ?>
+					</td>
+
+				</tr>
+                
+                <?php
+				}
+                ?>
+                </table>
+            
+            <?php
+                    
+            }
+                
+            
+            if($dependencias2 != null){
+            ?>
+            
+            <table>
+                    <th>
+                        ASIGNAC_QA
+                    </th>
+            <?php
+				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {
+            ?>
+			
+            <tr>
+                    
+				    <td>
+                        <?php 
+				        echo $fila['IdTrabajo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['LoginEvaluador'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['LoginEvaluado'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['AliasEvaluado'];
+
+                        ?>
+					</td>
+
+				</tr>
+                
+                <?php
+				}
+                ?>
+                </table>
+            <?php
+            }
+                
+                
+                ?>
+            
+            <form action='../Controllers/ENTREGA_CONTROLLER.php' method="post" style="display: inline">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+			</form>
+            <?php
+    }
+        
+                
+               if($dependencias == null && $dependencias2 == null ){
+                    
+              ?>  
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
@@ -91,6 +224,7 @@
 			</form>
 		</div>
 <?php
+               }
 		include '../Views/Footer.php';
 	}
 }

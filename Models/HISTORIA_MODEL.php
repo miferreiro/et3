@@ -8,6 +8,7 @@
         var $IdTrabajo; //es la clave de la tabla HISTORIA.
         var $IdHistoria;//Declaracion de la variable IdHistoria
         var $TextoHistoria;//Declaracion de la variable TextoHistoria
+        var $dependencias; //declaracion de la variable dependencias
       
             
         function __construct($IdTrabajo,$IdHistoria,$TextoHistoria){
@@ -135,6 +136,19 @@
 			$resultado = $resultado->fetch_array();
 			return $resultado;
 		}
+	} // fin del metodo RellenaDatos()
+        
+        function dependencias() { // se construye la sentencia de busqueda de la tupla
+        
+        $dependencias = null;
+
+		$sql = "SELECT E.IdTrabajo,LoginEvaluador, AliasEvaluado, E.IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, HISTORIA H WHERE E.IdHistoria = '$this->IdHistoria' AND E.IdHistoria = H.IdHistoria";
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows >= 1 ) {
+            $dependencias = $resultado;
+        }
+        
+        return $dependencias;
 	} // fin del metodo RellenaDatos()
         		
         // funcion EDIT()
