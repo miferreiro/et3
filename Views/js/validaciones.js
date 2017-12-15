@@ -299,6 +299,26 @@ function comprobarEmail(campo) {
 	}
 	return true;
 }
+
+/*
+	function comprobarExtension(campo):funcion que comprueba si el tipo de extensión de un type "file" es aceptada
+*/
+function comprobarExtension(campo){
+	//variable que recoje el campo
+    var fileInput = campo;
+    //variable que recoje el valor del campo
+    var filePath = fileInput.value;
+    //variable que recoje la extensiones permitidas
+    var NotallowedExtensions = /(.sh|.php)$/i;
+    //Si el archivo no tiene una extensión permitida ejecuta el código del "if"
+    if(NotallowedExtensions.exec(filePath)){
+    	//muestra mensaje de alerta
+        msgError('<?php echo $strings["El atributo "]?>' + atributo[campo.name] + '<?php echo $strings[" no permite las extensiones: .sh/.php"]; ?>');//mensaje multidioma
+        campo.focus();
+        return false;//Devuelve false
+    }
+    return true;//Devuelve true
+}
 /*
 	function abrirVentana(): realiza la función de abrir una ventana emergente, a través de una capa, capaFondo1, para que no se pueda interacionar con la capa base. Estas dos capas se activan y su visibility pasa a visible.
 */
@@ -1354,6 +1374,11 @@ function comprobarAddEntrega() {
 	/*Comprueba si Ruta es vacio, retorna false*/
 	if (!comprobarVacio(Ruta)) {
 		return false;
+	}else{
+		/*Comprueba que Ruta tenga una extensión permitida*/
+		if(!comprobarExtension(Ruta)){
+			return false;
+		}
 	}
 
 	return true;
@@ -1454,6 +1479,11 @@ function comprobarEditEntrega() {
 	/*Comprueba si Ruta es vacio, retorna false*/
 	if (!comprobarVacio(Ruta)) {
 		return false;
+	}else{
+		/*Comprueba que Ruta tenga una extensión permitida*/
+		if(!comprobarExtension(Ruta)){
+			return false;
+		}
 	}
 
 	return true;
@@ -1516,6 +1546,11 @@ function comprobarSearchEntrega() {
 	/*Comprueba si Ruta es vacio, retorna false*/
 	if (!comprobarVacio(Ruta)) {
 		return false;
+	}else{
+		/*Comprueba que Ruta tenga una extensión permitida*/
+		if(!comprobarExtension(Ruta)){
+			return false;
+		}
 	}
 
 	return true;

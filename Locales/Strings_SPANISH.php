@@ -193,7 +193,8 @@ array(
 	'Ya existe el grupo introducido en la base de datos' => 'Ya existe el grupo introducido en la base de datos',
 	'Debe eliminar antes todas las dependencias para poder borrar este dato.' => 'Debe eliminar antes todas las dependencias para poder borrar este dato.',
 	'NOMBRE_GRUPO' => 'Nombre del grupo',
-	'USUARIO_GRUPO' => 'Nombre del usuario'
+	'USUARIO_GRUPO' => 'Nombre del usuario',
+	' no permite las extensiones: .sh/.php' => ' no permite las extensiones: .sh/.php'
 	
 	
 	
