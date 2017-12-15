@@ -1,21 +1,21 @@
 <!--Modelo que contiene un constructor de usuarios de grupo y las funciones de la base de datos como insertar, buscar, etc-->
-<!--Fecha: 23-11-2017 Autor: fwnbmw Dedicados: 20 minutos-->
+<!--Fecha: 23-11-2017 Autor: Brais Rodríguez Dedicados: 20 minutos-->
 
 <?php
  include_once '../Functions/BdAdmin.php';
 
     class USU_GRUPO{
-        var $login;
-        var $IdGrupo;
+        var $login;//declaración de la variable login
+        var $IdGrupo;//declaración de la variable IdGrupo
         
         var $mysqli;
         public function __construct($login, $IdGrupo){
-            $this->login = $login;
-            $this->IdGrupo = $IdGrupo;
+            $this->login = $login;//se le pasa un valor a login
+            $this->IdGrupo = $IdGrupo;//se le pasa un valor a IdGrupo
            
             
-            $this->mysqli=ConectarBD();
-        }
+            $this->mysqli=ConectarBD();//nos conectamos a la base de datos
+        }//fin del constructor
    
     //Metodo ADD()
 //Inserta en la tabla  de la bd  los valores
@@ -25,36 +25,6 @@ function ADD()
 {
     if (($this->login <> '' && $this->IdGrupo <> '')){ // si el atributo clave de la entidad no esta vacío'
         
-      /*  $usuario="SELECT * FROM USUARIO WHERE (login = '$this->login')";
-        
-        $result=$this->mysqli->query($usuario);
-        
-        if(!$result){
-            return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
-        }
-        else{
-            
-            if($result->num_rows == 0){
-                return "No puedes insertar este usuario debido a que no existe, debes insertar previamente un usuario";
-            }
-        }
-        
-        $grupo = "SELECT * FROM GRUPO WHERE (IdGrupo = '$this->IdGrupo')";
-        
-        $result = $this->mysqli->query($grupo);
-        
-        if(!$result){
-             return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara 
-        }
-        
-        else{
-                if($result->num_rows == 0){
-                    
-                    return "No puedes insertar este grupo debido a que no existe, debes insertar previamente un grupo";
-                }    
-        
-        }
-        */
 		
 		// construimos el sql para buscar esa clave en la tabla
         $sql = "SELECT * FROM USU_GRUPO WHERE (login = '$this->login' && IdGrupo = '$this->IdGrupo')";
@@ -74,7 +44,7 @@ function ADD()
                     '$this->IdGrupo')";
 				
 				if (!$this->mysqli->query($sql)) { // si da error en la ejecución del insert devolvemos mensaje
-					return 'Error en la inserción, login ya en uso';
+					return 'Error en la inserción, login ya en uso';//operación no insertada
 				}
 				else{ //si no da error en la insercion devolvemos mensaje de exito
 					 return 'Inserción realizada con éxito'; //operacion de insertado correcta
@@ -138,9 +108,9 @@ function DELETE()
 function RellenaDatos($login, $IdGrupo)
 {	// se construye la sentencia de busqueda de la tupla
     $sql = "SELECT U.login,U.IdGrupo,G.NombreGrupo FROM USU_GRUPO U,GRUPO G WHERE (U.login = '$this->login' && U.IdGrupo = '$this->IdGrupo' && U.IdGrupo LIKE G.IdGrupo)";
-    // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
-    if (!($resultado = $this->mysqli->query($sql))){
-		return 'No existe en la base de datos'; // 
+   
+    if (!($resultado = $this->mysqli->query($sql))){ // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		return 'No existe en la base de datos';
 	}
     else{ // si existe se devuelve la tupla resultado
 		$result = $resultado->fetch_array();
@@ -148,33 +118,37 @@ function RellenaDatos($login, $IdGrupo)
 	}
 } // fin del metodo RellenaDatos()
     
-		
+   //esta función nos permite comprobar los permisos de cada grupo
    function comprobarPermisos(){
-	   $sql = "SELECT DISTINCT P.IdGrupo, P.IdFuncionalidad, P.IdAccion FROM PERMISO P, USU_GRUPO U WHERE U.login = '$this->login' && (U.IdGrupo = P.IdGrupo || P.IdGrupo ='00000A')";
+	   $sql = "SELECT DISTINCT P.IdGrupo, P.IdFuncionalidad, P.IdAccion FROM PERMISO P, USU_GRUPO U WHERE U.login = '$this->login' && (U.IdGrupo = P.IdGrupo || P.IdGrupo ='00000A')";//se construye la sentencia sql 
+       
 	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
        return $resultado;
 
-   }
+   }//fin del método comprobarPermisos
+   
+    //esta función nos permite saber si un usuario es administrador o no.
    function comprobarAdmin(){
 		
-		$sql = "SELECT * FROM USU_GRUPO WHERE login = '$this->login' && IdGrupo = '00000A'";
+		$sql = "SELECT * FROM USU_GRUPO WHERE login = '$this->login' && IdGrupo = '00000A'";//se construye la sentencia sql.
 		
 		$resultado = $this->mysqli->query($sql); //hacemos la consulta en la base de datos
 		
 		if($resultado->num_rows == 0){//miramos si el numero de filas es 0
 			return false;
-		}else{
+		}else{//miramos si el número de filas es mayor que 0.
 			return true;
 		}
 	
-   }
+   }//fin del método comprobarAdmin
 		
 	function RellenaShowCurrent() { // se construye la sentencia de busqueda de la tupla
-
+        //se construye la sentencia sql
 		$sql = "SELECT NombreGrupo,IdGrupo FROM GRUPO WHERE ( IdGrupo NOT IN (SELECT IdGrupo FROM USU_GRUPO WHERE login='$this->login'))";
+        
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'No existe en la base de datos'; // 
+			return 'No existe en la base de datos';  
 		} else { // si existe se devuelve la tupla resultado
 			return $resultado;
 		}
