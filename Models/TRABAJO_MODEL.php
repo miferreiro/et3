@@ -8,19 +8,20 @@ class TRABAJO{
     var $FechaIniTrabajo;//declaracion de la variable FechaIniTrabajo
     var $FechaFinTrabajo;//declaracion de la variable FechaFinTrabajo
     var $PorcentajeNota; //declaracion de la variable PorcentajeNota
-    var $dependencias;
-    var $dependencias2;
-    var $dependencias3;
-    var $dependencias4;
-    var $dependencias5;
+    var $dependencias;//declaracion de la variable dependencias
+    var $dependencias2;//declaracion de la variable dependencias2
+    var $dependencias3;//declaracion de la variable dependencias3
+    var $dependencias4;//declaracion de la variable dependencias4
+    var $dependencias5;//declaracion de la variable dependencias5
+    
     //constructor de la clase
     function __construct($IdTrabajo,$NombreTrabajo,$FechaIniTrabajo,$FechaFinTrabajo,$PorcentajeNota){
         //Asignamos valores a los atributos de la clase
-        $this->IdTrabajo=$IdTrabajo;
-        $this->NombreTrabajo=$NombreTrabajo;
-        $this->FechaIniTrabajo=$FechaIniTrabajo;
-        $this->FechaFinTrabajo=$FechaFinTrabajo;
-        $this->PorcentajeNota=$PorcentajeNota;
+        $this->IdTrabajo=$IdTrabajo;//le asignamos un valor a IdTrabajo
+        $this->NombreTrabajo=$NombreTrabajo;//le asignamos un valor a NombreTrabajo
+        $this->FechaIniTrabajo=$FechaIniTrabajo;//le asignamos un valor a FechaIniTrabajo
+        $this->FechaFinTrabajo=$FechaFinTrabajo;//le asignamos un valor a FechaFinTrabajo
+        $this->PorcentajeNota=$PorcentajeNota;//le asignamos un valor a PorcentajeNota
         
           // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -48,7 +49,8 @@ class TRABAJO{
                     (BINARY DATE_FORMAT(FechaIniTrabajo,'%d/%m/%Y') LIKE '%$this->FechaIniTrabajo%') &&
                     (BINARY DATE_FORMAT(FechaFinTrabajo,'%d/%m/%Y') LIKE '%$this->FechaFinTrabajo%') &&
                     (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%')
-    				)";
+    				)";//se construye la sentencia sql
+        
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -111,9 +113,9 @@ class TRABAJO{
 		$sql = "SELECT * FROM TRABAJO WHERE (IdTrabajo  = '$this->IdTrabajo')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
-		// si existe una tupla con ese valor de clave
+		
 
-		if ( $result->num_rows == 1 ) {
+		if ( $result->num_rows == 1 ) {// si existe una tupla con ese valor de clave
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM TRABAJO WHERE (IdTrabajo  = '$this->IdTrabajo' )";
 			// se ejecuta la query
@@ -128,85 +130,89 @@ class TRABAJO{
         // funcion RellenaDatos()
         // Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	   // en el atributo de la clase
-	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
+	function RellenaDatos() { 
 
-		$sql = "SELECT * FROM TRABAJO WHERE (IdTrabajo  = '$this->IdTrabajo')";
+		$sql = "SELECT * FROM TRABAJO WHERE (IdTrabajo  = '$this->IdTrabajo')";// se construye la sentencia de busqueda de la tupla
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'No existe en la base de datos'; // 
+			return 'No existe en la base de datos'; 
 		} else { // si existe se devuelve la tupla resultado
 			$result = $resultado->fetch_array();
-			$result[ 'FechaIniTrabajo' ] = date( "d/m/Y", strtotime( $result[ 'FechaIniTrabajo' ] ) );
-			$result[ 'FechaFinTrabajo' ] = date( "d/m/Y", strtotime( $result[ 'FechaFinTrabajo' ] ) );
+			$result[ 'FechaIniTrabajo' ] = date( "d/m/Y", strtotime( $result[ 'FechaIniTrabajo' ] ) );//se pone la fecha en formato europeo
+			$result[ 'FechaFinTrabajo' ] = date( "d/m/Y", strtotime( $result[ 'FechaFinTrabajo' ] ) );//de pone la fecha en formato europeo
 			return $result;
 		}
 	} // fin del metodo RellenaDatos()
     
-    
-    function dependencias() { // se construye la sentencia de busqueda de la tupla
+    //Esta función se utiliza para saber las dependencias de la tabla a la hora de borrar
+    function dependencias() { 
         
-        $dependencias = null;
+        $dependencias = null;//inicializamos la variable a null
 
-		$sql = "SELECT E.IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, TRABAJO T WHERE E.IdTrabajo = '$this->IdTrabajo' AND E.IdTrabajo = T.IdTrabajo";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias = $resultado;
+		$sql = "SELECT E.IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, TRABAJO T WHERE E.IdTrabajo = '$this->IdTrabajo' AND E.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) {//si el numero de tuplas es mayor o igual a uno
+            $dependencias = $resultado;//asignamos las dependecias
         }
         
         return $dependencias;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias()
     
-    function dependencias2() { // se construye la sentencia de busqueda de la tupla
+     //Esta función se utiliza para saber las dependencias de la tabla a la hora de borrar
+    function dependencias2() { 
         
-        $dependencias2 = null;
+        $dependencias2 = null;//inicializamos la variable a null
 
-		$sql = "SELECT H.IdTrabajo, IdHistoria, TextoHistoria FROM HISTORIA H, TRABAJO T WHERE H.IdTrabajo = '$this->IdTrabajo' AND H.IdTrabajo = T.IdTrabajo";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias2 = $resultado;
+		$sql = "SELECT H.IdTrabajo, IdHistoria, TextoHistoria FROM HISTORIA H, TRABAJO T WHERE H.IdTrabajo = '$this->IdTrabajo' AND H.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) {//si el numero de tuplas es mayor o igual a uno
+            $dependencias2 = $resultado;//asignamos las dependecias
         }
         
         return $dependencias2;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias2()
     
-    function dependencias3() { // se construye la sentencia de busqueda de la tupla
+     //Esta función se utiliza para saber las dependencias de la tabla a la hora de borrar
+    function dependencias3() { 
         
-        $dependencias3 = null;
+        $dependencias3 = null;//inicializamos la variable a null
 
-		$sql = "SELECT login, NT.IdTrabajo, NotaTrabajo FROM NOTA_TRABAJO NT, TRABAJO T WHERE NT.IdTrabajo = '$this->IdTrabajo' AND NT.IdTrabajo = T.IdTrabajo";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias3 = $resultado;
+		$sql = "SELECT login, NT.IdTrabajo, NotaTrabajo FROM NOTA_TRABAJO NT, TRABAJO T WHERE NT.IdTrabajo = '$this->IdTrabajo' AND NT.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) {//si el numero de tuplas es mayor o igual a uno
+            $dependencias3 = $resultado;//asignamos las dependecias
         }
         
         return $dependencias3;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias3()
     
-    function dependencias4() { // se construye la sentencia de busqueda de la tupla
+     //Esta función se utiliza para saber las dependencias de la tabla a la hora de borrar
+    function dependencias4() { 
         
-        $dependencias4 = null;
+        $dependencias4 = null;//inicializamos la variable a null
 
-		$sql = "SELECT QA.IdTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, TRABAJO T WHERE QA.IdTrabajo = '$this->IdTrabajo' AND QA.IdTrabajo = T.IdTrabajo";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias4 = $resultado;
+		$sql = "SELECT QA.IdTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, TRABAJO T WHERE QA.IdTrabajo = '$this->IdTrabajo' AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) {//si el numero de tuplas es mayor o igual a uno
+            $dependencias4 = $resultado;//asignamos las dependecias
         }
         
         return $dependencias4;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias4()
 
-    function dependencias5() { // se construye la sentencia de busqueda de la tupla
+     //Esta función se utiliza para saber las dependencias de la tabla a la hora de borrar
+    function dependencias5() { 
         
-        $dependencias5 = null;
+        $dependencias5 = null;//inicializamos la variable a null
 
-		$sql = "SELECT login, E.IdTrabajo, Alias, Horas, Ruta FROM ENTREGA E, TRABAJO T WHERE E.IdTrabajo = '$this->IdTrabajo' AND E.IdTrabajo=T.IdTrabajo";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias5 = $resultado;
+		$sql = "SELECT login, E.IdTrabajo, Alias, Horas, Ruta FROM ENTREGA E, TRABAJO T WHERE E.IdTrabajo = '$this->IdTrabajo' AND E.IdTrabajo=T.IdTrabajo";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) {//si el numero de tuplas es mayor o igual a uno
+            $dependencias5 = $resultado;//asignamos las dependecias
         }
         
         return $dependencias5;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias5()
         
         
         // funcion EDIT()
@@ -217,9 +223,9 @@ class TRABAJO{
 		$sql = "SELECT * FROM TRABAJO WHERE (IdTrabajo  = '$this->IdTrabajo')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
-		// si el numero de filas es igual a uno es que lo encuentra
-		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
-			
+		
+		if ( $result->num_rows == 1 ) { // si el numero de filas es igual a uno es que lo encuentra
+			// se construye la sentencia de modificacion en base a los atributos de la clase
 				$sql = "UPDATE TRABAJO SET 
 					IdTrabajo = '$this->IdTrabajo',
 					 NombreTrabajo='$this->NombreTrabajo',
@@ -264,11 +270,12 @@ class TRABAJO{
 			return $miarray;
 	}
 
+    //Esta función nos devuelve el Idtrabajo y NombreTrabjo de las entregas(ET)
 	function DevolverET(){
-		$sql = "SELECT IdTrabajo,NombreTrabajo FROM `TRABAJO` WHERE (BINARY IdTrabajo LIKE 'ET%')"; 
+		$sql = "SELECT IdTrabajo,NombreTrabajo FROM `TRABAJO` WHERE (BINARY IdTrabajo LIKE 'ET%')"; //se construye la sentencia sql
 		//variable que almacena el resultado de la query
 			$resultado = $this->mysqli->query( $sql );
-			if ( $resultado->num_rows == 0 ) { return null; }
+			if ( $resultado->num_rows == 0 ) { return null; }//si el numero de filas es 0
 			
 			//Caragamos las tuplas resultado de la consulta en un array
 			while($datos = mysqli_fetch_row ($resultado)){
@@ -279,11 +286,12 @@ class TRABAJO{
 			return $miarray;
 	}
 
+    //Esra fucion nos devuelve el IdTrabajo y NombreTrabajo de las QAs
 	function DevolverQA(){
-		$sql = "SELECT IdTrabajo,NombreTrabajo FROM `TRABAJO` WHERE (BINARY IdTrabajo LIKE 'QA%')"; 
+		$sql = "SELECT IdTrabajo,NombreTrabajo FROM `TRABAJO` WHERE (BINARY IdTrabajo LIKE 'QA%')"; //se construye la sentencia sql
 		//variable que almacena el resultado de la query
 			$resultado = $this->mysqli->query( $sql );
-			if ( $resultado->num_rows == 0 ) { return null; }
+			if ( $resultado->num_rows == 0 ) { return null; }//mira si el numero de tuplas es cero
 			
 			//Caragamos las tuplas resultado de la consulta en un array
 			while($datos = mysqli_fetch_row ($resultado)){
