@@ -214,7 +214,7 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $dependencias = null;
 
-		$sql = "SELECT UG.login, IdGrupo FROM USU_GRUPO UG, USUARIO U WHERE UG.login = '$this->login' AND U.login = UG.login";
+		$sql = "SELECT UG.login, NombreGrupo FROM USU_GRUPO UG, USUARIO U, GRUPO G WHERE UG.login = '$this->login' AND U.login = UG.login AND G.IdGrupo = UG.IdGrupo";
         $resultado = $this->mysqli->query( $sql );
         if ( $resultado->num_rows >= 1 ) {
             $dependencias = $resultado;
@@ -291,19 +291,6 @@ class USUARIO_MODEL{ //declaración de la clase
         return $dependencias6;
 	} // fin del metodo RellenaDatos()
     
-    function dependencias7() { // se construye la sentencia de busqueda de la tupla
-        
-        $dependencias7 = null;
-        
-        $sql = "SELECT E.IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, USUARIO U, ENTREGA EN WHERE LoginEvaluado = '$this->login' AND LoginEvaluado = U.login AND AliasEvaluado = Alias";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias7 = $resultado;
-        }
-        
-        return $dependencias7;
-	} // fin del metodo RellenaDatos()
-
 
 	// funcion EDIT()
 	// Se comprueba que la tupla a modificar exista en base al valor de su clave primaria

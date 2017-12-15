@@ -80,7 +80,16 @@ class TRABAJO_DELETE {
 				</tr>
 				
 			</table>
+            <br>
+            <br>
             
+            <?php
+            if($dependencias != null || $dependencias2 != null || $dependencias3 != null || $dependencias4 != null || $dependencias5 != null ){
+                
+                 echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
+                 ?>
+                <br>
+                <br>
             <?php
             
             if($dependencias != null){
@@ -347,6 +356,13 @@ class TRABAJO_DELETE {
                 ?>
                 </table>
                 <?php
+            }
+                ?>
+            <form action='../Controllers/TRABAJO_CONTROLLER.php' method="post" style="display: inline">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+			</form>
+            
+            <?php
             }
                 
                 

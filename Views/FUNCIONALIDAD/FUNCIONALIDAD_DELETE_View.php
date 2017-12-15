@@ -51,9 +51,17 @@ class FUNCIONALIDAD_DELETE {
 				</tr>
 				
 			</table>
+            <br>
+            <br>
               <?php
             
             if($dependencias != null){
+                
+                echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
+               ?>
+                <br>
+                <br>
+            <?php
             
 				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
@@ -78,6 +86,13 @@ class FUNCIONALIDAD_DELETE {
                 </table>
                 <?php
 				}
+                ?>
+                
+            <form action='../Controllers/FUNCIONALIDAD_CONTROLLER.php' method="post" style="display: inline">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+			</form>
+            
+            <?php
             }
                 
                 

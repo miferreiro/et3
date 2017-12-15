@@ -42,10 +42,18 @@ class FUNC_ACCION_DELETE {
 				</tr>
 				
 			</table>
+            <br>
+            <br>
             
             <?php
             
             if($dependencias != null){
+                
+                echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
+                ?>
+                <br>
+                <br>
+            <?php
             
 				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
@@ -76,6 +84,13 @@ class FUNC_ACCION_DELETE {
                 </table>
                 <?php
 				}
+                ?>
+            <form action='../Controllers/FUNC_ACCION_CONTROLLER.php' method="post" style="display: inline">
+				<input type="hidden" name="IdFuncionalidad" value=<?php echo $this->valores['IdFuncionalidad'] ?> />
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+			</form>
+            <?php
+                
             }
         
             else{

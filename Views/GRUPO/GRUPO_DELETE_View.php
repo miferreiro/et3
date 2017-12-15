@@ -100,21 +100,15 @@ class GRUPO_DELETE {
             
              <?php
         
-       // if($dependencias != null || $dependencias2 !=null){
-        
+        if($dependencias != null || $dependencias2 !=null){
             
-            if($dependencias2 != null){
-                
-                 echo $strings['Debe borrar antes los usuarios de este grupo'];
-            }
+            echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
+            echo "<br>";
+        
             
             if($dependencias != null){
                 ?>
-            <br>
-            <br>
-                <p style="text-align:center;">
-				<?php echo $strings['Debe borrar antes los permisos de este grupo'];?>
-			</p>
+            
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias) ) {
             ?>
@@ -148,10 +142,18 @@ class GRUPO_DELETE {
                     
 				}
             }
-            
+            if($dependencias2 != null){
+                
+                 //if redundante para que verifique que dependencias 2 es realmente distinto de null
+            }
+            ?>
+            <form action='../Controllers/GRUPO_CONTROLLER.php' method="post" style="display: inline">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+			</form>
+            <?php
            
-    //}
-            else{
+    }
+            if($dependencias == null && $dependencias2 ==null){
 
                 ?>
 			<p style="text-align:center;">

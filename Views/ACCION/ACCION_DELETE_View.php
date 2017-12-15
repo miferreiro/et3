@@ -52,10 +52,18 @@ class ACCION_DELETE {
 				</tr>
 				
 			</table>
+            <br>
+            <br>
             
              <?php
             
             if($dependencias != null){
+                
+                 echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
+                 ?>
+                <br>
+                <br>
+            <?php
             
 				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
@@ -80,6 +88,11 @@ class ACCION_DELETE {
                 </table>
                 <?php
 				}
+                ?>
+            <form action='../Controllers/ACCION_CONTROLLER.php' method="post" style="display: inline">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+			</form>
+            <?php
             }
         
             else{
