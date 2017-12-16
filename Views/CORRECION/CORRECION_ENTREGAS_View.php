@@ -57,6 +57,9 @@ class CORRECION_ENTREGAS {
 				}
 ?>
 			</table>
+			<form action='../Controllers/CORRECION_ENTREGA_CONTROLLER.php' method="post">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			</form>
 		</div>
 <?php
 		include '../Views/Footer.php';
