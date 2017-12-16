@@ -70,7 +70,7 @@ class TRABAJO{
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH2() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-        
+        $fechaActual = date('Y-m-d');
 		$sql = "select IdTrabajo,
                         NombreTrabajo,
                         FechaIniTrabajo,
@@ -83,7 +83,7 @@ class TRABAJO{
                     (BINARY NombreTrabajo LIKE '%ET%') &&
                     (BINARY DATE_FORMAT(FechaIniTrabajo,'%d/%m/%Y') LIKE '%$this->FechaIniTrabajo%') &&
                     (BINARY DATE_FORMAT(FechaFinTrabajo,'%d/%m/%Y') LIKE '%$this->FechaFinTrabajo%') &&
-                    (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%') 
+                    (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%') &&  $fechaActual <= FechaIniTrabajo
     				)";//se construye la sentencia sql
         
         
