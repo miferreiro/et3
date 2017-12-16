@@ -105,6 +105,10 @@ class GRUPO_DELETE {
             echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
             echo "<br>";
             ?>
+            
+            <?php
+            if($dependencias != null){
+                ?>
             <table>
                     <th>
                         <?php echo $strings['NOMBRE_GRUPO'];?>
@@ -117,10 +121,6 @@ class GRUPO_DELETE {
                     <th>
                         <?php echo $strings['NombreAc'];?>
                     </th>
-            <?php
-            if($dependencias != null){
-                ?>
-            
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias) ) {
             ?>
