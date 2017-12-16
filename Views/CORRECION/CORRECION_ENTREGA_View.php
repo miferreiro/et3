@@ -24,13 +24,17 @@ class CORRECION_ENTREGA {
 			<table>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					
 ?>
 					<th>
-						<?php echo $strings[$atributo]?>
+						<?php echo $strings['login']?>
+					</th>
+                    
+					<th>
+						<?php echo $strings['IdTrabajo']?>
 					</th>
 <?php
-					}
+					
 ?>
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
@@ -41,20 +45,15 @@ class CORRECION_ENTREGA {
 ?>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+			
 ?>
-					<td>
-<?php 
-							echo $fila[ $atributo ];
-
-?>
-					</td>
-<?php
-					}
-?>
-					<td>
+                    
+				    <td><?php echo $fila[0] ?></td>
+                    <td><?php echo $fila[2] ?></td>
+                    
 						<form action="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" method="get" style="display:inline" >
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
+                           
 							<td>
                                 <button type="submit" name="action" value="RESULTADO" ><img src="../Views/icon/flecha.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
                             </td>

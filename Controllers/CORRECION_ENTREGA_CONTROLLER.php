@@ -1,4 +1,5 @@
 
+
 <?php
 session_start();//solicito trabajar con la sesión
 
@@ -23,6 +24,7 @@ switch($_REQUEST['action']){
         $CORRECION = new EVALUACION('','','','','','','','','');
         $lista=array('IdTrabajo','IdHistoria','CorrectoP','ComentIncorrectoP','CorrectoA','ComenIncorrectoA');
         $datos =$CORRECION->mostrarCorrecion1($_REQUEST['IdTrabajo'],$_REQUEST['LoginEvaluador']);
+        
         new CORRECION_ENTREGA_RESULTADO($lista,$datos);
         break;
     
@@ -30,13 +32,13 @@ switch($_REQUEST['action']){
         //  $sql = "SELECT DISTINCT LoginEvaluador,E.IdTrabajo FROM EVALUACION E,ENTREGA ET WHERE 
         //( E.IdTrabajo = '$IdTrabajo' && Alias = AliasEvaluado && login='$nombre')";
         $CORRECION = new EVALUACION('','','','','','','','','');
-        $lista=array('LoginEvaluador','IdTrabajo','login');
+        $lista=array('LoginEvaluador','login','IdTrabajo');
         $datos =$CORRECION->mostrarCorrecion($_REQUEST['IdTrabajo'],$_SESSION['login']);
         new CORRECION_ENTREGAS($lista,$datos);
-        
+        break;
     default:
         $CORRECION = new EVALUACION('','','','','','','','','');
-        $lista = array('login','IdTrabajo');
+        $lista = array('login','IdTrabajo','Entrega');
         $datos =$CORRECION->mostrarEntregas($_SESSION['login']);
 
         new CORRECION_ENTREGA($lista,$datos);

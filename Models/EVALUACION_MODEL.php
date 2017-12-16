@@ -85,10 +85,10 @@ class EVALUACION{ //declaración de la clase
  /*****************************************************************************************************/
     //PARA CORRECCION DE QAS Y ENTREGAS
      
- function mostrarEntregas($nombre){
+function mostrarEntregas($nombre){
         
     
-    $sql = "SELECT DISTINCT login,ET.IdTrabajo FROM ENTREGA ET,EVALUACION E WHERE  ET.Alias=E.AliasEvaluado AND login='$nombre'";
+    $sql = "SELECT DISTINCT login,E.IdTrabajo,ET.IdTrabajo AS Entrega FROM ENTREGA ET,EVALUACION E WHERE  ET.Alias=E.AliasEvaluado AND login='$nombre'";
           
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -120,20 +120,20 @@ class EVALUACION{ //declaración de la clase
         
         
        
-        $sql = "SELECT DISTINCT LoginEvaluador,E.IdTrabajo,ET.login FROM EVALUACION E,ENTREGA ET WHERE 
-        ( Alias = AliasEvaluado && login='$nombre')";
+        $sql = "SELECT DISTINCT LoginEvaluador,ET.login,E.IdTrabajo FROM EVALUACION E,ENTREGA ET WHERE 
+        ( Alias = AliasEvaluado && login='$nombre' && E.IdTrabajo='$IdTrabajo')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
 		} else { // si existe se devuelve la tupla resultado
             
-            
+         
 			return $resultado;
 		}
     }
 
-    function mostrarCorrecion1($IdTrabajo,$nombre){
+   function mostrarCorrecion1($IdTrabajo,$nombre){
         
         
        
@@ -144,7 +144,8 @@ class EVALUACION{ //declaración de la clase
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
 		} else { // si existe se devuelve la tupla resultado
-            
+      
+           
             
 			return $resultado;
 		}

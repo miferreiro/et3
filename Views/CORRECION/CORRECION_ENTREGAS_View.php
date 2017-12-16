@@ -24,9 +24,11 @@ class CORRECION_ENTREGAS {
 			<table>
 				<tr>
 
-					<th>
+					
+                    <th>
 						<?php echo $strings['login']?>
 					</th>
+                  
 
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
@@ -37,9 +39,9 @@ class CORRECION_ENTREGAS {
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
-
-                    <td><?php echo $fila[2]; ?></td>
-
+                   
+                    <td><?php echo $fila[1]; ?></td>
+                    
 					
 						<form action="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" method="get" style="display:inline" >
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
