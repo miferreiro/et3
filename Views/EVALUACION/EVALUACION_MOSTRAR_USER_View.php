@@ -80,7 +80,7 @@ class EVALUACION_MOSTRAR_USER {
 				}
 ?>
 			</table>
-			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
+			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
                 <!--si pulsas este boton vas atras -->
 			</form>

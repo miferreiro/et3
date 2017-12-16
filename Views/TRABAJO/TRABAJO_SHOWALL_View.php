@@ -90,7 +90,6 @@ class TRABAJO_SHOWALL {
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 <?php } ?>
 						</form>
-				   <td>
 						<form action="../Controllers/ENTREGA_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
                          
