@@ -213,7 +213,8 @@ array(
     'OK' => 'Corrección de la QA',
     'NombreFunc' => 'Funcionalidad',
     'NombreAc' => 'Acción',
-    'TextoHistoria' => 'Definición de la historia'
+    'TextoHistoria' => 'Definición de la historia',
+    'El porcentaje introducido es incorrecto, el porcentaje total de los trabajos no debe superar el 100%' => 'El porcentaje introducido es incorrecto, el porcentaje total de los trabajos no debe superar el 100%'
 	
 	
 	
