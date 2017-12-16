@@ -26,17 +26,7 @@ class EVALUACION_SHOWALL {
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
 			<table>
-				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/EVALUACION_CONTROLLER.php'>
-<?php if(permisosAcc($_SESSION['login'],12,3)==true){ ?>
-						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
-<?php }
-	  if(permisosAcc($_SESSION['login'],12,0)==true){ 
-		?>
-						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
-<?php } ?>
-					</form>
-				</caption>
+
 				<tr>
 <?php
 					foreach ( $lista as $atributo ) {
@@ -73,6 +63,8 @@ class EVALUACION_SHOWALL {
 					<td>
 <?php 
 							echo $fila[ $atributo ];
+							$id = $fila['IdTrabajo'];
+							$al = $fila['AliasEvaluado'];
 
 ?>
 					</td>
@@ -102,6 +94,23 @@ class EVALUACION_SHOWALL {
 <?php
 				}
 ?>
+							<caption style="margin-bottom:10px;">
+					<form action='../Controllers/EVALUACION_CONTROLLER.php' method="get">
+					<input type="hidden" name="IdTrabajo" value="<?php echo $id ?>">
+					<input type="hidden" name="AliasEvaluado" value="<?php echo $al ?>">
+					
+<?php if(permisosAcc($_SESSION['login'],12,3)==true){ ?>
+						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+<?php 
+	  }
+	  if(permisosAcc($_SESSION['login'],12,0)==true){
+?>
+						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+<?php
+	} 
+?>
+					</form>
+				</caption>
 			</table>
 			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

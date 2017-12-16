@@ -63,9 +63,9 @@ class EVALUACION_USUARIO_EDIT {
 						</th>
                         <td class="formThTd"><textarea type="text" id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" required maxlength="300" cols="50" rows="7" onBlur="comprobarVacio(this) && comprobarLongitud(this,'300') && comprobarTexto(this,'300')"><?php echo $this->valores['ComenIncorrectoA']?></textarea>
 					</tr>
-                        <input type = "hidden" id="CorrectoP" name="CorrectoP" >
-                        <input type = "hidden" id="ComentIncorrectoP" name="ComentIncorrectoP" >
-                        <input type = "hidden" id="OK" name="OK" >
+                    <input type="hidden" name="CorrectoP" value="<?php echo $this->valores['CorrectoP']?>">
+					<input type="hidden" name="ComentIncorrectoP" value="<?php echo $this->valores['ComentIncorrectoP']?>">
+					<input type="hidden" name="OK" value="<?php echo $this->valores['OK']?>">
                     
                   
 					
@@ -74,6 +74,9 @@ class EVALUACION_USUARIO_EDIT {
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
 			<form action='../Controllers/EVALUACION_CONTROLLER.php' style="display: inline">
+				<input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo']?>">
+				<input type="hidden" name="AliasEvaluado" value="<?php echo $this->valores['AliasEvaluado']?>">
+				<input type="hidden" name="action" value="MOSTRAR_USER">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</tr>
