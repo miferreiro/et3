@@ -153,10 +153,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
-
-			$datos = $USUARIO->RellenaSelect();
-             
-
 			//Muestra la vista del formulario editar
 			new USUARIO_EDIT( $valores);
 			}else{
