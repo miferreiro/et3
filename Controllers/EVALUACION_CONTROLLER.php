@@ -65,7 +65,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if(permisosAcc($_SESSION['login'],12,0)==true){
 			new EVALUACION_ADD($_REQUEST['IdTrabajo'],$_REQUEST['AliasEvaluado']);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );
 			}
 		} else {//Si recive datos los recoge y mediante las funcionalidad de EVALUACION_MODEL inserta los datos
 			$EVALUACION = get_data_form();//Variable que almacena los datos recogidos
@@ -85,7 +85,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Crea una vista delete para ver la tupla
 			new EVALUACION_DELETE( $valores );
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );
 			}
 			//Si recibe valores ejecuta el borrado
 		} else {
@@ -122,7 +122,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                 new EVALUACION_USUARIO_EDIT( $valores );
             }
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );
 			}
 		} else {
 			//Variable que almacena los datos recogidos
@@ -152,7 +152,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
             }
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );
 			}
 		} else {
 			$contenido = $_SESSION['contenido'];
@@ -192,7 +192,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if(permisosAcc($_SESSION['login'],12,3)==true){
 			new EVALUACION_SEARCH($_REQUEST['IdTrabajo'],$_REQUEST['AliasEvaluado']);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );
 			}
 		//Si se reciben datos	
 		} else {
@@ -216,7 +216,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Creación de la vista showcurrent
 		new EVALUACION_SHOWCURRENT( $valores );
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );
 			}
 		//Final del bloque
 		break;
