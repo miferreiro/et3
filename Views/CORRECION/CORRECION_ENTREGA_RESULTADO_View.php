@@ -38,6 +38,8 @@ class CORRECION_ENTREGA_RESULTADO {
 					
 				</tr>
 <?php
+				$cont=0;
+		        $Id;
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				
@@ -56,6 +58,9 @@ class CORRECION_ENTREGA_RESULTADO {
 <?php                    
                             
                            echo $fila[ $atributo ]; 
+							if($cont==1){
+							$Id= $fila[ 'IdTrabajo' ];
+						}
 ?>                       
                         </textarea></td>
 <?php                       
@@ -69,7 +74,9 @@ class CORRECION_ENTREGA_RESULTADO {
 					<td>
 <?php 
 							echo $fila[ $atributo ];
-
+						    if($cont==1){
+							$Id= $fila[ 'IdTrabajo' ];
+						}
 ?>
 					</td>
                     
@@ -81,11 +88,13 @@ class CORRECION_ENTREGA_RESULTADO {
 
 				</tr>
 <?php
+				$cont++;
 				}
 ?>
 			</table>
 			<form action='../Controllers/CORRECION_ENTREGA_CONTROLLER.php' method="post">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			    <input type="hidden" name="IdTrabajo" value="<?php echo $Id; ?>">
+				<button type="submit" name="action" value="RESULTADO"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php
