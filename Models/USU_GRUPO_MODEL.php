@@ -1,5 +1,5 @@
 <!--Modelo que contiene un constructor de usuarios de grupo y las funciones de la base de datos como insertar, buscar, etc-->
-<!--Fecha: 23-11-2017 Autor: Brais Rodríguez Dedicados: 20 minutos-->
+<!--Fecha: 23-11-2017 Autor: Brais Rodríguez -->
 
 <?php
  include_once '../Functions/BdAdmin.php';
@@ -141,8 +141,9 @@ function RellenaDatos($login, $IdGrupo)
 		}
 	
    }//fin del método comprobarAdmin
-		
-	function RellenaShowCurrent() { // se construye la sentencia de busqueda de la tupla
+    
+    //Esta funcion devuelve el id del grupo y nombre del grupo de los usuarios
+	function RellenaShowCurrent() {
         //se construye la sentencia sql
 		$sql = "SELECT NombreGrupo,IdGrupo FROM GRUPO WHERE ( IdGrupo NOT IN (SELECT IdGrupo FROM USU_GRUPO WHERE login='$this->login'))";
         

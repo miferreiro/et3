@@ -2,7 +2,7 @@
 
 /*
  Función: modelo de datos definida en una clase que permite interactuar con la base de datos
- Fecha de creación:23/11/2017
+ Fecha de creación:23/11/2017 Autor:Brais Santos
 */
 class USUARIO_MODEL{ //declaración de la clase
 
@@ -26,14 +26,14 @@ class USUARIO_MODEL{ //declaración de la clase
 
 	function __construct($login,$password,$DNI,$Nombre,$Apellidos,$Correo,$Direccion,$Telefono) {
 		//asignación de valores de parámetro a los atributos de la clase
-		$this->login = $login;
-        $this->password=$password;
-		$this->DNI = $DNI;
-		$this->Nombre = $Nombre;
-		$this->Apellidos = $Apellidos;
-        $this->Correo = $Correo;
-        $this->Direccion=$Direccion;
-		$this->Telefono = $Telefono;	
+		$this->login = $login;//le asignamos un valor al login
+        $this->password=$password;//le asignamos un valor a la password
+		$this->DNI = $DNI;//le asignamos un valor al dni
+		$this->Nombre = $Nombre;//le asignamos un valor al nombre
+		$this->Apellidos = $Apellidos;//le asignamos un valor a apellidos
+        $this->Correo = $Correo;//le asignamos un valor a correo
+        $this->Direccion=$Direccion;//le asignamos un valor a direccion
+		$this->Telefono = $Telefono;//le asignamos un valor a telefono
 		
         
 		// incluimos la funcion de acceso a la bd
@@ -128,9 +128,9 @@ class USUARIO_MODEL{ //declaración de la clase
 								'$this->Direccion',
 								'$this->Telefono'
 								)";
-							include_once '../Models/USU_GRUPO_MODEL.php';
-							$USU_GRUPO = new USU_GRUPO($this->login,'00001A');
-							$mensaje = $USU_GRUPO->ADD();
+							include_once '../Models/USU_GRUPO_MODEL.php';//incluimos el modelo USU_GRUPO
+							$USU_GRUPO = new USU_GRUPO($this->login,'00001A');//instanciamos un objeto del modelo USU_GRUPO donde metemos un  usuario en el grupo alumnos
+							$mensaje = $USU_GRUPO->ADD();//insertamos el login en el grupo alumnos
 							
 							
 							/*$sql2 = "INSERT INTO USU_GRUPO
@@ -146,7 +146,7 @@ class USUARIO_MODEL{ //declaración de la clase
 						return 'Error en la inserción';
 					} else { //si no da error en la insercion devolvemos mensaje de exito
 						
-						if($mensaje == 'Inserción realizada con éxito'){
+						if($mensaje == 'Inserción realizada con éxito'){//miramos si la inserción en USU_GRUPO tuvo exito
 							return 'Inserción realizada con éxito'; //operacion de insertado correcta
 						}else{
 							return $mensaje;
@@ -207,85 +207,89 @@ class USUARIO_MODEL{ //declaración de la clase
 		}
 	} // fin del metodo RellenaDatos()
     
-    // funcion RellenaDatos()
-	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
-	// en el atributo de la clase
-	function dependencias() { // se construye la sentencia de busqueda de la tupla
+   
+    //Esta funcion mira las dependencias de la tabla a la hora de borrar
+	function dependencias() { 
         
-        $dependencias = null;
+        $dependencias = null;//inicializamos la variable a null
 
-		$sql = "SELECT UG.login, NombreGrupo FROM USU_GRUPO UG, USUARIO U, GRUPO G WHERE UG.login = '$this->login' AND U.login = UG.login AND G.IdGrupo = UG.IdGrupo";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias = $resultado;
+		$sql = "SELECT UG.login, NombreGrupo FROM USU_GRUPO UG, USUARIO U, GRUPO G WHERE UG.login = '$this->login' AND U.login = UG.login AND G.IdGrupo = UG.IdGrupo";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
+            $dependencias = $resultado;//asignamos las dependencias
         }
         
         return $dependencias;
 	} // fin del metodo RellenaDatos()
     
-    function dependencias2() { // se construye la sentencia de busqueda de la tupla
+    //Esta funcion mira las dependencias de la tabla a la hora de borrar
+    function dependencias2() { 
         
-        $dependencias2 = null;
+        $dependencias2 = null;//inicializamos la variable a null
 
         
-        $sql = "SELECT E.login, IdTrabajo, Alias, Horas, Ruta FROM ENTREGA E, USUARIO U WHERE E.login = '$this->login' AND E.login = U.login";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
+        $sql = "SELECT E.login, IdTrabajo, Alias, Horas, Ruta FROM ENTREGA E, USUARIO U WHERE E.login = '$this->login' AND E.login = U.login";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
             
-            $dependencias2 = $resultado;
+            $dependencias2 = $resultado;//asignamos las dependencias
         }
         
         return $dependencias2;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias2()
     
-    function dependencias3() { // se construye la sentencia de busqueda de la tupla
+    //Esta funcion mira las dependencias de la tabla a la hora de borrar
+    function dependencias3() { 
         
-        $dependencias3 = null;
+        $dependencias3 = null;//inicializamos la variable a null
         
-        $sql = "SELECT IdTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, USUARIO U WHERE LoginEvaluador = '$this->login' AND LoginEvaluador=login";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) { 
-            $dependencias3 = $resultado;
+        $sql = "SELECT IdTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, USUARIO U WHERE LoginEvaluador = '$this->login' AND LoginEvaluador=login";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) { //miramos si el numero de tuplas es mayor o igual a uno
+            $dependencias3 = $resultado;//asignamos las dependencias
         }
         
         return $dependencias3;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependenias3()
     
-    function dependencias4() { // se construye la sentencia de busqueda de la tupla
+    //Esta funcion mira las dependencias de la tabla a la hora de borrar
+    function dependencias4() { 
         
-        $dependencias4 = null;
+        $dependencias4 = null;//inicializamos la variable a null
         
 		
-        $sql = "SELECT IdTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, USUARIO U WHERE LoginEvaluado = '$this->login' AND LoginEvaluado=login";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias4 = $resultado;
+        $sql = "SELECT IdTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, USUARIO U WHERE LoginEvaluado = '$this->login' AND LoginEvaluado=login";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) { //miramos si el numero de tuplas es mayor o igual a uno
+            $dependencias4 = $resultado;//asignamos las dependencias
         }
         
         return $dependencias4;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias4()
     
-    function dependencias5() { // se construye la sentencia de busqueda de la tupla
+     //Esta funcion mira las dependencias de la tabla a la hora de borrar
+    function dependencias5() { 
         
-        $dependencias5 = null;
+        $dependencias5 = null;//inicializamos la variable a null
         
-        $sql = "SELECT NT.login,IdTrabajo,NotaTrabajo FROM NOTA_TRABAJO NT, USUARIO U WHERE NT.login = '$this->login' AND U.login=NT.login";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias5 = $resultado;
+        $sql = "SELECT NT.login,IdTrabajo,NotaTrabajo FROM NOTA_TRABAJO NT, USUARIO U WHERE NT.login = '$this->login' AND U.login=NT.login";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
+            $dependencias5 = $resultado;//asignamos las dependencias
         }
         
         return $dependencias5;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias5()
 
-    function dependencias6() { // se construye la sentencia de busqueda de la tupla
+    //Esta funcion mira las dependencias de la tabla a la hora de borrar
+    function dependencias6() { 
         
-        $dependencias6 = null;
+        $dependencias6 = null;//inicializamos la variable a null
         
-        $sql = "SELECT IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, USUARIO U WHERE LoginEvaluador = '$this->login' AND LoginEvaluador = login";
-        $resultado = $this->mysqli->query( $sql );
-        if ( $resultado->num_rows >= 1 ) {
-            $dependencias6 = $resultado;
+        $sql = "SELECT IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, USUARIO U WHERE LoginEvaluador = '$this->login' AND LoginEvaluador = login";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
+            $dependencias6 = $resultado;//asignamos las dependencias
         }
         
         return $dependencias6;
