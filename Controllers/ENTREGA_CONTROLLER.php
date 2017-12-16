@@ -19,7 +19,7 @@ include '../Views/ENTREGA/ENTREGA_DELETE_View.php'; //incluye la vista delete
 include '../Views/ENTREGA/ENTREGA_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
-include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
+include_once '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
 
 
 function aleatorio(){
@@ -406,7 +406,6 @@ switch ( $_REQUEST[ 'action' ] ) {
         break;
         
 	default: //Caso que se ejecuta por defecto
-		exit;
 	if(comprobarAdministrador($_SESSION['login'])==true){        
 		if ( !$_POST ) {//Si no se han recibido datos 
                   $ENTREGA = new ENTREGA_MODEL( '','', '', '', '');
