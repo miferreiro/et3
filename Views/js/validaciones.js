@@ -1,4 +1,4 @@
-<script type="text/javascript" >
+<script language="JavaScript" type="text/javascript" >
 	/*  Archivo javaScript
 		Nombre: validaciones.js
 		Autor: 	fta875
@@ -56,6 +56,8 @@ atributo['ComentIncorrectoP'] = '<?php echo $strings["ComentIncorrectoP"]?>';
 atributo['OK'] = '<?php echo $strings["OK"]?>';
 //GESTION ASIGNAC_QA
 atributo['LoginEvaluado'] = '<?php echo $strings["LoginEvaluado"]?>';
+//GESTION NOTA
+atributo['NotaTrabajo'] = '<?php echo $strings["NotaTrabajo"]?>';
 
 // function hayEspacio(campo): Comprueba que no tenga espacios el campo
 function sinEspacio(campo) {

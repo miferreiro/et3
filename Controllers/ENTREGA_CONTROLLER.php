@@ -406,6 +406,7 @@ switch ( $_REQUEST[ 'action' ] ) {
         break;
         
 	default: //Caso que se ejecuta por defecto
+		exit;
 	if(comprobarAdministrador($_SESSION['login'])==true){        
 		if ( !$_POST ) {//Si no se han recibido datos 
                   $ENTREGA = new ENTREGA_MODEL( '','', '', '', '');
