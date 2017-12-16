@@ -157,6 +157,19 @@ class TRABAJO{
             
     }
     
+    function obtenerPorcentaje($trabajo){
+        $sql = "SELECT PorcentajeNota FROM TRABAJO WHERE IdTrabajo = '$trabajo'";
+        
+        if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
+				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+			} 
+        else {
+            $result = mysqli_fetch_row($result);
+            return $result;
+        }
+            
+    }
+    
     //Esta función se utiliza para saber las dependencias de la tabla a la hora de borrar
     function dependencias() { 
         

@@ -99,7 +99,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			$TRABAJO = get_data_form();
             $porcentajeTotal = $TRABAJO->obtenerPorcentajeTotal();
-            $percent = $porcentajeTotal[0] + $_REQUEST['PorcentajeNota'];
+            $porcentajeAntiguo = $TRABAJO->obtenerPorcentaje($_REQUEST[ 'IdTrabajo' ]);
+            $percentTemp = $porcentajeTotal [0] - $porcentajeAntiguo[0];
+            $percent = $percentTemp + $_REQUEST['PorcentajeNota'];
             if($percent > 100){
                 new MESSAGE ('El porcentaje introducido es incorrecto, el porcentaje total de los trabajos no debe superar el 100%', '../Controllers/TRABAJO_CONTROLLER.php');
             }
