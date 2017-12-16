@@ -52,28 +52,20 @@ que comprueba permisos para cada una de las acciones -->
 					<a href="../Controllers/HISTORIA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de historias']; ?></a>
 
 				</li>
-
 	<?php }
-		 if((permisosAcc($_SESSION['login'],6,0)==true)||(permisosAcc($_SESSION['login'],6,8)==true) ||(permisosAcc($_SESSION['login'],6,9)==true)){?>
+	if((permisosAcc($_SESSION['login'],6,5)==true)){ ?>
 				<li>
-					<a class="primerNivel"><?php echo $strings['Gestión de QAs']; ?></a> 
-						<ul class="submenu">
-						<?php if(permisosAcc($_SESSION['login'],6,5)==true){ ?>
-							<li>
-								<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php" class="segundoNivel"><?php echo $strings['Mostrar todos']; ?></a>
-							</li>
-						<?php } 
-							if(permisosAcc($_SESSION['login'],6,8)==true){ ?>
-							<li>
-								<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=GENERAR" class="segundoNivel"><?php echo $strings['GENERACIÓN DE QAs']; ?></a>
-							</li>
-						<?php } 
-							if(permisosAcc($_SESSION['login'],6,9)==true){ ?>
-							<li>
-								<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=HISTORIAS" class="segundoNivel"><?php echo $strings['GENERACIÓN DE HISTORIAS EVALUACIÓN']; ?></a>
-							</li>
-						<?php } ?>
-						</ul>
+					<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestión de QAs']; ?></a> 
+				</li>
+	<?php }
+	if((permisosAcc($_SESSION['login'],6,8)==true)){ ?>
+				<li>
+					<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=GENERAR" class="primerNivel"><?php echo $strings['GENERACIÓN DE QAs']; ?></a> 
+				</li>
+	<?php }
+	if((permisosAcc($_SESSION['login'],6,9)==true)){ ?>
+				<li>
+					<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=HISTORIAS" class="primerNivel"><?php echo $strings['GENERACIÓN DE HISTORIAS EVALUACIÓN']; ?></a> 
 				</li>
 	<?php }
 		 if(comprobarAdministrador($_SESSION['login']== true) || (permisosAcc($_SESSION['login'],8,10)==true)){?>

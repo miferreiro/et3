@@ -210,7 +210,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                      $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
                  }
                 
-                 	  $datos = $NOTAS->SEARCH();
+                 	  $datos = $NOTAS->SEARCH2();
 		              //Variable que almacena array con el nombre de los atributos
 		              $lista = array('IdTrabajo','login','NotaTrabajo');
 		              //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta

@@ -50,6 +50,22 @@ class NOTAS_MODEL{ //declaración de la clase
 		}
 	} // fin metodo SEARCH
     
+		function SEARCH2() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		$sql = "select  IdTrabajo,
+                        login,
+                        NotaTrabajo
+       			from NOTA_TRABAJO
+    			where 
+    				(BINARY login = '$this->login')";//se construye la sentencia sql
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	} // fin metodo SEARCH
   /****************************************************************/
     
     //PARA NOTA DE ENTREGA
