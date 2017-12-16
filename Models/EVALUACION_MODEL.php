@@ -39,6 +39,49 @@ class EVALUACION{ //declaración de la clase
 
 	} // fin del constructor
     
+
+	function DevolverCommentAlumno($log,$al,$id,$trabajo){
+        
+    
+    $sql = "SELECT CorrectoA,ComenIncorrectoA 
+    		FROM EVALUACION
+    		WHERE LoginEvaluador = '$log' &&
+    			  AliasEvaluado = '$al' && 
+    			  IdHistoria = '$id' && 
+    			  IdTrabajo = '$trabajo'";
+          
+    $resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) { return null; }
+		//Caragamos las tuplas resultado de la consulta en un array
+		while($datos = mysqli_fetch_row ($resultado)){
+			//Variable que almacena el array de las tuplas resultado de la query
+			$miarray[] = $datos;
+		}
+		return $miarray;	
+        
+    }
+
+	function EvaluacionesQa($alias){
+        
+    
+    $sql = "SELECT E.IdHistoria,CorrectoA,ComenIncorrectoA,CorrectoP,ComentIncorrectoP,OK,TextoHistoria,LoginEvaluador,AliasEvaluado,E.IdTrabajo,CorrectoA,ComenIncorrectoA
+			FROM EVALUACION E,HISTORIA H
+			WHERE AliasEvaluado = '$alias' &&
+				  E.IdHistoria = H.IdHistoria &&
+				  SUBSTRING(E.IdTrabajo,3) = SUBSTRING(H.IdTrabajo,3)
+			ORDER BY E.IdHistoria";
+          
+    $resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) { return null; }
+		//Caragamos las tuplas resultado de la consulta en un array
+		while($datos = mysqli_fetch_row ($resultado)){
+			//Variable que almacena el array de las tuplas resultado de la query
+			$miarray[] = $datos;
+		}
+		return $miarray;	
+        
+    }
+
  /*****************************************************************************************************/
     //PARA CORRECCION DE QAS Y ENTREGAS
      
@@ -162,6 +205,7 @@ class EVALUACION{ //declaración de la clase
     			where 
     				(
     				H.IdHistoria = E.IdHistoria &&
+    				SUBSTRING(E.IdTrabajo,3) = SUBSTRING(H.IdTrabajo,3) &&
 					(BINARY E.IdTrabajo LIKE '%$this->IdTrabajo%') &&
 					(BINARY LoginEvaluador LIKE '%$this->LoginEvaluador%') &&
                     (BINARY AliasEvaluado LIKE '%$this->AliasEvaluado%') &&
@@ -377,11 +421,42 @@ class EVALUACION{ //declaración de la clase
 			return 'No existe en la base de datos';
 	} // fin del metodo EDIT
 
+	function EDITAR_EVALUACION_ADMIN() {
+		// se construye la sentencia de busqueda de la tupla en la bd
+		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' && AliasEvaluado = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
+		// se ejecuta la query
+		$result = $this->mysqli->query( $sql );
+		// si el numero de filas es igual a uno es que lo encuentra
+		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
+			     //modificamos los atributos de la tabla EVALUACION
+				$sql = "UPDATE EVALUACION SET 
+					IdTrabajo = '$this->IdTrabajo',
+					LoginEvaluador = '$this->LoginEvaluador',
+                    AliasEvaluado='$this->AliasEvaluado',
+					IdHistoria = '$this->IdHistoria',
+                    CorrectoP = '$this->CorrectoP',
+                    ComentIncorrectoP ='$this->ComentIncorrectoP',
+					OK = '$this->OK'
+				WHERE ( IdTrabajo = '$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' && AliasEvaluado = '$this->AliasEvaluado' && 
+                IdHistoria = '$this->IdHistoria'
+				)";
+            
+			// si hay un problema con la query se envia un mensaje de error en la modificacion
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+				return 'Error en la modificación';
+			} else { // si no hay problemas con la modificación se indica que se ha modificado
+				return 'Modificado correctamente';
+			}
+
+		} else // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
+			return 'No existe en la base de datos';
+	} // fin del metodo EDIT
+
 	function DevolverEntregas(){
-		$sql = "SELECT DISTINCT login,Alias,E.IdTrabajo
+		$sql = "SELECT DISTINCT login,Alias,E.IdTrabajo,Ruta
 				FROM ENTREGA EN,EVALUACION E
-				WHERE Alias = AliasEvaluado 
-				ORDER BY AliasEvaluado,E.IdHistoria";
+				WHERE Alias = AliasEvaluado && SUBSTRING(E.IdTrabajo,3) = SUBSTRING(EN.IdTrabajo,3)
+				ORDER BY E.Idtrabajo,AliasEvaluado,E.IdHistoria";
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
 		} else { // si la busqueda es correcta devolvemos el recordset resultado
@@ -389,6 +464,8 @@ class EVALUACION{ //declaración de la clase
 			return $resultado;
 		}
 	}
+
+
 
 	function entregasUsu($nombre){
         

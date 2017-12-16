@@ -24,6 +24,7 @@ include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 include '../Views/EVALUACION/EVALUACION_MOSTRAR_USER_View.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_USUARIO_EDIT.php'; //incluye la vista del showall
 include '../Views/DEFAULT_View.php';
+include '../Views/EVALUACION/EVALUACION_ADMIN_EVALUAR_View.php';
 
 
 function get_data_form() {
@@ -126,6 +127,59 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			//Variable que almacena los datos recogidos
 			$EVALUACION = get_data_form();
+			//Variable que almacena la respuesta de la edición de los datos
+			$respuesta = $EVALUACION->EDIT();
+			//crea una vista mensaje con la respuesta y la ComentIncorrectoPción de vuelta
+			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' );
+		}
+		//Fin del bloque
+		break;
+	case 'ADMIN_EVALUAR'://Caso editar	
+		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
+			if(permisosAcc($_SESSION['login'],12,2)==true){
+			//Variable que almacena un objeto model con el LoginEvaluador
+            $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+            $ADMIN = $USUARIO->comprobarAdmin();
+            if($ADMIN == true){
+
+                $EVALUACION = new EVALUACION($_REQUEST[ 'IdTrabajo' ],'', $_REQUEST[ 'AliasEvaluado' ], '', '', '', '', '','');
+                    //Variable que almacena los datos de los atibutos rellenados a traves de LoginEvaluador
+                $valores = $EVALUACION->EvaluacionesQa($_REQUEST['AliasEvaluado']);
+                
+                //Muestra la vista del formulario editar
+                new EVALUACION_ADMIN_EVALUAR( $valores );
+                //Si se reciben valores
+
+            }
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			}
+		} else {
+			$contenido = $_SESSION['contenido'];
+			$EVALUACION = new EVALUACION('','', '', '', '', '', '', '','');
+			for ($i=0; $i < count($contenido); $i++) { 
+				$id = $contenido[$i][0];
+				$login = $contenido[$i][1];
+				$Alias = $contenido[$i][2];
+
+				$CorrectoP = $_REQUEST[$login . $id];
+				$ComentIncorrectoP = $_REQUEST[$id . $Alias];
+				$OK = $_REQUEST[$id];
+
+				$miarray = $EVALUACION->DevolverCommentAlumno($login,$Alias,$id,$_REQUEST['IdTrabajo']);
+
+				$CorrectoA = $miarray[0][0];
+				$ComentIncorrectoA = $miarray[0][1];
+
+				$EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$login,$Alias,$id,$CorrectoA,$ComentIncorrectoA,$CorrectoP,$ComentIncorrectoP,$OK);
+				$respuesta = $EVALUACION->EDIT();
+				//echo "id: " . $id . "login: " . $login . "alias: " . $Alias . "correctoP: " . $CorrectoP . "ok: " . $OK ."comp " . $ComentIncorrectoP;
+				//echo "--------------------------<br>";
+
+ 			}
+ 			//echo $_REQUEST['diego7'];
+			//Variable que almacena los datos recogidos
+			//$EVALUACION = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $EVALUACION->EDIT();
 			//crea una vista mensaje con la respuesta y la ComentIncorrectoPción de vuelta
