@@ -86,7 +86,7 @@ class CORRECION_QA_RESULTADOS {
 			</table>
 			<form action='../Controllers/CORRECION_QA_CONTROLLER.php' method="post">
                 <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
-				<button type="submit" value="RESULTADO" ><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button type="submit" name="action" value="RESULTADO" ><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php
