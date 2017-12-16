@@ -1,18 +1,19 @@
 <?php
 
-/*	Archivo php
-	Nombre: pcomprobarAdministrador.php
-	Autor:	fta875
-	Fecha de creación: 9/10/2017 
-	Función: Esta función valida si existen los permisos para la accion de la funcionalidad indicada.
+/*	
+	Autor:	Alejandro Vila
+	Fecha de creación: 22/11/2017 
+	Este fichero lo que hace es comprobar si es administrador un login que se pasa
 */
-include_once '../Functions/BdAdmin.php';
-include_once '../Models/USU_GRUPO_MODEL.php';
+include_once '../Functions/BdAdmin.php';//permite conexión a la base de datos
+include_once '../Models/USU_GRUPO_MODEL.php';//incluye el contenido del modelo USU_GRUPO
+
+//Esta función comprueba  si el login que se pasa como parámetro es administrador
 function comprobarAdministrador($login){
 	
 	
-	$ADMIN = new USU_GRUPO($login,'');
+	$ADMIN = new USU_GRUPO($login,'');//instanciamos un objeto del modelo USU_GRUPO.
 	
-	return $ADMIN->comprobarAdmin();
+	return $ADMIN->comprobarAdmin();//comprobamos si ese login es administrador llamando a la función comprobarAdmin del modelo USU_GRUPO
 } //end of function comprobarAdministrador()
 ?>

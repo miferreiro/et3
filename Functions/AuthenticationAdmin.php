@@ -1,21 +1,21 @@
 <?php
 
-/*	Archivo php
-	Nombre: Authentication.php
-	Autor:	fta875
+/*	
+	Autor:	Miguel Ferreiro
 	Fecha de creación: 9/10/2017 
-	Función: Esta función valida si existe la variable de session login. Si no existe redirige a la pagina de login.
-			Si existe comprueba si el usuario tiene permisos para ejecutar la accion de ese controlador.
+	En este fichero vamos a comprobar si existe una variable de sesión para el administrador
 */
+
+//Esta función comprueba si existe una variable de sesión para el administrador
 function IsAuthenticatedAdmin(){
 
-	if (!isset($_SESSION['login'])){
-		return false;
+	if (!isset($_SESSION['login'])){//mira si no existe una variable de sesión para el login
+		return false;//retorna false
 	}
-	else{
-		if($_SESSION['login']=='admin'){
-		return true;
-		}else{
+	else{//si existe una variable de sesión
+		if($_SESSION['login']=='admin'){//miramos si hay una variable de sesión del login para el administrador
+		return true;//retorna true
+		}else{//si el administrador no está logeado devolvemos false
 		return false;
 		}
 	}
