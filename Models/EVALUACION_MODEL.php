@@ -2,7 +2,7 @@
 
 /*
  Función: modelo de datos definida en una clase que permite interactuar con la base de datos
- Fecha de creación:23/11/2017
+ Fecha de creación:23/11/2017 Autor:Brais Rodríguez
 */
 class EVALUACION{ //declaración de la clase
 
@@ -45,7 +45,7 @@ class EVALUACION{ //declaración de la clase
  function mostrarEntregas($nombre){
         
     
-    $sql = "SELECT DISTINCT login,E.IdTrabajo FROM ENTREGA ET,EVALUACION E WHERE  ET.Alias=E.AliasEvaluado AND login='$nombre'";
+    $sql = "SELECT DISTINCT login,ET.IdTrabajo FROM ENTREGA ET,EVALUACION E WHERE  ET.Alias=E.AliasEvaluado AND login='$nombre'";
           
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -77,8 +77,8 @@ class EVALUACION{ //declaración de la clase
         
         
        
-        $sql = "SELECT DISTINCT LoginEvaluador,E.IdTrabajo FROM EVALUACION E,ENTREGA ET WHERE 
-        ( E.IdTrabajo = '$IdTrabajo' && Alias = AliasEvaluado && login='$nombre')";
+        $sql = "SELECT DISTINCT LoginEvaluador,E.IdTrabajo,ET.login FROM EVALUACION E,ENTREGA ET WHERE 
+        ( Alias = AliasEvaluado && login='$nombre')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

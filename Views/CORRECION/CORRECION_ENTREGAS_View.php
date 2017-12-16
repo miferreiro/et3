@@ -25,7 +25,7 @@ class CORRECION_ENTREGAS {
 				<tr>
 
 					<th>
-						<?php echo $strings['IdTrabajo']?>
+						<?php echo $strings['login']?>
 					</th>
 
 					<th colspan="3" >
@@ -38,7 +38,7 @@ class CORRECION_ENTREGAS {
 ?>
 				<tr>
 
-                    <td><?php echo $fila[1]; ?></td>
+                    <td><?php echo $fila[2]; ?></td>
 
 					
 						<form action="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" method="get" style="display:inline" >

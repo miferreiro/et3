@@ -30,7 +30,7 @@ switch($_REQUEST['action']){
         //  $sql = "SELECT DISTINCT LoginEvaluador,E.IdTrabajo FROM EVALUACION E,ENTREGA ET WHERE 
         //( E.IdTrabajo = '$IdTrabajo' && Alias = AliasEvaluado && login='$nombre')";
         $CORRECION = new EVALUACION('','','','','','','','','');
-        $lista=array('LoginEvaluador','IdTrabajo');
+        $lista=array('LoginEvaluador','IdTrabajo','login');
         $datos =$CORRECION->mostrarCorrecion($_REQUEST['IdTrabajo'],$_SESSION['login']);
         new CORRECION_ENTREGAS($lista,$datos);
         
