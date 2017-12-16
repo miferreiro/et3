@@ -157,9 +157,10 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM ASIGNAC_QA
+		$sql = "SELECT * FROM ASIGNAC_QA A,TRABAJO T
 						 WHERE (
-						 		(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
+						 		(BINARY A.IdTrabajo LIKE '%$this->IdTrabajo%') &&
+                                (A.IdTrabajo = T.IdTrabajo) &&
                     			(BINARY LoginEvaluador LIKE '%$this->LoginEvaluador%') &&
                     			(BINARY AliasEvaluado LIKE '%$this->AliasEvaluado%')
 								)";//se construye la sentencia sql

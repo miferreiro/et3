@@ -135,9 +135,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
-			$datos = $GRUPOS->RellenaSelect();
 			//Muestra la vista del formulario editar
-			new GRUPO_EDIT( $valores,$datos);
+			new GRUPO_EDIT( $valores);
 			}else{
             $cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
@@ -154,9 +153,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
-			$datos = $GRUPOS->RellenaSelect();
 			//Muestra la vista del formulario editar
-			new GRUPO_EDIT( $valores,$datos);
+			new GRUPO_EDIT( $valores);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 		}

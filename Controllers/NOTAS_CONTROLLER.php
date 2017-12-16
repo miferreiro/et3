@@ -218,7 +218,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             }else{
 				new USUARIO_DEFAULT();				
 			}
-           
+                               
 		//Si se reciben datos
 		//} 
         //else {

@@ -234,7 +234,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			$ASIGNACION = get_data_form();
 			$datos = $ASIGNACION->SEARCH();
-			$lista = array( 'IdTrabajo','LoginEvaluador','LoginEvaluado', 'AliasEvaluado' );
+			$lista = array( 'NombreTrabajo','LoginEvaluador','LoginEvaluado', 'AliasEvaluado' );
 			new ASIGNAC_QA_SHOWALL( $lista, $datos );
 		}
 		break;
@@ -255,7 +255,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ASIGNACION = get_data_form();
 		}
 		$datos = $ASIGNACION->SEARCH();
-		$lista = array( 'IdTrabajo','LoginEvaluador','LoginEvaluado', 'AliasEvaluado' );
+		$lista = array( 'NombreTrabajo','LoginEvaluador','LoginEvaluado', 'AliasEvaluado' );
 		new ASIGNAC_QA_SHOWALL( $lista, $datos );
 
 			}else{
