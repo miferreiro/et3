@@ -148,8 +148,7 @@ class GRUPO_DELETE {
 					</td>
 				</tr>
                 
-                <br>
-                <br>
+
                 <?php
                     
 				}
