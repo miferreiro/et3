@@ -264,7 +264,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Muestra la vista del formulario editar
 			new ENTREGA_EDIT( $valores );
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 			}
 			//Si se reciben valores
 		} else {
@@ -401,7 +401,7 @@ switch ( $_REQUEST[ 'action' ] ) {
           $lista = array('login','IdTrabajo','Alias','Horas','Ruta');
           new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,false */);
 		}else{
-			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
         break;
         

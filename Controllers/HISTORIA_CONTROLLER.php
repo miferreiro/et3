@@ -48,7 +48,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if(permisosAcc($_SESSION['login'],10,0)==true){			
 			new HISTORIA_ADD();
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );
 			}
 		} else {
 			$HISTORIA = get_data_form();
@@ -64,7 +64,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$dependencias = $HISTORIA->dependencias( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ]);
 			new HISTORIA_DELETE( $valores, $dependencias);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );
 			}
 		} else {
 			$HISTORIA = get_data_form();
@@ -79,7 +79,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] ,$_REQUEST[ 'IdHistoria' ]);
 			new HISTORIA_EDIT( $valores );
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );
 			}
 		} else {
 			$HISTORIA = get_data_form();
@@ -92,7 +92,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if(permisosAcc($_SESSION['login'],10,3)==true){
 			new HISTORIA_SEARCH();
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );
 			}
 		} else {
 			$HISTORIA = get_data_form();
@@ -107,7 +107,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] ,$_REQUEST[ 'IdHistoria' ]);
 		new HISTORIA_SHOWCURRENT( $valores );
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );
 			}
 		break;
 	default:

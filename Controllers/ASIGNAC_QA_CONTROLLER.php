@@ -62,7 +62,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Creación vista para generación de qas
 			new ASIGNAC_QA_HISTORIAS($QA);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 			}				
 		//Si se reciben parametros
 		} else {
@@ -116,7 +116,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Creación de una nueva vista para generar QAs
 			new ASIGNAC_QA_GENERAR($ET);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 			}	
 		//Si se reciben parámetros
 		} else {
@@ -184,7 +184,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if(permisosAcc($_SESSION['login'],6,0)==true){
 			new ASIGNAC_QA_ADD();
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 			}
 		} else {
 			$ASIGNACION = get_data_form();
@@ -201,7 +201,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$dependencias2 = $ASIGNACION->dependencias2( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
 			new ASIGNAC_QA_DELETE( $valores, $dependencias, $dependencias2 );
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 			}
 		} else {
 			$ASIGNACION = get_data_form();
@@ -216,7 +216,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $ASIGNACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
 			new ASIGNAC_QA_EDIT( $valores );
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 			}
 		} else {
 			$ASIGNACION = get_data_form();
@@ -229,7 +229,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if(permisosAcc($_SESSION['login'],6,3)==true){
 			new ASIGNAC_QA_SEARCH();
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 			}
 		} else {
 			$ASIGNACION = get_data_form();
@@ -244,7 +244,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$valores = $ASIGNACION->RellenaDatos( $_REQUEST[ 'IdTrabajo' ], $_REQUEST['LoginEvaluador'], $_REQUEST['AliasEvaluado']);
 		new ASIGNAC_QA_SHOWCURRENT( $valores );
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 			}
 		break;
 	default:

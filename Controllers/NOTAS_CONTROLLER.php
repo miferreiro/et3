@@ -51,7 +51,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Crea una vista add para ver la tupla
 			new NOTAS_ADD();
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
 			}
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de NOTAS_MODEL inserta los datos
 			$NOTAS = get_data_form();//Variable que almacena los datos recogidos
@@ -71,7 +71,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             //Crea una vista delete para ver la tupla
 			new NOTAS_DELETE($valores);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
 			}
 			//Si recibe valores ejecuta el borrado
 		} else {
@@ -94,7 +94,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $NOTAS->RellenaDatos();
 			new NOTAS_EDIT($valores);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
 			}
 			//Si se reciben valores
 		} else {
@@ -112,7 +112,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if(permisosAcc($_SESSION['login'],7,3)==true){
 			new NOTAS_SEARCH();
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
 			}
 		//Si se reciben datos	
 		} else {
@@ -136,7 +136,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Creación de la vista showcurrent
 		new NOTAS_SHOWCURRENT( $valores );
 		}else{
-			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
 		}
 		//Final del bloque
 		break;
