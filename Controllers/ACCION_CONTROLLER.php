@@ -174,7 +174,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$PERMISO = $USUARIO->comprobarPermisos();
 			$ACCION = get_data_form();
 			$datos = $ACCION->SEARCH();
-			$lista = array( 'IdAccion','NombreAccion','DescripAccion' );
+			$lista = array( 'NombreAccion','DescripAccion' );
 			new ACCION_SHOWALL( $lista, $datos,$PERMISO,true );
 		}
 		break;
@@ -219,7 +219,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los datos de la busqueda
 		$datos = $ACCION->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
-		$lista = array('IdAccion','NombreAccion','DescripAccion');
+		$lista = array('NombreAccion','DescripAccion');
 		$PERMISO = $USUARIO->comprobarPermisos();
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new ACCION_SHOWALL( $lista, $datos,$PERMISO,true);
@@ -245,7 +245,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los datos de la busqueda
 		$datos = $ACCION->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
-		$lista = array( 'IdAccion','NombreAccion','DescripAccion');
+		$lista = array( 'NombreAccion','DescripAccion');
 		$PERMISO = $USUARIO->comprobarPermisos();
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new ACCION_SHOWALL( $lista, $datos,$PERMISO,false);

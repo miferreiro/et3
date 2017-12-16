@@ -31,13 +31,15 @@ class NOTAS_MODEL{ //declaración de la clase
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "select  IdTrabajo,
+		$sql = "select  N.IdTrabajo,
+						T.NombreTrabajo,
                         login,
                         NotaTrabajo
-       			from NOTA_TRABAJO
+       			from NOTA_TRABAJO N,TRABAJO T
     			where 
     				(
-					(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
+					(BINARY N.IdTrabajo LIKE '%$this->IdTrabajo%') &&
+					(N.IdTrabajo=T.IdTrabajo) &&
                     (BINARY login LIKE '%$this->login%') &&
 	 				(BINARY NotaTrabajo LIKE '%$this->NotaTrabajo%')
     				)";//se construye la sentencia sql
@@ -52,11 +54,14 @@ class NOTAS_MODEL{ //declaración de la clase
     
 		function SEARCH2() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "select  IdTrabajo,
+		$sql = "select  N.IdTrabajo,
+						T.NombreTrabajo,
                         login,
                         NotaTrabajo
        			from NOTA_TRABAJO
-    			where 
+    			where
+					(BINARY N.IdTrabajo LIKE '%$this->IdTrabajo%') &&
+					(N.IdTrabajo=T.IdTrabajo) &&
     				(BINARY login = '$this->login')";//se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

@@ -121,7 +121,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el resultado de la busqueda
 			$datos = $NOTAS->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
-			$lista = array('IdTrabajo','login','NotaTrabajo');
+			$lista = array('NombreTrabajo','login','NotaTrabajo');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new NOTAS_SHOWALL( $lista, $datos );
 		}
@@ -178,7 +178,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                   
                   	$datos = $NOTAS->SEARCH();
                     //Variable que almacena array con el nombre de los atributos
-                    $lista = array('IdTrabajo','login','NotaTrabajo');
+                    $lista = array('NombreTrabajo','login','NotaTrabajo');
                     //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
                     new NOTAS_SHOWALL( $lista, $datos, $notas,false );
                   
@@ -212,7 +212,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                 
                  	  $datos = $NOTAS->SEARCH2();
 		              //Variable que almacena array con el nombre de los atributos
-		              $lista = array('IdTrabajo','login','NotaTrabajo');
+		              $lista = array('NombreTrabajo','login','NotaTrabajo');
 		              //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		              new NOTAS_SHOWALL( $lista, $datos, $notas,true );
             }else{

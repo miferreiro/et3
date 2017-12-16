@@ -151,9 +151,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
-			$datos = $USUARIO->RellenaSelect();
 			//Muestra la vista del formulario editar
-			new USUARIO_EDIT( $valores,$datos);
+			new USUARIO_EDIT( $valores);
 			}else{
 			$cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();
@@ -171,9 +170,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
-			$datos = $USUARIO->RellenaSelect();
 			//Muestra la vista del formulario editar
-			new USUARIO_EDIT( $valores,$datos);
+			new USUARIO_EDIT( $valores);
 			}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
@@ -223,7 +221,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el resultado de la busqueda
 			$datos = $USUARIO->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
-			$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
+			$lista = array( 'login','DNI','Nombre','Apellidos','Correo');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			if($ADMIN == true){
 				new USUARIO_SHOWALL( $lista, $datos,$PERMISO,true );
@@ -282,7 +280,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los datos de la busqueda
 		$datos = $USUARIO->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
-		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
+		$lista = array( 'login','DNI','Nombre','Apellidos','Correo');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		$PERMISO = $USER->comprobarPermisos();
 		new USUARIO_SHOWALL( $lista, $datos, $PERMISO,true);
@@ -308,7 +306,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los datos de la busqueda
 		$datos = $USUARIO->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
-		$lista = array( 'login','password','DNI','Nombre','Apellidos','Correo','Direccion','Telefono');
+		$lista = array( 'login','DNI','Nombre','Apellidos','Correo');
 		$PERMISO = $USER->comprobarPermisos();
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new USUARIO_SHOWALL( $lista, $datos, $PERMISO,false);

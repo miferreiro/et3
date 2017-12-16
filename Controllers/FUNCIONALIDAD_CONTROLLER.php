@@ -172,7 +172,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$PERMISO = $USUARIO->comprobarPermisos();
 			$FUNCIONALIDAD = get_data_form();
 			$datos = $FUNCIONALIDAD->SEARCH();
-			$lista = array( 'IdFuncionalidad', 'NombreFuncionalidad', 'DescripFuncionalidad' );
+			$lista = array( 'NombreFuncionalidad', 'DescripFuncionalidad' );
 			new FUNCIONALIDAD_SHOWALL( $lista, $datos,$PERMISO,true);
 		}
 		break;
@@ -217,7 +217,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena los datos de la busqueda
 			$datos = $FUNCIONALIDAD->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
-			$lista = array( 'IdFuncionalidad', 'NombreFuncionalidad', 'DescripFuncionalidad' );
+			$lista = array( 'NombreFuncionalidad', 'DescripFuncionalidad' );
 			$PERMISO = $USUARIO->comprobarPermisos();
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new FUNCIONALIDAD_SHOWALL( $lista, $datos, $PERMISO, true );
@@ -243,7 +243,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				//Variable que almacena los datos de la busqueda
 				$datos = $FUNCIONALIDAD->SEARCH();
 				//Variable que almacena array con el nombre de los atributos
-				$lista = array( 'IdFuncionalidad', 'NombreFuncionalidad', 'DescripFuncionalidad' );
+				$lista = array( 'NombreFuncionalidad', 'DescripFuncionalidad' );
 				$PERMISO = $USUARIO->comprobarPermisos();
 				//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 				new FUNCIONALIDAD_SHOWALL( $lista, $datos, $PERMISO, false );

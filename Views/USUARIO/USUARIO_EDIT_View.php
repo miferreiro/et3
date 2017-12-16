@@ -7,15 +7,13 @@
 */
 class USUARIO_EDIT {
 
-	function __construct( $valores,$datos ) {
+	function __construct( $valores) {
 		$this->valores = $valores;
-		$this->datos = $datos;
-		$this->render( $this->valores, $this->datos);
+		$this->render( $this->valores);
 	}
 
-	function render( $valores, $datos) {
+	function render( $valores) {
  		$this->valores = $valores;
-		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		?>
