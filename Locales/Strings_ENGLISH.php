@@ -193,7 +193,26 @@ array(
 	'Debe eliminar antes todas las dependencias para poder borrar este dato.' => 'You must first remove all dependencies in order to delete this data.',
 	'NOMBRE_GRUPO' => 'Group Name',
 	'USUARIO_GRUPO' => 'User Name',
-	' no se permiten las extensiones: .sh/.php' => ' does not allow extensions: .sh/.php '
+	' no se permiten las extensiones: .sh/.php' => ' does not allow extensions: .sh/.php ',
+    'ID_GRUPO' => 'Group ID',
+	'USUARIO_ENTREGA' => 'Delivery User',
+	'ID_TRABAJO' => 'Work ID',
+	'ALIAS' => 'Alias',
+	'HORAS' => 'Dedicated hours',
+	'RUTA' => 'Delivery route',
+	'LoginEvaluador' => 'Evaluating User',
+	'LoginEvaluado' => 'Evaluated User',
+	'AliasEvaluado' => 'Evaluated Alias',
+	'NotaTrabajo' => 'Mark',
+	'IdHistoria' => 'Evaluated story',
+	'CorrectoA' => 'Student Correction',
+	'CorrectoP' => 'Teacher Correction',
+    'ComenIncorrectoA' => 'Student Comment',
+    'ComenIncorrectoP' => 'Teacher Comment',
+    'OK' => 'QA Correction',
+    'NombreFunc' => 'Funcionality',
+    'NombreAc' => 'Action',
+    'TextoHistoria' => 'Story definition'
     
 	
 	

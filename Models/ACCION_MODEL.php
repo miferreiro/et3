@@ -131,7 +131,7 @@ class ACCION{
         
         $dependencias = null;//inicialiazmos la variable dependencias a null.
 
-		$sql = "SELECT IdFuncionalidad, FA.IdAccion FROM FUNC_ACCION FA, ACCION A WHERE FA.IdAccion = '$this->IdAccion' AND FA.IdAccion = A.IdAccion";//se construye la sentencia sql.
+		$sql = "SELECT NombreFuncionalidad, NombreAccion FROM FUNC_ACCION FA, ACCION A, FUNCIONALIDAD F WHERE FA.IdAccion = '$this->IdAccion' AND FA.IdAccion = A.IdAccion AND FA.IdFuncionalidad = F.IdFuncionalidad";//se construye la sentencia sql.
      
         $resultado = $this->mysqli->query( $sql );   // se ejecuta la query 
         

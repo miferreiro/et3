@@ -76,7 +76,41 @@ class ASIGNAC_QA_DELETE {
             ?>
             
             <table>
+                    <th>
+                        <?php echo $strings['ID_TRABAJO'];?>
+                    </th>
                 
+                    <th>
+                        <?php echo $strings['LoginEvaluador'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['AliasEvaluado'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['IdHistoria'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['CorrectoA'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['ComenIncorrectoA'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['CorrectoP'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['ComentIncorrectoP'];?>
+                    </th>
+                
+                     <th>
+                        <?php echo $strings['OK'];?>
+                    </th>
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
@@ -158,6 +192,41 @@ class ASIGNAC_QA_DELETE {
             ?>
             
             <table>
+                    <th>
+                        <?php echo $strings['ID_TRABAJO'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['LoginEvaluador'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['AliasEvaluado'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['IdHistoria'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['CorrectoA'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['ComenIncorrectoA'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['CorrectoP'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['ComentIncorrectoP'];?>
+                    </th>
+                
+                     <th>
+                        <?php echo $strings['OK'];?>
+                    </th>
                 
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {

@@ -104,44 +104,59 @@ class GRUPO_DELETE {
             
             echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
             echo "<br>";
-        
-            
+            ?>
+            <table>
+                    <th>
+                        <?php echo $strings['NOMBRE_GRUPO'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['NombreFunc'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['NombreAc'];?>
+                    </th>
+            <?php
             if($dependencias != null){
                 ?>
             
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias) ) {
             ?>
-			<table>
+			
             <tr>
 
 				    <td>
                         <?php 
-				        echo $fila['IdGrupo'];
+				        echo $fila['NombreGrupo'];
                             
                         ?>
 					</td>
                     <td>
                         <?php 
 							
-                        echo $fila['IdFuncionalidad'];
+                        echo $fila['NombreFuncionalidad'];
 
                         ?>
 					</td>
                     <td>
                         <?php 
-				        echo $fila['IdAccion'];
+				        echo $fila['NombreAccion'];
                             
                         ?>
 					</td>
 				</tr>
-                </table>
+                
                 <br>
                 <br>
                 <?php
                     
 				}
             }
+            ?>
+            </table>
+            <?php
             if($dependencias2 != null){
                 
                  //if redundante para que verifique que dependencias 2 es realmente distinto de null

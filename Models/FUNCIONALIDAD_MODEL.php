@@ -131,7 +131,7 @@ class FUNCIONALIDAD {
 
 		$dependencias = null;//inicializamos la variable a null
 
-		$sql = "SELECT FA.IdFuncionalidad, IdAccion FROM FUNC_ACCION FA, FUNCIONALIDAD F WHERE FA.IdFuncionalidad = '$this->IdFuncionalidad' AND FA.IdFuncionalidad = F.IdFuncionalidad";//se construye la sentencia sql
+		$sql = "SELECT NombreFuncionalidad, NombreAccion FROM FUNC_ACCION FA, FUNCIONALIDAD F, ACCION A WHERE FA.IdFuncionalidad = '$this->IdFuncionalidad' AND FA.IdFuncionalidad = F.IdFuncionalidad AND A.IdAccion = FA.IdAccion";//se construye la sentencia sql
 		$resultado = $this->mysqli->query( $sql );//se ejecuta la query
 		if ( $resultado->num_rows >= 1 ) {//miramos si el número de filas es mayor ó igual que uno
 			$dependencias = $resultado;//asignamos todas las dependencias

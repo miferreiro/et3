@@ -96,7 +96,41 @@ class TRABAJO_DELETE {
             ?>
             
             <table>
+                 <th>
+                        <?php echo $strings['ID_TRABAJO'];?>
+                    </th>
                 
+                    <th>
+                        <?php echo $strings['LoginEvaluador'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['AliasEvaluado'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['IdHistoria'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['CorrectoA'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['ComenIncorrectoA'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['CorrectoP'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['ComentIncorrectoP'];?>
+                    </th>
+                
+                     <th>
+                        <?php echo $strings['OK'];?>
+                    </th>
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
@@ -176,6 +210,19 @@ class TRABAJO_DELETE {
             if($dependencias2 != null){
             ?>
             <table>
+                 <th>
+                        <?php echo $strings['ID_TRABAJO'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['IdHistoria'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['TextoHistoria'];?>
+                    </th>
+                
+                    
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {
             ?>
@@ -209,6 +256,7 @@ class TRABAJO_DELETE {
 				}
                 ?>
                 </table>
+            
             <?php
             }
                 
@@ -217,6 +265,16 @@ class TRABAJO_DELETE {
             ?>
             
             <table>
+                    <th>
+                        <?php echo $strings['login'];?>
+                    </th>
+                    <th>
+                        <?php echo $strings['ID_TRABAJO'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['NotaTrabajo'];?>
+                    </th>
                 
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias3 ) ) {
@@ -258,6 +316,21 @@ class TRABAJO_DELETE {
             ?>
             
             <table>
+                    <th>
+                        <?php echo $strings['ID_TRABAJO'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['LoginEvaluador'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['LoginEvaluado'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['AliasEvaluado'];?>
+                    </th>
                 
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias4 ) ) {
@@ -306,6 +379,24 @@ class TRABAJO_DELETE {
             ?>
             
             <table>
+                    <th>
+                        <?php echo $strings['USUARIO_ENTREGA'];?>
+                    </th>
+                    <th>
+                        <?php echo $strings['ID_TRABAJO'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['ALIAS'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['HORAS'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['RUTA'];?>
+                    </th>
                 
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias5 ) ) {

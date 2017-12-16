@@ -95,7 +95,19 @@
             
             <table>
                     <th>
-                        ASIGNAC_QA
+                        <?php echo $strings['ID_TRABAJO'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['LoginEvaluador'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['LoginEvaluado'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['AliasEvaluado'];?>
                     </th>
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
@@ -147,7 +159,19 @@
             
             <table>
                     <th>
-                        ASIGNAC_QA
+                        <?php echo $strings['ID_TRABAJO'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['LoginEvaluador'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['LoginEvaluado'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['AliasEvaluado'];?>
                     </th>
             <?php
 				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {

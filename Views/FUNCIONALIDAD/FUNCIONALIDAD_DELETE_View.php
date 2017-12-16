@@ -61,32 +61,40 @@ class FUNCIONALIDAD_DELETE {
                ?>
                 <br>
                 <br>
+            <table>
+                    <th>
+                        <?php echo $strings['NombreFunc'];?>
+                    </th>
+                    <th>
+                        <?php echo $strings['NombreAc'];?>
+                    </th>
             <?php
             
 				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
-			<table>
+			
             <tr>
 
 				    <td>
                         <?php 
-				        echo $fila['IdFuncionalidad'];
+				        echo $fila['NombreFuncionalidad'];
                             
                         ?>
 					</td>
                     <td>
                         <?php 
 							
-                        echo $fila['IdAccion'];
+                        echo $fila['NombreAccion'];
 
                         ?>
 					</td>
 
 				</tr>
-                </table>
+                
                 <?php
 				}
                 ?>
+                </table>
                 
             <form action='../Controllers/FUNCIONALIDAD_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>

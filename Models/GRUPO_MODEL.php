@@ -161,7 +161,7 @@
         
         $dependencias = null;//inicializamos la variable a null
         
-        $sql = "SELECT P.IdGrupo, IdFuncionalidad, IdAccion FROM PERMISO P, GRUPO G WHERE P.IdGrupo= '$this->IdGrupo' AND P.IdGrupo = G.IdGrupo";//se construye la sentencia sql
+        $sql = "SELECT NombreGrupo, NombreFuncionalidad, NombreAccion FROM PERMISO P, GRUPO G, FUNCIONALIDAD F, ACCION A WHERE P.IdGrupo= '$this->IdGrupo' AND P.IdGrupo = G.IdGrupo AND F.IdFuncionalidad = P.IdFuncionalidad AND A.IdAccion = P.IdAccion";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//se ejecuta la query
         if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor que uno
             $dependencias = $resultado;//le asignamos todas las dependencias

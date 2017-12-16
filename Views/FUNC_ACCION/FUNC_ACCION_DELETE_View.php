@@ -53,38 +53,52 @@ class FUNC_ACCION_DELETE {
                 ?>
                 <br>
                 <br>
+            <table>
+                    <th>
+                        <?php echo $strings['NOMBRE_GRUPO'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['NombreFunc'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['NombreAc'];?>
+                    </th>
+                
             <?php
             
 				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
-			<table>
+			
             <tr>
 
                     <td>
                         <?php 
-				        echo $fila['IdGrupo'];
+				        echo $fila['NombreGrupo'];
                             
                         ?>
 					</td>
 				    <td>
                         <?php 
-				        echo $fila['IdFuncionalidad'];
+				        echo $fila['NombreFuncionalidad'];
                             
                         ?>
 					</td>
                     <td>
                         <?php 
 							
-                        echo $fila['IdAccion'];
+                        echo $fila['NombreAccion'];
 
                         ?>
 					</td>
 
 				</tr>
-                </table>
+                
                 <?php
 				}
                 ?>
+                </table>
             <form action='../Controllers/FUNC_ACCION_CONTROLLER.php' method="post" style="display: inline">
 				<input type="hidden" name="IdFuncionalidad" value=<?php echo $this->valores['IdFuncionalidad'] ?> />
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>

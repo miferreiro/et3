@@ -194,9 +194,26 @@ array(
 	'Debe eliminar antes todas las dependencias para poder borrar este dato.' => 'Debe eliminar antes todas las dependencias para poder borrar este dato.',
 	'NOMBRE_GRUPO' => 'Nombre del grupo',
 	'USUARIO_GRUPO' => 'Nombre del usuario',
-	' no permite las extensiones: .sh/.php' => ' no permite las extensiones: .sh/.php'
-	
-	
+	' no permite las extensiones: .sh/.php' => ' no permite las extensiones: .sh/.php',
+	'ID_GRUPO' => 'Id del grupo',
+	'USUARIO_ENTREGA' => 'Usuario de la entrega',
+	'ID_TRABAJO' => 'Id del trabajo',
+	'ALIAS' => 'Alias',
+	'HORAS' => 'Horas dedicadas',
+	'RUTA' => 'Ruta de la entrega',
+	'LoginEvaluador' => 'Usuario evaluador',
+	'LoginEvaluado' => 'Usuario evaluado',
+	'AliasEvaluado' => 'Alias evaluado',
+	'NotaTrabajo' => 'Calificación',
+	'IdHistoria' => 'Historia evaluada',
+	'CorrectoA' => 'Corrección del alumno',
+	'CorrectoP' => 'Corrección del profesor',
+    'ComenIncorrectoA' => 'Comentario del alumno',
+    'ComenIncorrectoP' => 'Comentario del profesor',
+    'OK' => 'Corrección de la QA',
+    'NombreFunc' => 'Funcionalidad',
+    'NombreAc' => 'Acción',
+    'TextoHistoria' => 'Definición de la historia'
 	
 	
 	
