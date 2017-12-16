@@ -135,7 +135,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		break;
 	default:
-	if(permisosAcc($_SESSION['login'],11,5)==true || permisosAcc($_SESSION['login'],8,10)==true){
+	if(permisosAcc($_SESSION['login'],11,5)==true ){
 		if ( !$_POST ) {
 			$TRABAJO = new TRABAJO('','','','','');
 		} 
@@ -145,9 +145,22 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $TRABAJO->SEARCH();
 		$lista = array( 'IdTrabajo','NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo','PorcentajeNota' );
 		new TRABAJO_SHOWALL( $lista, $datos );
-			}else{
-				new USUARIO_DEFAULT();
-			}
+		}else if(permisosAcc($_SESSION['login'],8,10)==true){
+				if ( !$_POST ) {
+			$TRABAJO = new TRABAJO('','','','','');
+		} 
+        else {
+			$TRABAJO = get_data_form();
+		}
+		$datos = $TRABAJO->SEARCH2();
+		$lista = array( 'IdTrabajo','NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo','PorcentajeNota' );
+		new TRABAJO_SHOWALL( $lista, $datos );
+		
+		}else{
+		
+			new USUARIO_DEFAULT();
+		
+		}
 }
 
 ?>

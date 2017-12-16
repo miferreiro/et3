@@ -40,7 +40,6 @@ class TRABAJO{
          $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
          $ADMIN = $USUARIO->comprobarAdmin();
         
-        if($ADMIN == true){
 		$sql = "select IdTrabajo,
                         NombreTrabajo,
                         FechaIniTrabajo,
@@ -56,9 +55,23 @@ class TRABAJO{
                     (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%') 
     				)";//se construye la sentencia sql
         
-        }
-        else{
-            $sql = "select IdTrabajo,
+        
+ 
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	} // fin metodo SEARCH
+	
+   //funcion SEARCH2: hace una búsqueda de ETs en la tabla con
+	//los datos proporcionados. Si van vacios devuelve todos
+	function SEARCH2() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+        
+		$sql = "select IdTrabajo,
                         NombreTrabajo,
                         FechaIniTrabajo,
                         FechaFinTrabajo,
@@ -67,13 +80,14 @@ class TRABAJO{
     			where 
     				(
 					(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
-                    (BINARY NombreTrabajo LIKE '%$this->NombreTrabajo%') &&
+                    (BINARY NombreTrabajo LIKE '%ET%') &&
                     (BINARY DATE_FORMAT(FechaIniTrabajo,'%d/%m/%Y') LIKE '%$this->FechaIniTrabajo%') &&
                     (BINARY DATE_FORMAT(FechaFinTrabajo,'%d/%m/%Y') LIKE '%$this->FechaFinTrabajo%') &&
-                    (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%') &&
-                    (BINARY IdTrabajo LIKE '%ET%')
+                    (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%') 
     				)";//se construye la sentencia sql
-        }
+        
+        
+ 
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
