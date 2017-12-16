@@ -58,11 +58,14 @@ class NOTAS_MODEL{ //declaración de la clase
 						T.NombreTrabajo,
                         login,
                         NotaTrabajo
-       			from NOTA_TRABAJO
-    			where
+       			from NOTA_TRABAJO N,TRABAJO T
+    			where 
+    				(
 					(BINARY N.IdTrabajo LIKE '%$this->IdTrabajo%') &&
 					(N.IdTrabajo=T.IdTrabajo) &&
-    				(BINARY login = '$this->login')";//se construye la sentencia sql
+                    (BINARY login = '$this->login') &&
+	 				(BINARY NotaTrabajo LIKE '%$this->NotaTrabajo%')
+    				)";//se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
