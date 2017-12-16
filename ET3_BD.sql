@@ -296,7 +296,7 @@ ALTER TABLE `PERMISO`
   
   --         INSERTS
   
-INSERT INTO `accion` (`IdAccion`, `NombreAccion`, `DescripAccion`) VALUES
+INSERT INTO `ACCION` (`IdAccion`, `NombreAccion`, `DescripAccion`) VALUES
 ('0', 'ADD', 'ADD'),
 ('1', 'DELETE', 'DELETE'),
 ('2', 'EDIT', 'EDIT'),
@@ -312,7 +312,7 @@ INSERT INTO `accion` (`IdAccion`, `NombreAccion`, `DescripAccion`) VALUES
   
   
   
-INSERT INTO `funcionalidad` (`IdFuncionalidad`, `NombreFuncionalidad`, `DescripFuncionalidad`) VALUES
+INSERT INTO `FUNCIONALIDAD` (`IdFuncionalidad`, `NombreFuncionalidad`, `DescripFuncionalidad`) VALUES
 ('1', 'GestionUsuarios', 'GestionUsuarios'),
 ('10', 'Gestion de historias', 'Gestion de historias'),
 ('11', 'Gestion de trabajos', 'Gestion de trabajos'),
@@ -331,7 +331,7 @@ INSERT INTO `funcionalidad` (`IdFuncionalidad`, `NombreFuncionalidad`, `DescripF
 
 
 
-INSERT INTO `func_accion` (`IdFuncionalidad`, `IdAccion`) VALUES
+INSERT INTO `FUNC_ACCION` (`IdFuncionalidad`, `IdAccion`) VALUES
 ('1', '0'),
 ('1', '1'),
 ('1', '2'),
@@ -445,7 +445,7 @@ INSERT INTO `func_accion` (`IdFuncionalidad`, `IdAccion`) VALUES
 ('8', '10'),
 ('9', '7');
 
-INSERT INTO `permiso` (`IdGrupo`, `IdFuncionalidad`, `IdAccion`) VALUES
+INSERT INTO `PERMISO` (`IdGrupo`, `IdFuncionalidad`, `IdAccion`) VALUES
 ('00001A', '12', '2'),
 ('00001A', '12', '5'),
 ('00001A', '13', '7'),
