@@ -123,7 +123,38 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array('NombreTrabajo','login','NotaTrabajo');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			new NOTAS_SHOWALL( $lista, $datos );
+            $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+            $ADMIN = $USUARIO->comprobarAdmin();
+            
+            $NOTAS = new NOTAS_MODEL('',$_SESSION['login'], '');
+                 $dat=$NOTAS->cogerDatos();
+                 $notas=array();
+                  
+                 while($fila = mysqli_fetch_array($dat)){
+                     $nota = $NOTAS->calcularNota($fila['login'],$fila['IdTrabajo']);
+                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
+                     $notaET = $nota * ($porcentaje[0]/100);
+                      array_push($notas,$notaET);
+                    
+                     $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
+                 }
+                
+                 $NOTAS = new NOTAS_MODEL('',$_SESSION['login'], '');
+                 $dat=$NOTAS->cogerDatosQA();
+                
+                 while($fila = mysqli_fetch_array($dat)){
+                     $nota = $NOTAS->calcularNotaQA($fila['login'],$fila['IdTrabajo']);
+                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
+                     $notaET = $nota * ($porcentaje[0]/100);
+                      array_push($notas,$notaET);
+                     $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
+                 }
+            if($ADMIN == true){
+                new NOTAS_SHOWALL( $lista, $datos,$notas,false );
+            }
+            else
+                 new NOTAS_SHOWALL( $lista, $datos,$notas,true );
+			
 		}
 		//Final del bloque
 		break;
@@ -186,7 +217,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             }
             else if(permisosAcc($_SESSION['login'],7,5)==true){
                 
-                  $NOTAS = new NOTAS_MODEL('',$_SESSION['login'], '');
+                 $NOTAS = new NOTAS_MODEL('',$_SESSION['login'], '');
                  $dat=$NOTAS->cogerDatos();
                  $notas=array();
                   

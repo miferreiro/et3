@@ -9,13 +9,15 @@ class NOTAS_SHOWALL {
 		$this->lista = $lista;
 		$this->datos = $datos;
 		$this->notas = $notas;
-		$this->render($this->lista,$this->datos, $this->notas,$bol);
+        $this->bol=$bol;
+		$this->render($this->lista,$this->datos, $this->notas,$this->bol);
 	}
 	
 	function render($lista,$datos, $notas,$bol){
 		$this->lista = $lista;
 		$this->datos = $datos;
 		$this->notas = $notas;
+        $this->bol=$bol;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		include_once '../Functions/permisosAcc.php';
@@ -117,7 +119,7 @@ class NOTAS_SHOWALL {
 <?php
         echo '<br>';
         
-                if($bol ==true){
+                if($this->bol ==true){
                     echo "Nota final:".$suma;
                 }
         
