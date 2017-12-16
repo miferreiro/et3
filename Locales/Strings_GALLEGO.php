@@ -171,7 +171,7 @@ array(
     'Correción entregas' => 'Correción entregas',
     'Correción QAs' => 'Correción QAs',
 	'Consulta de correciones' => 'Consulta de correcións',
-    'GENERACIÓN DE QAs' => 'XERACIÓN DE QAs',
+    'GENERACIÓN DE QAs' => 'Xeración de QAs',
 	'Ya existe la entrega introducida en la base de datos' => 'Xa existe a entrega introducida na base de datos',
 	'GENERACIÓN DE HISTORIAS EVALUACIÓN' => 'Xeración de historias evaluación',
 	'GENERACIÓN AUTOMÁTICA DE HISTORIAS' => 'Xeración automática de historias',

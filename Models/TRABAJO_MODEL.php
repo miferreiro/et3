@@ -83,7 +83,7 @@ class TRABAJO{
                     (BINARY NombreTrabajo LIKE '%ET%') &&
                     (BINARY DATE_FORMAT(FechaIniTrabajo,'%d/%m/%Y') LIKE '%$this->FechaIniTrabajo%') &&
                     (BINARY DATE_FORMAT(FechaFinTrabajo,'%d/%m/%Y') LIKE '%$this->FechaFinTrabajo%') &&
-                    (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%') &&  $fechaActual <= FechaIniTrabajo
+                    (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%') &&  $fechaActual > FechaIniTrabajo
     				)";//se construye la sentencia sql
         
         
