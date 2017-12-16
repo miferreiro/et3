@@ -454,7 +454,7 @@ function mostrarEntregas($nombre){
 	} // fin del metodo EDIT
 
 	function DevolverEntregas(){
-		$sql = "SELECT DISTINCT login,Alias,E.IdTrabajo,Ruta
+		$sql = "SELECT DISTINCT login,Alias,E.IdTrabajo,Ruta,Horas
 				FROM ENTREGA EN,EVALUACION E
 				WHERE Alias = AliasEvaluado && SUBSTRING(E.IdTrabajo,3) = SUBSTRING(EN.IdTrabajo,3)
 				ORDER BY E.Idtrabajo,AliasEvaluado,E.IdHistoria";
@@ -470,7 +470,7 @@ function mostrarEntregas($nombre){
 
 	function entregasUsu($nombre){
         
-        $sql = "SELECT DISTINCT login,Alias,E.IdTrabajo
+        $sql = "SELECT DISTINCT login,Alias,E.IdTrabajo,Ruta,Horas
 				FROM ENTREGA EN,EVALUACION E
 				WHERE Alias = AliasEvaluado &&
 					  LoginEvaluador = '$nombre'

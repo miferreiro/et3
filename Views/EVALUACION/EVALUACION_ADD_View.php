@@ -7,11 +7,11 @@
 */
 class EVALUACION_ADD {
 
-	function __construct() {
-		$this->render();
+	function __construct($id,$alias) {
+		$this->render($id,$alias);
 	}
 
-	function render() {
+	function render($id,$alias) {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		?>
@@ -25,7 +25,7 @@ class EVALUACION_ADD {
 						<th class="formThTd">
 							<?php echo $strings['IdTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
+						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" value="<?php echo $id ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')" readonly />
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -37,7 +37,7 @@ class EVALUACION_ADD {
 						<th class="formThTd">
 							<?php echo $strings['AliasEvaluado'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="AliasEvaluado" name="AliasEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+						<td class="formThTd"><input type="text" id="AliasEvaluado" name="AliasEvaluado" value="<?php echo $alias ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')" readonly />
 					</tr>
 
 					<tr>
@@ -86,7 +86,10 @@ class EVALUACION_ADD {
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
-			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="get" style="display: inline">
+				<input type="hidden" name="IdTrabajo" value="<?php echo $id ?>">
+				<input type="hidden" name="AliasEvaluado" value="<?php echo $alias ?>">
+				<input type="hidden" name="action" value="MOSTRAR_USER">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</tr>
