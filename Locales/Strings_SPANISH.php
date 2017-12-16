@@ -171,7 +171,7 @@ array(
     'Correción entregas' => 'Correción entregas',
     'Correción QAs' => 'Correción QAs',
     'GENERACIÓN DE QAs' => 'Generación de  QAs',
-	'GENERACIÓN DE HISTORIAS EVALUACIÓN' => 'Generación de historias evaliación',
+	'GENERACIÓN DE HISTORIAS EVALUACIÓN' => 'Generación de historias evaluación',
 	'GENERACIÓN AUTOMÁTICA DE HISTORIAS' => 'Generación automática de historia',
 	'GENERACIÓN AUTOMÁTICA DE QAs' => 'Generación automática de QAs',
 	'No puedes asignar una qa debido a que este alias no existe' => 'No puedes asignar una qa debido a que este alias no existe',
