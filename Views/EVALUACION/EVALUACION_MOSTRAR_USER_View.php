@@ -66,7 +66,10 @@ class EVALUACION_MOSTRAR_USER {
                             
                             
 						<td>
-								<button type="submit" name="action" value="MOSTRAR_USER" ><img src="../Views/icon/flecha.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+								<button type="submit" name="action" value="MOSTRAR_USER" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+                                <!--si pulsas este boton ves la vista SHOWCURRENT-->
+                        <td>
+								<button type="submit" name="action" value="ADMIN_EVALUAR" ><img src="../Views/icon/flecha.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
                                 <!--si pulsas este boton ves la vista SHOWCURRENT-->
                         </td>
                             
