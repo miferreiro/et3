@@ -44,7 +44,7 @@
                     (BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
                     (BINARY Alias LIKE '%$this->Alias%') &&
                     (BINARY Horas LIKE '%$this->Horas%') &&
-                    (BINARY Ruta LIKE '%$this->Ruta%')
+                    (BINARY Ruta LIKE '%$this->Ruta%') 
     				)";// se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -117,6 +117,17 @@
 		}
          return false;
     }
+    function filtrarET(){
+        $sql = "SELECT * FROM ENTREGA WHERE IdTrabajo LIKE '%et%'";
+        if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} 
+        else {
+            return $resultado;
+        }
+        
+    }
+            
            
     //Metodo ADD()
 	//Inserta en la tabla  de la bd  los valores
