@@ -52,7 +52,7 @@ class CORRECION_QA_RESULTADOS {
                     if($fila[$atributo] == $fila['ComenIncorrectoA'] || $fila[$atributo] == $fila['ComentIncorrectoP']){
 ?>
             
-                        <td><textarea maxlength="300" cols="50" rows="7" readonly>
+                        <td><textarea maxlength="300" cols="20" rows="7" readonly>
 <?php                    
                             
                            echo $fila[ $atributo ]; 
