@@ -153,11 +153,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
+
 			//Muestra la vista del formulario editar
 			new USUARIO_EDIT( $valores);
-			}else{
+			}else{//si el usuaio no es administrador inicializamos la variable cont a 0.
 			$cont=0;
-			$PERMISO = $USUARIO->comprobarPermisos();
+			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para saber los permisos que tiene el usuario
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
 
 			if($fila['IdFuncionalidad']=='1'){
