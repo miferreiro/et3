@@ -189,7 +189,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			$ASIGNACION = get_data_form();
 			$respuesta = $ASIGNACION->ADD();
-			new MESSAGE( $respuesta, '../Controllers/ACCION_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 		}
 		break;
 	case 'DELETE':

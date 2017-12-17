@@ -19,7 +19,7 @@ class ASIGNAC_QA_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/ASIGNAC_QA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
+			<form id="ADD"name="ADD" action="../Controllers/ASIGNAC_QA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddAsignQa()">
 				<table>
 					<tr>
 						<th class="formThTd">

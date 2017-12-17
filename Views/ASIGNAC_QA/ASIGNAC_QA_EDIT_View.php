@@ -21,7 +21,7 @@ class ASIGNAC_QA_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/ASIGNAC_QA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
+			<form id="EDIT" name="EDIT" action="../Controllers/ASIGNAC_QA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditAsignQa()">
 				<table>
 					<tr>
 						<th class="formThTd">

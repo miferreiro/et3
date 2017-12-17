@@ -1430,9 +1430,10 @@ function comprobarSearchEntrega(){
 	
 	login = document.forms['SEARCH'].elements[0];
 	IdTrabajo = document.forms['SEARCH'].elements[1];
-	Alias = document.forms['SEARCH'].elemens[2];
+	Alias = document.forms['SEARCH'].elements[2];
 	Horas = document.forms['SEARCH'].elements[3];
 	Ruta = document.forms['SEARCH'].elements[4];
+	
 
 
 	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
@@ -2676,7 +2677,7 @@ function comprobarAddNotas(){
 		return false;
 	} else {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarLogitud(login, 9)) {
+		if (!comprobarLoNgitud(login, 9)) {
 			return false;
 		}else{
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
@@ -2691,7 +2692,7 @@ function comprobarAddNotas(){
 		return false;
 	} else {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarLogitud(IdTrabajo, 6)) {
+		if (!comprobarLongitud(IdTrabajo, 6)) {
 			return false;
 		}else{
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
@@ -2706,7 +2707,7 @@ function comprobarAddNotas(){
 		return false;
 	} else {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarLogitud(NotaTrabajo, 4)) {
+		if (!comprobarLongitud(NotaTrabajo, 4)) {
 			return false;
 		}else{
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
@@ -2741,7 +2742,7 @@ function comprobarSearchNotas(){
 	
 
 	/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-	if (!comprobarLogitud(login, 9)) {
+	if (!comprobarLongitud(login, 9)) {
 		return false;
 	}else{
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
@@ -2753,7 +2754,7 @@ function comprobarSearchNotas(){
 	
 
 	/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-	if (!comprobarLogitud(IdTrabajo, 6)) {
+	if (!comprobarLongitud(IdTrabajo, 6)) {
 		return false;
 	}else{
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
@@ -2764,7 +2765,7 @@ function comprobarSearchNotas(){
 
 
 	/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-	if (!comprobarLogitud(NotaTrabajo, 4)) {
+	if (!comprobarLongitud(NotaTrabajo, 4)) {
 		return false;
 	}else{
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
@@ -2794,7 +2795,7 @@ function comprobarEditNotas(){
 		return false;
 	} else {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarLogitud(login, 9)) {
+		if (!comprobarLongitud(login, 9)) {
 			return false;
 		}else{
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
@@ -2809,7 +2810,7 @@ function comprobarEditNotas(){
 		return false;
 	} else {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarLogitud(IdTrabajo, 6)) {
+		if (!comprobarLongitud(IdTrabajo, 6)) {
 			return false;
 		}else{
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
@@ -2824,7 +2825,7 @@ function comprobarEditNotas(){
 		return false;
 	} else {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarLogitud(NotaTrabajo, 4)) {
+		if (!comprobarLongitud(NotaTrabajo, 4)) {
 			return false;
 		}else{
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
@@ -2838,6 +2839,229 @@ function comprobarEditNotas(){
 			}
 		}
 	}
+	return true;
+}
+/*
+	function comprobarAddAsignQa(): valida todos los campos del formulario add antes de realizar el submit
+*/
+function comprobarAddAsignQa(){
+	
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario add de gestión de asign_qa*/
+	var LoginEvaluador; /*variable que representa el elemento LoginEvaluador del formulario add de gestión de asign_qa*/
+	var LoginEvaluado; /*variable que representa el elemento LoginEvaluado del formulario add de gestión de asign_qa*/
+	var AliasEvaluado; /*variable que representa el elemento AliasEvaluado del formulario add de gestión de asign_qa*/
+	
+	IdTrabajo = document.forms['ADD'].elements[0];
+	LoginEvaluador = document.forms['ADD'].elements[1];
+	LoginEvaluado = document.forms['ADD'].elements[2];
+	AliasEvaluado = document.forms['ADD'].elements[2];
+
+	/*Comprueba si IdTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(IdTrabajo)) {
+		return false;
+	} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		}
+	
+	/*Comprueba si LoginEvaluador es vacio, retorna false*/
+	if (!comprobarVacio(LoginEvaluador)) {
+		return false;
+	} else {
+			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
+			if (!comprobarLongitud(LoginEvaluador, 9)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(LoginEvaluador, 9)) {
+					return false;
+				}
+			}
+		}
+	
+	/*Comprueba si LoginEvaluado es vacio, retorna false*/
+	if (!comprobarVacio(LoginEvaluado)) {
+		return false;
+	} else {
+			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
+			if (!comprobarLongitud(LoginEvaluado, 9)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(LoginEvaluado, 9)) {
+					return false;
+				}
+			}
+		}
+	
+	/*Comprueba si AliasEvaluado es vacio, retorna false*/
+	if (!comprobarVacio(AliasEvaluado)) {
+		return false;
+	} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(AliasEvaluado, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTraAliasEvaluadobajo, 6)) {
+					return false;
+				}
+			}
+		}
+	
+
+	return true;
+	
+}
+/*
+	function comprobarEditAsignQa(): valida todos los campos del formulario edit antes de realizar el submit
+*/
+function comprobarEditAsignQa(){
+	
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario edit de gestión de asign_qa*/
+	var LoginEvaluador; /*variable que representa el elemento LoginEvaluador del formulario edit de gestión de asign_qa*/
+	var LoginEvaluado; /*variable que representa el elemento LoginEvaluado del formulario edit de gestión de asign_qa*/
+	var AliasEvaluado; /*variable que representa el elemento AliasEvaluado del formulario edit de gestión de asign_qa*/
+	
+	IdTrabajo = document.forms['EDIT'].elements[0];
+	LoginEvaluador = document.forms['EDIT'].elements[1];
+	LoginEvaluado = document.forms['EDIT'].elements[2];
+	AliasEvaluado = document.forms['EDIT'].elements[2];
+
+	/*Comprueba si IdTrabajo es vacio, retorna false*/
+	if (!comprobarVacio(IdTrabajo)) {
+		return false;
+	} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		}
+	
+	/*Comprueba si LoginEvaluador es vacio, retorna false*/
+	if (!comprobarVacio(LoginEvaluador)) {
+		return false;
+	} else {
+			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
+			if (!comprobarLongitud(LoginEvaluador, 9)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(LoginEvaluador, 9)) {
+					return false;
+				}
+			}
+		}
+	
+	/*Comprueba si LoginEvaluado es vacio, retorna false*/
+	if (!comprobarVacio(LoginEvaluado)) {
+		return false;
+	} else {
+			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
+			if (!comprobarLongitud(LoginEvaluado, 9)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(LoginEvaluado, 9)) {
+					return false;
+				}
+			}
+		}
+	
+	/*Comprueba si AliasEvaluado es vacio, retorna false*/
+	if (!comprobarVacio(AliasEvaluado)) {
+		return false;
+	} else {
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(AliasEvaluado, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTraAliasEvaluadobajo, 6)) {
+					return false;
+				}
+			}
+		}
+	
+
+	return true;
+	
+}
+/*
+	function comprobarSearchAsignQa(): valida todos los campos del formulario search antes de realizar el submit
+*/
+function comprobarSearchAsignQa(){
+	
+	
+	var IdTrabajo; /*variable que representa el elemento IdTrabajo del formulario search de gestión de asign_qa*/
+	var LoginEvaluador; /*variable que representa el elemento LoginEvaluador del formulario searcg de gestión de asign_qa*/
+	var LoginEvaluado; /*variable que representa el elemento LoginEvaluado del formulario search de gestión de asign_qa*/
+	var AliasEvaluado; /*variable que representa el elemento AliasEvaluado del formulario searcg de gestión de asign_qa*/
+	
+	IdTrabajo = document.forms['SEARCH'].elements[0];
+	LoginEvaluador = document.forms['SEARCH'].elements[1];
+	LoginEvaluado = document.forms['SEARCH'].elements[2];
+	AliasEvaluado = document.forms['SEARCH'].elements[2];
+
+
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(IdTrabajo, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTrabajo, 6)) {
+					return false;
+				}
+			}
+		
+
+			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
+			if (!comprobarLongitud(LoginEvaluador, 9)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(LoginEvaluador, 9)) {
+					return false;
+				}
+			}
+		
+
+			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
+			if (!comprobarLongitud(LoginEvaluado, 9)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(LoginEvaluado, 9)) {
+					return false;
+				}
+			}
+		
+	
+
+			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
+			if (!comprobarLongitud(AliasEvaluado, 6)) {
+				return false;
+			} else {
+				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(IdTraAliasEvaluadobajo, 6)) {
+					return false;
+				}
+			}
+		
+	
+
 	return true;
 }
 
