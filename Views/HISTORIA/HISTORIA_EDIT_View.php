@@ -19,7 +19,7 @@ class HISTORIA_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/HISTORIA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="comprobarEditHistoria()">
+			<form name="EDIT" action="../Controllers/HISTORIA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditHistoria()">
 				<table>
 					<tr>
 						<th class="formThTd">

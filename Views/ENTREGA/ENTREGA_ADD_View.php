@@ -16,7 +16,7 @@ class ENTREGA_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarAddEntrega()"><!--Formulario para añadir una entrega -->
+			<form id="ADD" name="ADD" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarAddEntrega()"><!--Formulario para añadir una entrega -->
 				<table>
 				<tr>
 						<th class="formThTd">
@@ -30,13 +30,6 @@ class ENTREGA_ADD {
 						</th>
 						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
-				<!--	<tr>
-						<th class="formThTd">
-							<?php// echo $strings['Alias'];?>
-						</th>
-						<td class="formThTd"><input type="text" id="Alias" name="Alias" placeholder="<?php echo $strings['Escriba aqui...']?>" value=aleatorio() maxlength="9" size="9" readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
-					</tr>-->
-                    
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['Horas'];?><!--se muestra el campo Horas-->

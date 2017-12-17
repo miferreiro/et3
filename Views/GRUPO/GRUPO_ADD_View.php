@@ -18,7 +18,7 @@ class GRUPO_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
+			<form name="ADD" action="../Controllers/GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddGrupo()">
 				<table>
 					<tr>
 						<th class="formThTd">

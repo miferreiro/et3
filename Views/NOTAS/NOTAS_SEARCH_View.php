@@ -17,7 +17,7 @@ class NOTAS_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form name="SEARCH" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data">
+			<form name="SEARCH" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchNotas()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -35,12 +35,12 @@ class NOTAS_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['Nota del Trabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NotaTrabajo" name="NotaTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="4" size="4"  onBlur="sinEspacio(this) && comprobarLongitud(this,'4')"/>
+						<td class="formThTd"><input type="text" id="NotaTrabajo" name="NotaTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="4" size="4"  onBlur="comprobarLongitud(this,'4') && comprobarTexto(this,4)"/>
 					</tr>
 				
 					<tr>
 						<td colspan="2">
-							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
+							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
 						<form action='../Controllers/NOTAS_CONTROLLER.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

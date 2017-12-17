@@ -17,7 +17,7 @@ class HISTORIA_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/HISTORIA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="comprobarAddHistoria()">
+			<form name="ADD" action="../Controllers/HISTORIA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddHistoria()">
 				<table>
 					<tr>
 						<th class="formThTd">

@@ -20,7 +20,7 @@ class TRABAJO_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" action="../Controllers/TRABAJO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchTrabajo()">
+			<form id="SEARCH"name="SEARCH" action="../Controllers/TRABAJO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchTrabajo()">
 				<table>
 					<tr>
 						<th class="formThTd">

@@ -21,7 +21,7 @@ class GRUPO_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="comprobarEditGrupo()">
+			<form name="EDIT" action="../Controllers/GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditGrupo()">
 				<table>
 					<tr>
 						<th class="formThTd">

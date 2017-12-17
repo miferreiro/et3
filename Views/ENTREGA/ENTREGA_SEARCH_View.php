@@ -15,7 +15,7 @@ class ENTREGA_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form name="SEARCH" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarSearchEntrega()">
+			<form id="SEARCH" name="SEARCH" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarSearchEntrega()">
 				<table>
 				<tr>
 						<th class="formThTd">

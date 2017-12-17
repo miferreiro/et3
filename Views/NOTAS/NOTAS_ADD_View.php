@@ -17,13 +17,13 @@ class NOTAS_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data">
+			<form name="ADD" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddNotas()">
 				<table>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Usuario'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && sinEspacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -35,9 +35,8 @@ class NOTAS_ADD {
 						<th class="formThTd">
 							<?php echo $strings['Nota del Trabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NotaTrabajo" name="NotaTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="4" size="4" required onBlur="comprobarVacio(this) && sinEspacio(this) && comprobarLongitud(this,'4')"/>
+						<td class="formThTd"><input type="text" id="NotaTrabajo" name="NotaTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="4" size="4" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'4') && comprobarReal(this,4,0,10)"/>
 					</tr>
-				
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>

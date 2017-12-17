@@ -17,7 +17,7 @@ class HISTORIA_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form name="SEARCH" action="../Controllers/HISTORIA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="comprobarSearchHistoria()">
+			<form name="SEARCH" action="../Controllers/HISTORIA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchHistoria()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -35,7 +35,7 @@ class HISTORIA_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['TextoHistoria'];?>
 						</th>
-						<td class="formThTd"><textarea id="TextoHistoria" name="TextoHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="50" rows="7"  required onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300')"></textarea>
+						<td class="formThTd"><textarea id="TextoHistoria" name="TextoHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="50" rows="7"  onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300')"></textarea>
 					</tr>
 					
 					<tr>

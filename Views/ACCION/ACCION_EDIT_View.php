@@ -21,7 +21,7 @@ class ACCION_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/ACCION_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="comprobarEditAccion()">
+			<form name="EDIT" action="../Controllers/ACCION_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditAccion()">
 				<table>
 					<tr>
 						<th class="formThTd">

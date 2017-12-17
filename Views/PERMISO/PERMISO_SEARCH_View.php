@@ -20,7 +20,7 @@ class PERMISO_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" name= "SEARCH" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" onSubmit="comprobarSearchPermisos()">
+			<form id="SEARCH" name= "SEARCH" action="../Controllers/PERMISO_CONTROLLER.php" method="post" enctype="multipart/form-data" onSubmit="return comprobarSearchPermisos()">
 				<table>
 					<tr>
 						<th class="formThTd">

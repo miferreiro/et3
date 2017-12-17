@@ -19,7 +19,7 @@ class ENTREGA_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarEditEntrega()">
+			<form id="EDIT" name="EDIT" action="../Controllers/ENTREGA_CONTROLLER.php" method="post"  enctype="multipart/form-data"  onsubmit="return comprobarEditEntrega()">
 				<table>
 				<tr>
 						<th class="formThTd">
@@ -46,15 +46,6 @@ class ENTREGA_EDIT {
 						</th>
 						<td class="formThTd"><input type="text" id="Horas" name="Horas" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Horas']?>"  maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2') && comprobarEntero(this,0,99)"/>
 					</tr>
-                    
-                  <!--  <tr>
-						<th class="formThTd">
-							<?php //echo $strings['Ruta'];?>
-						</th>
-						<td class="formThTd"><input type="file" id="Ruta" name="Ruta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php //echo $this->valores['Ruta']?>"  maxlength="60" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'60') && comprobarTexto(this,'60')"/>
-					</tr>
-					<input type="hidden" id="ruta2" name="ruta2" value="<?php echo $this->valores['Ruta']?>"/>
-					<tr>-->
                 <tr>
                     <th class="formThTd">
 							<?php echo $strings['Ruta'];?>
