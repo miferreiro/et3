@@ -19,7 +19,7 @@ class ASIGNAC_QA_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="SEARCH" action="../Controllers/ASIGNAC_QA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
+			<form id="SEARCH" name="SEARCH" action="../Controllers/ASIGNAC_QA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchAsignQa()">
 				<table>
 					<tr>
 						<th class="formThTd">

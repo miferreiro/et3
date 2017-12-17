@@ -20,7 +20,7 @@ class NOTAS_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditNotas()">
+			<form id="EDIT" name="EDIT" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditNotas()">
 				<table>
 					<tr>
 						<th class="formThTd">
