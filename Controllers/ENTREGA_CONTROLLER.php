@@ -44,7 +44,13 @@ function get_data_form2() {
     $IdTrabajo = $_REQUEST['IdTrabajo'];
     
     $Alias = aleatorio();
-  
+    $buscar=$ENTREGA->buscarAlias($Alias);
+    
+    
+        while($Alias == $buscar){
+            $Alias = aleatorio();
+        }
+    
     
     
     $Horas = $_REQUEST['Horas'];
@@ -62,18 +68,12 @@ function get_data_form2() {
 		$nombreTempRuta = null;
 	}
    
-    if (!file_exists("../Files/$login")){ 
-              mkdir("../Files/$login", 0777);
+    if (!file_exists("../Files/$Alias")){ 
+              mkdir("../Files/$Alias", 0777);
    }
     
-        
-   /* }else{ 
-    echo "El fichero no existe"; 
-    } */
-    
-
-	if ( $nombreRuta != null ) {
-		$dir_subida = '../Files/'.$login.'/';
+    if ( $nombreRuta != null ) {
+		$dir_subida = '../Files/'.$Alias.'/';
 		$rutapersonal = $dir_subida . $nombreRuta;
 		move_uploaded_file( $nombreTempRuta, $rutapersonal );
 	}
@@ -97,22 +97,6 @@ function get_data_form2() {
         $rutapersonal
 	);
 	//Devuelve el valor del objecto model creado
-    
-      $buscar=$ENTREGA->buscarAlias($Alias);
-    
-    
-        while($Alias == $buscar){
-            $Alias = aleatorio();
-        }
-    
-    
-   $ENTREGA = new ENTREGA_MODEL(
-		$login,
-        $IdTrabajo,
-        $Alias,
-        $Horas,
-        $rutapersonal
-	);
     
 	return $ENTREGA;
 }
@@ -138,12 +122,12 @@ function get_data_form() {
 		$nombreTempRuta = null;
 	}
 
-     if (!file_exists("../Files/$login")){ 
-              mkdir('../Files/'.$login.'/', 0777);
+     if (!file_exists("../Files/$Alias")){ 
+              mkdir('../Files/'.$Alias.'/', 0777);
     }
 
 	if ( $nombreRuta != null ) {
-		$dir_subida = '../Files/'.$login.'/';
+		$dir_subida = '../Files/'.$Alias.'/';
 		$rutapersonal = $dir_subida . $nombreRuta;
 		move_uploaded_file( $nombreTempRuta, $rutapersonal );
 	}
