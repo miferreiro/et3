@@ -7,11 +7,11 @@
 */
 class EVALUACION_SEARCH {
 
-	function __construct($id,$alias) {
-		$this->render($id,$alias);
+	function __construct() {
+		$this->render();
 	}
 
-	function render($id,$alias) {
+	function render() {
 
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
@@ -26,7 +26,7 @@ class EVALUACION_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['IdTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" value="<?php echo $id ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6')" readonly />
+						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" value="" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6')" />
 					</tr>
 
 					<tr>
@@ -39,7 +39,7 @@ class EVALUACION_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['AliasEvaluado'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="AliasEvaluado" value="<?php echo $alias ?>" name="AliasEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarAlfabetico(this,'9')" readonly/>
+						<td class="formThTd"><input type="text" id="AliasEvaluado" value="" name="AliasEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarAlfabetico(this,'9')" />
 					</tr>
                     
                     <tr>
@@ -60,7 +60,7 @@ class EVALUACION_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['ComenIncorrectoA'];?>
 						</th>
-                        <td class="formThTd"><texarea  id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="50" rows="7" onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300') && comprobarAlfabetico(this,'300')"></texarea>
+                        <td class="formThTd"><textarea  id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="50" rows="7" onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300') && comprobarAlfabetico(this,'300')"></textarea>
 					</tr>
                     
                     <tr>
@@ -89,9 +89,6 @@ class EVALUACION_SEARCH {
 							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>
 			</form>
 						<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post" style="display:inline">
-							<input type="hidden" name="IdTrabajo" value="<?php echo $id ?>">
-							<input type="hidden" name="AliasEvaluado" value="<?php echo $alias ?>">
-							<input type="hidden" name="action" value="MOSTRAR_USER">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 						</td>

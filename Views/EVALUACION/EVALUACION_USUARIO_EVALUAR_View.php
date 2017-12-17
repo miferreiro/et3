@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class EVALUACION_USUARIO_SHOWALL {
+class EVALUACION_USUARIO_EVALUAR {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -38,11 +38,21 @@ class EVALUACION_USUARIO_SHOWALL {
 						<?php echo $strings['Opciones']?>
 					</th>
 				</tr>
+				<tr><td></td></tr>
+				<tr></tr>
 <?php
+				$his = -100000;
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
 <?php
+					if ($fila['IdHistoria'] != $his) {
+?>
+						<th colspan="6"><?php echo $fila['TextoHistoria']; ?></th>
+						<tr></tr>
+<?php
+					}
+					$his = $fila['IdHistoria'];
 					foreach ( $lista as $atributo ) {
 ?>
 					<td>
@@ -70,8 +80,8 @@ class EVALUACION_USUARIO_SHOWALL {
 				}
 ?>
 			</table>
-			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="get">
+				<button type="submit" name="action" value="SELECT_QA"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php
