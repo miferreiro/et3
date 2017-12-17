@@ -5,11 +5,14 @@
 */
 class HISTORIA_ADD {
 
-	function __construct() {
-		$this->render();
+	function __construct($datos) {
+		$this->datos = $datos;
+		$this->render($this->datos);
+
 	}
 
-	function render() {
+	function render($datos) {
+		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -21,9 +24,26 @@ class HISTORIA_ADD {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['IdTrabajo'];?>
+							<?php echo $strings['NombreTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
+                  <td class="formThTd">
+                   <select id="IdTrabajo" name="IdTrabajo">
+<?php
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+?>
+				<option value="<?php echo $fila[ 'IdTrabajo' ]?>">
+
+<?php 
+			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					echo $fila['NombreTrabajo'];
+?>		
+               							
+
+               </option>
+	
+<?php } ?>					
+					</select>
+				</td>
 					</tr>
 					<tr>
 						<th class="formThTd">
