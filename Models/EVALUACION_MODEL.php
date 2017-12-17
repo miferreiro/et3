@@ -313,15 +313,9 @@ function mostrarEntregas($nombre){
 		                        '$this->OK'
 								)";
                     
-                    $sql2 ="INSERT INTO NOTA_TRABAJO (
-							    login,
-                                IdTrabajo,
-                                NotaTrabajo) 
-								VALUES(
-                                '$this->LoginEvaluador',
-                                '$this->IdTrabajo',
-		                        ''
-								)";
+                   include_once '../Models/NOTAS_MODEL.php';//incluimos el modelo USU_GRUPO
+							$NOTA = new NOTAS_MODEL($this->LoginEvaluador,$this->IdTrabajo,'');//instanciamos un objeto del modelo USU_GRUPO donde metemos un  usuario en el grupo alumnos
+							$mensaje = $NOTA->ADD();//insertamos el login en el grupo alumnos
                     
                 }
                     else{
@@ -331,9 +325,7 @@ function mostrarEntregas($nombre){
 					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
 					} 
-                    if ( !$this->mysqli->query( $sql2 ) ) { // si da error en la ejecución del insert devolvemos mensaje
-						return 'Error en la inserción';
-					} 
+                   
             
                     else { //si no da error en la insercion devolvemos mensaje de exito
 						return 'Inserción realizada con éxito'; //operacion de insertado correcta
