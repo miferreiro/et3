@@ -86,6 +86,10 @@ que comprueba permisos para cada una de las acciones -->
 				<li>
 					<a href="../Controllers/EVALUACION_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de evaluaciones']; ?></a>
 				</li>
+				<!-- *******************************Adaptar esto bien****************************************** -->
+				<li>
+					<a href="../Controllers/EVALUACION_CONTROLLER.php?action=SELECT_QA" class="primerNivel"><?php echo $strings['Evaluar Historias QA']; ?></a>
+				</li>
 	<?php }
 		if(comprobarAdministrador($_SESSION['login'])==false){
 		 if((permisosAcc($_SESSION['login'],9,7)==true)||(permisosAcc($_SESSION['login'],13,7)==true)){?>
