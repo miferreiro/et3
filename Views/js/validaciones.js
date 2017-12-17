@@ -2921,7 +2921,7 @@ function comprobarAddAsignQa(){
 				return false;
 			} else {
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-				if (!comprobarTexto(IdTraAliasEvaluadobajo, 6)) {
+				if (!comprobarTexto(AliasEvaluado, 6)) {
 					return false;
 				}
 			}
