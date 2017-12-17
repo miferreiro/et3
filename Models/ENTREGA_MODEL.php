@@ -121,17 +121,7 @@
 		}
          return false;
     }
-    function filtrarET(){
-        $sql = "SELECT * FROM ENTREGA WHERE IdTrabajo LIKE '%et%'";
-        if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} 
-        else {
-            return $resultado;
-        }
-        
-    }
-            
+       
            
     //Metodo ADD()
 	//Inserta en la tabla  de la bd  los valores

@@ -415,7 +415,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			      $ENTREGA = get_data_form();
 		}
 		//Variable que almacena los datos de la busqueda
-        $datos = $ENTREGA->filtrarET();
+        $datos = $ENTREGA->SEARCH();
 		//Variable que almacena array con el CorrectoA de los atributos
 		$lista = array('login','NombreTrabajo','Alias','Horas','Ruta');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
