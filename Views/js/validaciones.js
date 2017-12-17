@@ -1476,12 +1476,12 @@ function comprobarSearchEntrega(){
 
 
 
-	/*Comprueba su longitud, si es mayor que 9, retorna false*/
-	if (!comprobarLongitud(Alias, 9)) {
+	/*Comprueba su longitud, si es mayor que 6, retorna false*/
+	if (!comprobarLongitud(Alias, 6)) {
 		return false;
 	} else {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(Alias, 9)) {
+		if (!comprobarTexto(Alias, 6)) {
 			return false;
 		}
 	}
@@ -1752,12 +1752,7 @@ function comprobarAddEvaluacion() {
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(LoginEvaluador, 9)) {
 					return false;
-				} else {
-					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-					if (!comprobarAlfabetico(LoginEvaluador, 9)) {
-						return false;
-					}
-				}
+				} 
 			}
 		}
 	}
@@ -1766,12 +1761,12 @@ function comprobarAddEvaluacion() {
 	if (!comprobarVacio(AliasEvaluado)) {
 		return false;
 	} else {
-		/*Comprueba su longitud, si es mayor que 9, retorna false*/
-		if (!comprobarLongitud(AliasEvaluado, 9)) {
+		/*Comprueba su longitud, si es mayor que 6, retorna false*/
+		if (!comprobarLongitud(AliasEvaluado, 6)) {
 			return false;
 		} else {
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(AliasEvaluado, 9)) {
+			if (!comprobarTexto(AliasEvaluado, 6)) {
 				return false;
 			}
 		}
@@ -1820,8 +1815,8 @@ function comprobarAddEvaluacion() {
 				if (!comprobarTexto(CorrectoA, 1)) {
 					return false;
 				} else {
-					/*Comprueba que sea un entero y esté entre 0 y 1*/
-					if (!comprobarEntero(CorrectoA, 0, 1)) {
+					/*Comprueba que sea un entero y esté entre 0 y 2*/
+					if (!comprobarEntero(CorrectoA, 0, 2)) {
 						return false;
 					}
 				}
@@ -1862,8 +1857,8 @@ function comprobarAddEvaluacion() {
 				if (!comprobarTexto(CorrectoP, 1)) {
 					return false;
 				} else {
-					/*Comprueba que sea un entero y esté entre 0 y 1*/
-					if (!comprobarEntero(CorrectoP, 0, 1)) {
+					/*Comprueba que sea un entero y esté entre 0 y 2*/
+					if (!comprobarEntero(CorrectoP, 0, 2)) {
 						return false;
 					}
 				}
@@ -1901,7 +1896,7 @@ function comprobarAddEvaluacion() {
 					return false;
 				} else {
 					/*Comprueba que sea un entero y esté entre 0 y 1*/
-					if (!comprobarEntero(OK, 0, 1)) {
+					if (!comprobarEntero(OK, 0, 2)) {
 						return false;
 					}
 				}
@@ -1968,12 +1963,7 @@ function comprobarEditEvaluacion() {
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(LoginEvaluador, 9)) {
 					return false;
-				} else {
-					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-					if (!comprobarAlfabetico(LoginEvaluador, 9)) {
-						return false;
-					}
-				}
+				} 
 			}
 		}
 	}
@@ -1982,12 +1972,12 @@ function comprobarEditEvaluacion() {
 	if (!comprobarVacio(AliasEvaluado)) {
 		return false;
 	} else {
-		/*Comprueba su longitud, si es mayor que 9, retorna false*/
-		if (!comprobarLongitud(AliasEvaluado, 9)) {
+		/*Comprueba su longitud, si es mayor que 6, retorna false*/
+		if (!comprobarLongitud(AliasEvaluado, 6)) {
 			return false;
 		} else {
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(AliasEvaluado, 9)) {
+			if (!comprobarTexto(AliasEvaluado, 6)) {
 				return false;
 			}
 		}
@@ -2036,8 +2026,8 @@ function comprobarEditEvaluacion() {
 				if (!comprobarTexto(CorrectoA, 1)) {
 					return false;
 				} else {
-					/*Comprueba que sea un entero y esté entre 0 y 1*/
-					if (!comprobarEntero(CorrectoA, 0, 1)) {
+					/*Comprueba que sea un entero y esté entre 0 y 2*/
+					if (!comprobarEntero(CorrectoA, 0, 2)) {
 						return false;
 					}
 				}
@@ -2078,8 +2068,8 @@ function comprobarEditEvaluacion() {
 				if (!comprobarTexto(CorrectoP, 1)) {
 					return false;
 				} else {
-					/*Comprueba que sea un entero y esté entre 0 y 1*/
-					if (!comprobarEntero(CorrectoP, 0, 1)) {
+					/*Comprueba que sea un entero y esté entre 0 y 2*/
+					if (!comprobarEntero(CorrectoP, 0, 2)) {
 						return false;
 					}
 				}
@@ -2116,8 +2106,8 @@ function comprobarEditEvaluacion() {
 				if (!comprobarTexto(OK, 1)) {
 					return false;
 				} else {
-					/*Comprueba que sea un entero y esté entre 0 y 1*/
-					if (!comprobarEntero(OK, 0, 1)) {
+					/*Comprueba que sea un entero y esté entre 0 y 2*/
+					if (!comprobarEntero(OK, 0, 2)) {
 						return false;
 					}
 				}
@@ -2169,23 +2159,18 @@ function comprobarSearchEvaluacion() {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(LoginEvaluador, 9)) {
 			return false;
-		} else {
-			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-			if (!comprobarAlfabetico(LoginEvaluador, 9)) {
-				return false;
-			}
 		}
 	}
 
 
 
 
-	/*Comprueba su longitud, si es mayor que 9, retorna false*/
-	if (!comprobarLongitud(AliasEvaluado, 9)) {
+	/*Comprueba su longitud, si es mayor que 6, retorna false*/
+	if (!comprobarLongitud(AliasEvaluado, 6)) {
 		return false;
 	} else {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(AliasEvaluado, 9)) {
+		if (!comprobarTexto(AliasEvaluado, 6)) {
 			return false;
 		}
 	}
@@ -2196,7 +2181,7 @@ function comprobarSearchEvaluacion() {
 	}
 
 	//Comprobamos que tenga un formato válido
-	if (!comprobarCampoNumFormSearch(CorrectoA, 1, 0, 1)) {
+	if (!comprobarCampoNumFormSearch(CorrectoA, 1, 0, 2)) {
 		return false;
 	}
 
@@ -2214,7 +2199,7 @@ function comprobarSearchEvaluacion() {
 	}
 
 	//Comprobamos que tenga un formato válido
-	if (!comprobarCampoNumFormSearch(CorrectoP, 1, 0, 1)) {
+	if (!comprobarCampoNumFormSearch(CorrectoP, 1, 0, 2)) {
 		return false;
 	}
 
@@ -2231,7 +2216,7 @@ function comprobarSearchEvaluacion() {
 		}
 	}
 	//Comprobamos que tenga un formato válido
-	if (!comprobarCampoNumFormSearch(OK, 1, 0, 1)) {
+	if (!comprobarCampoNumFormSearch(OK, 1, 0, 2)) {
 		return false;
 	}
 	/*Comprueba si OK es vacio, retorna false*/
