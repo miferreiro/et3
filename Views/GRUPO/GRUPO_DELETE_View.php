@@ -177,7 +177,7 @@ class GRUPO_DELETE {
 				<input type="hidden" name="IdGrupo" value=<?php echo $valores2['IdGrupo'] ?> />
 				<input type="hidden" name="NombreGrupo" value=<?php echo $valores2['NombreGrupo'] ?> />
 				<input type="hidden" name="DescripGrupo" value=<?php echo $valores2['DescripGrupo'] ?> />
-				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
+				<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/GRUPO_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>

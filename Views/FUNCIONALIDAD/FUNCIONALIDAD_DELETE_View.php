@@ -118,7 +118,7 @@ class FUNCIONALIDAD_DELETE {
 				<input type="hidden" name="IdFuncionalidad" value=<?php echo $this->valores['IdFuncionalidad'] ?> />
 				<input type="hidden" name="NombreFuncionalidad" value=<?php echo $this->valores['NombreFuncionalidad'] ?> />
 				<input type="hidden" name="DescripFuncionalidad" value=<?php echo $this->valores['DescripFuncionalidad'] ?> />
-				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
+				<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/FUNCIONALIDAD_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>

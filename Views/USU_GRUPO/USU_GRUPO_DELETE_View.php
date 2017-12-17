@@ -45,7 +45,7 @@ class USU_GRUPO_DELETE {
 			<form action="../Controllers/USU_GRUPO_CONTROLLER.php" method="post" style="display: inline">
 				<input type="hidden" name="login" value="<?php echo $this->valores['login'] ?>" />
 				<input type="hidden" name="IdGrupo" value="<?php echo $this->valores['IdGrupo'] ?>" />
-				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>">
+				<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/USU_GRUPO_CONTROLLER.php' method="post" style="display: inline">
 				<input type="hidden" name="login" value="<?php echo $this->valores['login'] ?>">
