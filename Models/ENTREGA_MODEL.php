@@ -203,17 +203,9 @@
                                 '$this->Ruta'
 								)";//se contruye la sentencia sql para insertar la entrega
                     
-                    
-                    $sql2= "INSERT INTO NOTA_TRABAJO (
-							    login,
-                                IdTrabajo,
-                                NotaTrabajo
-                                ) 
-								VALUES(
-								'$this->login',
-								'$this->IdTrabajo',
-								''
-                                )";//se construye la sentencia sql para insertar la nota del trabajo
+                   include_once '../Models/NOTAS_MODEL.php';//incluimos el modelo USU_GRUPO
+							$NOTA = new NOTAS_MODEL($this->login,$this->IdTrabajo,'');//instanciamos un objeto del modelo USU_GRUPO donde metemos un  usuario en el grupo alumnos
+							$mensaje = $NOTA->ADD();//insertamos el login en el grupo alumnos
                     
                     
                    
@@ -225,9 +217,7 @@
 					if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
 						return "Error en la inserción";
 					}
-                    if(!$this->mysqli->query( $sql2 )){// si da error en la ejecución del insert devolvemos mensaje
-                        return "Error en la inserción";
-                    }
+                 
                     
                     else { //si no da error en la insercion devolvemos mensaje de exito
 						return 'Inserción realizada con éxito'; //operacion de insertado correcta

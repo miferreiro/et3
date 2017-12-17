@@ -237,11 +237,12 @@
                 <input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo'] ?>" />
                 <input type="hidden" name="Alias" value="<?php echo $this->valores['Alias'] ?>" />
                 
-                <input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo'] ?>" />
+            
                 
                 <input type="hidden" name="Horas" value="<?php echo $this->valores['Horas'] ?>" />
                 
-				<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>"><!--boton para conformar el borrado -->
+                <button type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
+				
 			</form>
 			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>

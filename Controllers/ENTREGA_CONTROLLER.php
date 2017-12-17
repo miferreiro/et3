@@ -43,6 +43,8 @@ function get_data_form2() {
 	$login = $_REQUEST['login'];
     $IdTrabajo = $_REQUEST['IdTrabajo'];
     
+    $ENTREGA = new ENTREGA_MODEL('','','','','');
+    
     $Alias = aleatorio();
     $buscar=$ENTREGA->buscarAlias($Alias);
     
