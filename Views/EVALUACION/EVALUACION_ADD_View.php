@@ -89,8 +89,7 @@ class EVALUACION_ADD {
 			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="get" style="display: inline">
 				<input type="hidden" name="IdTrabajo" value="<?php echo $id ?>">
 				<input type="hidden" name="AliasEvaluado" value="<?php echo $alias ?>">
-				<input type="hidden" name="action" value="MOSTRAR_USER">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button type="submit" name="action" value="MOSTRAR_USER"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</tr>
 			</table>

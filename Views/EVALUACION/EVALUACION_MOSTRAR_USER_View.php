@@ -68,8 +68,6 @@ class EVALUACION_MOSTRAR_USER {
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
                             <input type="hidden" name="AliasEvaluado" value="<?php echo $fila['Alias']; ?>">
                             
-                            
-						<td>
 <?php         if(permisosAcc($_SESSION['login'],12,2)==true){ ?>
 								<button type="submit" name="action" value="MOSTRAR_USER" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 <?php } ?>
