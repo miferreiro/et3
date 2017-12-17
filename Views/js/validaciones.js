@@ -594,7 +594,7 @@ function comprobarSearchUsuario() {
 	var apellidosuser; /*variable que representa el elemento apellidosuser del formulario search */
 	var telefono; /*variable que representa el elemento telefono del formulario search */
 	var emailuser; /*variable que representa el elemento emailuser del formulario search */
-
+	var direccion /*variable que representa el elemento direccion del formulario search */
 
 	login = document.forms['SEARCH'].elements[0];
 	pwd = document.forms['SEARCH'].elements[1];
@@ -708,7 +708,7 @@ function comprobarEditUsuario() {
 	var apellidosuser; /*variable que representa el elemento apellidosuser del formulario edit */
 	var telefono; /*variable que representa el elemento telefono del formulario edit */
 	var emailuser; /*variable que representa el elemento emailuser del formulario edit */
-
+	var direccion /*variable que representa el elemento direccion del formulario edit */
 
 	login = document.forms['EDIT'].elements[0];
 	pwd = document.forms['EDIT'].elements[1];
@@ -2519,6 +2519,11 @@ function comprobarEditFuncionalidad() {
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreFuncionalidad, 60)) {
 					return false;
+				}else{
+					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+					if(!comprobarAlfabetico(NombreFuncionalidad,60)){
+						return false;
+					}
 				}
 			}
 		}
@@ -2587,8 +2592,13 @@ function comprobarAddFuncionalidad() {
 				return false;
 			} else {
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-				if (!comprobarTexto(NombreAccion, 60)) {
+				if (!comprobarTexto(NombreFuncionalidad, 60)) {
 					return false;
+				}else{
+					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+					if(!comprobarAlfabetico(NombreFuncionalidad,60)){
+						return false;
+					}
 				}
 			}
 		}

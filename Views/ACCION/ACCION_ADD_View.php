@@ -37,7 +37,7 @@ class ACCION_ADD {
 						<th class="formThTd">
 							<?php echo $strings['DescripAccion'];?>
 						</th>
-						<td class="formThTd"><textarea id="DescripAccion" name="DescripAccion" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="100" cols="50" rows="3" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100')"/></textarea>
+						<td class="formThTd"><textarea id="DescripAccion" name="DescripAccion" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="100" cols="50" rows="3" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'100') && comprobarTexto(this,'100')"/></textarea>
 					</tr>
 					
 					<tr>
