@@ -81,10 +81,13 @@ class NOTAS_SHOWALL {
                     <td>
                     <?php
 
-                
-                echo $notas[$i];
-                $suma=$suma+$notas[$i];
-                    $i++;
+            
+                    echo $notas[$fila['login'].$fila['IdTrabajo']];
+
+
+              
+                $suma=$suma+$notas[$fila['login'].$fila['IdTrabajo']];
+                    
             
                 ?>
                     </td>

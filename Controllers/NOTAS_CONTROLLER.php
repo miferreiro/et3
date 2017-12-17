@@ -190,16 +190,20 @@ switch ( $_REQUEST[ 'action' ] ) {
                  while($fila = mysqli_fetch_array($dat)){
                      
                      $nota = $NOTAS->calcularNota($fila['login'],$fila['IdTrabajo']);
+                    
                      $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
-                    
-                     $notaET = $nota * ($porcentaje[0]/100);
                      
-                     array_push($notas,$notaET);
+                     $notaET = $nota * ($porcentaje[0]/100);
                     
+                   //  $not = array ($fila['login'].$fila['IdTrabajo'] => $notaET);
+                      $notas[$fila['login'].$fila['IdTrabajo']] = $notaET;
+                    // array_push($notas,$not);
                     
+                   
                      
                      $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
                  }
+
                   
                     $NOTAS = new NOTAS_MODEL('','', '');
                  $dat=$NOTAS->cogerDatosQA();
@@ -208,7 +212,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                       $nota = $NOTAS->calcularNotaQA($fila['login'],$fila['IdTrabajo']);
                      $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
                      $notaET = $nota * ($porcentaje[0]/100);
-                     array_push($notas,$notaET);
+                     $notas[$fila['login'].$fila['IdTrabajo']] = $notaET;
                     
                       $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
                  }
@@ -231,8 +235,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                      $nota = $NOTAS->calcularNota($fila['login'],$fila['IdTrabajo']);
                      $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
                      $notaET = $nota * ($porcentaje[0]/100);
-                      array_push($notas,$notaET);
-                    
+                    $notas[$fila['login'].$fila['IdTrabajo']] = $notaET;
                      $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
                  }
                 
@@ -243,7 +246,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                      $nota = $NOTAS->calcularNotaQA($fila['login'],$fila['IdTrabajo']);
                      $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
                      $notaET = $nota * ($porcentaje[0]/100);
-                      array_push($notas,$notaET);
+                    $notas[$fila['login'].$fila['IdTrabajo']] = $notaET;
                      $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$nota);
                  }
                 
