@@ -136,13 +136,15 @@ class EVALUACION_ADMIN_EVALUAR {
 				$_SESSION['contenido'] = $contenido;
 ?>
 				
-			</table>
-			<input type="hidden" name="IdTrabajo" value="<?php echo $datos[0][9] ?>">
-			<button type="submit" name="action" value="ADMIN_EVALUAR"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Atras']?>" /></button>
-		</form>
-			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				</table>
+				<table>
+				<input type="hidden" name="IdTrabajo" value="<?php echo $datos[0][9] ?>">
+				<button type="submit" name="action" value="EVALUAR"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
+			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="get">
+				<button type="submit" name="action" value="SELECT_QA"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			</form>
+			</table>
 		</div>
 <?php
 		include '../Views/Footer.php';

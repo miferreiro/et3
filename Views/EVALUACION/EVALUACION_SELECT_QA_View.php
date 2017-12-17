@@ -2,7 +2,7 @@
     //Se muestra una tabla SHOWALL conto todas las entregas y iconos para añadir,insertar,borrar,buscar y buscar en detalle.
     //Fecha de creación:28/11/2017
 
-class EVALUACION_MOSTRAR_USER {
+class EVALUACION_SELECT_QA {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -67,15 +67,8 @@ class EVALUACION_MOSTRAR_USER {
 							<input type="hidden" name="LoginEvaluado" value="<?php echo $fila['login']; ?>">
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
                             <input type="hidden" name="AliasEvaluado" value="<?php echo $fila['Alias']; ?>">
-                            
-<?php         if(permisosAcc($_SESSION['login'],12,2)==true){ ?>
-								<button type="submit" name="action" value="MOSTRAR_USER" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
-<?php } ?>
-                                <!--si pulsas este boton ves la vista SHOWCURRENT-->
                         <td>
- <?php         if(comprobarAdministrador($_SESSION['login'])==true){ ?>
-								<button type="submit" name="action" value="ADMIN_EVALUAR" ><img src="../Views/icon/evaluar.png" alt="<?php echo $strings['Ver en detalle']?>" width="32" height="32"/></button>
- <?php } ?>                              
+								<button type="submit" name="action" value="EVALUAR" ><img src="../Views/icon/evaluar.png" alt="<?php echo $strings['Ver en detalle']?>" width="32" height="32"/></button>                             
                                 <!--si pulsas este boton ves la vista SHOWCURRENT-->
                         </td>
                             
@@ -86,8 +79,8 @@ class EVALUACION_MOSTRAR_USER {
 				}
 ?>
 			</table>
-			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="get">
+				<button type="submit" name="action" value="SELECT_QA"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
                 <!--si pulsas este boton vas atras -->
 			</form>
 		</div>
