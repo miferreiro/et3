@@ -7,6 +7,8 @@ session_start(); //solicito trabajar con la session
 
 include '../Models/NOTAS_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
+include_once '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Functions/permisosAcc.php';
 include '../Views/NOTAS/NOTAS_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/NOTAS/NOTAS_SHOWALL2_View.php'; //incluye la vista del showall para el caso de los usuarios
@@ -48,8 +50,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			if(permisosAcc($_SESSION['login'],7,0)==true){
+			$USUARIO= new USUARIO_MODEL('','','','','','','','');
+			$USUARIOS=$USUARIO->SEARCH();				
+			$TRABAJO= new TRABAJO('','','','','');
+			$TRABAJOS=$TRABAJO->SEARCH2();
 			//Crea una vista add para ver la tupla
-			new NOTAS_ADD();
+			new NOTAS_ADD($USUARIOS,$TRABAJOS);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
 			}
