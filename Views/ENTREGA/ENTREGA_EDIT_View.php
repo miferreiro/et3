@@ -58,6 +58,7 @@ class ENTREGA_EDIT {
 							<input type="file" id="Ruta" name="Ruta" value="<?php echo $this->valores['Ruta']?>"   />
                             
                 </tr>
+                <tr>
                     <input type="hidden" id="ruta2" name="ruta2" value="<?php echo $this->valores['Ruta']?>"/>
                     
 						<td colspan="2">

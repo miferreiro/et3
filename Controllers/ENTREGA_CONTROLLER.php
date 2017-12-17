@@ -20,7 +20,7 @@ include '../Views/ENTREGA/ENTREGA_SHOWCURRENT_View.php'; //incluye la vista show
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include_once '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
-
+include_once '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo usuarios
 
 function aleatorio(){
         $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; //posibles caracteres a usar
@@ -181,7 +181,11 @@ switch ( $_REQUEST[ 'action' ] ) {
             $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
 			$ADMIN = $ENTREGA->comprobarAdmin();
 			if($ADMIN == true){
-				new ENTREGA_ADD();
+			$USUARIO= new USUARIO_MODEL('','','','','','','','');
+			$USUARIOS=$USUARIO->SEARCH();				
+			$TRABAJO= new TRABAJO('','','','','');
+			$TRABAJOS=$TRABAJO->SEARCH2();
+				new ENTREGA_ADD($USUARIOS,$TRABAJOS);
 			}else{
             $cont=0;
 			$PERMISO = $ENTREGA->comprobarPermisos();
@@ -194,7 +198,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 			   } 
 			}
 			if($cont==1){
-			new USUARIO_ADD();
+			$USUARIO= new USUARIO_MODEL('','','','','','','','');
+			$USUARIOS=$USUARIO->SEARCH();				
+			$TRABAJO= new TRABAJO('','','','','');
+			$TRABAJOS=$TRABAJO->SEARCH2();
+				new ENTREGA_ADD($USUARIOS,$TRABAJOS);
 			}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 			}

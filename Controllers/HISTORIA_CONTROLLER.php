@@ -10,6 +10,7 @@
 session_start();//solicito trabajar con la sesión
 
 include '../Models/HISTORIA_MODEL.php';
+include '../Models/TRABAJO_MODEL.php';
 include '../Functions/permisosAcc.php';
 include '../Views/HISTORIA/HISTORIA_SHOWALL_View.php';
 include '../Views/HISTORIA/HISTORIA_SEARCH_View.php';
@@ -45,8 +46,10 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
-			if(permisosAcc($_SESSION['login'],10,0)==true){			
-			new HISTORIA_ADD();
+			if(permisosAcc($_SESSION['login'],10,0)==true){	
+			$TRABAJO= new TRABAJO('','','','','');
+			$TRABAJOS=$TRABAJO->SEARCH2();
+			new HISTORIA_ADD($TRABAJOS);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );
 			}
