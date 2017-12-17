@@ -27,7 +27,7 @@ class HISTORIA_ADD {
 							<?php echo $strings['NombreTrabajo'];?>
 						</th>
                   <td class="formThTd">
-                   <select id="IdTrabajo" name="IdTrabajo">
+                   <select id="IdTrabajo" name="IdTrabajo" required>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
