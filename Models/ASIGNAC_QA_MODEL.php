@@ -71,6 +71,43 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 			return "Asignacion generada con exito";
 	} //fin del método ADD
 	
+	function ADD2($ALIASC){
+       if ( ( $this->LoginEvaluador<>$this->LoginEvaluado && $this->AliasEvaluado == $ALIASC ) ) {
+			// construimos el sql para buscar esa clave en la tabla
+			$sql = "SELECT * FROM ASIGNAC_QA WHERE (  IdTrabajo ='$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' &&  AliasEvaluado = '$this->AliasEvaluado')";//se construye la sentencia sql
+
+			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
+				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+			} else { // si la ejecución de la query no da error
+                if ($result->num_rows == 0){
+			//Variable que almacena sentencia sql
+			$sql = "INSERT INTO ASIGNAC_QA (
+									  IdTrabajo,
+									  LoginEvaluador,
+									  LoginEvaluado,
+									  AliasEvaluado)					           
+									 VALUES(
+									 '$this->IdTrabajo',
+                                	 '$this->LoginEvaluador',
+									 '$this->LoginEvaluado',
+									 '$this->AliasEvaluado'
+									 )";
+
+			//ejecutamos la consulta
+			$this->mysqli->query( $sql );
+			return "Asignacion generada con exito";
+	   }else{//si el resultado de la consulta no es vacío
+            return 'Ya existe el grupo introducido en la base de datos'; // ya existe
+       }
+                }
+					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
+						return 'Error en la inserción';
+					} else { //si no da error en la insercion devolvemos mensaje de exito
+						return 'Inserción realizada con éxito'; //operacion de insertado correcta 	   
+	} 
+	}
+	   return 'Error en la inserción';
+	}//fin del método ADD
     //función que borra una tupla de una QA
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase

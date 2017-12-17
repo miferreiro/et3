@@ -121,8 +121,29 @@
 		}
          return false;
     }
-       
-           
+				
+        function obtenerUsuarios(){
+        $sql = "select login
+       			from ENTREGA";//Se construye la sentencia sql
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+    }    
+          function obtenerAlias($LOG){
+        $sql = "select Alias
+       			from ENTREGA WHERE login=='$LOG'";//Se construye la sentencia sql
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+    }          
     //Metodo ADD()
 	//Inserta en la tabla  de la bd  los valores
 	// de los atributos del objeto. Comprueba si la clave esta vacia y si 

@@ -11,6 +11,7 @@ session_start(); //solicito trabajar con la session
 include '../Models/ASIGNAC_QA_MODEL.php'; //incluye el contendio del asignacion de qa
 include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/HISTORIA_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Functions/permisosAcc.php';
 include '../Views/ASIGNAC_QA/ASIGNAC_QA_GENERAR_View.php'; //incluye la vista de asignación qa
@@ -182,13 +183,19 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
 			if(permisosAcc($_SESSION['login'],6,0)==true){
-			new ASIGNAC_QA_ADD();
+			$TRABAJO= new TRABAJO('','','','','');
+			$TRABAJOS=$TRABAJO->SEARCH2();
+			$USU= new ENTREGA_MODEL('','','','','');
+			$USU=$USU->obtenerUsuarios();
+			new ASIGNAC_QA_ADD($TRABAJOS,$USU);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 			}
 		} else {
 			$ASIGNACION = get_data_form();
-			$respuesta = $ASIGNACION->ADD();
+			$USU= new ENTREGA_MODEL('','','','','');
+			$Ali=$USU->obtenerAlias($_REQUEST['LoginEvaluado']);
+			$respuesta = $ASIGNACION->ADD2($Ali);
 			new MESSAGE( $respuesta, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 		}
 		break;
