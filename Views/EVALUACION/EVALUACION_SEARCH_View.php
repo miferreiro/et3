@@ -20,7 +20,7 @@ class EVALUACION_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" action="../Controllers/EVALUACION_CONTROLLER.php" method="post" enctype="multipart/form-data" ">
+			<form id="SEARCH" action="../Controllers/EVALUACION_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<th class="formThTd">
