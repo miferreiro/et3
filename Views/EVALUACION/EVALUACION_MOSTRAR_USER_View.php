@@ -37,6 +37,7 @@ class EVALUACION_MOSTRAR_USER {
 					<th colspan="2" >
 						<?php echo $strings['Opciones']?>
 					</th>
+<?php } ?>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
