@@ -68,7 +68,7 @@ class HISTORIA_DELETE {
             
             <table>
                      <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -110,7 +110,7 @@ class HISTORIA_DELETE {
 
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>

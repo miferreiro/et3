@@ -228,7 +228,7 @@ class USUARIO_MODEL{ //declaración de la clase
         $dependencias2 = null;//inicializamos la variable a null
 
         
-        $sql = "SELECT E.login, IdTrabajo, Alias, Horas, Ruta FROM ENTREGA E, USUARIO U WHERE E.login = '$this->login' AND E.login = U.login";//se construye la sentencia sql
+        $sql = "SELECT E.login, NombreTrabajo, Alias, Horas, Ruta FROM ENTREGA E, USUARIO U, TRABAJO T WHERE E.login = '$this->login' AND E.login = U.login AND E.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
             
@@ -243,7 +243,7 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $dependencias3 = null;//inicializamos la variable a null
         
-        $sql = "SELECT IdTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, USUARIO U WHERE LoginEvaluador = '$this->login' AND LoginEvaluador=login";//se construye la sentencia sql
+        $sql = "SELECT NombreTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, USUARIO U, TRABAJO T WHERE LoginEvaluador = '$this->login' AND LoginEvaluador=login AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) { //miramos si el numero de tuplas es mayor o igual a uno
             $dependencias3 = $resultado;//asignamos las dependencias
@@ -258,7 +258,7 @@ class USUARIO_MODEL{ //declaración de la clase
         $dependencias4 = null;//inicializamos la variable a null
         
 		
-        $sql = "SELECT IdTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, USUARIO U WHERE LoginEvaluado = '$this->login' AND LoginEvaluado=login";//se construye la sentencia sql
+        $sql = "SELECT NombreTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, USUARIO U, TRABAJO T WHERE LoginEvaluado = '$this->login' AND LoginEvaluado=login AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) { //miramos si el numero de tuplas es mayor o igual a uno
             $dependencias4 = $resultado;//asignamos las dependencias
@@ -272,7 +272,7 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $dependencias5 = null;//inicializamos la variable a null
         
-        $sql = "SELECT IdTrabajo,NotaTrabajo FROM NOTA_TRABAJO NT, USUARIO U WHERE NT.login = '$this->login' AND U.login=NT.login";//se construye la sentencia sql
+        $sql = "SELECT NombreTrabajo,NotaTrabajo FROM NOTA_TRABAJO NT, USUARIO U, TRABAJO T WHERE NT.login = '$this->login' AND U.login=NT.login AND NT.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
             $dependencias5 = $resultado;//asignamos las dependencias
@@ -286,13 +286,26 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $dependencias6 = null;//inicializamos la variable a null
         
-        $sql = "SELECT IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, USUARIO U WHERE LoginEvaluador = '$this->login' AND LoginEvaluador = login";//se construye la sentencia sql
+        $sql = "SELECT NombreTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, USUARIO U, TRABAJO T WHERE LoginEvaluador = '$this->login' AND LoginEvaluador = login AND E.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
             $dependencias6 = $resultado;//asignamos las dependencias
         }
         
         return $dependencias6;
+	} // fin del metodo RellenaDatos()
+    
+     function dependencias7() { 
+        
+        $dependencias7 = null;//inicializamos la variable a null
+        
+        $sql = "SELECT NombreTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ENTREGA ET, TRABAJO T WHERE AliasEvaluado = Alias AND ET.IdTrabajo = T.IdTrabajo AND login = '$this->login';";//se construye la sentencia sql
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
+        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
+            $dependencias7 = $resultado;//asignamos las dependencias
+        }
+        
+        return $dependencias7;
 	} // fin del metodo RellenaDatos()
     
 

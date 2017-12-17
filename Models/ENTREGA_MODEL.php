@@ -278,7 +278,7 @@
         
         $dependencias = null;//inicializamos la variable a null
 
-		$sql = "SELECT QA.IdTrabajo, QA.LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, ENTREGA E WHERE QA.LoginEvaluador = '$this->login' AND QA.LoginEvaluador = E.login";//se construye la sentencia sql
+		$sql = "SELECT NombreTrabajo, QA.LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, ENTREGA E, TRABAJO T WHERE QA.LoginEvaluador = '$this->login' AND QA.LoginEvaluador = E.login AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//se ejecuta la query
         if ( $resultado->num_rows >= 1 ) {//miramos si el número de tuplas es mayor o igual que uno
             $dependencias = $resultado;//le pasamos a la variable dependencias todas las tablas de las que depende
@@ -291,7 +291,7 @@
         
         $dependencias2 = null;//inicializamos la variable a null
 
-		$sql = "SELECT QA.IdTrabajo, QA.LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, ENTREGA E WHERE QA.LoginEvaluado = '$this->login' AND QA.LoginEvaluado = E.login";//se construye la sentencia sql
+		$sql = "SELECT NombreTrabajo, QA.LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, ENTREGA E, TRABAJO T WHERE QA.LoginEvaluado = '$this->login' AND QA.LoginEvaluado = E.login AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//se ejecuta la query
         if ( $resultado->num_rows >= 1 ) {//miramos si el número de tuplas es mayor o igual que uno
             $dependencias2 = $resultado;//le pasamos a la variable dependencias2 todas las tablas de las que depende

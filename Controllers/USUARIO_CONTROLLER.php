@@ -100,9 +100,10 @@ switch ( $_REQUEST[ 'action' ] ) {
             $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);
             $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);
             $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);
+            $dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);
                 
             //Crea una vista delete para ver la tupla
-			new USUARIO_DELETE( $valores,$dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6 );
+			new USUARIO_DELETE( $valores,$dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7 );
 			}else{//si el usuario no es administrador
 			$cont=0;//inicializamos la variable cont a 0.
 			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario

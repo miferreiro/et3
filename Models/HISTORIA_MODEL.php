@@ -143,7 +143,7 @@
         
         $dependencias = null;//inicializamos la varriable a null
 
-		$sql = "SELECT E.IdTrabajo,LoginEvaluador, AliasEvaluado, E.IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, HISTORIA H WHERE E.IdHistoria = '$this->IdHistoria' AND E.IdHistoria = H.IdHistoria";//se construye la sentencia sql
+		$sql = "SELECT NombreTrabajo,LoginEvaluador, AliasEvaluado, E.IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, HISTORIA H, TRABAJO T WHERE E.IdHistoria = '$this->IdHistoria' AND E.IdHistoria = H.IdHistoria AND H.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//se ejecuta la query
         if ( $resultado->num_rows >= 1 ) {//miramos si el numero de filas es mayor o igual a uno
             $dependencias = $resultado;//asignamos todas las dependencias
