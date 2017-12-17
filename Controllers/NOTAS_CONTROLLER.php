@@ -194,10 +194,8 @@ switch ( $_REQUEST[ 'action' ] ) {
                      $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
                      
                      $notaET = $nota * ($porcentaje[0]/100);
-                    
-                   //  $not = array ($fila['login'].$fila['IdTrabajo'] => $notaET);
-                      $notas[$fila['login'].$fila['IdTrabajo']] = $notaET;
-                    // array_push($notas,$not);
+
+                    $notas[$fila['login'].$fila['IdTrabajo']] = $notaET; 
                     
                    
                      
