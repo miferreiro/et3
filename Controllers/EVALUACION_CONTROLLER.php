@@ -247,7 +247,7 @@ switch ( $_REQUEST[ 'action' ] ) {
         
     
 	default: //Caso que se ejecuta por defecto
-	//if(permisosAcc($_SESSION['login'],12,5)==true){
+	if(permisosAcc($_SESSION['login'],12,5)==true){
     if ( !$_POST ) {//Si no se han recibido datos 
         
               $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
@@ -266,9 +266,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		       //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		    }
 		    new EVALUACION_MOSTRAR_USER( $lista, $datos );
-		//}else{
-			//new USUARIO_DEFAULT();
-		}		
+		 }
+		}else{
+			new USUARIO_DEFAULT();
+		}
 }
 
 ?>

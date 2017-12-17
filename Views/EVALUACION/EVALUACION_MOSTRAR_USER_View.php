@@ -15,6 +15,8 @@ class EVALUACION_MOSTRAR_USER {
 		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
+		include_once '../Functions/permisosAcc.php';
+		include_once '../Functions/comprobarAdministrador.php';
 ?>
 		<div class="seccion">
 			<h2>
@@ -30,8 +32,9 @@ class EVALUACION_MOSTRAR_USER {
 					</th>
 <?php
 					}
+		if((permisosAcc($_SESSION['login'],12,2)==true)||(comprobarAdministrador($_SESSION['login'])==true)){ 
 ?>
-					<th colspan="3" >
+					<th colspan="2" >
 						<?php echo $strings['Opciones']?>
 					</th>
 				</tr>
@@ -66,10 +69,14 @@ class EVALUACION_MOSTRAR_USER {
                             
                             
 						<td>
+<?php         if(permisosAcc($_SESSION['login'],12,2)==true){ ?>
 								<button type="submit" name="action" value="MOSTRAR_USER" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+<?php } ?>
                                 <!--si pulsas este boton ves la vista SHOWCURRENT-->
                         <td>
+ <?php         if(comprobarAdministrador($_SESSION['login'])==true){ ?>
 								<button type="submit" name="action" value="ADMIN_EVALUAR" ><img src="../Views/icon/evaluar.png" alt="<?php echo $strings['Ver en detalle']?>" width="32" height="32"/></button>
+ <?php } ?>                              
                                 <!--si pulsas este boton ves la vista SHOWCURRENT-->
                         </td>
                             
