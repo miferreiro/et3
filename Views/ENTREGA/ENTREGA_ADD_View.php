@@ -27,7 +27,7 @@ class ENTREGA_ADD {
 							<?php echo $strings['login'];?>
 						</th>
                   <td class="formThTd">
-                   <select id="login" name="login">
+                   <select id="login" name="login" required>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
@@ -50,7 +50,7 @@ class ENTREGA_ADD {
 							<?php echo $strings['NombreTrabajo'];?>
 						</th>
                   <td class="formThTd">
-                   <select id="IdTrabajo" name="IdTrabajo">
+                   <select id="IdTrabajo" name="IdTrabajo" required>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->trabajos ) ) {
 ?>

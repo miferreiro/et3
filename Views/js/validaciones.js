@@ -1382,13 +1382,29 @@ function comprobarAddEntrega() {
 */
 function comprobarEditEntrega() {
 	
+	var Alias /*variable que representa el elemento Alias del formulario edit de gestión de accion*/
 	var Horas; /*variable que representa el elemento Horas del formulario edit de gestión de accion*/
 	var Ruta; /*variable que representa el elemento Ruta del formulario edit de gestión de accion*/
 	
+	Alias = document.forms['EDIT'].elements[2];
 	Horas = document.forms['EDIT'].elements[3];
 	Ruta = document.forms['EDIT'].elements[4];
 
-
+	
+	/*Comprueba si Horas es vacio, retorna false*/
+	if (!comprobarVacio(Alias)) {
+		return false;
+	} else {
+		/*Comprueba su longitud, si es mayor que 6, retorna false*/
+		if (!comprobarLongitud(Alias, 6)) {
+			return false;
+		} else {
+			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			if (!comprobarTexto(Alias, 6)) {
+				return false;
+			} 
+		}
+	}
 	/*Comprueba si Horas es vacio, retorna false*/
 	if (!comprobarVacio(Horas)) {
 		return false;
