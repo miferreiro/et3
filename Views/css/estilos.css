@@ -21,7 +21,9 @@
  
 	#main > article {
 		margin: 4px;
+		margin-left: 40%;
 		padding: 5px;
+		position: absolute;
 		-webkit-flex: 3 1 60%;
 				flex: 3 1 60%;
 		-webkit-order: 2;
@@ -32,9 +34,10 @@
 		margin: 0px;
 		padding: 5px;
 		background-color: #C8D5B9;
-		min-width: 180px;
-		-webkit-flex: 1 6 15%;
-				flex: 1 6 15%;
+		max-width: 19%;
+		min-width: 270px;
+		-webkit-flex: 1 6 18%;
+				flex: 1 6 18%;
 		-webkit-order: 1;
 				order: 1;		
     }
@@ -222,3 +225,4 @@
 		z-index:1;
 		background-color: rgba(1, 1, 1, 0.5);
 	}
+	
