@@ -201,7 +201,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el resultado de la busqueda
 			$datos = $EVALUACION->SEARCH();
 			//Variable que almacena array con el CorrectoA de los atributos
-			$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA','CorrectoP','ComentIncorrectoP','OK');
+			$lista = array( 'nombreTrabajo','LoginEvaluador','AliasEvaluado','NombreHistoria','CorrectoA','ComenIncorrectoA','CorrectoP','ComentIncorrectoP','OK');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new EVALUACION_SHOWALL( $lista, $datos );
 		}
@@ -227,11 +227,11 @@ switch ( $_REQUEST[ 'action' ] ) {
             $ADMIN = $USUARIO->comprobarAdmin();
              if($ADMIN == true){
             	$EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],'',$_REQUEST['AliasEvaluado'], '', '', '', '', '', '');
-            	$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
+            	$lista = array( 'NombreTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
             }
             else{
             	$EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado'], '', '', '', '', '', '');
-            	$lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
+            	$lista = array( 'NombreTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
             }
             
         
@@ -256,13 +256,13 @@ switch ( $_REQUEST[ 'action' ] ) {
             if($ADMIN == true){
             	 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                  $datos=$EVALUACION->DevolverEntregas(); 
-                 $lista = array('login','IdTrabajo','Alias','Horas','Ruta');	
+                 $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');	
             }
             else{
                 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                 $datos=$EVALUACION->entregasUsu($_SESSION['login']);
                 //Variable que almacena array con el CorrectoA de los atributos
-		        $lista = array('IdTrabajo','Alias','Horas','Ruta');
+		        $lista = array('NombreTrabajo','Alias','Horas','Ruta');
 		       //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		    }
 		    new EVALUACION_MOSTRAR_USER( $lista, $datos );

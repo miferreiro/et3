@@ -33,18 +33,20 @@
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "select login,
-                        IdTrabajo,
+                        E.IdTrabajo,
+						T.NombreTrabajo,
                         Alias,
                         Horas,
                         Ruta
-       			from ENTREGA
+       			from ENTREGA E, TRABAJO T
     			where 
     				(
 					(BINARY login LIKE '%$this->login%') &&
-                    (BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
+                    (BINARY E.IdTrabajo LIKE '%$this->IdTrabajo%') &&
                     (BINARY Alias LIKE '%$this->Alias%') &&
                     (BINARY Horas LIKE '%$this->Horas%') &&
-                    (BINARY Ruta LIKE '%$this->Ruta%') 
+                    (BINARY Ruta LIKE '%$this->Ruta%') &&
+					(E.IdTrabajo = T.IdTrabajo)
     				)";// se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -61,18 +63,20 @@
 	function SEARCH2() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "select login,
-                        IdTrabajo,
+                        E.IdTrabajo,
+						T.NombreTrabajo,
                         Alias,
                         Horas,
                         Ruta
-       			from ENTREGA
+       			from ENTREGA E, TRABAJO T
     			where 
     				(
 					(BINARY login = '$this->login') &&
-                    (BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
+                    (BINARY E.IdTrabajo LIKE '%$this->IdTrabajo%') &&
                     (BINARY Alias LIKE '%$this->Alias%') &&
                     (BINARY Horas LIKE '%$this->Horas%') &&
-                    (BINARY Ruta LIKE '%$this->Ruta%')
+                    (BINARY Ruta LIKE '%$this->Ruta%')&&
+					(E.IdTrabajo = T.IdTrabajo)
     				)";//se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

@@ -398,7 +398,7 @@ switch ( $_REQUEST[ 'action' ] ) {
          $datos=$ENTREGA->SEARCH2();
        // var_dump($datos);
         //exit;
-          $lista = array('login','IdTrabajo','Alias','Horas','Ruta');
+          $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');
           new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,false */);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
@@ -417,7 +417,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los datos de la busqueda
         $datos = $ENTREGA->filtrarET();
 		//Variable que almacena array con el CorrectoA de los atributos
-		$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
+		$lista = array('login','NombreTrabajo','Alias','Horas','Ruta');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,true */);
 			}else{

@@ -193,6 +193,7 @@ function mostrarEntregas($nombre){
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "select  E.IdTrabajo,
+					T.NombreTrabajo,
                     LoginEvaluador,
                     AliasEvaluado,
 					E.IdHistoria,
@@ -202,10 +203,11 @@ function mostrarEntregas($nombre){
                     ComentIncorrectoP,
 					OK,
 					TextoHistoria
-       			from EVALUACION E,HISTORIA H
+       			from EVALUACION E,HISTORIA H,TRABAJO T
     			where 
     				(
     				H.IdHistoria = E.IdHistoria &&
+					E.IdTrabajo = T.IdTrabajo &&
     				SUBSTRING(E.IdTrabajo,3) = SUBSTRING(H.IdTrabajo,3) &&
 					(BINARY E.IdTrabajo LIKE '%$this->IdTrabajo%') &&
 					(BINARY LoginEvaluador LIKE '%$this->LoginEvaluador%') &&
@@ -454,9 +456,10 @@ function mostrarEntregas($nombre){
 	} // fin del metodo EDIT
 
 	function DevolverEntregas(){
-		$sql = "SELECT DISTINCT login,Alias,E.IdTrabajo,Ruta,Horas
-				FROM ENTREGA EN,EVALUACION E
+		$sql = "SELECT DISTINCT login,Alias,E.IdTrabajo,Ruta,Horas,T.NombreTrabajo
+				FROM ENTREGA EN,EVALUACION E,TRABAJO T
 				WHERE Alias = AliasEvaluado && SUBSTRING(E.IdTrabajo,3) = SUBSTRING(EN.IdTrabajo,3)
+				&& E.IdTrabajo=T.IdTrabajo
 				ORDER BY E.Idtrabajo,AliasEvaluado,E.IdHistoria";
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -470,10 +473,11 @@ function mostrarEntregas($nombre){
 
 	function entregasUsu($nombre){
         
-        $sql = "SELECT DISTINCT login,Alias,E.IdTrabajo,Ruta,Horas
-				FROM ENTREGA EN,EVALUACION E
+        $sql = "SELECT DISTINCT login,Alias,E.IdTrabajo,Ruta,Horas,T.NombreTrabajo
+				FROM ENTREGA EN,EVALUACION E,TRABAJO T
 				WHERE Alias = AliasEvaluado &&
-					  LoginEvaluador = '$nombre'
+					  LoginEvaluador = '$nombre' &&
+					  E.IdTrabajo=T.IdTrabajo  
 				ORDER BY AliasEvaluado,E.IdHistoria";
         if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
