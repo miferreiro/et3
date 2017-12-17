@@ -215,7 +215,7 @@ class TRABAJO{
         
         $dependencias = null;//inicializamos la variable a null
 
-		$sql = "SELECT E.IdTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, TRABAJO T WHERE E.IdTrabajo = '$this->IdTrabajo' AND E.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
+		$sql = "SELECT NombreTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, TRABAJO T WHERE E.IdTrabajo = '$this->IdTrabajo' AND E.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) {//si el numero de tuplas es mayor o igual a uno
             $dependencias = $resultado;//asignamos las dependecias
@@ -229,7 +229,7 @@ class TRABAJO{
         
         $dependencias2 = null;//inicializamos la variable a null
 
-		$sql = "SELECT H.IdTrabajo, IdHistoria, TextoHistoria FROM HISTORIA H, TRABAJO T WHERE H.IdTrabajo = '$this->IdTrabajo' AND H.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
+		$sql = "SELECT NombreTrabajo, IdHistoria, TextoHistoria FROM HISTORIA H, TRABAJO T WHERE H.IdTrabajo = '$this->IdTrabajo' AND H.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) {//si el numero de tuplas es mayor o igual a uno
             $dependencias2 = $resultado;//asignamos las dependecias
@@ -243,7 +243,7 @@ class TRABAJO{
         
         $dependencias3 = null;//inicializamos la variable a null
 
-		$sql = "SELECT login, NT.IdTrabajo, NotaTrabajo FROM NOTA_TRABAJO NT, TRABAJO T WHERE NT.IdTrabajo = '$this->IdTrabajo' AND NT.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
+		$sql = "SELECT login, NombreTrabajo, NotaTrabajo FROM NOTA_TRABAJO NT, TRABAJO T WHERE NT.IdTrabajo = '$this->IdTrabajo' AND NT.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) {//si el numero de tuplas es mayor o igual a uno
             $dependencias3 = $resultado;//asignamos las dependecias
@@ -257,7 +257,7 @@ class TRABAJO{
         
         $dependencias4 = null;//inicializamos la variable a null
 
-		$sql = "SELECT QA.IdTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, TRABAJO T WHERE QA.IdTrabajo = '$this->IdTrabajo' AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
+		$sql = "SELECT NombreTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, TRABAJO T WHERE QA.IdTrabajo = '$this->IdTrabajo' AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) {//si el numero de tuplas es mayor o igual a uno
             $dependencias4 = $resultado;//asignamos las dependecias
@@ -271,7 +271,7 @@ class TRABAJO{
         
         $dependencias5 = null;//inicializamos la variable a null
 
-		$sql = "SELECT login, E.IdTrabajo, Alias, Horas, Ruta FROM ENTREGA E, TRABAJO T WHERE E.IdTrabajo = '$this->IdTrabajo' AND E.IdTrabajo=T.IdTrabajo";//se construye la sentencia sql
+		$sql = "SELECT login, NombreTrabajo, Alias, Horas, Ruta FROM ENTREGA E, TRABAJO T WHERE E.IdTrabajo = '$this->IdTrabajo' AND E.IdTrabajo=T.IdTrabajo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) {//si el numero de tuplas es mayor o igual a uno
             $dependencias5 = $resultado;//asignamos las dependecias

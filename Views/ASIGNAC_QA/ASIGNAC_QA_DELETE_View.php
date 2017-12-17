@@ -77,7 +77,7 @@ class ASIGNAC_QA_DELETE {
             
             <table>
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -119,7 +119,7 @@ class ASIGNAC_QA_DELETE {
 
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>
@@ -193,7 +193,7 @@ class ASIGNAC_QA_DELETE {
             
             <table>
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -236,7 +236,7 @@ class ASIGNAC_QA_DELETE {
 
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>

@@ -95,7 +95,7 @@
             
             <table>
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -117,7 +117,7 @@
                     
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>
@@ -159,7 +159,7 @@
             
             <table>
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -181,7 +181,7 @@
                     
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>

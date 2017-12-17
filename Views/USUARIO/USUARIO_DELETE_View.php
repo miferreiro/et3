@@ -7,7 +7,7 @@
 */
 class USUARIO_DELETE {
 
-	function __construct( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6) {
+	function __construct( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7) {
 		$this->valores = $valores;
 		$this->dependencias = $dependencias;
 		$this->dependencias2 = $dependencias2;
@@ -15,10 +15,11 @@ class USUARIO_DELETE {
 		$this->dependencias4 = $dependencias4;
 		$this->dependencias5 = $dependencias5;
 		$this->dependencias6 = $dependencias6;
-		$this->render( $this->valores, $this->dependencias,$this->dependencias2,$this->dependencias3,$this->dependencias4,$this->dependencias5,$this->dependencias6);
+		$this->dependencias7 = $dependencias7;
+		$this->render( $this->valores, $this->dependencias,$this->dependencias2,$this->dependencias3,$this->dependencias4,$this->dependencias5,$this->dependencias6, $this->dependencias7);
 	}
 
-	function render( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6) {
+	function render( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7) {
 		$this->valores = $valores;
 		$this->dependencias = $dependencias;
 		$this->dependencias2 = $dependencias2;
@@ -26,6 +27,7 @@ class USUARIO_DELETE {
 		$this->dependencias4 = $dependencias4;
 		$this->dependencias5 = $dependencias5;
 		$this->dependencias6 = $dependencias6;
+		$this->dependencias7 = $dependencias7;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -104,7 +106,7 @@ class USUARIO_DELETE {
         
             <?php
             
-            if($dependencias != null || $dependencias2 != null || $dependencias3 != null || $dependencias4 != null || $dependencias5 != null || $dependencias6 != null  ){
+            if($dependencias != null || $dependencias2 != null || $dependencias3 != null || $dependencias4 != null || $dependencias5 != null || $dependencias6 != null || $dependencias7 != null ){
                 
                 echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
                 ?>
@@ -162,7 +164,7 @@ class USUARIO_DELETE {
                         <?php echo $strings['USUARIO_ENTREGA'];?>
                     </th>
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -193,7 +195,7 @@ class USUARIO_DELETE {
                     <td>
                         <?php 
 							
-                        echo $fila['IdTrabajo'];
+                        echo $fila['NombreTrabajo'];
 
                         ?>
 					</td>
@@ -235,7 +237,7 @@ class USUARIO_DELETE {
             
             <table>
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -257,7 +259,7 @@ class USUARIO_DELETE {
                     
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>
@@ -299,7 +301,7 @@ class USUARIO_DELETE {
             
             <table>
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -321,7 +323,7 @@ class USUARIO_DELETE {
                     
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>
@@ -362,7 +364,7 @@ class USUARIO_DELETE {
             <table>
                 
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -378,7 +380,7 @@ class USUARIO_DELETE {
                     <td>
                         <?php 
 							
-                        echo $fila['IdTrabajo'];
+                        echo $fila['NombreTrabajo'];
 
                         ?>
 					</td>
@@ -404,7 +406,7 @@ class USUARIO_DELETE {
             <table>
 
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -446,7 +448,122 @@ class USUARIO_DELETE {
 
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['LoginEvaluador'];
+
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+							
+                        echo $fila['AliasEvaluado'];
+
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['IdHistoria'];
+                            
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['CorrectoA'];
+                            
+                        ?>
+					</td>
+                
+                    <td>
+                        <?php 
+				        echo $fila['ComenIncorrectoA'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['CorrectoP'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['ComentIncorrectoP'];
+                            
+                        ?>
+					</td>
+                    <td>
+                        <?php 
+				        echo $fila['OK'];
+                            
+                        ?>
+					</td>
+
+				</tr>
+                
+                <?php
+				}
+                ?>
+                </table>
+                <?php
+            }
+                
+                if($dependencias7 != null){
+            ?>
+            
+            <table>
+
+                    <th>
+                        <?php echo $strings['NombreTrabajo'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['LoginEvaluador'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['AliasEvaluado'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['IdHistoria'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['CorrectoA'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['ComenIncorrectoA'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['CorrectoP'];?>
+                    </th>
+                
+                    <th>
+                        <?php echo $strings['ComentIncorrectoP'];?>
+                    </th>
+                
+                     <th>
+                        <?php echo $strings['OK'];?>
+                    </th>
+            <?php
+				while ( $fila = mysqli_fetch_array( $dependencias7 ) ) {
+            ?>
+			
+            <tr>
+
+				    <td>
+                        <?php 
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>
@@ -521,7 +638,7 @@ class USUARIO_DELETE {
     }
         
                 
-               if($dependencias == null && $dependencias2 == null && $dependencias3 == null && $dependencias4 == null && $dependencias5 == null && $dependencias6 == null ){
+               if($dependencias == null && $dependencias2 == null && $dependencias3 == null && $dependencias4 == null && $dependencias5 == null && $dependencias6 == null && $dependencias7 == null ){
                     
               ?>  
             

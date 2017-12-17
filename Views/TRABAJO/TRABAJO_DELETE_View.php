@@ -97,7 +97,7 @@ class TRABAJO_DELETE {
             
             <table>
                  <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -139,7 +139,7 @@ class TRABAJO_DELETE {
 
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>
@@ -211,7 +211,7 @@ class TRABAJO_DELETE {
             ?>
             <table>
                  <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -231,7 +231,7 @@ class TRABAJO_DELETE {
 
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>
@@ -269,7 +269,7 @@ class TRABAJO_DELETE {
                         <?php echo $strings['login'];?>
                     </th>
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -291,7 +291,7 @@ class TRABAJO_DELETE {
                     <td>
                         <?php 
 							
-                        echo $fila['IdTrabajo'];
+                        echo $fila['NombreTrabajo'];
 
                         ?>
 					</td>
@@ -317,7 +317,7 @@ class TRABAJO_DELETE {
             
             <table>
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -340,7 +340,7 @@ class TRABAJO_DELETE {
 
 				    <td>
                         <?php 
-				        echo $fila['IdTrabajo'];
+				        echo $fila['NombreTrabajo'];
                             
                         ?>
 					</td>
@@ -383,7 +383,7 @@ class TRABAJO_DELETE {
                         <?php echo $strings['USUARIO_ENTREGA'];?>
                     </th>
                     <th>
-                        <?php echo $strings['ID_TRABAJO'];?>
+                        <?php echo $strings['NombreTrabajo'];?>
                     </th>
                 
                     <th>
@@ -413,7 +413,7 @@ class TRABAJO_DELETE {
                     <td>
                         <?php 
 							
-                        echo $fila['IdTrabajo'];
+                        echo $fila['NombreTrabajo'];
 
                         ?>
 					</td>

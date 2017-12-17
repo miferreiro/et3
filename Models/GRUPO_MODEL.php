@@ -175,7 +175,7 @@
         
         $dependencias = null;//inicializamos la variable a null
         
-        $sql = "SELECT login, UG.IdGrupo FROM USU_GRUPO UG, GRUPO G WHERE UG.IdGrupo= '$this->IdGrupo' AND UG.IdGrupo = G.IdGrupo";//se construye la sentencia sql
+        $sql = "SELECT login, NombreGrupo FROM USU_GRUPO UG, GRUPO G WHERE UG.IdGrupo= '$this->IdGrupo' AND UG.IdGrupo = G.IdGrupo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//se ejecuta la query
         if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
             $dependencias = $resultado;//le asignamos todas las dependencias

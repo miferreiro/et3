@@ -127,7 +127,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 
 		$dependencias = null; //inicializamos la variable dependencias a null
 
-		$sql = "SELECT E.IdTrabajo, E.LoginEvaluador, E.AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ASIGNAC_QA QA WHERE E.LoginEvaluador = '$this->LoginEvaluador' AND E.LoginEvaluador = QA.LoginEvaluador";//se construye la sentencia sql
+		$sql = "SELECT NombreTrabajo, E.LoginEvaluador, E.AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ASIGNAC_QA QA, TRABAJO T WHERE E.LoginEvaluador = '$this->LoginEvaluador' AND E.LoginEvaluador = QA.LoginEvaluador AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
 		$resultado = $this->mysqli->query( $sql );//se ejecuta la query
 		if ( $resultado->num_rows >= 1 ) {//mira si el número de filas es mayor ó igual a uno
 			$dependencias = $resultado;//le asignamos a la variable dependencias las tablas de las que depende
@@ -141,7 +141,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
      
 	 $dependencias2= null;//inicializamos la variable dependencias2 a null
 
-		$sql = "SELECT E.IdTrabajo, E.LoginEvaluador, E.AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ASIGNAC_QA QA WHERE QA.LoginEvaluado = '$this->LoginEvaluado' AND E.AliasEvaluado = QA.AliasEvaluado";//se construye la sentencia sql
+		$sql = "SELECT NombreTrabajo, E.LoginEvaluador, E.AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ASIGNAC_QA QA, TRABAJO T WHERE QA.LoginEvaluado = '$this->LoginEvaluado' AND E.AliasEvaluado = QA.AliasEvaluado AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
      
 		$resultado = $this->mysqli->query( $sql );  //se ejecuta la query
 		if ( $resultado->num_rows >= 1 ) {//miramos si el número de filas es mayor o igual que uno
