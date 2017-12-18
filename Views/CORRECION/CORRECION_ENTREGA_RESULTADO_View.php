@@ -68,33 +68,12 @@ class CORRECION_ENTREGA_RESULTADO {
                         
                     else{
                         
-                         if($atributo == 'CorrectoP' || $atributo == 'CorrectoA' && $fila[$atributo] == "1"){
-                            ?>
-                                <td bgcolor="green">
-                            <?php
-                                    echo $fila[ $atributo ];
-                            ?>
-                                </td>
-<?php                               
-                            }
                         
-                        else if($atributo == 'CorrectoP' || $atributo == 'CorrectoA' && $fila[$atributo] == "0"){
-                            
-                            ?>
-                                 <td bgcolor="red">
-                            <?php
-                                echo $fila[ $atributo ];
-                            ?>
-                            </td>
- <?php                           
-                        }
-                        
-                        
-                           
-                        else{
-                        
-               
-                    
+?>
+                                
+<?php
+                                  
+                     
 ?>                 
                   
                     
@@ -109,7 +88,7 @@ class CORRECION_ENTREGA_RESULTADO {
 					</td>
                     
 <?php
-                        }
+                       
                         }
                         
 					}
