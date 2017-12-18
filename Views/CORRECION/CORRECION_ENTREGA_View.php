@@ -53,9 +53,9 @@ class CORRECION_ENTREGA {
                     
 						<form action="../Controllers/CORRECION_ENTREGA_CONTROLLER.php" method="get" style="display:inline" >
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
-                           
+                            <input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
 							<td>
-                                <button type="submit" name="action" value="RESULTADO" ><img src="../Views/icon/flecha.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+                                <button type="submit" name="action" value="RESULTADOS" ><img src="../Views/icon/flecha.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
                             </td>
 						</form>
 

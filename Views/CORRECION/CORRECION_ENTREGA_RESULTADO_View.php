@@ -51,7 +51,7 @@ class CORRECION_ENTREGA_RESULTADO {
 ?>
                     
 <?php                    
-                    if($fila[$atributo] == $fila['ComenIncorrectoA'] || $fila[$atributo] == $fila['ComentIncorrectoP']){
+                    if($atributo == 'ComentIncorrectoP'){
 ?>
             
                         <td><textarea maxlength="300" cols="20" rows="7" readonly>

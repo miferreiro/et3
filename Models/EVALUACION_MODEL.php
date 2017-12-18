@@ -100,7 +100,7 @@ function mostrarEntregas($nombre){
         
     }
     
-    function mostrarQAS($nombre){
+   function mostrarQAS($nombre){
         
     
     $sql = "SELECT  DISTINCT LoginEvaluador,IdTrabajo FROM EVALUACION  WHERE LoginEvaluador='$nombre'";
@@ -133,12 +133,12 @@ function mostrarEntregas($nombre){
 		}
     }
 
-   function mostrarCorrecion1($IdTrabajo,$nombre){
+  function mostrarCorrecion1($IdTrabajo,$nombre){
         
         
        
-        $sql = "SELECT DISTINCT E.IdTrabajo,IdHistoria,CorrectoP,ComentIncorrectoP,CorrectoA,ComenIncorrectoA FROM EVALUACION E,ENTREGA ET WHERE 
-        ( E.IdTrabajo = '$IdTrabajo' && Alias = AliasEvaluado && LoginEvaluador='$nombre')";
+        $sql ="SELECT DISTINCT E.IdTrabajo,LoginEvaluador,IdHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET WHERE 
+        ( E.IdTrabajo = '$IdTrabajo' && Alias = AliasEvaluado && login='$nombre') GROUP BY IdHistoria";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -153,7 +153,7 @@ function mostrarEntregas($nombre){
     
 
   
-      function mostrarCorrecion2($IdTrabajo,$nombre){
+        function mostrarCorrecion2($IdTrabajo,$nombre){
         $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,IdTrabajo FROM EVALUACION  WHERE 
         ( IdTrabajo = '$IdTrabajo' && LoginEvaluador='$nombre')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
