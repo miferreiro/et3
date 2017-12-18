@@ -31,6 +31,9 @@
 </div>
 	
 <div id="capaFondo1"></div>
-	<footer><?php echo date("d-M-Y", mktime()); ?></br><?php if (IsAuthenticated()){  echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>'; }?></footer>
+	<footer>
+		<?php echo date("d-M-Y", mktime()); ?></br><?php if (IsAuthenticated()){  echo $strings['Usuario'] . ' : ' . 'LICORCA' . '<br>'; }?>
+		<a href="../Views/INFO_GRUPO_ET.php"><?php echo $strings['INFORMACIÓN GRUPO'];?></a>
+	</footer>
   </body>
 </html>
