@@ -65,14 +65,14 @@ class EVALUACION_ADMIN_EVALUAR {
 					if ($datos[$i][3] == 1) {
 
 ?>			
-						<select name="<?php echo $datos[$i][7] . $datos[$i][0] ?>">						        	
+						<select name="<?php echo $datos[$i][7] . $datos[$i][0] ?>" required>						        	
 								<option selected="selected" value="1">1</option>
 						        <option value="0">0</option>
 						</select>
 <?php
 					} else {
 ?>
-						<select name="<?php echo $datos[$i][7] . $datos[$i][0] ?>">						        	
+						<select name="<?php echo $datos[$i][7] . $datos[$i][0] ?>"required>						        	
 						        <option value="1">1</option>
 						        <option selected="selected" value="0">0</option>
 						</select>
@@ -104,13 +104,13 @@ class EVALUACION_ADMIN_EVALUAR {
 ?>
 				<tr></tr>
 				<td colspan="15">
-					<textarea id="TextoHistoria" name="<?php echo $datos[$i][0] . $datos[$i][8] ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"  required onBlur="comprobarTexto(this,'300')" ><?php echo $datos[$i][4]?></textarea>
+					<textarea id="TextoHistoria" name="<?php echo $datos[$i][0] . $datos[$i][8] ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"   onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300')" ><?php echo $datos[$i][4]?></textarea>
 
 					<?php echo $datos[$i][5] ?>
 <?php
 					if ($datos[$i][5] == 1) {
 ?>
-						<select name="<?php echo $datos[$i][0] ?>">						        	
+						<select name="<?php echo $datos[$i][0] ?>" required>						        	
 								<option selected="selected" value="1">1</option>
 						        <option value="0">0</option>
 						</select>
@@ -118,7 +118,7 @@ class EVALUACION_ADMIN_EVALUAR {
 <?php
 					} else {
 ?>
-						<select name="<?php echo $datos[$i][0] ?>">						        	
+						<select name="<?php echo $datos[$i][0] ?>" required>						        	
 						        <option value="1">1</option>
 						        <option selected="selected" value="0">0</option>
 						</select>

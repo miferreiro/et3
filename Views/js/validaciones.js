@@ -1824,10 +1824,7 @@ function comprobarAddEvaluacion() {
 		}
 	}
 
-	/*Comprueba si ComenIncorrectoA es vacio, retorna false*/
-	if (!comprobarVacio(ComenIncorrectoA)) {
-		return false;
-	} else {
+	
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(ComenIncorrectoA, 300)) {
 			return false;
@@ -1837,7 +1834,7 @@ function comprobarAddEvaluacion() {
 				return false;
 			}
 		}
-	}
+	
 
 
 
@@ -1865,10 +1862,7 @@ function comprobarAddEvaluacion() {
 			}
 		}
 	}
-	/*Comprueba si ComentIncorrectoP es vacio, retorna false*/
-	if (!comprobarVacio(ComentIncorrectoP)) {
-		return false;
-	} else {
+
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(ComentIncorrectoP, 300)) {
 			return false;
@@ -1878,7 +1872,7 @@ function comprobarAddEvaluacion() {
 				return false;
 			}
 		}
-	}
+	
 	/*Comprueba si OK es vacio, retorna false*/
 	if (!comprobarVacio(OK)) {
 		return false;
@@ -2035,10 +2029,7 @@ function comprobarEditEvaluacion() {
 		}
 	}
 
-	/*Comprueba si ComenIncorrectoA es vacio, retorna false*/
-	if (!comprobarVacio(ComenIncorrectoA)) {
-		return false;
-	} else {
+
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(ComenIncorrectoA, 300)) {
 			return false;
@@ -2048,7 +2039,7 @@ function comprobarEditEvaluacion() {
 				return false;
 			}
 		}
-	}
+	
 
 
 
@@ -2076,10 +2067,7 @@ function comprobarEditEvaluacion() {
 			}
 		}
 	}
-	/*Comprueba si ComentIncorrectoP es vacio, retorna false*/
-	if (!comprobarVacio(ComentIncorrectoP)) {
-		return false;
-	} else {
+
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(ComentIncorrectoP, 300)) {
 			return false;
@@ -2089,7 +2077,7 @@ function comprobarEditEvaluacion() {
 				return false;
 			}
 		}
-	}
+	
 	/*Comprueba si OK es vacio, retorna false*/
 	if (!comprobarVacio(OK)) {
 		return false;
