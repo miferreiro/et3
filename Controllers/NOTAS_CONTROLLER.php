@@ -190,7 +190,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                  while($fila = mysqli_fetch_array($dat)){
                      
                      $nota = $NOTAS->calcularNota($fila['login'],$fila['IdTrabajo']);
-                    
+                  
                      $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
                      
                      $notaET = $nota * ($porcentaje[0]/100);
