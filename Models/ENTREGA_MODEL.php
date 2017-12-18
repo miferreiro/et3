@@ -204,9 +204,9 @@
 								)";//se contruye la sentencia sql para insertar la entrega
                     
                    include_once '../Models/NOTAS_MODEL.php';//incluimos el modelo USU_GRUPO
-							$NOTA = new NOTAS_MODEL($this->login,$this->IdTrabajo,'');//instanciamos un objeto del modelo USU_GRUPO donde metemos un  usuario en el grupo alumnos
+							$NOTA = new NOTAS_MODEL($this->IdTrabajo,$this->login,'');//instanciamos un objeto del modelo USU_GRUPO donde metemos un  usuario en el grupo alumnos
 							$mensaje = $NOTA->ADD();//insertamos el login en el grupo alumnos
-                    
+                         
                     
                    
                 }
