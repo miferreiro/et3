@@ -73,7 +73,7 @@ class NOTAS_ADD {
 						<th class="formThTd">
 							<?php echo $strings['Nota del Trabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NotaTrabajo" name="NotaTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="4" size="4" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'4') && comprobarReal(this,4,0,10)"/>
+						<td class="formThTd"><input type="text" id="NotaTrabajo" name="NotaTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="4" size="4" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'4') && comprobarReal(this,2,0,10)"/>
 					</tr>
 					<tr>
 						<td colspan="2">

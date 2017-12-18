@@ -38,7 +38,7 @@ class NOTAS_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Nota del Trabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="NotaTrabajo" name="NotaTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['NotaTrabajo']?>" maxlength="4" size="4" onBlur="comprobarVacio(this) && comprobarLongitud(this,'4') && comprobarTexto(this,'4') && comprobarReal(this,4,0,10) " required/>
+						<td class="formThTd"><input type="text" id="NotaTrabajo" name="NotaTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['NotaTrabajo']?>" maxlength="4" size="4" onBlur="comprobarVacio(this) && comprobarLongitud(this,'4') && comprobarTexto(this,'4') && comprobarReal(this,2,0,10) " required/>
 					</tr>
 					
 					

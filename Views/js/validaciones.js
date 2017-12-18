@@ -2714,7 +2714,7 @@ function comprobarAddNotas(){
 				return false;
 			}else{
 				/*Comprueba que la nota tenga el formato concreto*/
-				if(!comprobarReal(NotaTrabajo,4,2,0,10)){
+				if(!comprobarReal(NotaTrabajo,2,0,10)){
 					return false;
 				}
 			}
@@ -2832,7 +2832,7 @@ function comprobarEditNotas(){
 				return false;
 			}else{
 				/*Comprueba que la nota tenga el formato concreto*/
-				if(!comprobarReal(NotaTrabajo,4,2,0,10)){
+				if(!comprobarReal(NotaTrabajo,2,0,10)){
 					return false;
 				}
 			}
