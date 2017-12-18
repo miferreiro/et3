@@ -230,7 +230,9 @@ array(
     'NombreFunc' => 'Functionality',
     'NombreAc' => 'Action',
     'TextoHistoria' => 'Definition of history',
-    'El porcentaje introducido es incorrecto, el porcentaje total de los trabajos no debe superar el 100%' => 'The percentage entered is incorrect, the total percentage of the works must not exceed 100%'
+    'El porcentaje introducido es incorrecto, el porcentaje total de los trabajos no debe superar el 100%' => 'The percentage entered is incorrect, the total percentage of the works must not exceed 100%',
+	
+	'Evaluar Historias QA' => 'Evaluate history QA'
 	)
 ;
 
