@@ -53,10 +53,31 @@ class EVALUACION_ADMIN_EVALUAR {
 					}
 					$his = $datos[$i][0];
 ?>
-					<td>
+<?php
+					if ($datos[$i][1] == 1) {
+?>
+							<td bgcolor="#4e8726">
+<?php
+					} else {
+?>		
+							<td bgcolor="#ff3700">					
+<?php
+					}
+?>
 						<?php echo $datos[$i][1]; ?>
 					</td>
-					<td>
+<?php
+					if ($datos[$i][3] == 1) {
+?>
+						<td bgcolor="#4e8726">
+<?php
+					} else {
+?>
+						<td bgcolor="#ff3700">
+<?php
+
+					}
+?>
 						<?php echo $datos[$i][3]; ?>
 
 					</td>
@@ -89,7 +110,7 @@ class EVALUACION_ADMIN_EVALUAR {
 
 
 				$total++;
-				if(strlen($datos[$i][2]) > 0){$comentario[] = $datos[$i][2] . " ";}
+				if(strlen($datos[$i][2]) > 0){$comentario[] = $datos[$i][2];}
 				if ($cont >= $num) {
 ?>
 				<tr></tr>
@@ -97,16 +118,28 @@ class EVALUACION_ADMIN_EVALUAR {
 				for ($j=0; $j < count($comentario); $j++) { 
 ?>
 					<tr>
-						<td colspan="15"><?php echo $comentario[$j]; ?></td>
+						<td bgcolor="" colspan="15"><?php echo $comentario[$j]; ?></td>
 					</tr>
 <?php
-				}
+				} 
 ?>
 				<tr></tr>
 				<td colspan="15">
 					<textarea id="TextoHistoria" name="<?php echo $datos[$i][0] . $datos[$i][8] ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"   onBlur="validarComentIncorrectoP(this,'300')" ><?php echo $datos[$i][4]?></textarea>
+<?php
+				if ($datos[$i][5] == 1) {
+?>
+					<td bgcolor="#4e8726">
+<?php
+				} else {
+?>
+					<td bgcolor="#ff3700">
+<?php
+				}
+?>
 
 					<?php echo $datos[$i][5] ?>
+				<td>
 <?php
 					if ($datos[$i][5] == 1) {
 ?>
@@ -126,6 +159,8 @@ class EVALUACION_ADMIN_EVALUAR {
 <?php
 					}
 ?>
+				</td>
+				</td>
 				</td>
 				</tr>
 <?php
