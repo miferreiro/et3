@@ -241,7 +241,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	default: //Caso que se ejecuta por defecto
 		if ( !$_POST ) {//Si no se han recibido datos 
 		   //Comprobamos los permisos, si tiene permisos se ejecuta el código dentro del if
-           if(permisosAcc($_SESSION['login'],12,4)==true){
+           if(permisosAcc($_SESSION['login'],12,5)==true){
 	            $EVALUACION = new EVALUACION('','','', '', '', '', '', '', '');
 	            $lista = array( 'NombreTrabajo','LoginEvaluador','AliasEvaluado','CorrectoA','ComenIncorrectoA','CorrectoP','ComentIncorrectoP','OK');
 				//Variable que almacena los datos de la busqueda
