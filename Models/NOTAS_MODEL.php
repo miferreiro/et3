@@ -110,18 +110,19 @@ class NOTAS_MODEL{ //declaración de la clase
         return $result;
     }
     
-    //Esta funcion coge el login y Idtrabajo de todas las entregas
-    function cogerDatos(){
-        $sql = "SELECT IdTrabajo,login FROM NOTA_TRABAJO WHERE IdTrabajo LIKE '%et%'";//Se construye la sentencia sql
-            if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {//ejecutamos la query
-			         return 'Error en la consulta sobre la base de datos';
-		  } else { // si existe se devuelve la tupla resultado
-           
-            return $resultado;
-		}
+     function siExiste($login,$trabajo){
+         $sql = "SELECT IdTrabajo,login FROM NOTA_TRABAJO WHERE IdTrabajo='$trabajo' AND login='$login'";
         
+        $resultado = $this->mysqli->query( $sql );
         
+        if($resultado->num_rows == 0){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
+   
     
     //Esta función sirve para actualizar la nota cada vez que se está evaluando a un ususario
     function actualizar($login,$trabajo,$nota){
@@ -162,16 +163,7 @@ class NOTAS_MODEL{ //declaración de la clase
         
     }
     
-    //Esta función nos devuelve el IdTrabajo y login donde el IdTrabajo sea una QA
-    function cogerDatosQA(){
-         $sql = "SELECT IdTrabajo,login FROM NOTA_TRABAJO WHERE IdTrabajo LIKE '%qa%'";
-            if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {//ejecutamos la query
-			         return 'Error en la consulta sobre la base de datos';
-		  } else { // si existe se devuelve la tupla resultado
-           
-            return $resultado;
-		}
-    }
+   
     
     
     

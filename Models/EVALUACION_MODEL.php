@@ -81,6 +81,17 @@ class EVALUACION{ //declaración de la clase
 		return $miarray;	
         
     }
+    
+     //Esta función nos devuelve el IdTrabajo y login donde el IdTrabajo sea una QA
+    function cogerDatosQA($trabajo){
+         $sql = "SELECT IdTrabajo,LoginEvaluador FROM EVALUACION WHERE IdTrabajo LIKE '%qa%' AND IdTrabajo='$trabajo'";
+            if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {//ejecutamos la query
+			         return 'Error en la consulta sobre la base de datos';
+		  } else { // si existe se devuelve la tupla resultado
+           
+            return $resultado;
+		}
+    }
 
  /*****************************************************************************************************/
     //PARA CORRECCION DE QAS Y ENTREGAS

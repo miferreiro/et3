@@ -7,7 +7,7 @@ include '../Models/EVALUACION_MODEL.php';//incluye el contendio del modelo EVALU
 include '../Functions/permisosAcc.php';//incluye el contendio de la función permisosAcc
 include '../Views/CORRECION/CORRECION_ENTREGA_View.php';//incluye el contendio de la vista CORRECION_ENTREGA
 include '../Views/CORRECION/CORRECION_ENTREGA_RESULTADO_View.php';//incluye el contendio de la vista CORRECION_ENTREGA_RESULTADO
-include '../Views/CORRECION/CORRECION_ENTREGAS_View.php';//incluye el contendio de la vista CORRECION_ENTREGAS
+
 include '../Views/DEFAULT_View.php';//incluye una vista por defecto que no tiene nada
 
 
@@ -23,7 +23,7 @@ switch($_REQUEST['action']){//Estructura de control, que realiza un determinado 
     case 'RESULTADOS'://caso donde se muestran todas las correciones por parte del alumno y profesor
         $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
         $lista=array('IdTrabajo','IdHistoria','CorrectoP','ComentIncorrectoP');//se crea un arrray con los atributos que queremos mostrar
-        $datos =$CORRECION->mostrarCorrecion1($_REQUEST['IdTrabajo'],$_REQUEST['login']);//llamamos  a esta fución para que nos muestre todas las correciones de nuestras ETs por parte de alumnos y profesor
+        $datos =$CORRECION->mostrarCorrecion1($_REQUEST['IdTrabajo'],$_REQUEST['login'],$_REQUEST['Entrega']);//llamamos  a esta fución para que nos muestre todas las correciones de nuestras ETs por parte de alumnos y profesor
         
         new CORRECION_ENTREGA_RESULTADO($lista,$datos);//se nos muestra la vista con las correciones de nuestras ETs
         break;

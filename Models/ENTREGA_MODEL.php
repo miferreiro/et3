@@ -26,8 +26,16 @@
 		      $this->mysqli = ConectarBD();
         }//fin del constructor
         
-        
-        
+    //Esta funcion coge el login y Idtrabajo de todas las entregas
+    function cogerDatos($trabajo){
+        $sql = "SELECT IdTrabajo,login FROM ENTREGA WHERE IdTrabajo LIKE '%et%' AND IdTrabajo='$trabajo'";//Se construye la sentencia sql
+            if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {//ejecutamos la query
+			         return 'Error en la consulta sobre la base de datos';
+		  } else { // si existe se devuelve la tupla resultado
+           
+            return $resultado;
+		}
+    }
 	//funcion SEARCH: hace una búsqueda en la tabla con
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {

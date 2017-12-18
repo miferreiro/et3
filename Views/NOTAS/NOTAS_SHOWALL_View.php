@@ -5,18 +5,16 @@
 */
 class NOTAS_SHOWALL {
         
-	function __construct( $lista, $datos, $notas,$bol) {
+	function __construct( $lista, $datos,$bol) {
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->notas = $notas;
         $this->bol=$bol;
-		$this->render($this->lista,$this->datos, $this->notas,$this->bol);
+		$this->render($this->lista,$this->datos,$this->bol);
 	}
 	
-	function render($lista,$datos, $notas,$bol){
+	function render($lista,$datos,$bol){
 		$this->lista = $lista;
 		$this->datos = $datos;
-		$this->notas = $notas;
         $this->bol=$bol;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
@@ -45,10 +43,12 @@ class NOTAS_SHOWALL {
 					<th>
 						<?php echo $strings[$atributo]?>
 					</th>
+                    
 <?php
 					}
+                    
                 ?>
-                    <th>NotaET</th>
+                    
                     <?php
 		if((permisosAcc($_SESSION['login'],7,1)==true)||(permisosAcc($_SESSION['login'],7,2)==true)||        (permisosAcc($_SESSION['login'],7,4)==true)){ 
 ?>
@@ -57,7 +57,7 @@ class NOTAS_SHOWALL {
 					</th>
 <?php } ?>
 				</tr>
-<?php           $i=0;
+<?php           
                 $suma=0;
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
@@ -80,16 +80,9 @@ class NOTAS_SHOWALL {
                     
                     <td>
                     <?php
-
+                    $suma = $suma + $fila['NotaTrabajo'];
             
-                    echo $notas[$fila['login'].$fila['IdTrabajo']];
-
-
-              
-                $suma=$suma+$notas[$fila['login'].$fila['IdTrabajo']];
-                    
-            
-                ?>
+                    ?>
                     </td>
                     
 
