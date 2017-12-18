@@ -197,7 +197,7 @@ array(
 	'Añadir' => 'Add',
 
 
-	'Consulta de correciones' => 'Consultation of corrections',
+	'Consulta de correciones' => 'Correction of QAs',
 	'Ya existe la entrega introducida en la base de datos' => 'Consulta de correciones',
     'Seleccione un nuevo archivo si desea cambiarlo, en caso contrario, no es necesario seleccionarlo de nuevo.' =>  'Select a new file if you want to change it, otherwise it is not necessary to select it again.',
     'No hay suficiente número de entregas para asignar el número de QAs solicitado' => 'There are not enough deliveries to assign the requested number of QAs',
