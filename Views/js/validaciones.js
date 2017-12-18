@@ -3064,4 +3064,30 @@ function comprobarSearchAsignQa(){
 	return true;
 }
 
+/*
+	function validarComentIncorrectoP(): funcion que permite validar el campo de comentario incorrecto del formulario de evaluar
+*/
+function validarComentIncorrectoP(campo,size){
+	
+	/*Si el campo tiene mayor longitud que size, se manda un aviso de error llamando a la función msgError y se retorna false */
+	if (campo.value.length > size) {
+		msgError('<?php echo $strings["Longitud incorrecta. El atributo "];?>' + atributo['ComentIncorrectoP'] + '<?php echo $strings[" puede tener una longitud máxima de "];?>' + size + '<?php echo $strings[" y es de "];?>' + campo.value.length);
+		campo.focus();
+		return false;
+	}
+	
+	
+	var i; //variable auxiliar de control
+	/*Estructura que permite recorrer todos los caracteres del valor de campo */
+	for (i = 0; i < size; i++) {
+		/*Comprueba que el carácter seleccionado de campo no es un carácter especial, si es así muestra un mensaje de error y retorna false */
+		if (/[^!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ñáéíóúÑÁÉÍÓÚüÜ ]/.test(campo.value.charAt(i))) {
+			msgError('<?php echo $strings["El atributo "];?>' + atributo['ComentIncorrectoP'] + '<?php echo $strings[" contiene algún carácter no válido: "];?>' + campo.value.charAt(i));
+			campo.focus();
+			return false;
+		}
+	}
+	
+	return true;
+}
 </script>

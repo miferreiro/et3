@@ -104,7 +104,7 @@ class EVALUACION_ADMIN_EVALUAR {
 ?>
 				<tr></tr>
 				<td colspan="15">
-					<textarea id="TextoHistoria" name="<?php echo $datos[$i][0] . $datos[$i][8] ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"   onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300')" ><?php echo $datos[$i][4]?></textarea>
+					<textarea id="TextoHistoria" name="<?php echo $datos[$i][0] . $datos[$i][8] ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"   onBlur="validarComentIncorrectoP(this,'300')" ><?php echo $datos[$i][4]?></textarea>
 
 					<?php echo $datos[$i][5] ?>
 <?php
