@@ -19,7 +19,7 @@ include '../Views/USUARIO/USUARIO_SHOWCURRENT_View.php'; //incluye la vista show
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
-
+//Esta función crea un objeto tipo USUARIO_MODEL con los valores que se le pasan con $_REQUEST
 function get_data_form() {
 
 	$login = $_REQUEST[ 'login' ]; //Variable que almacena el valor de login
