@@ -137,8 +137,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if (count($miarray) <= $_REQUEST['num']) {
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
 			new MESSAGE( 'No hay suficiente número de entregas para asignar el número de QAs solicitado', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
-		}
-		//Variable que guarda el nombre de la QA
+		//Si hay un número suficiente de entregas inserta las qas en la tabla asignac_qa
+		} else {
+			//Variable que guarda el nombre de la QA
 		$NombreQA = "QA" . substr($_REQUEST['IdTrabajo'], 2);
 		//Bucle que llena las posiciones de cada trabajo, que nos sirve para ver que tengan el número deseado
 		for ($i=0; $i < count($miarray); $i++) { $veces[] = 0; }
@@ -174,10 +175,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 					
 				}
 			}
-		//crea una vista mensaje con la respuesta y la dirección de vuelta
-		new MESSAGE( $resultado, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
-		//new MESSAGE( 'Asignacion generada con exito', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
-		//Finaliza el bloque
+			//crea una vista mensaje con la respuesta y la dirección de vuelta 
+			new MESSAGE( $resultado, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+			//new MESSAGE( 'Asignacion generada con exito', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+			//Finaliza el bloque
+		}
+
 	}
 		break;
 	case 'ADD':
