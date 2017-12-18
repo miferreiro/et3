@@ -215,8 +215,10 @@ array(
     'TextoHistoria' => 'Definición da historia',
     'El porcentaje introducido es incorrecto, el porcentaje total de los trabajos no debe superar el 100%' => 'A porcentaxe introducida é incorecta, a porcentaxe total dos traballos non debe superar o 100%',
 	
-	'Evaluar Historias QA' => 'Evaluar Historias QA'
-	
+	'Evaluar Historias QA' => 'Evaluar Historias QA',
+	'INFORMACIÓN GRUPO' => 'INFORMACIÓN GRUPO',
+	'Integrantes' => 'Membros',
+	'Lider' => 'Lider'
 	
 	
 	
