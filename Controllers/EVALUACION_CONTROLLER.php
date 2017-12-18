@@ -145,7 +145,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             }
             else{
 	            $EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado'], '', '', '', '', '', '');
-	            $lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','IdHistoria','CorrectoA','ComenIncorrectoA');
+	            $lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','CorrectoA','ComenIncorrectoA');
 	            //Variable que almacena los datos de la busqueda
 	    		$datos = $EVALUACION->SEARCH();
 	    		//Variable que almacena array con el CorrectoA de los atributos

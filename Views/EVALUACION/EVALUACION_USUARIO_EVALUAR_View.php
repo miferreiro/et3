@@ -48,7 +48,7 @@ class EVALUACION_USUARIO_EVALUAR {
 <?php
 					if ($fila['IdHistoria'] != $his) {
 ?>
-						<th colspan="6"><?php echo $fila['TextoHistoria']; ?></th>
+						<td bgcolor="#b59438" colspan="6"><?php echo $fila['IdHistoria'] . ". " . $fila['TextoHistoria']; ?></td>
 						<tr></tr>
 <?php
 					}
