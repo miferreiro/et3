@@ -53,7 +53,7 @@ class EVALUACION_SHOWALL {
 <?php
 					if ($fila['IdHistoria'] != $his) {
 ?>
-						<td bgcolor="#b59438" colspan="8"><?php echo $fila['TextoHistoria']; ?></td>
+						<td bgcolor="#b59438" colspan="8"><?php echo $fila['IdHistoria'] . ". " . $fila['TextoHistoria']; ?></td>
 						<tr></tr>
 <?php
 					}
