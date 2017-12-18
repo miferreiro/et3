@@ -905,12 +905,7 @@ function comprobarSearchAccion() {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(NombreAccion, 60)) {
 			return false;
-		} else {
-			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-			if (!comprobarAlfabetico(NombreAccion, 60)) {
-				return false;
-			}
-		}
+		} 
 	}
 	/*Comprueba su longitud, si es mayor que 100, retorna false*/
 	if (!comprobarLongitud(DescripAccion, 100)) {
@@ -2441,12 +2436,7 @@ function comprobarSearchFuncionalidad() {
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(NombreFuncionalidad, 60)) {
 			return false;
-		} else {
-			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-			if (!comprobarAlfabetico(NombreFuncionalidad, 60)) {
-				return false;
-			}
-		}
+		} 
 	}
 	/*Comprueba su longitud, si es mayor que 100, retorna false*/
 	if (!comprobarLongitud(DescripFuncionalidad, 100)) {
@@ -2508,11 +2498,6 @@ function comprobarEditFuncionalidad() {
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreFuncionalidad, 60)) {
 					return false;
-				}else{
-					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-					if(!comprobarAlfabetico(NombreFuncionalidad,60)){
-						return false;
-					}
 				}
 			}
 		}
@@ -2583,11 +2568,6 @@ function comprobarAddFuncionalidad() {
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreFuncionalidad, 60)) {
 					return false;
-				}else{
-					/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-					if(!comprobarAlfabetico(NombreFuncionalidad,60)){
-						return false;
-					}
 				}
 			}
 		}
@@ -3054,7 +3034,7 @@ function comprobarSearchAsignQa(){
 				return false;
 			} else {
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-				if (!comprobarTexto(IdTraAliasEvaluadobajo, 6)) {
+				if (!comprobarTexto(AliasEvaluado, 6)) {
 					return false;
 				}
 			}

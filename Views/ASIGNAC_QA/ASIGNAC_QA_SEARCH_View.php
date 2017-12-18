@@ -25,27 +25,27 @@ class ASIGNAC_QA_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['IdTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="10" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
+						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="7" onBlur="comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['LoginEvaluador'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="LoginEvaluador" name="LoginEvaluador" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="9" size="10" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarAlfabetico(this,'9')"/>
+						<td class="formThTd"><input type="text" id="LoginEvaluador" name="LoginEvaluador" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="9" size="10" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9') "/>
 					</tr>
 				
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['LoginEvaluado'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="LoginEvaluado" name="LoginEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="9" size="10" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarAlfabetico(this,'9')"/>
+						<td class="formThTd"><input type="text" id="LoginEvaluado" name="LoginEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="9" size="10" onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
 					</tr>
 
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['AliasEvaluado'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="AliasEvaluado" name="AliasEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="6" size="7" onBlur="ComprobarLongitud(this,'6') && comprobarTexto(this,'6') && comprobarAlfabetico(this,'6')"/>
+						<td class="formThTd"><input type="text" id="AliasEvaluado" name="AliasEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="6" size="7" onBlur="ComprobarLongitud(this,'6') && comprobarTexto(this,'6')"/>
 					</tr>
 
 					<tr>
