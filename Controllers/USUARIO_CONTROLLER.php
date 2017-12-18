@@ -160,10 +160,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}else{//si el usuaio no es administrador inicializamos la variable cont a 0.
 			$cont=0;
 			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para saber los permisos que tiene el usuario
-						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle va a seguir mientras haya permisos
 
-			if($fila['IdFuncionalidad']=='1'){
-				if($fila['IdAccion']=='2'){
+			if($fila['IdFuncionalidad']=='1'){//mira si este usuario tiene la funcionalidad de gestion de usuarios
+				if($fila['IdAccion']=='2'){//mira si este usuario tiene la acción de editar
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
 				}
@@ -176,7 +176,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			//Muestra la vista del formulario editar
 			new USUARIO_EDIT( $valores);
-			}else{
+			}else{//si la variable cont no es mayor o igual a uno muestra una vista diciendo que el usuario no tiene dichos permisos
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
 			}
@@ -193,33 +193,33 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
-			$ADMIN = $USUARIO->comprobarAdmin();
-			if($ADMIN == true){
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//instanciamos un objeto del modelo USU_GRUPO pasandole el login del usuario conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//comprobamos si el usuario conectado es administrador
+			if($ADMIN == true){//miramos si es administrador, si lo es, nos muestra la vista SEARCH
 				new USUARIO_SEARCH();
-			}else{
-			$cont=0;
-			$PERMISO = $USUARIO->comprobarPermisos();
-						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			}else{//si no es administrador el usuario
+			$cont=0;//instanciamos la variable cont a 0.
+			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para saber que permisos tiene el usuario
+						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
 
-			if($fila['IdFuncionalidad']=='1'){
-				if($fila['IdAccion']=='3'){
+			if($fila['IdFuncionalidad']=='1'){//mira si el usuario tiene la funcionalidad de gestión de usuarios
+				if($fila['IdAccion']=='3'){//mira si el usuario tiene la acción de buscar
 			    //Crea una vista add para ver la tupla
-			     $cont=$cont+1;
+			     $cont=$cont+1;//incrementa la variable cont a 1.
 				}
 			   }
 			}
-			if($cont>=1){
+			if($cont>=1){//si la variable con es mayor o igual a uno muestra la vista search, ya que tiene dichos permisos
 			new USUARIO_SEARCH();
-			}else{
+			}else{//en caso de que no tenga dichos permisos se muestra una vista diciendo que este usuario no tiene dichos permisos
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
 			}
 		//Si se reciben datos	
 		} else {
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
-			$PERMISO = $USUARIO->comprobarPermisos();	
-			$ADMIN = $USUARIO->comprobarAdmin();
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$PERMISO = $USUARIO->comprobarPermisos();//llamamosa esta función para saber los permisos que tiene dicho usuario
+			$ADMIN = $USUARIO->comprobarAdmin();//comprobamos si es administrador el usuario
 			//Variable que almacena los datos recogidos de los atributos
 			$USUARIO = get_data_form();
 			//Variable que almacena el resultado de la busqueda
@@ -227,9 +227,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'login','DNI','Nombre','Apellidos','Correo');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			if($ADMIN == true){
+			if($ADMIN == true){//si el usuario es administrador mostramos  una vista showall con todos los iconos y permisos
 				new USUARIO_SHOWALL( $lista, $datos,$PERMISO,true );
-			}else{
+			}else{//en caso de que no sea administrador no se le mostrará los demás iconos y permisos.
 				new USUARIO_SHOWALL( $lista, $datos,$PERMISO,false );
 			}
 			
@@ -237,49 +237,49 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ],'');
-			$ADMIN = $USUARIO->comprobarAdmin();
-			if($ADMIN == true){
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//comprobamos si es administrador el usuario
+			if($ADMIN == true){//miramos si el usuario es administrador
 					//Variable que almacena un objeto model con el login
 		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
 		           $valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		           //Creación de la vista showcurrent
 		           new USUARIO_SHOWCURRENT( $valores );
-			}else{
-			$cont=0;
-			$PERMISO = $USUARIO->comprobarPermisos();
-						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			}else{//en el caso de que no sea administrador
+			$cont=0;//instanciamos la variabel cont a 0.
+			$PERMISO = $USUARIO->comprobarPermisos();//llamamosa esta función para saber los permisos que tiene dicho usuario
+						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
 	
-			if($fila['IdFuncionalidad']=='1'){
-				if($fila['IdAccion']=='4'){
+			if($fila['IdFuncionalidad']=='1'){//miramos si este usuario tiene la funcionalidad de gestión de usuarios
+				if($fila['IdAccion']=='4'){//miramos si este usuario tiene la acción showcurrent
 			    //Crea una vista add para ver la tupla
-			     $cont=$cont+1;
+			     $cont=$cont+1;//incrementamos cont a uno
 				}
 			   }
 			}
-			if($cont>=1){
+			if($cont>=1){//miramos si cont es mayor o igual a uno
 		//Variable que almacena un objeto model con el login
 		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
 		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		//Creación de la vista showcurrent
 		new USUARIO_SHOWCURRENT( $valores );
-		}else{
+		}else{//si cont no es mayor o igual a uno nos muestra un mensaje de que el usuario no tiene dichos permisos
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 		}
 		}
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-		$USER = new USU_GRUPO(  $_SESSION[ 'login' ],'');
-		$ADMIN = $USER->comprobarAdmin();
-			if($ADMIN == true){
+		$USER = new USU_GRUPO(  $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+		$ADMIN = $USER->comprobarAdmin();//comprobamos si es administrador el usuario
+			if($ADMIN == true){//miramos si el usuario es administrador
 				if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');
+			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');//intanciamos un objeto del modelo USUARIO
 		//Si se reciben datos
 		} else {
-			$USUARIO = get_data_form();
+			$USUARIO = get_data_form();//pasamos a la variable los valores de un objeto USUARIO_MODEL
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $USUARIO->SEARCH();
@@ -287,25 +287,25 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'login','DNI','Nombre','Apellidos','Correo');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		$PERMISO = $USER->comprobarPermisos();
-		new USUARIO_SHOWALL( $lista, $datos, $PERMISO,true);
-			}else{
-		$cont=0;
-		$PERMISO = $USER->comprobarPermisos();
-		while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+		new USUARIO_SHOWALL( $lista, $datos, $PERMISO,true);//nos muestra una vista showall con todos los permisos
+			}else{//en el caso de que el usuario no sea administrador
+		$cont=0;//instanciamos el contador a 0.
+		$PERMISO = $USER->comprobarPermisos();//llamamos a esta función para comprobar los permisos de este usuario
+		while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
 
-			if($fila['IdFuncionalidad']=='1'){
-				if($fila['IdAccion']=='5'){
-			    //Crea una vista add para ver la tupla
-			     $cont=$cont+1;
+			if($fila['IdFuncionalidad']=='1'){//miramos si este usuario tiene la funcionalidad de gestión de usuarios
+				if($fila['IdAccion']=='5'){//mira si el usuario tiene la acción de buscar
+			   
+			     $cont=$cont+1;//incrementamos el cont a uno
 				}
 			   }
 			}
-			if($cont>=1){
+			if($cont>=1){//miramos si cont es mayor o igual a uno
 		if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');
+			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');//intanciamos un objeto del modelo USUARIO
 		//Si se reciben datos
 		} else {
-			$USUARIO = get_data_form();
+			$USUARIO = get_data_form();//pasamos a la variable los valores de un objeto USUARIO_MODEL
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $USUARIO->SEARCH();
@@ -315,7 +315,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new USUARIO_SHOWALL( $lista, $datos, $PERMISO,false);
 
-   }else{
+   }else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
 				new USUARIO_DEFAULT();
 			}
 			}
