@@ -23,7 +23,7 @@ class CORRECION_ENTREGA_RESULTADO {
 			<h2>
 				<?php echo $strings['Ver los resultados de las entregas'];?>
 			</h2>
-			<table>
+			<table border>
 				
 				<tr>
 <?php
@@ -67,6 +67,33 @@ class CORRECION_ENTREGA_RESULTADO {
                     }
                         
                     else{
+                        
+                         if($atributo == 'CorrectoP' || $atributo == 'CorrectoA' && $fila[$atributo] == "1"){
+                            ?>
+                                <td bgcolor="green">
+                            <?php
+                                    echo $fila[ $atributo ];
+                            ?>
+                                </td>
+<?php                               
+                            }
+                        
+                        else if($atributo == 'CorrectoP' || $atributo == 'CorrectoA' && $fila[$atributo] == "0"){
+                            
+                            ?>
+                                 <td bgcolor="red">
+                            <?php
+                                echo $fila[ $atributo ];
+                            ?>
+                            </td>
+ <?php                           
+                        }
+                        
+                        
+                           
+                        else{
+                        
+               
                     
 ?>                 
                   
@@ -77,11 +104,14 @@ class CORRECION_ENTREGA_RESULTADO {
 						    if($cont==1){
 							$Id= $fila[ 'IdTrabajo' ];
 						}
+                        
 ?>
 					</td>
                     
 <?php
-                    }
+                        }
+                        }
+                        
 					}
 ?>
 					<td>

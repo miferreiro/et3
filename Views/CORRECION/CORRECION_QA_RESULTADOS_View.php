@@ -67,8 +67,38 @@ class CORRECION_QA_RESULTADOS {
                     }
                         
                     else{
-                    
+                            if($atributo == 'OK'   && $fila[$atributo]=="1"){
+                            ?>
+                                <td bgcolor="green">
+                            <?php
+                                    echo $fila[ $atributo ];
+                            ?>
+                                </td>
+<?php                               
+                            }
+                        
+                        else if($atributo == 'OK'   && $fila[$atributo]=="0"){
+                            
+                            ?>
+                                 <td bgcolor="red">
+                            <?php
+                                 echo $fila[ $atributo ];
+                            ?>
+                                 </td>
+<?php                     
+                    }
+                        
+                        else{
+                            
+                       
+                        
 ?>                 
+            
+<?php
+                                    
+                        
+
+?>
                   
                     
 					<td>
@@ -81,7 +111,8 @@ class CORRECION_QA_RESULTADOS {
 					</td>
                     
 <?php
-                    }
+                            }
+                        }
 					}
 ?>
 					<td>
