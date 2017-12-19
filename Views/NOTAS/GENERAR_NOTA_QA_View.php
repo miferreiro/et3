@@ -17,7 +17,7 @@ class GENERAR_NOTA_QA {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['GENERACIÓN AUTOMÁTICA DE NOTAS DE QAs'];?>
+				<?php echo $strings['GENERACIÓN NOTAS QA'];?>
 			</h2>
 			<form name="NOTA_QA" value="NOTA_QA" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<table>

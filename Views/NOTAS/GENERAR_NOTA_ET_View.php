@@ -17,7 +17,7 @@ class GENERAR_NOTA_ET {
 ?>
 		<div class="seccion">
 			<h2>
-				<?php echo $strings['GENERACIÓN AUTOMÁTICA DE NOTAS DE ETS'];?>
+				<?php echo $strings['GENERACIÓN NOTAS ENTREGA'];?>
 			</h2>
 			<form name="NOTA_ET" value="NOTA_ET" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<table>
