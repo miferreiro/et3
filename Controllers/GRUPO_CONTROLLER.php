@@ -108,6 +108,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );
 			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );
             $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);
+            $dependencias2 = $GRUPOS->dependencias2($_REQUEST['IdGrupo']);
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'login', 'IdGrupo');
 			//Crea una vista delete para ver la tupla
