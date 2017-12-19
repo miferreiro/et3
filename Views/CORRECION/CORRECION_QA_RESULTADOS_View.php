@@ -53,7 +53,8 @@ class CORRECION_QA_RESULTADOS {
                         <td bgcolor="#b59438" colspan="6"><?php echo $fila['IdHistoria'] . '. ' . $fila['TextoHistoria'] ?></td>
                         <tr></tr>
 <?php
-                    } 
+                    }
+                    $his = $fila['IdHistoria'];
 					foreach ( $lista as $atributo ) {
 ?>
 

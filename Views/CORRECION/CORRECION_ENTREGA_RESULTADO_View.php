@@ -37,9 +37,12 @@ class CORRECION_ENTREGA_RESULTADO {
 ?>
 					
 				</tr>
+                <tr><td></td></tr>
+                <tr></tr>
 <?php
 				$cont=0;
 		        $Id;
+                $his = -10000;
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				
@@ -47,6 +50,13 @@ class CORRECION_ENTREGA_RESULTADO {
                    
                     
 <?php
+                    if($his != $fila['IdHistoria']){
+?>
+                    <td bgcolor="#b59438" colspan="6"><?php echo $fila['IdHistoria'] . '. ' . $fila['TextoHistoria'] ?></td>
+                    <tr></tr>
+<?php
+                    }
+                    $his = $fila['IdHistoria'];
 					foreach ( $lista as $atributo ) {
 ?>
                     

@@ -152,7 +152,7 @@ function mostrarEntregas($nombre){
       
       
        
-        $sql ="SELECT DISTINCT H.IdTrabajo,LoginEvaluador,TextoHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET,HISTORIA H WHERE 
+        $sql ="SELECT DISTINCT H.IdTrabajo,LoginEvaluador,TextoHistoria,H.IdHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET,HISTORIA H WHERE 
         ( E.IdTrabajo = '$IdTrabajo' && H.IdTrabajo ='$entrega' && H.IdHistoria=E.IdHistoria && Alias = AliasEvaluado && login='$nombre') GROUP BY H.IdHistoria"; 
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		
