@@ -95,6 +95,35 @@ class TRABAJO{
 			return $resultado;
 		}
 	} // fin metodo SEARCH
+    
+    function SEARCH3() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		$sql = "select IdTrabajo,
+                        NombreTrabajo,
+                        FechaIniTrabajo,
+                        FechaFinTrabajo,
+                        PorcentajeNota
+       			from TRABAJO
+    			where 
+    				(
+					(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
+                    (BINARY NombreTrabajo LIKE '%QA%') &&
+                    (BINARY DATE_FORMAT(FechaIniTrabajo,'%d/%m/%Y') LIKE '%$this->FechaIniTrabajo%') &&
+                    (BINARY DATE_FORMAT(FechaFinTrabajo,'%d/%m/%Y') LIKE '%$this->FechaFinTrabajo%') &&
+                    (BINARY PorcentajeNota LIKE '%$this->PorcentajeNota%') &&  CURDATE() >= FechaIniTrabajo
+    				)";//se construye la sentencia sql
+        
+        
+ 
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	} // fin metodo SEARCH
+    
         
         
     //Metodo ADD()
