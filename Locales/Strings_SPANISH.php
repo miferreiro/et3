@@ -223,9 +223,10 @@ array(
 	'Evaluar Historias' => 'Evaluación historias',
 	'INFORMACIÓN GRUPO' => 'INFORMACIÓN GRUPO',
 	'Integrantes' => 'Integrantes',
-	'Lider' => 'Lider'
+	'Lider' => 'Lider',
 	
-	
+	'Evaluación resultados de QAs de la entrega ' => 'Evaluación resultados de QAs de la entrega ',
+	' para el alias ' => ' para el alias ' 
 	
 	
 	
