@@ -75,8 +75,7 @@ class CORRECION_ENTREGA_RESULTADO {
                         </textarea></td>
 <?php                       
                     }
-                        
-                        
+                                               
                     if($atributo == 'TextoHistoria'){
                         
                         ?>
@@ -93,12 +92,27 @@ class CORRECION_ENTREGA_RESULTADO {
                         
                     else{
                         
+                        if($atributo == 'CorrectoP' && $fila[$atributo] == '1'){
+                            ?>
+                                <td bgcolor="#4e8726">
+                                <?php echo $fila[ $atributo ]; ?>
+                                </td>
+<?php                            
+                        }
                         
+                        else if($atributo == 'CorrectoP' && ($fila[$atributo] == '0' || $fila[$atributo] == '2') ){
+                            ?>
+                             <td bgcolor="#ff3700">
+                             <?php echo $fila[$atributo]; ?>
+                            </td> 
+<?php                
+                        }
+                        
+                        else{                      
 ?>
                                 
 <?php
-                                  
-                     
+                                                      
 ?>                 
                   
                     
@@ -114,6 +128,7 @@ class CORRECION_ENTREGA_RESULTADO {
                     
 <?php
                        
+                        }
                         }
                         
 					}

@@ -369,9 +369,10 @@ function mostrarEntregas($nombre){
 		                        '$this->OK'
 								)";
                     
-                   include_once '../Models/NOTAS_MODEL.php';//incluimos el modelo USU_GRUPO
+               /*    include_once '../Models/NOTAS_MODEL.php';//incluimos el modelo USU_GRUPO
 							$NOTA = new NOTAS_MODEL($this->IdTrabajo,$this->LoginEvaluador,'');//instanciamos un objeto del modelo USU_GRUPO donde metemos un  usuario en el grupo alumnos
 							$mensaje = $NOTA->ADD();//insertamos el login en el grupo alumnos
+                            */
                     
                 }
                     else{
