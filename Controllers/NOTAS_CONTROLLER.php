@@ -124,14 +124,13 @@ switch ( $_REQUEST[ 'action' ] ) {
              
         
            if(!$_POST){
-                 if($ADMIN == true){
+                 if(permisosAcc($_SESSION['login'],7,13)==true){
                 
                     new GENERAR_NOTA_ET();
                 
             }
-            else{
-                 // new GENERAR_NOTA_ET();   //MIRAR PERMISOS PARA QUE UN ALUMNO PUEDA
-                new USUARIO_DEFAULT();
+            else{  
+                new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
             }
         }
         
@@ -155,7 +154,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                      $notaET = $nota * ($porcentaje[0]/100);
                     
                      $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$notaET);
-                     $respuesta="Notas de ETs generadas correctamente";
+                     $respuesta="Notas generadas correctamente";
                      new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
                          
                      }
@@ -166,14 +165,14 @@ switch ( $_REQUEST[ 'action' ] ) {
                      $notaET = $nota * ($porcentaje[0]/100);
                       
                      $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$notaET);
-                     $respuesta="Notas de ETs generadas correctamente";
+                     $respuesta="Notas generadas correctamente";
                       new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
                     }
                      
                      
                   
                  }
-                    $respuesta="No se pudieron generar las notas de las ETs ";
+                    $respuesta="Las notas no se pudieron generar";
                     new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
 
       }
@@ -187,14 +186,14 @@ switch ( $_REQUEST[ 'action' ] ) {
         
         if(!$_POST){
         
-           if($ADMIN == true){
+           if(permisosAcc($_SESSION['login'],7,8)==true){
                
                new GENERAR_NOTA_QA();  
                
             }
             else{
-                //PERMISO SI EL USUARIO PUEDE
-                new USUARIO_DEFAULT();
+                
+                new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
             }
         }
             
@@ -219,7 +218,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                      $notaET = $nota * ($porcentaje[0]/100);
                      //$notas[$fila['LoginEvaluador'].$fila['IdTrabajo']] = $notaET;
                      $NOTAS->actualizar($fila['LoginEvaluador'],$fila['IdTrabajo'],$notaET);
-                     $respuesta="Notas de QAs generadas correctamente";
+                     $respuesta="Notas generadas correctamente";
                      new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
                          
                      }
@@ -229,12 +228,12 @@ switch ( $_REQUEST[ 'action' ] ) {
                      $notaET = $nota * ($porcentaje[0]/100);
                     // $notas[$fila['LoginEvaluador'].$fila['IdTrabajo']] = $notaET;
                      $NOTAS->actualizar($fila['LoginEvaluador'],$fila['IdTrabajo'],$notaET);
-                      $respuesta="Notas de QAs generadas correctamente";
+                      $respuesta="Notas generadas correctamente";
                       new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
                     
                     }
         }
-                    $respuesta="Notas de QAs no se pudieron generar";
+                    $respuesta="Las notas no se pudieron generar";
                     new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
         
          }

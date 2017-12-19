@@ -22,6 +22,7 @@ include '../Views/EVALUACION/EVALUACION_DELETE_View.php'; //incluye la vista del
 include '../Views/EVALUACION/EVALUACION_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 include '../Views/EVALUACION/EVALUACION_SELECT_QA_View.php'; //incluye la vista del showall
+include '../Views/EVALUACION/EVALUACION_SELECT_ALL_QA_View.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_USUARIO_EDIT_HISTORIAS_View.php'; //incluye la vista del showall
 include '../Views/DEFAULT_View.php';
 include '../Views/EVALUACION/EVALUACION_ADMIN_EVALUAR_View.php';
@@ -143,7 +144,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php'.$at );
 			}
-	case 'EVALUAR'://Caso editar	
+	case 'EVALUARADMIN'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			if((permisosAcc($_SESSION['login'],12,11)==true)){
 				//Variable que almacena un objeto model con el LoginEvaluador
@@ -160,7 +161,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	            $EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado'], '', '', '', '', '', '');
 	            $lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','CorrectoA','ComenIncorrectoA');
 	            //Variable que almacena los datos de la busqueda
-	    		$datos = $EVALUACION->SEARCH();
+	    		$datos = $EVALUACION->SEARCH2();
 	    		//Variable que almacena array con el CorrectoA de los atributos
 	    
 	    		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
@@ -196,10 +197,29 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena los datos recogidos
 			//$EVALUACION = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
-			$respuesta = $EVALUACION->EDIT();
+			/*$respuesta = $EVALUACION->EDIT();*/
 			//crea una vista mensaje con la respuesta y la ComentIncorrectoPción de vuelta
 			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' );
 		}
+		//Fin del bloque
+		break;
+	case 'EVALUARUSU'://Caso editar	
+		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
+
+				if(permisosAcc($_SESSION['login'],12,10)==true){
+	            $EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado'], '', '', '', '', '', '');
+	            $lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','CorrectoA','ComenIncorrectoA');
+	            //Variable que almacena los datos de la busqueda
+	    		$datos = $EVALUACION->SEARCH2();
+	    		//Variable que almacena array con el CorrectoA de los atributos
+	    
+	    		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+	    		new EVALUACION_USUARIO_EVALUAR( $lista, $datos );
+				}else{
+			  new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );	 
+			 }
+         
+		} 
 		//Fin del bloque
 		break;
 	case 'SEARCH'://Caso buscar
@@ -243,7 +263,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                  $datos=$EVALUACION->DevolverEntregas(); 
                  $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');	
             }
-			 new EVALUACION_SELECT_QA( $lista, $datos );
+			 new EVALUACION_SELECT_ALL_QA( $lista, $datos );
 		}
     break;
     case 'EVALUACION_HISTORIAS_ASIGNADAS':		

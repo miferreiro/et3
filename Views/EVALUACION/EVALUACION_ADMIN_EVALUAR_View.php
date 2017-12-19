@@ -174,7 +174,7 @@ class EVALUACION_ADMIN_EVALUAR {
 				</table>
 				<table>
 				<input type="hidden" name="IdTrabajo" value="<?php echo $datos[0][9] ?>">
-				<button type="submit" name="action" value="EVALUAR"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button type="submit" name="action" value="EVALUARADMIN"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="get">
 				<button type="submit" name="action" value="EVALUACION_HISTORIAS"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

@@ -2,7 +2,7 @@
     //Se muestra una tabla SHOWALL conto todas las entregas y iconos para añadir,insertar,borrar,buscar y buscar en detalle.
     //Fecha de creación:28/11/2017
 
-class EVALUACION_SELECT_QA {
+class EVALUACION_SELECT_ALL_QA {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -67,7 +67,7 @@ class EVALUACION_SELECT_QA {
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
                             <input type="hidden" name="AliasEvaluado" value="<?php echo $fila['Alias']; ?>">
                         <td>
-								<button type="submit" name="action" value="EVALUARUSU" ><img src="../Views/icon/evaluar.png" alt="<?php echo $strings['Ver en detalle']?>" width="32" height="32"/></button>                             
+								<button type="submit" name="action" value="EVALUARADMIN" ><img src="../Views/icon/evaluar.png" alt="<?php echo $strings['Ver en detalle']?>" width="32" height="32"/></button>                             
                                 <!--si pulsas este boton ves la vista SHOWCURRENT-->
                         </td>
                             
@@ -86,25 +86,3 @@ class EVALUACION_SELECT_QA {
 ?>
 
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

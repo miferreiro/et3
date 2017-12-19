@@ -90,7 +90,7 @@ que comprueba permisos para cada una de las acciones -->
 	<?php }
 	if((permisosAcc($_SESSION['login'],12,11)==true)){ ?>
 				<li>
-					<a href="../Controllers/EVALUACION_CONTROLLER.php?action=EVALUACION_HISTORIAS" class="primerNivel"><?php echo $strings['Evaluar Historias QA']; ?></a>
+					<a href="../Controllers/EVALUACION_CONTROLLER.php?action=EVALUACION_HISTORIAS" class="primerNivel"><?php echo $strings['Evaluar Historias']; ?></a>
 				</li>
 	<?php }
 
@@ -113,6 +113,16 @@ que comprueba permisos para cada una de las acciones -->
 	if((permisosAcc($_SESSION['login'],6,9)==true)){ ?>
 				<li>
 					<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php?action=HISTORIAS" class="primerNivel"><?php echo $strings['GENERACIÓN DE HISTORIAS EVALUACIÓN']; ?></a> 
+				</li>
+	<?php }
+	if((permisosAcc($_SESSION['login'],7,13)==true)){ ?>
+				<li>
+					<a href="../Controllers/NOTAS_CONTROLLER.php?action=NOTA_ENTREGA" class="primerNivel"><?php echo $strings['GENERACIÓN NOTAS ENTREGA']; ?></a> 
+				</li>
+	<?php }
+	if((permisosAcc($_SESSION['login'],7,8)==true)){ ?>
+				<li>
+					<a href="../Controllers/NOTAS_CONTROLLER.php?action=NOTA_QA" class="primerNivel"><?php echo $strings['GENERACIÓN NOTAS QA']; ?></a> 
 				</li>
 	<?php } ?>
 			</ul>

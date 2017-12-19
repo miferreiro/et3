@@ -231,8 +231,12 @@ array(
     'NombreAc' => 'Action',
     'TextoHistoria' => 'Definition of history',
     'El porcentaje introducido es incorrecto, el porcentaje total de los trabajos no debe superar el 100%' => 'The percentage entered is incorrect, the total percentage of the works must not exceed 100%',
-	
-	'Evaluar Historias QA' => 'Evaluate history QA',
+	'GENERACIÓN NOTAS ENTREGA' => 'Generation of delivery notes',
+	'GENERACIÓN NOTAS QA' => 'Generation of delivery QAs',
+	'Notas generadas correctamente' => 'Notes generated correctly',
+	'Las notas no se pudieron generar' => 'The notes could not be generated',	
+	'Evaluar Historias QA' => 'Evaluate assigned stories',
+	'Evaluar Historias' => 'Evaluate Stories',
 	'INFORMACIÓN GRUPO' => 'GROUP INFORMATION',
 	'Integrantes' => 'Members',
 	'Lider' => 'Leader'

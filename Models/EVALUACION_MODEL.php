@@ -246,6 +246,44 @@ function mostrarEntregas($nombre){
 			return $resultado;
 		}
 	} // fin metodo SEARCH
+	function SEARCH2() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		$sql = "select  E.IdTrabajo,
+					T.NombreTrabajo,
+                    LoginEvaluador,
+                    AliasEvaluado,
+					E.IdHistoria,
+					CorrectoA,
+					ComenIncorrectoA,
+                    CorrectoP,
+                    ComentIncorrectoP,
+					OK,
+					TextoHistoria
+       			from EVALUACION E,HISTORIA H,TRABAJO T
+    			where 
+    				(
+    				H.IdHistoria = E.IdHistoria &&
+					E.IdTrabajo = T.IdTrabajo &&
+    				SUBSTRING(E.IdTrabajo,3) = SUBSTRING(H.IdTrabajo,3) &&
+					(BINARY E.IdTrabajo LIKE '%$this->IdTrabajo%') &&
+					(BINARY LoginEvaluador = '$this->LoginEvaluador') &&
+                    (BINARY AliasEvaluado LIKE '%$this->AliasEvaluado%') &&
+    				(BINARY E.IdHistoria LIKE '%$this->IdHistoria%') &&
+					(BINARY CorrectoA LIKE '%$this->CorrectoA%') &&
+	 				(BINARY ComenIncorrectoA LIKE '%$this->ComenIncorrectoA%') &&
+                    (BINARY CorrectoP LIKE '%$this->CorrectoP%') &&
+                    (BINARY ComentIncorrectoP LIKE '%$this->ComentIncorrectoP%') &&
+	 				(BINARY OK LIKE '%$this->OK%')
+    				)
+    			ORDER BY AliasEvaluado,E.IdHistoria	";
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	} // fin metodo SEARCH
 
 
 	//Metodo ADD()
