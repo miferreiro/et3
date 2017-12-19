@@ -239,7 +239,10 @@ array(
 	'Evaluar Historias' => 'Evaluate Stories',
 	'INFORMACIÓN GRUPO' => 'GROUP INFORMATION',
 	'Integrantes' => 'Members',
-	'Lider' => 'Leader'
+	'Lider' => 'Leader',
+
+	'Evaluación resultados de QAs de la entrega ' => 'Evaluation results of QAs of the delivery ',
+	' para el alias ' => ' for the alias '
 
 	)
 ;

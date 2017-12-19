@@ -18,9 +18,8 @@ class EVALUACION_ADMIN_EVALUAR {
 		include '../Views/Header.php';
 ?>
 		<div class="seccion">
-			<h2>
-				<?php echo $strings['Tabla de datos'];?>
-			</h2>
+			
+			<h2><?php echo $strings['Evaluación resultados de QAs de la entrega '] . "ET" . substr($datos[0][9],2) . $strings[' para el alias '] . $datos[0][8]?></h2>
 			<form name="EVALUAR" action="../Controllers/EVALUACION_CONTROLLER.php" method="post"  enctype="multipart/form-data">
 			<table>
 
@@ -67,7 +66,7 @@ class EVALUACION_ADMIN_EVALUAR {
 						<?php echo $datos[$i][1]; ?>
 					</td>
 <?php
-					if ($datos[$i][3] == 1) {
+					if ($datos[$i][5] == 1) {
 ?>
 						<td bgcolor="#4e8726">
 <?php
@@ -78,12 +77,12 @@ class EVALUACION_ADMIN_EVALUAR {
 
 					}
 ?>
-						<?php echo $datos[$i][3]; ?>
+						<?php echo $datos[$i][5]; ?>
 
 					</td>
 					<td>
 <?php
-					if ($datos[$i][3] == 1) {
+					if ($datos[$i][5] == 1) {
 
 ?>			
 						<select name="<?php echo $datos[$i][7] . $datos[$i][0] ?>" required>						        	
@@ -127,7 +126,7 @@ class EVALUACION_ADMIN_EVALUAR {
 				<td colspan="15">
 					<textarea id="TextoHistoria" name="<?php echo $datos[$i][0] . $datos[$i][8] ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"   onBlur="validarComentIncorrectoP(this,'300')" ><?php echo $datos[$i][4]?></textarea>
 <?php
-				if ($datos[$i][5] == 1) {
+				if ($datos[$i][3] == 1) {
 ?>
 					<td bgcolor="#4e8726">
 <?php
@@ -138,10 +137,10 @@ class EVALUACION_ADMIN_EVALUAR {
 				}
 ?>
 
-					<?php echo $datos[$i][5] ?>
+					<?php echo $datos[$i][3] ?>
 				<td>
 <?php
-					if ($datos[$i][5] == 1) {
+					if ($datos[$i][3] == 1) {
 ?>
 						<select name="<?php echo $datos[$i][0] ?>" required>						        	
 								<option selected="selected" value="1">1</option>

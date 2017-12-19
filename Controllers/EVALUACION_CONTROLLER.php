@@ -178,9 +178,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$login = $contenido[$i][1];
 				$Alias = $contenido[$i][2];
 
-				$CorrectoP = $_REQUEST[$login . $id];
+				$OK = $_REQUEST[$login . $id];
 				$ComentIncorrectoP = $_REQUEST[$id . $Alias];
-				$OK = $_REQUEST[$id];
+				$CorrectoP = $_REQUEST[$id];
 
 				$miarray = $EVALUACION->DevolverCommentAlumno($login,$Alias,$id,$_REQUEST['IdTrabajo']);
 
@@ -199,7 +199,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena la respuesta de la edición de los datos
 			/*$respuesta = $EVALUACION->EDIT();*/
 			//crea una vista mensaje con la respuesta y la ComentIncorrectoPción de vuelta
-			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' );
+			$at = "?action=EVALUACION_HISTORIAS";
+			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' . $at);
 		}
 		//Fin del bloque
 		break;
