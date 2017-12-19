@@ -32,12 +32,11 @@ class EVALUACION_SELECT_QA {
 					</th>
 <?php
 					}
-		if((permisosAcc($_SESSION['login'],12,2)==true)||(comprobarAdministrador($_SESSION['login'])==true)){ 
 ?>
 					<th colspan="2" >
 						<?php echo $strings['Opciones']?>
 					</th>
-<?php } ?>
+
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -79,10 +78,6 @@ class EVALUACION_SELECT_QA {
 				}
 ?>
 			</table>
-			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="get">
-				<button type="submit" name="action" value="SELECT_QA"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
-                <!--si pulsas este boton vas atras -->
-			</form>
 		</div>
 <?php
 		include '../Views/Footer.php';

@@ -71,7 +71,7 @@ class EVALUACION_USUARIO_EDIT_HISTORIAS {
 					
 					<tr>
 						<td colspan="2">
-							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
+							<button type="submit" name="action" value="EDITUSU"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
 			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="get" style="display: inline">
 				<input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo']?>">

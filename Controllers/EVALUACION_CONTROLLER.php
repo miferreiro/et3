@@ -100,7 +100,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-			if(permisosAcc($_SESSION['login'],12,4)==true){
+			if(permisosAcc($_SESSION['login'],12,2)==true){
                 $EVALUACION = new EVALUACION($_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ], '', '', '', '','');
                     //Variable que almacena los datos de los atibutos rellenados a traves de LoginEvaluador
                 $valores = $EVALUACION->RellenaDatos();
@@ -108,32 +108,44 @@ switch ( $_REQUEST[ 'action' ] ) {
                 new EVALUACION_EDIT( $valores );
                 //Si se reciben valores
 
-            } else {
-               $EVALUACION = new EVALUACION($_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ], '', '', '', '','');
-                //Variable que almacena los datos de los atibutos rellenados a traves de LoginEvaluador
-                $valores = $EVALUACION->RellenaDatos();
-                //Muestra la vista del formulario editar
-                new EVALUACION_USUARIO_EDIT_HISTORIAS( $valores );
-            }
+            }else{
+			  new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );	 
+			 }	
 		} else {
 			//Variable que almacena los datos recogidos
 			$EVALUACION = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $EVALUACION->EDIT();
 			//crea una vista mensaje con la respuesta y la ComentIncorrectoPción de vuelta
-			if(permisosAcc($_SESSION['login'],12,4)==true){
-				new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' );
-			} else {
-				$at = "?IdTrabajo=".$_REQUEST['IdTrabajo']."&AliasEvaluado=".$_REQUEST['AliasEvaluado']."&action=EVALUAR";
-				//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
-				new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' . $at );
-			}
+			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php' );
+
 		}
 		//Fin del bloque
 		break;
+	case 'EDITUSU':
+		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
+			if(permisosAcc($_SESSION['login'],12,12)==true){
+                $EVALUACION = new EVALUACION($_REQUEST[ 'IdTrabajo' ], $_REQUEST[ 'LoginEvaluador' ], $_REQUEST[ 'AliasEvaluado' ], $_REQUEST[ 'IdHistoria' ], '', '', '', '','');
+                    //Variable que almacena los datos de los atibutos rellenados a traves de LoginEvaluador
+                $valores = $EVALUACION->RellenaDatos();
+                //Muestra la vista del formulario editar
+                new EVALUACION_USUARIO_EDIT_HISTORIAS( $valores );
+                //Si se reciben valores
+            }else{
+			  new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );	 
+			 }
+            } else {
+			$EVALUACION = get_data_form();
+			//Variable que almacena la respuesta de la edición de los datos
+			$respuesta = $EVALUACION->EDIT();
+			//crea una vista mensaje con la respuesta y la ComentIncorrectoPción de vuelta
+			$at = "?IdTrabajo=".$_REQUEST['IdTrabajo']."&AliasEvaluado=".$_REQUEST['AliasEvaluado']."&action=EVALUAR";
+			//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
+			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php'.$at );
+			}
 	case 'EVALUAR'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-			if(permisosAcc($_SESSION['login'],12,4)==true){
+			if((permisosAcc($_SESSION['login'],12,11)==true)){
 				//Variable que almacena un objeto model con el LoginEvaluador
                 $EVALUACION = new EVALUACION($_REQUEST[ 'IdTrabajo' ],'', $_REQUEST[ 'AliasEvaluado' ], '', '', '', '', '','');
                     //Variable que almacena los datos de los atibutos rellenados a traves de LoginEvaluador
@@ -144,6 +156,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
             }
             else{
+				if(permisosAcc($_SESSION['login'],12,10)==true){
 	            $EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado'], '', '', '', '', '', '');
 	            $lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','CorrectoA','ComenIncorrectoA');
 	            //Variable que almacena los datos de la busqueda
@@ -152,6 +165,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 	    
 	    		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 	    		new EVALUACION_USUARIO_EVALUAR( $lista, $datos );
+				}else{
+			  new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );	 
+			 }
             }
 		} else {
 			$contenido = $_SESSION['contenido'];
@@ -220,14 +236,19 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
         
-    case 'SELECT_QA':
+    case 'EVALUACION_HISTORIAS':  
     	if ( !$_POST ) {//Si no se han recibido datos 
-    		if(permisosAcc($_SESSION['login'],12,4)==true){
+    		if(permisosAcc($_SESSION['login'],12,11)==true){
                  $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                  $datos=$EVALUACION->DevolverEntregas(); 
                  $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');	
             }
-            else{
+			 new EVALUACION_SELECT_QA( $lista, $datos );
+		}
+    break;
+    case 'EVALUACION_HISTORIAS_ASIGNADAS':		
+    	if ( !$_POST ) {//Si no se han recibido datos	
+			if(permisosAcc($_SESSION['login'],12,10)==true){
                 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                 $datos=$EVALUACION->entregasUsu($_SESSION['login']);
                 //Variable que almacena array con el CorrectoA de los atributos

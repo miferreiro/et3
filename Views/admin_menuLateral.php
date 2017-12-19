@@ -82,9 +82,15 @@ que comprueba permisos para cada una de las acciones -->
 				<li>
 					<a href="../Controllers/EVALUACION_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de evaluaciones']; ?></a>
 				</li>
-				<!-- *******************************Adaptar esto bien****************************************** -->
+	<?php }
+	if((permisosAcc($_SESSION['login'],12,10)==true)){ ?>
 				<li>
-					<a href="../Controllers/EVALUACION_CONTROLLER.php?action=SELECT_QA" class="primerNivel"><?php echo $strings['Evaluar Historias QA']; ?></a>
+					<a href="../Controllers/EVALUACION_CONTROLLER.php?action=EVALUACION_HISTORIAS_ASIGNADAS" class="primerNivel"><?php echo $strings['Evaluar Historias QA']; ?></a>
+				</li>
+	<?php }
+	if((permisosAcc($_SESSION['login'],12,11)==true)){ ?>
+				<li>
+					<a href="../Controllers/EVALUACION_CONTROLLER.php?action=EVALUACION_HISTORIAS" class="primerNivel"><?php echo $strings['Evaluar Historias QA']; ?></a>
 				</li>
 	<?php }
 

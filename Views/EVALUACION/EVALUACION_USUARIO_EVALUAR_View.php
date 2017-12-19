@@ -17,6 +17,7 @@ class EVALUACION_USUARIO_EVALUAR {
 		$this->lista = $lista;
 		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include_once '../Functions/permisosAcc.php';
 		include '../Views/Header.php';
 ?>
 		<div class="seccion">
@@ -33,10 +34,12 @@ class EVALUACION_USUARIO_EVALUAR {
 					</th>
 <?php
 					}
+		if(permisosAcc($_SESSION['login'],12,12)==true){
 ?>
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
 					</th>
+<?php } ?>
 				</tr>
 				<tr><td></td></tr>
 				<tr></tr>
@@ -71,7 +74,9 @@ class EVALUACION_USUARIO_EVALUAR {
                             <input type="hidden" name="AliasEvaluado" value="<?php echo $fila['AliasEvaluado']; ?>">
                             <input type="hidden" name="IdHistoria" value="<?php echo $fila['IdHistoria']; ?>">
                             <td>
-								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+							<?php if(permisosAcc($_SESSION['login'],12,12)==true){ ?>
+								<button type="submit" name="action" value="EDITUSU" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+			                <?php } ?>
 				            </td>
 						</form>
 
@@ -81,7 +86,7 @@ class EVALUACION_USUARIO_EVALUAR {
 ?>
 			</table>
 			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="get">
-				<button type="submit" name="action" value="SELECT_QA"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button type="submit" name="action" value="EVALUACION_HISTORIAS_ASIGNADAS"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php
