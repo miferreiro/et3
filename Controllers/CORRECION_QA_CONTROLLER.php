@@ -18,7 +18,7 @@ switch($_REQUEST['action']){//Estructura de control, que realiza un determinado 
         
     case 'RESULTADOS'://caso donde nos aparecen los resultados de nuestras QAs
         $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
-        $lista=array('LoginEvaluador','AliasEvaluado','IdTrabajo','IdHistoria','CorrectoA','ComenIncorrectoA','OK');//se crea un arrray con los atributos que queremos mostrar
+        $lista=array('LoginEvaluador','AliasEvaluado','IdTrabajo','CorrectoA','ComenIncorrectoA','OK');//se crea un arrray con los atributos que queremos mostrar
         $datos =$CORRECION->mostrarCorrecion3($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado']);//llamamos a esta función para que nos muestren los resultados de nuestras QAs y se mete en la vista
         new CORRECION_QA_RESULTADOS($lista,$datos);
         break;

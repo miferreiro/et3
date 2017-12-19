@@ -37,23 +37,29 @@ class CORRECION_QA_RESULTADOS {
 ?>
 					
 				</tr>
+                <tr><td></td></tr>
+                <tr></tr>
 <?php
 		$cont=0;
 		$Id;
+        $his = -100000;
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				
                 <tr>
-                   
-                    
 <?php
+                 if($his != $fila['IdHistoria']){
+?>
+                        <td bgcolor="#b59438" colspan="6"><?php echo $fila['IdHistoria'] . '. ' . $fila['TextoHistoria'] ?></td>
+                        <tr></tr>
+<?php
+                    } 
 					foreach ( $lista as $atributo ) {
 ?>
-                    
+
 <?php                    
                     if($atributo == 'ComenIncorrectoA'){
 ?>
-            
                         <td><textarea maxlength="300" cols="20" rows="7" readonly>
 <?php                    
                             

@@ -66,6 +66,21 @@ class CORRECION_ENTREGA_RESULTADO {
 <?php                       
                     }
                         
+                        
+                    if($atributo == 'TextoHistoria'){
+                        
+                        ?>
+                            <td><textarea maxlength="300" cols="20" rows="7" readonly>
+                            <?php
+                                echo $fila[ $atributo ]; 
+                        ?>
+                                
+                                </textarea></td>
+  <?php                  
+                    }    
+                        
+                        
+                        
                     else{
                         
                         

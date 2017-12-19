@@ -144,14 +144,19 @@ function mostrarEntregas($nombre){
 		}
     }
 
-  function mostrarCorrecion1($IdTrabajo,$nombre){
+  function mostrarCorrecion1($IdTrabajo,$nombre,$entrega){
         
-        
+     /* SELECT DISTINCT E.IdTrabajo,LoginEvaluador,TextoHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET,HISTORIA H WHERE 
+        ( E.IdTrabajo = 'QA2' && H.IdTrabajo ='ET2' && H.IdHistoria=E.IdHistoria && Alias = AliasEvaluado && login='a') GROUP BY H.IdHistoria;  
+      */
+      
+      
        
-        $sql ="SELECT DISTINCT E.IdTrabajo,LoginEvaluador,IdHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET WHERE 
-        ( E.IdTrabajo = '$IdTrabajo' && Alias = AliasEvaluado && login='$nombre') GROUP BY IdHistoria";
+        $sql ="SELECT DISTINCT H.IdTrabajo,LoginEvaluador,TextoHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET,HISTORIA H WHERE 
+        ( E.IdTrabajo = '$IdTrabajo' && H.IdTrabajo ='$entrega' && H.IdHistoria=E.IdHistoria && Alias = AliasEvaluado && login='$nombre') GROUP BY H.IdHistoria"; 
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		
+      
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
 		} else { // si existe se devuelve la tupla resultado
@@ -178,11 +183,13 @@ function mostrarEntregas($nombre){
 }
     
  function mostrarCorrecion3($IdTrabajo,$nombre,$alias){
-        
-        
-       
-       $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,IdTrabajo,IdHistoria,CorrectoP,ComentIncorrectoP,CorrectoA,ComenIncorrectoA,OK FROM EVALUACION   WHERE 
-        (IdTrabajo = '$IdTrabajo' && AliasEvaluado='$alias' && LoginEvaluador='$nombre')";
+      
+       $sql ="SELECT LoginEvaluador,AliasEvaluado,E.IdTrabajo,TextoHistoria,E.IdHistoria,CorrectoA,ComenIncorrectoA,OK
+			FROM EVALUACION E,HISTORIA H
+			WHERE AliasEvaluado = '$alias' && E.IdTrabajo='$IdTrabajo' && LoginEvaluador='$nombre' &&
+				  E.IdHistoria = H.IdHistoria &&
+				  SUBSTRING(E.IdTrabajo,3) = SUBSTRING(H.IdTrabajo,3)
+			ORDER BY E.IdHistoria";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';

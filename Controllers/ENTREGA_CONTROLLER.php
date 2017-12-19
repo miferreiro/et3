@@ -7,8 +7,8 @@ session_start(); //solicito trabajar con la session
 
 include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Functions/permisosAcc.php';
-include '../Functions/comprobarAdministrador.php';
+include '../Functions/permisosAcc.php'; //incluye el contendio de la función permisosAcc
+include '../Functions/comprobarAdministrador.php';//incluye el contenido de la función comprobarAdministrador
 include '../Views/ENTREGA/ENTREGA_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_USU_SHOWALL.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_SUBIR_SHOWALL_View.php'; //incluye la vista del showall
@@ -22,11 +22,13 @@ include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include_once '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
 include_once '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo usuarios
 
+
+//Esta función genera un alias aleatorio de 6 letras o números
 function aleatorio(){
         $caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"; //posibles caracteres a usar
         $numerodeletras=6; //numero de letras para generar el texto
         $cadena = ""; //variable para almacenar la cadena generada
-        for($i=0;$i<$numerodeletras;$i++)
+        for($i=0;$i<$numerodeletras;$i++)//este bucle se va a repetir 6 veces para generar un alias de 6 letras ó números
         {       
             $cadena .= substr($caracteres,rand(0,strlen($caracteres)),1); /*Extraemos 1 caracter de los caracteres 
                 entre el rango 0 a Numero de letras que tiene la cadena */
@@ -35,6 +37,7 @@ function aleatorio(){
         
         
     }
+
 
 function get_data_form2() {
     
