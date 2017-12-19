@@ -152,8 +152,8 @@ function mostrarEntregas($nombre){
       
       
        
-        $sql ="SELECT DISTINCT H.IdTrabajo,LoginEvaluador,TextoHistoria,H.IdHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET,HISTORIA H WHERE 
-        ( E.IdTrabajo = '$IdTrabajo' && H.IdTrabajo ='$entrega' && H.IdHistoria=E.IdHistoria && Alias = AliasEvaluado && login='$nombre') GROUP BY H.IdHistoria"; 
+        $sql ="SELECT DISTINCT H.IdTrabajo,NombreTrabajo,LoginEvaluador,TextoHistoria,H.IdHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET,HISTORIA H,TRABAJO T WHERE 
+        ( E.IdTrabajo = '$IdTrabajo' && H.IdTrabajo ='$entrega' && H.IdHistoria=E.IdHistoria && Alias = AliasEvaluado && T.IdTrabajo=H.IdTrabajo && login='$nombre') GROUP BY H.IdHistoria;"; 
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		
       
@@ -184,9 +184,9 @@ function mostrarEntregas($nombre){
     
  function mostrarCorrecion3($IdTrabajo,$nombre,$alias){
       
-       $sql ="SELECT LoginEvaluador,AliasEvaluado,E.IdTrabajo,TextoHistoria,E.IdHistoria,CorrectoA,ComenIncorrectoA,OK
-			FROM EVALUACION E,HISTORIA H
-			WHERE AliasEvaluado = '$alias' && E.IdTrabajo='$IdTrabajo' && LoginEvaluador='$nombre' &&
+       $sql ="SELECT LoginEvaluador,AliasEvaluado,NombreTrabajo,E.IdTrabajo,TextoHistoria,E.IdHistoria,CorrectoA,ComenIncorrectoA,OK
+			FROM EVALUACION E,HISTORIA H,TRABAJO T
+			WHERE T.IdTrabajo=E.IdTrabajo && AliasEvaluado = '$alias' && E.IdTrabajo='$IdTrabajo' && LoginEvaluador='$nombre' &&
 				  E.IdHistoria = H.IdHistoria &&
 				  SUBSTRING(E.IdTrabajo,3) = SUBSTRING(H.IdTrabajo,3)
 			ORDER BY E.IdHistoria";
