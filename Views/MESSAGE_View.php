@@ -23,18 +23,19 @@ class MESSAGE { // declaración de la función
 		<br>
 		<br>
 		<?php
-			echo $strings[$this->text]; // se muestra por pantalla el texto
-		?>
+			echo $strings[$this->text]; // se muestra por pantalla el texto?>
+
+		
 		<br>
 		<br>
 		<br>
-	<?php if($this->text=='No puedes eliminar ese grupo'){ ?>
-		<img src="../Views/icon/MOTHERFUCKER.gif">
-	<?php } ?>
+
 		<form action='<?php echo $this->ruta?>' method="post">
 			<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>"/></button>
 		</form>
-
+     <?php  if($strings[$this->text]=='No puedes eliminar ese grupo'){ ?>
+		<img src="../Views/icon/MOTHERFUCKER.gif">
+	<?php } ?>
 
 <?php
 	include '../Views/Footer.php';
