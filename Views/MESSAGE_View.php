@@ -28,7 +28,9 @@ class MESSAGE { // declaración de la función
 		<br>
 		<br>
 		<br>
-		
+	<?php if($this->text=='No puedes eliminar ese grupo'){ ?>
+		<img src="../Views/icon/MOTHERFUCKER.gif">
+	<?php } ?>
 		<form action='<?php echo $this->ruta?>' method="post">
 			<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>"/></button>
 		</form>
