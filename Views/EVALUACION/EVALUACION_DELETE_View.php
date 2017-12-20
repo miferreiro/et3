@@ -72,7 +72,7 @@ class EVALUACION_DELETE {
 						<?php echo $strings['ComenIncorrectoA'];?>
 					</th>
 					<td>
-						<textarea id="" maxlength="300" cols="30" rows="7" readonly><?php echo $this->valores['ComenIncorrectoA']?></textarea>
+						<textarea id="" maxlength="300" cols="32" rows="8" readonly><?php echo $this->valores['ComenIncorrectoA']?></textarea>
 					</td>
 				</tr>
                 
@@ -90,7 +90,7 @@ class EVALUACION_DELETE {
 						<?php echo $strings['ComentIncorrectoP'];?>
 					</th>
 					<td>
-						<textarea id="" maxlength="300" cols="30" rows="7" readonly><?php echo $strings['ComentIncorrectoP'];?></textarea>
+						<textarea id="" maxlength="300" cols="32" rows="8" readonly><?php echo $strings['ComentIncorrectoP'];?></textarea>
 					</td>
 				</tr>
                 
