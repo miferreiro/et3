@@ -16,14 +16,14 @@ if(!isset($_REQUEST['action'])){//Si la variable action no tiene contenido le as
 if(permisosAcc($_SESSION['login'],9,7)==true){//miramos si este usuario tiene permiso para ver la correcion de sus qas
 switch($_REQUEST['action']){//Estructura de control, que realiza un determinado caso dependiendo del valor action
         
-    case 'RESULTADOS'://caso donde nos aparecen los resultados de nuestras QAs
+    case 'RESULTADOS_QAS'://caso donde nos aparecen los resultados de nuestras QAs
         $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
         $lista=array('LoginEvaluador','AliasEvaluado','NombreTrabajo','CorrectoA','ComenIncorrectoA','OK');//se crea un arrray con los atributos que queremos mostrar
         $datos =$CORRECION->mostrarCorrecion3($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado']);//llamamos a esta función para que nos muestren los resultados de nuestras QAs y se mete en la vista
         new CORRECION_QA_RESULTADOS($lista,$datos);
         break;
         
-    case 'RESULTADO'://caso donde se muestran todas las QAs que corregimos
+    case 'RESULTADO_QA'://caso donde se muestran todas las QAs que corregimos
         $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
         $lista=array('LoginEvaluador','AliasEvaluado','IdTrabajo');//se crea un arrray con los atributos que queremos mostrar
         $datos =$CORRECION->mostrarCorrecion2($_REQUEST['IdTrabajo'],$_SESSION['login']);//llamamos a esta funcióm para que se nos muestren todas las Qas que tenemos que corregir
@@ -31,13 +31,13 @@ switch($_REQUEST['action']){//Estructura de control, que realiza un determinado 
         break;
         
         
-    default://caso por defecto con vista SHOWALL
+     case 'MOSTAR_CORRECCION_QA'://caso por defecto con vista SHOWALL
         $CORRECION =new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
         $lista = array('LoginEvaluador','IdTrabajo');//se crea un arrray con los atributos que queremos mostrar
         $datos =$CORRECION->mostrarQAS($_SESSION['login']);//llamamos a esta función para mostrar todas las entregas que realizó dicho usuario
 
         new CORRECION_QA($lista,$datos);//se nos muestra la vista 
-      
+      break;
         
 }
 }else{

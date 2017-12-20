@@ -21,6 +21,11 @@ include '../Views/EVALUACION/EVALUACION_EDIT_View.php'; //incluye la vista edit
 include '../Views/EVALUACION/EVALUACION_DELETE_View.php'; //incluye la vista delete
 include '../Views/EVALUACION/EVALUACION_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
+include '../Views/EVALUACION/EVALUACION_MOSTAR_CORRECCION_ET_View.php';//incluye el contendio de la vista CORRECION_ENTREGA
+include '../Views/EVALUACION/EVALUACION_RESULTADOS_ENTREGAS_View.php';//incluye el contendio de la vista
+include '../Views/EVALUACION/EVALUACION_RESULTADO_QA_View.php'; //incluye el contendio de la vista CORRECION_QA
+include '../Views/EVALUACION/EVALUACION_RESULTADOS_QAS_View.php'; //incluye el contendio de la CORRECION_QA_RESULTADO
+include '../Views/EVALUACION/EVALUACION_MOSTAR_CORRECCION_QA_View.php';//incluye el contendio de la CORRECION_QA_RESULTADOS
 include '../Views/EVALUACION/EVALUACION_SELECT_QA_View.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_SELECT_ALL_QA_View.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_USUARIO_EDIT_HISTORIAS_View.php'; //incluye la vista del showall
@@ -279,7 +284,69 @@ switch ( $_REQUEST[ 'action' ] ) {
 		    new EVALUACION_SELECT_QA( $lista, $datos );
 		}
     break;
+
+    case 'RESULTADOS_ENTREGAS'://caso donde se muestran todas las correciones por parte del alumno y profesor
+    if(permisosAcc($_SESSION['login'],12,7)==true){	
+        $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
+        $lista=array('NombreTrabajo','NombreTrabajo','CorrectoP','ComentIncorrectoP');//se crea un arrray con los atributos que queremos mostrar
+        
+        $datos =$CORRECION->mostrarCorrecion1($_REQUEST['IdTrabajo'],$_REQUEST['login'],$_REQUEST['Entrega']);//llamamos  a esta fución para que nos muestre todas las correciones de nuestras ETs por parte de alumnos y profesor
+        
+        new CORRECION_ENTREGA_RESULTADO($lista,$datos);//se nos muestra la vista con las correciones de nuestras ETs
+	}else{
+	 new USUARIO_DEFAULT();
+    }
+        break;
     
+   
+    case 'MOSTAR_CORRECCION_ET'://caso por defecto con vista SHOWALL
+    if(permisosAcc($_SESSION['login'],12,7)==true){	
+        $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
+        $lista = array('login','IdTrabajo','Entrega');//se crea un arrray con los atributos que queremos mostrar
+        $datos =$CORRECION->mostrarEntregas($_SESSION['login']);//llamamos a esta función para mostrar todas las entregas que realizó dicho usuario
+
+        new CORRECION_ENTREGA($lista,$datos);//se nos muestra la vista 
+	}else{
+	 new USUARIO_DEFAULT();
+    }
+        break;		
+		
+				
+    case 'RESULTADOS_QAS'://caso donde nos aparecen los resultados de nuestras QAs
+	    if(permisosAcc($_SESSION['login'],12,14)==true){	
+        $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
+        $lista=array('LoginEvaluador','AliasEvaluado','NombreTrabajo','CorrectoA','ComenIncorrectoA','OK');//se crea un arrray con los atributos que queremos mostrar
+        $datos =$CORRECION->mostrarCorrecion3($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado']);//llamamos a esta función para que nos muestren los resultados de nuestras QAs y se mete en la vista
+        new CORRECION_QA_RESULTADOS($lista,$datos);
+		}else{
+	      new USUARIO_DEFAULT();
+        }  
+        break;
+        
+    case 'RESULTADO_QA'://caso donde se muestran todas las QAs que corregimos
+		if(permisosAcc($_SESSION['login'],12,14)==true){	
+        $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
+        $lista=array('LoginEvaluador','AliasEvaluado','IdTrabajo');//se crea un arrray con los atributos que queremos mostrar
+        $datos =$CORRECION->mostrarCorrecion2($_REQUEST['IdTrabajo'],$_SESSION['login']);//llamamos a esta funcióm para que se nos muestren todas las Qas que tenemos que corregir
+        new CORRECION_QA_RESULTADO($lista,$datos);
+	    }else{
+	     new USUARIO_DEFAULT();
+        }
+        break;
+        
+        
+     case 'MOSTAR_CORRECCION_QA'://caso por defecto con vista SHOWALL
+	    if(permisosAcc($_SESSION['login'],12,14)==true){	
+        $CORRECION =new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
+        $lista = array('LoginEvaluador','IdTrabajo');//se crea un arrray con los atributos que queremos mostrar
+        $datos =$CORRECION->mostrarQAS($_SESSION['login']);//llamamos a esta función para mostrar todas las entregas que realizó dicho usuario
+        new CORRECION_QA($lista,$datos);//se nos muestra la vista    	  
+		}else{
+	     new USUARIO_DEFAULT();
+        }
+      break;		
+		
+
 	default: //Caso que se ejecuta por defecto
 		if ( !$_POST ) {//Si no se han recibido datos 
 		   //Comprobamos los permisos, si tiene permisos se ejecuta el código dentro del if
