@@ -73,7 +73,7 @@ que comprueba permisos para cada una de las acciones -->
 		<?php }
 		 if((permisosAcc($_SESSION['login'],7,5)==true)){?>
 		<li>
-			<a href="../Controllers/NOTAS_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de notas']; ?></a>
+			<a href="../Controllers/NOTA_TRABAJO_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de notas']; ?></a>
 
 		</li>
 
@@ -117,12 +117,12 @@ que comprueba permisos para cada una de las acciones -->
 		<?php }
 	if((permisosAcc($_SESSION['login'],7,13)==true)){ ?>
 		<li>
-			<a href="../Controllers/NOTAS_CONTROLLER.php?action=GENERAR_NOTA_ENTREGA" class="primerNivel"><?php echo $strings['GENERACIÓN NOTAS ENTREGA']; ?></a>
+			<a href="../Controllers/NOTA_TRABAJO_CONTROLLER.php?action=GENERAR_NOTA_ENTREGA" class="primerNivel"><?php echo $strings['GENERACIÓN NOTAS ENTREGA']; ?></a>
 		</li>
 		<?php }
 	if((permisosAcc($_SESSION['login'],7,8)==true)){ ?>
 		<li>
-			<a href="../Controllers/NOTAS_CONTROLLER.php?action=GENERAR_NOTA_QA" class="primerNivel"><?php echo $strings['GENERACIÓN NOTAS QA']; ?></a>
+			<a href="../Controllers/NOTA_TRABAJO_CONTROLLER.php?action=GENERAR_NOTA_QA" class="primerNivel"><?php echo $strings['GENERACIÓN NOTAS QA']; ?></a>
 		</li>
 		<?php } ?>
 
