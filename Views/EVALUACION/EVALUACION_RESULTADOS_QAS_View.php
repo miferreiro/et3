@@ -103,7 +103,8 @@ class CORRECION_QA_RESULTADOS {
 						    if($cont==1){
 							$Id= $fila[ 'IdTrabajo' ];
 						}
-?>                      }
+                    }
+?>                      
 					</td>
                     
 <?php
