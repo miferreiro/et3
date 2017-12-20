@@ -21,11 +21,11 @@ include '../Views/EVALUACION/EVALUACION_EDIT_View.php'; //incluye la vista edit
 include '../Views/EVALUACION/EVALUACION_DELETE_View.php'; //incluye la vista delete
 include '../Views/EVALUACION/EVALUACION_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
-include '../Views/EVALUACION/EVALUACION_MOSTAR_CORRECCION_ET_View.php';//incluye el contendio de la vista CORRECION_ENTREGA
+include '../Views/EVALUACION/EVALUACION_MOSTRAR_CORRECCION_ET_View.php';//incluye el contendio de la vista CORRECION_ENTREGA
 include '../Views/EVALUACION/EVALUACION_RESULTADOS_ENTREGAS_View.php';//incluye el contendio de la vista
 include '../Views/EVALUACION/EVALUACION_RESULTADO_QA_View.php'; //incluye el contendio de la vista CORRECION_QA
 include '../Views/EVALUACION/EVALUACION_RESULTADOS_QAS_View.php'; //incluye el contendio de la CORRECION_QA_RESULTADO
-include '../Views/EVALUACION/EVALUACION_MOSTAR_CORRECCION_QA_View.php';//incluye el contendio de la CORRECION_QA_RESULTADOS
+include '../Views/EVALUACION/EVALUACION_MOSTRAR_CORRECCION_QA_View.php';//incluye el contendio de la CORRECION_QA_RESULTADOS
 include '../Views/EVALUACION/EVALUACION_SELECT_QA_View.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_SELECT_ALL_QA_View.php'; //incluye la vista del showall
 include '../Views/EVALUACION/EVALUACION_USUARIO_EDIT_HISTORIAS_View.php'; //incluye la vista del showall
