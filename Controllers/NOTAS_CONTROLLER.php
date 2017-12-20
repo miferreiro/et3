@@ -125,8 +125,9 @@ switch ( $_REQUEST[ 'action' ] ) {
         
            if(!$_POST){
                  if(permisosAcc($_SESSION['login'],7,13)==true){
-                
-                    new GENERAR_NOTA_ET();
+                 $TRABAJOS= new TRABAJO('','','','','');
+			     $datos=$TRABAJOS->SEARCH2();
+                 new GENERAR_NOTA_ET($datos);
                 
             }
             else{  
@@ -187,8 +188,9 @@ switch ( $_REQUEST[ 'action' ] ) {
         if(!$_POST){
         
            if(permisosAcc($_SESSION['login'],7,8)==true){
-               
-               new GENERAR_NOTA_QA();  
+               $TRABAJOS= new TRABAJO('','','','','');
+			   $datos=$TRABAJOS->SEARCH3();
+               new GENERAR_NOTA_QA($datos);  
                
             }
             else{
@@ -287,7 +289,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                  
                 $datos = $NOTAS->SEARCH();
 		        //Variable que almacena array con el nombre de los atributos
-		        $lista = array('NombreTrabajo','login','NotaTrabajo');
+		        $lista = array('login','NombreTrabajo','NotaTrabajo');
                 
                 new NOTAS_SHOWALL( $lista, $datos,false );
                   

@@ -7,11 +7,14 @@
 */
 class GENERAR_NOTA_QA {
 
-	function __construct() {
-		$this->render();
+	function __construct($datos) {
+		$this->datos = $datos;
+		$this->render($this->datos);
+
 	}
 
-	function render() {
+	function render($datos) {
+		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -23,25 +26,39 @@ class GENERAR_NOTA_QA {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['IdTrabajo'];?><!--se muestra el campo Horas-->
+							<?php echo $strings['NombreTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="10" size="10" required/>
-					</tr>
-					
+                  <td class="formThTd">
+                   <select id="IdTrabajo" name="IdTrabajo" required>
+<?php
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+?>
+				<option value="<?php echo $fila[ 'IdTrabajo' ]?>">
 
-					<tr>
+<?php 
+			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					echo $fila['NombreTrabajo'];
+?>		
+               							
+
+               </option>
+	
+<?php } ?>					
+					</select>
+				</td>
+					</tr>					
+				</table>
 						
-                     </form>     
-                    
+
 							<button type="submit" name="action" value="NOTA_QA"><img src="../Views/icon/generar.png" alt="<?php echo $strings['Confirmar formulario']?>" width="32" height="32" /></button>
                    
 			
 						<form action='../Controllers/NOTAS_CONTROLLER.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
-					</tr>
-				</table>
-               
+					
+				
+               </form>   
 		</div>
 <?php
 		include '../Views/Footer.php';
