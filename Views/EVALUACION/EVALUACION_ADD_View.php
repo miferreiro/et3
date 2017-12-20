@@ -7,11 +7,20 @@
 */
 class EVALUACION_ADD {
 
-	function __construct() {
-		$this->render();
+	function __construct($datos,$trabajos,$trabajos2,$hists) {
+		$this->datos = $datos;
+		$this->trabajos = $trabajos;
+		$this->trabajos2 = $trabajos2;
+		$this->hists= $hists;
+		$this->render($this->datos,$this->trabajos,$this->trabajos2,$this->hists);
+
 	}
 
-	function render() {
+	function render($datos,$trabajos,$trabajos2,$hists) {
+		$this->datos = $datos;
+		$this->trabajos = $trabajos;
+		$this->trabajos2 = $trabajos2;
+		$this->hists= $hists;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		?>
@@ -23,28 +32,101 @@ class EVALUACION_ADD {
 				<table>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['IdTrabajo'];?>
+							<?php echo $strings['NombreTrabajo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdTrabajo" name="IdTrabajo" value="" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')" />
+                  <td class="formThTd">
+                   <select id="IdTrabajo" name="IdTrabajo" required>
+<?php
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+?>
+				<option value="<?php echo $fila[ 'IdTrabajo' ]?>">
+
+<?php 
+			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					echo $fila['NombreTrabajo'];
+?>		
+               							
+
+               </option>
+	
+<?php } ?>					
+					</select>
+				</td>
 					</tr>
-					<tr>
+					
+					
+					
+				<tr>
 						<th class="formThTd">
 							<?php echo $strings['LoginEvaluador'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="LoginEvaluador" name="LoginEvaluador" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9') "/>
+                  <td class="formThTd">
+                   <select id="LoginEvaluador" name="LoginEvaluador" required>
+<?php
+				while ( $fila = mysqli_fetch_array( $this->trabajos) ) {
+?>
+				<option value="<?php echo $fila[ 'login' ]?>">
+
+<?php 
+			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					echo $fila['login'];
+?>		
+               							
+
+               </option>
+	
+<?php } ?>					
+					</select>
+				</td>
 					</tr>
-					<tr>
+
+			
+				<tr>
 						<th class="formThTd">
 							<?php echo $strings['AliasEvaluado'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="AliasEvaluado" name="AliasEvaluado" value="" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="6" size="6" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6')" />
-					</tr>
+                  <td class="formThTd">
+                   <select id="AliasEvaluado" name="AliasEvaluado" required>
+<?php
+				while ( $fila = mysqli_fetch_array( $this->trabajos2) ) {
+?>
+				<option value="<?php echo $fila[ 'Alias' ]?>">
 
-					<tr>
+<?php 
+			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					echo $fila['Alias'];
+?>		
+               							
+
+               </option>
+	
+<?php } ?>					
+					</select>
+				</td>
+					</tr>
+			
+				<tr>
 						<th class="formThTd">
-							<?php echo $strings['IdHistoria'];?>
+							<?php echo $strings['TextoHistoria'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdHistoria" name="IdHistoria" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="2" size="2" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'2') && comprobarTexto(this,'2') && comprobarEntero(this,0,99)"/>
+                  <td class="formThTd">
+                   <select id="IdHistoria" name="IdHistoria" required>
+<?php
+				while ( $fila = mysqli_fetch_array( $this->hists) ) {
+?>
+				<option value="<?php echo $fila[ 'IdHistoria' ]?>">
+
+<?php 
+			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					echo $fila['TextoHistoria'];
+?>		
+               							
+
+               </option>
+	
+<?php } ?>					
+					</select>
+				</td>
 					</tr>
 					<tr>
 						<th class="formThTd">

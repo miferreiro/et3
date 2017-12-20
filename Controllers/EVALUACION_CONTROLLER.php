@@ -11,6 +11,8 @@ session_start(); //solicito trabajar con la session
 
 include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/HISTORIA_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Functions/permisosAcc.php';
 include '../Views/EVALUACION/EVALUACION_SHOWALL_View.php'; //incluye la vista del showall
@@ -69,7 +71,14 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			if(permisosAcc($_SESSION['login'],12,0)==true){
-				new EVALUACION_ADD();
+				$TRABAJO= new TRABAJO('','','','','');
+				$trabs=$TRABAJO->SEARCH3();
+				$USUARIOS= new ENTREGA_MODEL('','','','','');
+				$users=$USUARIOS->SEARCH();
+				$users2=$USUARIOS->SEARCH();
+				$HISTORIAS= new HISTORIA_MODEL('','','');
+				$hists=$HISTORIAS->SEARCH();
+				new EVALUACION_ADD($trabs,$users,$users2,$hists);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );
 			}
