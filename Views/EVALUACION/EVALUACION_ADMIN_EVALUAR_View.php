@@ -109,7 +109,7 @@ class EVALUACION_ADMIN_EVALUAR {
 
 
 				$total++;
-				if(strlen($datos[$i][2]) > 0){$comentario[] = $datos[$i][2];}
+				if(strlen(trim($datos[$i][2])) > 0){$comentario[] = $datos[$i][2];}
 				if ($cont >= $num) {
 ?>
 				<tr></tr>
@@ -117,14 +117,28 @@ class EVALUACION_ADMIN_EVALUAR {
 				for ($j=0; $j < count($comentario); $j++) { 
 ?>
 					<tr>
-						<td bgcolor="" colspan="15"><?php echo $comentario[$j]; ?></td>
+						<td bgcolor="" colspan="15">
+<?php
+						if (strlen(trim($comentario[$j])) > 150) {
+							$parte = chunk_split(trim($comentario[$j]),150, "|");
+    						$parte2 = explode("|",$parte);
+?>
+							<p align="left"><?php echo $parte2[0] . "\n" . $parte2[1]?></p>
+<?php
+						} else {
+?>
+							<p align="left"><?php echo trim($comentario[$j]); ?></p>
+<?php
+						}
+?>
+						</td>
 					</tr>
 <?php
 				} 
 ?>
 				<tr></tr>
 				<td colspan="15">
-					<textarea id="TextoHistoria" name="<?php echo $datos[$i][0] . $datos[$i][8] ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"   onBlur="validarComentIncorrectoP(this,'300')" ><?php echo $datos[$i][4]?></textarea>
+					<textarea id="TextoHistoria" name="<?php echo $datos[$i][0] . $datos[$i][8] ?>" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="300" cols="50" rows="7"   onBlur="validarComentIncorrectoP(this,'300')" ><?php echo trim($datos[$i][4])?></textarea>
 <?php
 				if ($datos[$i][3] == 1) {
 ?>
