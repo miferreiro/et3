@@ -3,7 +3,7 @@
 	Fecha de creación: 4/12/2017 
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar la nota del trabajo
 */
-class NOTAS_EDIT {
+class NOTA_TRABAJO_EDIT {
 
 	function __construct($valores) {
 		$this->valores = $valores;
@@ -20,7 +20,7 @@ class NOTAS_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form id="EDIT" name="EDIT" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditNotas()">
+			<form id="EDIT" name="EDIT" action="../Controllers/NOTA_TRABAJO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditNotas()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -46,7 +46,7 @@ class NOTAS_EDIT {
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
-			<form action='../Controllers/NOTAS_CONTROLLER.php' style="display: inline">
+			<form action='../Controllers/NOTA_TRABAJO_CONTROLLER.php' style="display: inline">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</tr>

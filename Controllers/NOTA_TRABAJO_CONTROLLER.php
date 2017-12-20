@@ -5,7 +5,7 @@
 */
 session_start(); //solicito trabajar con la session
 
-include '../Models/NOTAS_MODEL.php'; //incluye el contendio del modelo usuarios
+include '../Models/NOTA_TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
@@ -13,16 +13,14 @@ include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuario
 include_once '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Functions/permisosAcc.php';
 include '../Functions/comprobarAdministrador.php';
-include '../Views/NOTAS/NOTAS_SHOWALL_View.php'; //incluye la vista del showall
-include '../Views/NOTAS/GENERAR_NOTA_ET_View.php'; //incluye la vista del showall
-include '../Views/NOTAS/GENERAR_NOTA_QA_View.php'; //incluye la vista del showall
-include '../Views/NOTAS/NOTAS_SHOWALL2_View.php'; //incluye la vista del showall para el caso de los usuarios
-include '../Views/NOTAS/NOTAS_SEARCH_View.php'; //incluye la vista search
-include '../Views/NOTAS/NOTAS_ADD_View.php'; //incluye la vista add
-include '../Views/NOTAS/NOTAS_EDIT_View.php'; //incluye la vista edit
-include '../Views/NOTAS/NOTAS_DELETE_View.php'; //incluye la vista delete
-include '../Views/NOTAS/NOTAS_SHOWCURRENT_View.php'; //incluye la vista showcurrent
-include '../Views/NOTAS/NOTAS_SHOWCURRENT2_View.php'; //incluye la vista showcurrent
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SHOWALL_View.php'; //incluye la vista del showall
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_ENTREGA_View.php'; //incluye la vista del showall
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_QA_View.php'; //incluye la vista del showall
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SEARCH_View.php'; //incluye la vista search
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_ADD_View.php'; //incluye la vista add
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_EDIT_View.php'; //incluye la vista edit
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_DELETE_View.php'; //incluye la vista delete
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SHOWCURRENT_View.php'; //incluye la vista showcurrent
 include '../Views/DEFAULT_View.php';
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
@@ -34,7 +32,7 @@ function get_data_form() {
     $login = $_REQUEST['login'];
     $NotaTrabajo = $_REQUEST['NotaTrabajo'];
     $action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
-	$NOTAS = new NOTAS_MODEL(
+	$NOTAS = new NOTA_TRABAJO_MODEL(
 		$IdTrabajo,
         $login,
         $NotaTrabajo
@@ -60,15 +58,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$TRABAJO= new TRABAJO('','','','','');
 			$TRABAJOS=$TRABAJO->SEARCH2();
 			//Crea una vista add para ver la tupla
-			new NOTAS_ADD($USUARIOS,$TRABAJOS);
+			new NOTA_TRABAJO_ADD($USUARIOS,$TRABAJOS);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
 			}
-		} else {//Si recibe datos los recoge y mediante las funcionalidad de NOTAS_MODEL inserta los datos
+		} else {//Si recibe datos los recoge y mediante las funcionalidad de NOTA_TRABAJO_MODEL inserta los datos
 			$NOTAS = get_data_form();//Variable que almacena los datos recogidos
 			$respuesta = $NOTAS->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
-			new MESSAGE( $respuesta, '../Controllers/NOTAS_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
 		break;
@@ -76,13 +74,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			if(permisosAcc($_SESSION['login'],7,1)==true){
 			//Variable que recoge un objecto model
-			$NOTAS = new NOTAS_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'login' ],'');
+			$NOTAS = new NOTA_TRABAJO_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'login' ],'');
 			//Variable que almacena el relleno de los datos
 			$valores = $NOTAS->RellenaDatos();
             //Crea una vista delete para ver la tupla
-			new NOTAS_DELETE($valores);
+			new NOTA_TRABAJO_DELETE($valores);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
 			}
 			//Si recibe valores ejecuta el borrado
 		} else {
@@ -92,7 +90,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $NOTAS->DELETE();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/NOTAS_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
 		break;
@@ -100,12 +98,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			if(permisosAcc($_SESSION['login'],7,2)==true){
 			//Variable que almacena un objeto model
-			$NOTAS = new NOTAS_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'login' ],'');
+			$NOTAS = new NOTA_TRABAJO_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'login' ],'');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $NOTAS->RellenaDatos();
-			new NOTAS_EDIT($valores);
+			new NOTA_TRABAJO_EDIT($valores);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
 			}
 			//Si se reciben valores
 		} else {
@@ -114,12 +112,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $NOTAS->EDIT();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/NOTAS_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
 		}
 		//Fin del bloque
 		break;
         
-    case 'NOTA_ENTREGA':
+    case 'GENERAR_NOTA_ENTREGA':
              $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
              $ADMIN = $USUARIO->comprobarAdmin();
              
@@ -132,20 +130,20 @@ switch ( $_REQUEST[ 'action' ] ) {
                 
             }
             else{  
-                new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
+                new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
             }
         }
         
       else{
                  $ENTREGA = new ENTREGA_MODEL('','','','','');
                  $dat=$ENTREGA->cogerDatos($_REQUEST['IdTrabajo']);
-                 $NOTAS = new NOTAS_MODEL('','','','','');
+                 $NOTAS = new NOTA_TRABAJO_MODEL('','','','','');
                  
                  while($fila = mysqli_fetch_array($dat)){
                      $existe=$NOTAS->siExiste($fila['login'],$fila['IdTrabajo']);
                      
                      if($existe == false){
-                         $NOTAS = new NOTAS_MODEL($fila['IdTrabajo'],$fila['login'], '');
+                         $NOTAS = new NOTA_TRABAJO_MODEL($fila['IdTrabajo'],$fila['login'], '');
                          $NOTAS->ADD();
                          
                             
@@ -157,7 +155,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                     
                      $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$notaET);
                      $respuesta="Notas generadas correctamente";
-                     new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
+                     new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
                          
                      }
                     else{
@@ -168,20 +166,20 @@ switch ( $_REQUEST[ 'action' ] ) {
                       
                      $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$notaET);
                      $respuesta="Notas generadas correctamente";
-                      new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
+                      new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
                     }
                      
                      
                   
                  }
                     $respuesta="Las notas no se pudieron generar";
-                    new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
+                    new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
 
       }
         
     break;    
         
-    case 'NOTA_QA':
+    case 'GENERAR_NOTA_QA':
         
          $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
          $ADMIN = $USUARIO->comprobarAdmin();
@@ -196,7 +194,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             }
             else{
                 
-                new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
+                new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
             }
         }
             
@@ -205,7 +203,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             
                  $EVALUACION = new EVALUACION('','','','','','','','','');
                  $dat=$EVALUACION->cogerDatosQA($_REQUEST['IdTrabajo']);
-                 $NOTAS = new NOTAS_MODEL('','','','','');
+                 $NOTAS = new NOTA_TRABAJO_MODEL('','','','','');
                 // $notas=array();
                  
                  while($fila = mysqli_fetch_array($dat)){
@@ -213,7 +211,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                      $existe=$NOTAS->siExiste($fila['LoginEvaluador'],$fila['IdTrabajo']);
                      
                      if($existe == false){
-                         $NOTAS = new NOTAS_MODEL($fila['IdTrabajo'],$fila['LoginEvaluador'], '');
+                         $NOTAS = new NOTA_TRABAJO_MODEL($fila['IdTrabajo'],$fila['LoginEvaluador'], '');
                          $NOTAS->ADD();
                          
                      $nota = $NOTAS->calcularNotaQA($fila['LoginEvaluador'],$fila['IdTrabajo']);
@@ -222,7 +220,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                      //$notas[$fila['LoginEvaluador'].$fila['IdTrabajo']] = $notaET;
                      $NOTAS->actualizar($fila['LoginEvaluador'],$fila['IdTrabajo'],$notaET);
                      $respuesta="Notas generadas correctamente";
-                     new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
+                     new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
                          
                      }
                     else{
@@ -232,12 +230,12 @@ switch ( $_REQUEST[ 'action' ] ) {
                     // $notas[$fila['LoginEvaluador'].$fila['IdTrabajo']] = $notaET;
                      $NOTAS->actualizar($fila['LoginEvaluador'],$fila['IdTrabajo'],$notaET);
                       $respuesta="Notas generadas correctamente";
-                      new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
+                      new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
                     
                     }
         }
                     $respuesta="Las notas no se pudieron generar";
-                    new MESSAGE($respuesta,'../Controllers/NOTAS_CONTROLLER.php');
+                    new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
         
          }
         break;
@@ -245,9 +243,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
 			if(permisosAcc($_SESSION['login'],7,3)==true){
-			new NOTAS_SEARCH();
+			new NOTA_TRABAJO_SEARCH();
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
 			}
 		//Si se reciben datos	
 		} else {
@@ -259,10 +257,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$lista = array('NombreTrabajo','login','NotaTrabajo');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
             if(comprobarAdministrador($_SESSION['login']) == true){
-                new NOTAS_SHOWALL( $lista, $datos,false );
+                new NOTA_TRABAJO_SHOWALL( $lista, $datos,false );
             }
             else
-                 new NOTAS_SHOWALL( $lista, $datos,true );
+                 new NOTA_TRABAJO_SHOWALL( $lista, $datos,true );
 			
 		}
 		//Final del bloque
@@ -270,13 +268,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SHOWCURRENT'://Caso showcurrent
 		if(permisosAcc($_SESSION['login'],7,4)==true){
 		//Variable que almacena un objeto model con el login
-		$NOTAS = new NOTAS_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST['login'],'');
+		$NOTAS = new NOTA_TRABAJO_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST['login'],'');
 		//Variable que almacena los valores rellenados a traves de login
 		$valores = $NOTAS->RellenaDatos();
 		//Creación de la vista showcurrent
-		new NOTAS_SHOWCURRENT( $valores );
+		new NOTA_TRABAJO_SHOWCURRENT( $valores );
 		}else{
-			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTAS_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
 		}
 		//Final del bloque
 		break;
@@ -284,7 +282,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	
               $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
               $ADMIN = $USUARIO->comprobarAdmin();
-              $NOTAS=new NOTAS_MODEL('','','');        
+              $NOTAS=new NOTA_TRABAJO_MODEL('','','');        
         
              if($ADMIN == true){
                  
@@ -292,17 +290,17 @@ switch ( $_REQUEST[ 'action' ] ) {
 		        //Variable que almacena array con el nombre de los atributos
 		        $lista = array('login','NombreTrabajo','NotaTrabajo');
                 
-                new NOTAS_SHOWALL( $lista, $datos,false );
+                new NOTA_TRABAJO_SHOWALL( $lista, $datos,false );
                   
             }
             else if(permisosAcc($_SESSION['login'],7,5)==true){
                 
-                      $NOTAS=new NOTAS_MODEL('',$_SESSION['login'],'');  
+                      $NOTAS=new NOTA_TRABAJO_MODEL('',$_SESSION['login'],'');  
                  	  $datos = $NOTAS->SEARCH();
 		              //Variable que almacena array con el nombre de los atributos
 		              $lista = array('NombreTrabajo','login','NotaTrabajo');
 		              //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		              new NOTAS_SHOWALL( $lista, $datos,true );
+		              new NOTA_TRABAJO_SHOWALL( $lista, $datos,true );
             }else{
 				new USUARIO_DEFAULT();				
 			}

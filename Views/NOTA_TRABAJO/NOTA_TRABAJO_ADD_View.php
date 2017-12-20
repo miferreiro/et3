@@ -3,7 +3,7 @@
 	Fecha de creación: 4/12/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una nota de trabajo a la base de datos
 */
-class NOTAS_ADD {
+class NOTA_TRABAJO_ADD {
 	function __construct($datos,$trabajos) {
 		$this->datos = $datos;
 		$this->trabajos = $trabajos;
@@ -21,7 +21,7 @@ class NOTAS_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form id="ADD" name="ADD" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddNotas()">
+			<form id="ADD" name="ADD" action="../Controllers/NOTA_TRABAJO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddNotas()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -79,7 +79,7 @@ class NOTAS_ADD {
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
-						<form action='../Controllers/NOTAS_CONTROLLER.php' method="post" style="display: inline">
+						<form action='../Controllers/NOTA_TRABAJO_CONTROLLER.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>

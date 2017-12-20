@@ -22,7 +22,7 @@ class GENERAR_NOTA_ET {
 			<h2>
 				<?php echo $strings['GENERACIÓN NOTAS ENTREGA'];?>
 			</h2>
-			<form name="NOTA_ET" value="NOTA_ET" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data">
+			<form name="GENERAR_NOTA_ENTREGA" value="GENERAR_NOTA_ENTREGA" action="../Controllers/NOTA_TRABAJO_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -50,10 +50,10 @@ class GENERAR_NOTA_ET {
 				</table>		
                             
                     
-							<button type="submit" name="action" value="NOTA_ENTREGA"><img src="../Views/icon/generar.png" alt="<?php echo $strings['Confirmar formulario']?>" width="32" height="32" /></button>
+							<button type="submit" name="action" value="GENERAR_NOTA_ENTREGA"><img src="../Views/icon/generar.png" alt="<?php echo $strings['Confirmar formulario']?>" width="32" height="32" /></button>
                    
 			
-						<form action='../Controllers/NOTAS_CONTROLLER.php' method="post" style="display: inline">
+						<form action='../Controllers/NOTA_TRABAJO_CONTROLLER.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>

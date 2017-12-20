@@ -3,7 +3,7 @@
 	Fecha de creación: 4/12/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class NOTAS_SHOWALL {
+class NOTA_TRABAJO_SHOWALL {
         
 	function __construct( $lista, $datos,$bol) {
 		$this->lista = $lista;
@@ -26,7 +26,7 @@ class NOTAS_SHOWALL {
 			</h2>
 			<table>
 				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/NOTAS_CONTROLLER.php'>
+					<form action='../Controllers/NOTA_TRABAJO_CONTROLLER.php'>
 <?php if(permisosAcc($_SESSION['login'],7,3)==true){ ?>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
 <?php }
@@ -87,7 +87,7 @@ class NOTAS_SHOWALL {
                     
 
 					<td>
-						<form action="../Controllers/NOTAS_CONTROLLER.php" method="get" style="display:inline" >
+						<form action="../Controllers/NOTA_TRABAJO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
                             <input type="hidden" name=IdTrabajo value="<?php echo $fila['IdTrabajo']; ?>">
 <?php         if(permisosAcc($_SESSION['login'],7,2)==true){ ?>
@@ -122,7 +122,7 @@ class NOTAS_SHOWALL {
 ?>
             
             
-			<form action='../Controllers/NOTAS_CONTROLLER.php' method="post">
+			<form action='../Controllers/NOTA_TRABAJO_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
