@@ -1,6 +1,7 @@
 <?php
 /*
 	Controlador que gestiona las entregas
+    Autor:Brais Santos
     Fecha de creación:28/11/2017
 */
 session_start(); //solicito trabajar con la session
@@ -10,8 +11,6 @@ include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuario
 include '../Functions/permisosAcc.php'; //incluye el contendio de la función permisosAcc
 include '../Functions/comprobarAdministrador.php';//incluye el contenido de la función comprobarAdministrador
 include '../Views/ENTREGA/ENTREGA_SHOWALL_View.php'; //incluye la vista del showall
-include '../Views/ENTREGA/ENTREGA_USU_SHOWALL.php'; //incluye la vista del showall
-include '../Views/ENTREGA/ENTREGA_SUBIR_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/ENTREGA/ENTREGA_SEARCH_View.php'; //incluye la vista search
 include '../Views/ENTREGA/ENTREGA_ADD_View.php'; //incluye la vista add
 include '../Views/ENTREGA/ENTREGA_EDIT_View.php'; //incluye la vista edit
@@ -38,54 +37,54 @@ function aleatorio(){
         
     }
 
-
+//Esta función crea un objeto tipo ENTREGA_MODEL con los valores que se le pasan con $_REQUEST y se utiliza para el add que es donde se genera el alias aleatorio
 function get_data_form2() {
     
   
     
-	$login = $_REQUEST['login'];
-    $IdTrabajo = $_REQUEST['IdTrabajo'];
+	$login = $_REQUEST['login'];//Variable que almacena el valor de login
+    $IdTrabajo = $_REQUEST['IdTrabajo'];//Variable que almacena el valor de IdTrabajo
     
-    $ENTREGA = new ENTREGA_MODEL('','','','','');
+    $ENTREGA = new ENTREGA_MODEL('','','','','');// se crea un objeto tipo ENTREGA_MODEL
     
-    $Alias = aleatorio();
-    $buscar=$ENTREGA->buscarAlias($Alias);
+    $Alias = aleatorio();//se le asigna a la variable Alias un alias aleatorio
+    $buscar=$ENTREGA->buscarAlias($Alias);//llamamos a esta función para ver si existe ese mismo alias
     
     
-        while($Alias == $buscar){
-            $Alias = aleatorio();
+        while($Alias == $buscar){//este bucle se va a repetir mientras el alias este repetido
+            $Alias = aleatorio();//se le asigna a la variable Alias un alias aleatorio
         }
     
     
     
-    $Horas = $_REQUEST['Horas'];
+    $Horas = $_REQUEST['Horas'];//Variable que almacena el valor de Horas
   
     
-    	if ( isset( $_FILES[ 'Ruta' ][ 'name' ] ) ) {
-		$nombreRuta = $_FILES[ 'Ruta' ][ 'name' ];
-	} else {
+    	if ( isset( $_FILES[ 'Ruta' ][ 'name' ] ) ) {//mira si existe una ruta
+		$nombreRuta = $_FILES[ 'Ruta' ][ 'name' ];//le asigna a nombreRuta la ruta del archivo
+	} else {//si no existe la ruta le asignamos a la variable el valor null
 		$nombreRuta = null;
 	}
 
-	if ( isset( $_FILES[ 'Ruta' ][ 'tmp_name' ] ) ) {
-		$nombreTempRuta = $_FILES[ 'Ruta' ][ 'tmp_name' ];
-	} else {
+	if ( isset( $_FILES[ 'Ruta' ][ 'tmp_name' ] ) ) {//mira si existe una ruta con un nombre temporal
+		$nombreTempRuta = $_FILES[ 'Ruta' ][ 'tmp_name' ];//le asigna a nombreRuta la ruta del archivo con un nombre temporal
+	} else {//si no existe la ruta le asignamos a la variable el valor null
 		$nombreTempRuta = null;
 	}
    
-    if (!file_exists("../Files/$Alias")){ 
+    if (!file_exists("../Files/$Alias")){ //miramos si no existe este fichero, en el caso de que no exista lo creamos
               mkdir("../Files/$Alias", 0777);
    }
     
-    if ( $nombreRuta != null ) {
-		$dir_subida = '../Files/'.$Alias.'/';
-		$rutapersonal = $dir_subida . $nombreRuta;
-		move_uploaded_file( $nombreTempRuta, $rutapersonal );
+    if ( $nombreRuta != null ) {//mira si la variable nombreRuta no es vacía
+		$dir_subida = '../Files/'.$Alias.'/';//le asignamos a esta variable la ruta donde se va a subir el archivo
+		$rutapersonal = $dir_subida . $nombreRuta;//le pasamos a $rutapersonal la dirección de subida.
+		move_uploaded_file( $nombreTempRuta, $rutapersonal );//movemos el archivo a la dirección especificada
 	}
-   else{
-    if(isset($_POST['ruta2'])){
+   else{//mira si la variable nombreRuta no es vacía
+    if(isset($_POST['ruta2'])){//si existe la anterior ruta del archivo  le asignamos a la variable rutapersonal ese valor
                         $rutapersonal=$_POST['ruta2'];
-                }else{
+                }else{//si no tiene una ruta anterior el archivo, le asignamos el valor null
 
                     $rutapersonal=null;
                 }
@@ -100,46 +99,48 @@ function get_data_form2() {
         $Alias,
         $Horas,
         $rutapersonal
-	);
-	//Devuelve el valor del objecto model creado
+	);//Devuelve el valor del objecto model creado
+	
     
 	return $ENTREGA;
 }
 
+
+//Esta función crea un objeto tipo ENTREGA_MODEL con los valores que se le pasan con $_REQUEST
 function get_data_form() {
     
     
-	$login = $_REQUEST['login'];
-    $IdTrabajo = $_REQUEST['IdTrabajo'];
-    $Alias = $_REQUEST['Alias'];
-    $Horas = $_REQUEST['Horas'];
+	$login = $_REQUEST['login'];//Variable que almacena el valor de login
+    $IdTrabajo = $_REQUEST['IdTrabajo'];//Variable que almacena el valor de IdTrabajo
+    $Alias = $_REQUEST['Alias'];//Variable que almacena el valor del Alias
+    $Horas = $_REQUEST['Horas'];//Variable que almacena el valor de Horas
   
     
-    	if ( isset( $_FILES[ 'Ruta' ][ 'name' ] ) ) {
-		$nombreRuta = $_FILES[ 'Ruta' ][ 'name' ];
-	} else {
+    	if ( isset( $_FILES[ 'Ruta' ][ 'name' ] ) ) {//mira si existe una ruta
+		$nombreRuta = $_FILES[ 'Ruta' ][ 'name' ];//le asigna a nombreRuta la ruta del archivo
+	} else {//si no existe la ruta le asignamos a la variable el valor null
 		$nombreRuta = null;
 	}
 
-	if ( isset( $_FILES[ 'Ruta' ][ 'tmp_name' ] ) ) {
-		$nombreTempRuta = $_FILES[ 'Ruta' ][ 'tmp_name' ];
-	} else {
+	if ( isset( $_FILES[ 'Ruta' ][ 'tmp_name' ] ) ) {//mira si existe una ruta con un nombre temporal
+		$nombreTempRuta = $_FILES[ 'Ruta' ][ 'tmp_name' ];//le asigna a nombreRuta la ruta del archivo con un nombre temporal
+	} else {//si no existe la ruta le asignamos a la variable el valor null
 		$nombreTempRuta = null;
 	}
 
-     if (!file_exists("../Files/$Alias")){ 
+     if (!file_exists("../Files/$Alias")){ //miramos si no existe este fichero, en el caso de que no exista lo creamos
               mkdir('../Files/'.$Alias.'/', 0777);
     }
 
-	if ( $nombreRuta != null ) {
-		$dir_subida = '../Files/'.$Alias.'/';
-		$rutapersonal = $dir_subida . $nombreRuta;
-		move_uploaded_file( $nombreTempRuta, $rutapersonal );
+	if ( $nombreRuta != null ) {//mira si la variable nombreRuta no es vacía
+		$dir_subida = '../Files/'.$Alias.'/';//le asignamos a esta variable la ruta donde se va a subir el archivo
+		$rutapersonal = $dir_subida . $nombreRuta;;//le pasamos a $rutapersonal la dirección de subida.
+		move_uploaded_file( $nombreTempRuta, $rutapersonal );//movemos el archivo a la dirección especificada
 	}
-   else{
-    if(isset($_POST['ruta2'])){
+   else{//mira si la variable nombreRuta no es vacía
+    if(isset($_POST['ruta2'])){//si existe la anterior ruta del archivo  le asignamos a la variable rutapersonal ese valor
                         $rutapersonal=$_POST['ruta2'];
-                }else{
+                }else{//si no tiene una ruta anterior el archivo, le asignamos el valor null
 
                     $rutapersonal=null;
                 }
@@ -154,45 +155,45 @@ function get_data_form() {
         $Alias,
         $Horas,
         $rutapersonal
-	);
-	//Devuelve el valor del objecto model creado
+	);	//Devuelve el valor del objecto model creado
+
 	return $ENTREGA;
 }
 
-//Si la variable action no tiene contenido le asignamos ''
-if ( !isset( $_REQUEST[ 'action' ] ) ) {
+
+if ( !isset( $_REQUEST[ 'action' ] ) ) {//Si la variable action no tiene contenido le asignamos ''
 	$_REQUEST[ 'action' ] = '';
 }
 //Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
-			$ADMIN = $ENTREGA->comprobarAdmin();
-			if($ADMIN == true){
-			$USUARIO= new USUARIO_MODEL('','','','','','','','');
-			$USUARIOS=$USUARIO->SEARCH();				
-			$TRABAJO= new TRABAJO('','','','','');
-			$TRABAJOS=$TRABAJO->SEARCH2();
-				new ENTREGA_ADD($USUARIOS,$TRABAJOS);
-			}else{
-            $cont=0;
-			$PERMISO = $ENTREGA->comprobarPermisos();
-			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='8'){
-				if($fila['IdAccion']=='0'){
-			    //Crea una vista add para ver la tupla
-			     $cont=$cont+1;
+            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto tipo USU_GRUPO
+			$ADMIN = $ENTREGA->comprobarAdmin();//llamamos a esta función para comprobar si dicho usuario es administrador
+			if($ADMIN == true){//miramos si es administrador
+			$USUARIO= new USUARIO_MODEL('','','','','','','','');//creamos un objeto de tipo USUARIO_MODEL
+			$USUARIOS=$USUARIO->SEARCH();//llamamos al método SEARCH 				
+			$TRABAJO= new TRABAJO('','','','','');//creamos un objeto de tipo TRABAJO
+			$TRABAJOS=$TRABAJO->SEARCH2();//llamamos al método SEARCH2 de TRABAJO
+				new ENTREGA_ADD($USUARIOS,$TRABAJOS);//instanciamos una vista para añadir una entrega con un select de todos los ususarios y trabajos
+			}else{// si no es administrador
+            $cont=0;//inicializamos la variable cont a 0
+			$PERMISO = $ENTREGA->comprobarPermisos();//llamamos a esta función para ver los permisos que tiene este usuario
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
+			if($fila['IdFuncionalidad']=='8'){//miramos si el usuario tiene la funcionalidad de gestion de entregas
+				if($fila['IdAccion']=='0'){//miramos si el usuario tiene la acción de insertar
+			    
+			     $cont=$cont+1;//incrementamos la variable cont
 				}
 			   } 
 			}
-			if($cont==1){
-			$USUARIO= new USUARIO_MODEL('','','','','','','','');
-			$USUARIOS=$USUARIO->SEARCH();				
-			$TRABAJO= new TRABAJO('','','','','');
-			$TRABAJOS=$TRABAJO->SEARCH2();
-				new ENTREGA_ADD($USUARIOS,$TRABAJOS);
-			}else{
+			if($cont==1){//si la variable cont es 1, por tanto si tiene el permiso
+			$USUARIO= new USUARIO_MODEL('','','','','','','','');//creamos un objeto de tipo USUARIO_MODEL
+			$USUARIOS=$USUARIO->SEARCH();	//llamamos al método SEARCH 			
+			$TRABAJO= new TRABAJO('','','','','');/creamos un objeto de tipo TRABAJO
+			$TRABAJOS=$TRABAJO->SEARCH2();//llamamos al método SEARCH2 de TRABAJO
+				new ENTREGA_ADD($USUARIOS,$TRABAJOS);//instanciamos una vista para añadir una entrega con un select de todos los ususarios y trabajos
+			}else{//si el usuario no tiene dicho permiso , se muestra un mensaje indicandolo
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 			}
 			}
@@ -206,29 +207,29 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
-            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
-			$ADMIN = $ENTREGA->comprobarAdmin();
-			if($ADMIN == true){
+            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto tipo USU_GRUPO
+			$ADMIN = $ENTREGA->comprobarAdmin();//llamamos a esta función para comprobar si dicho usuario es administrador
+			if($ADMIN == true){//miramos si es administrador
 			//Variable que recoge un objecto model.
 			$ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '','', '');
 			//Variable que almacena el relleno de los datos.
 			$valores = $ENTREGA->RellenaDatos();
-			$dependencias = $ENTREGA->dependencias();
-			$dependencias2 = $ENTREGA->dependencias2();
+			$dependencias = $ENTREGA->dependencias();//se recogen las dependencias de borrado
+			$dependencias2 = $ENTREGA->dependencias2();//se recogen las dependencias de borrado
             //Crea una vista delete para ver la tupla
 			new ENTREGA_DELETE($valores, $dependencias, $dependencias2);
-			}else{
-			$cont=0;
-			$PERMISO = $ENTREGA->comprobarPermisos();
-			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
-			if($fila['IdFuncionalidad']=='8'){
-				if($fila['IdAccion']=='1'){
+			}else{//si no es administrador
+			$cont=0;//iniciamos la variable cont a 0
+			$PERMISO = $ENTREGA->comprobarPermisos();//llamamos a esta función para ver los permisos que tiene este usuario
+			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
+			if($fila['IdFuncionalidad']=='8'){//miramos si el usuario tiene la funcionalidad de gestion de entregas
+				if($fila['IdAccion']=='1'){//miramos si el usuario tiene la acción de borrar
 			    //Crea una vista add para ver la tupla
 			     $cont=$cont+1;
 				}
 			  }
 			}
-			if($cont==1){
+			if($cont==1){//si la variable cont es uno, por tanto si el usuario tiene permiso
 			//Variable que recoge un objecto model.
 			$ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '','', '');
             //Variable que almacena el relleno de los datos.
@@ -236,11 +237,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Crea una vista delete para ver la tupla
 			new ENTREGA_DELETE( $valores );
 			//Si recibe valores ejecuta el borrado
-			}else{
+			}else{//si el usuario no tiene dicho permiso, se muestra un mensaje indicandolo
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 			}
 			}
-		} else {
+		} else {//Si recibe datos los recoge y mediante la clase ENTREGA_MODEL borra los datos
 			//Variable que almacena los datos recogidos de los atributos
 			$ENTREGA = get_data_form();
 			//Variable que almacena la respuesta de realizar el borrado
@@ -252,27 +253,27 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-			//Variable que almacena un objeto model 
-			if(permisosAcc($_SESSION['login'],8,2)==true){	            
+			
+			if(permisosAcc($_SESSION['login'],8,2)==true){//miramos si este usuario tiene permiso para editar	            
             
-			$ENTREGA = new ENTREGA_MODEL($_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ],'', '', '');
+			$ENTREGA = new ENTREGA_MODEL($_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ],'', '', '');//creamos un objeto de tipo ENTREGA_MODEL
 			//Variable que almacena los datos de los atibutos rellenados 
 			$valores = $ENTREGA->RellenaDatos();
 			//Muestra la vista del formulario editar
 			new ENTREGA_EDIT( $valores );
-			}else{
+			}else{//si no tiene dicho permiso se muestra un mensaje indicandolo
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 			}
 			//Si se reciben valores
-		} else {
-	      if(comprobarAdministrador($_SESSION['login'])==true){		
+		} else {//Si recibe datos los recoge y mediante la clase ENTREGA_MODEL edita los datos
+	      if(comprobarAdministrador($_SESSION['login'])==true){//miramos si el usuario es administrador		
 			//Variable que almacena los datos recogidos
 			$ENTREGA = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $ENTREGA->EDIT();
 			//crea una vista mensaje con la respuesta
 			new MESSAGE( $respuesta, '../Controllers/ENTREGA_CONTROLLER.php' );
-		  }else{
+		  }else{//si no es administrador
 			//Variable que almacena los datos recogidos
 			$ENTREGA = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
@@ -285,30 +286,30 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
-			$ADMIN = $ENTREGA->comprobarAdmin();
-			if($ADMIN == true){
-				new ENTREGA_SEARCH();
-			}else{
-			$cont=0;
-			$PERMISO = $ENTREGA->comprobarPermisos();
-            while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+            $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto tipo USU_GRUPO
+			$ADMIN = $ENTREGA->comprobarAdmin();//llamamos a esta función para comprobar si dicho usuario es administrador
+			if($ADMIN == true){//miramos si es administrador
+				new ENTREGA_SEARCH();//mostramos una vista SEARCH
+			}else{//si no es administrador
+			$cont=0;//iniciamos la variable cont a 0
+			$PERMISO = $ENTREGA->comprobarPermisos();//llamamos a esta función para ver los permisos que tiene este usuario
+            while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
 
-			if($fila['IdFuncionalidad']=='8'){
-				if($fila['IdAccion']=='3'){
-			    //Crea una vista add para ver la tupla
-			     $cont=$cont+1;
+			if($fila['IdFuncionalidad']=='8'){//miramos si el usuario tiene la funcionalidad de gestion de entregas
+				if($fila['IdAccion']=='3'){//miramos si el usuario tiene la acción de buscar
+			  
+			     $cont=$cont+1;//incrementamos la variable
 				}
 			   }
 			}
-			if($cont>=1){
+			if($cont>=1){//si la variable cont es uno, por tanto si el usuario tiene permiso
 			new ENTREGA_SEARCH();
-			}else{
+			}else{//si el usuario no tiene dicho permiso, se muestra un mensaje indicandolo
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 			}
 			}
-		//Si se reciben datos	
-		} else {
+			
+		} else {//Si se reciben datos
            /* $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
 			$PERMISO = $ENTREGA->comprobarPermisos();	
 			$ADMIN = $ENTREGA->comprobarAdmin();*/
