@@ -337,80 +337,80 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-        $ENTREGA = new USU_GRUPO(  $_SESSION[ 'login' ],'');
-			$ADMIN = $ENTREGA->comprobarAdmin();
-			if($ADMIN == true){
+        $ENTREGA = new USU_GRUPO(  $_SESSION[ 'login' ],'');//creamos un objeto tipo USU_GRUPO
+			$ADMIN = $ENTREGA->comprobarAdmin();//llamamos a esta función para comprobar si dicho usuario es administrador
+			if($ADMIN == true){//miramos si el usuario es administrador
 					//Variable que almacena un objeto model
 		          $ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '', '','');
 		         //Variable que almacena los valores rellenados 
 		          $valores = $ENTREGA->RellenaDatos();
                     //Creación de la vista showcurrent
 		          new ENTREGA_SHOWCURRENT( $valores );
-			}else{
-			$cont=0;
-			$PERMISO = $USUARIO->comprobarPermisos();
-						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+			}else{//si el usuario no es administrador
+			$cont=0;//iniciamos la variable cont a 0
+			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
+						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos 
 	
-			if($fila['IdFuncionalidad']=='8'){
-				if($fila['IdAccion']=='4'){
-			    //Crea una vista add para ver la tupla
-			     $cont=$cont+1;
+			if($fila['IdFuncionalidad']=='8'){//miramos si el usuario tiene la funcionalidad de gestion de entregas
+				if($fila['IdAccion']=='4'){//miramos si el usuario tiene la acción de showcurrent
+			    
+			     $cont=$cont+1;//incementamos la variable
 				}
 			   }
 			}
-			if($cont>=1){
+			if($cont>=1){//si la variable cont es 1 y por tanto el usuario tiene dicho permiso
 		//Variable que almacena un objeto model con el login
 		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
 		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		//Creación de la vista showcurrent
 		new USUARIO_SHOWCURRENT( $valores );
-		}else{
+		}else{//si el usuario no tiene dicho permiso se muestra un mensaje indicandolo
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
 		}
 		break;
         
-    case 'SUBIR_ENTREGA':
-		if(permisosAcc($_SESSION['login'],8,10)==true){		
-           $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
-           $PERMISO = $USUARIO->comprobarPermisos();
+    case 'SUBIR_ENTREGA'://caso para añadir una entrega cuando un usuario entra a gestión de entregas
+		if(permisosAcc($_SESSION['login'],8,10)==true){	//miramos si el usuario tiene dicho permiso	
+           $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto tipo USU_GRUPO
+           $PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para ver los permisos que tiene este usuario
         
-          $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],'','','');
-          $respuesta=$ENTREGA->comprobarCreacion();
+          $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],'','','');//creamos un objeto de tipo ENTREGA_MODEL
+          $respuesta=$ENTREGA->comprobarCreacion();//llamamos a esta función para ver si la entrega ya esta creada
         
-        if($respuesta == false){
-              $alias = aleatorio();
-              $comprobar=$ENTREGA->buscarAlias($alias);
+        if($respuesta == false){//si la entrega no esta creada
+              $alias = aleatorio();//asignamos un alias aleatorio
+              $comprobar=$ENTREGA->buscarAlias($alias);//llamamos a esta función para saber si el alias esta repetido
              
-              while($comprobar == true){
-                 $alias = aleatorio();
-                $buscar=buscarAlias($Alias_Usuario);
+              while($comprobar == true){//mienttras el alias este repetido 
+                 $alias = aleatorio();//asignamos un alias
+                $buscar=buscarAlias($Alias_Usuario);//miramos si ese alias esta repetido
             }
-                  $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],$alias,'','');
-                   $ENTREGA->ADD();
+                  $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],$alias,'','');//se crea un objeto de tipo ENTREGA_MODEL
+                   $ENTREGA->ADD();//añadimos la entrega
          }
           
                   
-         $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],'','','');
-         $datos=$ENTREGA->SEARCH2();
+         $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],'','','');//creamos un objeto de tipo ENTREGA_MODEL
+         $datos=$ENTREGA->SEARCH2();//llamamos a esta función para obtener todas las entregas
        // var_dump($datos);
         //exit;
-          $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');
-          new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,false */);
-		}else{
+          $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');//en un array almacenamos los campos a mostrar
+          new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,false */);//mostramos la vista showall 
+		}else{//si el usuario no tiene dicho permiso se indica
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
         break;
         
 	default: //Caso que se ejecuta por defecto
-	if(comprobarAdministrador($_SESSION['login'])==true){        
+	if(comprobarAdministrador($_SESSION['login'])==true){  //miramos si el usuario es administrador      
 		if ( !$_POST ) {//Si no se han recibido datos 
-                  $ENTREGA = new ENTREGA_MODEL( '','', '', '', '');
+                  $ENTREGA = new ENTREGA_MODEL( '','', '', '', '');//creamos un objeto de tipo ENTREGA_MODEL
 		//Si se reciben datos
 		} 
-        else {
-			      $ENTREGA = get_data_form();
+        else {//Si  se han recibido datos 
+			      $ENTREGA = get_data_form();//creamos un objeto de tipo ENTREGA_MODEL pasandole los parametros
 		}
 		//Variable que almacena los datos de la busqueda
         $datos = $ENTREGA->SEARCH();
@@ -418,7 +418,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array('login','NombreTrabajo','Alias','Horas','Ruta');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,true */);
-			}else{
+			}else{//si el usuario no tiene dicho permiso se le indica con un mensaje
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
 			}
 }
