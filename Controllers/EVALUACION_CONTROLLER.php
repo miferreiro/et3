@@ -299,7 +299,7 @@ switch ( $_REQUEST[ 'action' ] ) {
         break;
     
    
-    case 'MOSTAR_CORRECCION_ET'://caso por defecto con vista SHOWALL
+    case 'MOSTRAR_CORRECCION_ET'://caso por defecto con vista SHOWALL
     if(permisosAcc($_SESSION['login'],12,7)==true){	
         $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
         $lista = array('login','IdTrabajo','Entrega');//se crea un arrray con los atributos que queremos mostrar
@@ -335,7 +335,7 @@ switch ( $_REQUEST[ 'action' ] ) {
         break;
         
         
-     case 'MOSTAR_CORRECCION_QA'://caso por defecto con vista SHOWALL
+     case 'MOSTRAR_CORRECCION_QA'://caso por defecto con vista SHOWALL
 	    if(permisosAcc($_SESSION['login'],12,14)==true){	
         $CORRECION =new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
         $lista = array('LoginEvaluador','IdTrabajo');//se crea un arrray con los atributos que queremos mostrar
