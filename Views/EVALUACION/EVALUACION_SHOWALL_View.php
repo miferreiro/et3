@@ -64,7 +64,7 @@ class EVALUACION_SHOWALL {
 <?php 
 					if ($fila[ $atributo ]==$fila['ComenIncorrectoA'] || $fila[ $atributo ]==$fila['ComentIncorrectoP']) {
 ?>
-						<textarea id="" maxlength="300" cols="30" rows="7" readonly><?php echo $fila[ $atributo ] ?></textarea>
+						<textarea id="" maxlength="300" cols="32" rows="8" readonly><?php echo $fila[ $atributo ] ?></textarea>
 <?php
 					} else {
 							echo $fila[ $atributo ];
