@@ -293,7 +293,7 @@ class USUARIO_MODEL{ //declaración de la clase
         
         $dependencias7 = null;//inicializamos la variable a null
         
-        $sql = "SELECT NombreTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ENTREGA ET, TRABAJO T WHERE AliasEvaluado = Alias AND ET.IdTrabajo = T.IdTrabajo AND login = '$this->login';";//se construye la sentencia sql
+        $sql = "SELECT NombreTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ENTREGA ET, TRABAJO T, USUARIO U WHERE AliasEvaluado = Alias AND ET.IdTrabajo = T.IdTrabajo AND U.login = ET.login AND ET.login = '$this->login'";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
             $dependencias7 = $resultado;//asignamos las dependencias
