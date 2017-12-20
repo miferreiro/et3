@@ -20,7 +20,7 @@ if(permisosAcc($_SESSION['login'],13,7)==true){//miramos si este usuario tiene p
 switch($_REQUEST['action']){//Estructura de control, que realiza un determinado caso dependiendo del valor action
         
         
-    case 'RESULTADOS'://caso donde se muestran todas las correciones por parte del alumno y profesor
+    case 'RESULTADOS_ENTREGAS'://caso donde se muestran todas las correciones por parte del alumno y profesor
         $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
         $lista=array('NombreTrabajo','NombreTrabajo','CorrectoP','ComentIncorrectoP');//se crea un arrray con los atributos que queremos mostrar
         
@@ -30,13 +30,13 @@ switch($_REQUEST['action']){//Estructura de control, que realiza un determinado 
         break;
     
    
-    default://caso por defecto con vista SHOWALL
+    case 'MOSTAR_CORRECCION_ET'://caso por defecto con vista SHOWALL
         $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
         $lista = array('login','IdTrabajo','Entrega');//se crea un arrray con los atributos que queremos mostrar
         $datos =$CORRECION->mostrarEntregas($_SESSION['login']);//llamamos a esta función para mostrar todas las entregas que realizó dicho usuario
 
         new CORRECION_ENTREGA($lista,$datos);//se nos muestra la vista 
-        
+        break;
     /*
             SELECT DISTINCT E.IdTrabajo,LoginEvaluador,IdHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET WHERE 
         ( E.IdTrabajo = 'QA2' && Alias = AliasEvaluado && login='a') GROUP BY IdHistoria;
