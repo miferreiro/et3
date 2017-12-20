@@ -226,7 +226,8 @@ array(
 	'Lider' => 'Lider',
 	
 	'Evaluación resultados de QAs de la entrega ' => 'Evaluación resultados de QAs de la entrega ',
-	' para el alias ' => ' para el alias ' 
+	' para el alias ' => ' para el alias ',
+	'Ya existe un usuario con el Correo introducido en la base de datos' => 'Ya existe un usuario con el Correo introducido en la base de datos'
 	
 	
 	
