@@ -71,7 +71,7 @@ class EVALUACION_SHOWCURRENT {
 						<?php echo $strings['ComenIncorrectoA'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['ComenIncorrectoA']?>
+						<textarea id="" maxlength="300" cols="30" rows="7" readonly><?php echo $this->valores['ComenIncorrectoA']?></textarea>
 					</td>
 				</tr>
                 
@@ -89,7 +89,7 @@ class EVALUACION_SHOWCURRENT {
 						<?php echo $strings['ComentIncorrectoP'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['ComentIncorrectoP']?>
+						<textarea id="" maxlength="300" cols="30" rows="7" readonly><?php echo $this->valores['ComentIncorrectoP']?></textarea>
 					</td>
 				</tr>
                 

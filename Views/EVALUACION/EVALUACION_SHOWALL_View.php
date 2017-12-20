@@ -62,7 +62,13 @@ class EVALUACION_SHOWALL {
 ?>
 					<td>
 <?php 
+					if ($fila[ $atributo ]==$fila['ComenIncorrectoA'] || $fila[ $atributo ]==$fila['ComentIncorrectoP']) {
+?>
+						<textarea id="" maxlength="300" cols="30" rows="7" readonly><?php echo $fila[ $atributo ] ?></textarea>
+<?php
+					} else {
 							echo $fila[ $atributo ];
+					}
 							$id = $fila['IdTrabajo'];
 							$al = $fila['AliasEvaluado'];
 
