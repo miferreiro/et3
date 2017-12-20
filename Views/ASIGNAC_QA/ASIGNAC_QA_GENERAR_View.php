@@ -42,13 +42,7 @@ class ASIGNAC_QA_GENERAR {
 							<?php echo $strings['Número de QAs'];?>
 						</th>
 						<td class="formThTd">
-						<select name="num" >
-							<option value="5">5</option>
-					        <option value="4">4</option>
-					        <option value="3">3</option>
-					        <option value="2">2</option>
-					        <option value="1">1</option>
-						</select>
+						<input type="text" id="num" name="num" placeholder="<?php echo $strings['Escriba aqui...']?>" value="5" maxlength="3" size="3" required onBlur="comprobarVacio(this) && comprobarEntero(this, 0, 999) "/>
 					</tr>
 
 					<tr>
