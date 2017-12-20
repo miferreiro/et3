@@ -190,7 +190,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($cont==1){//si la variable cont es 1, por tanto si tiene el permiso
 			$USUARIO= new USUARIO_MODEL('','','','','','','','');//creamos un objeto de tipo USUARIO_MODEL
 			$USUARIOS=$USUARIO->SEARCH();	//llamamos al método SEARCH 			
-			$TRABAJO= new TRABAJO('','','','','');/creamos un objeto de tipo TRABAJO
+			$TRABAJO= new TRABAJO('','','','','');//creamos un objeto de tipo TRABAJO
 			$TRABAJOS=$TRABAJO->SEARCH2();//llamamos al método SEARCH2 de TRABAJO
 				new ENTREGA_ADD($USUARIOS,$TRABAJOS);//instanciamos una vista para añadir una entrega con un select de todos los ususarios y trabajos
 			}else{//si el usuario no tiene dicho permiso , se muestra un mensaje indicandolo
