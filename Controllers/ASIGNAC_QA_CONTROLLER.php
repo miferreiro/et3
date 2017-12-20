@@ -195,7 +195,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			if(permisosAcc($_SESSION['login'],6,0)==true){
 			$TRABAJO= new TRABAJO('','','','','');
-			$TRABAJOS=$TRABAJO->SEARCH2();
+			$TRABAJOS=$TRABAJO->SEARCH3();
 			$USU= new ENTREGA_MODEL('','','','','');
 			$USU=$USU->obtenerUsuarios();
 			new ASIGNAC_QA_ADD($TRABAJOS,$USU);
@@ -204,9 +204,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		} else {
 			$ASIGNACION = get_data_form();
-			$USU= new ENTREGA_MODEL('','','','','');
-			$Ali=$USU->obtenerAlias($_REQUEST['LoginEvaluado']);
-			$respuesta = $ASIGNACION->ADD2($Ali);
+			$respuesta = $ASIGNACION->ADD2();
 			new MESSAGE( $respuesta, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 		}
 		break;

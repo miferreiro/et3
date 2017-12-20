@@ -71,17 +71,16 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 			return "Asignacion generada con exito";
 	} //fin del método ADD
 	
-	function ADD2($ALIASC){
-       if ( ( $this->LoginEvaluador<>$this->LoginEvaluado && $this->AliasEvaluado == $ALIASC ) ) {
-			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM ASIGNAC_QA WHERE (  IdTrabajo ='$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' &&  AliasEvaluado = '$this->AliasEvaluado')";//se construye la sentencia sql
-
+	function ADD2(){
+			//Variable que almacena la consulta de si existen los datos en la base de datos
+	       $sql = "SELECT * FROM ASIGNAC_QA WHERE (  LoginEvaluador = '$this->LoginEvaluador' && IdTrabajo = '$this->IdTrabajo' && AliasEvaluado = '$this->AliasEvaluado')";
+            
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
 			} else { // si la ejecución de la query no da error
-                if ($result->num_rows == 0){
-			//Variable que almacena sentencia sql
-			$sql = "INSERT INTO ASIGNAC_QA (
+                if ($result->num_rows == 0){ // miramos si el resultado de la consulta es vacio
+                    //Variable que almacena la sentencia de inserción de la consulta
+					$sql = "INSERT INTO ASIGNAC_QA (
 									  IdTrabajo,
 									  LoginEvaluador,
 									  LoginEvaluado,
@@ -91,22 +90,16 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
                                 	 '$this->LoginEvaluador',
 									 '$this->LoginEvaluado',
 									 '$this->AliasEvaluado'
-									 )";
-
-			//ejecutamos la consulta
-			$this->mysqli->query( $sql );
-			return "Asignacion generada con exito";
-	   }else{//si el resultado de la consulta no es vacío
-            return 'Ya existe el grupo introducido en la base de datos'; // ya existe
-       }
+									 )";             
+                } else {//si el número de tuplas no es 0
+                        return 'Ya existe en la base de datos'; // ya existe
                 }
-					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
-						return 'Error en la inserción';
-					} else { //si no da error en la insercion devolvemos mensaje de exito
-						return 'Inserción realizada con éxito'; //operacion de insertado correcta 	   
-	} 
-	}
-	   return 'Error en la inserción';
+            }
+			if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
+				return "Error en la inserción";
+			} else { //si no da error en la insercion devolvemos mensaje de exito
+						return 'Inserción realizada con éxito'; //operacion de insertado correcta
+			}
 	}//fin del método ADD
     //función que borra una tupla de una QA
 	function DELETE() {
@@ -226,7 +219,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 		$result = $this->mysqli->query( $sql );// se ejecuta la query
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
-			
+				//Variable que almacena la sentencia de update
 				$sql = "UPDATE ASIGNAC_QA SET 
 					 IdTrabajo = '$this->IdTrabajo',
 					 LoginEvaluador = '$this->LoginEvaluador',
