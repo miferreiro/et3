@@ -5,7 +5,13 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de un usuario
 */
-    	session_start();
+    session_start();
+    include '../Functions/Authentication.php'; //incluye el contenido de la función de autentificación
+	//Si no esta autenticado se redirecciona al index
+	if (!IsAuthenticated()){
+		//Redireción al index
+ 		header('Location:../index.php');
+	}
     	include '../Views/Header.php';
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		

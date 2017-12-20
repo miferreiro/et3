@@ -7,6 +7,12 @@
 	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas.
 */
 session_start(); //solicito trabajar con la session
+include '../Functions/Authentication.php'; //incluye el contenido de la función de autentificación
+//Si no esta autenticado se redirecciona al index
+if (!IsAuthenticated()){
+	//Redireción al index
+ 	header('Location:../index.php');
+}
 
 include '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/USU_GRUPO_MODEL.php';//incluye el contendio del modelo usuarios grupo
