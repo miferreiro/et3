@@ -12,6 +12,7 @@ include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuar
 include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
 include_once '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Functions/permisosAcc.php';
+include '../Functions/comprobarAdministrador.php';
 include '../Views/NOTAS/NOTAS_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/NOTAS/GENERAR_NOTA_ET_View.php'; //incluye la vista del showall
 include '../Views/NOTAS/GENERAR_NOTA_QA_View.php'; //incluye la vista del showall
@@ -257,11 +258,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array('NombreTrabajo','login','NotaTrabajo');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-            if($ADMIN == true){
-                new NOTAS_SHOWALL( $lista, $datos,$notas,false );
+            if(comprobarAdministrador($_SESSION['login']) == true){
+                new NOTAS_SHOWALL( $lista, $datos,false );
             }
             else
-                 new NOTAS_SHOWALL( $lista, $datos,$notas,true );
+                 new NOTAS_SHOWALL( $lista, $datos,true );
 			
 		}
 		//Final del bloque
