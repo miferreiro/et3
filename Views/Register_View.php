@@ -1,7 +1,7 @@
 <?php
 /*  Archivo php
 	Nombre: Register_View.php
-	Autor: 	fta875
+	Autor: 	Miguel Ferreiro
 	Fecha de creación: 23/10/2017 
 	Función: vista del formulario de registro(register) realizada con una clase donde se muestran todos los campos necesarios para añadir un nuevo usuario a la base de datos
 */
@@ -31,13 +31,13 @@ class Register {
 						<th class="formThTd">
 							<?php echo $strings['Contraseña']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="20" size="25" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'20') && comprobarTexto(this,'20')"/>
+						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="20" size="20" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'20') && comprobarTexto(this,'20')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['DNI']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="DNI" name="DNI" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="9" size="11" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarDni(this)"/>
+						<td class="formThTd"><input type="text" id="DNI" name="DNI" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarDni(this)"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
