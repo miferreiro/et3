@@ -288,7 +288,7 @@ switch ( $_REQUEST[ 'action' ] ) {
     case 'RESULTADOS_ENTREGAS'://caso donde se muestran todas las correciones por parte del alumno y profesor
     if(permisosAcc($_SESSION['login'],12,7)==true){	
         $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
-        $lista=array('NombreTrabajo','NombreTrabajo','CorrectoP','ComentIncorrectoP');//se crea un arrray con los atributos que queremos mostrar
+        $lista=array('NombreTrabajo','CorrectoP','ComentIncorrectoP');//se crea un arrray con los atributos que queremos mostrar
         
         $datos =$CORRECION->mostrarCorrecion1($_REQUEST['IdTrabajo'],$_REQUEST['login'],$_REQUEST['Entrega']);//llamamos  a esta fución para que nos muestre todas las correciones de nuestras ETs por parte de alumnos y profesor
         
