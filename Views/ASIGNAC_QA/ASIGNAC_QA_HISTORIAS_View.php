@@ -40,7 +40,7 @@ class ASIGNAC_QA_HISTORIAS {
 
 					<tr>
 						<td colspan="2">
-							<button type="submit" name="action" value="HISTORIAS"><img src="../Views/icon/historias.png" alt="<?php echo $strings['Confirmar formulario']?>" width="32" height="32" /></button>
+							<button type="submit" name="action" value="HISTORIAS"><img src="../Views/icon/generar.png" alt="<?php echo $strings['Confirmar formulario']?>" width="32" height="32" /></button>
 			</form>
 						<form action='../Controllers/ASIGNAC_QA_CONTROLLER.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
