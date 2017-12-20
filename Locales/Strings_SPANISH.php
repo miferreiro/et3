@@ -2,7 +2,7 @@
 /*
 	Archivo php
 	Nombre: Strings_SPANISH.php
-	Autor: 	fta875
+    Autores:Miguel Ferreiro,Alejandro Vila,Brais Rodriguez,Jonatan Couto,Brais Santos
 	Fecha de creación: 23/10/2017 
 	Función: contiene el array que permite la traducción de los textos a español
 */
