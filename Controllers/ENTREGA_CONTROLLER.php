@@ -5,6 +5,12 @@
     Fecha de creación:28/11/2017
 */
 session_start(); //solicito trabajar con la session
+include '../Functions/Authentication.php'; //incluye el contenido de la función de autentificación
+//Si no esta autenticado se redirecciona al index
+if (!IsAuthenticated()){
+	//Redireción al index
+ 	header('Location:../index.php');
+}
 
 include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
 include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios

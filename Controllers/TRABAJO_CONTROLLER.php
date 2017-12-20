@@ -8,6 +8,12 @@
 */
 
 session_start();//solicito trabajar con la sesión
+include '../Functions/Authentication.php'; //incluye el contenido de la función de autentificación
+//Si no esta autenticado se redirecciona al index
+if (!IsAuthenticated()){
+	//Redireción al index
+ 	header('Location:../index.php');
+}
 
 include '../Models/TRABAJO_MODEL.php';//incluye el contendio del modelo TRABAJO_MODEL
 include '../Functions/permisosAcc.php';//incluye el contendio de la función permisosAcc
