@@ -98,8 +98,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$mensaje = $EVALUACION->ADD();//Añadimos los datos a la tabla
 				}
 			}
+			//Variable que almacena la accion a la que tiene que volever 
+			$at = "?action=HISTORIAS";
 		//crea una vista mensaje con la respuesta y la dirección de vuelta
-		new MESSAGE( $mensaje, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+		new MESSAGE( $mensaje, '../Controllers/ASIGNAC_QA_CONTROLLER.php'.$at );
 		//new MESSAGE( 'Asignacion generada con exito', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 		//Finaliza el bloque
 		}
@@ -127,16 +129,20 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$TRABAJO = new TRABAJO($_REQUEST['IdTrabajo'], '', '', '', '');
 		//Si no se encuentra la ET que se desea generar, muestra un mensaje y no se realiza
 		if ($TRABAJO->DevolverArray($_REQUEST['IdTrabajo']) == null) {
+			//Variable que almacena la accion a la que tiene que volever 
+			$at = "?action=GENERAR";
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( 'No hay entregas para realizar la asignación', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+			new MESSAGE( 'No hay entregas para realizar la asignación', '../Controllers/ASIGNAC_QA_CONTROLLER.php'.$at );
 		}
 		//Variable que almacena el array de las tuplas de entrega.
 		$miarray = $TRABAJO->DevolverArray($_REQUEST['IdTrabajo']);
 		//Comprobamos que haya un minimo de entregas para generar el número solicitado
 		//Si no hay un minimo enviamos mensaje de que no se puede generar
 		if (count($miarray) <= $_REQUEST['num']) {
+			//Variable que almacena la accion a la que tiene que volever 
+			$at = "?action=GENERAR";
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( 'No hay suficiente número de entregas para asignar el número de QAs solicitado', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+			new MESSAGE( 'No hay suficiente número de entregas para asignar el número de QAs solicitado', '../Controllers/ASIGNAC_QA_CONTROLLER.php' .$at );
 		//Si hay un número suficiente de entregas inserta las qas en la tabla asignac_qa
 		} else {
 			//Variable que guarda el nombre de la QA
@@ -175,8 +181,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 					
 				}
 			}
+			//Variable que almacena la accion a la que tiene que volever 
+			$at = "?action=GENERAR";
 			//crea una vista mensaje con la respuesta y la dirección de vuelta 
-			new MESSAGE( $resultado, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+			new MESSAGE( $resultado, '../Controllers/ASIGNAC_QA_CONTROLLER.php' . $at);
 			//new MESSAGE( 'Asignacion generada con exito', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
 			//Finaliza el bloque
 		}
