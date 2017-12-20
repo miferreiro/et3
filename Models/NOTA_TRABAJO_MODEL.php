@@ -4,7 +4,7 @@
  Función: modelo de datos definida en una clase que permite interactuar con la base de datos
  Fecha de creación:4/12/2017
 */
-class NOTAS_MODEL{ //declaración de la clase
+class NOTA_TRABAJO_MODEL{ //declaración de la clase
 
 	var $IdTrabajo;//declaracion del atributo IdTrabajo
     var $login;//declaracion del atributo login

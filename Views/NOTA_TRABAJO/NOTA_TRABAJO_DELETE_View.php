@@ -1,7 +1,7 @@
 <?php
     //vista que muestra una tabla con todos los atributos de la clase NOTA_TRABAJO a borrar.
     //Fecha de creación:28/11/2017
-    class NOTAS_DELETE{
+    class NOTA_TRABAJO_DELETE{
         
         
         function __construct($valores){
@@ -56,7 +56,7 @@
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
-			<form action="../Controllers/NOTAS_CONTROLLER.php" method="post" style="display: inline">
+			<form action="../Controllers/NOTA_TRABAJO_CONTROLLER.php" method="post" style="display: inline">
 				<input type="hidden" name="login" value="<?php echo $this->valores['login'] ?>" />
                 
                 <input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo'] ?>" />
@@ -64,7 +64,7 @@
                 
                 <button type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
-			<form action='../Controllers/NOTAS_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/NOTA_TRABAJO_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>

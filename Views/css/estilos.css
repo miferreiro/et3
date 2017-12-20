@@ -60,31 +60,7 @@
 		background: #CCC;
 	   
     }
-	  @media all and (max-width:1100px) {
-	  
-	   #main, #page {
-			-webkit-flex-flow: column;
-				flex-flow: column;
-		}
 
-	   #main > article{
-			-webkit-order: 0;
-				order: 0;
-		}
-	   #main > nav{
-			-webkit-order: 0;
-				order: 0;
-		  
-		}
-	  
-	   #main > nav, aticle {
-			min-height: 300px;
-		}
-		  #main > footer{
-			  min-height: 30px;
-		  }
-		
-	   }
 	h1{
 		text-align:center;
 		font-size: 45px;

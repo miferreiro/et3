@@ -3,7 +3,7 @@
 	Fecha de creación: 4/12/2017 
 	Función: vista de el formulario de buscar(search) realizada con una clase donde se muestran todos los campos a buscar 
 */
-class NOTAS_SEARCH {
+class NOTA_TRABAJO_SEARCH {
 
 	function __construct() {
 		$this->render();
@@ -17,7 +17,7 @@ class NOTAS_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
-			<form id="SEARCH" name="SEARCH" action="../Controllers/NOTAS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchNotas()">
+			<form id="SEARCH" name="SEARCH" action="../Controllers/NOTA_TRABAJO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchNotas()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -42,7 +42,7 @@ class NOTAS_SEARCH {
 						<td colspan="2">
 							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
-						<form action='../Controllers/NOTAS_CONTROLLER.php' method="post" style="display: inline">
+						<form action='../Controllers/NOTA_TRABAJO_CONTROLLER.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>
