@@ -307,10 +307,10 @@ INSERT INTO `ACCION` (`IdAccion`, `NombreAccion`, `DescripAccion`) VALUES
 ('7', 'CONSULTETS', 'CONSULTETS'),
 ('8', 'GENQAS', 'GENQAS'),
 ('9', 'GENHIST', 'GENHIST'),
-('10', 'SOLOUSU', 'SOLOUSU');
-('11', 'SOLOADMIN', 'SOLOADMIN');
-('12', 'EDITUSU', 'EDITUSU');
-('13', 'GENET', 'GENET');  
+('10', 'SOLOUSU', 'SOLOUSU'),
+('11', 'SOLOADMIN', 'SOLOADMIN'),
+('12', 'EDITUSU', 'EDITUSU'),
+('13', 'GENET', 'GENET'),  
 ('14', 'CONSULTQAS', 'CONSULTQAS'); 
   
 INSERT INTO `FUNCIONALIDAD` (`IdFuncionalidad`, `NombreFuncionalidad`, `DescripFuncionalidad`) VALUES
