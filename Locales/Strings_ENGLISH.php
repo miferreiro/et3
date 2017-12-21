@@ -244,7 +244,16 @@ array(
 
 	'Evaluación resultados de QAs de la entrega ' => 'Evaluation results of QAs of the delivery ',
 	' para el alias ' => ' for the alias ',
-	'Ya existe un usuario con el Correo introducido en la base de datos' => 'There is already a user with the Mail entered in the database'
+	'Ya existe un usuario con el Correo introducido en la base de datos' => 'There is already a user with the Mail entered in the database',
+
+
+	'Ya existe esa funcionalidad  en la base de datos' => 'That functionality already exists in the database',
+	'Inserta un valor' => 'Insert a value',
+	'Ya existe la historia introducida en la base de datos' => 'The history already entered in the database already exists',
+	'ya está almacenada esta nota' => 'this note is already stored',
+	'Error en la consulta sobre la base de datos, revise los campos introducidos' => 'Error in the query on the database, check the entered fields',
+	'Ya existe el trabajo introducido en la base de datos' => 'The work entered in the database already exists',	
+	'Error en la inserción, login ya en uso' => 'Insertion error, login already in use'
 
 	)
 ;
