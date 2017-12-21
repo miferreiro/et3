@@ -61,10 +61,8 @@ class ENTREGA_EDIT {
                 <tr>
                     <input type="hidden" id="ruta2" name="ruta2" value="<?php echo $this->valores['Ruta']?>"/>
                     
-						<td colspan="2">
+						<td >
 							<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button><!--boton para confirmar borrado-->
-			</form>
-					
 <?php if((permisosAcc($_SESSION['login'],8,5)==false) && (permisosAcc($_SESSION['login'],8,10)==true)){ ?>
 			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
 			    <input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo']?>">
@@ -76,7 +74,11 @@ class ENTREGA_EDIT {
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>	
 <?php } ?>
+					</td>
 					</tr>
+			</form>
+					
+
 				</table>
 		</div>
 <?php
