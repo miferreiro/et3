@@ -228,9 +228,16 @@ array(
 	
 	'Evaluación resultados de QAs de la entrega ' => 'Resultados de avaliación dos QA da entrega ',
 	' para el alias ' => ' para o alias ',
-	'Ya existe un usuario con el Correo introducido en la base de datos' => 'Xa existe un usuario co Correo introducido na base de datos'
+	'Ya existe un usuario con el Correo introducido en la base de datos' => 'Xa existe un usuario co Correo introducido na base de datos',
 	
-	
+
+	'Ya existe esa funcionalidad  en la base de datos' => 'Xa existe a funcionalidad  na base de datos',
+	'Inserta un valor' => 'Introduce un valor',
+	'Ya existe la historia introducida en la base de datos' => 'Xa existe a historia introducida na base de datos',
+	'ya está almacenada esta nota' => 'Xa está almacenada esta nota',
+	'Error en la consulta sobre la base de datos, revise los campos introducidos' => 'Erro na consulta sobre a base de datos, revise os campos introducidos',
+	'Ya existe el trabajo introducido en la base de datos' => 'Xa existe o traballo introducido na base de datos',	
+	'Error en la inserción, login ya en uso' => 'Erro na inserción, o login esta en uso'
 	
 	)
 ;
