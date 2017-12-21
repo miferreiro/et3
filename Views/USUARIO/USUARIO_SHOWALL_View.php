@@ -29,15 +29,7 @@ $DELETE=false;
 $SHOW=false;
 $ASIGN=false;
 $GESTUSU=false;
-$GESTGRUP=false;
-$GESTFUNC=false;
-$GESTACC=false;
-$GESTPERM=false;		
-$GESTQAS=false;		
-$GESTENTR=false;		
-$GESTHIST=false;
-$GESTTRAB=false;		
-$GESTEVAL=false;		
+		
 		
 	if($admin==true){
 			    $ADD=true;	
@@ -70,19 +62,6 @@ $GESTEVAL=false;
 			    $ASIGN=true;	
 			   }
 			   }
-	 if($fila['IdFuncionalidad']=='2'){
-				$GESTGRUP=true;
-			   }
-	 if($fila['IdFuncionalidad']=='5'){
-				$GESTPERM=true;
-			   }
-	 if($fila['IdFuncionalidad']=='3'){
-				$GESTFUNC=true;
-			   }
-	 if($fila['IdFuncionalidad']=='4'){
-				$GESTACC=true;
-			   }
-
 			}
 	include '../Views/Header.php';			
 ?>
