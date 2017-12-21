@@ -134,6 +134,17 @@
 		display:block;
 	}
 	
+	.ajustar{
+		width: 300px;
+		float: left;
+		white-space: normal !important;
+ 		word-wrap: break;
+ 		hyphens: auto;
+ 		overflow-wrap: break-word;
+	}
+
+	
+
 	table{
 		padding:1px;
 		margin-top:0px;
