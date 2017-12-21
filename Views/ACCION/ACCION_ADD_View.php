@@ -1,19 +1,23 @@
 <?php
 /*  Archivo php
 	Nombre: ACCION_ADD_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
+	Autor: 	Alejandro Vila
+	Fecha de creación: 23/11/2017 
+	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos.
 */
+
+//es la clase ADD de ACCION que nos permite añadir una accion
 class ACCION_ADD {
 
-	function __construct() {
-		$this->render();
+    
+	function __construct() {//es el constructor de la clase ACCION_ADD
+		$this->render();//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 	}
 
+   //En está función se mostrará el formulario ADD con los campos correspondientes
 	function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -51,7 +55,7 @@ class ACCION_ADD {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página 
 		}
 		}
 ?>

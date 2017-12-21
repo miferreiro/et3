@@ -34,12 +34,12 @@ include '../Views/EVALUACION/EVALUACION_RESULTADOS_ENTREGAS_View.php';//incluye 
 include '../Views/EVALUACION/EVALUACION_RESULTADO_QA_View.php'; //incluye el contendio de la vista CORRECION_QA
 include '../Views/EVALUACION/EVALUACION_RESULTADOS_QAS_View.php'; //incluye el contendio de la CORRECION_QA_RESULTADO
 include '../Views/EVALUACION/EVALUACION_MOSTRAR_CORRECCION_QA_View.php';//incluye el contendio de la CORRECION_QA_RESULTADOS
-include '../Views/EVALUACION/EVALUACION_SELECT_QA_View.php'; //incluye la vista del showall
-include '../Views/EVALUACION/EVALUACION_SELECT_ALL_QA_View.php'; //incluye la vista del showall
-include '../Views/EVALUACION/EVALUACION_USUARIO_EDIT_HISTORIAS_View.php'; //incluye la vista del showall
+include '../Views/EVALUACION/EVALUACION_EVALUACION_HISTORIAS_ASIGNADAS_View.php'; //incluye la vista del showall
+include '../Views/EVALUACION/EVALUACION_EVALUACION_HISTORIAS_View.php'; //incluye la vista del showall
+include '../Views/EVALUACION/EVALUACION_EDITUSU_View.php'; //incluye la vista del showall
 include '../Views/DEFAULT_View.php';//incluye la vista por defecto
-include '../Views/EVALUACION/EVALUACION_ADMIN_EVALUAR_View.php';//incluye la vista donde donde el administrador evalua
-include '../Views/EVALUACION/EVALUACION_USUARIO_EVALUAR_View.php';//incluye la vista donde donde el usuario evalua
+include '../Views/EVALUACION/EVALUACION_EVALUARADMIN_View.php';//incluye la vista donde donde el administrador evalua
+include '../Views/EVALUACION/EVALUACION_EVALUARUSU_View.php';//incluye la vista donde donde el usuario evalua
 
 
 //Esta función crea un objeto tipo EVALUACION_MODEL con los valores que se le pasan con $_REQUEST
