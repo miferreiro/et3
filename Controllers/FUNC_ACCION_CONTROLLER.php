@@ -138,7 +138,7 @@ switch ( $_REQUEST[ 'action' ] ) {//Si la variable action no tiene contenido le 
 			}
 			$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');//creamos un objeto de tipo FUNCIONALIDAD
 			$DatosFuncionalidad = $FUNCIONALIDAD->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);//llamamos a esta función para devolver los datos de una funcionalidad pasandole el IdFuncionalidad
-			$datos = $FUNC_ACCION->SEARC2H();//llamamos a la función SEARCH2 para buscar todas las FUNC_ACCION
+			$datos = $FUNC_ACCION->SEARCH2();//llamamos a la función SEARCH2 para buscar todas las FUNC_ACCION
 			$lista = array( 'NombreFuncionalidad','NombreAccion' );//metemos e un array los campos que queremos mostrar
 			new FUNC_ACCION_SHOWALL( $lista, $datos, $DatosFuncionalidad );//mostramos la vista SHOWALL de FUNC_ACCION
 		} else {//si el usuario no es administrador
