@@ -112,7 +112,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 					$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');
 				    $DatosGrupo= $GRUPO->recuperarGrupo($_REQUEST['IdGrupo']);
 					$Funcionalidad_accion= $FUNCIONALIDAD->recuperarFuncionalidades();
-					new PERMISO_ADD($_REQUEST['IdGrupo'],$Funcionalidad_accion);
+					new PERMISO_ADD($DatosGrupo,$Funcionalidad_accion);
 				} else {
 					new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 				}
@@ -157,8 +157,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 				}
 				if($cont==1){
 					$PERMISO = new PERMISO_MODEL( $_REQUEST['IdGrupo'], $_REQUEST['IdFuncionalidad'], $_REQUEST['IdAccion'], '', '', '');
+					$datos = $PERMISO->RellenaDatos();
 					$lista = array('NombreGrupo','NombreFuncionalidad','NombreAccion');
-				new PERMISO_DELETE($datos,$lista);
+					new PERMISO_DELETE($datos,$lista);
 				} else {
 					new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 				}

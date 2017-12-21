@@ -66,7 +66,7 @@ class PERMISO_ASSIGN {
 					<form action='../Controllers/PERMISO_CONTROLLER.php'>
 						<input type="hidden" name="IdGrupo" value="<?php echo $DatosGrupo[0][0]?>">
 						<input type="hidden" name="NombreGrupo" value="<?php echo $DatosGrupo[0][1]?>">
-						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="BUSCAR" /></button>
+						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Atras']?>" /></button>
 					</form>
 				</caption>
 			</table>
