@@ -65,7 +65,7 @@ que comprueba permisos para cada una de las acciones -->
 			<a href="../Controllers/ENTREGA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a>
 		</li>
 		<?php }else
-		                       if((permisosAcc($_SESSION['login'],8,10)==true)){ ?>
+		     if((permisosAcc($_SESSION['login'],8,10)==true)){ ?>
 		<li>
 			<a href="../Controllers/TRABAJO_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a>
 		</li>
@@ -103,6 +103,12 @@ que comprueba permisos para cada una de las acciones -->
 		 if((permisosAcc($_SESSION['login'],12,14)==true)){?>
 		<li>
 			<a href="../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_QA" class="primerNivel"><?php echo $strings['Consulta de correciones']; ?></a>
+		</li>
+		<?php }
+		 if((permisosAcc($_SESSION['login'],7,10)==true)){?>
+		<li>
+			<a href="../Controllers/NOTA_TRABAJO_CONTROLLER.php?action=SHOWMISNOTAS" class="primerNivel"><?php echo $strings['Consultar mis notas']; ?></a>
+
 		</li>
 		<?php }
 	if((permisosAcc($_SESSION['login'],6,8)==true)){ ?>

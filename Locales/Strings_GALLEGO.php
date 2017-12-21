@@ -43,6 +43,7 @@ array(
 	'Correo' => 'Correo',
 	'Direccion' => 'Dirección',
 	'Telefono' => 'Telefono',
+	'Consultar mis notas' => 'Consultar as miñas notas',
 	'email' => 'Correo electrónico',
 	'Fecha de Nacimiento' => 'Fecha de Nacemento',
 	'FechaNacimiento' => 'Fecha de Nacemento',

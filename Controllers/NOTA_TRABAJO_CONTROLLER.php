@@ -20,6 +20,7 @@ include_once '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo us
 include '../Functions/permisosAcc.php';
 include '../Functions/comprobarAdministrador.php';
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SHOWALL_View.php'; //incluye la vista del showall
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SHOWMISNOTAS_View.php'; //incluye la vista del showall
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_ENTREGA_View.php'; //incluye la vista del showall
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_QA_View.php'; //incluye la vista del showall
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SEARCH_View.php'; //incluye la vista search
@@ -284,29 +285,29 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		//Final del bloque
 		break;
+	case 'SHOWMISNOTAS'://Caso showcurrent
+		if(permisosAcc($_SESSION['login'],7,10)==true){           
+                      $NOTAS=new NOTA_TRABAJO_MODEL('',$_SESSION['login'],'');  
+                 	  $datos = $NOTAS->SEARCH2();
+		              //Variable que almacena array con el nombre de los atributos
+		              $lista = array('NombreTrabajo','login','NotaTrabajo');
+		              //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		              new NOTA_TRABAJO_SHOWMISNOTAS( $lista, $datos,true );
+		}else{
+			new USUARIO_DEFAULT();	
+			
+		}
+		//Final del bloque
+		break;
 	default: //Caso que se ejecuta por defecto
-	
-              $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
-              $ADMIN = $USUARIO->comprobarAdmin();
-              $NOTAS=new NOTA_TRABAJO_MODEL('','','');        
-        
-             if($ADMIN == true){
-                 
+             if(permisosAcc($_SESSION['login'],7,5)==true){
+  				$NOTAS=new NOTA_TRABAJO_MODEL('','','');                 
                 $datos = $NOTAS->SEARCH();
 		        //Variable que almacena array con el nombre de los atributos
 		        $lista = array('login','NombreTrabajo','NotaTrabajo');
                 
                 new NOTA_TRABAJO_SHOWALL( $lista, $datos,false );
                   
-            }
-            else if(permisosAcc($_SESSION['login'],7,5)==true){
-                
-                      $NOTAS=new NOTA_TRABAJO_MODEL('',$_SESSION['login'],'');  
-                 	  $datos = $NOTAS->SEARCH();
-		              //Variable que almacena array con el nombre de los atributos
-		              $lista = array('NombreTrabajo','login','NotaTrabajo');
-		              //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		              new NOTA_TRABAJO_SHOWALL( $lista, $datos,true );
             }else{
 				new USUARIO_DEFAULT();				
 			}

@@ -65,7 +65,7 @@ array(
 	'Introduzca un valor' => 'Enter a value',
 	'Borrado correctamente' => 'Correctly deleted',
 	'No existe' => 'does not exist',
-
+    'Consultar mis notas' => 'Check my notes',
 
 	'No existe en la base de datos' => 'Does not exist in the database',
 	'Error en la modificación' => 'Error in the modification',
