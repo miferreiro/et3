@@ -62,7 +62,7 @@ class EVALUACION_SHOWALL {
 ?>
 					
 <?php 
-					if ($fila[ $atributo ]==$fila['ComenIncorrectoA'] || $fila[ $atributo ]==$fila['ComentIncorrectoP']) {
+					if ($atributo == 'ComenIncorrectoA' || $atributo == 'ComentIncorrectoP') {
 					
 
 ?>
