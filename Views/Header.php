@@ -7,7 +7,6 @@
 	Función: contiene todas las características del header
 */
 	include_once '../Functions/Authentication.php';
-    include_once '../Functions/AuthenticationAdmin.php';
 	if (!isset($_SESSION['idioma'])) {
 		$_SESSION['idioma'] = 'SPANISH';
 
