@@ -60,15 +60,22 @@ class EVALUACION_SHOWALL {
 					$his = $fila['IdHistoria'];
 					foreach ( $lista as $atributo ) {
 ?>
-					<td>
+					
 <?php 
 					if ($fila[ $atributo ]==$fila['ComenIncorrectoA'] || $fila[ $atributo ]==$fila['ComentIncorrectoP']) {
+					
+
 ?>
-						<textarea id="" maxlength="300" cols="32" rows="8" readonly><?php echo $fila[ $atributo ] ?></textarea>
+						<td  >
+							<p class="ajustar"><?php echo $fila[ $atributo ] ?></p>
 <?php
 					} else {
-							echo $fila[ $atributo ];
+?>
+						<td>	
+<?php
+						echo $fila[ $atributo ];
 					}
+					
 							$id = $fila['IdTrabajo'];
 							$al = $fila['AliasEvaluado'];
 
