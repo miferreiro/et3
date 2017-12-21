@@ -21,14 +21,9 @@ include_once '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo US
 include '../Functions/permisosAcc.php';//incluye el contenido del fichero permisosAcc.php
 include '../Functions/comprobarAdministrador.php';//incluye el contenido del fichero comprobarAministrador.php
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SHOWALL_View.php'; //incluye la vista del showall
-<<<<<<< HEAD
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SHOWMISNOTAS_View.php'; //incluye la vista del showall
-include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_ENTREGA_View.php'; //incluye la vista del showall
-include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_QA_View.php'; //incluye la vista del showall
-=======
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_ENTREGA_View.php'; //incluye la vista del fichero NOTA_TRABAJO_GENERAR_NOTA_ENTREGA_View.php
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_QA_View.php'; //incluye la vista del fichero NOTA_TRABAJO_GENERAR_NOTA_QA_View.php
->>>>>>> 1017a1927bd785793cd8aafd6f4b9bb962d99cee
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SEARCH_View.php'; //incluye la vista search
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_ADD_View.php'; //incluye la vista add
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_EDIT_View.php'; //incluye la vista edit
