@@ -22,6 +22,7 @@ include '../Views/ENTREGA/ENTREGA_ADD_View.php'; //incluye la vista add
 include '../Views/ENTREGA/ENTREGA_EDIT_View.php'; //incluye la vista edit
 include '../Views/ENTREGA/ENTREGA_DELETE_View.php'; //incluye la vista delete
 include '../Views/ENTREGA/ENTREGA_SHOWCURRENT_View.php'; //incluye la vista showcurrent
+include '../Views/ENTREGA/ENTREGA_SHOWET_View.php'; //incluye la vista de las entregas
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include_once '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
@@ -408,9 +409,22 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
         break;
-        
+		
+	case 'SUBIRET':
+	    if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SHOWALL
+			$TRABAJO = new TRABAJO('','','','','');//se crea un objeto de tipo TRABAJO para buscar todos los trabajos
+		} 
+        else {//Si recibe datos los recoge y mediante la funcionalidad de TRABAJO_MODEL muestra  los datos.
+			$TRABAJO = get_data_form();//le pasamos a $TRABAJO un objeto de tipo TRABAJO_MODEL con los valores correspondientes
+		}
+		$datos = $TRABAJO->SEARCH2();//llamamos al metodo SEARCH2 para buscar todos los trabajos
+		$lista = array( 'NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );//metemos en un array todos los campos que queremos mostrar
+		new ENTREGA_SHOWET( $lista, $datos );//muestra una vista SHOWALL con todos los trabajos
+	break;
+		
+		
 	default: //Caso que se ejecuta por defecto
-	if(comprobarAdministrador($_SESSION['login'])==true){  //miramos si el usuario es administrador      
+	if(permisosAcc($_SESSION['login'],8,5)==true){  //miramos si el usuario es administrador      
 		if ( !$_POST ) {//Si no se han recibido datos 
                   $ENTREGA = new ENTREGA_MODEL( '','', '', '', '');//creamos un objeto de tipo ENTREGA_MODEL
 		//Si se reciben datos
@@ -424,9 +438,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array('login','NombreTrabajo','Alias','Horas','Ruta');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,true */);
-			}else{//si el usuario no tiene dicho permiso se le indica con un mensaje
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
-			}
+	}else{//si el usuario no tiene dicho permiso se muestra una vista por defecto sin nada
+		
+			new USUARIO_DEFAULT();
+		
+		}
 }
 
 ?>

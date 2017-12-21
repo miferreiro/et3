@@ -18,7 +18,8 @@ array(
 	'Elija sexo' => 'Choose sex',
 	'Hombre' => 'Man',
 	'Mujer' => 'Woman',
-
+    'Subir entrega' => 'Upload delivery',
+	
 	'Ya existe la acción introducida en la base de datos' => 'The action already entered in the database already exists',
 	'No puedes eliminar ese grupo' => 'You can not delete that group',
 	'Formulario de búsqueda' => 'Search form',
@@ -65,7 +66,7 @@ array(
 	'Introduzca un valor' => 'Enter a value',
 	'Borrado correctamente' => 'Correctly deleted',
 	'No existe' => 'does not exist',
-
+    'Consultar mis notas' => 'Check my notes',
 
 	'No existe en la base de datos' => 'Does not exist in the database',
 	'Error en la modificación' => 'Error in the modification',

@@ -156,17 +156,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $TRABAJO->SEARCH();//llamamos al metodo SEARCH para buscar todos los trabajos
 		$lista = array('NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );//metemos en un array todos los campos que queremos mostrar
 		new TRABAJO_SHOWALL( $lista, $datos );//muestra una vista SHOWALL con todos los trabajos
-		}else if(permisosAcc($_SESSION['login'],8,10)==true){//miramos si el usuario tiene dichos permisos
-				if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SHOWALL
-			$TRABAJO = new TRABAJO('','','','','');//se crea un objeto de tipo TRABAJO para buscar todos los trabajos
-		} 
-        else {//Si recibe datos los recoge y mediante la funcionalidad de TRABAJO_MODEL muestra  los datos.
-			$TRABAJO = get_data_form();//le pasamos a $TRABAJO un objeto de tipo TRABAJO_MODEL con los valores correspondientes
-		}
-		$datos = $TRABAJO->SEARCH2();//llamamos al metodo SEARCH2 para buscar todos los trabajos
-		$lista = array( 'NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );//metemos en un array todos los campos que queremos mostrar
-		new TRABAJO_SHOWALL( $lista, $datos );//muestra una vista SHOWALL con todos los trabajos
-		
 		}else{//si el usuario no tiene dicho permiso se muestra una vista por defecto sin nada
 		
 			new USUARIO_DEFAULT();

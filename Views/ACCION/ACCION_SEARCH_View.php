@@ -1,20 +1,22 @@
 <?php
 /*  Archivo php
 	Nombre: ACCION_SEARCH_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+    Autor: Alejandro Vila
+	Fecha de creación: 23/11/2017 
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a una acción de la base de datos
 */
+
+//Es la clase SEARCH de ACCION que nos permite buscar una accion
 class ACCION_SEARCH {
 
-	function __construct() {
-		$this->render();
+	function __construct() {//es el constructor de la clase ACCION_SEARCH
+		$this->render();//llamamos a la función render donde se mostrará el formulario SEARCH con los campos correspondientes
 	}
 
-	function render() {
+	function render() {//función render donde se mostrará el formulario SEARCH con los campos correspondientes
 
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -55,7 +57,7 @@ class ACCION_SEARCH {
 
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la pagina
 		}
 		}
 ?>

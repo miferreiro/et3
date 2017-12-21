@@ -58,20 +58,13 @@ que comprueba permisos para cada una de las acciones -->
 			<a href="../Controllers/ASIGNAC_QA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestión de QAs']; ?></a>
 		</li>
 		<?php }
-		 if(comprobarAdministrador($_SESSION['login']== true) || (permisosAcc($_SESSION['login'],8,10)==true)){?>
-
-		<?php if(comprobarAdministrador($_SESSION['login'])==true){ ?>
+	 if((permisosAcc($_SESSION['login'],8,5)==true)){ ?>
 		<li>
 			<a href="../Controllers/ENTREGA_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a>
 		</li>
-		<?php }else
-		                       if((permisosAcc($_SESSION['login'],8,10)==true)){ ?>
-		<li>
-			<a href="../Controllers/TRABAJO_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de entregas']; ?></a>
-		</li>
-		<?php } ?>
+		
 		<?php }
-		 if((permisosAcc($_SESSION['login'],7,5)==true)){?>
+	 if((permisosAcc($_SESSION['login'],7,5)==true)){?>
 		<li>
 			<a href="../Controllers/NOTA_TRABAJO_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de notas']; ?></a>
 
@@ -81,6 +74,11 @@ que comprueba permisos para cada una de las acciones -->
 	if((permisosAcc($_SESSION['login'],12,5)==true)){ ?>
 		<li>
 			<a href="../Controllers/EVALUACION_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de evaluaciones']; ?></a>
+		</li>
+		<?php }
+	 if((permisosAcc($_SESSION['login'],8,10)==true)){ ?>
+		<li>
+			<a href="../Controllers/ENTREGA_CONTROLLER.php?action=SUBIRET" class="primerNivel"><?php echo $strings['Subir entrega']; ?></a>
 		</li>
 		<?php }
 	if((permisosAcc($_SESSION['login'],12,10)==true)){ ?>
@@ -103,6 +101,12 @@ que comprueba permisos para cada una de las acciones -->
 		 if((permisosAcc($_SESSION['login'],12,14)==true)){?>
 		<li>
 			<a href="../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_QA" class="primerNivel"><?php echo $strings['Consulta de correciones']; ?></a>
+		</li>
+		<?php }
+		 if((permisosAcc($_SESSION['login'],7,10)==true)){?>
+		<li>
+			<a href="../Controllers/NOTA_TRABAJO_CONTROLLER.php?action=SHOWMISNOTAS" class="primerNivel"><?php echo $strings['Consultar mis notas']; ?></a>
+
 		</li>
 		<?php }
 	if((permisosAcc($_SESSION['login'],6,8)==true)){ ?>
