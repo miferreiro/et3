@@ -1,22 +1,26 @@
 <?php
 /*  Archivo php
 	Nombre: FUNCIONALIDAD_DELETE_View.php
-	Fecha de creación: 26/11/2017 
+	Autor: 	Alejandro Vila
+	Fecha de creación: 22/11/2017 
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una Funcionalidad y da la opción de borrarlos
 */
+
+//es la clase DELETE de FUNCIONALIDAD que nos permite borrar una funcionalidad
 class FUNCIONALIDAD_DELETE {
 
-	function __construct( $valores, $dependencias ) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		$this->render( $this->valores, $this->dependencias);
+	function __construct( $valores, $dependencias ){  //es el constructor de la clase FUNCIONALIDAD_DELETE
+		$this->valores = $valores;//pasamos el valor de los campos
+		$this->dependencias = $dependencias;//pasamos las dependencias de la tabla FUNCIONALIDAD a la hora de borrar
+		$this->render( $this->valores, $this->dependencias);//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
 
+//función render donde se mostrará el formulario DELETE con los campos correspondientes
 	function render( $valores, $dependencias ) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		$this->valores = $valores;//pasamos el valor de los campos
+		$this->dependencias = $dependencias;//pasamos las dependencias de la tabla FUNCIONALIDAD a la hora de borrar
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -55,7 +59,7 @@ class FUNCIONALIDAD_DELETE {
             <br>
               <?php
             
-            if($dependencias != null){
+            if($dependencias != null){//miramis si la tabla FUNCIONALIDAD tiene dependencias 
                 
                 echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
                ?>
@@ -70,7 +74,7 @@ class FUNCIONALIDAD_DELETE {
                     </th>
             <?php
             
-				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) {//este bucle se va a repetir mientras haya dependencias
             ?>
 			
             <tr>
@@ -108,7 +112,7 @@ class FUNCIONALIDAD_DELETE {
             
             
         
-            else{
+            else{//si la tabla FUNCIONALIDAD no tiene dependencias
                 ?>
             <br>   
 			<p style="text-align:center;">
@@ -126,7 +130,7 @@ class FUNCIONALIDAD_DELETE {
 		</div>
 <?php
             }
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
             
 	}
 }

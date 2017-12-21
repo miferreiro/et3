@@ -1,18 +1,21 @@
 <?php
 /*  Archivo php
 	Nombre: FUNCIONALIDAD_ADD_View.php
-	Fecha de creación: 26/11/2017 
+	Autor: 	Alejandro Vila
+	Fecha de creación: 22/11/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una funcionalidad a la base de datos
 */
+
+//es la clase ADD de FUNCIONALIDAD que nos permite añadir una funcionalidad
 class FUNCIONALIDAD_ADD {
 
-	function __construct() {
-		$this->render();
+	function __construct() {//es el constructor de la clase FUNCIONALIDAD_ADD
+		$this->render();//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 	}
 
-	function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render() {//función render donde se mostrará el formulario ADD con los campos correspondientes
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -49,7 +52,7 @@ class FUNCIONALIDAD_ADD {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página 
 		}
 		}
 ?>

@@ -1,20 +1,23 @@
 <?php
 /*  Archivo php
 	Nombre: FUNCIONALIDAD_SHOWCURRENT_View.php
-	Fecha de creación: 26/11/2017 
+	Autor: 	Alejandro Vila
+	Fecha de creación: 22/11/2017  
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una Funcionalidad
 */
+
+//es la clase SHOWCURRENT de FUNCIONALIDAD que nos permite mostrar todas funcionalidades
 class FUNCIONALIDAD_SHOWCURRENT {
 
-	function __construct( $lista ) {
-		$this->lista = $lista;
-		$this->render( $this->lista );
+	function __construct( $lista ) { //es el constructor de la clase FUNCIONALIDAD_SHOWCURRENT
+		$this->lista = $lista;//pasamos los campos de la tabla FUNCIONALIDAD
+		$this->render( $this->lista );//llamamos a la función render donde se mostrará el formulario showcurrent con los campos correspondientes
 	}
 
-	function render( $lista ) {
-		$this->lista = $lista;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render( $lista ) { //funcion donde se mostrará el formulario showcurrent con los campos correspondientes
+		$this->lista = $lista;//pasamos los campos de la tabla FUNCIONALIDAD
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<h2>
 			<?php echo $strings['Vista detallada'];?>
@@ -54,7 +57,7 @@ class FUNCIONALIDAD_SHOWCURRENT {
 		</table>
 
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 	}
 }
 ?>

@@ -1,19 +1,24 @@
 <?php
 /*  Archivo php
 	Nombre: FUNCIONALIDAD_SEARCH_View.php
-	Fecha de creación: 26/11/2017 
+	Autor: 	Alejandro Vila
+	Fecha de creación: 22/11/2017  
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a una funcionalidad de la base de datos
 */
+
+
+//es la clase SEARCH de FUNCIONALIDAD que nos permite buscar una funcionalidad
 class FUNCIONALIDAD_SEARCH {
 
-	function __construct() {
-		$this->render();
+	function __construct() { //es el constructor de la clase FUNCIONALIDAD_SEARCH
+		$this->render();//llamamos a la función render donde se mostrará el formulario search con los campos correspondientes
 	}
 
-	function render() {
+    
+	function render() {//función render donde se mostrará el formulario search con los campos correspondientes
 
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -54,7 +59,7 @@ class FUNCIONALIDAD_SEARCH {
 
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>
