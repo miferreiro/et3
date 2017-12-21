@@ -47,7 +47,7 @@ class TRABAJO_SHOWALL {
 					}
 		if((permisosAcc($_SESSION['login'],11,1)==true)||(permisosAcc($_SESSION['login'],11,2)==true)||        (permisosAcc($_SESSION['login'],11,4)==true) || (permisosAcc($_SESSION['login'],8,10)==true)){ 
 ?>
-					<th colspan="4" >
+					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
 					</th>
 <?php } ?>
@@ -90,24 +90,7 @@ class TRABAJO_SHOWALL {
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 <?php } ?>
 						</form>
-						<form action="../Controllers/ENTREGA_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
-                         
-                            <td>
-                                <?php
-	                          if(permisosAcc($_SESSION['login'],8,10)==true){
-                                    if(date('d-m-Y')<$fila['FechaFinTrabajo']){
-                                 ?>
-                                
-                                <button type="submit" name="action" value="SUBIR_ENTREGA" ><img src="../Views/icon/flecha.png"  width="20" height="20" /></button>
-				                
-                                <?php
-                                    }
-				               }  
-                                ?>
-                            
-                            </td>
-						</form>
+
 				</tr>
 <?php
 				}
