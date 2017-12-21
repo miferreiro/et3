@@ -279,8 +279,11 @@ switch ( $_REQUEST[ 'action' ] ) {
                  $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
                  $datos=$EVALUACION->DevolverEntregas(); 
                  $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');	
-            }
-			 new EVALUACION_SELECT_ALL_QA( $lista, $datos );
+            	new EVALUACION_SELECT_ALL_QA( $lista, $datos );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
+			}
+			 
 		}
     break;
     case 'EVALUACION_HISTORIAS_ASIGNADAS':		
@@ -291,8 +294,11 @@ switch ( $_REQUEST[ 'action' ] ) {
                 //Variable que almacena array con el CorrectoA de los atributos
 		        $lista = array('NombreTrabajo','Alias','Horas','Ruta');
 		       //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		    }//si no tiene permisos se muestra la vista para evaluar las entregas de otros
-		    new EVALUACION_SELECT_QA( $lista, $datos );
+		    //se muestra la vista para evaluar las entregas de otros
+			new EVALUACION_SELECT_QA( $lista, $datos );
+		    }else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
+			}
 		}
     break;
 
@@ -305,7 +311,7 @@ switch ( $_REQUEST[ 'action' ] ) {
         
         new CORRECION_ENTREGA_RESULTADO($lista,$datos);//se nos muestra la vista con las correciones de nuestras ETs
 	}else{//si no tiene permisos 
-	 new USUARIO_DEFAULT();//muestra una vista por defecto
+	 new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
     }
         break;
     
@@ -318,7 +324,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
         new CORRECION_ENTREGA($lista,$datos);//se nos muestra la vista 
 	}else{//si no tiene permiso
-	 new USUARIO_DEFAULT();//se muestra una vista por defecto
+	new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
     }
         break;		
 		
@@ -330,7 +336,7 @@ switch ( $_REQUEST[ 'action' ] ) {
         $datos =$CORRECION->mostrarCorrecion3($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado']);//llamamos a esta función para que nos muestren los resultados de nuestras QAs y se mete en la vista
         new CORRECION_QA_RESULTADOS($lista,$datos);
 		}else{//si no tiene permiso 
-	      new USUARIO_DEFAULT();//se muestra una vista por defecto
+	      new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
         }  
         break;
         
@@ -341,7 +347,7 @@ switch ( $_REQUEST[ 'action' ] ) {
         $datos =$CORRECION->mostrarCorrecion2($_REQUEST['IdTrabajo'],$_SESSION['login']);//llamamos a esta funcióm para que se nos muestren todas las Qas que tenemos que corregir
         new CORRECION_QA_RESULTADO($lista,$datos);
 	    }else{//si no tiene permiso
-	     new USUARIO_DEFAULT();//se muestra una vista por defecto
+	     new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
         }
         break;
         
@@ -353,7 +359,7 @@ switch ( $_REQUEST[ 'action' ] ) {
         $datos =$CORRECION->mostrarQAS($_SESSION['login']);//llamamos a esta función para mostrar todas las entregas que realizó dicho usuario
         new CORRECION_QA($lista,$datos);//se nos muestra la vista    	  
 		}else{//si no tiene permsio
-	     new USUARIO_DEFAULT();//se muestra una vista por defecto
+	    new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
         }
       break;		
 		
