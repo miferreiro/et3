@@ -15,14 +15,14 @@ if (!IsAuthenticated()){
  	header('Location:../index.php');
 }
 
-include '../Models/ACCION_MODEL.php';//incluye el contendio del modelo ACCION_MODEL
-include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo USU_GRUPO_MODEL
-include '../Views/ACCION/ACCION_SHOWALL_View.php';//incluye el contendio de la vista SHOWALL de accion
-include '../Views/ACCION/ACCION_SEARCH_View.php';//incluye el contendio de la vista SEARCH de accion
-include '../Views/ACCION/ACCION_ADD_View.php';//incluye el contendio de la vista ADD de accion
-include '../Views/ACCION/ACCION_EDIT_View.php';//incluye el contendio de la vista EDIT de accion
-include '../Views/ACCION/ACCION_DELETE_View.php';//incluye el contendio de la vista DELETE de accion
-include '../Views/ACCION/ACCION_SHOWCURRENT_View.php';//incluye el contendio de la vista SHOWCURRENT de accion
+include '../Models/ACCION_MODEL.php';//incluye el contenido del modelo ACCION_MODEL
+include '../Models/USU_GRUPO_MODEL.php'; //incluye el contenido del modelo USU_GRUPO_MODEL
+include '../Views/ACCION/ACCION_SHOWALL_View.php';//incluye el contenido de la vista SHOWALL de accion
+include '../Views/ACCION/ACCION_SEARCH_View.php';//incluye el contenido de la vista SEARCH de accion
+include '../Views/ACCION/ACCION_ADD_View.php';//incluye el contenido de la vista ADD de accion
+include '../Views/ACCION/ACCION_EDIT_View.php';//incluye el contenido de la vista EDIT de accion
+include '../Views/ACCION/ACCION_DELETE_View.php';//incluye el contenido de la vista DELETE de accion
+include '../Views/ACCION/ACCION_SHOWCURRENT_View.php';//incluye el contenido de la vista SHOWCURRENT de accion
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php';//incluye el contendio de la vista MESSAGE
 
