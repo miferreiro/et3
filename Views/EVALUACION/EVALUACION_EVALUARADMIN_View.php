@@ -47,7 +47,7 @@ class EVALUACION_ADMIN_EVALUAR {
 					if ($his != $datos[$i][0]) {
 ?>
 					<tr>
-						<td bgcolor="#b59438"  colspan="15"><?php echo $datos[$i][0] . ". " . $datos[$i][6]; ?></td>
+						<td bgcolor="#b59438"  colspan="999999999999"><?php echo $datos[$i][0] . ". " . $datos[$i][6]; ?></td>
 						<tr></tr>
 <?php
 					}
