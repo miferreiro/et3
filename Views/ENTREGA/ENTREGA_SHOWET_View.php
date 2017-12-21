@@ -5,7 +5,7 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
-class ENTREGA_SHOWETS {
+class ENTREGA_SHOWET {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -35,11 +35,12 @@ class ENTREGA_SHOWETS {
 					</th>
 <?php
 					}
-		
+		if(permisosAcc($_SESSION['login'],8,2)==true){
 ?>
 					<th>
 						<?php echo $strings['Opciones']?>
 					</th>
+       <?php } ?>
 				</tr>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -71,7 +72,7 @@ class ENTREGA_SHOWETS {
                          
                             <td>
                                 <?php
-	                       
+	                       		if(permisosAcc($_SESSION['login'],8,2)==true){
                                     if(date('d-m-Y')<$fila['FechaFinTrabajo']){
                                  ?>
                                 
@@ -79,7 +80,7 @@ class ENTREGA_SHOWETS {
 				                
                                 <?php
                                     }
-				                 
+								}
                                 ?>
                             
                             </td>

@@ -22,7 +22,7 @@ include '../Views/ENTREGA/ENTREGA_ADD_View.php'; //incluye la vista add
 include '../Views/ENTREGA/ENTREGA_EDIT_View.php'; //incluye la vista edit
 include '../Views/ENTREGA/ENTREGA_DELETE_View.php'; //incluye la vista delete
 include '../Views/ENTREGA/ENTREGA_SHOWCURRENT_View.php'; //incluye la vista showcurrent
-include '../Views/ENTREGA/ENTREGA_SHOWETS_View.php'; //incluye la vista de las entregas
+include '../Views/ENTREGA/ENTREGA_SHOWET_View.php'; //incluye la vista de las entregas
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include_once '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
@@ -419,7 +419,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		$datos = $TRABAJO->SEARCH2();//llamamos al metodo SEARCH2 para buscar todos los trabajos
 		$lista = array( 'NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );//metemos en un array todos los campos que queremos mostrar
-		new ENTREGA_SHOWETS( $lista, $datos );//muestra una vista SHOWALL con todos los trabajos
+		new ENTREGA_SHOWET( $lista, $datos );//muestra una vista SHOWALL con todos los trabajos
 	break;
 		
 		

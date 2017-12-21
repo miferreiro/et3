@@ -18,6 +18,7 @@ array(
 	'Elija sexo' => 'Elija sexo',
 	'Hombre' => 'Hombre',
 	'Mujer' => 'Mujer',
+	'Subir entrega' => 'Subir entrega',
 	'Ya existe la acción introducida en la base de datos' => 'Ya existe la acción introducida en la base de datos',
 	'No puedes eliminar ese grupo' => 'No puedes eliminar ese grupo',
 	'Formulario de búsqueda' => 'Formulario de búsqueda',
