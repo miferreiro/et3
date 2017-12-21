@@ -1,23 +1,26 @@
 <?php
 /*  Archivo php
 	Nombre: ACCION_DELETE_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+    Autor: 	Alejandro Vila
+	Fecha de creación: 23/11/2017 
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una acción y da la opción de borrarlos
 */
+
+//Es la clase DELETE de ACCION que nos permite borrar una accion
 class ACCION_DELETE {
 
-	function __construct( $valores, $dependencias ) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		$this->render( $this->valores, $this->dependencias );
+	function __construct( $valores, $dependencias ) { //es el constructor de la clase ACCION_DELETE
+		$this->valores = $valores;//le pasamos el valor de los campos de la tabla ACCION
+		$this->dependencias = $dependencias;//pasamos todas las dependencias que tiene la tabla a la hora de borrar
+		$this->render( $this->valores, $this->dependencias );//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
 
+    //En está función se mostrará el formulario DELETE con los campos correspondientes
 	function render( $valores, $dependencias ) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		$this->valores = $valores;//le pasamos el valor de los campos de la tabla ACCION
+		$this->dependencias = $dependencias;//pasamos todas las dependencias que tiene la tabla a la hora de borrar
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -57,9 +60,9 @@ class ACCION_DELETE {
             
              <?php
             
-            if($dependencias != null){
+            if($dependencias != null){//si hay dependencias a la hora de borrar te se muestran todas las tablas de las que depende
                 
-                 echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
+                 echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];//se muestra un mensaje indicando que el  usuario debe eliminar todas las dependencias
                  ?>
                 <br>
                 <br>
@@ -73,7 +76,7 @@ class ACCION_DELETE {
                     </th>
             <?php
             
-				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) { //este bucle se va a repetir mientras haya dependencias de borrado
             ?>
 			
             <tr>
@@ -124,7 +127,7 @@ class ACCION_DELETE {
 		</div>
 <?php
             }
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la pagina
                 
 	}
 }

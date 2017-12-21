@@ -1,21 +1,24 @@
 <?php
 /*  Archivo php
 	Nombre: ACCION_SHOWCURRENT_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+    Autor: Alejandro Vila
+	Fecha de creación: 23/11/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una acción
 */
+
+
+//Es la clase SHOWCURRENT de ACCION que nos permite ver en detalle una accion
 class ACCION_SHOWCURRENT {
 
-	function __construct( $lista ) {
-		$this->lista = $lista;
-		$this->render( $this->lista );
+	function __construct( $lista ) { //es el constructor de la clase ACCION_SHOWCURRENT
+		$this->lista = $lista;//pasamos una array con los campos a mostrar
+		$this->render( $this->lista );//llamamos a la función render donde se mostrará el formulario SHOWCURRENT con los campos correspondientes
 	}
 
-	function render( $lista ) {
-		$this->lista = $lista;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render( $lista ) {//Función render donde se mostrará el formulario SHOWCURRENT con los campos correspondientes
+		$this->lista = $lista;//pasamos una array con los campos a mostrar
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<h2>
 			<?php echo $strings['Vista detallada'];?>
@@ -55,7 +58,7 @@ class ACCION_SHOWCURRENT {
 		</table>
 
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la pagina
 	}
 }
 ?>
