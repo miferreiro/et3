@@ -136,7 +136,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);
 			$dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);	
             //Crea una vista delete para ver la tupla
-			new USUARIO_DELETE( $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6,$dependencias7 );
+			new USUARIO_DELETE($valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6,$dependencias7 );
 			}else{//si la variable cont no es uno mostramos un mensaje diciendo que dicho usuario no tiene permiso
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
