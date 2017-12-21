@@ -52,7 +52,7 @@ class CORRECION_ENTREGA_RESULTADO {
 <?php
                     if($his != $fila['IdHistoria']){
 ?>
-                    <td bgcolor="#b59438" colspan="6"><?php echo $fila['IdHistoria'] . '. ' . $fila['TextoHistoria'] ?></td>
+                    <td bgcolor="#b59438" colspan="3"><?php echo $fila['IdHistoria'] . '. ' . $fila['TextoHistoria'] ?></td>
                     <tr></tr>
 <?php
                     }
@@ -64,27 +64,28 @@ class CORRECION_ENTREGA_RESULTADO {
                     if($atributo == 'ComentIncorrectoP'){
 ?>
             
-                        <td><textarea maxlength="300" cols="20" rows="7" readonly>
+                        <td><p class="ajustar">
 <?php                    
                             
                            echo $fila[ $atributo ]; 
+                          
 							if($cont==1){
 							$Id= $fila[ 'IdTrabajo' ];
-						}
+						  }
 ?>                       
-                        </textarea></td>
+                        </p></td>
 <?php                       
                     }
                                                
                     if($atributo == 'TextoHistoria'){
                         
                         ?>
-                            <td><textarea maxlength="300" cols="20" rows="7" readonly>
+                            <td>
                             <?php
                                 echo $fila[ $atributo ]; 
                         ?>
                                 
-                                </textarea></td>
+                                </td>
   <?php                  
                     }    
                         
@@ -100,7 +101,7 @@ class CORRECION_ENTREGA_RESULTADO {
 <?php                            
                         }
                         
-                        else if($atributo == 'CorrectoP' && ($fila[$atributo] == '0' || $fila[$atributo] == '2') ){
+                        else if($atributo == 'CorrectoP' && $fila[$atributo] == '0' ){
                             ?>
                              <td bgcolor="#ff3700">
                              <?php echo $fila[$atributo]; ?>

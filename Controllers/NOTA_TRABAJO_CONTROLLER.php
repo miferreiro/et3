@@ -1,7 +1,8 @@
 <?php
 /*
 	Fecha de creación: 4/12/2017 
-	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas.
+    Autor:Brais Rodriguez
+	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas en la tabla NOTA_TRABAJO
 */
 session_start(); //solicito trabajar con la session
 include '../Functions/Authentication.php'; //incluye el contenido de la función de autentificación
@@ -11,32 +12,32 @@ if (!IsAuthenticated()){
  	header('Location:../index.php');
 }
 
-include '../Models/NOTA_TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo usuarios
-include_once '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Functions/permisosAcc.php';
-include '../Functions/comprobarAdministrador.php';
+include '../Models/NOTA_TRABAJO_MODEL.php'; //incluye el contendio del modelo NOTA_TRABAJO
+include '../Models/ENTREGA_MODEL.php'; //incluye el contendio del modelo ENTREGA
+include '../Models/EVALUACION_MODEL.php'; //incluye el contendio del modelo EVALUACION
+include '../Models/USU_GRUPO_MODEL.php'; //incluye el contendio del modelo USU_GRUPO
+include '../Models/TRABAJO_MODEL.php'; //incluye el contendio del modelo TRABAJO
+include_once '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo USUARIO
+include '../Functions/permisosAcc.php';//incluye el contenido del fichero permisosAcc.php
+include '../Functions/comprobarAdministrador.php';//incluye el contenido del fichero comprobarAministrador.php
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SHOWALL_View.php'; //incluye la vista del showall
-include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_ENTREGA_View.php'; //incluye la vista del showall
-include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_QA_View.php'; //incluye la vista del showall
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_ENTREGA_View.php'; //incluye la vista del fichero NOTA_TRABAJO_GENERAR_NOTA_ENTREGA_View.php
+include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_GENERAR_NOTA_QA_View.php'; //incluye la vista del fichero NOTA_TRABAJO_GENERAR_NOTA_QA_View.php
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SEARCH_View.php'; //incluye la vista search
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_ADD_View.php'; //incluye la vista add
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_EDIT_View.php'; //incluye la vista edit
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_DELETE_View.php'; //incluye la vista delete
 include '../Views/NOTA_TRABAJO/NOTA_TRABAJO_SHOWCURRENT_View.php'; //incluye la vista showcurrent
-include '../Views/DEFAULT_View.php';
+include '../Views/DEFAULT_View.php';//incluye una vista por defecto
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
-
+//Esta función crea un objeto tipo NOTA_TRABAJO_MODEL con los valores que se le pasan con $_REQUEST
 function get_data_form() {
 
 
-	$IdTrabajo = $_REQUEST['IdTrabajo'];
-    $login = $_REQUEST['login'];
-    $NotaTrabajo = $_REQUEST['NotaTrabajo'];
+	$IdTrabajo = $_REQUEST['IdTrabajo'];//Variable que almacena el valor de IdTrabajo
+    $login = $_REQUEST['login'];//Variable que almacena el valor de login
+    $NotaTrabajo = $_REQUEST['NotaTrabajo'];//Variable que almacena el valor de NotaTrabajo
     $action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
 	$NOTAS = new NOTA_TRABAJO_MODEL(
 		$IdTrabajo,
@@ -58,11 +59,11 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-			if(permisosAcc($_SESSION['login'],7,0)==true){
-			$USUARIO= new USUARIO_MODEL('','','','','','','','');
-			$USUARIOS=$USUARIO->SEARCH();				
-			$TRABAJO= new TRABAJO('','','','','');
-			$TRABAJOS=$TRABAJO->SEARCH2();
+			if(permisosAcc($_SESSION['login'],7,0)==true){//miramos si el usuario tiene permiso para añadir
+			$USUARIO= new USUARIO_MODEL('','','','','','','','');//creamos un objeto de tipo USUARIO_MODEL
+			$USUARIOS=$USUARIO->SEARCH();//llamamos al método SEARCH para obtener todos los usuarios			
+			$TRABAJO= new TRABAJO('','','','','');//creamos un objeto de tipo TRABAJO
+			$TRABAJOS=$TRABAJO->SEARCH2();//llamamos al método SEARCH2 para obtener todos los trabajos
 			//Crea una vista add para ver la tupla
 			new NOTA_TRABAJO_ADD($USUARIOS,$TRABAJOS);
 			}else{

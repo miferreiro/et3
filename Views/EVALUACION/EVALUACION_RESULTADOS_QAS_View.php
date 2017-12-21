@@ -61,7 +61,7 @@ class CORRECION_QA_RESULTADOS {
 <?php                    
                     if($atributo == 'ComenIncorrectoA'){
 ?>
-                        <td><textarea maxlength="300" cols="20" rows="7" readonly>
+                        <td><P class="alinear">
 <?php                    
                             
                            echo $fila[ $atributo ]; 
@@ -69,7 +69,7 @@ class CORRECION_QA_RESULTADOS {
 							$Id= $fila[ 'IdTrabajo' ];
 						}
 ?>                       
-                        </textarea></td>
+                        </P></td>
 <?php                       
                     }
                         
@@ -83,7 +83,7 @@ class CORRECION_QA_RESULTADOS {
  <?php                           
                         }
                         
-                        else if($atributo == 'OK' && ($fila[$atributo] == '0' || $fila[$atributo] == '2' )){
+                        else if($atributo == 'OK' && $fila[$atributo] == '0'){
                             ?>
                                 <td bgcolor="#ff3700">
                                          <?php echo $fila[$atributo]; ?>
