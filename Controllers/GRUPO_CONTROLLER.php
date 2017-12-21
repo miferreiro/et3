@@ -297,7 +297,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$GRUPOS = new GRUPO( '', '', '','');//creamos un objeto de tipo GRUPO
 		
 		} else {//Si se reciben datos
-			$GRUPOS = get_data_form();
+			$GRUPOS = get_data_form();//Variable que almacena los datos recogidos de los atributos
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $GRUPOS->SEARCH();
