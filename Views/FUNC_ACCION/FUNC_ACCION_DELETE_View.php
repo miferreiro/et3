@@ -1,22 +1,27 @@
 <?php
 /*  Archivo php
 	Nombre: FUNC_ACCION_DELETE_View.php
-	Fecha de creación: 26/11/2017 
+    Autor: Alejandro Vila
+	Fecha de creación: 26/11/2017  
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una accion de una Funcionalidad y da la opción de borrarlos
 */
+
+
+
+//es la clase DELETE de FUNC_ACCION que nos permite borrar una accion de una funcionalidad
 class FUNC_ACCION_DELETE {
 
-	function __construct( $valores, $dependencias ) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		$this->render( $this->valores, $this->dependencias );
+	function __construct( $valores, $dependencias ) { //es el constructor de la clase FUNC_ACCION_DELETE
+		$this->valores = $valores; //pasamos los valores de cada uno de los campos
+		$this->dependencias = $dependencias; //pasamos las dependdencias de la tabla a la hora de borrar
+		$this->render( $this->valores, $this->dependencias );//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
 
-	function render( $valores, $dependencias ) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render( $valores, $dependencias ) { //funcion que mostrará el formulario DELETE con los campos correspondientes
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->dependencias = $dependencias; //pasamos las dependdencias de la tabla a la hora de borrar
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -47,7 +52,7 @@ class FUNC_ACCION_DELETE {
             
             <?php
             
-            if($dependencias != null){
+            if($dependencias != null){ //si hay dependencias a la hora de borrar
                 
                 echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
                 ?>
@@ -68,7 +73,7 @@ class FUNC_ACCION_DELETE {
                 
             <?php
             
-				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) { //este bucle se repite mientras se devuelven todas las dependencias
             ?>
 			
             <tr>
@@ -107,7 +112,7 @@ class FUNC_ACCION_DELETE {
                 
             }
         
-            else{
+            else{ //si no hay dependencias
                 
            
               ?>  
@@ -129,7 +134,7 @@ class FUNC_ACCION_DELETE {
 		</div>
 <?php
             }
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
             
 	}
 }

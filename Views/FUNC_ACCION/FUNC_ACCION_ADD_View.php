@@ -1,18 +1,22 @@
 <?php
 /*  Archivo php
 	Nombre: FUNC_ACCION_ADD_View.php
+    Autor: Alejandro Vila
 	Fecha de creación: 26/11/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una accion de una funcionalidad a la base de datos
 */
+
+
+//es la clase ADD de FUNC_ACCION que nos permite añadir una accion de una funcionalidad
 class FUNC_ACCION_ADD {
 
-	function __construct($valores,$acciones) {
-		$this->render($valores,$acciones);
+	function __construct($valores,$acciones) { //es el constructor de la clase FUNC_ACCION_ADD
+		$this->render($valores,$acciones); //llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 	}
 
-	function render($valores,$acciones) {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render($valores,$acciones) {// funcion que se mostrará el formulario ADD con los campos correspondientes
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -34,8 +38,8 @@ class FUNC_ACCION_ADD {
 						<td class="formThTd">
 							<select name="IdAccion">						        
 								<?php
-								//Bucle que recorre las posibles et para generer qas
-								for ($i=0; $i < count($acciones); $i++) { 
+								
+								for ($i=0; $i < count($acciones); $i++) {  //Bucle que recorre todas acciones
 								?>
 								<option value="<?php echo $acciones[$i][0] ?>"><?php echo $acciones[$i][1] ?></option>
 						        <?php
@@ -56,7 +60,7 @@ class FUNC_ACCION_ADD {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>

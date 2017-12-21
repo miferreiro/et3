@@ -1,22 +1,25 @@
 <?php
 /*  Archivo php
 	Nombre: FUNC_ACCION_SHOWALL_View.php
-	Fecha de creación: 26/11/2017 
+    Autor: Alejandro Vila
+	Fecha de creación: 26/11/2017  
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la accion de una funcionalidad que se desea realizar en la aplicación
 */
+
+//es la clase SHOWALL de FUNC_ACCION que nos permite mostrar todas las acciones de una funcionalidad
 class FUNC_ACCION_SHOWALL {
 
-	function __construct( $lista, $datos, $name) {
-		$this->lista = $lista;
-		$this->datos = $datos;
-		$this->render($this->lista,$this->datos,$name);
+	function __construct( $lista, $datos, $name) {  //es el constructor de la clase FUNC_ACCION_SHOWALL
+		$this->lista = $lista;//pasamos cada uno de los campos a mostrar
+		$this->datos = $datos; //pasamos los valores de cada uno de los campos
+		$this->render($this->lista,$this->datos,$name);//llamamos a la función render donde se mostrará el formulario showall con los campos correspondientes
 	}
 	
-	function render($lista,$datos,$name){
-		$this->lista = $lista;
-		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render($lista,$datos,$name){ // funcion  que mostrará el formulario showall con los campos correspondientes
+		$this->lista = $lista;//pasamos cada uno de los campos a mostrar
+		$this->datos = $datos;//pasamos los valores de cada uno de los campos
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -25,7 +28,7 @@ class FUNC_ACCION_SHOWALL {
 			<table>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					foreach ( $lista as $atributo ) { //este bucle se repite hasta que no devuelva todos los campos
 ?>
 					<th>
 						<?php echo $strings[$atributo]?>
@@ -38,11 +41,11 @@ class FUNC_ACCION_SHOWALL {
 					</th>
 				</tr>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle se repite hasta que no se devuelvan todos los datos de FUNC_ACCION que hay en la base de datos
 ?>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					foreach ( $lista as $atributo ) { //este bucle se repite hasta que no se muestre todos los valores de cada uno de los campos
 ?>
 					<td>
 <?php 
@@ -79,7 +82,7 @@ class FUNC_ACCION_SHOWALL {
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>
