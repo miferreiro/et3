@@ -1,26 +1,28 @@
 ﻿<?php
 /*  Archivo php
 	Nombre: USUARIOS_GRUPO_SHOWALL_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+	Autor: 	Alejandro Vila
+	Fecha de creación: 20/11/2017
+	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar el usario y el grupo al que pertenecen
 */
+
+//es la clase SHOWALL de USU_GRUPO que nos permite mostrar todos los usuarios asociasdos a grupos
 class USU_GRUPO_SHOWALL {
 
-	function __construct( $lista, $datos,$login) {
-		$this->lista = $lista;
-		$this->datos = $datos;
-		$this->login = $login;
-		$this->render($this->lista,$this->datos,$this->login);
+	function __construct( $lista, $datos,$login) { //es el constructor de la clase USU_GRUPO_SHOWALL
+		$this->lista = $lista;//pasamos los campos que queremos mostrar
+		$this->datos = $datos;//pasamos cada una de las tuplas de USU_GRUPO que queremos mostrar
+		$this->login = $login;//pasamos el login
+		$this->render($this->lista,$this->datos,$this->login);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 		
 	}
 	
-	function render($lista,$datos,$login){
-		$this->lista = $lista;
-		$this->datos = $datos;
-		$this->login = $login;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render($lista,$datos,$login){ //Función que  mostrará el formulario SHOWALL con los campos correspondientes
+		$this->lista = $lista;//pasamos los campos que queremos mostrar
+		$this->datos = $datos;//pasamos cada una de las tuplas de USU_GRUPO que queremos mostrar
+		$this->login = $login;//pasamos el login
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -29,7 +31,7 @@ class USU_GRUPO_SHOWALL {
 			<table>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					foreach ( $lista as $atributo ) { //este bucle se va a repetir mientras no se muestren todos los campos
 ?>
 					<th>
 						<?php echo $strings[$atributo]?>
@@ -42,17 +44,17 @@ class USU_GRUPO_SHOWALL {
 					</th>
 				</tr>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle se va a repetir mientras devuelva cada tupla de la tabla USU_GRUPO
 ?>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					foreach ( $lista as $atributo ) { //este bucle se repite mientras devuelva cada uno de los campos de la tabla USU_GRUPO
 ?>
 					<td>
 <?php 
                             
 							echo $fila[ $atributo ];
-						    //$log=$fila['login'];
+						    
 ?>
 					</td>
 <?php
@@ -82,7 +84,7 @@ class USU_GRUPO_SHOWALL {
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>

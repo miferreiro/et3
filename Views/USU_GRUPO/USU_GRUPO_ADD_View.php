@@ -1,23 +1,25 @@
 <?php
 /*  Archivo php
 	Nombre: USUARIOS_ADD_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Alejandro Vila
+	Fecha de creación: 20/11/2017  
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir un usuario a la base de datos
 */
+
+//es la clase ADD de USU_GRUPO que nos permite añadir un usuario a un grupo
 class USU_GRUPO_ADD {
 
-	function __construct($login,$grupos) {
-		$this->grupos = $grupos;
-		$this->login = $login;
-		$this->render($this->grupos,$this->login);
+	function __construct($login,$grupos) { //es el constructor de la clase USU_GRUPO_ADD
+		$this->grupos = $grupos;//pasamos todos los grupos
+		$this->login = $login;//pasamos el login de un usuario
+		$this->render($this->grupos,$this->login); //llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 	}
 
-	function render($grupos,$login) { 
-		$this->grupos = $grupos;
-		$this->login = $login;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render($grupos,$login) { //se mostrará el formulario ADD con los campos correspondientes
+		$this->grupos = $grupos;//pasamos todos los grupos
+		$this->login = $login;//pasamos el login de un usuario
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -40,12 +42,12 @@ class USU_GRUPO_ADD {
                   <td>
                    <select id="IdGrupo" name="IdGrupo">
 <?php
-				while ( $fila = mysqli_fetch_array( $this->grupos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->grupos ) ) { //este bucle se va a repetir mientras no se devuelvan todos los grupos
 ?>
 				<option value="<?php echo $fila[ 'IdGrupo' ]?>">
 
 <?php 
-			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+			
 					echo $fila['NombreGrupo'];
 ?>		
                							
@@ -68,7 +70,7 @@ class USU_GRUPO_ADD {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>
