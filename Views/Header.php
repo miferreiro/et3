@@ -20,7 +20,7 @@
 	<script type="text/javascript" src="../Views/js/md5.js"></script>
 	<link rel="stylesheet" type="text/css" media="screen" href="../Views/css/estilos.css" hreflang="es">
 	<link rel="stylesheet" type="text/css" media="screen" href="../Views/js/tcal/tcal.css" hreflang="es">
-	<script language="JavaScript" type="text/javascript" src="../Views/tcal/tcal.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../Views/js/tcal/tcal.js"></script>
 	<?php include '../Views/js/validaciones.js' ?>
 	<title>ET3</title>
 </head>
