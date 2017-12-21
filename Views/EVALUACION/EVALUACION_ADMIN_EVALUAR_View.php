@@ -32,6 +32,7 @@ class EVALUACION_ADMIN_EVALUAR {
 					$num++;
 					$i++;
 				}
+		
 				$comentario = array();
 				$cont = 0;
 				$his = -10000;

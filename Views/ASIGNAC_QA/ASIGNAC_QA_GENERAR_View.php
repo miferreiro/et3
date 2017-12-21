@@ -19,7 +19,7 @@ class ASIGNAC_QA_GENERAR {
 			<h2>
 				<?php echo $strings['GENERACIÓN AUTOMÁTICA DE QAs'];?>
 			</h2>
-			<form name="ASIGNAC_QA" action="../Controllers/ASIGNAC_QA_CONTROLLER.php" method="post" enctype="multipart/form-data">
+			<form name="ASIGNAC_QA" action="../Controllers/ASIGNAC_QA_CONTROLLER.php" method="post" enctype="multipart/form-data" onSubmit="return comprobarGenerarAsignQa()">
 				<table>
 					<tr>
 						<th class="formThTd">
@@ -42,12 +42,12 @@ class ASIGNAC_QA_GENERAR {
 							<?php echo $strings['Número de QAs'];?>
 						</th>
 						<td class="formThTd">
-						<input type="text" id="num" name="num" placeholder="<?php echo $strings['Escriba aqui...']?>" value="5" maxlength="3" size="3" required onBlur="comprobarVacio(this) && comprobarEntero(this, 0, 999) "/>
+						<input type="text" id="num" name="num" placeholder="<?php echo $strings['Escriba aqui...']?>" value="5" maxlength="3" size="3" required onBlur="comprobarVacio(this) && comprobarLongitud(this, 3) && comprobarTexto(this, 3) && comprobarEntero(this, 0, 999) "/>
 					</tr>
 
 					<tr>
 						<td colspan="2">
-							<button type="submit" name="action" value="GENERAR"><img src="../Views/icon/generar.png" alt="<?php echo $strings['Confirmar formulario']?>" width="32" height="32" /></button>
+							<button type="submit" name="action" value="GENERAR"><img src="../Views/icon/generar.png" width="32" height="32" /></button>
 			</form>
 						<form action='../Controllers/ASIGNAC_QA_CONTROLLER.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

@@ -58,6 +58,8 @@ atributo['OK'] = '<?php echo $strings["OK"]?>';
 atributo['LoginEvaluado'] = '<?php echo $strings["LoginEvaluado"]?>';
 //GESTION NOTA
 atributo['NotaTrabajo'] = '<?php echo $strings["NotaTrabajo"]?>';
+//GENERAR ASIGNAC QA
+atributo['num'] = '<?php echo $strings["Número de QAs"]?>';
 
 // function hayEspacio(campo): Comprueba que no tenga espacios el campo
 function sinEspacio(campo) {
@@ -71,7 +73,7 @@ function sinEspacio(campo) {
 	return true; //Devuelve "true"
 }
 /*
-		function comprobarVacio(campo): realiza una comprobación de si el campo es vacío o está compuesto de espacios en blanco.
+	function comprobarVacio(campo): realiza una comprobación de si el campo es vacío o está compuesto de espacios en blanco.
 */
 function comprobarVacio(campo) {
 	/*Si el campo es nulo, tiene longitud 0 o está compuesto por espacios en blanco, se muestra un mensaje de error y se retorna false*/
@@ -3067,6 +3069,36 @@ function validarComentIncorrectoP(campo,size){
 			return false;
 		}
 	}
+	
+	return true;
+}
+/*
+	function comprobarGenerarAsignQa(): funcion que permite validar el formulario de generar asignación qa
+*/
+function comprobarGenerarAsignQa(){
+	
+	var num; /*variable que representa el elemento num degenerar de asign_qa*/
+	num = document.forms['ASIGNAC_QA'].elements[1];
+	
+	/*Comprueba si num es vacio, retorna false*/
+	if (!comprobarVacio(num)) {
+		return false;
+	} else {
+			/*Comprueba su longitud, si es mayor que 3, retorna false*/
+			if (!comprobarLongitud(num, 3)) {
+				return false;
+			} else {
+				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+				if (!comprobarTexto(num, 3)) {
+					return false;
+				} else {
+					/*Comprueba que sea un entero y esté entre 0 y 999*/
+					if (!comprobarEntero(num, 0, 999)) {
+						return false;
+					}
+				}
+			}
+		}
 	
 	return true;
 }
