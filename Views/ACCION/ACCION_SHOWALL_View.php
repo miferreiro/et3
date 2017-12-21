@@ -149,7 +149,7 @@ $GESTEVAL=false;
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
 							<?php } ?>
 					<td>
-							<?php if($SHOW==true){ //miramos si tiene la accion de añadir?>
+							<?php if($SHOW==true){ //miramos si tiene la accion de showall?>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 							<?php } ?>
 						</form>
