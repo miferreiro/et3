@@ -63,7 +63,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$cont = 0;//inicializamos la variable cont a 0
 				$PERMISO = $USUARIO->comprobarPermisos();//comprobamos los permisos que tiene el usuario
 				while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
-					if ( $fila[ 'IdFuncionalidad' ] == '4' ) {//miramos si este usuario tiene la funcionalidad de Gestión de Funcionalidad
+					if ( $fila[ 'IdFuncionalidad' ] == '3' ) {//miramos si este usuario tiene la funcionalidad de Gestión de Funcionalidad
 						if ( $fila[ 'IdAccion' ] == '0' ) {//miramos si este usuario tiene la funcionalidad de añadir
 							//Crea una vista add para ver la tupla
 							$cont = $cont + 1;//incrementamos la variable cont
@@ -96,7 +96,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$cont = 0;//iniciamos la variable cont a 0
 				$PERMISO = $USUARIO->comprobarPermisos();//comprobamos los permisos que tiene el usuario
 				while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
-					if ( $fila[ 'IdFuncionalidad' ] == '4' ) {//miramos si este usuario tiene la funcionalidad de Gestión de Funcionalidad
+					if ( $fila[ 'IdFuncionalidad' ] == '3' ) {//miramos si este usuario tiene la funcionalidad de Gestión de Funcionalidad
 						if ( $fila[ 'IdAccion' ] == '1' ) {//miramos si este usuario tiene la funcionalidad de borrar
 							
 							$cont = $cont + 1;//incrementamos la variable cont
@@ -132,7 +132,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$cont = 0;//iniciamos la variable cont a 0
 				$PERMISO = $USUARIO->comprobarPermisos();//comprobamos los permisos que tiene el usuario
 				while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
-					if ( $fila[ 'IdFuncionalidad' ] == '4' ) {//miramos si este usuario tiene la funcionalidad de Gestión de Funcionalidad
+					if ( $fila[ 'IdFuncionalidad' ] == '3' ) {//miramos si este usuario tiene la funcionalidad de Gestión de Funcionalidad
 						if ( $fila[ 'IdAccion' ] == '2' ) {//miramos si este usuario tiene la funcionalidad de editar
 							
 							$cont = $cont + 1;//incrementamos la variable cont
@@ -164,7 +164,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$cont = 0;//iniciamos cont a 0
 				$PERMISO = $USUARIO->comprobarPermisos();//comprobamos los permisos que tiene el usuario
 				while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
-					if ( $fila[ 'IdFuncionalidad' ] == '4' ) {//miramos si este usuario tiene la funcionalidad de Gestión de Funcionalidad
+					if ( $fila[ 'IdFuncionalidad' ] == '3' ) {//miramos si este usuario tiene la funcionalidad de Gestión de Funcionalidad
 						if ( $fila[ 'IdAccion' ] == '3' ) {//miramos si este usuario tiene la accion de buscar
 							
 							$cont = $cont + 1;//incrementamos la variable cont
@@ -197,7 +197,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$cont = 0;//iniciamos la variable cont a 0
 			$PERMISO = $USUARIO->comprobarPermisos();//comprobamos los permisos que tiene el usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
-				if ( $fila[ 'IdFuncionalidad' ] == '4' ) {//miramos si este usuario tiene la funcionalidad de Gestión de Funcionalidad
+				if ( $fila[ 'IdFuncionalidad' ] == '3' ) {//miramos si este usuario tiene la funcionalidad de Gestión de Funcionalidad
 					if ( $fila[ 'IdAccion' ] == '4' ) {//miramos si este usuario tiene la accion de ver en detalle
 						
 						$cont = $cont + 1;//incrementamos la variable cont

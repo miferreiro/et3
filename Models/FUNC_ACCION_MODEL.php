@@ -47,41 +47,38 @@
 			return $resultado;
 		}
 	} // fin metodo SEARCH
-        
+       
+	    //funcion SEARCH2: hace una búsqueda en la tabla con
+        //los datos proporcionados. Si van vacios devuelve todos
+	   function SEARCH2() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		$sql = "select  A.NombreAccion,
+						F.NombreFuncionalidad,
+						FA.IdFuncionalidad,
+                        FA.IdAccion
+       			from FUNC_ACCION FA,ACCION A,FUNCIONALIDAD F
+    			where 
+    				(
+    				FA.IdFuncionalidad = F.IdFuncionalidad &&
+    				FA.IdAccion = A.IdAccion &&
+					(BINARY FA.IdFuncionalidad = '$this->IdFuncionalidad')
+    				)";//se construye la sentencia sql
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	} // fin metodo SEARCH2
+		
     //Metodo ADD()
 	//Inserta en la tabla  de la bd  los valores
 	// de los atributos del objeto. Comprueba si la clave esta vacia y si 
 	//existe ya en la tabla
 	function ADD() {
 		if ( ( $this->IdFuncionalidad <> '' && $this->IdAccion <> '' ) ) { // si el atributo clave de la entidad no esta vacio
-        /*
-        $accion = "SELECT * FROM ACCION WHERE (IdAccion = '$this->IdAccion')";
-        $result=$this->mysqli->query($accion);
-        
-        if(!$result){
-           return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
-        }
-        else{
-             if($result->num_rows == 0){
-                 return "No puedes insertar este id de accion debido a que no existe, debes insertar previamente una accion";
-            }
-            
-        }
-           
-            
-        $funcionalidad = "SELECT * FROM FUNCIONALIDAD WHERE (IdFuncionalidad = '$this->IdFuncionalidad')";  
-        $result=$this->mysqli->query($funcionalidad);
-        
-        if(!$result){
-           return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
-        }
-            
-        else{
-                 if($result->num_rows == 0){
-                 return "No puedes insertar este id de funcionalidad debido a que no existe, debes insertar previamente una funcionalidad";
-                }
-            }
-        */
+    
 
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM FUNC_ACCION WHERE (  IdFuncionalidad = '$this->IdFuncionalidad' &&  IdAccion = '$this->IdAccion' )";//se construye la sentencia sql

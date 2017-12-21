@@ -76,7 +76,7 @@ switch ( $_REQUEST[ 'action' ] ) {//Si la variable action no tiene contenido le 
 			    	$acciones= $ACCION->DevolverAcciones();//llamamos a esta función para devolver todas las acciones
 					$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');//creamos un objeto de tipo FUNCIONALIDAD_MODEL
 					$DatosFuncionalidad = $FUNCIONALIDAD->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);//llamamos a este metodo para devolver todas las funcionalidades
-					new FUNC_ACCION_ADD($_REQUEST['IdFuncionalidad'],$acciones);//mostramos una vista ADD
+					new FUNC_ACCION_ADD($DatosFuncionalidad,$acciones);//mostramos una vista ADD
 				} else {//si el usuario no tiene dicho permiso, se le indica en un mensaje
 					new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );
 				}
@@ -138,7 +138,7 @@ switch ( $_REQUEST[ 'action' ] ) {//Si la variable action no tiene contenido le 
 			}
 			$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');//creamos un objeto de tipo FUNCIONALIDAD
 			$DatosFuncionalidad = $FUNCIONALIDAD->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);//llamamos a esta función para devolver los datos de una funcionalidad pasandole el IdFuncionalidad
-			$datos = $FUNC_ACCION->SEARCH();//llamamos a la función SEARCH para buscar todas las FUNC_ACCION
+			$datos = $FUNC_ACCION->SEARC2H();//llamamos a la función SEARCH2 para buscar todas las FUNC_ACCION
 			$lista = array( 'NombreFuncionalidad','NombreAccion' );//metemos e un array los campos que queremos mostrar
 			new FUNC_ACCION_SHOWALL( $lista, $datos, $DatosFuncionalidad );//mostramos la vista SHOWALL de FUNC_ACCION
 		} else {//si el usuario no es administrador
@@ -164,7 +164,7 @@ switch ( $_REQUEST[ 'action' ] ) {//Si la variable action no tiene contenido le 
 				$FUNCIONALIDAD = new FUNCIONALIDAD( '', '', '');//creamos un objeto de tipo FUNCIONALIDAD
 				$DatosFuncionalidad = $FUNCIONALIDAD->DevolverDatosFuncionalidad($_REQUEST['IdFuncionalidad']);//llamamos a esta función para que nos devuelva los datos de la funcionalidad pasandole el IdFuncionalidad
 
-				$datos = $FUNC_ACCION->SEARCH();//con el método SEARCH en este caso buscamos todos los valores que hay en la base de datos.
+				$datos = $FUNC_ACCION->SEARCH2();//con el método SEARCH2 en este caso buscamos todos los valores que hay en la base de datos.
 				$lista = array( 'NombreFuncionalidad','NombreAccion' );//metemos en un array los campos que queremos mostrar en el SHOWALL 
 				new FUNC_ACCION_SHOWALL( $lista, $datos, $DatosFuncionalidad );// se muestra la vista SHOWALL.
 			}else{//si el usuario no tiene permiso se muestra una vista por defecto que no tiene nada
