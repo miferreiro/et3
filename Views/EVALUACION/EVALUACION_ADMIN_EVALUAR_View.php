@@ -58,10 +58,15 @@ class EVALUACION_ADMIN_EVALUAR {
 ?>
 							<td bgcolor="#4e8726">
 <?php
-					} else {
+					} else if($datos[$i][1] == 0){
 ?>		
 							<td bgcolor="#ff3700">					
 <?php
+					} else {
+?>
+							<td>
+<?php
+
 					}
 ?>
 						<?php echo $datos[$i][1]; ?>
@@ -71,9 +76,14 @@ class EVALUACION_ADMIN_EVALUAR {
 ?>
 						<td bgcolor="#4e8726">
 <?php
-					} else {
+					} else if($datos[$i][5] == 0) {
 ?>
 						<td bgcolor="#ff3700">
+<?php
+
+					} else {
+?>
+						<td>
 <?php
 
 					}
@@ -145,10 +155,15 @@ class EVALUACION_ADMIN_EVALUAR {
 ?>
 					<td bgcolor="#4e8726">
 <?php
-				} else {
+				} else if($datos[$i][3] == 0) {
 ?>
 					<td bgcolor="#ff3700">
 <?php
+				} else {
+?>
+					<td>
+<?php
+
 				}
 ?>
 

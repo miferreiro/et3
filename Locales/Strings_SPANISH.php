@@ -200,6 +200,7 @@ array(
 	'ID_TRABAJO' => 'Id del trabajo',
 	'ALIAS' => 'Alias',
 	'HORAS' => 'Horas dedicadas',
+	'Consultar mis notas' => 'Consultar mis notas',
 	'RUTA' => 'Ruta de la entrega',
 	'LoginEvaluador' => 'Usuario evaluador',
 	'LoginEvaluado' => 'Usuario evaluado',
