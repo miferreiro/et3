@@ -410,12 +410,13 @@ INSERT INTO `FUNC_ACCION` (`IdFuncionalidad`, `IdAccion`) VALUES
 
 INSERT INTO `PERMISO` (`IdGrupo`, `IdFuncionalidad`, `IdAccion`) VALUES
 ('00001A', '12', '2'),
-('00001A', '12', '5'),
-('00001A', '13', '7'),
+('00001A', '12', '7'),
+('00001A', '12', '10'),
+('00001A', '12', '14'),
 ('00001A', '7', '5'),
 ('00001A', '8', '2'),
-('00001A', '8', '10'),
-('00001A', '9', '7');
+('00001A', '8', '10');
+
 
 
 INSERT INTO `GRUPO` (`IdGrupo`, `NombreGrupo`, `DescripGrupo`) VALUES
