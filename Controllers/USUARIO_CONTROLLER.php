@@ -134,8 +134,9 @@ switch ( $_REQUEST[ 'action' ] ) {
             $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);
             $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);
             $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);
+			$dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);	
             //Crea una vista delete para ver la tupla
-			new USUARIO_DELETE( $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6 );
+			new USUARIO_DELETE( $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6,$dependencias7 );
 			}else{//si la variable cont no es uno mostramos un mensaje diciendo que dicho usuario no tiene permiso
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
@@ -175,6 +176,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				}
 			   }
 			}
+			//Si se han encontado que el usuario tiene esos permisos
 			if($cont>=1){
 			//Variable que almacena un objeto model con el login
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
