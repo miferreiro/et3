@@ -171,13 +171,13 @@ $GESTEVAL=false;
 				}
 ?>
 			</table>
-<?php if((comprobarAdministrador($_SESSION['login']))==false && (permisosAcc($_SESSION['login'],8,10)==true)){ ?>
-			<form action='../Controllers/TRABAJO_CONTROLLER.php' method="post">
+<?php if((permisosAcc($_SESSION['login'],8,5)==false) && (permisosAcc($_SESSION['login'],8,10)==true)){ ?>
+			<form action='../Controllers/ENTREGA_CONTROLLER.php?action=SUBIRET' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>					
 <?php }else{ ?>
 			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button type="submit" ><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 <?php } ?>
 		</div>

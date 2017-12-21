@@ -65,8 +65,8 @@ class ENTREGA_EDIT {
 							<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button><!--boton para confirmar borrado-->
 			</form>
 					
-<?php if((comprobarAdministrador($_SESSION['login']))==false && (permisosAcc($_SESSION['login'],8,10)==true)){ ?>
-			<form action='../Controllers/ENTREGA_CONTROLLER.php?ac' method="post">
+<?php if((permisosAcc($_SESSION['login'],8,5)==false) && (permisosAcc($_SESSION['login'],8,10)==true)){ ?>
+			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
 			    <input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo']?>">
 				<button type="submit" name="action" value="SUBIR_ENTREGA" ><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>

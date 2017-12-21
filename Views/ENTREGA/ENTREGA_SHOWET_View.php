@@ -70,7 +70,7 @@ class ENTREGA_SHOWET {
 						<form action="../Controllers/ENTREGA_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
                          
-                            <td>
+
                                 <?php
 	                       		if(permisosAcc($_SESSION['login'],8,2)==true){
                                     if(date('d-m-Y')<$fila['FechaFinTrabajo']){
@@ -83,15 +83,15 @@ class ENTREGA_SHOWET {
 								}
                                 ?>
                             
-                            </td>
+                       
 						</form>
 				</tr>
 <?php
 				}
 ?>
 			</table>
-			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
-				<button type="submit" name="action" value="SUBIRETS" ><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			<form action='../Controllers/ENTREGA_CONTROLLER.php?action=SUBIRET' method="post">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php

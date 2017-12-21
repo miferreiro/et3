@@ -406,11 +406,12 @@ switch ( $_REQUEST[ 'action' ] ) {
           $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');//en un array almacenamos los campos a mostrar
           new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,false */);//mostramos la vista showall 
 		}else{//si el usuario no tiene dicho permiso se indica
-			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php?action=SUBIRET' );
 		}
         break;
 		
 	case 'SUBIRET':
+		if(permisosAcc($_SESSION['login'],8,10)==true){	//miramos si el usuario tiene dicho permiso	
 	    if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SHOWALL
 			$TRABAJO = new TRABAJO('','','','','');//se crea un objeto de tipo TRABAJO para buscar todos los trabajos
 		} 
@@ -420,6 +421,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $TRABAJO->SEARCH2();//llamamos al metodo SEARCH2 para buscar todos los trabajos
 		$lista = array( 'NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );//metemos en un array todos los campos que queremos mostrar
 		new ENTREGA_SHOWET( $lista, $datos );//muestra una vista SHOWALL con todos los trabajos
+	    }else{//si el usuario no tiene dicho permiso se muestra una vista por defecto sin nada
+		
+			new USUARIO_DEFAULT();
+		
+		}
 	break;
 		
 		
