@@ -94,12 +94,12 @@ que comprueba permisos para cada una de las acciones -->
 		</li>
 		<?php }
 
-		 if((permisosAcc($_SESSION['login'],9,7)==true)){?>
+		 if((permisosAcc($_SESSION['login'],12,7)==true)){?>
 		<li>
 			<a href="../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_QA" class="primerNivel"><?php echo $strings['Consulta de correciones']; ?></a>
 		</li>
 		<?php }
-		if(permisosAcc($_SESSION['login'],13,7)==true){ ?>
+		if(permisosAcc($_SESSION['login'],12,14)==true){ ?>
 		<li>
 			<a href="../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_ET" class="primerNivel"><?php echo $strings['Correción entregas']; ?></a>
 		</li>
