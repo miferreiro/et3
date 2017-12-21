@@ -1,21 +1,24 @@
 <?php
 /*  Archivo php
 	Nombre: EVALUACION_DELETE_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una acción y da la opción de borrarlos
+	Autor: 	Alejandro Vila
+	Fecha de creación: 28/11/2017 
+	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una evaluacion y da la opción de borrarlos
 */
+
+
+//es la clase DELETE de EVALUACION que nos permite borrar una evaluacion
 class EVALUACION_DELETE {
 
-	function __construct( $valores ) {
-		$this->valores = $valores;
-		$this->render( $this->valores );
+	function __construct( $valores ) { //es el constructor de la clase EVALUACION_DELETE
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->render( $this->valores );//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
 
-	function render( $valores ) {
-		$this->valores = $valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render( $valores ) { //funcion que  mostrará el formulario DELETE con los campos correspondientes
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -128,7 +131,7 @@ class EVALUACION_DELETE {
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 	}
 }
 

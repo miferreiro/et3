@@ -1,21 +1,24 @@
 <?php
 /*  Archivo php
 	Nombre: EVALUACIONES_EDIT_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una acción en la base de datos
+	Autor: 	Alejandro Vila
+	Fecha de creación: 28/11/2017 
+	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una evalaucion en la base de datos
 */
+
+
+//es la clase EDIT de EVALUACION que nos permite editar una evaluacion
 class EVALUACION_EDIT {
 
-	function __construct( $valores ) {
+	function __construct( $valores ) { //es el constructor de la clase EVALUACION_EDIT
 		
-		$this->render( $valores );
+		$this->render( $valores );//llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
 	}
 
-	function render( $valores ) {
-		$this->valores = $valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render( $valores ) {//funcion que mostrará el formulario EDIT con los campos correspondientes
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 		?>
 		<div class="seccion">
 			<h2>
@@ -98,7 +101,7 @@ class EVALUACION_EDIT {
 		</div>
 
 		<?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 		?>

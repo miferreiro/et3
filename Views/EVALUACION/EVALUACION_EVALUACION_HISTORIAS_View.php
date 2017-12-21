@@ -1,6 +1,8 @@
 <?php
-    //Se muestra una tabla SHOWALL conto todas las entregas y iconos para añadir,insertar,borrar,buscar y buscar en detalle.
-    //Fecha de creación:28/11/2017
+    //Se muestra una tabla SHOWALL con todas las entregas y iconos para añadir,insertar,borrar,buscar y buscar en detalle.
+    //Fecha de creación:30/11/2017
+    // Autor: Alejandro Vila
+
 
 class EVALUACION_SELECT_ALL_QA {
 
@@ -80,7 +82,7 @@ class EVALUACION_SELECT_ALL_QA {
 			</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>
