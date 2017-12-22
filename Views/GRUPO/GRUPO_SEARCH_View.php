@@ -5,16 +5,18 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a un grupo e la base de datos
 */
+//Clase Grupo_search que contiene la vista que muestra un formulario de busqueda de grupo
 class GRUPO_SEARCH {
-
+	//Constructor de la clase
 	function __construct() {
+		//metodo que llama a la función render que contiene todo el código de la vista
 		$this->render();
 	}
-
+	//Función que contiene el código de la vista
 	function render() {
 
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		include '../Views/Header.php';//Incluye el contenido del header
 ?>
 		<div class="seccion">
 			<h2>
