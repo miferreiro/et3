@@ -139,15 +139,15 @@ function comprobarCampoNumFormSearch(campo, size, valormenor, valormayor) {
 	/*Si el campo es nulo, tiene longitud 0 o está compuesto por espacios en blanco, se retorna true. Si no es así se valida el campo*/
 	if (campo.value == null || campo.value.length == 0 || /^\s+$/.test(campo.value)) {
 		return true;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba que el campo no tenga una longitud mayor que el indicado por size, si la supera, se retorna false*/
 		if (!comprobarLongitud(campo, size)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba que el campo no contenga carácteres especiales, si no es así, se retorna false */
 			if (!comprobarTexto(campo, size)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba que el campo es un dígito y es mayor que valormenor y es menor que valormayor, si no es así, se retorna false */
 				if (!comprobarEntero(campo, valormenor, valormayor)) {
 					return false;
@@ -209,7 +209,7 @@ function comprobarReal(campo, numeroDecimales, valormenor, valormayor) {
 		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" tiene un formato no válido"];?>');
 		campo.focus();
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Recorre el valor de campo hasta que control sea falso o la variable de de control i sobrepase la longitud de campo*/
 		do {
 			/*Comprueba si el caracter seleccionado es un punto o una coma, si es así cuenta los carácteres que le siguen*/
@@ -228,13 +228,13 @@ function comprobarReal(campo, numeroDecimales, valormenor, valormayor) {
 			msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede tener más de "];?>' + numeroDecimales);
 			campo.focus();
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba que el valor de campo es mayor que valormayor, si es así muestra un mensaje de error y retorna false */
 			if (num > valormayor) {
 				msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede ser mayor que "];?>' + valormayor);
 				campo.focus();
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba que el valor de campo es menor que valormenor, si es así muestra un mensaje de error y retorna false */
 				if (num < valormenor) {
 					msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede ser menor que "];?>' + valormenor);
@@ -268,10 +268,10 @@ function comprobarDni(campo) {
 			msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" tiene un formato erróneo, la letra del NIF no se corresponde"];?>');
 			campo.focus();
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			return true;
 		}
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" tiene un formato erróneo"];?>');
 		campo.focus();
 		return false;
@@ -325,8 +325,8 @@ function comprobarExtension(campo){
 	function abrirVentana(): realiza la función de abrir una ventana emergente, a través de una capa, capaFondo1, para que no se pueda interacionar con la capa base. Estas dos capas se activan y su visibility pasa a visible.
 */
 function abrirVentana() {
-	document.getElementById("capaFondo1").style.visibility = "visible";
-	document.getElementById("capaVentana").style.visibility = "visible";
+	document.getElementById("capaFondo1").style.visibility = "visible";//Se establece la capa de fondo a visible
+	document.getElementById("capaVentana").style.visibility = "visible";//Se establece la capa de ventana a visible
 	document.formError.bAceptar.focus();
 }
 /*
@@ -334,7 +334,7 @@ function abrirVentana() {
 */
 function cerrarVentana() {
 	document.getElementById("capaFondo1").style.visibility = "hidden";
-	document.getElementById("capaVentana").style.visibility = "hidden";
+	document.getElementById("capaVentana").style.visibility = "hidden";//Se establece la capa de ventana a oculta
 	document.formError.bAceptar.blur();
 }
 /*
@@ -347,7 +347,7 @@ function msgError(msg) {
 
 	miDiv.innerHTML = ""; //innerHTML te añade código a lo que ya haya por eso primero lo ponemos en blanco.
 	html = msg;
-	miDiv.innerHTML = html;
+	miDiv.innerHTML = html;//añadimos el texto que queramos al div
 	abrirVentana();
 	return true;
 }
@@ -366,11 +366,11 @@ function comprobarLogin() {
 	/*Comprueba si el login es vacio, retorna false*/
 	if (!comprobarVacio(login)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprobamos su longitud, si es mayor que 9, retorna false*/
 		if (!comprobarLongitud(login, 9)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(login, 9)) {
 				return false;
@@ -379,11 +379,11 @@ function comprobarLogin() {
 		/*Comprueba si la password es vacio, retorna false*/
 		if (!comprobarVacio(pwd)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 20, retorna false*/
 			if (!comprobarLongitud(pwd, 20)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(pwd, 20)) {
 					return false;
@@ -432,15 +432,15 @@ function comprobarAddUsuario() {
 	/*Comprueba si login es vacio, retorna false*/
 	if (!comprobarVacio(login)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(login)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 15, retorna false*/
 			if (!comprobarLongitud(login, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(login, 9)) {
 					return false;
@@ -451,15 +451,15 @@ function comprobarAddUsuario() {
 	/*Comprueba si password es vacio, retorna false*/
 	if (!comprobarVacio(pwd)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(pwd)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 20, retorna false*/
 			if (!comprobarLongitud(pwd, 20)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(pwd, 20)) {
 					return false;
@@ -470,15 +470,15 @@ function comprobarAddUsuario() {
 	/*Comprueba si dni es vacio, retorna false*/
 	if (!comprobarVacio(dni)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 9, retorna false*/
 		if (!comprobarLongitud(dni, 9)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(dni, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene un formato valido de dni */
 				if (!comprobarDni(dni)) {
 					return false;
@@ -489,15 +489,15 @@ function comprobarAddUsuario() {
 	/*Comprueba si nombreuser es vacio, retorna false*/
 	if (!comprobarVacio(nombreuser)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 30, retorna false*/
 		if (!comprobarLongitud(nombreuser, 30)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(nombreuser, 30)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
 				if (!comprobarAlfabetico(nombreuser, 30)) {
 					return false;
@@ -509,15 +509,15 @@ function comprobarAddUsuario() {
 	/*Comprueba si apellidosuser es vacio, retorna false*/
 	if (!comprobarVacio(apellidosuser)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 50, retorna false*/
 		if (!comprobarLongitud(apellidosuser, 50)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(apellidosuser, 50)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
 				if (!comprobarAlfabetico(apellidosuser, 50)) {
 					return false;
@@ -530,15 +530,15 @@ function comprobarAddUsuario() {
 	/*Comprueba si emailuser es vacio, retorna false*/
 	if (!comprobarVacio(emailuser)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 60, retorna false*/
 		if (!comprobarLongitud(emailuser, 40)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(emailuser, 40)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene su formato incorrecto, si es así, retorna false*/
 				if (!comprobarEmail(emailuser)) {
 					return false;
@@ -548,11 +548,11 @@ function comprobarAddUsuario() {
 	}
 	if (!comprobarVacio(direccion)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 60, retorna false*/
 		if (!comprobarLongitud(direccion, 60)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(direccion, 60)) {
 				return false;
@@ -563,15 +563,15 @@ function comprobarAddUsuario() {
 	/*Comprueba si telelefono es vacio, retorna false*/
 	if (!comprobarVacio(telefono)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 11, retorna false*/
 		if (!comprobarLongitud(telefono, 11)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(telefono, 11)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si el formato no es correcto, si es así, retorna false */
 				if (!comprobarTelf(telefono)) {
 					return false;
@@ -610,7 +610,7 @@ function comprobarSearchUsuario() {
 	/*Comprueba la longitud que tiene login, si es mayor que 15, retorna false*/
 	if (!comprobarLongitud(login, 9)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(login, 9)) {
 			return false;
@@ -619,7 +619,7 @@ function comprobarSearchUsuario() {
 	/*Comprueba la longitud que tiene pwd, si es mayor que 128, retorna false*/
 	if (!comprobarLongitud(pwd, 128)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(pwd, 128)) {
 			return false;
@@ -629,7 +629,7 @@ function comprobarSearchUsuario() {
 	/*Comprueba la longitud que tiene dni, si es mayor que 9, retorna false*/
 	if (!comprobarLongitud(dni, 9)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(dni, 9)) {
 			return false;
@@ -638,11 +638,11 @@ function comprobarSearchUsuario() {
 	/*Comprueba la longitud que tiene nombreuser, si es mayor que 30, retorna false*/
 	if (!comprobarLongitud(nombreuser, 30)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(nombreuser, 30)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
 			if (!comprobarAlfabetico(nombreuser, 30)) {
 				return false;
@@ -652,11 +652,11 @@ function comprobarSearchUsuario() {
 	/*Comprueba la longitud que tiene apellidosuser, si es mayor que 50, retorna false*/
 	if (!comprobarLongitud(apellidosuser, 50)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(apellidosuser, 50)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
 			if (!comprobarAlfabetico(apellidosuser, 50)) {
 				return false;
@@ -667,7 +667,7 @@ function comprobarSearchUsuario() {
 	/*Comprueba la longitud que tiene emailuser, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(emailuser, 40)) {
 		return false;
-	} else {
+	} else // si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(emailuser, 40)) {
 			return false;
@@ -678,7 +678,7 @@ function comprobarSearchUsuario() {
 	/*Comprueba su longitud, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(direccion, 60)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(direccion, 60)) {
 			return false;
@@ -689,7 +689,7 @@ function comprobarSearchUsuario() {
 	/*Comprueba la longitud que tiene telefono, si es mayor que 11, retorna false*/
 	if (!comprobarLongitud(telefono, 11)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(telefono, 11)) {
 			return false;
@@ -724,15 +724,15 @@ function comprobarEditUsuario() {
 	/*Comprueba si login es vacio, retorna false*/
 	if (!comprobarVacio(login)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(login)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 15, retorna false*/
 			if (!comprobarLongitud(login, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(login, 9)) {
 					return false;
@@ -743,15 +743,15 @@ function comprobarEditUsuario() {
 	/*Comprueba si password es vacio, retorna false*/
 	if (!comprobarVacio(pwd)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(pwd)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 128, retorna false*/
 			if (!comprobarLongitud(pwd, 128)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(pwd, 128)) {
 					return false;
@@ -762,15 +762,15 @@ function comprobarEditUsuario() {
 	/*Comprueba si dni es vacio, retorna false*/
 	if (!comprobarVacio(dni)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 9, retorna false*/
 		if (!comprobarLongitud(dni, 9)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(dni, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene un formato valido de dni */
 				if (!comprobarDni(dni)) {
 					return false;
@@ -781,15 +781,15 @@ function comprobarEditUsuario() {
 	/*Comprueba si nombreuser es vacio, retorna false*/
 	if (!comprobarVacio(nombreuser)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 30, retorna false*/
 		if (!comprobarLongitud(nombreuser, 30)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(nombreuser, 30)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
 				if (!comprobarAlfabetico(nombreuser, 30)) {
 					return false;
@@ -801,15 +801,15 @@ function comprobarEditUsuario() {
 	/*Comprueba si apellidosuser es vacio, retorna false*/
 	if (!comprobarVacio(apellidosuser)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 50, retorna false*/
 		if (!comprobarLongitud(apellidosuser, 50)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(apellidosuser, 50)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
 				if (!comprobarAlfabetico(apellidosuser, 50)) {
 					return false;
@@ -822,15 +822,15 @@ function comprobarEditUsuario() {
 	/*Comprueba si emailuser es vacio, retorna false*/
 	if (!comprobarVacio(emailuser)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 60, retorna false*/
 		if (!comprobarLongitud(emailuser, 40)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(emailuser, 40)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene su formato incorrecto, si es así, retorna false*/
 				if (!comprobarEmail(emailuser)) {
 					return false;
@@ -842,11 +842,11 @@ function comprobarEditUsuario() {
 	/*Comprueba si direccion es vacio, retorna false*/
 	if (!comprobarVacio(direccion)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 50, retorna false*/
 		if (!comprobarLongitud(direccion, 60)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(direccion, 60)) {
 				return false;
@@ -857,15 +857,15 @@ function comprobarEditUsuario() {
 	/*Comprueba si telelefono es vacio, retorna false*/
 	if (!comprobarVacio(telefono)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 11, retorna false*/
 		if (!comprobarLongitud(telefono, 11)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(telefono, 11)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene un formato incorrecto, si es así, retorna false */
 				if (!comprobarTelf(telefono)) {
 					return false;
@@ -894,7 +894,7 @@ function comprobarSearchAccion() {
 	/*Comprueba su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarLongitud(IdAccion, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(IdAccion, 6)) {
 			return false;
@@ -903,7 +903,7 @@ function comprobarSearchAccion() {
 	/*Comprueba su longitud, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(NombreAccion, 60)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(NombreAccion, 60)) {
 			return false;
@@ -938,15 +938,15 @@ function comprobarEditAccion() {
 	/*Comprueba si IdAccion es vacio, retorna false*/
 	if (!comprobarVacio(IdAccion)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdAccion)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdAccion, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdAccion, 6)) {
 					return false;
@@ -957,15 +957,15 @@ function comprobarEditAccion() {
 	/*Comprueba si NombreAccion es vacio, retorna false*/
 	if (!comprobarVacio(NombreAccion)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(NombreAccion)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 128, retorna false*/
 			if (!comprobarLongitud(NombreAccion, 60)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreAccion, 60)) {
 					return false;
@@ -976,11 +976,11 @@ function comprobarEditAccion() {
 	/*Comprueba si DescripAccion es vacio, retorna false*/
 	if (!comprobarVacio(DescripAccion)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 100, retorna false*/
 		if (!comprobarLongitud(DescripAccion, 100)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(DescripAccion, 100)) {
 				return false;
@@ -1008,15 +1008,15 @@ function comprobarAddAccion() {
 	/*Comprueba si IdAccion es vacio, retorna false*/
 	if (!comprobarVacio(IdAccion)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdAccion)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdAccion, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdAccion, 6)) {
 					return false;
@@ -1027,15 +1027,15 @@ function comprobarAddAccion() {
 	/*Comprueba si NombreAccion es vacio, retorna false*/
 	if (!comprobarVacio(NombreAccion)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(NombreAccion)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreAccion, 60)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreAccion, 60)) {
 					return false;
@@ -1046,11 +1046,11 @@ function comprobarAddAccion() {
 	/*Comprueba si DescripAccion es vacio, retorna false*/
 	if (!comprobarVacio(DescripAccion)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 100, retorna false*/
 		if (!comprobarLongitud(DescripAccion, 100)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(DescripAccion, 100)) {
 				return false;
@@ -1084,15 +1084,15 @@ function comprobarAddTrabajo() {
 	/*Comprueba si IdTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdTrabajo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTrabajo, 6)) {
 					return false;
@@ -1103,15 +1103,15 @@ function comprobarAddTrabajo() {
 	/*Comprueba si NombreTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(NombreTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(NombreTrabajo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreTrabajo, 60)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreTrabajo, 60)) {
 					return false;
@@ -1132,15 +1132,15 @@ function comprobarAddTrabajo() {
 	/*Comprueba si PorcentajeNota es vacio, retorna false*/
 	if (!comprobarVacio(PorcentajeNota)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 2, retorna false*/
 		if (!comprobarLongitud(PorcentajeNota, 2)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(PorcentajeNota, 2)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba que sea un numero entero y este entre 0 y 100*/
 				if (!comprobarEntero(PorcentajeNota, 0, 100)) {
 					return false;
@@ -1176,15 +1176,15 @@ function comprobarEditTrabajo() {
 	/*Comprueba si IdTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdTrabajo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTrabajo, 6)) {
 					return false;
@@ -1195,15 +1195,15 @@ function comprobarEditTrabajo() {
 	/*Comprueba si NombreTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(NombreTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(NombreTrabajo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreTrabajo, 60)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreTrabajo, 60)) {
 					return false;
@@ -1224,15 +1224,15 @@ function comprobarEditTrabajo() {
 	/*Comprueba si PorcentajeNota es vacio, retorna false*/
 	if (!comprobarVacio(PorcentajeNota)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 2, retorna false*/
 		if (!comprobarLongitud(PorcentajeNota, 2)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(PorcentajeNota, 2)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba que sea un numero entero y este entre 0 y 100*/
 				if (!comprobarEntero(PorcentajeNota, 0, 100)) {
 					return false;
@@ -1271,7 +1271,7 @@ function comprobarSearchTrabajo() {
 	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarLongitud(IdTrabajo, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(IdTrabajo, 6)) {
 			return false;
@@ -1283,7 +1283,7 @@ function comprobarSearchTrabajo() {
 	/*Comprueba su longitud, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(NombreTrabajo, 60)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(NombreTrabajo, 60)) {
 			return false;
@@ -1315,11 +1315,11 @@ function comprobarAddEntrega() {
 	/*Comprueba si login es vacio, retorna false*/
 	if (!comprobarVacio(login)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(login, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(login, 9)) {
 					return false;
@@ -1330,11 +1330,11 @@ function comprobarAddEntrega() {
 	/*Comprueba si IdTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTrabajo, 6)) {
 					return false;
@@ -1345,15 +1345,15 @@ function comprobarAddEntrega() {
 	/*Comprueba si Horas es vacio, retorna false*/
 	if (!comprobarVacio(Horas)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 2, retorna false*/
 		if (!comprobarLongitud(Horas, 2)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(Horas, 2)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				//Comprueba si es un numero entero y esta entre 0 y 99
 				if (!comprobarEntero(Horas, 0, 99)) {
 					return false;
@@ -1364,7 +1364,7 @@ function comprobarAddEntrega() {
 	/*Comprueba si Ruta es vacio, retorna false*/
 	if (!comprobarVacio(Ruta)) {
 		return false;
-	}else{
+	}else{// si no cumple con la condición del if anterior,
 		/*Comprueba que Ruta tenga una extensión permitida*/
 		if(!comprobarExtension(Ruta)){
 			return false;
@@ -1391,7 +1391,7 @@ function comprobarEditEntrega() {
 	/*Comprueba si Horas es vacio, retorna false*/
 	if (!comprobarVacio(Alias)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 6, retorna false*/
 		if (!comprobarLongitud(Alias, 6)) {
 			return false;
@@ -1405,15 +1405,15 @@ function comprobarEditEntrega() {
 	/*Comprueba si Horas es vacio, retorna false*/
 	if (!comprobarVacio(Horas)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 2, retorna false*/
 		if (!comprobarLongitud(Horas, 2)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(Horas, 2)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				//Comprueba si es un numero entero y esta entre 0 y 99
 				if (!comprobarEntero(Horas, 0, 99)) {
 					return false;
@@ -1452,7 +1452,7 @@ function comprobarSearchEntrega(){
 	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarLongitud(login, 9)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(login, 9)) {
 			return false;
@@ -1464,7 +1464,7 @@ function comprobarSearchEntrega(){
 	/*Comprueba su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarLongitud(IdTrabajo, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(IdTrabajo, 6)) {
 			return false;
@@ -1476,7 +1476,7 @@ function comprobarSearchEntrega(){
 	/*Comprueba su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarLongitud(Alias, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(Alias, 6)) {
 			return false;
@@ -1514,15 +1514,15 @@ function comprobarAddHistoria() {
 	/*Comprueba si IdTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdTrabajo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTrabajo, 6)) {
 					return false;
@@ -1533,19 +1533,19 @@ function comprobarAddHistoria() {
 	/*Comprueba si IdHistoria es vacio, retorna false*/
 	if (!comprobarVacio(IdHistoria)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdHistoria)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 2, retorna false*/
 			if (!comprobarLongitud(IdHistoria, 2)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdHistoria, 2)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 99*/
 					if (!comprobarEntero(IdHistoria, 0, 99)) {
 						return false;
@@ -1557,11 +1557,11 @@ function comprobarAddHistoria() {
 	/*Comprueba si TextoHistoria es vacio, retorna false*/
 	if (!comprobarVacio(TextoHistoria)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(TextoHistoria, 300)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(TextoHistoria, 300)) {
 				return false;
@@ -1589,15 +1589,15 @@ function comprobarEditHistoria() {
 	/*Comprueba si IdTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdTrabajo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTrabajo, 6)) {
 					return false;
@@ -1608,19 +1608,19 @@ function comprobarEditHistoria() {
 	/*Comprueba si IdHistoria es vacio, retorna false*/
 	if (!comprobarVacio(IdHistoria)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdHistoria)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 2, retorna false*/
 			if (!comprobarLongitud(IdHistoria, 2)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdHistoria, 2)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 99*/
 					if (!comprobarEntero(IdHistoria, 0, 99)) {
 						return false;
@@ -1632,7 +1632,7 @@ function comprobarEditHistoria() {
 	/*Comprueba si TextoHistoria es vacio, retorna false*/
 	if (!comprobarVacio(TextoHistoria)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(TextoHistoria, 300)) {
 			return false;
@@ -1664,7 +1664,7 @@ function comprobarSearchHistoria() {
 	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarLongitud(IdTrabajo, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(IdTrabajo, 6)) {
 			return false;
@@ -1680,7 +1680,7 @@ function comprobarSearchHistoria() {
 	/*Comprueba su longitud, si es mayor que 300, retorna false*/
 	if (!comprobarLongitud(TextoHistoria, 300)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(TextoHistoria, 300)) {
 			return false;
@@ -1718,15 +1718,15 @@ function comprobarAddEvaluacion() {
 	/*Comprueba si IdTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdTrabajo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTrabajo, 6)) {
 					return false;
@@ -1737,15 +1737,15 @@ function comprobarAddEvaluacion() {
 	/*Comprueba si LoginEvaluador es vacio, retorna false*/
 	if (!comprobarVacio(LoginEvaluador)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(LoginEvaluador)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 9, retorna false*/
 			if (!comprobarLongitud(LoginEvaluador, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(LoginEvaluador, 9)) {
 					return false;
@@ -1773,19 +1773,19 @@ function comprobarAddEvaluacion() {
 	/*Comprueba si IdHistoria es vacio, retorna false*/
 	if (!comprobarVacio(IdHistoria)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdHistoria)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 2, retorna false*/
 			if (!comprobarLongitud(IdHistoria, 2)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdHistoria, 2)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 99*/
 					if (!comprobarEntero(IdHistoria, 0, 99)) {
 						return false;
@@ -1799,19 +1799,19 @@ function comprobarAddEvaluacion() {
 	/*Comprueba si CorrectoA es vacio, retorna false*/
 	if (!comprobarVacio(CorrectoA)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(CorrectoA)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(CorrectoA, 1)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(CorrectoA, 1)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 2*/
 					if (!comprobarEntero(CorrectoA, 0, 2)) {
 						return false;
@@ -1825,7 +1825,7 @@ function comprobarAddEvaluacion() {
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(ComenIncorrectoA, 300)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(ComenIncorrectoA, 300)) {
 				return false;
@@ -1838,19 +1838,19 @@ function comprobarAddEvaluacion() {
 	/*Comprueba si CorrectoP es vacio, retorna false*/
 	if (!comprobarVacio(CorrectoP)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(CorrectoP)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(CorrectoP, 1)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(CorrectoP, 1)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 2*/
 					if (!comprobarEntero(CorrectoP, 0, 2)) {
 						return false;
@@ -1863,7 +1863,7 @@ function comprobarAddEvaluacion() {
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(ComentIncorrectoP, 300)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(ComentIncorrectoP, 300)) {
 				return false;
@@ -1873,19 +1873,19 @@ function comprobarAddEvaluacion() {
 	/*Comprueba si OK es vacio, retorna false*/
 	if (!comprobarVacio(OK)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(OK)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(OK, 1)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(OK, 1)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 1*/
 					if (!comprobarEntero(OK, 0, 2)) {
 						return false;
@@ -1923,15 +1923,15 @@ function comprobarEditEvaluacion() {
 	/*Comprueba si IdTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdTrabajo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTrabajo, 6)) {
 					return false;
@@ -1942,15 +1942,15 @@ function comprobarEditEvaluacion() {
 	/*Comprueba si LoginEvaluador es vacio, retorna false*/
 	if (!comprobarVacio(LoginEvaluador)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(LoginEvaluador)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 9, retorna false*/
 			if (!comprobarLongitud(LoginEvaluador, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(LoginEvaluador, 9)) {
 					return false;
@@ -1962,11 +1962,11 @@ function comprobarEditEvaluacion() {
 	/*Comprueba si AliasEvaluado es vacio, retorna false*/
 	if (!comprobarVacio(AliasEvaluado)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 6, retorna false*/
 		if (!comprobarLongitud(AliasEvaluado, 6)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(AliasEvaluado, 6)) {
 				return false;
@@ -1978,19 +1978,19 @@ function comprobarEditEvaluacion() {
 	/*Comprueba si IdHistoria es vacio, retorna false*/
 	if (!comprobarVacio(IdHistoria)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdHistoria)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 2, retorna false*/
 			if (!comprobarLongitud(IdHistoria, 2)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdHistoria, 2)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 99*/
 					if (!comprobarEntero(IdHistoria, 0, 99)) {
 						return false;
@@ -2004,19 +2004,19 @@ function comprobarEditEvaluacion() {
 	/*Comprueba si CorrectoA es vacio, retorna false*/
 	if (!comprobarVacio(CorrectoA)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(CorrectoA)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(CorrectoA, 1)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(CorrectoA, 1)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 2*/
 					if (!comprobarEntero(CorrectoA, 0, 2)) {
 						return false;
@@ -2030,7 +2030,7 @@ function comprobarEditEvaluacion() {
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(ComenIncorrectoA, 300)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(ComenIncorrectoA, 300)) {
 				return false;
@@ -2043,19 +2043,19 @@ function comprobarEditEvaluacion() {
 	/*Comprueba si CorrectoP es vacio, retorna false*/
 	if (!comprobarVacio(CorrectoP)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(CorrectoP)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(CorrectoP, 1)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(CorrectoP, 1)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 2*/
 					if (!comprobarEntero(CorrectoP, 0, 2)) {
 						return false;
@@ -2068,7 +2068,7 @@ function comprobarEditEvaluacion() {
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(ComentIncorrectoP, 300)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(ComentIncorrectoP, 300)) {
 				return false;
@@ -2082,19 +2082,19 @@ function comprobarEditEvaluacion() {
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(OK)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(OK, 1)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(OK, 1)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 2*/
 					if (!comprobarEntero(OK, 0, 2)) {
 						return false;
-					}
+					}// si no cumple con la condición del if anterior,
 				}
 			}
 		}
@@ -2128,7 +2128,7 @@ function comprobarSearchEvaluacion() {
 	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarLongitud(IdTrabajo, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(IdTrabajo, 6)) {
 			return false;
@@ -2140,7 +2140,7 @@ function comprobarSearchEvaluacion() {
 	/*Comprueba su longitud, si es mayor que 9, retorna false*/
 	if (!comprobarLongitud(LoginEvaluador, 9)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(LoginEvaluador, 9)) {
 			return false;
@@ -2153,7 +2153,7 @@ function comprobarSearchEvaluacion() {
 	/*Comprueba su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarLongitud(AliasEvaluado, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(AliasEvaluado, 6)) {
 			return false;
@@ -2176,7 +2176,7 @@ function comprobarSearchEvaluacion() {
 	/*Comprueba su longitud, si es mayor que 300, retorna false*/
 	if (!comprobarLongitud(ComenIncorrectoA, 300)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(ComenIncorrectoA, 300)) {
 			return false;
@@ -2194,7 +2194,7 @@ function comprobarSearchEvaluacion() {
 	/*Comprueba su longitud, si es mayor que 300, retorna false*/
 	if (!comprobarLongitud(ComentIncorrectoP, 300)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(ComentIncorrectoP, 300)) {
 			return false;
@@ -2225,15 +2225,15 @@ function comprobarAddGrupo() {
 	/*Comprueba si NombreGrupo es vacio, retorna false*/
 	if (!comprobarVacio(IdGrupo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdGrupo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(IdGrupo, 60)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdGrupo, 60)) {
 					return false;
@@ -2246,15 +2246,15 @@ function comprobarAddGrupo() {
 	/*Comprueba si NombreGrupo es vacio, retorna false*/
 	if (!comprobarVacio(NombreGrupo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(NombreGrupo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreGrupo, 60)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreGrupo, 60)) {
 					return false;
@@ -2265,12 +2265,12 @@ function comprobarAddGrupo() {
 	/*Comprueba si DescripGrupo es vacio, retorna false*/
 	if (!comprobarVacio(DescripGrupo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 
 			/*Comprueba su longitud, si es mayor que 100, retorna false*/
 			if (!comprobarLongitud(DescripGrupo, 100)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(DescripGrupo, 100)) {
 					return false;
@@ -2300,15 +2300,15 @@ function comprobarEditGrupo() {
 	/*Comprueba si IdGrupo es vacio, retorna false*/
 	if (!comprobarVacio(IdGrupo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdGrupo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdGrupo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdGrupo, 6)) {
 					return false;
@@ -2319,15 +2319,15 @@ function comprobarEditGrupo() {
 	/*Comprueba si NombreGrupo es vacio, retorna false*/
 	if (!comprobarVacio(NombreGrupo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(NombreGrupo)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreGrupo, 60)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreGrupo, 60)) {
 					return false;
@@ -2338,11 +2338,11 @@ function comprobarEditGrupo() {
 	/*Comprueba si DescripGrupo es vacio, retorna false*/
 	if (!comprobarVacio(DescripGrupo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 100, retorna false*/
 			if (!comprobarLongitud(DescripGrupo, 100)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(DescripGrupo, 100)) {
 					return false;
@@ -2373,7 +2373,7 @@ function comprobarSearchGrupo() {
 	/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarLongitud(IdGrupo, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(IdGrupo, 6)) {
 			return false;
@@ -2384,7 +2384,7 @@ function comprobarSearchGrupo() {
 	/*Comprobamos su longitud, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(NombreGrupo, 60)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(NombreGrupo, 60)) {
 			return false;
@@ -2396,7 +2396,7 @@ function comprobarSearchGrupo() {
 	/*Comprueba su longitud, si es mayor que 100, retorna false*/
 	if (!comprobarLongitud(DescripGrupo, 100)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(DescripGrupo, 100)) {
 			return false;
@@ -2425,7 +2425,7 @@ function comprobarSearchFuncionalidad() {
 	/*Comprueba su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarLongitud(IdFuncionalidad, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(IdFuncionalidad, 6)) {
 			return false;
@@ -2434,7 +2434,7 @@ function comprobarSearchFuncionalidad() {
 	/*Comprueba su longitud, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(NombreFuncionalidad, 60)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(NombreFuncionalidad, 60)) {
 			return false;
@@ -2443,7 +2443,7 @@ function comprobarSearchFuncionalidad() {
 	/*Comprueba su longitud, si es mayor que 100, retorna false*/
 	if (!comprobarLongitud(DescripFuncionalidad, 100)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(DescripFuncionalidad, 100)) {
 			return false;
@@ -2469,15 +2469,15 @@ function comprobarEditFuncionalidad() {
 	/*Comprueba si IdAccion es vacio, retorna false*/
 	if (!comprobarVacio(IdFuncionalidad)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdFuncionalidad)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdFuncionalidad, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdFuncionalidad, 6)) {
 					return false;
@@ -2488,15 +2488,15 @@ function comprobarEditFuncionalidad() {
 	/*Comprueba si NombreAccion es vacio, retorna false*/
 	if (!comprobarVacio(NombreFuncionalidad)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(NombreFuncionalidad)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 128, retorna false*/
 			if (!comprobarLongitud(NombreFuncionalidad, 60)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreFuncionalidad, 60)) {
 					return false;
@@ -2507,11 +2507,11 @@ function comprobarEditFuncionalidad() {
 	/*Comprueba si DescripFuncionalidad es vacio, retorna false*/
 	if (!comprobarVacio(DescripFuncionalidad)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 100, retorna false*/
 		if (!comprobarLongitud(DescripFuncionalidad, 100)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(DescripFuncionalidad, 100)) {
 				return false;
@@ -2539,15 +2539,15 @@ function comprobarAddFuncionalidad() {
 	/*Comprueba si IdFuncionalidad es vacio, retorna false*/
 	if (!comprobarVacio(IdFuncionalidad)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(IdFuncionalidad)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdFuncionalidad, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdFuncionalidad, 6)) {
 					return false;
@@ -2558,15 +2558,15 @@ function comprobarAddFuncionalidad() {
 	/*Comprueba si NombreFuncionalidad es vacio, retorna false*/
 	if (!comprobarVacio(NombreFuncionalidad)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		//Comprobamos que no hay espacio s intermedios
 		if (!sinEspacio(NombreFuncionalidad)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreFuncionalidad, 60)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(NombreFuncionalidad, 60)) {
 					return false;
@@ -2577,11 +2577,11 @@ function comprobarAddFuncionalidad() {
 	/*Comprueba si DescripFuncionalidad es vacio, retorna false*/
 	if (!comprobarVacio(DescripFuncionalidad)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 100, retorna false*/
 		if (!comprobarLongitud(DescripFuncionalidad, 100)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(DescripFuncionalidad, 100)) {
 				return false;
@@ -2609,7 +2609,7 @@ function comprobarSearchPermisos() {
 	/*Comprueba su longitud, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(NombreGrupo, 60)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(NombreGrupo, 60)) {
 			return false;
@@ -2619,7 +2619,7 @@ function comprobarSearchPermisos() {
 	/*Comprueba su longitud, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(NombreFuncionalidad, 60)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(NombreFuncionalidad, 60)) {
 			return false;
@@ -2629,7 +2629,7 @@ function comprobarSearchPermisos() {
 	/*Comprueba su longitud, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(NombreAccion, 60)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(NombreAccion, 60)) {
 			return false;
@@ -2656,11 +2656,11 @@ function comprobarAddNotas(){
 	/*Comprueba su longitud, si es mayor que 9, retorna false*/
 	if (!comprobarVacio(login, 9)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarLoNgitud(login, 9)) {
 			return false;
-		}else{
+		}else{// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if(!comprobarTexto(login, 9)){
 				return false;
@@ -2671,11 +2671,11 @@ function comprobarAddNotas(){
 	/*Comprueba su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarVacio(IdTrabajo, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarLongitud(IdTrabajo, 6)) {
 			return false;
-		}else{
+		}else{// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if(!comprobarTexto(IdTrabajo, 6)){
 				return false;
@@ -2686,15 +2686,15 @@ function comprobarAddNotas(){
 	/*Comprueba su longitud, si es mayor que 4, retorna false*/
 	if (!comprobarVacio(NotaTrabajo, 4)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarLongitud(NotaTrabajo, 4)) {
 			return false;
-		}else{
+		}else{// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if(!comprobarTexto(NotaTrabajo, 4)){
 				return false;
-			}else{
+			}else{// si no cumple con la condición del if anterior,
 				/*Comprueba que la nota tenga el formato concreto*/
 				if(!comprobarReal(NotaTrabajo,2,0,10)){
 					return false;
@@ -2725,7 +2725,7 @@ function comprobarSearchNotas(){
 	/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 	if (!comprobarLongitud(login, 9)) {
 		return false;
-	}else{
+	}else{// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if(!comprobarTexto(login,9)){
 			return false;
@@ -2737,7 +2737,7 @@ function comprobarSearchNotas(){
 	/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 	if (!comprobarLongitud(IdTrabajo, 6)) {
 		return false;
-	}else{
+	}else{// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if(!comprobarTexto(IdTrabajo,6)){
 			return false;
@@ -2748,7 +2748,7 @@ function comprobarSearchNotas(){
 	/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 	if (!comprobarLongitud(NotaTrabajo, 4)) {
 		return false;
-	}else{
+	}else{// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if(!comprobarTexto(NotaTrabajo,4)){
 			return false;
@@ -2774,11 +2774,11 @@ function comprobarEditNotas(){
 	/*Comprueba su longitud, si es mayor que 9, retorna false*/
 	if (!comprobarVacio(login, 9)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarLongitud(login, 9)) {
 			return false;
-		}else{
+		}else{// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if(!comprobarTexto(login,9)){
 				return false;
@@ -2789,11 +2789,11 @@ function comprobarEditNotas(){
 	/*Comprueba su longitud, si es mayor que 6, retorna false*/
 	if (!comprobarVacio(IdTrabajo, 6)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarLongitud(IdTrabajo, 6)) {
 			return false;
-		}else{
+		}else{// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if(!comprobarTexto(IdTrabajo,6)){
 				return false;
@@ -2804,15 +2804,15 @@ function comprobarEditNotas(){
 	/*Comprueba su longitud, si es mayor que 4, retorna false*/
 	if (!comprobarVacio(NotaTrabajo, 4)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarLongitud(NotaTrabajo, 4)) {
 			return false;
-		}else{
+		}else{// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if(!comprobarTexto(NotaTrabajo,4)){
 				return false;
-			}else{
+			}else{// si no cumple con la condición del if anterior,
 				/*Comprueba que la nota tenga el formato concreto*/
 				if(!comprobarReal(NotaTrabajo,2,0,10)){
 					return false;
@@ -2840,11 +2840,11 @@ function comprobarAddAsignQa(){
 	/*Comprueba si IdTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTrabajo, 6)) {
 					return false;
@@ -2855,11 +2855,11 @@ function comprobarAddAsignQa(){
 	/*Comprueba si LoginEvaluador es vacio, retorna false*/
 	if (!comprobarVacio(LoginEvaluador)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
 			if (!comprobarLongitud(LoginEvaluador, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(LoginEvaluador, 9)) {
 					return false;
@@ -2870,11 +2870,11 @@ function comprobarAddAsignQa(){
 	/*Comprueba si LoginEvaluado es vacio, retorna false*/
 	if (!comprobarVacio(LoginEvaluado)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
 			if (!comprobarLongitud(LoginEvaluado, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(LoginEvaluado, 9)) {
 					return false;
@@ -2885,11 +2885,11 @@ function comprobarAddAsignQa(){
 	/*Comprueba si AliasEvaluado es vacio, retorna false*/
 	if (!comprobarVacio(AliasEvaluado)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(AliasEvaluado, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(AliasEvaluado, 6)) {
 					return false;
@@ -2919,11 +2919,11 @@ function comprobarEditAsignQa(){
 	/*Comprueba si IdTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTrabajo, 6)) {
 					return false;
@@ -2934,11 +2934,11 @@ function comprobarEditAsignQa(){
 	/*Comprueba si LoginEvaluador es vacio, retorna false*/
 	if (!comprobarVacio(LoginEvaluador)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
 			if (!comprobarLongitud(LoginEvaluador, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(LoginEvaluador, 9)) {
 					return false;
@@ -2949,11 +2949,11 @@ function comprobarEditAsignQa(){
 	/*Comprueba si LoginEvaluado es vacio, retorna false*/
 	if (!comprobarVacio(LoginEvaluado)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
 			if (!comprobarLongitud(LoginEvaluado, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(LoginEvaluado, 9)) {
 					return false;
@@ -2964,11 +2964,11 @@ function comprobarEditAsignQa(){
 	/*Comprueba si AliasEvaluado es vacio, retorna false*/
 	if (!comprobarVacio(AliasEvaluado)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(AliasEvaluado, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTraAliasEvaluadobajo, 6)) {
 					return false;
@@ -3000,7 +3000,7 @@ function comprobarSearchAsignQa(){
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(IdTrabajo, 6)) {
 					return false;
@@ -3011,7 +3011,7 @@ function comprobarSearchAsignQa(){
 			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
 			if (!comprobarLongitud(LoginEvaluador, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(LoginEvaluador, 9)) {
 					return false;
@@ -3022,7 +3022,7 @@ function comprobarSearchAsignQa(){
 			/*Comprobamos su longitud, si es mayor que 9, retorna false*/
 			if (!comprobarLongitud(LoginEvaluado, 9)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(LoginEvaluado, 9)) {
 					return false;
@@ -3034,7 +3034,7 @@ function comprobarSearchAsignQa(){
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(AliasEvaluado, 6)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(AliasEvaluado, 6)) {
 					return false;
@@ -3083,15 +3083,15 @@ function comprobarGenerarAsignQa(){
 	/*Comprueba si num es vacio, retorna false*/
 	if (!comprobarVacio(num)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 3, retorna false*/
 			if (!comprobarLongitud(num, 3)) {
 				return false;
-			} else {
+			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 				if (!comprobarTexto(num, 3)) {
 					return false;
-				} else {
+				} else {// si no cumple con la condición del if anterior,
 					/*Comprueba que sea un entero y esté entre 0 y 999*/
 					if (!comprobarEntero(num, 0, 999)) {
 						return false;
