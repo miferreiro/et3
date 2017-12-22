@@ -2,13 +2,15 @@
 <!--Fecha: 23-11-2017 Autor: Brais Rodríguez -->
 
 <?php
- include_once '../Functions/BdAdmin.php';
+ include_once '../Functions/BdAdmin.php';//incluimos este fichero para conectarnos a la base de datos
 
     class USU_GRUPO{
         var $login;//declaración de la variable login
         var $IdGrupo;//declaración de la variable IdGrupo
         
-        var $mysqli;
+         var $mysqli;//declaración de la variable que se conectará a la base de datos
+        
+        //constuctor de la clase
         public function __construct($login, $IdGrupo){
             $this->login = $login;//se le pasa un valor a login
             $this->IdGrupo = $IdGrupo;//se le pasa un valor a IdGrupo

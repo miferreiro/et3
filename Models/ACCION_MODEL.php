@@ -8,6 +8,7 @@ class ACCION{
     var $NombreAccion;//declaración de la variable NombreAccion
     var $DescripAccion;//declaracion de la variable DescripAccion
     var $dependencias;//variable de dependencias de borrado.
+    var $mysqli;//declaración de la variable que se conectará a la base de datos
 
     //constructor de la clase
     function __construct($IdAccion,$NombreAccion,$DescripAccion){

@@ -8,8 +8,9 @@
         var $IdFuncionalidad; //declaración de la variable IdFuncionalidad, forma parte de la clave
         var $IdAccion;//Declaración de la variable IdAccion, forma parte de la clave.
         var $dependencias;//declaracion de la variable dependencias.
+         var $mysqli;//declaración de la variable que se conectará a la base de datos
         
-        
+        //constructor de la clase
             function __construct($IdFuncionalidad,$IdAccion){
                 //Asignamos valores a las variables.
                 $this->IdFuncionalidad=$IdFuncionalidad;//se le asigna un valor a IdFuncionalidad

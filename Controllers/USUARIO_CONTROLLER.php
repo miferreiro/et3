@@ -99,14 +99,14 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el relleno de los datos utilizando el login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			
-            //mostramos todas las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias = $USUARIO->dependencias($_REQUEST['login']);
-            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);
-            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);
-            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);
-            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);
-            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);
-            $dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);
+            
+            $dependencias = $USUARIO->dependencias($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
                 
             //Crea una vista delete para ver la tupla
 			new USUARIO_DELETE( $valores,$dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7 );
@@ -127,14 +127,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el relleno de los datos utilizando el login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			
-             //mostramos todas las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado   
-            $dependencias = $USUARIO->dependencias($_REQUEST['login']);
-            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);
-            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);
-            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);
-            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);
-            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);
-			$dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);	
+              
+            $dependencias = $USUARIO->dependencias($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+			$dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+                
             //Crea una vista delete para ver la tupla
 			new USUARIO_DELETE($valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6,$dependencias7 );
 			}else{//si la variable cont no es uno mostramos un mensaje diciendo que dicho usuario no tiene permiso

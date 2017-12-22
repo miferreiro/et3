@@ -1,7 +1,7 @@
 <?php
 
 //Modelo que interactúa con el controlador de FUNCIONALIDAD y la tabla de FUNCIONALIDAD de la base de datos.
-//Fecha de creación:26/11/2017
+//Fecha de creación:26/11/2017 //Autor:Alejandro Vila
 
 class FUNCIONALIDAD {
 
@@ -10,10 +10,10 @@ class FUNCIONALIDAD {
 	var $NombreFuncionalidad; //Declaración de la variable NombreFuncionalidad
 	var $DescripFuncionalidad; //Declaración de la variable DescripFuncionalidad
 	var $dependencias; //Declaración de la variable dependencias
+     var $mysqli;//declaración de la variable que se conectará a la base de datos
 
-
-
-	function __construct( $IdFuncionalidad, $NombreFuncionalidad, $DescripFuncionalidad ) {
+    //es el constructor de la clase FUNCIONALIDAD
+	function __construct( $IdFuncionalidad, $NombreFuncionalidad, $DescripFuncionalidad ) { 
 		//Asignamos valores a los atibutos de la clase.
 		$this->IdFuncionalidad = $IdFuncionalidad;//le asignamos un valor a IdFuncionalidad
 		$this->NombreFuncionalidad = $NombreFuncionalidad;//le asignamos un valor a NombreFuncionalidad

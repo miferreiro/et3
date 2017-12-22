@@ -9,7 +9,9 @@
         var $NombreGrupo;//Declaracion de la variable NombreGrupo
         var $DescripGrupo;//Declaracion de la variable DescripGrupo
         var $dependencias;//Declaracion de la variable dependencias
-            
+         var $mysqli;//declaración de la variable que se conectará a la base de datos 
+        
+        //Es el constructor de la clase GRUPO
         function __construct($IdGrupo,$NombreGrupo,$DescripGrupo){
             //Asignamos valores a los atributos de la clase
             $this->IdGrupo=$IdGrupo;//le asignamos un valor a Idgrupo

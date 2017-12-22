@@ -1,6 +1,6 @@
 <?php
 //modelo que interactuará con el controlador y llevará datos a la base de datos ó recogerá valores de la base de datos.
-//Fecha de creación:23/11/2017
+//Fecha de creación:23/11/2017 //Autor:Miguel Ferreiro
 class TRABAJO{
 
     var $IdTrabajo;//clave de la tabla de TRABAJO
@@ -13,6 +13,7 @@ class TRABAJO{
     var $dependencias3;//declaracion de la variable dependencias3
     var $dependencias4;//declaracion de la variable dependencias4
     var $dependencias5;//declaracion de la variable dependencias5
+     var $mysqli;//declaración de la variable que se conectará a la base de datos
     
     //constructor de la clase
     function __construct($IdTrabajo,$NombreTrabajo,$FechaIniTrabajo,$FechaFinTrabajo,$PorcentajeNota){
@@ -35,11 +36,12 @@ class TRABAJO{
     //funcion SEARCH: hace una búsqueda en la tabla con
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
-		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-        include_once '../Models/USU_GRUPO_MODEL.php';
-         $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
-         $ADMIN = $USUARIO->comprobarAdmin();
+		
+        include_once '../Models/USU_GRUPO_MODEL.php';//incluimos el modelo de USU_GRUPO
+         $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del tipo USU_GRUPO
+         $ADMIN = $USUARIO->comprobarAdmin();//llamamos a este metodo para comprobar si el usuario es administrador
         
+        // construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "select IdTrabajo,
                         NombreTrabajo,
                         FechaIniTrabajo,
@@ -96,6 +98,9 @@ class TRABAJO{
 		}
 	} // fin metodo SEARCH
     
+    
+    //funcion SEARCH3: hace una búsqueda de ETs en la tabla con
+	//los datos proporcionados. Si van vacios devuelve todos
     function SEARCH3() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "select IdTrabajo,
@@ -155,7 +160,7 @@ class TRABAJO{
                                 '$this->PorcentajeNota'
 								)";
                 }
-                    else{
+                    else{ //si el resultado de la consulta no es vacio
                         return 'Ya existe el trabajo introducido en la base de datos'; // ya existe
                     }
 					}
@@ -188,7 +193,7 @@ class TRABAJO{
 			// se devuelve el mensaje de borrado correcto
 			return "Borrado correctamente";
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe
-		else
+		else//si no existe una tupla con ese valor de clave
 			return "No existe";
 	} // fin metodo DELETE
     
@@ -206,34 +211,37 @@ class TRABAJO{
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; 
 		} else { // si existe se devuelve la tupla resultado
-			$result = $resultado->fetch_array();
+			$result = $resultado->fetch_array();//tupla del resultado
 			$result[ 'FechaIniTrabajo' ] = date( "d/m/Y", strtotime( $result[ 'FechaIniTrabajo' ] ) );//se pone la fecha en formato europeo
 			$result[ 'FechaFinTrabajo' ] = date( "d/m/Y", strtotime( $result[ 'FechaFinTrabajo' ] ) );//de pone la fecha en formato europeo
 			return $result;
 		}
 	} // fin del metodo RellenaDatos()
     
+    
+    //Esta funcion sirve para obtener el porcentaje total de todos los trabajos
     function obtenerPorcentajeTotal(){
-        $sql = "SELECT SUM(PorcentajeNota) FROM TRABAJO";
+        $sql = "SELECT SUM(PorcentajeNota) FROM TRABAJO";//se construye la sentencia sql
         
         if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
 			} 
-        else {
-            $result = mysqli_fetch_row($result);
+        else {//si no da error
+            $result = mysqli_fetch_row($result);//devolvemos el resultado
             return $result;
         }
             
     }
     
+    //Esta funcion sirve para obtener el porcentaje de un trabajo
     function obtenerPorcentaje($trabajo){
-        $sql = "SELECT PorcentajeNota FROM TRABAJO WHERE IdTrabajo = '$trabajo'";
+        $sql = "SELECT PorcentajeNota FROM TRABAJO WHERE IdTrabajo = '$trabajo'";//se construye la sentencia sql
         
         if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
 			} 
-        else {
-            $result = mysqli_fetch_row($result);
+        else { // si no da error la ejecución de la query
+            $result = mysqli_fetch_row($result);//devolvemos el resultado
             return $result;
         }
             
@@ -328,7 +336,7 @@ class TRABAJO{
 					 FechaFinTrabajo = STR_TO_DATE(REPLACE('$this->FechaFinTrabajo','/','.') ,GET_FORMAT(date,'EUR')),
                      PorcentajeNota='$this->PorcentajeNota'
 				WHERE ( IdTrabajo  = '$this->IdTrabajo'
-				)";
+				)";//se construye la sentencia sql
             
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

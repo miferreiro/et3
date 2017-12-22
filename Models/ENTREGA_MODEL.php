@@ -12,6 +12,9 @@
         var $Ruta; //Declaracion de la variable Ruta
         var $dependencias; //Declaracion de la variable dependencias
         var $dependencias2; //Declaracion de la variable dependencias2
+         var $mysqli;//declaración de la variable que se conectará a la base de datos
+        
+        //constructor de la clase
         function __construct($login,$IdTrabajo,$Alias,$Horas,$Ruta){
             //Asignamos valores a los atributos de la clase
             $this->login=$login;//le asignamos  a login un valor

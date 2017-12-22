@@ -1,46 +1,49 @@
 <!--Modelo que contiene un constructor permisos y las funciones de la base de datos como insertar, buscar, etc-->
-<!--Fecha: 24-11-2017 Autor: fwnbmw Dedicados: 25 minutos-->
+<!--Fecha: 24-11-2017 Autor: Alex Vila Dedicados: 25 minutos-->
 
 <?php
-    class PERMISO_MODEL{
-        var $IdFuncionalidad;
-        var $IdAccion;
-        var $IdGrupo;
-        
-        var $NombreGrupo;
-        var $NombreFuncionalidad;
-        var $NombreAccion;
 
-        var $mysqli;
+
+//Clase del modelo de PERMISO
+    class PERMISO_MODEL{
+        var $IdFuncionalidad;//declaración de la variable IdFuncionalidad
+        var $IdAccion;//declaración de la variable IdAccion
+        var $IdGrupo;//declaracion de la variable IdGrupo
+        
+        var $NombreGrupo;//declaración de la variable NombreGrupo
+        var $NombreFuncionalidad;//declaración de la variable NombreFuncionalidad
+        var $NombreAccion;//declaración de la variable NombreAccion
+
+        var $mysqli;//declaración de la variable que se conectará a la base de datos
+        
+        //Constructor de la clase
         function __construct($IdGrupo, $IdFuncionalidad, $IdAccion, $NombreGrupo, $NombreFuncionalidad, $NombreAccion){
-            $this->IdFuncionalidad = $IdFuncionalidad;
-            $this->IdAccion = $IdAccion;
-            $this->IdGrupo = $IdGrupo;
+            $this->IdFuncionalidad = $IdFuncionalidad;//le asignamos un valor a IdFuncionalidad
+            $this->IdAccion = $IdAccion;//le asignamos un valor a IdAccion
+            $this->IdGrupo = $IdGrupo;//le asignamos un valor a IdGrupo
            
-            $this->NombreGrupo = $NombreGrupo;
-            $this->NombreFuncionalidad = $NombreFuncionalidad;
-            $this->NombreAccion = $NombreAccion;
+            $this->NombreGrupo = $NombreGrupo;//le asignamos un valor a NombreGrupo
+            $this->NombreFuncionalidad = $NombreFuncionalidad;//le asignamos un valor a NombreFuncionalidad
+            $this->NombreAccion = $NombreAccion;//le asignamos un valor a NombreAccion
             
-            include_once '../Functions/BdAdmin.php';  
-            $this->mysqli=ConectarBD();
+            include_once '../Functions/BdAdmin.php';  // incluimos la funcion de acceso a la bd
+            $this->mysqli=ConectarBD();	// conectamos con la bd y guardamos el manejador en un atributo de la clase
         }
    
     //Metodo ADD()
 //Inserta en la tabla  de la bd  los valores
 // de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 //existe ya en la tabla
-
-
 function ADD() {
         if ( ( $this->IdGrupo <> '' && $this->IdFuncionalidad <> '' && $this->IdAccion <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
-            // construimos el sql para buscar esa clave en la tabla
+           
             $sql = "SELECT * FROM PERMISO 
                              WHERE ( 
                                     IdGrupo = '$this->IdGrupo' &&
                                     IdFuncionalidad = '$this->IdFuncionalidad' &&
                                     IdAccion = '$this->IdAccion'
-                                    )";
+                                    )"; // construimos el sql para buscar esa clave en la tabla
 
             if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
                 return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -57,7 +60,7 @@ function ADD() {
                                 '$this->IdAccion'
                                 )";
                 }
-                    else{
+                    else{//si el resultado de la consulta no es vacío
                         return 'Ya existe la acción introducida en la base de datos'; // ya existe
                     }
                     }
@@ -72,39 +75,41 @@ function ADD() {
     
     } // fin del metodo ADD
 
+        
+//Esta funcion sirve para borrar un permiso de la base de datos
 function DELETE() {
-        // se construye la sentencia sql de busqueda con los atributos de la clase
+        
         $sql = "SELECT * FROM PERMISO 
                          WHERE (
                                 IdGrupo = '$this->IdGrupo' &&
                                 IdFuncionalidad = '$this->IdFuncionalidad' &&
                                 IdAccion = '$this->IdAccion'
-                                )";
+                                )";// se construye la sentencia sql de busqueda con los atributos de la clase
         // se ejecuta la query
         $result = $this->mysqli->query( $sql );
-        // si existe una tupla con ese valor de clave
+        
 
-        if ( $result->num_rows == 1 ) {
-            // se construye la sentencia sql de borrado
+        if ( $result->num_rows == 1 ) {// si existe una tupla con ese valor de clave
+            
             $sql = "DELETE FROM PERMISO 
                            WHERE (
                                   IdGrupo = '$this->IdGrupo' &&
                                   IdFuncionalidad = '$this->IdFuncionalidad' &&
                                   IdAccion = '$this->IdAccion' 
-                                 )";
+                                 )";// se construye la sentencia sql de borrado
             // se ejecuta la query
             $this->mysqli->query( $sql );
             // se devuelve el mensaje de borrado correcto
             return "Borrado correctamente";
         } // si no existe el login a borrar se devuelve el mensaje de que no existe
-        else
+        else // si no existe una tupla con ese valor de clave
             return "No existe";
     } // fin metodo DELETE
 
  //funcion SEARCH: hace una búsqueda en la tabla con
 //los datos proporcionados. Si van vacios devuelve todos
 function SEARCH()
-{ 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+{ 	
      $sql = "SELECT P.IdGrupo,G.NombreGrupo,P.IdFuncionalidad,F.NombreFuncionalidad,P.IdAccion,A.NombreAccion
                      FROM PERMISO P,GRUPO G,FUNCIONALIDAD F,FUNC_ACCION FA,ACCION A 
                      WHERE (
@@ -114,7 +119,7 @@ function SEARCH()
                             F.IdFuncionalidad = FA.IdFuncionalidad &&
                             A.IdAccion = FA.IdAccion &&
                             P.IdGrupo LIKE '$this->IdGrupo'
-                           )";
+                           )";// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 
     // si se produce un error en la busqueda m&&amos el mensaje de error en la consulta
     if (!($resultado = $this->mysqli->query($sql))){
@@ -125,8 +130,11 @@ function SEARCH()
 	}
 } // fin metodo SEARCH
 
+        
+//funcion SEARCH2: hace una búsqueda en la tabla con
+//los datos proporcionados. Si van vacios devuelve todos
 function SEARCH2()
-{   // construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+{   
      $sql = "SELECT P.IdGrupo,G.NombreGrupo,P.IdFuncionalidad,F.NombreFuncionalidad,P.IdAccion,A.NombreAccion
                      FROM PERMISO P,GRUPO G,FUNCIONALIDAD F,FUNC_ACCION FA,ACCION A 
                      WHERE (
@@ -138,7 +146,7 @@ function SEARCH2()
                             F.NombreFuncionalidad LIKE '%$this->NombreFuncionalidad%' &&
                             A.NombreAccion LIKE '%$this->NombreAccion%' &&
                             G.NombreGrupo LIKE '%$this->NombreGrupo%'
-                           )";
+                           )";// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 
     // si se produce un error en la busqueda m&&amos el mensaje de error en la consulta
     if (!($resultado = $this->mysqli->query($sql))){
@@ -155,7 +163,7 @@ function SEARCH2()
 // Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 // en el atributo de la clase
 function RellenaDatos()
-{	// se construye la sentencia de busqueda de la tupla
+{	
     $sql = "SELECT P.IdGrupo,G.NombreGrupo,P.IdFuncionalidad,F.NombreFuncionalidad,P.IdAccion,A.NombreAccion
                      FROM PERMISO P,GRUPO G,FUNCIONALIDAD F,FUNC_ACCION FA,ACCION A 
                      WHERE (
@@ -167,7 +175,7 @@ function RellenaDatos()
                             G.IdGrupo = '$this->IdGrupo' &&
                             F.IdFuncionalidad = '$this->IdFuncionalidad' &&
                             A.IdAccion = '$this->IdAccion'
-                           )";
+                           )";// se construye la sentencia de busqueda de la tupla
     // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
     if (!($resultado = $this->mysqli->query($sql))){
 		return 'No existe en la base de datos'; // 
@@ -178,13 +186,16 @@ function RellenaDatos()
 	}
 } // fin del metodo RellenaDatos()
 
+        
+//Esta funcion sirve para comprobar los permisos que tiene un usuario
 function comprobarPermisos($login){
 	
-	$sql = "SELECT DISTINCT U.login, P.IdGrupo, P.IdFuncionalidad FROM PERMISO P, USU_GRUPO U WHERE U.login = '$login' &&  (U.IdGrupo = P.IdGrupo && P.IdFuncionalidad = '$this->IdFuncionalidad' && P.IdAccion = '$this->IdAccion') ";
-			$resultado = $this->mysqli->query( $sql );
-			if ( $resultado->num_rows == 0 ) { //miramos si el numero de filas es 0
+	$sql = "SELECT DISTINCT U.login, P.IdGrupo, P.IdFuncionalidad FROM PERMISO P, USU_GRUPO U WHERE U.login = '$login' &&  (U.IdGrupo = P.IdGrupo && P.IdFuncionalidad = '$this->IdFuncionalidad' && P.IdAccion = '$this->IdAccion') ";//se construye la sentencia sql
+    
+			$resultado = $this->mysqli->query( $sql );//hacemos la query
+			if ( $resultado->num_rows == 0 ) { //miramos si el numero de filas es 0 devolvemos false
 				return false;
-			} else {
+			} else {//si el numero de filas no es 0, devolvemos true
 				return true;
 			}
 }

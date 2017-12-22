@@ -1,7 +1,7 @@
 <?php
 
 //modelo de datos definida con una clase que interactúa con el controlador que gestiona la historia.
-//Fecha de creación:2/12/2017
+//Fecha de creación:2/12/2017 //Autor:Alejandro Vila
     class HISTORIA_MODEL{
         
         //Se definen las vaiables que se utilizarán en esta clase
@@ -9,8 +9,9 @@
         var $IdHistoria;//Declaracion de la variable IdHistoria
         var $TextoHistoria;//Declaracion de la variable TextoHistoria
         var $dependencias; //declaracion de la variable dependencias
-      
-            
+         var $mysqli;//declaración de la variable que se conectará a la base de datos
+        
+      //Es el constructo de la clase HISTORIA_MODEL      
         function __construct($IdTrabajo,$IdHistoria,$TextoHistoria){
             //Asignamos valores a los atributos de la clase
             $this->IdTrabajo=$IdTrabajo;//le asignamos un valor a Idtrabajo
@@ -58,18 +59,7 @@
 	function ADD() {
 		if ( ( $this->IdTrabajo <> '' && $this->IdHistoria <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
-           /* $trabajo="SELECT * FROM TRABAJO WHERE (IdTrabajo = '$this->IdTrabajo')";
-            
-                   $result=$this->mysqli->query($trabajo);
-                if(!$result){
-                    return "No se ha podido conectar a la base de datos";
-                }
-                else{
-                    if($result->num_rows == 0){
-                        return "No puedes añadir una historia debido a que no se añadio un trabajo";
-                    }
-                }
-            */
+          
             
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM HISTORIA WHERE (  IdTrabajo = '$this->IdTrabajo' AND IdHistoria = '$this->IdHistoria')";//se construye la sentencia sql

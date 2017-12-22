@@ -116,9 +116,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );//Variable que almacena el relleno de los datos utilizando el IdGrupo
 			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );//Variable que almacena el relleno de los datos utilizando el IdGrupo
                 
-              //pasamos todas las dependencias de la tabla GRUPO a la hora de borrar    
-            $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);
-            $dependencias2 = $GRUPOS->dependencias2($_REQUEST['IdGrupo']);
+                
+            $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);//pasamos todas las dependencias de la tabla GRUPO a la hora de borrar  
+            $dependencias2 = $GRUPOS->dependencias2($_REQUEST['IdGrupo']);//pasamos todas las dependencias de la tabla GRUPO a la hora de borrar  
 			
 			$lista = array( 'login', 'IdGrupo');//Variable que almacena array con el nombre de los atributos
 			
