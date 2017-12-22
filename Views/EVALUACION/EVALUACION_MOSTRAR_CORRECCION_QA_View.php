@@ -3,19 +3,20 @@
 	Fecha de creación: 7/12/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
+//Clase Correcion_qa que almacena el contenido de la vista de correcion qa
 class CORRECION_QA {
-
+	//Constructor de la clase
 	function __construct( $lista, $datos) {
-		$this->lista = $lista;
-		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+		$this->lista = $lista;//Variable que almacena el array de atributos a mostrar en la vista
+		$this->datos = $datos;//Variable que almacena un recordset de la base datos con info de las correciones
+		$this->render($this->lista,$this->datos);//Método que llama a la función render que contiene todo el código de la vista
 	}
-	
+	//Funcion que contiene el código de la vista
 	function render($lista,$datos){
-		$this->lista = $lista;
-		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		$this->lista = $lista;//Variable que almacena el array de atributos a mostrar en la vista
+		$this->datos = $datos;//Variable que almacena un recordset de la base datos con info de las correciones
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesario para el multiidioma
+		include '../Views/Header.php';//incluye el contenido del header
 ?>
 		<div class="seccion">
 			<h2>
@@ -24,6 +25,7 @@ class CORRECION_QA {
 			<table>
 				<tr>
 <?php
+					//bucle que recorre el array de los atributos 
 					foreach ( $lista as $atributo ) {
 ?>
 					<th>
@@ -37,14 +39,17 @@ class CORRECION_QA {
 					</th>
 				</tr>
 <?php
+				//Bucle que recorre todo el recordset de datos y pasa estos valores a array y los muestra
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
 <?php
+					//Bucle que recorre los atributos que estan en el array lista
 					foreach ( $lista as $atributo ) {
 ?>
 					<td>
 <?php 
+							//Muestra el valor del array para cada atributo
 							echo $fila[ $atributo ];
 
 ?>
