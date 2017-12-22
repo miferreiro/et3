@@ -667,7 +667,7 @@ function comprobarSearchUsuario() {
 	/*Comprueba la longitud que tiene emailuser, si es mayor que 60, retorna false*/
 	if (!comprobarLongitud(emailuser, 40)) {
 		return false;
-	} else // si no cumple con la condición del if anterior,
+	} else{// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(emailuser, 40)) {
 			return false;
@@ -912,7 +912,7 @@ function comprobarSearchAccion() {
 	/*Comprueba su longitud, si es mayor que 100, retorna false*/
 	if (!comprobarLongitud(DescripAccion, 100)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 		if (!comprobarTexto(DescripAccion, 100)) {
 			return false;
@@ -1757,11 +1757,11 @@ function comprobarAddEvaluacion() {
 	/*Comprueba si AliasEvaluado es vacio, retorna false*/
 	if (!comprobarVacio(AliasEvaluado)) {
 		return false;
-	} else {
+	} else {// si no cumple con la condición del if anterior,
 		/*Comprueba su longitud, si es mayor que 6, retorna false*/
 		if (!comprobarLongitud(AliasEvaluado, 6)) {
 			return false;
-		} else {
+		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
 			if (!comprobarTexto(AliasEvaluado, 6)) {
 				return false;
