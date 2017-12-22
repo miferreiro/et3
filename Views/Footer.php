@@ -1,6 +1,6 @@
 <!--Archivo php
 	Nombre: Footer.php
-	Autor: fta875
+	Autor: Miguel Ferreiro
 	Fecha de creación: 23/10/2017 
 	Función: contiene todas las características del footer
 -->
@@ -32,7 +32,7 @@
 	
 <div id="capaFondo1"></div>
 	<footer>
-		<?php echo date("d-M-Y", mktime()); ?></br><?php if (IsAuthenticated()){  echo $strings['Usuario'] . ' : ' . 'LICORCA' . '<br>'; }?>
+		<?php echo date("d-M-Y", mktime()); ?></br><?php if (IsAuthenticated()){   echo $strings['Usuario'] . ' : ' . 'LICORCA' . '<br>'; }?><!-- miramos si el usuario esta autenticado -->
 		<a href="../Views/INFO_GRUPO_ET.php"><?php echo $strings['INFORMACIÓN GRUPO'];?></a>
 	</footer>
   </body>

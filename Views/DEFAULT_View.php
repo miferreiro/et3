@@ -1,25 +1,27 @@
 <?php
 /*  Archivo php
 	Nombre: USUARIOS_SHOWALL_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+	Autor: 	Alejandro Vila
+	Fecha de creación: 29/11/2017 
+	Función:se muestra una vista por defecto que no tiene nada
 */
+
+//es la clase donde se muestra una vista por defecto
 class USUARIO_DEFAULT {
 
-	function __construct( ) {
+	function __construct( ) { //es el constructor de la clase
 
-		$this->render();
+		$this->render();//llamamos a esta función para mostrar la vista
 	}
 	
-	function render(){
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render(){//función para mostrar la vista
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">	
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>
