@@ -1,6 +1,6 @@
 <?php
 /*  Archivo php
-	Nombre: Register_View.php
+	Nombre: REGISTRO_View.php
 	Autor: 	Miguel Ferreiro
 	Fecha de creación: 23/10/2017 
 	Función: vista del formulario de registro(register) realizada con una clase donde se muestran todos los campos necesarios para añadir un nuevo usuario a la base de datos
@@ -8,11 +8,11 @@
 class Register {
 
 	function __construct() {
-		$this->render();
+		$this->render();//Llamada a la función dónde se encuentra el formulario de registro
 	}
 
 	function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//establecer el idioma de la página
 		include '../Views/Header.php'; //header necesita los strings
 		?>
 		<div class="seccion">
@@ -84,7 +84,7 @@ class Register {
 		</div>
 
 		<?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluida la vista del footer
 		} //fin metodo render
 
 		} //fin REGISTER

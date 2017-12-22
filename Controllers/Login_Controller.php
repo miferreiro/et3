@@ -9,7 +9,7 @@
 session_start();//se inicia la sesión
 if(!isset($_REQUEST['login']) && !(isset($_REQUEST['password']))){//mira si no existe el login y no existe la password
 	//Incluye la vista login
-	include '../Views/Login_View.php';
+	include '../Views/LOGIN_View.php';
 	//Variable que almacena un objecto de login
 	$login = new Login();
 }

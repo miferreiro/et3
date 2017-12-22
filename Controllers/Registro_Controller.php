@@ -10,7 +10,7 @@ session_start();//se inicia la sesión
 include_once '../Locales/Strings_'.$_SESSION['idioma'].'.php';//incluimos los strings para poder cambiar de idioma(español,galego,inglés)
 
 if(!isset($_POST['login'])){//Si no se han recibido datos del login
-	include '../Views/Register_View.php';//incluimos la vista para Registrarse
+	include '../Views/REGISTRO_View.php';//incluimos la vista para Registrarse
 	$register = new Register();//creamos un objeto de tipo Registro para registrarnos
 }
 else{
