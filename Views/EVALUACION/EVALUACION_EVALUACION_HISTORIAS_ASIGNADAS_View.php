@@ -5,18 +5,18 @@
 	
 
 
-//esta clase es de la tabla EVALUACION y es para la evaluación de historias asignadas
+//esta clase es de la tabla Selecion QA necesaria para elegir la qa a evaluar
 class EVALUACION_SELECT_QA {
 
 	function __construct( $lista, $datos) { //es el constructor de la clase EVALUACION_SELECT_QA
-		$this->lista = $lista;//pasamos cada uno de los campos a mostrar
-		$this->datos = $datos;//pasamos los valores de cada uno de los campos
+		$this->lista = $lista;//Variable que almacena el array de atributos a mostrar en la vista
+		$this->datos = $datos;//Variable que almacena el recordset de la base de datos
 		$this->render($this->lista,$this->datos);//llamamos a la función render donde se mostrará un formulario para evaluar historias asignadas con los campos correspondientes
 	}
 	
 	function render($lista,$datos){//funcion que  mostrará un formulario para evaluar historias asignadas con los campos correspondientes
-		$this->lista = $lista;//pasamos cada uno de los campos a mostrar
-		$this->datos = $datos;//pasamos los valores de cada uno de los campos
+		$this->lista = $lista;//Variable que almacena el array de atributos a mostrar en la vista
+		$this->datos = $datos;//Variable que almacena el recordset de la base de datos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 		include_once '../Functions/permisosAcc.php';//incluimos el fichero permisosAcc.php para saber que usuarios tienen que permisos
@@ -29,7 +29,8 @@ class EVALUACION_SELECT_QA {
 			<table>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) { //este bucle mostrará cada uno de los camps de la tabla
+					//Bucle que recorre todo  el array de atributos a mostrar
+					foreach ( $lista as $atributo ) { 
 ?>
 					<th>
 						<?php echo $strings[$atributo]?><!--se muestra todos los campos-->
@@ -43,10 +44,12 @@ class EVALUACION_SELECT_QA {
 
 				</tr>
 <?php
+				//Bucle que recorre todos los valores del recordset
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle devolverá todas las tuplas de la base de datos
 ?>
 				<tr>
 <?php
+					//Bucle que recorre el array asociativo y mostrando los valores correspondientes a los atributos
 					foreach ( $lista as $atributo ) {//este bucle mostrará eñ valor de cada uno de los campos que hay en una tupla
 ?>
 					<td>

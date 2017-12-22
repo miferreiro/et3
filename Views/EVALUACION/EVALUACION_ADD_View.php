@@ -8,21 +8,21 @@
 
 //es la clase ADD de EVALUACION que nos permite añadir una evaluacion
 class EVALUACION_ADD {
-
-	function __construct($datos,$trabajos,$trabajos2,$hists) { //es el constructor de la clase EVALUACION_ADD
-		$this->datos = $datos;//pasamos los valores de cada uno de los campos
-		$this->trabajos = $trabajos;//pasamos los login evaluadores 
-		$this->trabajos2 = $trabajos2;//pasamos los alias evaluados
-		$this->hists= $hists;//pasamos las historias
+	//Constructor de la clase evaluación
+	function __construct($datos,$trabajos,$trabajos2,$hists) { 
+		$this->datos = $datos;//Variable que almacena todos los trabajos
+		$this->trabajos = $trabajos;//Variable que almacena todos los usuarios
+		$this->trabajos2 = $trabajos2;//Variable que almacena todos los usuarios
+		$this->hists= $hists;//Variable que almacena todas las historias
 		$this->render($this->datos,$this->trabajos,$this->trabajos2,$this->hists);//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 
 	}
 
 	function render($datos,$trabajos,$trabajos2,$hists) { //funcion que mostrará el formulario ADD con los campos correspondientes
-		$this->datos = $datos;//pasamos los valores de cada uno de los campos
-		$this->trabajos = $trabajos;//pasamos los login evaluadores 
-		$this->trabajos2 = $trabajos2;//pasamos los alias evaluados
-		$this->hists= $hists;//pasamos las historias
+		$this->datos = $datos;//Variable que almacena todos los trabajos
+		$this->trabajos = $trabajos;//Variable que almacena todos los usuarios 
+		$this->trabajos2 = $trabajos2;//Variable que almacena todos los usuarios
+		$this->hists= $hists;//Variable que almacena todas las historias
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 		?>
@@ -39,12 +39,14 @@ class EVALUACION_ADD {
                   <td class="formThTd">
                    <select id="IdTrabajo" name="IdTrabajo" required>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle se va a repetir hasta que no devuelva los valores de cada uno de los campos
+				//Bucle que recorre los datos recogidos de la base de datos
+				//$fila variable que alamacena el array asociativo de los datos de la base de datos 
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) { 
 ?>
 				<option value="<?php echo $fila[ 'IdTrabajo' ]?>">
 
 <?php 
-			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					//Se muestra el valor de NombreTrabajo
 					echo $fila['NombreTrabajo'];
 ?>		
                							
@@ -60,17 +62,20 @@ class EVALUACION_ADD {
 					
 				<tr>
 						<th class="formThTd">
+							<!-- Se muestra el valor de NombreTrabajo -->
 							<?php echo $strings['LoginEvaluador'];?>
 						</th>
                   <td class="formThTd">
                    <select id="LoginEvaluador" name="LoginEvaluador" required>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->trabajos) ) { //este bucle se va a repetir hasta que no devuelva todos los login evaluadores
+				//Bucle que recorre los datos recogidos de la base de datos
+				//$fila variable que alamacena el array asociativo de los datos de la base de datos 
+				while ( $fila = mysqli_fetch_array( $this->trabajos) ) {
 ?>
 				<option value="<?php echo $fila[ 'login' ]?>">
 
 <?php 
-			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					//Se muestra el valor del login
 					echo $fila['login'];
 ?>		
                							
@@ -90,12 +95,14 @@ class EVALUACION_ADD {
                   <td class="formThTd">
                    <select id="AliasEvaluado" name="AliasEvaluado" required>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->trabajos2) ) { //este bucle se va a repetir hasta que no se muestre todos los alias evaluados
+				//Bucle que recorre los datos recogidos de la base de datos
+				//$fila variable que alamacena el array asociativo de los datos de la base de datos 
+				while ( $fila = mysqli_fetch_array( $this->trabajos2) ) { 
 ?>
 				<option value="<?php echo $fila[ 'Alias' ]?>">
 
 <?php 
-			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					//Muestra el valor del Alias
 					echo $fila['Alias'];
 ?>		
                							
@@ -114,12 +121,14 @@ class EVALUACION_ADD {
                   <td class="formThTd">
                    <select id="IdHistoria" name="IdHistoria" required>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->hists) ) { //este bucle se va a repetir hasta que no se muestre todas las historias
+				//Bucle que recorre los datos recogidos de la base de datos
+				//$fila variable que alamacena el array asociativo de los datos de la base de datos 
+				while ( $fila = mysqli_fetch_array( $this->hists) ) { 
 ?>
 				<option value="<?php echo $fila[ 'IdHistoria' ]?>">
 
 <?php 
-			//echo $fila[ 'NombreGrupo' ].'_'.$fila['IdGrupo'];
+					//Muestra el valor de TextoHistoria
 					echo $fila['TextoHistoria'];
 ?>		
                							
