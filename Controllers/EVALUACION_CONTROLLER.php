@@ -155,14 +155,14 @@ switch ( $_REQUEST[ 'action' ] ) {
                 new EVALUACION_USUARIO_EDIT_HISTORIAS( $valores );
                 //Si se reciben valores
             }else{//si el usuario no tiene el permiso
-			  new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );	 //mostramos una vista diciendo que el usuario no tiene los permisos necesarios
+			  new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php?action=EVALUACION_HISTORIAS_ASIGNADAS' );	 //mostramos una vista diciendo que el usuario no tiene los permisos necesarios
 			 }
             } else {//Si se reciben valores
 			$EVALUACION = get_data_form();//Variable que almacena los datos recogidos de los atributos
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $EVALUACION->EDIT();
 			
-			$at = "?IdTrabajo=".$_REQUEST['IdTrabajo']."&AliasEvaluado=".$_REQUEST['AliasEvaluado']."&action=EVALUAR";//pasamos a la variable el IdTrabajo seguido del aliasEvaluado
+			$at = "?IdTrabajo=".$_REQUEST['IdTrabajo']."&AliasEvaluado=".$_REQUEST['AliasEvaluado']."&action=EVALUARUSU";//pasamos a la variable el IdTrabajo seguido del aliasEvaluado
 			//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 			new MESSAGE( $respuesta, '../Controllers/EVALUACION_CONTROLLER.php'.$at );
 			}
@@ -225,7 +225,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 				if(permisosAcc($_SESSION['login'],12,10)==true){//miramos si el usuario conectado tiene permiso para evaluar
 	            $EVALUACION = new EVALUACION($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado'], '', '', '', '', '', '');//crea un objeto de tipo EVALUACION pasandole todos esos parametros
-	            $lista = array( 'IdTrabajo','LoginEvaluador','AliasEvaluado','CorrectoA','ComenIncorrectoA');//metemos en un array los campos que queremos mostrar
+	            $lista = array( 'NombreTrabajo','LoginEvaluador','AliasEvaluado','CorrectoA','ComenIncorrectoA');//metemos en un array los campos que queremos mostrar
 	           
 	    		$datos = $EVALUACION->SEARCH2(); //Variable que almacena los datos de la busqueda
 	    		
@@ -233,7 +233,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	    		
 	    		new EVALUACION_USUARIO_EVALUAR( $lista, $datos );//Creacion de la vista showall con el array $lista, los datos
 				}else{
-			  new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );	 //mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
+			  new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php?action=EVALUACION_HISTORIAS_ASIGNADAS' );	 //mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 			 }
          
 		} 
@@ -311,7 +311,7 @@ switch ( $_REQUEST[ 'action' ] ) {
         
         new CORRECION_ENTREGA_RESULTADO($lista,$datos);//se nos muestra la vista con las correciones de nuestras ETs
 	}else{//si no tiene permisos 
-	 new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
+	 new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_ET' );//mostramos en pantalla un mensaje con la diciendo que no tiene
     }
         break;
     
@@ -319,13 +319,13 @@ switch ( $_REQUEST[ 'action' ] ) {
     case 'MOSTRAR_CORRECCION_ET'://caso por defecto con vista SHOWALL
     if(permisosAcc($_SESSION['login'],12,7)==true){	//miramos si el usuario conectado tiene permiso para ver las entregas que hizo
         $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
-        $lista = array('login','IdTrabajo','Entrega');//se crea un arrray con los atributos que queremos mostrar
+        $lista = array('login','NombreTrabajo','Entrega');//se crea un arrray con los atributos que queremos mostrar
         $datos =$CORRECION->mostrarEntregas($_SESSION['login']);//llamamos a esta función para mostrar todas las entregas que realizó dicho usuario
 
         new CORRECION_ENTREGA($lista,$datos);//se nos muestra la vista 
-	}else{//si no tiene permiso
-	new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
-    }
+		} else {//Si no tiene permisos muestra pantalla en blanco
+				new USUARIO_DEFAULT();//se muestra una vista por defecto
+		}
         break;		
 		
 				
@@ -336,18 +336,18 @@ switch ( $_REQUEST[ 'action' ] ) {
         $datos =$CORRECION->mostrarCorrecion3($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado']);//llamamos a esta función para que nos muestren los resultados de nuestras QAs y se mete en la vista
         new CORRECION_QA_RESULTADOS($lista,$datos);
 		}else{//si no tiene permiso 
-	      new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
+	      new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_QA' );//mostramos en pantalla un mensaje con la diciendo que no tiene
         }  
         break;
         
     case 'RESULTADO_QA'://caso donde se muestran todas las QAs que corregimos
 		if(permisosAcc($_SESSION['login'],12,14)==true){	//miramos si el usuario conectado tiene permiso para ver cuantas personas evalúo en un mismo trabajo
         $CORRECION = new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
-        $lista=array('LoginEvaluador','AliasEvaluado','IdTrabajo');//se crea un arrray con los atributos que queremos mostrar
+        $lista=array('LoginEvaluador','AliasEvaluado','NombreTrabajo');//se crea un arrray con los atributos que queremos mostrar
         $datos =$CORRECION->mostrarCorrecion2($_REQUEST['IdTrabajo'],$_SESSION['login']);//llamamos a esta funcióm para que se nos muestren todas las Qas que tenemos que corregir
         new CORRECION_QA_RESULTADO($lista,$datos);
 	    }else{//si no tiene permiso
-	     new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
+	     new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_QA' );//mostramos en pantalla un mensaje con la diciendo que no tiene
         }
         break;
         
@@ -355,12 +355,12 @@ switch ( $_REQUEST[ 'action' ] ) {
      case 'MOSTRAR_CORRECCION_QA'://caso por defecto con vista SHOWALL
 	    if(permisosAcc($_SESSION['login'],12,14)==true){	//miramos si el usuario conectado tiene permiso para ver los login que corrigieron su entrega
         $CORRECION =new EVALUACION('','','','','','','','','');//se crea un objeto de tipo EVALUACION
-        $lista = array('LoginEvaluador','IdTrabajo');//se crea un arrray con los atributos que queremos mostrar
+        $lista = array('LoginEvaluador','NombreTrabajo');//se crea un arrray con los atributos que queremos mostrar
         $datos =$CORRECION->mostrarQAS($_SESSION['login']);//llamamos a esta función para mostrar todas las entregas que realizó dicho usuario
         new CORRECION_QA($lista,$datos);//se nos muestra la vista    	  
-		}else{//si no tiene permsio
-	    new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
-        }
+		} else {//Si no tiene permisos muestra pantalla en blanco
+				new USUARIO_DEFAULT();//se muestra una vista por defecto
+			}
       break;		
 		
 

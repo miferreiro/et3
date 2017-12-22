@@ -99,7 +99,7 @@ class EVALUACION{ //declaración de la clase
 function mostrarEntregas($nombre){
         
     
-    $sql = "SELECT DISTINCT login,E.IdTrabajo,ET.IdTrabajo AS Entrega FROM ENTREGA ET,EVALUACION E WHERE  ET.Alias=E.AliasEvaluado AND login='$nombre'";
+    $sql = "SELECT DISTINCT login,E.IdTrabajo,ET.IdTrabajo AS Entrega,T.NombreTrabajo  FROM ENTREGA ET,EVALUACION E,TRABAJO T WHERE  ET.Alias=E.AliasEvaluado AND login='$nombre' && E.IdTrabajo=T.IdTrabajo";
           
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -114,7 +114,7 @@ function mostrarEntregas($nombre){
    function mostrarQAS($nombre){
         
     
-    $sql = "SELECT  DISTINCT LoginEvaluador,IdTrabajo FROM EVALUACION  WHERE LoginEvaluador='$nombre'";
+    $sql = "SELECT  DISTINCT LoginEvaluador,E.IdTrabajo,T.NombreTrabajo FROM EVALUACION E, TRABAJO T  WHERE LoginEvaluador='$nombre' && E.IdTrabajo=T.IdTrabajo ";
           
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -170,8 +170,8 @@ function mostrarEntregas($nombre){
 
   
         function mostrarCorrecion2($IdTrabajo,$nombre){
-        $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,IdTrabajo FROM EVALUACION  WHERE 
-        ( IdTrabajo = '$IdTrabajo' && LoginEvaluador='$nombre')";
+        $sql = "SELECT DISTINCT LoginEvaluador,AliasEvaluado,E.IdTrabajo,T.NombreTrabajo FROM EVALUACION E, TRABAJO T  WHERE 
+        ( E.IdTrabajo = '$IdTrabajo' && LoginEvaluador='$nombre' && E.IdTrabajo=T.IdTrabajo)";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';

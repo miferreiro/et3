@@ -153,9 +153,9 @@ class CORRECION_ENTREGA_RESULTADO {
 				}
 ?>
 			</table>
-			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post">
+			<form action='../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_ET' method="post">
 			    <input type="hidden" name="IdTrabajo" value="<?php echo $Id; ?>">
-				<button type="submit" name="action" value="MOSTRAR_CORRECCION_ET"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button type="submit" ><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php

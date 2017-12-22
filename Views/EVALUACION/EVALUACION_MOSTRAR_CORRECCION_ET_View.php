@@ -32,7 +32,7 @@ class CORRECION_ENTREGA {
 					</th>
                     
 					<th>
-						<?php echo $strings['IdTrabajo']?>
+						<?php echo $strings['NombreTrabajo']?>
 					</th>
 <?php
 					
@@ -56,7 +56,7 @@ class CORRECION_ENTREGA {
                     
 						<form action="../Controllers/EVALUACION_CONTROLLER.php" method="get" style="display:inline" >
                             <input type="hidden" name="IdTrabajo" value="<?php echo $fila['IdTrabajo']; ?>">
-                              <input type="hidden" name="Entrega" value="<?php echo $fila[2]; ?>">
+                            <input type="hidden" name="Entrega" value="<?php echo $fila[2]; ?>">
                             <input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
 							<td>
                                 <button type="submit" name="action" value="RESULTADOS_ENTREGAS" ><img src="../Views/icon/flecha.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
@@ -68,8 +68,8 @@ class CORRECION_ENTREGA {
 				}
 ?>
 			</table>
-			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			<form action='../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_ET' method="post">
+				<button type="submit" ><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php
