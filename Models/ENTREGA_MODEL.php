@@ -144,19 +144,20 @@
 		}
          return false;
     }
-		//Funcion que devuelve todos los usuarios
+		//Funcion que devuelve un array de todos los usuarios
         function obtenerUsuarios(){
         //Variable que almacena la consulta sql
-        $sql = "select login
+        $sql = "select login,Alias
        			from ENTREGA";
-		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
-			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-        // si la busqueda es correcta devolvemos el recordset resultado
-		} else { 
-
-			return $resultado;
-		}
+		//se ejecuta la query
+        $resultado = $this->mysqli->query( $sql );
+        if ( $resultado->num_rows == 0 ) { return null; }//miramos si el número de filas es 0.
+        //Caragamos las tuplas resultado de la consulta en un array
+        while($datos = mysqli_fetch_row ($resultado)){
+            //Variable que almacena el array de las tuplas resultado de la query
+            $miarray[] = $datos;
+        }
+        return $miarray;
     }    
             //Funcion que devuelve todos los alias
           function obtenerAlias($LOG){
