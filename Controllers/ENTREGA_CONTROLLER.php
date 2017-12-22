@@ -167,6 +167,59 @@ function get_data_form() {
 	return $ENTREGA;
 }
 
+//Esta función crea un objeto tipo ENTREGA_MODEL con los valores que se le pasan con $_REQUEST en el caso de hacer un SEARCH(busqueda)
+function getSearch(){
+    
+      
+	$login = $_REQUEST['login'];//Variable que almacena el valor de login
+    $IdTrabajo = $_REQUEST['IdTrabajo'];//Variable que almacena el valor de IdTrabajo
+    $Alias = $_REQUEST['Alias'];//Variable que almacena el valor del Alias
+    $Horas = $_REQUEST['Horas'];//Variable que almacena el valor de Horas
+    
+    
+    
+    
+    	if ( isset( $_FILES[ 'Ruta' ][ 'name' ] ) ) {//mira si existe una ruta
+		$nombreRuta = $_FILES[ 'Ruta' ][ 'name' ];//le asigna a nombreRuta la ruta del archivo
+	} else {//si no existe la ruta le asignamos a la variable el valor null
+		$nombreRuta = null;
+	}
+
+	if ( isset( $_FILES[ 'Ruta' ][ 'tmp_name' ] ) ) {//mira si existe una ruta con un nombre temporal
+		$nombreTempRuta = $_FILES[ 'Ruta' ][ 'tmp_name' ];//le asigna a nombreRuta la ruta del archivo con un nombre temporal
+	} else {//si no existe la ruta le asignamos a la variable el valor null
+		$nombreTempRuta = null;
+	}
+    
+	if ( $nombreRuta != null ) {//mira si la variable nombreRuta no es vacía
+		$dir_subida = '../Files/'.$Alias.'/';//le asignamos a esta variable la ruta donde se va a subir el archivo
+		$rutapersonal = $dir_subida . $nombreRuta;;//le pasamos a $rutapersonal la dirección de subida.
+		move_uploaded_file( $nombreTempRuta, $rutapersonal );//movemos el archivo a la dirección especificada
+	}
+   else{//mira si la variable nombreRuta no es vacía
+    if(isset($_POST['ruta2'])){//si existe la anterior ruta del archivo  le asignamos a la variable rutapersonal ese valor
+                        $rutapersonal=$_POST['ruta2'];
+                }else{//si no tiene una ruta anterior el archivo, le asignamos el valor null
+
+                    $rutapersonal=null;
+                }
+                }
+ 
+    
+	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
+
+	$ENTREGA = new ENTREGA_MODEL(
+		$login,
+        $IdTrabajo,
+        $Alias,
+        $Horas,
+        $rutapersonal
+	);	//Devuelve el valor del objecto model creado
+
+	return $ENTREGA;
+    
+}
+
 
 if ( !isset( $_REQUEST[ 'action' ] ) ) {//Si la variable action no tiene contenido le asignamos ''
 	$_REQUEST[ 'action' ] = '';
@@ -321,7 +374,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$PERMISO = $ENTREGA->comprobarPermisos();	
 			$ADMIN = $ENTREGA->comprobarAdmin();*/
 			//Variable que almacena los datos recogidos de los atributos
-			$ENTREGA = get_data_form();
+			$ENTREGA = getSearch();
 			//Variable que almacena el resultado de la busqueda
 			$datos = $ENTREGA->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
