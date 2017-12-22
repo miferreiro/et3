@@ -53,7 +53,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 
 	//función que sirve para insertar una QA para generar qas
 	function ADD(){
-       
+       		
 			//Variable que almacena sentencia sql
 			$sql = "INSERT INTO ASIGNAC_QA (
 									  IdTrabajo,
@@ -74,13 +74,36 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 	
 	//función que sirve para insertar una QA
 	function ADD2(){
+			//Comprobar que el login evaluado no sea igual al login evaluador
+			if ($this->LoginEvaluador==$this->LoginEvaluado) {
+				return 'El usuario no puede evaluarse a si mismo';
+			}
+
+			//Variable que almacena la consulta de si existen los datos en la base de datos
+	       $sql = "SELECT * FROM ASIGNAC_QA A,ENTREGA E WHERE (  LoginEvaluado = '$this->LoginEvaluado' &&
+	   															 AliasEvaluado = Alias &&
+	   															 Alias = '$this->AliasEvaluado' 
+	   															)";
+	       // si da error la ejecución de la query
+	       if ( !$result = $this->mysqli->query( $sql ) ) { 
+				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
+			//Si la consulta no da error
+			} else {
+				//Si la consulta devuelve 1 columna o mas columnas
+				if ($result->num_rows == 0){
+					return 'El alias evaluado no se corresponde con LoginEvaluado';
+				}
+			}
+
 			//Variable que almacena la consulta de si existen los datos en la base de datos
 	       $sql = "SELECT * FROM ASIGNAC_QA WHERE (  LoginEvaluador = '$this->LoginEvaluador' && IdTrabajo = '$this->IdTrabajo' && AliasEvaluado = '$this->AliasEvaluado')";
             
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
-			} else { // si la ejecución de la query no da error
-                if ($result->num_rows == 0){ // miramos si el resultado de la consulta es vacio
+			// si la ejecución de la query no da error
+			} else { 
+				// Si el resulta devuelve 0 columnas inserta la consulta
+                if ($result->num_rows == 0){ 
                     //Variable que almacena la sentencia de inserción de la consulta
 					$sql = "INSERT INTO ASIGNAC_QA (
 									  IdTrabajo,

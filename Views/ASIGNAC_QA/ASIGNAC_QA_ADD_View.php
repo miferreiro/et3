@@ -56,37 +56,71 @@ class ASIGNAC_QA_ADD {
 							<?php echo $strings['LoginEvaluador'];?>
 						</th>
                   <td class="formThTd">
-                   <select id="LoginEvaluador" name="LoginEvaluador"  required>
+				<select id="LoginEvaluador" name="LoginEvaluador"  required>
 <?php
 				//Bucle que recorre todo el recordset de los usuarios y pasa estos valores a array y los muestra
-				while ( $fila = mysqli_fetch_array( $this->trabajos ) ) {
+				for($i = 0 ;$i < count($this->trabajos); $i++) {
 ?>
-				<option value="<?php echo $fila[ 'login' ]?>">
+				<option value="<?php echo $this->trabajos[$i][0] ?>">
 
 <?php 
 					//Muestra el valor del array para cada atributo
-					echo $fila['login'];
+					echo $this->trabajos[$i][0];
 ?>		
                							
 
                </option>
 	
 <?php } ?>					
-					</select>
+				</select>
 				</td>
 					</tr>		
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['LoginEvaluado'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="LoginEvaluado" name="LoginEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="9" size="10" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>
+						<td class="formThTd">
+						<select id="LoginEvaluado" name="LoginEvaluado"  required>
+<?php
+				//Bucle que recorre todo el recordset de los usuarios y pasa estos valores a array y los muestra
+				for($i = 0 ;$i < count($this->trabajos); $i++) {
+?>
+				<option value="<?php echo $this->trabajos[$i][0] ?>">
+
+<?php 
+					//Muestra el valor del array para cada atributo
+					echo $this->trabajos[$i][0];
+?>		
+               							
+
+               </option>
+	
+<?php } ?>					
+				</select>
 					</tr>
 
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['AliasEvaluado'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="AliasEvaluado" name="AliasEvaluado" placeholder="<?php echo $strings['Escriba aqui...']?>"  maxlength="6" size="7" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6') "/>
+						<td class="formThTd">
+				<select id="AliasEvaluado" name="AliasEvaluado"  required>
+<?php
+				//Bucle que recorre todo el recordset de los usuarios y pasa estos valores a array y los muestra
+				for($i = 0 ;$i < count($this->trabajos); $i++) {
+?>
+				<option value="<?php echo $this->trabajos[$i][1] ?>">
+
+<?php 
+					//Muestra el valor del array para cada atributo
+					echo $this->trabajos[$i][1];
+?>		
+               							
+
+               </option>
+	
+<?php } ?>					
+				</select>
 					</tr>
 
 					<tr>
