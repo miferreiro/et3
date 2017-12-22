@@ -1,6 +1,6 @@
 <?php
 /*  Archivo php
-	Nombre: INFO_GRUPO_ET_View.php
+	Nombre: INFO_GRUPO_ET.php
 	Autor: 	Jonatan Couto
 	Fecha de creación: 2/12/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de un usuario
