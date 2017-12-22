@@ -5,15 +5,18 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
 */
+//Clase Adignac_qa_generar que contiene la vista para ver los resultados de las correciones qa
 class ASIGNAC_QA_GENERAR {
-
+	//Constructor de la clase
 	function __construct($valores) {
-		$this->render($valores);
+		//$valores variable que almacena un array con la info de todas las Ets existentes para poder generar la qa
+		$this->render($valores);//metodo que llama a la función render que contiene todo el código de la vista
 	}
-
+	//Función que contiene el código de la vista
 	function render($ET) {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		//$ET variable que almacena un array con la info de todas las Ets existentes para poder generar la qa
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		include '../Views/Header.php';//Incluye el contenido del header
 ?>
 		<div class="seccion">
 			<h2>
@@ -28,7 +31,7 @@ class ASIGNAC_QA_GENERAR {
 						<td class="formThTd">
 							<select name="IdTrabajo">						        
 								<?php
-								//Bucle que recorre las posibles et para generer qas
+								//Bucle que recorre el array de las posibles et para generer qas
 								for ($i=0; $i < count($ET); $i++) { 
 								?>
 								<option value="<?php echo $ET[$i][0] ?>"><?php echo $ET[$i][1] ?></option>
@@ -56,7 +59,7 @@ class ASIGNAC_QA_GENERAR {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//Incluye el contenido del pie
 		}
 		}
 ?>

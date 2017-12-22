@@ -5,15 +5,16 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
 */
+//Clase Asignac_qa_search que contiene la vista de un formulario para poder buscar las asignaciones de qa
 class ASIGNAC_QA_SEARCH {
-
+	//Constructor de la clase
 	function __construct() {
-		$this->render();
+		$this->render();//metodo que llama a la función render que contiene todo el código de la vista
 	}
-
+	//Función que contiene el código de la vista
 	function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		include '../Views/Header.php';//Incluye el contenido del header
 ?>
 		<div class="seccion">
 			<h2>
@@ -59,7 +60,7 @@ class ASIGNAC_QA_SEARCH {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//Incluye el contenido del pie
 		}
 		}
 ?>
