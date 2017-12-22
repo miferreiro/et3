@@ -5,12 +5,13 @@
 	Fecha de creación: 23/10/2017 
 	Función: vista del formulario de registro(register) realizada con una clase donde se muestran todos los campos necesarios para añadir un nuevo usuario a la base de datos
 */
+//Es la clase Register que nos permite mostrar la vista para registrarse
 class Register {
-
+	//es el constructor de la clase Register
 	function __construct() {
 		$this->render();//Llamada a la función dónde se encuentra el formulario de registro
 	}
-
+	//función render donde se mostrará el formulario registro con los campos correspondientes
 	function render() {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//establecer el idioma de la página
 		include '../Views/Header.php'; //header necesita los strings

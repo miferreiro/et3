@@ -8,16 +8,16 @@
 
 //Es la clase SHOWALL de ACCION que nos permite mostrar todas las accion
 class ACCION_SHOWALL {
-
-	function __construct( $lista, $datos, $PERMISO,$admin) {//es el constructor de la clase ACCION_SHOWALL
+	//es el constructor de la clase ACCION_SHOWALL
+	function __construct( $lista, $datos, $PERMISO,$admin) {
 		$this->lista = $lista;//pasamos una array con los campos a mostrar
 		$this->datos = $datos;//pasamos el valor de los datos que queremos mostrar
 		$this->PERMISO = $PERMISO;//pasamos los permisos
 		$this->admin = $admin;//pasamos una variable booleana: true si es administrador y false si no es administrador
 		$this->render($this->lista,$this->datos,$this->PERMISO,$this->admin);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 	}
-	
-	function render($lista,$datos,$PERMISO,$admin){//función render donde se mostrará el formulario SHOWALL con los campos correspondientes
+	//función render donde se mostrará el formulario SHOWALL con los campos correspondientes
+	function render($lista,$datos,$PERMISO,$admin){
 		$this->lista = $lista;//pasamos una array con los campos a mostrar
 		$this->datos = $datos;//pasamos el valor de los datos que queremos mostrar
 		$this->PERMISO = $PERMISO;//pasamos los permisos
@@ -55,7 +55,7 @@ $GESTEVAL=false;
 	 if($fila['IdFuncionalidad']=='1'){//si se tiene el permiso de gestión de usuario se pone la variable a true
 				$GESTUSU=true;
 			   }
-	 if($fila['IdFuncionalidad']=='2'){//si se tiene el permiso de gestión de grupo se pone la variable a true
+	 if($fila['IdFuncionalidad']=='2'){//si se tiene el permiso de gestión de usuario se pone la variable a true
 				$GESTGRUP=true;
 			   }
 	 if($fila['IdFuncionalidad']=='5'){//si se tiene el permiso de gestión de permisos se pone la variable a true

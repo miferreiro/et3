@@ -1,20 +1,22 @@
 <?php
 /*  Archivo php
 	Nombre: PERMISO_DELETE_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Fecha de creación: 27/11/2017 
+	Autor: Alejandro Vila Cid
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los valores de un grupo y da la opción de borrarlos
 */
+//Es la clase DELETE de PERMISO que nos permite borrar permisos
+
 class PERMISO_DELETE {
-
+	//es el constructor de la clase PERMISO_DELETE
 	function __construct( $valores , $lista ) {
-		$this->valores = $valores;
-		$this->render( $this->valores, $lista );
+		$this->valores = $valores;//pasamos el valor de los datos que queremos mostrar
+		$this->render( $this->valores, $lista );//llamamos a la función render donde se mostrará la vista DELETE con los campos correspondientes
 	}
-
+	//función render donde se mostrará la vista delete con los campos correspondientes
 	function render( $valores, $lista ) {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -67,7 +69,7 @@ class PERMISO_DELETE {
 		</div>
 <?php
             
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el footer
          }   
 	}
 

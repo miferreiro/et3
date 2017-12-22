@@ -1,20 +1,21 @@
 <?php
 /*  Archivo php
 	Nombre: PERMISOS_SEARCH_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a una acción de la base de datos
+	Fecha de creación: 27/11/2017 
+	Autor: Alejandro Vila Cid
+	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar un permiso en la base de datos
 */
+//Es la clase SEARCH de PERMISO que nos permite buscar permisos 
 class PERMISO_SEARCH {
-
+	//es el constructor de la clase PERMISO_SEARCH
 	function __construct() {
-		$this->render();
+		$this->render();//llamamos a la función render donde se mostrará el formulario SEARCH con los campos correspondientes
 	}
-
+	//función render donde se mostrará el formulario SEARCH con los campos correspondientes
 	function render() {
 
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -55,7 +56,7 @@ class PERMISO_SEARCH {
 
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el footer
 		}
 		}
 ?>

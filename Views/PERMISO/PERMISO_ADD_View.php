@@ -1,18 +1,20 @@
 <?php
-/*  Archivo php
-	Nombre: PERMISO_ADD_View.php
-	Fecha de creación: 26/11/2017 
+/*  
+	Archivo php
+	Fecha de creación: 27/11/2017 
+	Autor: Alejandro Vila Cid
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una accion de una funcionalidad a la base de datos
 */
+//Es la clase ADD de PERMISO que nos permite añadir permisos
 class PERMISO_ADD {
-
+	//es el constructor de la clase PERMISO_ADD
 	function __construct($valores,$acciones) {
-		$this->render($valores,$acciones);
+		$this->render($valores,$acciones);//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 	}
-
+	//función render donde se mostrará el formulario ADD con los campos correspondientes
 	function render($valores,$acciones) {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -34,7 +36,7 @@ class PERMISO_ADD {
 						<td class="formThTd">
 							<select name="IdFuncionalidad">						        
 								<?php
-								//Bucle que recorre las posibles et para generer qas
+								//Bucle que recorre los posibles permisos 
 								for ($i=0; $i < count($acciones); $i++) { 
 								?>
 								<option value="<?php echo $acciones[$i][0] . ',' . $acciones[$i][2] ?>"><?php echo $acciones[$i][1] . "_" . $acciones[$i][3] ?></option>
@@ -57,7 +59,7 @@ class PERMISO_ADD {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el footer
 		}
 		}
 ?>

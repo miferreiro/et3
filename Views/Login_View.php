@@ -1,19 +1,20 @@
 <?php
 /*  Archivo php
 	Nombre: LOGIN_View.php
-	Autor: 	fta875
+	Autor: 	Miguel Ferreiro
 	Fecha de creación: 23/10/2017 
 	Función: vista de logearse(login) realizada con una clase donde se muestran los campos necesarios para logearse en nuestra aplicación
 */
+//Es la clase Login que nos permite mostrar la vista para logearse
 class Login {
-
+	//es el constructor de la clase Login
 	function __construct() {
-		$this->render();
+		$this->render();//Llamada a la función dónde se encuentra el formulario de logeo
 	}
-
+	//función render donde se mostrará el formulario login con los campos correspondientes
 	function render() {
 
-		include '../Views/Header.php';
+		include '../Views/Header.php';//incluimos la cabecera
 		?>
 
 		<h1>
@@ -40,7 +41,7 @@ class Login {
 		</form>
 
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el footer
 	} //fin metodo render
 
 	} //fin Login

@@ -1,28 +1,29 @@
 <?php
 /* 
-	Fecha de creación: 4/12/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar mostrar los permisos que existen
+	Archivo php
+	Fecha de creación: 27/11/2017 
+	Autor: Alejandro Vila Cid
+	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite mostrar los permisos que existen
 */
+//Es la clase SHOWALL de PERMISO que nos permite mostrar todas los permisos
 class PERMISO_SHOWALL {
-
-	function __construct( $lista, $datos/*, $DatosGrupo*/,$PERMISO,$admin) {
-		$this->lista = $lista;
-		$this->datos = $datos;
+	//es el constructor de la clase PERMISO_SHOWALL
+	function __construct( $lista, $datos,$PERMISO,$admin) {
+		$this->lista = $lista;//pasamos una array con los campos a mostrar
+		$this->datos = $datos;//pasamos el valor de los datos que queremos mostrar
 		$this->PERMISO = $PERMISO;
 		$this->admin = $admin;
-	/*	$this->DatosGrupo = $DatosGrupo;*/
-		$this->render($this->lista,$this->datos/*,$this->DatosGrupo*/,$this->PERMISO,$this->admin);
+		$this->render($this->lista,$this->datos,$this->PERMISO,$this->admin);
 	}
-	
-	function render($lista,$datos/*,$DatosGrupo*/,$PERMISO,$admin){
-		$this->lista = $lista;
-		$this->datos = $datos;
-		/*$this->DatosGrupo = $DatosGrupo;*/
-		$this->PERMISO = $PERMISO;
-		$this->admin = $admin;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+	//función render donde se mostrará la vista SHOWALL con los campos correspondientes
+	function render($lista,$datos,$PERMISO,$admin){
+		$this->lista = $lista;//pasamos una array con los campos a mostrar
+		$this->datos = $datos;//pasamos el valor de los datos que queremos mostrar
+		$this->PERMISO = $PERMISO;//pasamos los permisos
+		$this->admin = $admin;//pasamos una variable booleana: true si es administrador y false si no es administrador
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 
-	
+//pasamos a todas las variables el valor false porque no tienen dicho permiso	
 $SEARCH=false;	
 $GESTUSU=false;
 $GESTGRUP=false;
@@ -35,35 +36,35 @@ $GESTHIST=false;
 $GESTTRAB=false;		
 $GESTEVAL=false;		
 		
-	if($admin==true){
+	if($admin==true){//si es administrador, tiene todos los permisos, por eso le pasamos el valor true a todas las variables
 
 			    $SEARCH=true;			
 	}	
-	while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
+	while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
 
-	 if($fila['IdFuncionalidad']=='1'){
+	 if($fila['IdFuncionalidad']=='1'){//si se tiene el permiso de gestión de usuario se pone la variable a true
 				$GESTUSU=true;
 			   }
-	 if($fila['IdFuncionalidad']=='2'){
+	 if($fila['IdFuncionalidad']=='2'){//si se tiene el permiso de gestión de grupo se pone la variable a true
 				$GESTGRUP=true;
 			   }
-	 if($fila['IdFuncionalidad']=='5'){
+	 if($fila['IdFuncionalidad']=='5'){//si se tiene el permiso de gestión de permisos se pone la variable a true
 				$GESTPERM=true;
 
-		 if($fila['IdAccion']=='3'){
+		 if($fila['IdAccion']=='3'){//si se tiene la acción de buscar se pone la variable a true
 			    $SEARCH=true;	
 			   }
 
 			   }
-	 if($fila['IdFuncionalidad']=='3'){
+	 if($fila['IdFuncionalidad']=='3'){//si se tiene el permiso de gestión de funcionalidad se pone la variable a true
 				$GESTFUNC=true;
 			   }
-	 if($fila['IdFuncionalidad']=='4'){
+	 if($fila['IdFuncionalidad']=='4'){//si se tiene el permiso de gestión de accion se pone la variable a true
 				$GESTACC=true;
 			   }
 
 			}
-	include '../Views/Header.php';			
+	include '../Views/Header.php';		//incluimos la cabecera	
 ?>
 		<div class="seccion">
 			<h2>
@@ -72,7 +73,7 @@ $GESTEVAL=false;
 			<table>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					foreach ( $lista as $atributo ) {//este bucle se va a recorrer mientres queden campos por mostrar
 ?>
 					<th>
 						<?php echo $strings[$atributo]?>
@@ -82,11 +83,11 @@ $GESTEVAL=false;
 ?>
 				</tr>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) {//este bucle se va a repetir mientras no se muestren todos los datos
 ?>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					foreach ( $lista as $atributo ) {//este bucle se va a recorrer mientres queden campos por mostrar
 ?>
 					<td>
 <?php 
@@ -102,7 +103,7 @@ $GESTEVAL=false;
 ?>
 			<caption style="margin-bottom:10px;">
 					<form action='../Controllers/PERMISO_CONTROLLER.php'>
-<?php if($SEARCH==true){  ?>
+<?php if($SEARCH==true){  //miramos si tiene la accion de search?>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
 <?php } ?>
 					</form>
@@ -113,7 +114,7 @@ $GESTEVAL=false;
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el footer
 		}
 		}
 ?>
