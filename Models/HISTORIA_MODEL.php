@@ -29,15 +29,17 @@
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "select IdTrabajo,
+		$sql = "select  H.IdTrabajo,
+						T.NombreTrabajo,
                         IdHistoria,
                         TextoHistoria
-       			from HISTORIA
+       			from HISTORIA H, TRABAJO T
     			where 
     				(
-					(BINARY IdTrabajo LIKE '%$this->IdTrabajo%') &&
+					(BINARY H.IdTrabajo LIKE '%$this->IdTrabajo%') &&
                     (BINARY IdHistoria LIKE '%$this->IdHistoria%') &&
-                    (BINARY TextoHistoria LIKE '%$this->TextoHistoria%')
+                    (BINARY TextoHistoria LIKE '%$this->TextoHistoria%') &&
+					T.IdTrabajo=H.IdTrabajo
     				)";//se construye la sentencia sql
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

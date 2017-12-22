@@ -130,7 +130,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$HISTORIA = get_data_form();//Variable que almacena los datos recogidos de los atributos
 		}
 		$datos = $HISTORIA->SEARCH();//se llama al método SEARCH para buscar la historia en la base de datos
-		$lista = array( 'IdTrabajo','IdHistoria','TextoHistoria' );//se meten en un array los campos que queremos mostrar.
+		$lista = array( 'NombreTrabajo','IdHistoria','TextoHistoria' );//se meten en un array los campos que queremos mostrar.
 		new HISTORIA_SHOWALL( $lista, $datos );//se muestra una vista showall con todos los datos
 			}else{//si el usuario no tiene dicho permiso, se le indica en una vista por defecto que está vacía
 				new USUARIO_DEFAULT();//se muestra una vista pordefecto(vacía)
