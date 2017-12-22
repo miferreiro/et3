@@ -5,17 +5,19 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de un grupo en la base de datos
 */
+//Clase GRUPO_EDIT que contiene la vista para mostar un formulario de edición de una tupla
 class GRUPO_EDIT {
-
+	//Constructor de la clase
 	function __construct( $valores ) {
-		$this->valores = $valores;
+		$this->valores = $valores;//Variable que almacena la información de la tupla a editar
+		//metodo que llama a la función render que contiene todo el código de la vista
 		$this->render( $this->valores);
 	}
 
 	function render( $valores) {
- 		$this->valores = $valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+ 		$this->valores = $valores;//Variable que almacena la información de la tupla a editar
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		include '../Views/Header.php';//Incluye el contenido del header
 		?>
 		<div class="seccion">
 			<h2>

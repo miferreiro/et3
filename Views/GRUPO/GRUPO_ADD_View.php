@@ -5,14 +5,17 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir un grupo a la base de datos
 */
+//Clase GRUPO_ADD que contiene la vista del formulario para añadir un grupo
 class GRUPO_ADD {
+	//Constructor de la clase
 	function __construct() {
+		//metodo que llama a la función render que contiene todo el código de la vista
 		$this->render();
 	}
-
+	//Función que contiene el código de la vista
 	function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		include '../Views/Header.php';//Incluye el contenido del header
 ?>
 		<div class="seccion">
 			<h2>
