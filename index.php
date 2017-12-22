@@ -1,7 +1,7 @@
 
 <!-- Página html -->
 <!-- Nombre: EntregaET2.html-->
-<!-- Autor:  -->
+<!-- Autor: Miguel Ferreiro -->
 <!-- Fecha de creación: 26/9/2017 -->
 <!-- Función: el objetivo de este fichero es representar la estructura de la página web. En ella se presentan una cabecera, -->
 <!-- un menú lateral, espacio de trabajo y un pie. Respecto al espacio de trabajo, en él se encuentra un ejemplo de texto,  -->

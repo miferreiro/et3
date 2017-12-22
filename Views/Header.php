@@ -2,16 +2,16 @@
 /*
 	Archivo php
 	Nombre: Header.php
-	Autor: 	fta875
+	Autor: 	Miguel Ferreiro
 	Fecha de creación: 23/10/2017 
 	Función: contiene todas las características del header
 */
-	include_once '../Functions/Authentication.php';
-	if (!isset($_SESSION['idioma'])) {
-		$_SESSION['idioma'] = 'SPANISH';
+	include_once '../Functions/Authentication.php';//incluimos este fichero para mirar si el usuario esta auteneticado
+	if (!isset($_SESSION['idioma'])) { //miramos si existe algún idioma
+		$_SESSION['idioma'] = 'SPANISH';//si no existe ponemos por defecto el español
 
 	}
-	include '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
+	include '../Locales/Strings_' . $_SESSION['idioma'] . '.php';//incluimos todos los strings de los idiomas:ingles,español y galego
 ?>
 <!doctype html>
 <html lang="es">
@@ -34,7 +34,7 @@
 		</h1>
 	</p>
 <?php	
-	if (IsAuthenticated()){
+	if (IsAuthenticated()){ //miramos si el usuario esta autenticado
 ?>
 		<p style="font-size:20px; ">
 <?php
@@ -44,7 +44,7 @@
 	
 		</p>
 <?php
-	} else {
+	} else { //si no esta autenticado se muestra en un mensaje indicandolo
 		
 			echo $strings['Usuario no identificado'];
 ?> 
@@ -62,7 +62,7 @@
 </header>
 <div id = 'main'>   
 <?php
-		include '../Views/admin_menuLateral.php';
+		include '../Views/admin_menuLateral.php';//incluimos el footer
 ?>  
 <article>
 
