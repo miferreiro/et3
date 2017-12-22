@@ -4,7 +4,9 @@
  Función: modelo de datos definida en una clase que permite interactuar con la base de datos
  Fecha de creación:23/11/2017 Autor:Brais Santos
 */
-class USUARIO_MODEL{ //declaración de la clase
+
+//declaración de la clase
+class USUARIO_MODEL{ 
 
 	var $login; // declaración del atributo login
     var $password;//declaración del atributo password
@@ -22,8 +24,9 @@ class USUARIO_MODEL{ //declaración de la clase
     var $dependencias5;//declaración del atributo dependencias
     var $dependencias6;//declaración del atributo dependencias
     var $dependencias7;//declaración del atributo dependencias
-	//Constructor de la clase
+	
 
+    //Constructor de la clase
 	function __construct($login,$password,$DNI,$Nombre,$Apellidos,$Correo,$Direccion,$Telefono) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->login = $login;//le asignamos un valor al login
@@ -142,7 +145,7 @@ class USUARIO_MODEL{ //declaración de la clase
 						
 						if($mensaje == 'Inserción realizada con éxito'){//miramos si la inserción en USU_GRUPO tuvo exito
 							return 'Inserción realizada con éxito'; //operacion de insertado correcta
-						}else{
+						}else{//si la insercion no tuvo exito
 							return $mensaje;
 						}
 						
@@ -172,9 +175,9 @@ class USUARIO_MODEL{ //declaración de la clase
 		$sql = "SELECT * FROM USUARIO WHERE (login = '$this->login')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
-		// si existe una tupla con ese valor de clave
+		
 
-		if ( $result->num_rows == 1 ) {
+		if ( $result->num_rows == 1 ) {// si existe una tupla con ese valor de clave
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM USUARIO WHERE (login = '$this->login' )";
 			// se ejecuta la query
@@ -189,9 +192,9 @@ class USUARIO_MODEL{ //declaración de la clase
 	// funcion RellenaDatos()
 	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	// en el atributo de la clase
-	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
+	function RellenaDatos() { 
 
-		$sql = "SELECT * FROM USUARIO WHERE (login = '$this->login')";
+		$sql = "SELECT * FROM USUARIO WHERE (login = '$this->login')";// se construye la sentencia de busqueda de la tupla
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 

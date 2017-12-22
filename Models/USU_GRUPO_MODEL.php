@@ -4,6 +4,8 @@
 <?php
  include_once '../Functions/BdAdmin.php';//incluimos este fichero para conectarnos a la base de datos
 
+
+//declaracion de la clase USU_GRUPO
     class USU_GRUPO{
         var $login;//declaración de la variable login
         var $IdGrupo;//declaración de la variable IdGrupo

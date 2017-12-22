@@ -1,6 +1,9 @@
 <?php
 //modelo que interactuará con el controlador y llevará datos a la base de datos ó recogerá valores de la base de datos.
 //Fecha de creación:23/11/2017 //Autor:Miguel Ferreiro
+
+
+//clase del modelo TRABAJO
 class TRABAJO{
 
     var $IdTrabajo;//clave de la tabla de TRABAJO
