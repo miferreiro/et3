@@ -11,12 +11,12 @@
 class EVALUACION_DELETE {
 
 	function __construct( $valores ) { //es el constructor de la clase EVALUACION_DELETE
-		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->valores = $valores;//Variable que almacena el recordset de la base de datos
 		$this->render( $this->valores );//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
 
 	function render( $valores ) { //funcion que  mostrará el formulario DELETE con los campos correspondientes
-		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->valores = $valores;//Variable que almacena el recordset de la base de datos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 ?>
