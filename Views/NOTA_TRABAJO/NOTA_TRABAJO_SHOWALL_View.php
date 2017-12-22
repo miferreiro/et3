@@ -56,7 +56,7 @@ class NOTA_TRABAJO_SHOWALL {
                     <?php
 		if((permisosAcc($_SESSION['login'],7,1)==true)||(permisosAcc($_SESSION['login'],7,2)==true)||        (permisosAcc($_SESSION['login'],7,4)==true)){  //mira si el usuario tiene permiso para:añadir,borrar,ver en detalle
 ?>
-					<th colspan="3" >
+					<th colspan="4" >
 						<?php echo $strings['Opciones']?>
 					</th>
 <?php } ?>
