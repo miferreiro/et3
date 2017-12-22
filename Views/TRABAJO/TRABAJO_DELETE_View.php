@@ -1,32 +1,33 @@
 <?php
 /*  Archivo php
 	Nombre: TRABAJO_DELETE_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Brais Rodríguez Martínez
+	Fecha de creación: 27/11/2017 
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una acción y da la opción de borrarlos
 */
+//es la clase DELETE de TRABAJO que nos permite mostrar la vista de borrado
 class TRABAJO_DELETE {
-
+	//es el constructor de la clase TRABAJO_DELETE
 	function __construct( $valores, $dependencias,  $dependencias2,  $dependencias3,  $dependencias4,  $dependencias5 ) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		$this->dependencias2 = $dependencias2;
-		$this->dependencias3 = $dependencias3;
-		$this->dependencias4 = $dependencias4;
-		$this->dependencias5 = $dependencias5;
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->dependencias = $dependencias;//pasamos los valores de las dependencias de la tabla EVALUACION
+		$this->dependencias2 = $dependencias2;//pasamos los valores de las dependencias de la tabla HISTORIA
+		$this->dependencias3 = $dependencias3;//pasamos los valores de las dependencias de la tabla NOTA_TRABAJO
+		$this->dependencias4 = $dependencias4;//pasamos los valores de las dependencias de la tabla ASIGNAC_QA
+		$this->dependencias5 = $dependencias5;//pasamos los valores de las dependencias de la tabla ENTREGA
 		
-		$this->render( $this->valores, $this->dependencias, $this->dependencias2, $this->dependencias3, $this->dependencias4, $this->dependencias5);
+		$this->render( $this->valores, $this->dependencias, $this->dependencias2, $this->dependencias3, $this->dependencias4, $this->dependencias5);//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes y sus valores
 	}
 
 	function render( $valores, $dependencias,  $dependencias2,  $dependencias3,  $dependencias4,  $dependencias5 ) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		$this->dependencias2 = $dependencias2;
-		$this->dependencias3 = $dependencias3;
-		$this->dependencias4 = $dependencias4;
-		$this->dependencias5 = $dependencias5;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->dependencias = $dependencias;//pasamos los valores de las dependencias de la tabla EVALUACION
+		$this->dependencias2 = $dependencias2;//pasamos los valores de las dependencias de la tabla HISTORIA
+		$this->dependencias3 = $dependencias3;//pasamos los valores de las dependencias de la tabla NOTA_TRABAJO
+		$this->dependencias4 = $dependencias4;//pasamos los valores de las dependencias de la tabla ASIGNAC_QA
+		$this->dependencias5 = $dependencias5;//pasamos los valores de las dependencias de la tabla ENTREGA
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -84,6 +85,7 @@ class TRABAJO_DELETE {
             <br>
             
             <?php
+			//Comprobamos si hay dependencias
             if($dependencias != null || $dependencias2 != null || $dependencias3 != null || $dependencias4 != null || $dependencias5 != null ){
                 
                  echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
@@ -91,7 +93,7 @@ class TRABAJO_DELETE {
                 <br>
                 <br>
             <?php
-            
+            //Si hay dependencias de la tabla EVALUACION, mostramos las tuplas con las que hay dependencia
             if($dependencias != null){
             ?>
             
@@ -132,7 +134,7 @@ class TRABAJO_DELETE {
                         <?php echo $strings['OK'];?>
                     </th>
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) {//Recorremos el array mostrando los valores
             ?>
 			
             <tr>
@@ -206,7 +208,7 @@ class TRABAJO_DELETE {
             <?php
             }
                 
-            
+                        //Si hay dependencias de la tabla HISTORIA, mostramos las tuplas con las que hay dependencia
             if($dependencias2 != null){
             ?>
             <table>
@@ -224,7 +226,7 @@ class TRABAJO_DELETE {
                 
                     
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {//Recorremos el array mostrando los valores
             ?>
 			
             <tr>
@@ -260,7 +262,7 @@ class TRABAJO_DELETE {
             <?php
             }
                 
-            
+                        //Si hay dependencias de la tabla NOTA_TRABAJO, mostramos las tuplas con las que hay dependencia
             if($dependencias3 != null){
             ?>
             
@@ -277,7 +279,7 @@ class TRABAJO_DELETE {
                     </th>
                 
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias3 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias3 ) ) {//Recorremos el array mostrando los valores
             ?>
 			
             <tr>
@@ -311,7 +313,7 @@ class TRABAJO_DELETE {
                     
             }
                 
-            
+            //Si hay dependencias de la tabla ASIGNAC_QA, mostramos las tuplas con las que hay dependencia           
             if($dependencias4 != null){
             ?>
             
@@ -333,7 +335,7 @@ class TRABAJO_DELETE {
                     </th>
                 
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias4 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias4 ) ) {//Recorremos el array mostrando los valores
             ?>
 			
             <tr>
@@ -374,7 +376,7 @@ class TRABAJO_DELETE {
             <?php
             }
                 
-            
+                  //Si hay dependencias de la tabla ENTREGA, mostramos las tuplas con las que hay dependencia      
             if($dependencias5 != null){
             ?>
             
@@ -399,7 +401,7 @@ class TRABAJO_DELETE {
                     </th>
                 
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias5 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias5 ) ) {//Recorremos el array mostrando los valores
             ?>
 			
            <tr>
@@ -456,7 +458,7 @@ class TRABAJO_DELETE {
             <?php
             }
                 
-                
+                //Si no hay dependencias, permitimos borrar
                if($dependencias == null && $dependencias2 == null && $dependencias3 == null && $dependencias4 == null && $dependencias5 == null ){
                     
               ?>  
@@ -469,7 +471,6 @@ class TRABAJO_DELETE {
 				<input type="hidden" name="FechaIniTrabajo" value="<?php echo $this->valores['FechaIniTrabajo'] ?>" />
 				<input type="hidden" name="FechaFinTrabajo" value="<?php echo $this->valores['FechaFinTrabajo'] ?>" />
                 <input type="hidden" name="PorcentajeNota" value="<?php echo $this->valores['PorcentajeNota'] ?>" />
-				<!--<input id="DELETE" name="action" value="DELETE" type="image" src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php //echo $strings['Confirmar'] ?>">-->
                 <button type="submit" id="DELETE" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/TRABAJO_CONTROLLER.php' method="post" style="display: inline">
@@ -478,7 +479,7 @@ class TRABAJO_DELETE {
 		</div>
 <?php
                }
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
                
 	}
 }

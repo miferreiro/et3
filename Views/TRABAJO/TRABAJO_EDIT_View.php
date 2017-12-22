@@ -1,21 +1,22 @@
 <?php
 /*  Archivo php
 	Nombre: TRABAJO_EDIT_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Brais Rodríguez Martínez
+	Fecha de creación: 27/11/2017  
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una acción en la base de datos
 */
+//es la clase EDIT de TRABAJO que nos permite mostrar el formulario de editar
 class TRABAJO_EDIT {
-
+	//es el constructor de la clase TRABAJO_EDIT
 	function __construct( $valores ) {
-		$this->valores = $valores;
-		$this->render( $this->valores );
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->render( $this->valores );//llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes y sus valores
 	}
-
+	//funcion que mostrará el formulario EDIT con los campos correspondientes y sus valores
 	function render( $valores ) {
 		$this->valores = $valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 		?>
 		<div class="seccion">
 			<h2>
@@ -72,7 +73,7 @@ class TRABAJO_EDIT {
 		</div>
 
 		<?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 		?>
