@@ -5,21 +5,23 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de un usuario y da la opción de borrarlos
 */
+//Clase Asignac_qa_delete que contiene la vista para poder borrar una tupla de ASIGNAC_QA
 class ASIGNAC_QA_DELETE {
-
+    //Constructor de la clase
 	function __construct( $valores, $dependencias, $dependencias2 ) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		$this->dependencias2 = $dependencias2;
-		$this->render( $this->valores, $this->dependencias, $this->dependencias2 );
+		$this->valores = $valores;//Variable que almacena un recordset con la info de una tupla
+		$this->dependencias = $dependencias;//Variable que almacena un recordset con las dependencias de borrar una tupla
+		$this->dependencias2 = $dependencias2;//Variable que almacena un recordset con las dependencias de borrar una tupla
+		$this->render( $this->valores, $this->dependencias, $this->dependencias2 );//metodo que llama a la función render que contiene todo el código de la vista
 	}
-
+    //Función que contiene el código de la vista
 	function render( $valores, $dependencias, $dependencias2 ) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		$this->dependencias2 = $dependencias2;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		$this->valores = $valores;//Variable que almacena un recordset con la info de una tupla
+		$this->dependencias = $dependencias;//Variable que almacena un recordset con las dependencias de borrar una tupla
+		$this->dependencias2 = $dependencias2;//Variable que almacena un recordset con las dependencias de borrar una tupla
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		include '../Views/Header.php';//Incluye el contenido del header
+
 ?>
 		<div class="seccion">
 			<h2>
@@ -63,7 +65,7 @@ class ASIGNAC_QA_DELETE {
             <br>
             
             <?php
-            
+            //Si hay dependencias, mostramos un mensaje y informamos de las dependencias que evitan que se pueda borrar una tupla
             if($dependencias != null || $dependencias2 !=null){
                 
                 echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
@@ -71,7 +73,7 @@ class ASIGNAC_QA_DELETE {
                 <br>
                 <br>
             <?php
-            
+            //Si hay dependencias mostramos la columnas con el nombre del atributo
             if($dependencias != null){
             ?>
             
@@ -112,6 +114,7 @@ class ASIGNAC_QA_DELETE {
                         <?php echo $strings['OK'];?>
                     </th>
             <?php
+                //Bucle que recorre todo el recordset de dependencias y pasa estos valores a array y los muestra
 				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
             ?>
 			
@@ -187,7 +190,7 @@ class ASIGNAC_QA_DELETE {
             }
         
         
-            
+            //Si hay dependencias mostrara el valor de cada atributo del recordset de dependencias
             if($dependencias2 != null){
             ?>
             
@@ -229,6 +232,7 @@ class ASIGNAC_QA_DELETE {
                     </th>
                 
             <?php
+                //Bucle que recorre todo el recordset de dependencias y pasa estos valores a array y los muestra
 				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {
             ?>
 			
@@ -309,7 +313,7 @@ class ASIGNAC_QA_DELETE {
             <?php
     }
             
-            
+            //Si no hay dependencias muestra un mensaje y permite el borrado de la tupla
             if($dependencias == null && $dependencias2 == null){
                 
             ?>
@@ -331,7 +335,7 @@ class ASIGNAC_QA_DELETE {
 		</div>
 <?php
             }
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//Incluye el contenido del pie
                 
             }
         

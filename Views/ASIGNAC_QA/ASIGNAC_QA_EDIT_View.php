@@ -5,17 +5,18 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de un usuario en la base de datos
 */
+//Clase Asignac_qa_edit que contiene la vista de un formulario para poder editar una tupla
 class ASIGNAC_QA_EDIT {
-
+	//Constructor de la clase
 	function __construct( $valores ) {
-		$this->valores = $valores;
-		$this->render( $this->valores );
+		$this->valores = $valores;//Variable que almacena un recordset con la info de un tupla
+		$this->render( $this->valores );//metodo que llama a la función render que contiene todo el código de la vista
 	}
-
+	//Función que contiene el código de la vista
 	function render( $valores ) {
  		$this->valores = $valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		include '../Views/Header.php';//Incluye el contenido del header
 		?>
 		<div class="seccion">
 			<h2>
@@ -62,7 +63,7 @@ class ASIGNAC_QA_EDIT {
 		</div>
 
 		<?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//Incluye el contenido del pie
 		}
 		}
 		?>

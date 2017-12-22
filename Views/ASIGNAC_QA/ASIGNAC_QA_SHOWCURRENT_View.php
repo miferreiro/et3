@@ -7,21 +7,22 @@
 */
 
 
-
+	  //Clase ASIGNAC_QA_SHOWCURRENT que contiene la vista para una tupla de la tabla ASIGNAC_QA
       class ASIGNAC_QA_SHOWCURRENT{
         
-        
+        //Constructor de la clase
         function __construct($valores){
-            
-            $this->mostrar($valores);
+            //$valores  variable que almacena la informacion de una tupla de la tabla ASIGNAC_QA
+            $this->mostrar($valores);//metodo que llama a la función mostrar que contiene todo el código de la vista
             
             
         }
-        
+        //Función que contiene el código de la vista
         public function mostrar($valores){
+  			//variable que almacena la informacion de una tupla de la tabla ASIGNAC_QA
             $this->valores = $valores;
-		    include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		    include '../Views/Header.php';
+		    include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		    include '../Views/Header.php';//Incluye el contenido del header
                 
         ?>
     <div class="seccion">
@@ -72,7 +73,7 @@
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//Incluye el contenido del pie
 	}
 }
 
