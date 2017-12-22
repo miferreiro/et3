@@ -1,21 +1,25 @@
 <?php
 /*  Archivo php
 	Nombre: USUARIOS_EDIT_View.php
-	Autor: 	Miguel Ferreiro Díaz
-	Fecha de creación: 9/10/2017 
+	Autor: 	Jonatan Couto
+	Fecha de creación: 22/11/2017
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de un usuario en la base de datos
 */
+
+//es la clase EDIT de USUARIO que nos permite editar un usuario
 class USUARIO_EDIT {
 
-	function __construct( $valores ) {
-		$this->valores = $valores;
-		$this->render( $this->valores );
+    //es el constructor de la clase USUARIO_EDIT
+	function __construct( $valores ) { 
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->render( $this->valores );//llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
 	}
-
+ 
+    //funcion que mostrará el formulario EDIT con los campos correspondientes
 	function render( $valores ) {
-		$this->valores = $valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 		?>
 		<div class="seccion">
 			<h2>
@@ -85,7 +89,7 @@ class USUARIO_EDIT {
 		</div>
 
 		<?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de página
 		}
 		}
 		?>

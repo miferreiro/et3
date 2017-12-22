@@ -1,19 +1,21 @@
 <?php
 /*  Archivo php
 	Nombre: USUARIOS_ADD_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Jonatan Couto
+	Fecha de creación: 22/11/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir un usuario a la base de datos
 */
+
+//es la clase ADD de USUARIO que nos permite añadir un usuario
 class USUARIO_ADD {
 
-	function __construct() {
-		$this->render();
+	function __construct() {//es el constructor de la clase USUARIO_ADD
+		$this->render();//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 	}
 
-	function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render() {//funcion que  mostrará el formulario ADD con los campos correspondientes
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -81,7 +83,7 @@ class USUARIO_ADD {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>

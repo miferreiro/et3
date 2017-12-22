@@ -1,20 +1,25 @@
 <?php
 /*  Archivo php
 	Nombre: USUARIOS_SEARCH_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Jonatan Couto
+	Fecha de creación: 22/11/2017 
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a un usuario e la base de datos
 */
+
+
+//es la clase SEARCH de USUARIO que nos permite buscar un usuario
 class USUARIO_SEARCH {
 
+    //es el constructor de la clase USUARIO_SEARCH
 	function __construct() {
-		$this->render();
+		$this->render();//llamamos a la función render donde se mostrará el formulario SEARCH con los campos correspondientes
 	}
 
+    //funcion que  mostrará el formulario SEARCH con los campos correspondientes
 	function render() {
 
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -84,7 +89,7 @@ class USUARIO_SEARCH {
 
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de página
 		}
 		}
 ?>

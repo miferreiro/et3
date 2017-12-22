@@ -1,35 +1,38 @@
 <?php
 /*  Archivo php
 	Nombre: USUARIOS_DELETE_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Jonatan Couto
+	Fecha de creación: 22/11/2017 
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de un usuario y da la opción de borrarlos
 */
+
+
+//es la clase DELETE de USUARIO que nos permite borrar un usuario
 class USUARIO_DELETE {
 
-	function __construct( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		$this->dependencias2 = $dependencias2;
-		$this->dependencias3 = $dependencias3;
-		$this->dependencias4 = $dependencias4;
-		$this->dependencias5 = $dependencias5;
-		$this->dependencias6 = $dependencias6;
-		$this->dependencias7 = $dependencias7;
-		$this->render( $this->valores, $this->dependencias,$this->dependencias2,$this->dependencias3,$this->dependencias4,$this->dependencias5,$this->dependencias6, $this->dependencias7);
+	function __construct( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7) { //es el constructor de la clase USUARIO_DELETE
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->dependencias = $dependencias;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias2 = $dependencias2;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias3 = $dependencias3;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias4 = $dependencias4;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias5 = $dependencias5;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias6 = $dependencias6;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias7 = $dependencias7;//pasamos las dependencias que tiene a la hora de borrar
+		$this->render( $this->valores, $this->dependencias,$this->dependencias2,$this->dependencias3,$this->dependencias4,$this->dependencias5,$this->dependencias6, $this->dependencias7);//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
 
-	function render( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7) {
-		$this->valores = $valores;
-		$this->dependencias = $dependencias;
-		$this->dependencias2 = $dependencias2;
-		$this->dependencias3 = $dependencias3;
-		$this->dependencias4 = $dependencias4;
-		$this->dependencias5 = $dependencias5;
-		$this->dependencias6 = $dependencias6;
-		$this->dependencias7 = $dependencias7;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7) { //funcion que mostrará el formulario DELETE con los campos correspondientes
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->dependencias = $dependencias;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias2 = $dependencias2;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias3 = $dependencias3;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias4 = $dependencias4;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias5 = $dependencias5;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias6 = $dependencias6;//pasamos las dependencias que tiene a la hora de borrar
+		$this->dependencias7 = $dependencias7;//pasamos las dependencias que tiene a la hora de borrar
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -106,7 +109,7 @@ class USUARIO_DELETE {
         
             <?php
             
-            if($dependencias != null || $dependencias2 != null || $dependencias3 != null || $dependencias4 != null || $dependencias5 != null || $dependencias6 != null || $dependencias7 != null ){
+            if($dependencias != null || $dependencias2 != null || $dependencias3 != null || $dependencias4 != null || $dependencias5 != null || $dependencias6 != null || $dependencias7 != null ){ //miramos si hay alguna dependencia a la hora de borrar
                 
                 echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
                 ?>
@@ -114,7 +117,7 @@ class USUARIO_DELETE {
                 <br>
             <?php
             
-            if($dependencias != null){
+            if($dependencias != null){//si hay dependencias a la hora de borrar
             ?>
             
             <table>
@@ -126,7 +129,7 @@ class USUARIO_DELETE {
                     </th>
                 
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) { //este bucle se repite hasta que no nos devuelva todas  las dependencias
             ?>
 			
             <tr>
@@ -157,7 +160,7 @@ class USUARIO_DELETE {
             }
                 
             
-            if($dependencias2 != null){
+            if($dependencias2 != null){//si hay dependencias a la hora de borrar
             ?>
             <table>
                     <th>
@@ -179,7 +182,7 @@ class USUARIO_DELETE {
                         <?php echo $strings['RUTA'];?>
                     </th>
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {//este bucle se repite hasta que no nos devuelva todas  las dependencias
             ?>
 			
             <tr>
@@ -232,7 +235,7 @@ class USUARIO_DELETE {
             }
                 
             
-            if($dependencias3 != null){
+            if($dependencias3 != null){//si hay dependencias a la hora de borrar
             ?>
             
             <table>
@@ -252,7 +255,7 @@ class USUARIO_DELETE {
                         <?php echo $strings['AliasEvaluado'];?>
                     </th>
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias3 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias3 ) ) {//este bucle se repite hasta que no nos devuelva todas  las dependencias
             ?>
 			
             <tr>
@@ -296,7 +299,7 @@ class USUARIO_DELETE {
             }
                 
             
-            if($dependencias4 != null){
+            if($dependencias4 != null){//si hay dependencias a la hora de borrar
             ?>
             
             <table>
@@ -316,7 +319,7 @@ class USUARIO_DELETE {
                         <?php echo $strings['AliasEvaluado'];?>
                     </th>
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias4 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias4 ) ) {//este bucle se repite hasta que no nos devuelva todas  las dependencias
             ?>
 			
             <tr>
@@ -358,7 +361,7 @@ class USUARIO_DELETE {
             }
                 
             
-            if($dependencias5 != null){
+            if($dependencias5 != null){//si hay dependencias a la hora de borrar
             ?>
             
             <table>
@@ -372,7 +375,7 @@ class USUARIO_DELETE {
                     </th>
                 
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias5 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias5 ) ) {//este bucle se repite hasta que no nos devuelva todas  las dependencias
             ?>
 			
             <tr>
@@ -400,7 +403,7 @@ class USUARIO_DELETE {
             }
                 
             
-            if($dependencias6 != null){
+            if($dependencias6 != null){//si hay dependencias a la hora de borrar
             ?>
             
             <table>
@@ -441,7 +444,7 @@ class USUARIO_DELETE {
                         <?php echo $strings['OK'];?>
                     </th>
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias6 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias6 ) ) {//este bucle se repite hasta que no nos devuelva todas  las dependencias
             ?>
 			
             <tr>
@@ -515,7 +518,7 @@ class USUARIO_DELETE {
                 <?php
             }
                 
-                if($dependencias7 != null){
+                if($dependencias7 != null){//si hay dependencias a la hora de borrar
             ?>
             
             <table>
@@ -556,7 +559,7 @@ class USUARIO_DELETE {
                         <?php echo $strings['OK'];?>
                     </th>
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias7 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias7 ) ) {//este bucle se repite hasta que no nos devuelva todas  las dependencias
             ?>
 			
             <tr>
@@ -638,7 +641,7 @@ class USUARIO_DELETE {
     }
         
                 
-               if($dependencias == null && $dependencias2 == null && $dependencias3 == null && $dependencias4 == null && $dependencias5 == null && $dependencias6 == null && $dependencias7 == null ){
+               if($dependencias == null && $dependencias2 == null && $dependencias3 == null && $dependencias4 == null && $dependencias5 == null && $dependencias6 == null && $dependencias7 == null ){ //si ya no hay dependencias a la hora de borrar
                     
               ?>  
             
@@ -662,7 +665,7 @@ class USUARIO_DELETE {
 		</div>
 <?php
             }
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de página
                 
             }
         

@@ -1,21 +1,24 @@
 <?php
 /*  Archivo php
 	Nombre: USUARIOS_SHOWCURRENT_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Jonatan Couto
+	Fecha de creación: 29/11/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de un usuario
 */
+
+//es la clase SHOWCURRENT de USUARIO que nos permite ver en detalle un usuario
 class USUARIO_SHOWCURRENT {
 
+     //es el constructor de la clase USUARIO_SHOWCURRENT
 	function __construct( $lista ) {
-		$this->lista = $lista;
-		$this->render( $this->lista );
+		$this->lista = $lista;//pasamos los campos de la tabla usuario
+		$this->render( $this->lista );//llamamos a la función render donde se mostrará el formulario SHOWCURRENT con los campos correspondientes
 	}
 
-	function render( $lista ) {
-		$this->lista = $lista;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render( $lista ) { //funcion que mostrará el formulario SHOWCURRENT con los campos correspondientes
+		$this->lista = $lista;//pasamos los campos de la tabla usuario
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<h2>
 			<?php echo $strings['Vista detallada'];?>
@@ -95,7 +98,7 @@ class USUARIO_SHOWCURRENT {
 		</table>
 
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de página
 	}
 }
 ?>
