@@ -30,6 +30,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 
 	} // fin del constructor
 
+	//Funcion que devuelve un array con todas las qas
 	function DevolverQAs(){
 		//Consulta que recupera la tabla ASIGNAC_QA
 		$sql = "select IdTrabajo,
@@ -50,7 +51,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 
 	
 
-	//función que sirve para insertar una QA
+	//función que sirve para insertar una QA para generar qas
 	function ADD(){
        
 			//Variable que almacena sentencia sql
@@ -71,6 +72,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 			return "Asignacion generada con exito";
 	} //fin del método ADD
 	
+	//función que sirve para insertar una QA
 	function ADD2(){
 			//Variable que almacena la consulta de si existen los datos en la base de datos
 	       $sql = "SELECT * FROM ASIGNAC_QA WHERE (  LoginEvaluador = '$this->LoginEvaluador' && IdTrabajo = '$this->IdTrabajo' && AliasEvaluado = '$this->AliasEvaluado')";
