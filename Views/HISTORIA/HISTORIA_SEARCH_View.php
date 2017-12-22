@@ -2,16 +2,20 @@
 /* 
 	Fecha de creación: 2/12/2017 
 	Función: vista de el formulario de buscar(search) realizada con una clase para buscar datos a la base de datos.
+    Autor:Brais Santos
 */
+
+
+//es la clase SEARCH de HISTORIA que nos permite buscar una historia
 class HISTORIA_SEARCH {
 
-	function __construct() {
-		$this->render();
+	function __construct() { //es el constructor de la clase HISTORIA_SEARCH
+		$this->render();//llamamos a la función render donde se mostrará el formulario SEARCH con los campos correspondientes
 	}
 
-	function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render() { //llamamos a la función render donde se mostrará el formulario SEARCH con los campos correspondientes
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -49,7 +53,7 @@ class HISTORIA_SEARCH {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>

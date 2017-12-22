@@ -1,22 +1,25 @@
 <?php
 /* 
-	Fecha de creación: 4/12/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+	Fecha de creación: 16/12/2017 
+	Función: vista que muestra las notas de un alumno 
+    Autor:Alejandro Vila
 */
+
+//esta clase muestra las notas de un alumno
 class NOTA_TRABAJO_SHOWMISNOTAS {
         
-	function __construct( $lista, $datos) {
-		$this->lista = $lista;
-		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+	function __construct( $lista, $datos) { //es el constructor de la clase  NOTA_TRABAJO_SHOWMISNOTAS
+		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
+		$this->datos = $datos;//pasamos los valores de cada campo
+		$this->render($this->lista,$this->datos);//funcion que mostrará un formulario SHOWALL con los campos correspondientes
 	}
 	
-	function render($lista,$datos){
-		$this->lista = $lista;
-		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
-		include_once '../Functions/permisosAcc.php';
+	function render($lista,$datos){//funcion que mostrará un formulario SHOWALL con los campos correspondientes
+		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
+		$this->datos = $datos;//pasamos los valores de cada campo
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
+		include_once '../Functions/permisosAcc.php';//incluimos este fichero para saber los permisos del usuario
 ?>
 		<div class="seccion">
 			<h2>
@@ -25,7 +28,7 @@ class NOTA_TRABAJO_SHOWMISNOTAS {
 			<table>
 				<caption style="margin-bottom:10px;">
 					<form action='../Controllers/NOTA_TRABAJO_CONTROLLER.php'>
-<?php if(permisosAcc($_SESSION['login'],7,0)==true){ 
+<?php if(permisosAcc($_SESSION['login'],7,0)==true){  //miramos si el usuario tiene permiso para añadir
 		?>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 <?php } ?>
@@ -33,7 +36,7 @@ class NOTA_TRABAJO_SHOWMISNOTAS {
 				</caption>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					foreach ( $lista as $atributo ) { //este bucle mostrará cada uno de los campos correspondientes a las notas
 ?>
 					<th>
 						<?php echo $strings[$atributo]?>
@@ -45,7 +48,7 @@ class NOTA_TRABAJO_SHOWMISNOTAS {
                 ?>
                     
                     <?php
-		if((permisosAcc($_SESSION['login'],7,1)==true)||(permisosAcc($_SESSION['login'],7,2)==true)||        (permisosAcc($_SESSION['login'],7,4)==true)){ 
+		if((permisosAcc($_SESSION['login'],7,1)==true)||(permisosAcc($_SESSION['login'],7,2)==true)||        (permisosAcc($_SESSION['login'],7,4)==true)){ //mirmaos si el usuario tiene permiso: edit,search,delete.
 ?>
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
@@ -53,12 +56,12 @@ class NOTA_TRABAJO_SHOWMISNOTAS {
 <?php } ?>
 				</tr>
 <?php           
-                $suma=0;
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+                $suma=0;//iniciamos la variable $suma a 0 que será la nota final de un alumno
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle devolverá las tuplas de la tabla NOTA_TRABAJO
 ?>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					foreach ( $lista as $atributo ) { //este bucle devolverá los valores de una tupla
 ?>
 					<td>
 <?php 
@@ -75,7 +78,7 @@ class NOTA_TRABAJO_SHOWMISNOTAS {
                     
                     <td>
                     <?php
-                    $suma = $suma + $fila['NotaTrabajo'];
+                    $suma = $suma + $fila['NotaTrabajo'];//calculamos la nota final
             
                     ?>
                     </td>
@@ -85,15 +88,15 @@ class NOTA_TRABAJO_SHOWMISNOTAS {
 						<form action="../Controllers/NOTA_TRABAJO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
                             <input type="hidden" name=IdTrabajo value="<?php echo $fila['IdTrabajo']; ?>">
-<?php         if(permisosAcc($_SESSION['login'],7,2)==true){ ?>
+<?php         if(permisosAcc($_SESSION['login'],7,2)==true){ //miramos si el usuario tiene permiso para editar ?>
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 <?php } ?>
 					<td>
-<?php         if(permisosAcc($_SESSION['login'],7,1)==true){ ?>
+<?php         if(permisosAcc($_SESSION['login'],7,1)==true){ //miramos si el usuario tiene permiso para borrar ?>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
 <?php } ?>
 					<td>
-<?php         if(permisosAcc($_SESSION['login'],7,4)==true){ ?>
+<?php         if(permisosAcc($_SESSION['login'],7,4)==true){ //miramos si el usuario tiene permiso para ver en detalle ?>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 <?php } ?>
 						</form>
@@ -110,7 +113,7 @@ class NOTA_TRABAJO_SHOWMISNOTAS {
 <?php
         echo '<br>';
 
-                    echo "Nota final:".$suma;
+                    echo "Nota final:".$suma;//devolvemos la nota final
         
 ?>
             
@@ -120,7 +123,7 @@ class NOTA_TRABAJO_SHOWMISNOTAS {
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//mostamos el pie de la página
 		}
 		}
 ?>

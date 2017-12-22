@@ -1,15 +1,19 @@
 <?php
 //Esta función es la vista que sirve para buscar una entrega.
 //Fecha de creación:28/11/2017
+//Autor:Brais Santos
+
+
+//es la clase SEARCH de ENTREGA que nos permite buscar una entrega
 class ENTREGA_SEARCH {
 
-	function __construct() {
-		$this->render();
+	function __construct() {    //es el constructor de la clase ENTREGA_SEARCH
+		$this->render();//llamamos a la función render donde se mostrará el formulario SEARCH con los campos correspondientes
 	}
 
-	function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render() { //funcion render que mostrará el formulario SEARCH con los campos correspondientes
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -61,7 +65,7 @@ class ENTREGA_SEARCH {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página 
 		}
 		}
 ?>

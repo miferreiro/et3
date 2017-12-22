@@ -1,20 +1,23 @@
 <?php
 //Esta función es la vista que sirve para añadir una entrega.
+//Autor:Brais Santos
 //Fecha de creación:27/11/2017
+
+//es la clase ADD de ENTREGA que nos permite añadir una entrega
 class ENTREGA_ADD {
 
-	function __construct($datos,$trabajos) {
-		$this->datos = $datos;
-		$this->trabajos = $trabajos;
-		$this->render($this->datos,$this->trabajos);
+	function __construct($datos,$trabajos) { //es el constructor de la clase ENTREGA_ADD
+		$this->datos = $datos;//pasamos todos los login
+		$this->trabajos = $trabajos;//pasamos todos los trabajos
+		$this->render($this->datos,$this->trabajos);//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 
 	}
 
-	function render($datos,$trabajos) {
-		$this->datos = $datos;
-		$this->trabajos = $trabajos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render($datos,$trabajos) {//funcion que mostrará el formulario ADD con los campos correspondientes
+		$this->datos = $datos;//pasamos todos los login
+		$this->trabajos = $trabajos;//pasamos todos los trabajos
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -29,7 +32,7 @@ class ENTREGA_ADD {
                   <td class="formThTd">
                    <select id="login" name="login" required>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle va a sacar todos los login qu están almacenados
 ?>
 				<option value="<?php echo $fila[ 'login' ]?>">
 
@@ -52,7 +55,7 @@ class ENTREGA_ADD {
                   <td class="formThTd">
                    <select id="IdTrabajo" name="IdTrabajo" required>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->trabajos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->trabajos ) ) { //este bucle va a sacar todos los IdTrabajo que están almacenados
 ?>
 				<option value="<?php echo $fila[ 'IdTrabajo' ]?>">
 
@@ -94,7 +97,7 @@ class ENTREGA_ADD {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página 
 		}
 		}
 ?>

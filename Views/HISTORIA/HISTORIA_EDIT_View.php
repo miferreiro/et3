@@ -2,18 +2,22 @@
 /*
 	Fecha de creación: 2/12/2017 
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una historia en la base de datos
+    Autor:Brais Santos
 */
+
+
+//es la clase EDIT de HISTORIA que nos permite editar una historia
 class HISTORIA_EDIT {
 
-	function __construct( $valores ) {
-		$this->valores = $valores;
-		$this->render( $this->valores );
+	function __construct( $valores ) { //es el constructor de la clase HISTORIA_EDIT
+		$this->valores = $valores;//pasamos los valores de cada campo de la tupla que fue seleccionada en el showall
+		$this->render( $this->valores );//llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
 	}
 
-	function render( $valores ) {
-		$this->valores = $valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render( $valores ) { //llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
+		$this->valores = $valores;//pasamos los valores de cada campo de la tupla que fue seleccionada en el showall
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 		?>
 		<div class="seccion">
 			<h2>
@@ -54,7 +58,7 @@ class HISTORIA_EDIT {
 		</div>
 
 		<?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 		?>

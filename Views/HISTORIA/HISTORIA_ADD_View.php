@@ -1,20 +1,23 @@
 <?php
 /*  
 	Fecha de creación: 2/12/2017 
+    Autor:Brais Santos
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una historia a la base de datos
 */
+
+//es la clase ADD de HISTORIA que nos permite añadir una historia
 class HISTORIA_ADD {
 
-	function __construct($datos) {
-		$this->datos = $datos;
-		$this->render($this->datos);
+	function __construct($datos) { //es el constructor de la clase HISTORIA_ADD
+		$this->datos = $datos;//pasamos los valores de cada uno de los campos
+		$this->render($this->datos);//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 
 	}
 
-	function render($datos) {
-		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render($datos) { //funcion que mostrará el formulario ADD con los campos correspondientes
+		$this->datos = $datos;//pasamos los valores de cada uno de los campos
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -29,7 +32,7 @@ class HISTORIA_ADD {
                   <td class="formThTd">
                    <select id="IdTrabajo" name="IdTrabajo" required>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle muestra en un select todos los IdTrabajo que hay
 ?>
 				<option value="<?php echo $fila[ 'IdTrabajo' ]?>">
 
@@ -69,7 +72,7 @@ class HISTORIA_ADD {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>

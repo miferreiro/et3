@@ -2,19 +2,23 @@
 /* 
 	Fecha de creación: 4/12/2017 
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar la nota del trabajo
+    Autor:Brais Santos
 */
+
+
+ //es la clase EDIT de NOTA_TRABAJO que nos permite editar una nota
 class NOTA_TRABAJO_EDIT {
 
-	function __construct($valores) {
-		$this->valores = $valores;
-		$this->render($this->valores);
+	function __construct($valores) { //es el constructor de la clase  NOTA_TRABAJO_EDIT
+		$this->valores = $valores;//pasamos los valores de cada uno de los campos de la tupla que eligimos en el showall
+		$this->render($this->valores);//funcion que mostrará el formulario EDIT con los campos correspondientes
 	}
 
-	function render($valores) {
- 		$this->valores = $valores;
+	function render($valores) { //funcion que mostrará el formulario EDIT con los campos correspondientes
+ 		$this->valores = $valores;//pasamos los valores de cada uno de los campos de la tupla que eligimos en el showall
 		
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 		?>
 		<div class="seccion">
 			<h2>
@@ -55,7 +59,7 @@ class NOTA_TRABAJO_EDIT {
 		</div>
 
 		<?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 		?>

@@ -1,23 +1,24 @@
 <?php
 //Esta clase sirve para mostrar una tupla del SHOWALL en detalle con todos los atributos
 //Fecha de creación:28/11/2017
+//Autor:Brais Santos
 
 
-
-      class ENTREGA_SHOWCURRENT{
+//es la clase SHOWCURRENT de ENTREGA que nos permite ver en detalle una entrega
+      class ENTREGA_SHOWCURRENT{ 
         
         
-        function __construct($valores){
+        function __construct($valores){  //es el constructor de ENTREGA_SHOWCURRENT
             
-            $this->mostrar($valores);
+            $this->mostrar($valores); //llamamos a la función mostrar donde se mostrará el formulario SHOWCURRENT con los campos correspondientes
             
             
         }
         
-        public function mostrar($valores){
-            $this->valores = $valores;
-		    include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		    include '../Views/Header.php';
+        public function mostrar($valores){//funcion que mostrará el formulario SHOWCURRENT con los campos correspondientes
+            $this->valores = $valores;//pasamos los valores de cada campo
+		    include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		    include '../Views/Header.php';//incluimos la cabecera
                 
         ?>
     <div class="seccion">
@@ -79,7 +80,7 @@
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página 
 	}
 }
 

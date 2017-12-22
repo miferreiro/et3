@@ -1,22 +1,22 @@
 <?php
 /*  Archivo php
 	Nombre: ASIGNAC_QA_GENERAR_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
+	Autor: 	Alejandro Vila
+	Fecha de creación: 12/12/2017 
+	Función: esta vista genera las notas de las QAs
 */
 class GENERAR_NOTA_QA {
 
-	function __construct($datos) {
-		$this->datos = $datos;
-		$this->render($this->datos);
+	function __construct($datos) { //es el constructor de la clase  GENERAR_NOTA_QA
+		$this->datos = $datos;//pasamos todos los Idtrabajo que en este caso serán Qas
+		$this->render($this->datos);//funcion que mostrará la vista para generar la nota de las QAs
 
 	}
 
-	function render($datos) {
-		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render($datos) { //funcion que mostrará la vista para generar la nota de las QAs
+		$this->datos = $datos;//pasamos todos los Idtrabajo que en este caso serán Qas
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -31,7 +31,7 @@ class GENERAR_NOTA_QA {
                   <td class="formThTd">
                    <select id="IdTrabajo" name="IdTrabajo" required>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle se va a repetir hasta que no se recorran todos los trabajos que sean QA
 ?>
 				<option value="<?php echo $fila[ 'IdTrabajo' ]?>">
 
@@ -61,7 +61,7 @@ class GENERAR_NOTA_QA {
                </form>   
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>

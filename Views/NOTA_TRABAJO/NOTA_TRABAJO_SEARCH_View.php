@@ -2,16 +2,19 @@
 /* 
 	Fecha de creación: 4/12/2017 
 	Función: vista de el formulario de buscar(search) realizada con una clase donde se muestran todos los campos a buscar 
+    Autor:Brais Rodriguez
 */
+
+ //es la clase SEARCH de NOTA_TRABAJO que nos permite buscar una nota
 class NOTA_TRABAJO_SEARCH {
 
-	function __construct() {
-		$this->render();
+	function __construct() { //es el constructor de la clase  NOTA_TRABAJO_SEARCH
+		$this->render(); //funcion que mostrará el formulario SEARCH con los campos correspondientes
 	}
 
-	function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render() { //funcion que mostrará el formulario SEARCH con los campos correspondientes
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -49,7 +52,7 @@ class NOTA_TRABAJO_SEARCH {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>

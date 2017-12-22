@@ -2,18 +2,23 @@
 /* 
 	Fecha de creación: 2/12/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una historia
+    Autor:Brais Santos
 */
+
+
+
+//es la clase SHOWCURRENT de HISTORIA que nos permite mostrar la vista en detalle de una historia
 class HISTORIA_SHOWCURRENT {
 
-	function __construct( $lista ) {
-		$this->lista = $lista;
-		$this->render( $this->lista );
+	function __construct( $lista ) { //es el constructor de la clase HISTORIA_SHOWCURRENT
+		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
+		$this->render( $this->lista );//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes y sus valores correspondientes
 	}
 
-	function render( $lista ) {
-		$this->lista = $lista;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render( $lista ) { //funcion que  mostrará el formulario SHOWALL con los campos correspondientes y sus valores correspondientes
+		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<h2>
 			<?php echo $strings['Vista detallada'];?>
@@ -54,7 +59,7 @@ class HISTORIA_SHOWCURRENT {
 		</table>
 
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 	}
 }
 ?>

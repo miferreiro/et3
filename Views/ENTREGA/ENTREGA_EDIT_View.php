@@ -1,19 +1,22 @@
 <?php
 //Esta función es la vista que sirve para editar una entrega.
+//Autor:Brais Santos
 //Fecha de creación:27/11/2017
 
+
+//es la clase EDIT de ENTREGA que nos permite editar una entrega
 class ENTREGA_EDIT {
 
-	function __construct($valores) {
-		$this->render($valores);
+	function __construct($valores) {    //es el constructor de la clase ENTREGA_EDIT
+		$this->render($valores);//llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
 	}
 
-	function render($valores) {
-        $this->valores=$valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
-        include_once '../Functions/permisosAcc.php';
-		include_once '../Functions/comprobarAdministrador.php';
+	function render($valores) { //funcion que mostrará el formulario EDIT con los campos correspondientes
+        $this->valores=$valores;//pasamos el valor de cada uno de los campos
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
+        include_once '../Functions/permisosAcc.php';//incluimos este fichero para saber que permisos tiene el usuario
+		include_once '../Functions/comprobarAdministrador.php';//incluimos este fichero para saber si un usuario es administrador
 ?>
 		<div class="seccion">
 			<h2>
@@ -63,13 +66,13 @@ class ENTREGA_EDIT {
                     
 						<td >
 							<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button><!--boton para confirmar borrado-->
-<?php if((permisosAcc($_SESSION['login'],8,5)==false) && (permisosAcc($_SESSION['login'],8,10)==true)){ ?>
+<?php if((permisosAcc($_SESSION['login'],8,5)==false) && (permisosAcc($_SESSION['login'],8,10)==true)){ //miramos si el usuario tiene permiso para editar?>
 			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
 			    <input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo']?>">
 				<button type="submit" name="action" value="SUBIR_ENTREGA" ><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 				
-<?php }else{ ?>
+<?php }else{ //si el usuario no tiene permiso para editar ?>
 			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>	
@@ -82,7 +85,7 @@ class ENTREGA_EDIT {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página 
 		}
 		}
 ?>

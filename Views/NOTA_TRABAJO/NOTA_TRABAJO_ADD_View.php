@@ -1,21 +1,25 @@
 <?php
 /* 
 	Fecha de creación: 4/12/2017 
+    Autor:Brais Santos
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una nota de trabajo a la base de datos
 */
+
+
+//es la clase ADD de NOTA_TRABAJO que nos permite añadir una nota
 class NOTA_TRABAJO_ADD {
-	function __construct($datos,$trabajos) {
-		$this->datos = $datos;
-		$this->trabajos = $trabajos;
-		$this->render($this->datos,$this->trabajos);
+	function __construct($datos,$trabajos) { //es el constructor de la clase  NOTA_TRABAJO_ADD
+		$this->datos = $datos;//pasamos los login
+		$this->trabajos = $trabajos;//pasamos los IdTrabajo
+		$this->render($this->datos,$this->trabajos);//funcion que mostrará el formulario ADD con los campos correspondientes
 
 	}
 
-	function render($datos,$trabajos) {
-		$this->datos = $datos;
-		$this->trabajos = $trabajos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+	function render($datos,$trabajos) {//funcion que mostrará el formulario ADD con los campos correspondientes
+		$this->datos = $datos;//pasamos los login
+		$this->trabajos = $trabajos;//pasamos los IdTrabajo
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -30,7 +34,7 @@ class NOTA_TRABAJO_ADD {
                   <td class="formThTd">
                    <select id="login" name="login" required>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle se repetirá hasta que no se recorran todos los login
 ?>
 				<option value="<?php echo $fila[ 'login' ]?>">
 
@@ -53,7 +57,7 @@ class NOTA_TRABAJO_ADD {
                   <td class="formThTd">
                    <select id="IdTrabajo" name="IdTrabajo" required>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->trabajos ) ) {
+				while ( $fila = mysqli_fetch_array( $this->trabajos ) ) { //este bucle se repetirá hasta que no se recorran todos los IdTrabajo
 ?>
 				<option value="<?php echo $fila[ 'IdTrabajo' ]?>">
 
@@ -86,7 +90,7 @@ class NOTA_TRABAJO_ADD {
 				</table>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
 ?>

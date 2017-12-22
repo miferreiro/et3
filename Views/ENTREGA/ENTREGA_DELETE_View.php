@@ -1,23 +1,26 @@
 <?php
     //vista que muestra una tabla con todos los atributos de la clase ENTREGA a borrar.
     //Fecha de creación:28/11/2017
+    //Autor:Brais Santos
+
+//es la clase DELETE de ENTREGA que nos permite borrar una entrega
     class ENTREGA_DELETE{
         
         
-        function __construct($valores, $dependencias, $dependencias2){
+        function __construct($valores, $dependencias, $dependencias2){  //es el constructor de la clase ENTREGA_DELETE
             
-            $this->mostrar($valores, $dependencias, $dependencias2);
+            $this->mostrar($valores, $dependencias, $dependencias2);//llamamos a la función mostrar donde se mostrará el formulario DELETE con los campos correspondientes
 
             
             
         }
         
-        public function mostrar($valores, $dependencias, $dependencias2){
-            $this->valores = $valores;
-            $this->dependencias = $dependencias;
-            $this->dependencias2 = $dependencias2;
-		    include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		    include '../Views/Header.php';
+        public function mostrar($valores, $dependencias, $dependencias2){// funcion que mostrará el formulario DELETE con los campos correspondientes
+            $this->valores = $valores;//pasa el valor de cada uno de los campos
+            $this->dependencias = $dependencias;//pasa depencias a la hora de borrar
+            $this->dependencias2 = $dependencias2;//pasa dependencias a la hora de borrar
+		    include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		    include '../Views/Header.php';//incluimos la cabecera
                 
         ?>
     <div class="seccion">
@@ -79,7 +82,7 @@
         
             <?php
             
-            if($dependencias != null || $dependencias2 != null  ){
+            if($dependencias != null || $dependencias2 != null  ){ //miramos si hay dependencias a la hora de borrar
                 
                 echo $strings['Debe eliminar antes todas las dependencias para poder borrar este dato.'];
                 ?>
@@ -90,7 +93,7 @@
             
                 
             
-            if($dependencias != null){
+            if($dependencias != null){//si hay dependencias a la hora de borrar
             ?>
             
             <table>
@@ -110,7 +113,7 @@
                         <?php echo $strings['AliasEvaluado'];?>
                     </th>
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias ) ) {//este bucle sacará todas las dependencias a la hora de borrar
             ?>
 			
             <tr>
@@ -154,7 +157,7 @@
             }
                 
             
-            if($dependencias2 != null){
+            if($dependencias2 != null){//si hay dependencias a la hora de borrar
             ?>
             
             <table>
@@ -174,7 +177,7 @@
                         <?php echo $strings['AliasEvaluado'];?>
                     </th>
             <?php
-				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {
+				while ( $fila = mysqli_fetch_array( $dependencias2 ) ) {//este bucle sacará todas las dependencias a la hora de borrar
             ?>
 			
             <tr>
@@ -225,7 +228,7 @@
     }
         
                 
-               if($dependencias == null && $dependencias2 == null ){
+               if($dependencias == null && $dependencias2 == null ){//si no hay dependencias
                     
               ?>  
 			<p style="text-align:center;">
@@ -250,7 +253,7 @@
 		</div>
 <?php
                }
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el pie de la página 
 	}
 }
 
