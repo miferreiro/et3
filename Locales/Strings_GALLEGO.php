@@ -237,7 +237,10 @@ array(
 	'ya está almacenada esta nota' => 'Xa está almacenada esta nota',
 	'Error en la consulta sobre la base de datos, revise los campos introducidos' => 'Erro na consulta sobre a base de datos, revise os campos introducidos',
 	'Ya existe el trabajo introducido en la base de datos' => 'Xa existe o traballo introducido na base de datos',	
-	'Error en la inserción, login ya en uso' => 'Erro na inserción, o login esta en uso'
+	'Error en la inserción, login ya en uso' => 'Erro na inserción, o login esta en uso',
+
+	'El usuario no puede evaluarse a si mismo' => 'O usuario non pode evaluarse a si mismo',
+	'El alias evaluado no se corresponde con LoginEvaluado' => 'O alias evaluado non se corresponde con LoginEvaluado'
 	
 	)
 ;
