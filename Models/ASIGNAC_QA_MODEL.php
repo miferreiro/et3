@@ -82,22 +82,6 @@ class ASIGNAC_QA_MODEL{
 			}
 
 			//Variable que almacena la consulta de si existen los datos en la base de datos
-	       $sql = "SELECT * FROM ASIGNAC_QA A,ENTREGA E WHERE (  LoginEvaluado = '$this->LoginEvaluado' &&
-	   															 AliasEvaluado = Alias &&
-	   															 Alias = '$this->AliasEvaluado' 
-	   															)";
-	       // si da error la ejecución de la query
-	       if ( !$result = $this->mysqli->query( $sql ) ) { 
-				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
-			//Si la consulta no da error
-			} else {
-				//Si la consulta devuelve 1 columna o mas columnas
-				if ($result->num_rows == 0){
-					return 'El alias evaluado no se corresponde con LoginEvaluado';
-				}
-			}
-
-			//Variable que almacena la consulta de si existen los datos en la base de datos
 	       $sql = "SELECT * FROM ASIGNAC_QA WHERE (  LoginEvaluador = '$this->LoginEvaluador' && IdTrabajo = '$this->IdTrabajo' && AliasEvaluado = '$this->AliasEvaluado')";
             
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query

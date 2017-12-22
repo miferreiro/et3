@@ -265,6 +265,21 @@
         
         
     }
+    //Función que devuelve un alias de una entrega según un login y el número de un trabajo
+    function recuperarEntrega($login, $trabajo){
+        //Se construye la sentencia sql
+        $sql = "SELECT Alias FROM ENTREGA WHERE login = '$login' && SUBSTRING(IdTrabajo,3) = SUBSTRING('$trabajo',3)";
+        //se ejecuta la query y si da error informa de ello con un return
+        if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+        // si la busqueda es correcta devolvemos el recordset resultado
+		} else { 
+            //Hacemos un mysqli_fetch_row para guardar ese resultado único en una variable
+            $result = mysqli_fetch_row($resultado);
+			return $result;
+		}
+        
+    }
 
          // funcion DELETE()
 	    // comprueba que exista el valor de clave por el que se va a borrar,si existe se ejecuta el borrado, sino

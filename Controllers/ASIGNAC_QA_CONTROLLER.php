@@ -224,10 +224,24 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			//Variable que almacena un objecto ASIGNAC_QA_MODEL con los datos recogidos
 			$ASIGNACION = get_data_form();
-			//Variable que almacena la respuesta de realizar la insercion
-			$respuesta = $ASIGNACION->ADD2();
+            //Variable que llama al modelo de entregas y guarda dichas entregas
+            $ENTREGA = new ENTREGA_MODEL('','','','','');
+            
+            //Se llama a la función del modelo de entrega que cogerá un alias según el login evaluado y el id del trabajo
+            $datos = $ENTREGA->recuperarEntrega($_REQUEST['LoginEvaluado'], $_REQUEST['IdTrabajo']);
+            //Si el alias recuperado no se corresponde con el seleccionado nos dará un aviso de ello
+            if($datos[0] != $_REQUEST['AliasEvaluado']){
+                //Se define un mensaje determinado
+                $respuesta = 'El alias insertado no se corresponde con el alias evaluado';
+                //Se crea la vista con el mensaje definido anteriormente
+                new MESSAGE($respuesta, '../Controllers/ASIGNAC_QA_CONTROLLER.php');
+            }
+			else{
+            //Variable que almacena la respuesta de realizar la insercion
+			 $respuesta = $ASIGNACION->ADD2();
 			//Crea la vista mensaje con el mensaje informativo
 			new MESSAGE( $respuesta, '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
+            }
 		}
 		break;//Finaliza el bloque
 	case 'DELETE'://Caso borrar
