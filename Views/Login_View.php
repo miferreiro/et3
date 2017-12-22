@@ -1,6 +1,6 @@
 <?php
 /*  Archivo php
-	Nombre: Login_View.php
+	Nombre: LOGIN_View.php
 	Autor: 	fta875
 	Fecha de creación: 23/10/2017 
 	Función: vista de logearse(login) realizada con una clase donde se muestran los campos necesarios para logearse en nuestra aplicación
