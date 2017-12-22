@@ -2,6 +2,9 @@
 
 //modelo de datos definida con una clase que interactúa con el controlador que gestiona el grupo.
 //Fecha de creación:23/11/2017 Autor:Brais Santos
+
+
+//declaración de la clase
     class GRUPO{
         
         //Se definen las vaiables que se utilizarán en esta clase

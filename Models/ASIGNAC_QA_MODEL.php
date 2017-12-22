@@ -4,7 +4,9 @@
  Función: modelo de datos definida en una clase que permite interactuar con la base de datos
  Fecha de creación:23/11/2017 Autor:Jonatan Couto
 */
-class ASIGNAC_QA_MODEL{ //declaración de la clase
+
+//declaración de la clase
+class ASIGNAC_QA_MODEL{ 
 
     var $IdTrabajo; //declaración de idtrabajo
 	var $LoginEvaluador; // declaración del atributo LoginEvaluador
@@ -14,8 +16,8 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 	var $dependencias; // declaración de las dependencias
 	var $dependencias2; // declaración de las dependencias
 
-	//Constructor de la clase
-
+	
+        //Constructor de la clase
 	function __construct($IdTrabajo,$LoginEvaluador,$LoginEvaluado,$AliasEvaluado) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->IdTrabajo = $IdTrabajo;//se le asigna un valor a IdTrabajo
@@ -136,7 +138,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
         // funcion RellenaDatos()
         // Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	   // en el atributo de la clase
-	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
+	function RellenaDatos() {
 
 		// se construye la sentencia sql de busqueda con los atributos de la clase
 		$sql = "SELECT * FROM ASIGNAC_QA
@@ -155,7 +157,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 	} // fin del metodo RellenaDatos()
     
     //Esta función mira si tiene dependencias a la hora de borrar.
-    function dependencias() { // se construye la sentencia de busqueda de la tupla
+    function dependencias() { 
 
 		$dependencias = null; //inicializamos la variable dependencias a null
 
@@ -169,7 +171,7 @@ class ASIGNAC_QA_MODEL{ //declaración de la clase
 	} // fin del metodo RellenaDatos()
     
     //Esta función mira si tiene dependencias a la hora de borrar.
-    function dependencias2() { // se construye la sentencia de busqueda de la tupla
+    function dependencias2() { 
      
 	 $dependencias2= null;//inicializamos la variable dependencias2 a null
 

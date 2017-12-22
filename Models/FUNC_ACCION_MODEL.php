@@ -2,6 +2,7 @@
         //esta clase  es un modelo que interactúa con la base de datos y el controlador FUNC_ACCION
         //Fecha de creación:26/11/2017 Autor:Brais Santos
 
+    //declaración de la clase
     class  FUNC_ACCION{
      
 

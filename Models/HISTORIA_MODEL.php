@@ -2,6 +2,8 @@
 
 //modelo de datos definida con una clase que interactúa con el controlador que gestiona la historia.
 //Fecha de creación:2/12/2017 //Autor:Alejandro Vila
+
+//declaración de la clase
     class HISTORIA_MODEL{
         
         //Se definen las vaiables que se utilizarán en esta clase

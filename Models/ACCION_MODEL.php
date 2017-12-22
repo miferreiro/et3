@@ -115,7 +115,7 @@ class ACCION{
         // funcion RellenaDatos()
         // Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	   // en el atributo de la clase
-	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
+	function RellenaDatos() { 
 
 		$sql = "SELECT * FROM ACCION WHERE (IdAccion = '$this->IdAccion')";//Se construye la sentencia sql.
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe

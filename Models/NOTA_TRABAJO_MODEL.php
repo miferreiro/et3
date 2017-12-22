@@ -4,7 +4,9 @@
  Función: modelo de datos definida en una clase que permite interactuar con la base de datos
  Fecha de creación:4/12/2017 //Autor Brais Santos
 */
-class NOTA_TRABAJO_MODEL{ //declaración de la clase
+
+//declaración de la clase
+class NOTA_TRABAJO_MODEL{ 
 
 	var $IdTrabajo;//declaracion del atributo IdTrabajo
     var $login;//declaracion del atributo login
@@ -52,6 +54,9 @@ class NOTA_TRABAJO_MODEL{ //declaración de la clase
 		}
 	} // fin metodo SEARCH
     
+    
+    //funcion SEARCH2: hace una búsqueda en la tabla con
+	//los datos proporcionados. Si van vacios devuelve todos
 		function SEARCH2() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "select  N.IdTrabajo,
@@ -110,15 +115,16 @@ class NOTA_TRABAJO_MODEL{ //declaración de la clase
         return $result;
     }
     
+    //función que mira si existe una nota del trabajo para un usuario y trabajo concreto
      function siExiste($login,$trabajo){
-         $sql = "SELECT IdTrabajo,login FROM NOTA_TRABAJO WHERE IdTrabajo='$trabajo' AND login='$login'";
+         $sql = "SELECT IdTrabajo,login FROM NOTA_TRABAJO WHERE IdTrabajo='$trabajo' AND login='$login'";//Se construye la sentencia sql
         
-        $resultado = $this->mysqli->query( $sql );
+        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
         
-        if($resultado->num_rows == 0){
+        if($resultado->num_rows == 0){ //si el numero de tuplas es 0
             return false;
         }
-        else{
+        else{//si el numero de tuplas no es 0
             return true;
         }
     }
@@ -177,7 +183,7 @@ class NOTA_TRABAJO_MODEL{ //declaración de la clase
     
    //Esta función nos devuelve el porcentaje de la nota de un trabajo
    function notasUsuario($trabajo){
-       $sql = "SELECT PorcentajeNota FROM NOTA_TRABAJO N, TRABAJO T WHERE N.IdTrabajo=T.Idtrabajo AND T.IdTrabajo ='$trabajo'";
+       $sql = "SELECT PorcentajeNota FROM NOTA_TRABAJO N, TRABAJO T WHERE N.IdTrabajo=T.Idtrabajo AND T.IdTrabajo ='$trabajo'";//ejecutamos la query
        
        if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {//ejecutamos la query
 			         return 'Error en la consulta sobre la base de datos';

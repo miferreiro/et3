@@ -5,7 +5,9 @@
  Fecha de creación:23/11/2017 
  Autor:Brais Rodríguez
 */
-class EVALUACION{ //declaración de la clase
+
+//declaración de la clase
+class EVALUACION{ 
 
     var $IdTrabajo; //declaración de idtrabajo
 	var $LoginEvaluador; // declaración del atributo LoginEvaluador
