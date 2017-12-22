@@ -276,11 +276,11 @@ switch ( $_REQUEST[ 'action' ] ) {
     case 'EVALUACION_HISTORIAS':  
     	if ( !$_POST ) {//Si no se han recibido datos 
     		if(permisosAcc($_SESSION['login'],12,11)==true){//miramos si el usuario conectado tiene permiso para evaluar historias
-                 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');
-                 $datos=$EVALUACION->DevolverEntregas(); 
-                 $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');	
-            	new EVALUACION_SELECT_ALL_QA( $lista, $datos );
-			}else{
+                 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');//creamos un objeto de tipo EVALUACION
+                 $datos=$EVALUACION->DevolverEntregas(); //llamamos a este método para que nos devuelva todas las entregas
+                 $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');//metemos en un array los campos que queremos mostrar	
+            	new EVALUACION_SELECT_ALL_QA( $lista, $datos );//mostramos en una vista la evaluación de historias, donde se evalúa a otros usuarios
+			}else{//si no tiene permiso el usuario
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
 			}
 			 

@@ -1,7 +1,7 @@
 <?php
 /*
 	Fecha de creación: 4/12/2017 
-    Autor:Brais Rodriguez
+    Autor:Brais Santos
 	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas en la tabla NOTA_TRABAJO
 */
 session_start(); //solicito trabajar con la session
@@ -67,8 +67,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$TRABAJOS=$TRABAJO->SEARCH2();//llamamos al método SEARCH2 para obtener todos los trabajos
 			//Crea una vista add para ver la tupla
 			new NOTA_TRABAJO_ADD($USUARIOS,$TRABAJOS);
-			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
+			}else{ //si el usuario no tiene permiso para añadir 
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );//s muestra un mensaje indicando que el usuario no tiene dicho permiso y un enlace para volver atrás
 			}
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de NOTA_TRABAJO_MODEL inserta los datos
 			$NOTAS = get_data_form();//Variable que almacena los datos recogidos
@@ -80,18 +80,18 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
-			if(permisosAcc($_SESSION['login'],7,1)==true){
+			if(permisosAcc($_SESSION['login'],7,1)==true){//miramos si el usuario tiene permiso para borrar
 			//Variable que recoge un objecto model
 			$NOTAS = new NOTA_TRABAJO_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'login' ],'');
 			//Variable que almacena el relleno de los datos
 			$valores = $NOTAS->RellenaDatos();
             //Crea una vista delete para ver la tupla
 			new NOTA_TRABAJO_DELETE($valores);
-			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
+			}else{//si el usuario no tiene permiso para borrar
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );//s muestra un mensaje indicando que el usuario no tiene dicho permiso y un enlace para volver atrás
 			}
-			//Si recibe valores ejecuta el borrado
-		} else {
+			
+		} else {//Si recibe valores ejecuta el borrado
 			//Variable que almacena los datos recogidos de los atributos
 			$NOTAS = get_data_form();
            
@@ -104,17 +104,17 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-			if(permisosAcc($_SESSION['login'],7,2)==true){
+			if(permisosAcc($_SESSION['login'],7,2)==true){//miramos si el usuario tiene permiso para editar
 			//Variable que almacena un objeto model
 			$NOTAS = new NOTA_TRABAJO_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'login' ],'');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $NOTAS->RellenaDatos();
-			new NOTA_TRABAJO_EDIT($valores);
-			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
+			new NOTA_TRABAJO_EDIT($valores);//mostramos una vista para editar la nota del trabajo
+			}else{//si el usuario no tiene permiso para editar
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );//s muestra un mensaje indicando que el usuario no tiene dicho permiso y un enlace para volver atrás
 			}
-			//Si se reciben valores
-		} else {
+			
+		} else {//Si se reciben valores
 			//Variable que almacena los datos recogidos
 			$NOTAS = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
@@ -125,138 +125,138 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Fin del bloque
 		break;
         
-    case 'GENERAR_NOTA_ENTREGA':
-             $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
-             $ADMIN = $USUARIO->comprobarAdmin();
+    case 'GENERAR_NOTA_ENTREGA': //en este caso generamos la nota de la entrega(ET)
+             $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto USU_GRUPO
+             $ADMIN = $USUARIO->comprobarAdmin();//llamamos a esta función para comprobar si este usuario es administrador
              
         
-           if(!$_POST){
-                 if(permisosAcc($_SESSION['login'],7,13)==true){
-                 $TRABAJOS= new TRABAJO('','','','','');
-			     $datos=$TRABAJOS->SEARCH2();
-                 new GENERAR_NOTA_ET($datos);
+           if(!$_POST){//si no se recibieron datos
+                 if(permisosAcc($_SESSION['login'],7,13)==true){//miramos que permisos tiene este usuario
+                 $TRABAJOS= new TRABAJO('','','','','');//creamos un objeto de tipo TRABAJO
+			     $datos=$TRABAJOS->SEARCH2();//llamamos a este metodo para coger aquellos trabajos que son ET
+                 new GENERAR_NOTA_ET($datos);//mostramos la vista para generar nota de entrega
                 
             }
-            else{  
-                new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
+            else{//si el usuario no tiene dicho permiso  
+                new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );//s muestra un mensaje indicando que el usuario no tiene dicho permiso y un enlace para volver atrás
             }
         }
         
-      else{
-                 $ENTREGA = new ENTREGA_MODEL('','','','','');
-                 $dat=$ENTREGA->cogerDatos($_REQUEST['IdTrabajo']);
-                 $NOTAS = new NOTA_TRABAJO_MODEL('','','','','');
+      else{//si se reciben datos
+                 $ENTREGA = new ENTREGA_MODEL('','','','','');//creamos un objeto de tipo entrega
+                 $dat=$ENTREGA->cogerDatos($_REQUEST['IdTrabajo']);//llamamos a esta función para coger que login tienen el Idtrabajo elegido
+                 $NOTAS = new NOTA_TRABAJO_MODEL('','','','','');//creamos un objeto de tipo NOTA_TRABAJO_MODEL
                  
-                 while($fila = mysqli_fetch_array($dat)){
-                     $existe=$NOTAS->siExiste($fila['login'],$fila['IdTrabajo']);
+                 while($fila = mysqli_fetch_array($dat)){//recorremos el bucle hasta que no queden mas usuarios asociados a esa entrega
+                     $existe=$NOTAS->siExiste($fila['login'],$fila['IdTrabajo']);//miramos si ya existe ese login y IdTrabajo en la tabla NOTA_TRABAJO
                      
-                     if($existe == false){
-                         $NOTAS = new NOTA_TRABAJO_MODEL($fila['IdTrabajo'],$fila['login'], '');
-                         $NOTAS->ADD();
+                     if($existe == false){//Si no existe 
+                         $NOTAS = new NOTA_TRABAJO_MODEL($fila['IdTrabajo'],$fila['login'], '');//creamos un objeto de tipo NOTA_TRABAJO_MODEL
+                         $NOTAS->ADD();//añadimos esto en la tabla NOTA_TRABAJO
                          
                             
-                     $nota = $NOTAS->calcularNota($fila['login'],$fila['IdTrabajo']);
+                     $nota = $NOTAS->calcularNota($fila['login'],$fila['IdTrabajo']);//calculamos la nota de la entrega
                   
-                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
+                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);//sacamos el porcentaje del trabajo
                      
-                     $notaET = $nota * ($porcentaje[0]/100);
+                     $notaET = $nota * ($porcentaje[0]/100);//calculamos la nota aplicada al porcentaje
                     
-                     $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$notaET);
-                     $respuesta="Notas generadas correctamente";
-                     new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
+                     $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$notaET);//actualizamos la nota en la base de datos
+                     $respuesta="Notas generadas correctamente";//mensaje de éxito
+                     new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');//se muestra el mensaje de éxito y un enlace para volver atrás
                          
                      }
-                    else{
+                    else{//si ya existe ese usuario con es e IdTrabajo 
                          
-                     $nota = $NOTAS->calcularNota($fila['login'],$fila['IdTrabajo']);
-                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
-                     $notaET = $nota * ($porcentaje[0]/100);
+                     $nota = $NOTAS->calcularNota($fila['login'],$fila['IdTrabajo']);//calculamos la nota de la entrega
+                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);//sacamos el porcentaje del trabajo
+                     $notaET = $nota * ($porcentaje[0]/100);//calculamos la nota aplicada al porcentaje
                       
-                     $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$notaET);
-                     $respuesta="Notas generadas correctamente";
-                      new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
+                     $NOTAS->actualizar($fila['login'],$fila['IdTrabajo'],$notaET);//actualizamos la nota en la base de datos
+                     $respuesta="Notas generadas correctamente";//mensaje de éxito
+                      new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');//se muestra el mensaje de éxito y un enlace para volver atrás
                     }
                      
                      
                   
                  }
-                    $respuesta="Las notas no se pudieron generar";
-                    new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
+                    $respuesta="Las notas no se pudieron generar";//mensaje de que no se pudieron generar las notas
+                    new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');//se muestra el mensaje de fracaso y un enlace para volver atrás
 
       }
         
     break;    
         
-    case 'GENERAR_NOTA_QA':
+    case 'GENERAR_NOTA_QA'://en este caso generamos la nota de la QA(QA)
         
-         $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
-         $ADMIN = $USUARIO->comprobarAdmin();
+         $USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto USU_GRUPO
+         $ADMIN = $USUARIO->comprobarAdmin();//llamamos a esta función para comprobar si este usuario es administrador
         
-        if(!$_POST){
+        if(!$_POST){//si no se recibieron datos
         
-           if(permisosAcc($_SESSION['login'],7,8)==true){
-               $TRABAJOS= new TRABAJO('','','','','');
-			   $datos=$TRABAJOS->SEARCH3();
-               new GENERAR_NOTA_QA($datos);  
+           if(permisosAcc($_SESSION['login'],7,8)==true){//miramos que permisos tiene este usuario
+               $TRABAJOS= new TRABAJO('','','','','');//creamos un objeto de tipo TRABAJO
+			   $datos=$TRABAJOS->SEARCH3();//llamamos a este metodo para coger aquellos trabajos que son QA
+               new GENERAR_NOTA_QA($datos);  //mostramos la vista para generar nota de QA
                
             }
-            else{
+            else{//si el usuario no tiene dicho permiso 
                 
-                new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
+                new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );//s muestra un mensaje indicando que el usuario no tiene dicho permiso y un enlace para volver atrás
             }
         }
             
         
-         else{
+         else{//si se reciben datos
             
-                 $EVALUACION = new EVALUACION('','','','','','','','','');
-                 $dat=$EVALUACION->cogerDatosQA($_REQUEST['IdTrabajo']);
-                 $NOTAS = new NOTA_TRABAJO_MODEL('','','','','');
+                 $EVALUACION = new EVALUACION('','','','','','','','','');//creamos un objeto de tipo EVALUACION
+                 $dat=$EVALUACION->cogerDatosQA($_REQUEST['IdTrabajo']);//llamamos a esta función para coger que login tienen el Idtrabajo elegido
+                 $NOTAS = new NOTA_TRABAJO_MODEL('','','','','');//creamos un objeto de tipo NOTA_TRABAJO_MODEL
                 // $notas=array();
                  
-                 while($fila = mysqli_fetch_array($dat)){
+                 while($fila = mysqli_fetch_array($dat)){//recorremos el bucle hasta que no queden mas usuarios asociados a esa QA
                      
-                     $existe=$NOTAS->siExiste($fila['LoginEvaluador'],$fila['IdTrabajo']);
+                     $existe=$NOTAS->siExiste($fila['LoginEvaluador'],$fila['IdTrabajo']);//miramos si ya existe ese login y IdTrabajo en la tabla NOTA_TRABAJO
                      
-                     if($existe == false){
-                         $NOTAS = new NOTA_TRABAJO_MODEL($fila['IdTrabajo'],$fila['LoginEvaluador'], '');
-                         $NOTAS->ADD();
+                     if($existe == false){//Si no existe
+                         $NOTAS = new NOTA_TRABAJO_MODEL($fila['IdTrabajo'],$fila['LoginEvaluador'], '');//creamos un objeto de tipo NOTA_TRABAJO_MODEL
+                         $NOTAS->ADD();//añadimos esto en la tabla NOTA_TRABAJO
                          
-                     $nota = $NOTAS->calcularNotaQA($fila['LoginEvaluador'],$fila['IdTrabajo']);
-                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
-                     $notaET = $nota * ($porcentaje[0]/100);
-                     //$notas[$fila['LoginEvaluador'].$fila['IdTrabajo']] = $notaET;
-                     $NOTAS->actualizar($fila['LoginEvaluador'],$fila['IdTrabajo'],$notaET);
-                     $respuesta="Notas generadas correctamente";
-                     new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
+                     $nota = $NOTAS->calcularNotaQA($fila['LoginEvaluador'],$fila['IdTrabajo']);//calculamos la nota de la QA
+                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);//sacamos el porcentaje del trabajo
+                     $notaET = $nota * ($porcentaje[0]/100);//calculamos la nota aplicada al porcentaje
+                     
+                     $NOTAS->actualizar($fila['LoginEvaluador'],$fila['IdTrabajo'],$notaET);//actualizamos la nota en la base de datos
+                     $respuesta="Notas generadas correctamente";//mensaje de exito
+                     new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');//se muestra el mensaje de éxito y un enlace para volver atrás
                          
                      }
-                    else{
-                     $nota = $NOTAS->calcularNotaQA($fila['LoginEvaluador'],$fila['IdTrabajo']);
-                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);
-                     $notaET = $nota * ($porcentaje[0]/100);
-                    // $notas[$fila['LoginEvaluador'].$fila['IdTrabajo']] = $notaET;
-                     $NOTAS->actualizar($fila['LoginEvaluador'],$fila['IdTrabajo'],$notaET);
-                      $respuesta="Notas generadas correctamente";
-                      new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
+                    else{//si existe el usuario asciado  a esa QA
+                     $nota = $NOTAS->calcularNotaQA($fila['LoginEvaluador'],$fila['IdTrabajo']);//calculamos la nota de la QA
+                     $porcentaje = $NOTAS->notasUsuario($fila['IdTrabajo']);//sacamos el porcentaje del trabajo
+                     $notaET = $nota * ($porcentaje[0]/100);//calculamos la nota aplicada al porcentaje
+                    
+                     $NOTAS->actualizar($fila['LoginEvaluador'],$fila['IdTrabajo'],$notaET);//actualizamos la nota en la base de datos
+                      $respuesta="Notas generadas correctamente";//mensaje de exito
+                      new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');//se muestra el mensaje de éxito y un enlace para volver atrás
                     
                     }
         }
-                    $respuesta="Las notas no se pudieron generar";
-                    new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');
+                    $respuesta="Las notas no se pudieron generar";//mensaje de fracaso
+                    new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');//se muestra el mensaje de fracaso y un enlace para volver atrás
         
          }
         break;
         
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-			if(permisosAcc($_SESSION['login'],7,3)==true){
-			new NOTA_TRABAJO_SEARCH();
-			}else{
+			if(permisosAcc($_SESSION['login'],7,3)==true){//miramos si el usuario tiene permiso para buscar
+			new NOTA_TRABAJO_SEARCH();//se muestra la vista search de NOTA_TRABAJO
+			}else{//si no tien dicho permiso se indica en un mensaje en una vista
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
 			}
-		//Si se reciben datos	
-		} else {
+			
+		} else {//Si se reciben datos
 			//Variable que almacena los datos recogidos de los atributos
 			$NOTAS = get_data_form();
 			//Variable que almacena el resultado de la busquedaS
@@ -264,53 +264,53 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array('NombreTrabajo','login','NotaTrabajo');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-            if(comprobarAdministrador($_SESSION['login']) == true){
-                new NOTA_TRABAJO_SHOWALL( $lista, $datos,false );
+            if(comprobarAdministrador($_SESSION['login']) == true){//comprobamos si el usuario es administrador
+                new NOTA_TRABAJO_SHOWALL( $lista, $datos,false );//se muestra la vista de NOTA_TRABAJO_SHOWALL
             }
-            else
-                 new NOTA_TRABAJO_SHOWALL( $lista, $datos,true );
+            else//si no es administrador
+                 new NOTA_TRABAJO_SHOWALL( $lista, $datos,true );//se muestra la vista de NOTA_TRABAJO_SHOWALL con la nota final
 			
 		}
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		if(permisosAcc($_SESSION['login'],7,4)==true){
-		//Variable que almacena un objeto model con el login
+		if(permisosAcc($_SESSION['login'],7,4)==true){//miramos si el usuario tiene permiso para ver en detalle
+		//Variable que almacena un objeto model con el login y IdTrabajo
 		$NOTAS = new NOTA_TRABAJO_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST['login'],'');
 		//Variable que almacena los valores rellenados a traves de login
 		$valores = $NOTAS->RellenaDatos();
 		//Creación de la vista showcurrent
 		new NOTA_TRABAJO_SHOWCURRENT( $valores );
-		}else{
+		}else{//si no tiene permisos para ver ene detalle, se muestra en una vista indicandolo con un mensaje
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/NOTA_TRABAJO_CONTROLLER.php' );
 		}
 		//Final del bloque
 		break;
 	case 'SHOWMISNOTAS'://Caso showcurrent
-		if(permisosAcc($_SESSION['login'],7,10)==true){           
-                      $NOTAS=new NOTA_TRABAJO_MODEL('',$_SESSION['login'],'');  
-                 	  $datos = $NOTAS->SEARCH2();
+		if(permisosAcc($_SESSION['login'],7,10)==true){    //miramos si el usuario tiene permiso SHOWMISNOTAS       
+                      $NOTAS=new NOTA_TRABAJO_MODEL('',$_SESSION['login'],''); // Variable que almacena un objeto model con el login
+                 	  $datos = $NOTAS->SEARCH2();//llamamos a este metodo para sacar las notas de ese usuario
 		              //Variable que almacena array con el nombre de los atributos
 		              $lista = array('NombreTrabajo','login','NotaTrabajo');
-		              //Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		              //Creacion de la vista showall con el array $lista, los datos y la una variable booleana que al ser true indica la nota final
 		              new NOTA_TRABAJO_SHOWMISNOTAS( $lista, $datos,true );
-		}else{
-			new USUARIO_DEFAULT();	
+		}else{//si el usuario no tiene permiso SHOWMISNOTAS
+			new USUARIO_DEFAULT();	//va a una vista por defecto 
 			
 		}
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-             if(permisosAcc($_SESSION['login'],7,5)==true){
-  				$NOTAS=new NOTA_TRABAJO_MODEL('','','');                 
-                $datos = $NOTAS->SEARCH();
+             if(permisosAcc($_SESSION['login'],7,5)==true){ //miramos si el usuario tiene permiso showall
+  				$NOTAS=new NOTA_TRABAJO_MODEL('','','');         // Variable que almacena un objeto model        
+                $datos = $NOTAS->SEARCH();//llamamos a este metodo para sacar las notas de todos los usuarios
 		        //Variable que almacena array con el nombre de los atributos
 		        $lista = array('login','NombreTrabajo','NotaTrabajo');
                 
-                new NOTA_TRABAJO_SHOWALL( $lista, $datos,false );
+                new NOTA_TRABAJO_SHOWALL( $lista, $datos,false );//se muestra una vista showall con las notas de todos en porcentaje
                   
-            }else{
-				new USUARIO_DEFAULT();				
+            }else{//si el usuario no tiene permiso SHOWALL
+				new USUARIO_DEFAULT();	//va a una vista por defecto			
 			}
                                
 	

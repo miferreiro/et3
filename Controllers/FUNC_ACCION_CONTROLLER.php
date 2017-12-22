@@ -43,7 +43,7 @@ function get_data_form(){
 }
 
 
-if ( !isset( $_REQUEST[ 'action' ] ) ) {
+if ( !isset( $_REQUEST[ 'action' ] ) ) { //Si la variable action no tiene contenido le asignamos ''
 	$_REQUEST[ 'action' ] = '';
 }
 
