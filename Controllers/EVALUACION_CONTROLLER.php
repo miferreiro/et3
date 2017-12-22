@@ -272,7 +272,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		//Final del bloque
 		break;
-        
     case 'EVALUACION_HISTORIAS':  
     	if ( !$_POST ) {//Si no se han recibido datos 
     		if(permisosAcc($_SESSION['login'],12,11)==true){//miramos si el usuario conectado tiene permiso para evaluar historias
