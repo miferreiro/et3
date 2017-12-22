@@ -5,19 +5,20 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
+//Clase Correcion_qa_resultados que contiene la vista para ver los resultados de las evaluaciones qa	
 class CORRECION_QA_RESULTADOS {
-
+	//Constructor de la clase
 	function __construct( $lista, $datos) {
-		$this->lista = $lista;
-		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+		$this->lista = $lista;//Variable que contiene el array de los atributos a mostrar en la vista
+		$this->datos = $datos;//Variable que almacena el recordset de la base de datos con la info de los resultados de las evaluaciones
+		$this->render($this->lista,$this->datos);//metodo que llama a la función render que contiene todo el código de la vista
 	}
-	
+	//Función que contiene el código de la vista
 	function render($lista,$datos){
-		$this->lista = $lista;
-		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		$this->lista = $lista;//Variable que contiene el array de los atributos a mostrar en la vista
+		$this->datos = $datos;//Variable que almacena el recordset de la base de datos con la info de los resultados de las evaluaciones
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		include '../Views/Header.php';//Incluye el contenido del header
 ?>
 		<div class="seccion">
 			<h2>
@@ -27,6 +28,7 @@ class CORRECION_QA_RESULTADOS {
 				
 				<tr>
 <?php
+					//bucle que recorre el array de los atributos
 					foreach ( $lista as $atributo ) {
 ?>
 					<th>
@@ -40,31 +42,37 @@ class CORRECION_QA_RESULTADOS {
                 <tr><td></td></tr>
                 <tr></tr>
 <?php
-		$cont=0;
-		$Id;
-        $his = -100000;
+		$cont=0;//Variable que almacena las pasadas que se van realizando, para quedarnos con el valor del primer idTrabajo
+		$Id;//Inicializacion de la variable Id que contendrá el primer valor de IdTrabajo
+        $his = -100000;//Variable que almacena el id de historia en cada momento para ver si cambia de historia
+                //Bucle que recorre todo el recordset de datos y pasa estos valores a array y los muestra
+        		//Bucle que recorre todo el recordset de datos y pasa estos valores a array y los muestra
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				
                 <tr>
 <?php
+				//Si el id historia siguiente es distinto, muestra el texto de la historia
                  if($his != $fila['IdHistoria']){
 ?>
                         <td bgcolor="#b59438" colspan="6"><?php echo $fila['IdHistoria'] . '. ' . $fila['TextoHistoria'] ?></td>
                         <tr></tr>
 <?php
                     }
-                    $his = $fila['IdHistoria'];
+                    $his = $fila['IdHistoria'];//Actualiza el valor de la historia 
+                    //Muestra el valor del array para cada atributo
 					foreach ( $lista as $atributo ) {
 ?>
 
-<?php                    
+<?php                
+					//Si el atributo es igual a comentIncorrectoA se muestra un td con el texto adptado a la celda
                     if($atributo == 'ComenIncorrectoA'){
 ?>
                         <td><P class="alinear">
 <?php                    
-                            
+                            //Se muestra el valor de comentarioIncorrectoA
                            echo $fila[ $atributo ]; 
+                         //Si contador es igual a 1 guarda el Idtrabajo
 						if($cont==1){
 							$Id= $fila[ 'IdTrabajo' ];
 						}
@@ -72,9 +80,9 @@ class CORRECION_QA_RESULTADOS {
                         </P></td>
 <?php                       
                     }
-                        
+                     //Si el atributo es distinto de comentIncorrecto A, comprobamos el atributo ok  
                     else{
-                        
+                        //Si el valor de ok es igual a 1 se muestra el valor en una celda verde
                         if($atributo == 'OK' && $fila[$atributo] == '1'){
                             ?>
                                 <td bgcolor="#4e8726">
@@ -82,7 +90,7 @@ class CORRECION_QA_RESULTADOS {
                                 </td>
  <?php                           
                         }
-                        
+                        //Si el valor de ok es 0 muestra el valor en una celda roja 
                         else if($atributo == 'OK' && $fila[$atributo] == '0'){
                             ?>
                                 <td bgcolor="#ff3700">
@@ -91,16 +99,21 @@ class CORRECION_QA_RESULTADOS {
                             
  <?php                           
                         }
-                        
+                        //Si el valor de ok no es 0 ni 1 muestra la celda sin color
                         else{
                             
 ?>
                   
                     
 					<td>
-<?php                   if($atributo != "ComentIncorrectoP"){
+<?php                   
+							//Si el atributo es distinto de comentIcorrectoP 
+							if($atributo != "ComentIncorrectoP"){
+							//Muestra el contenido del array para ese atributo
 							echo $fila[ $atributo ];
+							//Si contador es igual a 1 almacenamos el IdTrabajo
 						    if($cont==1){
+						    	//Actualizamos la variable $Id
 							$Id= $fila[ 'IdTrabajo' ];
 						}
                     }
@@ -117,7 +130,7 @@ class CORRECION_QA_RESULTADOS {
 
 				</tr>
 <?php
-				$cont++;
+				$cont++;//Incrementamos el contador
 				}
 ?>
 			</table>

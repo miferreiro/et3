@@ -5,19 +5,20 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
+	//Clase Correcion_qa_resultado que contiene la vista para ver los resultados de las correciones qa
 class CORRECION_QA_RESULTADO {
-
+	//Constructor de la clase
 	function __construct( $lista, $datos) {
-		$this->lista = $lista;
-		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+		$this->lista = $lista;//Variable que contiene el array de los atributos a mostrar en la vista
+		$this->datos = $datos;//Variable que almacena el recordset de la base de datos con la info de los resultados de correción
+		$this->render($this->lista,$this->datos);//metodo que llama a la función render que contiene todo el código de la vista
 	}
-	
+	//Función que contiene el código de la vista
 	function render($lista,$datos){
-		$this->lista = $lista;
-		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		$this->lista = $lista;//Variable que contiene el array de los atributos a mostrar en la vista
+		$this->datos = $datos;//Variable que almacena el recordset de la base de datos con la info de los resultados de correción
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		include '../Views/Header.php'; //Incluye el contenido del header
 ?>
 		<div class="seccion">
 			<h2>
@@ -27,6 +28,7 @@ class CORRECION_QA_RESULTADO {
 				
 				<tr>
 <?php
+					//bucle que recorre el array de los atributos 
 					foreach ( $lista as $atributo ) {
 ?>
 					<th>
@@ -41,6 +43,7 @@ class CORRECION_QA_RESULTADO {
 					
 				</tr>
 <?php
+				//Bucle que recorre todo el recordset de datos y pasa estos valores a array y los muestra
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
@@ -49,6 +52,7 @@ class CORRECION_QA_RESULTADO {
 ?>
 					<td>
 <?php 
+							//Muestra el valor del array para cada atributo
 							echo $fila[ $atributo ];
 
 ?>

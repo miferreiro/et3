@@ -5,17 +5,19 @@
 	Fecha de creación: 9/10/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una acción
 */
+//Clase Evaluación_Showcurrent que contiene la vista para ver una tupla en detalle evaluación
 class EVALUACION_SHOWCURRENT {
-
+	//Constructor de la clase
 	function __construct( $valores ) {
+		//metodo que llama a la función render que contiene todo el código de la vista
 		$this->render($valores);
 		
 	}
-
+	//Función que contiene el código de la vista
 	function render( $valores) {
 		$this->valores = $valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
+		include '../Views/Header.php';//Incluye el contenido del header
 ?>
 		<h2>
 			<?php echo $strings['Vista detallada'];?>

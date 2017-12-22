@@ -3,19 +3,20 @@
 	Fecha de creación: 7/12/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
+//Clase Correcion_entrega que almacena el contenido de la vista entrega necesaria para que el usuario suba la entrega
 class CORRECION_ENTREGA {
-
+	//Contrutor de la clase
 	function __construct( $lista, $datos) {
-		$this->lista = $lista;
-		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+		$this->lista = $lista;//Variable que almacena el array de atributos a mostrar
+		$this->datos = $datos;//Variable que almacena el recordset de la base de datos con la info de las correciones
+		$this->render($this->lista,$this->datos);//Metodo que llama a la función render que contiene todo el código de la vista
 	}
-	
+	//Funcion que contiene el códido de la vista
 	function render($lista,$datos){
-		$this->lista = $lista;
-		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		$this->lista = $lista;//Variable que almacena el array de atributos a mostrar
+		$this->datos = $datos;//Variable que almacena el recordset de la base de datos con la info de las correciones
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesario para multiidioma
+		include '../Views/Header.php';//Incluye el contenido del header
 ?>
 		<div class="seccion">
 			<h2>
@@ -41,14 +42,16 @@ class CORRECION_ENTREGA {
 					</th>
 				</tr>
 <?php
+				//Bucle que recorre todo el recordset y pasa el recordset a un array para mostrar sus valores
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
 <?php
 			
 ?>
-                    
+                    <!-- Muestra los valores de login -->
 				    <td><?php echo $fila[0] ?></td>
+				     <!-- Muestra los valores de IdTrabajo -->
                     <td><?php echo $fila[2] ?></td>
                     
 						<form action="../Controllers/EVALUACION_CONTROLLER.php" method="get" style="display:inline" >
