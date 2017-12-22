@@ -1,8 +1,8 @@
 <?php
 /*  Archivo php
 	Nombre: GRUPO_SHOWCURRENT_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Brais Santos
+	Fecha de creación: 21/11/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de un grupo
 */
 //Clase Grupo_showcurrent que contiene la vista para ver una tupla de grupo en detalle

@@ -1,8 +1,8 @@
 <?php
 /*  Archivo php
 	Nombre: GRUPO_ADD_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Brais Santos
+	Fecha de creación: 20/11/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir un grupo a la base de datos
 */
 //Clase GRUPO_ADD que contiene la vista del formulario para añadir un grupo

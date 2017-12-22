@@ -1,8 +1,8 @@
 <?php
 /*  Archivo php
 	Nombre: GRUPO_EDIT_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Brais Santos
+	Fecha de creación: 21/11/2017 
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de un grupo en la base de datos
 */
 //Clase GRUPO_EDIT que contiene la vista para mostar un formulario de edición de una tupla
