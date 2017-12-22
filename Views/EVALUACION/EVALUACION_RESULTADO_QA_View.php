@@ -1,9 +1,8 @@
 <?php
-/*  Archivo php
-	Nombre: ACCION_SHOWALL_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+/*  
+	Autor: 	Brais Santos
+	Fecha de creación: 14/12/2017 
+	Función: muestra todos los alias que has evaluado en una misma QA
 */
 	//Clase Correcion_qa_resultado que contiene la vista para ver los resultados de las correciones qa
 class CORRECION_QA_RESULTADO {

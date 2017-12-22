@@ -1,9 +1,8 @@
 <?php
-/*  Archivo php
-	Nombre: ACCION_SHOWALL_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+/*  
+	Autor: 	Brais Santos
+	Fecha de creación: 6/12/2017 
+	Función: muestra todas las correciones de una entrega de un usuario
 */
 	//Clase Correcion_entrega_resultado que contiene la vista para ver los resultados de las correciones de las ET
 class CORRECION_ENTREGA_RESULTADO {

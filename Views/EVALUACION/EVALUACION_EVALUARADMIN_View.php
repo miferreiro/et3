@@ -1,9 +1,9 @@
 <?php
 /*  Archivo php
-	Nombre: EVALUACION_ADMIN_EVALUAR_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+	Nombre: EVALUACION_ADMIN_View.php
+	Autor: 	Alejandro Vila
+	Fecha de creación: 10/12/2017 
+	Función: Esta vista sirve para que el administrador pueda evaluar a otros usuarios
 */
 //Clase de Evaluacion_admin_evaluar que contiene la vista de la evaluación del administrador
 class EVALUACION_ADMIN_EVALUAR {

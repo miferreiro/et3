@@ -1,7 +1,8 @@
 <?php
 /* 
 	Fecha de creación: 7/12/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+    Autor:Brais Santos
+	Función: muestra todas las QAs de un usuario
 */
 //Clase Correcion_qa que almacena el contenido de la vista de correcion qa
 class CORRECION_QA {

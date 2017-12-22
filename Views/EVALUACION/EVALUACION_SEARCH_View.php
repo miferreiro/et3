@@ -1,9 +1,9 @@
 <?php
 /*  Archivo php
 	Nombre: EVALUACION_SEARCH_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a una acción de la base de datos
+	Autor: 	Brais Rodriguez
+	Fecha de creación: 26/11/2017 
+	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a una evaluacion en la base de datos
 */
 //Clase Evaluacion_search que contiene la vista para ver el formulario de busqueda de la tabla evaluación
 class EVALUACION_SEARCH {

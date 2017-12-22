@@ -1,6 +1,6 @@
 <?php
 /*  Archivo php
-	Nombre: EVALUACIONES_EDIT_View.php
+	Nombre: EVALUACIONES_EDITUSU_View.php
 	Autor: 	Alejandro Vila
 	Fecha de creación: 28/11/2017
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una evaluación en la base de datos

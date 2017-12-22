@@ -1,7 +1,8 @@
 <?php
 /* 
 	Fecha de creación: 7/12/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+    Autor:Brais Santos
+	Función: Esta función sirve para mostrar todas las entregas de un usuario
 */
 //Clase Correcion_entrega que almacena el contenido de la vista entrega necesaria para que el usuario suba la entrega
 class CORRECION_ENTREGA {

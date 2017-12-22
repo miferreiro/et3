@@ -1,5 +1,5 @@
 <?php
-    //Se muestra una tabla SHOWALL conto todas las entregas y iconos para añadir,insertar,borrar,buscar y buscar en detalle.
+    //Esta vista hace posible que el usuario pueda evaluar a otros usuarios
     //Fecha de creación:30/11/2017
    // Autor: Alejandro Vila
 	
@@ -8,7 +8,8 @@
 //esta clase es de la tabla Selecion QA necesaria para elegir la qa a evaluar
 class EVALUACION_SELECT_QA {
 
-	function __construct( $lista, $datos) { //es el constructor de la clase EVALUACION_SELECT_QA
+    //es el constructor de la clase EVALUACION_SELECT_QA
+	function __construct( $lista, $datos) { 
 		$this->lista = $lista;//Variable que almacena el array de atributos a mostrar en la vista
 		$this->datos = $datos;//Variable que almacena el recordset de la base de datos
 		$this->render($this->lista,$this->datos);//llamamos a la función render donde se mostrará un formulario para evaluar historias asignadas con los campos correspondientes

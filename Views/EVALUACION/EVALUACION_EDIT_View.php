@@ -3,7 +3,7 @@
 	Nombre: EVALUACIONES_EDIT_View.php
 	Autor: 	Alejandro Vila
 	Fecha de creación: 28/11/2017 
-	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una evalaucion en la base de datos
+	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una evaluacion en la base de datos
 */
 
 

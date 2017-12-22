@@ -1,9 +1,9 @@
 <?php
 /*  Archivo php
 	Nombre: EVALUACION_SHOWALL_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+	Autor: 	Brais Rodriguez
+	Fecha de creación: 26/11/2017 
+	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la evaluación que se desea realizar en la aplicación
 */
 //Clase Evaluacion_showall que contiene la vista showall para mostrar todos los datos
 class EVALUACION_SHOWALL {
