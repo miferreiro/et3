@@ -939,10 +939,6 @@ function comprobarEditAccion() {
 	if (!comprobarVacio(IdAccion)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdAccion)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdAccion, 6)) {
 				return false;
@@ -953,15 +949,11 @@ function comprobarEditAccion() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si NombreAccion es vacio, retorna false*/
 	if (!comprobarVacio(NombreAccion)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(NombreAccion)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 128, retorna false*/
 			if (!comprobarLongitud(NombreAccion, 60)) {
 				return false;
@@ -972,7 +964,7 @@ function comprobarEditAccion() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si DescripAccion es vacio, retorna false*/
 	if (!comprobarVacio(DescripAccion)) {
 		return false;
@@ -1009,10 +1001,6 @@ function comprobarAddAccion() {
 	if (!comprobarVacio(IdAccion)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdAccion)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdAccion, 6)) {
 				return false;
@@ -1023,15 +1011,11 @@ function comprobarAddAccion() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si NombreAccion es vacio, retorna false*/
 	if (!comprobarVacio(NombreAccion)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(NombreAccion)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
+	} else{// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreAccion, 60)) {
 				return false;
@@ -1042,7 +1026,7 @@ function comprobarAddAccion() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si DescripAccion es vacio, retorna false*/
 	if (!comprobarVacio(DescripAccion)) {
 		return false;
@@ -1084,11 +1068,7 @@ function comprobarAddTrabajo() {
 	/*Comprueba si IdTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdTrabajo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
+	} else  {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
@@ -1099,15 +1079,11 @@ function comprobarAddTrabajo() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si NombreTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(NombreTrabajo)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(NombreTrabajo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreTrabajo, 60)) {
 				return false;
@@ -1118,7 +1094,7 @@ function comprobarAddTrabajo() {
 				}
 			}
 		}
-	}
+	
 
 	/*Comprueba si FechaIniTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(FechaIniTrabajo)) {
@@ -1177,10 +1153,6 @@ function comprobarEditTrabajo() {
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdTrabajo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
@@ -1191,15 +1163,11 @@ function comprobarEditTrabajo() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si NombreTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(NombreTrabajo)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(NombreTrabajo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
+	}  else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreTrabajo, 60)) {
 				return false;
@@ -1210,7 +1178,7 @@ function comprobarEditTrabajo() {
 				}
 			}
 		}
-	}
+	
 
 	/*Comprueba si FechaIniTrabajo es vacio, retorna false*/
 	if (!comprobarVacio(FechaIniTrabajo)) {
@@ -1515,10 +1483,6 @@ function comprobarAddHistoria() {
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdTrabajo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
@@ -1529,15 +1493,11 @@ function comprobarAddHistoria() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si IdHistoria es vacio, retorna false*/
 	if (!comprobarVacio(IdHistoria)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdHistoria)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
+	}else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 2, retorna false*/
 			if (!comprobarLongitud(IdHistoria, 2)) {
 				return false;
@@ -1553,7 +1513,7 @@ function comprobarAddHistoria() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si TextoHistoria es vacio, retorna false*/
 	if (!comprobarVacio(TextoHistoria)) {
 		return false;
@@ -1590,10 +1550,6 @@ function comprobarEditHistoria() {
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdTrabajo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
@@ -1604,15 +1560,11 @@ function comprobarEditHistoria() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si IdHistoria es vacio, retorna false*/
 	if (!comprobarVacio(IdHistoria)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdHistoria)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 2, retorna false*/
 			if (!comprobarLongitud(IdHistoria, 2)) {
 				return false;
@@ -1628,7 +1580,7 @@ function comprobarEditHistoria() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si TextoHistoria es vacio, retorna false*/
 	if (!comprobarVacio(TextoHistoria)) {
 		return false;
@@ -1719,10 +1671,6 @@ function comprobarAddEvaluacion() {
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdTrabajo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
@@ -1733,15 +1681,11 @@ function comprobarAddEvaluacion() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si LoginEvaluador es vacio, retorna false*/
 	if (!comprobarVacio(LoginEvaluador)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(LoginEvaluador)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 9, retorna false*/
 			if (!comprobarLongitud(LoginEvaluador, 9)) {
 				return false;
@@ -1752,7 +1696,7 @@ function comprobarAddEvaluacion() {
 				} 
 			}
 		}
-	}
+	
 
 	/*Comprueba si AliasEvaluado es vacio, retorna false*/
 	if (!comprobarVacio(AliasEvaluado)) {
@@ -1774,10 +1718,6 @@ function comprobarAddEvaluacion() {
 	if (!comprobarVacio(IdHistoria)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdHistoria)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 2, retorna false*/
 			if (!comprobarLongitud(IdHistoria, 2)) {
 				return false;
@@ -1793,17 +1733,13 @@ function comprobarAddEvaluacion() {
 				}
 			}
 		}
-	}
+	
 
 
 	/*Comprueba si CorrectoA es vacio, retorna false*/
 	if (!comprobarVacio(CorrectoA)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(CorrectoA)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(CorrectoA, 1)) {
 				return false;
@@ -1819,7 +1755,7 @@ function comprobarAddEvaluacion() {
 				}
 			}
 		}
-	}
+	
 
 	
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
@@ -1839,10 +1775,6 @@ function comprobarAddEvaluacion() {
 	if (!comprobarVacio(CorrectoP)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(CorrectoP)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(CorrectoP, 1)) {
 				return false;
@@ -1858,7 +1790,7 @@ function comprobarAddEvaluacion() {
 				}
 			}
 		}
-	}
+	
 
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(ComentIncorrectoP, 300)) {
@@ -1874,10 +1806,6 @@ function comprobarAddEvaluacion() {
 	if (!comprobarVacio(OK)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(OK)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(OK, 1)) {
 				return false;
@@ -1893,7 +1821,7 @@ function comprobarAddEvaluacion() {
 				}
 			}
 		}
-	}
+	
 	return true;
 
 }
@@ -1924,10 +1852,6 @@ function comprobarEditEvaluacion() {
 	if (!comprobarVacio(IdTrabajo)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdTrabajo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdTrabajo, 6)) {
 				return false;
@@ -1938,15 +1862,11 @@ function comprobarEditEvaluacion() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si LoginEvaluador es vacio, retorna false*/
 	if (!comprobarVacio(LoginEvaluador)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(LoginEvaluador)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
+	}  else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 9, retorna false*/
 			if (!comprobarLongitud(LoginEvaluador, 9)) {
 				return false;
@@ -1957,7 +1877,7 @@ function comprobarEditEvaluacion() {
 				} 
 			}
 		}
-	}
+	
 
 	/*Comprueba si AliasEvaluado es vacio, retorna false*/
 	if (!comprobarVacio(AliasEvaluado)) {
@@ -1978,11 +1898,7 @@ function comprobarEditEvaluacion() {
 	/*Comprueba si IdHistoria es vacio, retorna false*/
 	if (!comprobarVacio(IdHistoria)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdHistoria)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
+	}  else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 2, retorna false*/
 			if (!comprobarLongitud(IdHistoria, 2)) {
 				return false;
@@ -1998,18 +1914,14 @@ function comprobarEditEvaluacion() {
 				}
 			}
 		}
-	}
+	
 
 
 	/*Comprueba si CorrectoA es vacio, retorna false*/
 	if (!comprobarVacio(CorrectoA)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(CorrectoA)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba su longitud, si es mayor que 1, retorna false*/
+	} else{// si no cumple con la condición del if anterior,
+		/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(CorrectoA, 1)) {
 				return false;
 			} else {// si no cumple con la condición del if anterior,
@@ -2024,7 +1936,7 @@ function comprobarEditEvaluacion() {
 				}
 			}
 		}
-	}
+	
 
 
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
@@ -2044,10 +1956,6 @@ function comprobarEditEvaluacion() {
 	if (!comprobarVacio(CorrectoP)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(CorrectoP)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(CorrectoP, 1)) {
 				return false;
@@ -2063,7 +1971,7 @@ function comprobarEditEvaluacion() {
 				}
 			}
 		}
-	}
+	
 
 		/*Comprueba su longitud, si es mayor que 300, retorna false*/
 		if (!comprobarLongitud(ComentIncorrectoP, 300)) {
@@ -2078,11 +1986,7 @@ function comprobarEditEvaluacion() {
 	/*Comprueba si OK es vacio, retorna false*/
 	if (!comprobarVacio(OK)) {
 		return false;
-	} else {
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(OK)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
+	} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 1, retorna false*/
 			if (!comprobarLongitud(OK, 1)) {
 				return false;
@@ -2098,7 +2002,7 @@ function comprobarEditEvaluacion() {
 				}
 			}
 		}
-	}
+	
 	return true;
 }
 /*
@@ -2226,10 +2130,6 @@ function comprobarAddGrupo() {
 	if (!comprobarVacio(IdGrupo)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdGrupo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(IdGrupo, 60)) {
 				return false;
@@ -2240,17 +2140,13 @@ function comprobarAddGrupo() {
 				} 
 			}
 		}
-	}
+	
 	
 
 	/*Comprueba si NombreGrupo es vacio, retorna false*/
 	if (!comprobarVacio(NombreGrupo)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(NombreGrupo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreGrupo, 60)) {
 				return false;
@@ -2261,7 +2157,7 @@ function comprobarAddGrupo() {
 				} 
 			}
 		}
-	}
+	
 	/*Comprueba si DescripGrupo es vacio, retorna false*/
 	if (!comprobarVacio(DescripGrupo)) {
 		return false;
@@ -2300,11 +2196,7 @@ function comprobarEditGrupo() {
 	/*Comprueba si IdGrupo es vacio, retorna false*/
 	if (!comprobarVacio(IdGrupo)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdGrupo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
+	}  else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdGrupo, 6)) {
 				return false;
@@ -2315,15 +2207,11 @@ function comprobarEditGrupo() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si NombreGrupo es vacio, retorna false*/
 	if (!comprobarVacio(NombreGrupo)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(NombreGrupo)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreGrupo, 60)) {
 				return false;
@@ -2334,7 +2222,7 @@ function comprobarEditGrupo() {
 				} 
 			}
 		}
-	}
+	
 	/*Comprueba si DescripGrupo es vacio, retorna false*/
 	if (!comprobarVacio(DescripGrupo)) {
 		return false;
@@ -2469,11 +2357,7 @@ function comprobarEditFuncionalidad() {
 	/*Comprueba si IdAccion es vacio, retorna false*/
 	if (!comprobarVacio(IdFuncionalidad)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdFuncionalidad)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
+	}  else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdFuncionalidad, 6)) {
 				return false;
@@ -2484,15 +2368,11 @@ function comprobarEditFuncionalidad() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si NombreAccion es vacio, retorna false*/
 	if (!comprobarVacio(NombreFuncionalidad)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(NombreFuncionalidad)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 128, retorna false*/
 			if (!comprobarLongitud(NombreFuncionalidad, 60)) {
 				return false;
@@ -2503,7 +2383,7 @@ function comprobarEditFuncionalidad() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si DescripFuncionalidad es vacio, retorna false*/
 	if (!comprobarVacio(DescripFuncionalidad)) {
 		return false;
@@ -2540,10 +2420,6 @@ function comprobarAddFuncionalidad() {
 	if (!comprobarVacio(IdFuncionalidad)) {
 		return false;
 	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(IdFuncionalidad)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
 			/*Comprobamos su longitud, si es mayor que 6, retorna false*/
 			if (!comprobarLongitud(IdFuncionalidad, 6)) {
 				return false;
@@ -2554,15 +2430,11 @@ function comprobarAddFuncionalidad() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si NombreFuncionalidad es vacio, retorna false*/
 	if (!comprobarVacio(NombreFuncionalidad)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(NombreFuncionalidad)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
+	}else {// si no cumple con la condición del if anterior,
 			/*Comprueba su longitud, si es mayor que 60, retorna false*/
 			if (!comprobarLongitud(NombreFuncionalidad, 60)) {
 				return false;
@@ -2573,7 +2445,7 @@ function comprobarAddFuncionalidad() {
 				}
 			}
 		}
-	}
+	
 	/*Comprueba si DescripFuncionalidad es vacio, retorna false*/
 	if (!comprobarVacio(DescripFuncionalidad)) {
 		return false;
