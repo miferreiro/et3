@@ -1,5 +1,5 @@
 <?php
-//Esta función es la vista que sirve para editar una entrega.
+//Función: vista que sirve para editar una entrega(edita una tupla de la tabla).
 //Autor:Brais Santos
 //Fecha de creación:27/11/2017
 

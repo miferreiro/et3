@@ -1,5 +1,5 @@
 <?php
-//Esta función es la vista que sirve para buscar una entrega.
+//Función: vista que sirve para buscar una entrega mediante un formulario en el que se insertan los valores de la busqueda deseados.
 //Fecha de creación:28/11/2017
 //Autor:Brais Santos
 
