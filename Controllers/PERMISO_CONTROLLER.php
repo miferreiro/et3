@@ -199,7 +199,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 					//Si tiene la accion para añadir incrementa el contador indicando que tiene el permiso
 					if($fila['IdAccion']=='6'){
 				    //Crea una vista add para ver la tupla
-				     $cont=$cont+1;
+				     $cont=$cont+1;//Se aumenta el contador
 					}
 				   } 
 				}
@@ -264,7 +264,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 					//Si tiene la accion para añadir incrementa el contador indicando que tiene el permiso
 					if($fila['IdAccion']=='3'){
 				    //Crea una vista add para ver la tupla
-				     $cont=$cont+1;
+				     $cont=$cont+1;//Se aumenta el contador
 					}
 				   }
 				}
@@ -344,7 +344,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				//Si tiene la accion para añadir incrementa el contador indicando que tiene el permiso
 				if($fila['IdAccion']=='6'){
 			    //Crea una vista add para ver la tupla
-			     $cont=$cont+1;
+			     $cont=$cont+1;//Se aumenta el contador
 				}
 			   }
 			}
@@ -416,7 +416,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				//Si tiene la accion para añadir incrementa el contador indicando que tiene el permiso
 				if($fila['IdAccion']=='5'){
 			    //Crea una vista add para ver la tupla
-			     $cont=$cont+1;
+			     $cont=$cont+1;//Se aumenta el contador
 				}
 			   }
 			}

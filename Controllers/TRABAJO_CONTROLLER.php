@@ -37,7 +37,7 @@ function get_data_form(){
 	$FechaFinTrabajo = $_REQUEST['FechaFinTrabajo'];//Variable que almacena el valor de FechaFinTrabajo
     $PorcentajeNota = $_REQUEST['PorcentajeNota'];//Variable que almacena el valor del porcentaje de la nota
 	$action= $_REQUEST['action'];//Variable que almacena la acción
-	
+	//Variable que almacena el modelo de TRABAJO
 	$TRABAJO = new TRABAJO(
 		$IdTrabajo,
 		$NombreTrabajo,
@@ -75,7 +75,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			 new MESSAGE( $respuesta, '../Controllers/TRABAJO_CONTROLLER.php' );
             }
 		}
-		break;
+		break;//Finaliza el bloque
 	case 'DELETE'://caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			if(permisosAcc($_SESSION['login'],11,1)==true){//miramos si el usuario tiene dichos permisos
@@ -97,11 +97,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$respuesta = $TRABAJO->DELETE();//eliminamos el trabajo
 			new MESSAGE( $respuesta, '../Controllers/TRABAJO_CONTROLLER.php' );//mostramos el mensaje tras la eliminación
 		}
-		break;
+		break;//Finaliza el bloque
 	case 'EDIT'://caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			if(permisosAcc($_SESSION['login'],11,2)==true){	//miramos si el usuario tiene dichos permisos		
-			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');//cremao un TRABAJO con un IdTrabajo que pasamos
+			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');//creamos un TRABAJO con un IdTrabajo que pasamos
 			$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] );//llamamos al metodo RellenaDatos de TRABAJO para coger los datos referentes a ese IdTrabajo
 			new TRABAJO_EDIT( $valores );//muestra una vista EDIT
 			}else{//Si el usuario no tiene dicho permiso , se le va a mostrar con un mensaje en una vista
@@ -121,7 +121,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new MESSAGE( $respuesta, '../Controllers/TRABAJO_CONTROLLER.php' );//muestra un mensaje de que fue editado
 		  }
         }
-		break;
+		break;//Finaliza el bloque
 	case 'SEARCH'://caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
 			if(permisosAcc($_SESSION['login'],11,3)==true){//miramos si el usuario tiene permisos
@@ -135,7 +135,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$lista = array( 'NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );//pasamos en un array los campos que queremos mostrar
 			new TRABAJO_SHOWALL( $lista, $datos );//muestra una vista SHOWALL del TRABAJO buscado
 		}
-		break;
+		break;//Finaliza el bloque
     case 'SHOWCURRENT'://caso ver en detalle
 			if(permisosAcc($_SESSION['login'],11,4)==true){//miramos si el usuario tiene dichos permisos
 		$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');//creamos un objeto TRABAJO pasandole un IdTrabajo correspondiente
@@ -144,7 +144,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}else{//si el usuario no tiene dicho permiso se le indica en un mensaje
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
 			}
-		break;
+		break;//Finaliza el bloque
 	default://caso por defecto
 	if(permisosAcc($_SESSION['login'],11,5)==true ){//miramos si el usuario tiene dichos permisos
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SHOWALL

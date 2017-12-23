@@ -37,7 +37,7 @@ function get_data_form() {
 	$direccion = $_REQUEST[ 'direc' ]; //Variable que almacena el valor de direccion
 	$telefono = $_REQUEST[ 'telefono' ]; //Variable que almacena el valor de telefono
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
-
+    //Variable que almacena un modelo de USUARIO
 	$USUARIO = new USUARIO_MODEL(
 		$login,
 		$password,
@@ -173,7 +173,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($fila['IdFuncionalidad']=='1'){//mira si este usuario tiene la funcionalidad de gestion de usuarios
 				if($fila['IdAccion']=='2'){//mira si este usuario tiene la acción de editar
 			    //Crea una vista add para ver la tupla
-			     $cont=$cont+1;
+			     $cont=$cont+1;//Incrementamos cont
 				}
 			   }
 			}

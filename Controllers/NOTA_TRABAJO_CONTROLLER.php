@@ -40,6 +40,7 @@ function get_data_form() {
     $login = $_REQUEST['login'];//Variable que almacena el valor de login
     $NotaTrabajo = $_REQUEST['NotaTrabajo'];//Variable que almacena el valor de NotaTrabajo
     $action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
+    //Variable que almacena un modelo de NOTA_TRABAJO
 	$NOTAS = new NOTA_TRABAJO_MODEL(
 		$IdTrabajo,
         $login,
@@ -185,7 +186,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
       }
         
-    break;    
+    break;//Finaliza el bloque
         
     case 'GENERAR_NOTA_QA'://en este caso generamos la nota de la QA(QA)
         
@@ -212,7 +213,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                  $EVALUACION = new EVALUACION('','','','','','','','','');//creamos un objeto de tipo EVALUACION
                  $dat=$EVALUACION->cogerDatosQA($_REQUEST['IdTrabajo']);//llamamos a esta función para coger que login tienen el Idtrabajo elegido
                  $NOTAS = new NOTA_TRABAJO_MODEL('','','','','');//creamos un objeto de tipo NOTA_TRABAJO_MODEL
-                // $notas=array();
+                
                  
                  while($fila = mysqli_fetch_array($dat)){//recorremos el bucle hasta que no queden mas usuarios asociados a esa QA
                      
@@ -246,7 +247,7 @@ switch ( $_REQUEST[ 'action' ] ) {
                     new MESSAGE($respuesta,'../Controllers/NOTA_TRABAJO_CONTROLLER.php');//se muestra el mensaje de fracaso y un enlace para volver atrás
         
          }
-        break;
+        break;//Finaliza el bloque
         
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
@@ -286,7 +287,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		//Final del bloque
 		break;
-	case 'SHOWMISNOTAS'://Caso showcurrent
+	case 'SHOWMISNOTAS'://Caso ver mis notas
 		if(permisosAcc($_SESSION['login'],7,10)==true){    //miramos si el usuario tiene permiso SHOWMISNOTAS       
                       $NOTAS=new NOTA_TRABAJO_MODEL('',$_SESSION['login'],''); // Variable que almacena un objeto model con el login
                  	  $datos = $NOTAS->SEARCH2();//llamamos a este metodo para sacar las notas de ese usuario

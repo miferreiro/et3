@@ -24,10 +24,10 @@ include '../Views/MESSAGE_View.php';//incluye una vista que muestra un mensaje y
 //esta función asigna los valores que vinieron del formulario al modelo USU_GRUPO
 function get_data_form(){
 	
-	$login = $_REQUEST['login'];//asigna el valor de login que vino del formulario
-	$IdGrupo = $_REQUEST['IdGrupo'];//asigna el valor de grupo que vino del formulario.
-	$action = $_REQUEST['action'];//asigna la acción que se eligió en el formulario.
-	
+	$login = $_REQUEST['login'];//variable que almacena el valor de login que vino del formulario
+	$IdGrupo = $_REQUEST['IdGrupo'];//variable que almacena el valor de grupo que vino del formulario.
+	$action = $_REQUEST['action'];//variable que almacena el valor de acción que se eligió en el formulario.
+	//Variable que almacena un modelo de USU_GRUPO
 	$USU_GRUPO = new USU_GRUPO(
 		$login,
 		$IdGrupo   
@@ -76,7 +76,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$aux = "?login=".$_REQUEST['login'];//pasamos el valor del login
 			new MESSAGE( $respuesta, '../Controllers/USU_GRUPO_CONTROLLER.php'.$aux );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 		}
-		break;
+		break;//Finaliza el bloque
 	case 'DELETE': //se hace este case en el caso de que queramos eliminar
 		if ( !$_POST ) { // si no existe dolar POST  se muestra la vista DELETE  de USU_GRUPO con todos sus valores.
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto de tipo USU_GRUPO pasando el login del usuario conectado
@@ -111,7 +111,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$aux = "?login=".$_REQUEST['login'];//pasamos a la variable el valor del login
 			new MESSAGE( $respuesta, '../Controllers/USU_GRUPO_CONTROLLER.php'.$aux );// se muestra en una vista un mensaje después del borrado.
 		}
-		break;
+		break;//Finaliza el bloque
 	default: // por defecto aparecerá la vista SHOWALL.
 		$USER = new USU_GRUPO(  $_SESSION[ 'login' ],'');//se crea un objeto de tipo USU_GRUPO pasandole el login del usuario que está conectado
 		$ADMIN = $USER->comprobarAdmin();//miramos si este usuario es administrador
