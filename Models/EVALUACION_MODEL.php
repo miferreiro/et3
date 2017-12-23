@@ -232,7 +232,7 @@ function mostrarEntregas($nombre){
                     (BINARY ComentIncorrectoP LIKE '%$this->ComentIncorrectoP%') &&
 	 				(BINARY OK LIKE '%$this->OK%')
     				)
-    			ORDER BY AliasEvaluado,E.IdHistoria	";
+    			ORDER BY AliasEvaluado,E.IdHistoria,T.IdTrabajo,LoginEvaluador	";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -523,7 +523,7 @@ function mostrarEntregas($nombre){
 				FROM ENTREGA EN,EVALUACION E,TRABAJO T
 				WHERE Alias = AliasEvaluado && SUBSTRING(E.IdTrabajo,3) = SUBSTRING(EN.IdTrabajo,3)
 				&& E.IdTrabajo=T.IdTrabajo
-				ORDER BY E.Idtrabajo,AliasEvaluado,E.IdHistoria";
+				ORDER BY login,E.IdTrabajo";
 		//Si la consulta devuelve error muestra mensaje de error
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -542,7 +542,7 @@ function mostrarEntregas($nombre){
 				WHERE Alias = AliasEvaluado &&
 					  LoginEvaluador = '$nombre' &&
 					  E.IdTrabajo=T.IdTrabajo  
-				ORDER BY AliasEvaluado,E.IdHistoria";
+				ORDER BY T.NombreTrabajo";
 		//Si la consulta devuelve error muestra mensaje de error
         if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';

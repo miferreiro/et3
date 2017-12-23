@@ -93,7 +93,7 @@ class EVALUACION_DELETE {
 						<?php echo $strings['ComentIncorrectoP'];?>
 					</th>
 					<td>
-						<p class="ajustar"><?php echo $strings['ComentIncorrectoP'];?></p>
+						<p class="ajustar"><?php echo $this->valores['ComentIncorrectoP'];?></p>
 					</td>
 				</tr>
                 
