@@ -328,21 +328,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			//Si se reciben valores
 		} else {//Si recibe datos los recoge y mediante la clase ENTREGA_MODEL edita los datos
-	      if(comprobarAdministrador($_SESSION['login'])==true){//miramos si el usuario es administrador		
 			//Variable que almacena los datos recogidos
 			$ENTREGA = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $ENTREGA->EDIT();
 			//crea una vista mensaje con la respuesta
 			new MESSAGE( $respuesta, '../Controllers/ENTREGA_CONTROLLER.php' );
-		  }else{//si no es administrador
-			//Variable que almacena los datos recogidos
-			$ENTREGA = get_data_form();
-			//Variable que almacena la respuesta de la edición de los datos
-			$respuesta = $ENTREGA->EDIT();
-			//crea una vista mensaje con la respuesta
-			new MESSAGE( $respuesta, '../Controllers/ENTREGA_CONTROLLER.php?IdTrabajo='.$_REQUEST['IdTrabajo'].'&action=SUBIR_ENTREGA&login='.$_REQUEST['login'] ); 
-		  }
 		}
 		//Fin del bloque
 		break;
