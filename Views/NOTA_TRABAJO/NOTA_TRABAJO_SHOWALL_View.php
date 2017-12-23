@@ -84,7 +84,7 @@ class NOTA_TRABAJO_SHOWALL {
                     
                     <td>
                     <?php
-                    $suma = $suma + $fila['NotaTrabajo'];//devuelve la nota final
+                    $suma = $suma + $fila['NotaTrabajo'];//variable que almacena la nota final
             
                     ?>
                     </td>
