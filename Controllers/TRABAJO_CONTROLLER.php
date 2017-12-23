@@ -65,13 +65,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		} else {//Si recibe datos los recoge y mediante la funcionalidad de TRABAJO_MODEL inserta los datos
 			$TRABAJO = get_data_form();//Variable que almacena los datos recogidos
-            $porcentajeTotal = $TRABAJO->obtenerPorcentajeTotal();//llamamos a esta función para tener el porcentaje total de todos los trabajos
-            $percent = $porcentajeTotal[0] + $_REQUEST['PorcentajeNota'];//calculamos la suma de los porcentajes
+            $porcentajeTotal = $TRABAJO->obtenerPorcentajeTotal();//Variable que almacena la repuesta de la función para tener el porcentaje total de todos los trabajos
+            $percent = $porcentajeTotal[0] + $_REQUEST['PorcentajeNota'];//Variable que almacena la suma de los porcentajes
             if($percent > 100){//miramos si el porcentaje supera el 100%, si es asi se muestra un mensaje indicandolo
                 new MESSAGE ('El porcentaje introducido es incorrecto, el porcentaje total de los trabajos no debe superar el 100%', '../Controllers/TRABAJO_CONTROLLER.php');
             }
             else{//si el porcentaje no es mayor que 100%
-			 $respuesta = $TRABAJO->ADD();//inserta el trabajo y muestra un mensaje
+			 $respuesta = $TRABAJO->ADD();//Variable que almacena la repuesta de insertar el trabajo y muestra un mensaje
 			 new MESSAGE( $respuesta, '../Controllers/TRABAJO_CONTROLLER.php' );
             }
 		}
@@ -79,45 +79,49 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'DELETE'://caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			if(permisosAcc($_SESSION['login'],11,1)==true){//miramos si el usuario tiene dichos permisos
-			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');//creamos un objeto de tipo TRABAJO
-			$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ]);//llamamos al metodo RellenaDatos para sacar los datos referentes a IdTrabajo
-                
-            //almacenamos en estas variables todas las depencias de TRABAJO a la hora de borrar
+			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');//Variable que almacena un objeto de tipo TRABAJO
+			$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ]);//Variable que almacena un recordset con todos los valores relacionados con IdTrabajo
+            
+            //Variable que almacena todas las depencias de TRABAJO a la hora de borrar
 			$dependencias = $TRABAJO->dependencias( $_REQUEST[ 'IdTrabajo' ]);
+			 //Variable que almacena todas las depencias de TRABAJO a la hora de borrar
 			$dependencias2 = $TRABAJO->dependencias2( $_REQUEST[ 'IdTrabajo' ]);
+			 //Variable que almacena todas las depencias de TRABAJO a la hora de borrar
 			$dependencias3 = $TRABAJO->dependencias3( $_REQUEST[ 'IdTrabajo' ]);
+			 //Variable que almacena todas las depencias de TRABAJO a la hora de borrar
 			$dependencias4 = $TRABAJO->dependencias4( $_REQUEST[ 'IdTrabajo' ]);
+			 //Variable que almacena todas las depencias de TRABAJO a la hora de borrar
 			$dependencias5 = $TRABAJO->dependencias5( $_REQUEST[ 'IdTrabajo' ]);
 			new TRABAJO_DELETE( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5 );//se muestra la vista DELETE de TRABAJO
 			}else{//si el usuario no tiene dicho permiso, muestra el mensaje en una vista
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
 			}				
 		} else { //Si recibe datos los recoge y mediante la funcionalidad de TRABAJO_MODEL borra los datos
-			$TRABAJO = get_data_form();//Variable que almacena los datos recogidos
-			$respuesta = $TRABAJO->DELETE();//eliminamos el trabajo
+			$TRABAJO = get_data_form();//Variable que almacena un objecto TRABAJO(modelo) con los datos recogidos
+			$respuesta = $TRABAJO->DELETE();//Variable que almacena la respuesta de elimninar los datos
 			new MESSAGE( $respuesta, '../Controllers/TRABAJO_CONTROLLER.php' );//mostramos el mensaje tras la eliminación
 		}
 		break;//Finaliza el bloque
 	case 'EDIT'://caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			if(permisosAcc($_SESSION['login'],11,2)==true){	//miramos si el usuario tiene dichos permisos		
-			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');//creamos un TRABAJO con un IdTrabajo que pasamos
-			$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] );//llamamos al metodo RellenaDatos de TRABAJO para coger los datos referentes a ese IdTrabajo
+			$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');//Variable que almacena un TRABAJO con un IdTrabajo que pasamos
+			$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] );//Variable que almacena un recordset con los valores relacionados con IdTrabajo
 			new TRABAJO_EDIT( $valores );//muestra una vista EDIT
 			}else{//Si el usuario no tiene dicho permiso , se le va a mostrar con un mensaje en una vista
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
 			}
 		} else {//Si recibe datos los recoge y mediante la funcionalidad de TRABAJO_MODEL edita los datos
-			$TRABAJO = get_data_form();//le pasamos a $TRABAJO un objeto de tipo TRABAJO_MODEL con los valores correspondientes
-            $porcentajeTotal = $TRABAJO->obtenerPorcentajeTotal();//llamamos a este metodo para tener el porcemtaje total de todos los trabajos
-            $porcentajeAntiguo = $TRABAJO->obtenerPorcentaje($_REQUEST[ 'IdTrabajo' ]);//llamamos a esta función para obtener el porcentaje antiguo de los trabajos
-            $percentTemp = $porcentajeTotal [0] - $porcentajeAntiguo[0];//calculamos la diferencia
-            $percent = $percentTemp + $_REQUEST['PorcentajeNota'];//calculamos el porcentaje total
+			$TRABAJO = get_data_form();//Variable que almacena un objeto de tipo TRABAJO_MODEL con los valores correspondientes
+            $porcentajeTotal = $TRABAJO->obtenerPorcentajeTotal();//Variable que almacena el porcemtaje total de todos los trabajos
+            $porcentajeAntiguo = $TRABAJO->obtenerPorcentaje($_REQUEST[ 'IdTrabajo' ]);//Variable que almacena el porcentaje antiguo de los trabajos
+            $percentTemp = $porcentajeTotal [0] - $porcentajeAntiguo[0];//Variable que almacena la diferencia de porcentajes
+            $percent = $percentTemp + $_REQUEST['PorcentajeNota'];//Variable que almacena el porcentaje total
             if($percent > 100){//si el porcentaje supera l 100% muestra un mensaje de que no es posible
                 new MESSAGE ('El porcentaje introducido es incorrecto, el porcentaje total de los trabajos no debe superar el 100%', '../Controllers/TRABAJO_CONTROLLER.php');
             }
             else{//si no supera el 100%
-			$respuesta = $TRABAJO->EDIT();//edita el trabajo
+			$respuesta = $TRABAJO->EDIT();//Variable que almacena la repuesta de editar los datos
 			new MESSAGE( $respuesta, '../Controllers/TRABAJO_CONTROLLER.php' );//muestra un mensaje de que fue editado
 		  }
         }
@@ -130,16 +134,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
 			}
 		} else {//Si recibe datos los recoge y mediante la funcionalidad de TRABAJO_MODEL busca los datos
-			$TRABAJO = get_data_form();//le pasamos a $TRABAJO un objeto de tipo TRABAJO_MODEL con los valores correspondientes
-			$datos = $TRABAJO->SEARCH();//llamamos al metodo SEARCH para buscar el trabajo correspondiente 
-			$lista = array( 'NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );//pasamos en un array los campos que queremos mostrar
+			$TRABAJO = get_data_form();//lVariable que almacena un objeto de tipo TRABAJO_MODEL con los valores correspondientes
+			$datos = $TRABAJO->SEARCH();//Variable que almacena el trabajo correspondiente 
+			$lista = array( 'NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );//Variable que almacena un array los campos que queremos mostrar
 			new TRABAJO_SHOWALL( $lista, $datos );//muestra una vista SHOWALL del TRABAJO buscado
 		}
 		break;//Finaliza el bloque
     case 'SHOWCURRENT'://caso ver en detalle
 			if(permisosAcc($_SESSION['login'],11,4)==true){//miramos si el usuario tiene dichos permisos
-		$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');//creamos un objeto TRABAJO pasandole un IdTrabajo correspondiente
-		$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] );//llamamos al metodo RellenaDatos para buscar dicho trabajo
+		$TRABAJO = new TRABAJO( $_REQUEST[ 'IdTrabajo' ], '', '', '','');//Variable que almacena un objeto TRABAJO pasandole un IdTrabajo correspondiente
+		$valores = $TRABAJO->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] );//Variable que almacena un recordset de los valores relacionados con dicho trabajo
 		new TRABAJO_SHOWCURRENT( $valores );//se muestra la vista en detalle con el trabajo elegido
 			}else{//si el usuario no tiene dicho permiso se le indica en un mensaje
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/TRABAJO_CONTROLLER.php' );
@@ -148,13 +152,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 	default://caso por defecto
 	if(permisosAcc($_SESSION['login'],11,5)==true ){//miramos si el usuario tiene dichos permisos
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SHOWALL
-			$TRABAJO = new TRABAJO('','','','','');//se crea un objeto de tipo TRABAJO para buscar todos los trabajos
+			$TRABAJO = new TRABAJO('','','','','');//Variable que almacena un objeto de tipo TRABAJO para buscar todos los trabajos
 		} 
         else {//Si recibe datos los recoge y mediante la funcionalidad de TRABAJO_MODEL muestra  los datos.
-			$TRABAJO = get_data_form();//le pasamos a $TRABAJO un objeto de tipo TRABAJO_MODEL con los valores correspondientes
+			$TRABAJO = get_data_form();//Variable que almacena un objeto de tipo TRABAJO_MODEL con los valores correspondientes
 		}
-		$datos = $TRABAJO->SEARCH();//llamamos al metodo SEARCH para buscar todos los trabajos
-		$lista = array('NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );//metemos en un array todos los campos que queremos mostrar
+		$datos = $TRABAJO->SEARCH();//Variable que almacena todos los trabajos
+		$lista = array('NombreTrabajo','FechaIniTrabajo','FechaFinTrabajo' );//Variable que almacena un array todos los campos que queremos mostrar
 		new TRABAJO_SHOWALL( $lista, $datos );//muestra una vista SHOWALL con todos los trabajos
 		}else{//si el usuario no tiene dicho permiso se muestra una vista por defecto sin nada
 		

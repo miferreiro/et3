@@ -11,19 +11,19 @@ include_once '../Locales/Strings_'.$_SESSION['idioma'].'.php';//incluimos los st
 
 if(!isset($_POST['login'])){//Si no se han recibido datos del login
 	include '../Views/REGISTRO_View.php';//incluimos la vista para Registrarse
-	$register = new Register();//creamos un objeto de tipo Registro para registrarnos
+	$register = new Register();//Variable que almacena un objeto de tipo Registro para registrarnos
 }
 else{
 		
 	include '../Models/USUARIO_MODEL.php';//incluye el contenido del modelo USUARIO_MODEL
 	//Variable que almacena un objecto de usuarios model
 	$usuario = new USUARIO_MODEL($_REQUEST['login'],$_REQUEST['password'],$_REQUEST['DNI'],$_REQUEST['nombre'],$_REQUEST['apellidos'],$_REQUEST['email'],$_REQUEST['direc'],$_REQUEST['telefono'],'');//creamos un objeto del modelo USUARIO_MODEL donde le pasamos todos los datos del usuario registrado
-	//Almacena la respuesta de si esta existe el login o no para poder registrarse
+	//Variable que almacena la respuesta de si esta existe el login o no para poder registrarse
 	$respuesta = $usuario->Register();
 
 	//Si no existe el login en la base de datos
 	if ($respuesta == 'true'){
-			$respuesta = $usuario->ADD();//añadimos este usuario a la base de datos
+			$respuesta = $usuario->ADD();//Variable que almacena la respuesta de añadir este usuario a la base de datos
 		//Incluye la vista mensaje
 		include '../Views/MESSAGE_View.php';//incluimos la vista para que nos mandé un mensaje por pantalla
 		new MESSAGE($respuesta, '../index.php');//creamos un objeto de tipo mensaje que mostrara el mensaje que viene del modelo.

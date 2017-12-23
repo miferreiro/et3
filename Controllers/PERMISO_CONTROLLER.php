@@ -161,7 +161,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 					//Asignamos a la variable IdAccion el valor de la primera parte que corresponde con el IdFuncionalidad
 					$PERMISO->IdAccion = $Porciones[1];
 				}
-				//obtenemos la respuesta que viene del método ADD() del modelo PERMISO
+				//Variable que almacena la respuesta que viene del método ADD() del modelo PERMISO
 				$respuesta = $PERMISO->ADD();
 				//Variable que almacena los datos necesarios para poder volver a la vista anterior concatenandola a la ruta
 				$at = "?IdGrupo=".$_REQUEST['IdGrupo']."&action=ASSIGN";
@@ -233,7 +233,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			else{
 				//Variable que almacena un objecto de PERMISO(modelo) con la información de los datos recibidos
 				$PERMISO = get_data_form();
-				//obtenemos la respuesta que viene del método DELETE() del modelo PERMISO
+				//Variable que almacena la respuesta que viene del método DELETE() del modelo PERMISO
 				$respuesta = $PERMISO->DELETE();
 				//Variable que almacena los datos necesarios para poder volver a la vista anterior concatenandola a la ruta
 				$at = "?IdGrupo=".$_REQUEST['IdGrupo']."&action=ASSIGN";
@@ -392,7 +392,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				//Variable que almacena un objecto de PERMISO_MODEL
 				$PERMISO = new PERMISO_MODEL('', '', '', '','','');
 			}
-			/*$GRUPO = new GRUPO( '', '', '');*/
+			
 			//Variable que almacena los datos de la busqueda
 			$datos = $PERMISO->SEARCH2();
 			//Variable que almacena array con el nombre de los atributos
