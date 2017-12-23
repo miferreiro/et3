@@ -29,14 +29,14 @@ class USUARIO_MODEL{
     //Constructor de la clase
 	function __construct($login,$password,$DNI,$Nombre,$Apellidos,$Correo,$Direccion,$Telefono) {
 		//asignación de valores de parámetro a los atributos de la clase
-		$this->login = $login;//le asignamos un valor al login
-        $this->password=$password;//le asignamos un valor a la password
-		$this->DNI = $DNI;//le asignamos un valor al dni
-		$this->Nombre = $Nombre;//le asignamos un valor al nombre
-		$this->Apellidos = $Apellidos;//le asignamos un valor a apellidos
-        $this->Correo = $Correo;//le asignamos un valor a correo
-        $this->Direccion=$Direccion;//le asignamos un valor a direccion
-		$this->Telefono = $Telefono;//le asignamos un valor a telefono
+		$this->login = $login;//declaracion de la variable que almacena login
+        $this->password=$password;//declaracion de la variable que almacena password
+		$this->DNI = $DNI;//declaracion de la variable que almacena dni
+		$this->Nombre = $Nombre;//declaracion de la variable que almacena nombre
+		$this->Apellidos = $Apellidos;//declaracion de la variable que almacena apellidos
+        $this->Correo = $Correo;//declaracion de la variable que almacena correo
+        $this->Direccion=$Direccion;//declaracion de la variable que almacena direccion
+		$this->Telefono = $Telefono;//declaracion de la variable que almacena telefono
 		
         
 		// incluimos la funcion de acceso a la bd
@@ -199,6 +199,7 @@ class USUARIO_MODEL{
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else { // si existe se devuelve la tupla resultado
+            //Aplicamos fetch_array sobre $resultado para crear un array y se guarda en $result
 			$result = $resultado->fetch_array();
 			return $result;
 		}
@@ -217,7 +218,7 @@ class USUARIO_MODEL{
         }
         
         return $dependencias;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias()
     
     //Esta funcion mira las dependencias de la tabla a la hora de borrar
     function dependencias2() { 
@@ -247,7 +248,7 @@ class USUARIO_MODEL{
         }
         
         return $dependencias3;
-	} // fin del metodo dependenias3()
+	} // fin del metodo dependencias3()
     
     //Esta funcion mira las dependencias de la tabla a la hora de borrar
     function dependencias4() { 
@@ -317,7 +318,7 @@ class USUARIO_MODEL{
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia de modificacion en base a los atributos de la clase
-			//if ( count($Grup) == 0){
+
 			//modificamos los atributos de la tabla USUARIO
 			$sql = "UPDATE USUARIO SET 
 					login = '$this->login',

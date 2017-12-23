@@ -21,11 +21,11 @@ class TRABAJO{
     //constructor de la clase
     function __construct($IdTrabajo,$NombreTrabajo,$FechaIniTrabajo,$FechaFinTrabajo,$PorcentajeNota){
         //Asignamos valores a los atributos de la clase
-        $this->IdTrabajo=$IdTrabajo;//le asignamos un valor a IdTrabajo
-        $this->NombreTrabajo=$NombreTrabajo;//le asignamos un valor a NombreTrabajo
-        $this->FechaIniTrabajo=$FechaIniTrabajo;//le asignamos un valor a FechaIniTrabajo
-        $this->FechaFinTrabajo=$FechaFinTrabajo;//le asignamos un valor a FechaFinTrabajo
-        $this->PorcentajeNota=$PorcentajeNota;//le asignamos un valor a PorcentajeNota
+        $this->IdTrabajo=$IdTrabajo;//declaracion de la variable que almacena IdTrabajo
+        $this->NombreTrabajo=$NombreTrabajo;//declaracion de la variable que almacena NombreTrabajo
+        $this->FechaIniTrabajo=$FechaIniTrabajo;//declaracion de la variable que almacena FechaIniTrabajo
+        $this->FechaFinTrabajo=$FechaFinTrabajo;//declaracion de la variable que almacena FechaFinTrabajo
+        $this->PorcentajeNota=$PorcentajeNota;//declaracion de la variable que almacena PorcentajeNota
         
           // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';

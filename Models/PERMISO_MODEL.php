@@ -1,5 +1,5 @@
 <!--Modelo que contiene un constructor permisos y las funciones de la base de datos como insertar, buscar, etc-->
-<!--Fecha: 24-11-2017 Autor: Brais Rod´riguez Dedicados: 25 minutos-->
+<!--Fecha: 24-11-2017 Autor: Brais Rodríguez Dedicados: 25 minutos-->
 
 <?php
 
@@ -18,13 +18,13 @@
         
         //Constructor de la clase
         function __construct($IdGrupo, $IdFuncionalidad, $IdAccion, $NombreGrupo, $NombreFuncionalidad, $NombreAccion){
-            $this->IdFuncionalidad = $IdFuncionalidad;//le asignamos un valor a IdFuncionalidad
-            $this->IdAccion = $IdAccion;//le asignamos un valor a IdAccion
-            $this->IdGrupo = $IdGrupo;//le asignamos un valor a IdGrupo
+            $this->IdFuncionalidad = $IdFuncionalidad;//declaracion de la variable que almacena IdFuncionalidad
+            $this->IdAccion = $IdAccion;//declaracion de la variable que almacena IdAccion
+            $this->IdGrupo = $IdGrupo;//declaracion de la variable que almacena IdGrupo
            
-            $this->NombreGrupo = $NombreGrupo;//le asignamos un valor a NombreGrupo
-            $this->NombreFuncionalidad = $NombreFuncionalidad;//le asignamos un valor a NombreFuncionalidad
-            $this->NombreAccion = $NombreAccion;//le asignamos un valor a NombreAccion
+            $this->NombreGrupo = $NombreGrupo;//declaracion de la variable que almacena NombreGrupo
+            $this->NombreFuncionalidad = $NombreFuncionalidad;//declaracion de la variable que almacena NombreFuncionalidad
+            $this->NombreAccion = $NombreAccion;//declaracion de la variable que almacena NombreAccion
             
             include_once '../Functions/BdAdmin.php';  // incluimos la funcion de acceso a la bd
             $this->mysqli=ConectarBD();	// conectamos con la bd y guardamos el manejador en un atributo de la clase
@@ -181,6 +181,7 @@ function RellenaDatos()
 		return 'No existe en la base de datos'; // 
 	}
     else{ // si existe se devuelve la tupla resultado
+        //Aplicamos fetch_array a $resultado para crear un array y lo almacenamos en $result
 		$result = $resultado->fetch_array();
 		return $result;
 	}

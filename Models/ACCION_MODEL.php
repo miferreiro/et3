@@ -15,9 +15,9 @@ class ACCION{
     //constructor de la clase
     function __construct($IdAccion,$NombreAccion,$DescripAccion){
         //Asignamos valores a los atributos de la clase
-        $this->IdAccion=$IdAccion;//se le asigna un valor a la id de accion
-        $this->NombreAccion=$NombreAccion;//se le asigna un valor a NombreAccion
-        $this->DescripAccion=$DescripAccion;//se le asigna un valor a DescripAccion
+        $this->IdAccion=$IdAccion;//declaracion variable que almacena el id de accion
+        $this->NombreAccion=$NombreAccion;//declaracion variable que almacena el NombreAccion
+        $this->DescripAccion=$DescripAccion;//declaracion variable que almacena la DescripAccion
         
           // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
