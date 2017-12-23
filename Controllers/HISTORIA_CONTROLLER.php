@@ -56,46 +56,46 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			if(permisosAcc($_SESSION['login'],10,0)==true){//miramos si el usuario tiene permisos para añadir en gestión de historias
-			$TRABAJO= new TRABAJO('','','','','');//se crea un objeto de tipo TRABAJO
-			$TRABAJOS=$TRABAJO->SEARCH2();//llamamos a la función SEARCH2 de TRABAJO
+			$TRABAJO= new TRABAJO('','','','','');//Variable que almacena un objeto de tipo TRABAJO
+			$TRABAJOS=$TRABAJO->SEARCH2();//Variable que almacena un recordset de todos los trabajos
 			new HISTORIA_ADD($TRABAJOS);//se muestra la vista ADD de HISTORIA
 			}else{//si el usuario no tiene dicho permiso, se le indica en una vista mediante un mensaje
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );//se muestra una vista con un mensaje diciendo que el usuario  no tiene permiso para añadir en HISTORIA
 			}
 		} else {//Si se reciben datos
-			$HISTORIA = get_data_form();//Variable que almacena los datos recogidos de los atributos
-			$respuesta = $HISTORIA->ADD();//se llama al método ADD para insertar la historia en la base de datos
+			$HISTORIA = get_data_form();//Variable que almacena un objecto HISTORIA(modelo) con los datos recogidos de los atributos
+			$respuesta = $HISTORIA->ADD();//Variable que almacena el resultado de la insercion de los datos
 			new MESSAGE( $respuesta, '../Controllers/HISTORIA_CONTROLLER.php' );//se muestra una vista con el mensaje que viene de la base de datos
 		}
 		break;//Finaliza el bloque
 	case 'DELETE'://caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			if(permisosAcc($_SESSION['login'],10,1)==true){//miramos si el usuario tiene permisos para borrar en gestión de historias
-			$HISTORIA = new HISTORIA_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ], '');//se crea un objeto de tipo HISTORIA
-			$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ]);//se llama al método RellenaDatos para sacar los valores correspondientes a un IdTrabajo y un IdHistoria
-			$dependencias = $HISTORIA->dependencias( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ]);//se pasan las dependencias de la tabla HISTORIA  a la hora de borrar
+			$HISTORIA = new HISTORIA_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ], '');//Variable que almacena un objeto de tipo HISTORIA
+			$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ]);//Variable que almacena un recordset con los valores que se relacionan con IdTrabajo y IdHistoria
+			$dependencias = $HISTORIA->dependencias( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ]);//Variable que almacena un recordset con las dependencias que se relacionan con IdTrabajo y IdHistoria
 			new HISTORIA_DELETE( $valores, $dependencias);//se muestra la vista DELETE de Historia
 			}else{//si el usuario no tiene dicho permiso, se le indica en una vista mediante un mensaje
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );//se muestra una vista con un mensaje diciendo que el usuario  no tiene permiso para borrar en HISTORIA
 			}
 		} else {//Si se reciben datos
-			$HISTORIA = get_data_form();//Variable que almacena los datos recogidos de los atributos
-			$respuesta = $HISTORIA->DELETE();//se llama al método DELETE para borrar la historia en la base de datos
+			$HISTORIA = get_data_form();//Variable que almacena un objecto HISTORIA(modelo) con los datos recogidos de los atributos
+			$respuesta = $HISTORIA->DELETE();//Variable que almacena la respuesta del borrado de los datos
 			new MESSAGE( $respuesta, '../Controllers/HISTORIA_CONTROLLER.php' );//se muestra una vista con el mensaje que viene de la base de datos
 		}
 		break;//Finaliza el bloque
 	case 'EDIT'://caso editar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			if(permisosAcc($_SESSION['login'],10,2)==true){//miramos si el usuario tiene permisos para editar en gestión de historias
-			$HISTORIA = new HISTORIA_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ], '');//se crea un objeto de tipo HISTORIA
-			$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] ,$_REQUEST[ 'IdHistoria' ]);//se llama al método RellenaDatos para sacar los valores correspondientes a un IdTrabajo y un IdHistoria
+			$HISTORIA = new HISTORIA_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ], '');//Variable que almacena un objeto de tipo HISTORIA
+			$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] ,$_REQUEST[ 'IdHistoria' ]);//Variable que almacena un recordset de los valores relacionados con IdTrabajo y IdHistoria
 			new HISTORIA_EDIT( $valores );//se muestra la vista edit de historia
 			}else{//si el usuario no tiene dicho permiso, se le indica en una vista mediante un mensaje
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );//se muestra una vista con un mensaje diciendo que el usuario  no tiene permiso para editar en HISTORIA
 			}
 		} else {//Si se reciben datos
-			$HISTORIA = get_data_form();//Variable que almacena los datos recogidos de los atributos
-			$respuesta = $HISTORIA->EDIT();//se llama al método EDIT para editar la historia en la base de datos
+			$HISTORIA = get_data_form();//Variable que almacena un objecto HISTORIA(modelo) los datos recogidos de los atributos
+			$respuesta = $HISTORIA->EDIT();//Variable que almacena la respuesta de la edicion en la tabla HISTORIA
 			new MESSAGE( $respuesta, '../Controllers/HISTORIA_CONTROLLER.php' );//se muestra una vista con el mensaje que viene de la base de datos
 		}
 		break;//Finaliza el bloque
@@ -107,16 +107,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );//se muestra una vista con un mensaje diciendo que el usuario  no tiene permiso para buscar  en HISTORIA
 			}
 		} else {//Si se reciben datos
-			$HISTORIA = get_data_form();//Variable que almacena los datos recogidos de los atributos
-			$datos = $HISTORIA->SEARCH();//se llama al método SEARCH para buscar la historia en la base de datos
-			$lista = array( 'IdTrabajo','IdHistoria','TextoHistoria' );//se meten en un array los campos que queremos mostrar.
+			$HISTORIA = get_data_form();//Variable que almacena un objecto HISTORIA(modelo) con los datos recogidos de los atributos
+			$datos = $HISTORIA->SEARCH();//Variable que almacena un recordset con el resultado de la busqueda
+			$lista = array( 'IdTrabajo','IdHistoria','TextoHistoria' );//Variable que almacena un array los campos que queremos mostrar.
 			new HISTORIA_SHOWALL( $lista, $datos );//se muestra una vista showall con los datos que queríamos buscar
 		}
 		break;//Finaliza el bloque
 	case 'SHOWCURRENT'://Caso ver en detalle
 	if(permisosAcc($_SESSION['login'],10,4)==true){//miramos si el usuario tiene permisos para ver en detalle en gestión de historias
-		$HISTORIA= new HISTORIA_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ], '');//creamos un objeto tipo HISTORIA pasandole el IdTrabaja y IdHistoria que se eligió
-		$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] ,$_REQUEST[ 'IdHistoria' ]);//se llama al método RellenaDatos para sacar los valores correspondientes a un IdTrabajo y un IdHistoria
+		$HISTORIA= new HISTORIA_MODEL( $_REQUEST[ 'IdTrabajo' ],$_REQUEST[ 'IdHistoria' ], '');//Variable que almacena un objeto tipo HISTORIA pasandole el IdTrabaja y IdHistoria que se eligió
+		$valores = $HISTORIA->RellenaDatos( $_REQUEST[ 'IdTrabajo' ] ,$_REQUEST[ 'IdHistoria' ]);//Variable que almacena un recordset con los valores relacionados con IdTrabajo y IdHistoria
 		new HISTORIA_SHOWCURRENT( $valores );//se muestra una vista showcurrent de historia
 			}else{//si el usuario no tiene dicho permiso, se le indica en una vista mediante un mensaje
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/HISTORIA_CONTROLLER.php' );//se muestra una vista con un mensaje diciendo que el usuario  no tiene permiso para ver en detalle  en HISTORIA
@@ -125,12 +125,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 	default://Caso por defecto
 	if(permisosAcc($_SESSION['login'],10,5)==true){//miramos si el usuario tiene permisos de showall en gestión de historia
 		if ( !$_POST ) {//Si no se han recibido datos creamos un objeto de tipo HISTORIA_MODEL
-			$HISTORIA = new HISTORIA_MODEL( '', '', '');//creamos un objeto de tipo HISTORIA_MODEL
+			$HISTORIA = new HISTORIA_MODEL( '', '', '');//Variable que almacena un objeto de tipo HISTORIA_MODEL
 		} else {//Si se reciben los datos
-			$HISTORIA = get_data_form();//Variable que almacena los datos recogidos de los atributos
+			$HISTORIA = get_data_form();//Variable que almacena un objecto HISTORIA(modelo) los datos recogidos de los atributos
 		}
-		$datos = $HISTORIA->SEARCH();//se llama al método SEARCH para buscar la historia en la base de datos
-		$lista = array( 'NombreTrabajo','IdHistoria','TextoHistoria' );//se meten en un array los campos que queremos mostrar.
+		$datos = $HISTORIA->SEARCH();//Variable que almacena un recordset con el resultado de la busqueda
+		$lista = array( 'NombreTrabajo','IdHistoria','TextoHistoria' );//Variable que almacena un array los campos que queremos mostrar.
 		new HISTORIA_SHOWALL( $lista, $datos );//se muestra una vista showall con todos los datos
 			}else{//si el usuario no tiene dicho permiso, se le indica en una vista por defecto que está vacía
 				new USUARIO_DEFAULT();//se muestra una vista pordefecto(vacía)
