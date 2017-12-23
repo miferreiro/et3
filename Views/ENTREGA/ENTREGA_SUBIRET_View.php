@@ -83,7 +83,9 @@ class ENTREGA_SHOWET {
 							//Si tiene los permisos para subir una entrega
 	                       		if(permisosAcc($_SESSION['login'],8,2)==true){
 									//Si la fecha de fin de trabajo es mayor que la fecha actual se permite subir la entrega
-                                    if(date('d-m-Y')<$fila['FechaFinTrabajo']){
+					
+                                    if(date("d/m/Y")<$fila['FechaFinTrabajo']){
+	
                                  ?>
                                 
                                 <button type="submit" name="action" value="SUBIR_ENTREGA" ><img src="../Views/icon/flecha.png"  width="20" height="20" /></button>

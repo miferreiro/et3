@@ -294,8 +294,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '','', '');
             //Variable que almacena el relleno de los datos.
 			$valores = $ENTREGA->RellenaDatos();
-			//Crea una vista delete para ver la tupla
-			new ENTREGA_DELETE( $valores );
+			$dependencias = $ENTREGA->dependencias();//se recogen las dependencias de borrado
+			$dependencias2 = $ENTREGA->dependencias2();//se recogen las dependencias de borrado
+            //Crea una vista delete para ver la tupla
+			new ENTREGA_DELETE($valores, $dependencias, $dependencias2);
 			//Si recibe valores ejecuta el borrado
 			}else{//si el usuario no tiene dicho permiso, se muestra un mensaje indicandolo
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
@@ -370,9 +372,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			
 		} else {//Si se reciben datos
-           /* $ENTREGA = new USU_GRUPO( $_SESSION[ 'login' ],'');
-			$PERMISO = $ENTREGA->comprobarPermisos();	
-			$ADMIN = $ENTREGA->comprobarAdmin();*/
+          
 			//Variable que almacena los datos recogidos de los atributos
 			$ENTREGA = getSearch();
 			//Variable que almacena el resultado de la busqueda
@@ -381,24 +381,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 
-				new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,true */);
+				new ENTREGA_SHOWALL( $lista, $datos);
   
-            /*
-			//Variable que almacena los datos recogidos de los atributos
-			$ENTREGA = get_data_form();
-			//Variable que almacena el resultado de la busqueda
-			$datos = $ENTREGA->SEARCH();
-			//Variable que almacena array con el CorrectoA de los atributos
-			$lista = array('login','IdTrabajo','Alias','Horas','Ruta');
-			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			new ENTREGA_SHOWALL( $lista, $datos );
-            */
+      
 		}
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-        $ENTREGA = new USU_GRUPO(  $_SESSION[ 'login' ],'');//creamos un objeto tipo USU_GRUPO
-			$ADMIN = $ENTREGA->comprobarAdmin();//llamamos a esta función para comprobar si dicho usuario es administrador
+        $USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ],'');//creamos un objeto tipo USU_GRUPO
+			$ADMIN = $USUARIO->comprobarAdmin();//llamamos a esta función para comprobar si dicho usuario es administrador
 			if($ADMIN == true){//miramos si el usuario es administrador
 					//Variable que almacena un objeto model
 		          $ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '', '','');
@@ -419,12 +410,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 			   }
 			}
 			if($cont>=1){//si la variable cont es 1 y por tanto el usuario tiene dicho permiso
-		//Variable que almacena un objeto model con el login
-		$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
-		//Variable que almacena los valores rellenados a traves de login
-		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
-		//Creación de la vista showcurrent
-		new USUARIO_SHOWCURRENT( $valores );
+		///Variable que almacena un objeto model
+		          $ENTREGA = new ENTREGA_MODEL( $_REQUEST[ 'login' ], $_REQUEST[ 'IdTrabajo' ], '', '','');
+		         //Variable que almacena los valores rellenados 
+		          $valores = $ENTREGA->RellenaDatos();
+				  //Creación de la vista showcurrent
+		          new ENTREGA_SHOWCURRENT( $valores );
 		}else{//si el usuario no tiene dicho permiso se muestra un mensaje indicandolo
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
@@ -496,7 +487,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena array con el CorrectoA de los atributos
 		$lista = array('login','NombreTrabajo','Alias','Horas','Ruta');
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,true */);
+		new ENTREGA_SHOWALL( $lista, $datos);
 	}else{//si el usuario no tiene dicho permiso se muestra una vista por defecto sin nada
 		
 			new USUARIO_DEFAULT();
