@@ -117,7 +117,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'GENERAR'://Caso generar QA
 		//Si no se reciben parametros
 		if ( !$_POST ) {
-
+            //Si el usuario tiene permisos puede ir a la vista de generar
 			if(permisosAcc($_SESSION['login'],6,8)==true){
 			//Variable que almacena un nuevo objecto model
 			$ASIGNACION = new ASIGNAC_QA_MODEL('', '', '', '');
@@ -166,6 +166,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		for ($i=0; $i < count($miarray); $i++) { 
 				//Variable que almacena el número de pasadas a realizar con cada login sobre el array de trabajos
 				$pasadas = 0;//Inicializamos la variable a 0
+                //Mientras la variable pasadas sea distinto del número de QAs a generar
 				while($pasadas != $_REQUEST['num']){
 					$pasadas++;//Se incrementa la variable
 					//Si el contador llega al número de datos, reinicia el contador

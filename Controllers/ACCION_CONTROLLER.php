@@ -35,7 +35,7 @@ function get_data_form(){
 	$NombreAccion = $_REQUEST['NombreAccion'];//Variable que almacena el valor de NombreAccion
 	$DescripAccion = $_REQUEST['DescripAccion'];//Variable que almacena el valor de DescripAccion
 	$action= $_REQUEST['action'];//Variable que almacena el valor de action
-	
+	//Variable que almacena un modelo de ACCION
 	$ACCION = new ACCION(
 		$IdAccion,
 		$NombreAccion,
@@ -249,7 +249,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ACCION_CONTROLLER.php' );
 		}
 			}
-		break;
+		break;//Finaliza el bloque
 	default://caso por defecto con vista SHOWALL
 
 		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
