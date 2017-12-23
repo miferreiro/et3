@@ -40,7 +40,7 @@ class HISTORIA_SHOWALL {
 				</caption>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) { //muestra el nombre de cada uno de los campos
+					foreach ( $lista as $atributo ) { //este bucle recorre  los nombres de cada uno de los campos de una tupla
 ?>
 					<th>
 						<?php echo $strings[$atributo]?>

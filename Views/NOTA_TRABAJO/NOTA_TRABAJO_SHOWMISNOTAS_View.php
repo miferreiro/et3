@@ -56,7 +56,7 @@ class NOTA_TRABAJO_SHOWMISNOTAS {
 <?php } ?>
 				</tr>
 <?php           
-                $suma=0;//iniciamos la variable $suma a 0 que será la nota final de un alumno
+                $suma=0;//Variable que almacena la suma que será la nota final de un alumno
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle devolverá las tuplas de la tabla NOTA_TRABAJO
 ?>
 				<tr>
@@ -78,7 +78,7 @@ class NOTA_TRABAJO_SHOWMISNOTAS {
                     
                     <td>
                     <?php
-                    $suma = $suma + $fila['NotaTrabajo'];//calculamos la nota final
+                    $suma = $suma + $fila['NotaTrabajo'];//Variable que almacena la nota final
             
                     ?>
                     </td>
