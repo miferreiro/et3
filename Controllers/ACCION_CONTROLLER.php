@@ -46,8 +46,8 @@ function get_data_form(){
 }
 
 
-
-if ( !isset( $_REQUEST[ 'action' ] ) ) {//Si la variable action no tiene contenido le asignamos ''
+//Si la variable action no tiene contenido le asignamos ''
+if ( !isset( $_REQUEST[ 'action' ] ) ) {
 	$_REQUEST[ 'action' ] = '';
 }
 
@@ -55,13 +55,19 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {//Si la variable action no tiene conteni
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-			//Crea una nueva vista del formulario añadir
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
-			if($ADMIN == true){//si el usuario es administrador mostramos la vista ADD
+			//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');
+			//Variable que almacena un recordset de los permisos del usuario
+			$ADMIN = $USUARIO->comprobarAdmin();
+			//si el usuario es administrador mostramos la vista ADD
+			if($ADMIN == true){
+				//Crea una vista con el formulario add
 				new ACCION_ADD();
-			}else{//si no es administrador
-            $cont=0;//iniciamos la variable a 0
+			//si no es administrador
+			}else{
+			//Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
+            $cont=0;
+            //Variable que almacena un recodset con los permisos del usuario
 			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
 			if($fila['IdFuncionalidad']=='4'){//miramos si este usuario tiene la funcionalidad de Gestión de acciones
@@ -82,30 +88,35 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$respuesta = $ACCION->ADD();//Variable que almacena la respuesta de la inserción
 			new MESSAGE( $respuesta, '../Controllers/ACCION_CONTROLLER.php' );//Crea la vista con la respuesta y la ruta para volver
 		}
-		break;
+		break;//Finaliza el bloque
 	case 'DELETE'://caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
-			//Crea una nueva vista del formulario borrar
+			//Variable que almacena un ojecto USU_GRUPO(modelo)
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			//Variable que almacena un booleano de si es administrador o no el usuario
 			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
 			
 			if($ADMIN == true){//miramos si el usuario es administrador
+            //Variable que almacena un objecto ACCION(modelo)
             $ACCION = new ACCION( $_REQUEST[ 'IdAccion' ], '', '');//se crea un objeto del modelo ACCION
             //Variable que almacena el relleno de los datos utilizando el IdAccion
 			$valores = $ACCION->RellenaDatos( $_REQUEST[ 'IdAccion' ]);
-			$dependencias = $ACCION->dependencias( $_REQUEST[ 'IdAccion' ]);//llamamos a esta función para saber las dependencias que tiene acción a a la hora de borrar
+			//Variable que almacena las dependencias que tiene accion a la hora de borrar
+			$dependencias = $ACCION->dependencias( $_REQUEST[ 'IdAccion' ]);
 			new ACCION_DELETE( $valores, $dependencias );//se crea una vista de borrado de acción
 			}else{//miramos si el usuario no es administrador
-            $cont=0;//instanciamos la variable cont a 0
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
-			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se repite mientras haya permisos
-			if($fila['IdFuncionalidad']=='4'){//miramos si este usuario tiene la funcionalidad de Gestión de Accion
-				if($fila['IdAccion']=='1'){//miramos si el usuario tiene la acción para borrar
-			    
-			     $cont=$cont+1;//incrementamos la variable cont a uno
+	            //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
+	            $cont=0;//instanciamos la variable cont a 0
+				//Variable que almacena un recordset con los permisos del usuario
+				$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
+				while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se repite mientras haya permisos
+				if($fila['IdFuncionalidad']=='4'){//miramos si este usuario tiene la funcionalidad de Gestión de Accion
+					if($fila['IdAccion']=='1'){//miramos si el usuario tiene la acción para borrar
+				    
+				     $cont=$cont+1;//incrementamos la variable cont a uno
+					}
+				   }
 				}
-			   }
-			}
 			if($cont==1){//si la variable cont es igual a uno
 			$ACCION = new ACCION( $_REQUEST[ 'IdAccion' ], '', '');//Variable que recoge un objecto model con solo el IdAccion
 			$valores = $ACCION->RellenaDatos( $_REQUEST[ 'IdAccion' ]);//Variable que almacena el relleno de los datos utilizando el IdAccion
@@ -121,18 +132,22 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$respuesta = $ACCION->DELETE();//Variable que almacena la respuesta de realizar el borrado
 			new MESSAGE( $respuesta, '../Controllers/ACCION_CONTROLLER.php' );//crea una vista mensaje con la respuesta y la dirección de vuelta
 		}
-		break;
+		break;//finaliza el bloque
 	case 'EDIT'://caso editar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-						
+			//Variable que almacena un objecto de modelo USU_GRUPO	
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			//Variable que almacena un recordset con todos los permisos del usuario
 			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
 			if($ADMIN == true){//miramos si el usuario es administrador
-			$ACCION = new ACCION( $_REQUEST[ 'IdAccion' ], '', '');//se crea un objeto del modelo ACCION
-			$valores = $ACCION->RellenaDatos( $_REQUEST[ 'IdAccion' ] ); //Variable que almacena el relleno de los datos utilizando el login
-			new ACCION_EDIT( $valores );//se crea una vista de edit de acción
+				//Variable que almacena un objecto ACCION(modelo)
+				$ACCION = new ACCION( $_REQUEST[ 'IdAccion' ], '', '');//se crea un objeto del modelo ACCION
+				$valores = $ACCION->RellenaDatos( $_REQUEST[ 'IdAccion' ] ); //Variable que almacena el relleno de los datos utilizando el login
+				new ACCION_EDIT( $valores );//se crea una vista de edit de acción
 			}else{//miramos si el usuario no es administrador
+            //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
             $cont=0;//instanciamos la variable cont a 0
+			//Variable que almacena un recordset con los permisos del usuario
 			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se repite mientras haya permisos
 			if($fila['IdFuncionalidad']=='4'){//miramos si este usuario tiene la funcionalidad de Gestión de Accion
@@ -156,17 +171,19 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$respuesta = $ACCION->EDIT();//se crea una vista de edit de acción
 			new MESSAGE( $respuesta, '../Controllers/ACCION_CONTROLLER.php' );//crea una vista mensaje con la respuesta y la dirección de vuelta
 		}
-		break;
+		break;//Finaliza el bloque
 	case 'SEARCH'://caso buscar
-		
+		//Variable que almacena un objecto del modelo USU_GRUPO
 		$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-			
+			//Variable que almacena un recordset con los permisos del usuario
 			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
 			if($ADMIN == true){//miramos si el usuario es administrador
 				new ACCION_SEARCH();//se crea una vista de SEARCH de acción
 			}else{//miramos si el usuario no es administrador
+            //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
             $cont=0;//intanciamos la variabel cont a 0.
+			//Variable que almacena un recordset con los permisos del usuario
 			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se repite mientras haya permisos
 			if($fila['IdFuncionalidad']=='4'){//miramos si este usuario tiene la funcionalidad de Gestión de Accion
@@ -183,10 +200,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 			}
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de ACCION_MODEL edita los datos
+			//Variable que almacena un recordset con los permisos del usuario
 			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
+			//Variable que almacena un booleano indicando si es admin o no
 			$ADMIN = $USUARIO->comprobarAdmin();//comprobamos si es administrador el usuario
+			
 			$ACCION = get_data_form();//Variable que almacena los datos recogidos de los atributos
+			
 			$datos = $ACCION->SEARCH();//Variable que almacena los datos de realizar el borrado
+			//Variable que almacena un array con los atributos a mostrar en la vista
 			$lista = array( 'NombreAccion','DescripAccion' );//campos que apareceran en la tabla
 			if($ADMIN == true){//si el usuario es administrador mostramos  una vista showall con todos los iconos y permisos
 				new ACCION_SHOWALL( $lista, $datos,$PERMISO,true );//se muestra una tabla SHOWALL con los datos que se buscaron
@@ -195,16 +217,21 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			
 		}
-		break;
+		break;//Finaliza el bloque
 	case 'SHOWCURRENT'://caso ver en detalle
+			//Variable que almacena un objecto USU_GRUPO
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			//Variable que almacena un recordset de los permisos de un usuario
 			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
 			if($ADMIN == true){//miramos si el usuario es administrador
+			//Variable que almacena un ojeto tipo ACCION(modelo)
 			$ACCION= new ACCION( $_REQUEST[ 'IdAccion' ], '', '');//se crea un objeto de tipo ACCION
 		    $valores = $ACCION->RellenaDatos( $_REQUEST[ 'IdAccion' ] ); //Variable que almacena el relleno de los datos utilizando el IdAccion
 		    new ACCION_SHOWCURRENT( $valores );//se crea una vista de showcurrent de acción
 			}else{//si el usuario no es administrador
+            //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
             $cont=0;//instaciamos cont a 0
+			//Variable que almacena un recordset de los permisos de un usuario
 			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se repite mientras haya permisos
 			if($fila['IdFuncionalidad']=='4'){//miramos si este usuario tiene la funcionalidad de Gestión de Accion
@@ -215,7 +242,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			   }
 			}
 			if($cont==1){//si la variable cont es igual a uno
-		    $ACCION= new ACCION( $_REQUEST[ 'IdAccion' ], '', '');//se crea un objeto de tipo ACCION
+		    $ACCION= new ACCION( $_REQUEST[ 'IdAccion' ], '', '');//Variable que almacena un objeto de tipo ACCION
 		    $valores = $ACCION->RellenaDatos( $_REQUEST[ 'IdAccion' ] );//Variable que almacena el relleno de los datos utilizando el IdAccion
 		    new ACCION_SHOWCURRENT( $valores );//se crea una vista de showcurrent de acción
 		}else{//si cont no es igual a uno muestra un mensaje de que el usuario no tiene dicho permiso
@@ -225,25 +252,30 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default://caso por defecto con vista SHOWALL
 
-		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-		$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+		$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano de si este usuario es administrador
 			if($ADMIN == true){//miramos si el usuario es administrador
 				if ( !$_POST ) {//Si no se han recibido datos 
+			//Variable que almacena un ojecto ACCION(modelo)
 			$ACCION = new ACCION( '', '', '');
 		//Si se reciben datos
 		} else {//Si recibe datos los recoge
+			//Variable que almacena un objecto ACCION(modelo) con todos los datos recogidos
 			$ACCION = get_data_form();
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $ACCION->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array('NombreAccion','DescripAccion');
+		//Variable que almacena un recordset de todos los permisos del usuario
 		$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new ACCION_SHOWALL( $lista, $datos,$PERMISO,true);
 			}else{//si el usuario no es administrador
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//Variable que almacena objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+            //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
             $cont=0;//instanciamos cont a 0
+			//Variable que almacena un recordset con todos los permisos del usuario
 			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se repite mientras haya permisos
 			if($fila['IdFuncionalidad']=='4'){//miramos si este usuario tiene la funcionalidad de Gestión de Accion
@@ -255,19 +287,23 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			if($cont==1){//si la variable cont es igual a uno
 		if ( !$_POST ) {//Si no se han recibido datos 
+			//Variable que almacena un ojecto ACCION (modelo)
 			$ACCION = new ACCION( '', '', '','');
 		//Si se reciben datos
 		} else {//Si recibe datos los recoge
+			//Variable que almacena un ojecto(modelo) con todos los datos recogidos
 			$ACCION = get_data_form();
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $ACCION->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'NombreAccion','DescripAccion');
+		//Variable que almacena un recordset con todos los permisos del usuario
 		$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new ACCION_SHOWALL( $lista, $datos,$PERMISO,false);
 		}else{//si la variable cont no es igual a uno mostramos una vista por defecto que no tiene nada
+		 //Crea una nueva vista default
 		 new USUARIO_DEFAULT();
 		}
 			}
