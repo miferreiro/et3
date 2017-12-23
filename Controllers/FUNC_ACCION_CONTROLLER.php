@@ -20,10 +20,8 @@ include '../Models/USU_GRUPO_MODEL.php';//incluye el contendio del modelo USU_GR
 include '../Models/ACCION_MODEL.php';//incluye el contendio del modelo ACCION
 include '../Models/FUNCIONALIDAD_MODEL.php';//incluye el contendio del modelo FUNCIONALIDAD
 include '../Views/FUNC_ACCION/FUNC_ACCION_SHOWALL_View.php';//incluye el contendio de la vista SHOWALL
-include '../Views/FUNC_ACCION/FUNC_ACCION_SEARCH_View.php';//incluye el contendio de la vista SEARCH
 include '../Views/FUNC_ACCION/FUNC_ACCION_ADD_View.php';//incluye el contendio de la vista SHOWALL
 include '../Views/FUNC_ACCION/FUNC_ACCION_DELETE_View.php';//incluye el contendio de la vista DELETE
-include '../Views/FUNC_ACCION/FUNC_ACCION_SHOWCURRENT_View.php';//incluye el contendio de la vista SHOWCURRENT
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php';//incluye el contendio de la vista message
 
