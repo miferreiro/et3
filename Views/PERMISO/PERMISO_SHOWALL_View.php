@@ -24,17 +24,17 @@ class PERMISO_SHOWALL {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 
 //pasamos a todas las variables el valor false porque no tienen dicho permiso	
-$SEARCH=false;	
-$GESTUSU=false;
-$GESTGRUP=false;
-$GESTFUNC=false;
-$GESTACC=false;
-$GESTPERM=false;		
-$GESTQAS=false;		
-$GESTENTR=false;		
-$GESTHIST=false;
-$GESTTRAB=false;		
-$GESTEVAL=false;		
+$SEARCH=false;	//pasamos a la variable el valor false porque no tiene dicho permiso
+$GESTUSU=false;//pasamos a la variable el valor false porque no tiene dicho permiso
+$GESTGRUP=false;//pasamos a la variable el valor false porque no tiene dicho permiso
+$GESTFUNC=false;//pasamos a la variable el valor false porque no tiene dicho permiso
+$GESTACC=false;//pasamos a la variable el valor false porque no tiene dicho permiso
+$GESTPERM=false;//pasamos a la variable el valor false porque no tiene dicho permiso		
+$GESTQAS=false;	//pasamos a la variable el valor false porque no tiene dicho permiso	
+$GESTENTR=false;//pasamos a la variable el valor false porque no tiene dicho permiso		
+$GESTHIST=false;//pasamos a la variable el valor false porque no tiene dicho permiso
+$GESTTRAB=false;//pasamos a la variable el valor false porque no tiene dicho permiso		
+$GESTEVAL=false;//pasamos a la variable el valor false porque no tiene dicho permiso		
 		
 	if($admin==true){//si es administrador, tiene todos los permisos, por eso le pasamos el valor true a todas las variables
 

@@ -29,22 +29,22 @@ class USUARIO_SHOWALL {
 
         
 //metemos a todas las variables(acciones) el valor false si no es administrador
-$ADD=false;	
-$EDIT=false;	
-$SEARCH=false;	
-$DELETE=false;	
-$SHOW=false;
-$ASIGN=false;
-$GESTUSU=false;
+$ADD=false;	//pasamos a la variable el valor false porque no tiene dicho permiso
+$EDIT=false;	//pasamos a la variable el valor false porque no tiene dicho permiso
+$SEARCH=false;//pasamos a la variable el valor false porque no tiene dicho permiso	
+$DELETE=false;//pasamos a la variable el valor false porque no tiene dicho permiso	
+$SHOW=false;//pasamos a la variable el valor false porque no tiene dicho permiso
+$ASIGN=false;//pasamos a la variable el valor false porque no tiene dicho permiso
+$GESTUSU=false;//pasamos a la variable el valor false porque no tiene dicho permiso
 		
 		
 	if($admin==true){//miramos si es administrador, si es así todas las acciones van a tener el valor true
-			    $ADD=true;	
-			    $DELETE=true;				   
-			    $EDIT=true;	
-			    $SEARCH=true;	
-			    $SHOW=true;	
-			    $ASIGN=true;	
+			    $ADD=true;//pasamos a la variable el valor true porque  tiene dicho permiso	
+			    $DELETE=true;//pasamos a la variable el valor true porque  tiene dicho permiso					   
+			    $EDIT=true;	//pasamos a la variable el valor true porque  tiene dicho permiso	
+			    $SEARCH=true;//pasamos a la variable el valor true porque  tiene dicho permiso		
+			    $SHOW=true;//pasamos a la variable el valor true porque  tiene dicho permiso		
+			    $ASIGN=true;//pasamos a la variable el valor true porque  tiene dicho permiso		
 	}	
 	while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
 
