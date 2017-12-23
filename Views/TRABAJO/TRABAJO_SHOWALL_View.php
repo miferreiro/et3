@@ -3,7 +3,7 @@
 	Nombre: TRABAJO_SHOWALL_View.php
 	Autor: 	Brais Rodríguez Martínez
 	Fecha de creación: 27/11/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar el trbajo que se desea realizar en la aplicación
 */
 //es la clase SHOWALL de TRABAJO que nos permite mostrar todos los trabajos
 class TRABAJO_SHOWALL {

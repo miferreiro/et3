@@ -3,7 +3,7 @@
 	Nombre: TRABAJO_DELETE_View.php
 	Autor: 	Brais Rodríguez Martínez
 	Fecha de creación: 27/11/2017 
-	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una acción y da la opción de borrarlos
+	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de un trabajo y da la opción de borrarlos
 */
 //es la clase DELETE de TRABAJO que nos permite mostrar la vista de borrado
 class TRABAJO_DELETE {

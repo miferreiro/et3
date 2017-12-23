@@ -3,7 +3,7 @@
 	Nombre: TRABAJO_SHOWCURRENT_View.php
 	Autor: 	Brais Rodríguez Martínez
 	Fecha de creación: 27/11/2017 
-	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una acción
+	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de un trabajo
 */
 
 //es la clase SHOWCURRENT de TRABAJO que nos permite mostrar una vista detallada de un trabajo

@@ -3,7 +3,7 @@
 	Nombre: ASIGNAC_QA_SEARCH_View.php
 	Autor: 	Jonatan Couto Riádigos
 	Fecha de creación: 29/11/2017 
-	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
+	Función: vista de el formulario de search que permite buscar una asig_qa
 */
 //Clase Asignac_qa_search que contiene la vista de un formulario para poder buscar las asignaciones de qa
 class ASIGNAC_QA_SEARCH {

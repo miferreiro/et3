@@ -2,9 +2,9 @@
 /*
 	Archivo php
 	Nombre: TRABAJO_CONTROLLER.php
-	Autor: 	Jonatan Couto
+	Autor: 	Brais Rdodríguez
 	Fecha de creación: 26/11/2017 
-	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas.
+	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas de la tabla TRABAJO
 */
 
 session_start();//solicito trabajar con la sesión

@@ -3,7 +3,7 @@
 	Nombre: TRABAJO_ADD_View.php
 	Autor: 	Brais Rodríguez Martínez
 	Fecha de creación: 27/11/2017 
-	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
+	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir un trabajo a la base de datos
 */
 //es la clase ADD de TRABAJO que nos permite mostrar el formulario de añadir
 class TRABAJO_ADD {

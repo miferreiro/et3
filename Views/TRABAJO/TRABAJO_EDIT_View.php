@@ -3,7 +3,7 @@
 	Nombre: TRABAJO_EDIT_View.php
 	Autor: 	Brais Rodríguez Martínez
 	Fecha de creación: 27/11/2017  
-	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una acción en la base de datos
+	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de un trabajo n en la base de datos
 */
 //es la clase EDIT de TRABAJO que nos permite mostrar el formulario de editar
 class TRABAJO_EDIT {

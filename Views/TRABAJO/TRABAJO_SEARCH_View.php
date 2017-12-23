@@ -3,7 +3,7 @@
 	Nombre: TRABAJO_SEARCH_View.php
 	Autor: 	Brais Rodríguez Martínez
 	Fecha de creación: 27/11/2017 
-	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a una acción de la base de datos
+	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar un trabjo de la base de datos
 */
 //es la clase SEARCH de TRABAJO que nos permite mostrar el formulario de buscar
 class TRABAJO_SEARCH {

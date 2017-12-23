@@ -1,7 +1,7 @@
 <?php
 
 /*
- Función: modelo de datos definida en una clase que permite interactuar con la base de datos
+ Función: modelo de datos definida en una clase que permite interactuar con la base de datos y el controlador de ASIG_QA
  Fecha de creación:23/11/2017 Autor:Jonatan Couto
 */
 

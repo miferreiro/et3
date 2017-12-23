@@ -3,7 +3,7 @@
 	Nombre: ASIGNAC_QA_HISTORIAS_View.php
 	Autor: 	Jonatan Couto Riádigos
 	Fecha de creación: 29/11/2017 
-	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
+	Función: vista de el formulario que asigna historias de usuario a qas
 */
 //Clase Asignac_qa_historias que contiene la vista para poder generar las historias por cada qa	
 class ASIGNAC_QA_HISTORIAS {

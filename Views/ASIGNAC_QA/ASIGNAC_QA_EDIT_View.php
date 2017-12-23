@@ -3,7 +3,7 @@
 	Nombre: ASIGNAC_QA_EDIT_View.php
 	Autor: 	Jonatan Couto Riádigos
 	Fecha de creación: 29/11/2017 
-	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de un usuario en la base de datos
+	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una asignación qa en la base de datos
 */
 //Clase Asignac_qa_edit que contiene la vista de un formulario para poder editar una tupla
 class ASIGNAC_QA_EDIT {
