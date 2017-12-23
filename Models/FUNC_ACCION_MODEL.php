@@ -14,8 +14,8 @@
         //constructor de la clase
             function __construct($IdFuncionalidad,$IdAccion){
                 //Asignamos valores a las variables.
-                $this->IdFuncionalidad=$IdFuncionalidad;//se le asigna un valor a IdFuncionalidad
-                $this->IdAccion=$IdAccion;//se le asigna un valor a IdAccion
+                $this->IdFuncionalidad=$IdFuncionalidad;//declaracion de la variable que almacena IdFuncionalidad
+                $this->IdAccion=$IdAccion;//declaracion de la variable que almacena IdAccion
                 
                   // incluimos la funcion de acceso a la bd
 		              include_once '../Functions/BdAdmin.php';
@@ -53,7 +53,7 @@
 	    //funcion SEARCH2: hace una búsqueda en la tabla con
         //los datos proporcionados. Si van vacios devuelve todos
 	   function SEARCH2() {
-		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		// construimos la sentencia de busqueda con los atributos de la entidad
 		$sql = "select  A.NombreAccion,
 						F.NombreFuncionalidad,
 						FA.IdFuncionalidad,
@@ -156,6 +156,7 @@
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 			return 'No existe en la base de datos'; // 
 		} else { // si existe se devuelve la tupla resultado
+            //Se aplica fetch_array a $resultado para almacenar un array en $result
 			$result = $resultado->fetch_array();
 			return $result;
 		}

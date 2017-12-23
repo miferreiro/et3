@@ -12,14 +12,15 @@
         var $NombreGrupo;//Declaracion de la variable NombreGrupo
         var $DescripGrupo;//Declaracion de la variable DescripGrupo
         var $dependencias;//Declaracion de la variable dependencias
+        var $dependencias2;//Declaracion de la variable dependencias
          var $mysqli;//declaración de la variable que se conectará a la base de datos 
         
         //Es el constructor de la clase GRUPO
         function __construct($IdGrupo,$NombreGrupo,$DescripGrupo){
             //Asignamos valores a los atributos de la clase
-            $this->IdGrupo=$IdGrupo;//le asignamos un valor a Idgrupo
-            $this->NombreGrupo=$NombreGrupo;//le asignamos un valor a NombreGrupo
-            $this->DescripGrupo=$DescripGrupo;//le asignamos un valor a DescripGrupo
+            $this->IdGrupo=$IdGrupo;//declaracion de la variable que almacena Idgrupo
+            $this->NombreGrupo=$NombreGrupo;//declaracion de la variable que almacena NombreGrupo
+            $this->DescripGrupo=$DescripGrupo;//declaracion de la variable que almacena DescripGrupo
             
             // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -126,7 +127,7 @@
 			// se devuelve el mensaje de borrado correcto
 			return "Borrado correctamente";
 		} // si no existe el login a borrar se devuelve el mensaje de que no existe
-		else //si el numeo de filas no es uno
+		else //si el numero de filas no es uno
 			return "No existe";
 		}
 	} // fin metodo DELETE
@@ -141,6 +142,7 @@
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else { // si existe se devuelve la tupla resultado
+            //Se aplica fetch_array a $resultado para crear un array y se guarda en $resultado
 			$resultado = $resultado->fetch_array();
 			return $resultado;
 		}
@@ -156,6 +158,7 @@
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else { // si existe se devuelve la tupla resultado
+            //Se aplica fetch_array a $resultado para crear un array y se guarda en $result
 			$result = $resultado->fetch_array();
 			return $result;
 		}
@@ -178,7 +181,7 @@
         //esta función mira si esta tabla tiene dependencias a la hora de borrar
         function dependencias2() { // se construye la sentencia de busqueda de la tupla
         
-        $dependencias = null;//inicializamos la variable a null
+        $dependencias2 = null;//inicializamos la variable a null
         
         $sql = "SELECT login, NombreGrupo FROM USU_GRUPO UG, GRUPO G WHERE UG.IdGrupo= '$this->IdGrupo' AND UG.IdGrupo = G.IdGrupo";//se construye la sentencia sql
         $resultado = $this->mysqli->query( $sql );//se ejecuta la query
@@ -187,7 +190,7 @@
         }
         
         return $dependencias;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias2()
 
 		
         // funcion RellenaShowCurrent()
@@ -246,6 +249,7 @@ function recuperarGrupo($id){
             WHERE IdGrupo = '$id'";//se construye la sentencia sql
     //Variable que almacena el resultado de la query
     $resultado = $this->mysqli->query( $sql );
+    //Si no se encuentra ningún resultado, se retorna null
     if ( $resultado->num_rows == 0 ) { return null; }
     //Caragamos las tuplas resultado de la consulta en un array
     while($datos = mysqli_fetch_row ($resultado)){

@@ -18,11 +18,11 @@
         //constructor de la clase
         function __construct($login,$IdTrabajo,$Alias,$Horas,$Ruta){
             //Asignamos valores a los atributos de la clase
-            $this->login=$login;//le asignamos  a login un valor
-            $this->IdTrabajo=$IdTrabajo;//le asignamos a IdTrabajo un valor
-            $this->Alias=$Alias;//se le asigna un valor al alias
-            $this->Horas=$Horas;//se le asigna un valor a horas
-            $this->Ruta=$Ruta;//se le asigna un valor a la ruta
+            $this->login=$login;//declaracion variable que almacena login
+            $this->IdTrabajo=$IdTrabajo;//declaracion variable que almacena IdTrabajo
+            $this->Alias=$Alias;//declaracion variable que almacena alias
+            $this->Horas=$Horas;//declaracion variable que almacena horas
+            $this->Ruta=$Ruta;//declaracion variable que almacena ruta
             
             // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -314,6 +314,7 @@
 			return 'No existe en la base de datos'; 
         // si existe se devuelve la tupla resultado 
 		} else { 
+            //Se guarda un array en $result con fetch_array
 			$result = $resultado->fetch_array();
 			return $result;
 		}
@@ -333,7 +334,7 @@
         }
         
         return $dependencias;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias()
          //Busca las dependencias en asignac_qa en las que el usuario sea evaluado
         function dependencias2() { // se construye la sentencia de busqueda de la tupla
         //Variable que almacena las dependencias
@@ -347,7 +348,7 @@
         }
         
         return $dependencias2;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias2()
         
         
         // funcion EDIT()

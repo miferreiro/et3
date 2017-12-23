@@ -17,9 +17,9 @@ class NOTA_TRABAJO_MODEL{
     //Constructor de la clase
 	function __construct($IdTrabajo,$login,$NotaTrabajo) {
         //asignación de valores de parámetro a los atributos de la clase
-        $this->IdTrabajo = $IdTrabajo;//le asignamos un valor a IdTrabajo
-		$this->login = $login;//le asignamos un valor a login
-        $this->NotaTrabajo = $NotaTrabajo;//le asignamos un valor a NotaTrabajo
+        $this->IdTrabajo = $IdTrabajo;//declaracion de la variable que almacena IdTrabajo
+		$this->login = $login;//declaracion de la variable que almacena login
+        $this->NotaTrabajo = $NotaTrabajo;//declaracion de la variable que almacena NotaTrabajo
 		
         
 		// incluimos la funcion de acceso a la bd

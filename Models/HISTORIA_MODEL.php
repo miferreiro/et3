@@ -16,9 +16,9 @@
       //Es el constructo de la clase HISTORIA_MODEL      
         function __construct($IdTrabajo,$IdHistoria,$TextoHistoria){
             //Asignamos valores a los atributos de la clase
-            $this->IdTrabajo=$IdTrabajo;//le asignamos un valor a Idtrabajo
-            $this->IdHistoria=$IdHistoria;//le asignamos un valor a IdHistoria
-            $this->TextoHistoria=$TextoHistoria;//le asignamos un valor a TextoHistoria
+            $this->IdTrabajo=$IdTrabajo;//declaracion de la variable que almacena Idtrabajo
+            $this->IdHistoria=$IdHistoria;//declaracion de la variable que almacena IdHistoria
+            $this->TextoHistoria=$TextoHistoria;//declaracion de la variable que almacena TextoHistoria
             
             // incluimos la funcion de acceso a la bd
 		      include_once '../Functions/BdAdmin.php';
@@ -127,6 +127,7 @@
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else { // si existe se devuelve la tupla resultado
+            //Se aplica fetch_array sobre $resultado para crear un array y se guarda en $resultado
 			$resultado = $resultado->fetch_array();
 			return $resultado;
 		}
@@ -183,7 +184,7 @@
 					   where IdTrabajo = '$Id'";//se construye la sentencia sql
 		$resultado = $this->mysqli->query( $sql );//se ejecuta la query
 		if ( $resultado->num_rows == 0 ) { return null; }//miramos si el numero de tuplas es 0
-		//Caragamos las tuplas resultado de la consulta en un array
+		//Caragamos las tuplas resultado de la consulta en un array y lo recorremos
 		while($datos = mysqli_fetch_row ($resultado)){
 			//Variable que almacena el array de las tuplas resultado de la query
 			$miarray[] = $datos;

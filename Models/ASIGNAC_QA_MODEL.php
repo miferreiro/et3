@@ -20,10 +20,10 @@ class ASIGNAC_QA_MODEL{
         //Constructor de la clase
 	function __construct($IdTrabajo,$LoginEvaluador,$LoginEvaluado,$AliasEvaluado) {
 		//asignación de valores de parámetro a los atributos de la clase
-		$this->IdTrabajo = $IdTrabajo;//se le asigna un valor a IdTrabajo
-		$this->LoginEvaluador = $LoginEvaluador;//se le asigan un valor a LoginEvaluador
-        $this->LoginEvaluado = $LoginEvaluado;//se le asigna un valor a LoginEvaluado 
-        $this->AliasEvaluado = $AliasEvaluado;//se le asigna un valor a AliasEvaluado
+		$this->IdTrabajo = $IdTrabajo;//declaracion variable que almacena el IdTrabajo
+		$this->LoginEvaluador = $LoginEvaluador;//declaracion variable que almacena el LoginEvaluador
+        $this->LoginEvaluado = $LoginEvaluado;//declaracion variable que almacena el LoginEvaluado 
+        $this->AliasEvaluado = $AliasEvaluado;//declaracion variable que almacena el AliasEvaluado
 		
 		// incluimos la funcion de acceso a la bd
 		include_once '../Functions/BdAdmin.php';
@@ -175,7 +175,7 @@ class ASIGNAC_QA_MODEL{
 		}
 
 		return $dependencias;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias()
     
     //Esta función mira si tiene dependencias a la hora de borrar.
     function dependencias2() { 
@@ -190,7 +190,7 @@ class ASIGNAC_QA_MODEL{
 		}
 
 		return $dependencias2;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias2()
     
     
         //funcion SEARCH: hace una búsqueda en la tabla con

@@ -14,8 +14,8 @@
         
         //constuctor de la clase
         public function __construct($login, $IdGrupo){
-            $this->login = $login;//se le pasa un valor a login
-            $this->IdGrupo = $IdGrupo;//se le pasa un valor a IdGrupo
+            $this->login = $login;//declaracion de la variable que almacena login
+            $this->IdGrupo = $IdGrupo;//declaracion de la variable que almacena IdGrupo
            
             
             $this->mysqli=ConectarBD();//nos conectamos a la base de datos
@@ -117,6 +117,7 @@ function RellenaDatos($login, $IdGrupo)
 		return 'No existe en la base de datos';
 	}
     else{ // si existe se devuelve la tupla resultado
+        //Se aplica fetch_array a $resultado para crear un array y se almacena en $result
 		$result = $resultado->fetch_array();
 		return $result;
 	}

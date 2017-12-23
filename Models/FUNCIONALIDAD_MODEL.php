@@ -17,9 +17,9 @@ class FUNCIONALIDAD {
     //es el constructor de la clase FUNCIONALIDAD
 	function __construct( $IdFuncionalidad, $NombreFuncionalidad, $DescripFuncionalidad ) { 
 		//Asignamos valores a los atibutos de la clase.
-		$this->IdFuncionalidad = $IdFuncionalidad;//le asignamos un valor a IdFuncionalidad
-		$this->NombreFuncionalidad = $NombreFuncionalidad;//le asignamos un valor a NombreFuncionalidad
-		$this->DescripFuncionalidad = $DescripFuncionalidad;//le asignamos un valor a DescripFuncionalidad
+		$this->IdFuncionalidad = $IdFuncionalidad;//declaracion de la variable que almacena IdFuncionalidad
+		$this->NombreFuncionalidad = $NombreFuncionalidad;//declaracion de la variable que almacena NombreFuncionalidad
+		$this->DescripFuncionalidad = $DescripFuncionalidad;//declaracion de la variable que almacena DescripFuncionalidad
 
 		// incluimos la funcion de acceso a la bd
 		include_once '../Functions/BdAdmin.php';
@@ -75,7 +75,7 @@ class FUNCIONALIDAD {
 								'$this->NombreFuncionalidad',
 								'$this->DescripFuncionalidad'
 								)";//se construye la sentencia sql de inserción
-				} else {
+				} else {//En caso de que no sea 0
 					return 'Ya existe esa funcionalidad  en la base de datos'; // ya existe
 				}
 			}
@@ -123,6 +123,7 @@ class FUNCIONALIDAD {
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else { // si existe se devuelve la tupla resultado
+            //Se ejecuta fetch_array sobre $resultado para crear un array y se guarda en $result
 			$result = $resultado->fetch_array();
 			return $result;
 		}
@@ -140,7 +141,7 @@ class FUNCIONALIDAD {
 		}
 
 		return $dependencias;
-	} // fin del metodo RellenaDatos()
+	} // fin del metodo dependencias()
 
 	// funcion EDIT()
 	// Se comprueba que la tupla a modificar exista en base al valor de su clave primaria

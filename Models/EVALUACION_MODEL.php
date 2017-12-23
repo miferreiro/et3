@@ -23,15 +23,15 @@ class EVALUACION{
 	//Constructor de la clase
 	function __construct($IdTrabajo,$LoginEvaluador,$AliasEvaluado,$IdHistoria,$CorrectoA,$ComenIncorrectoA,$CorrectoP,$ComentIncorrectoP,$OK) {
 		//asignación de valores de parámetro a los atributos de la clase
-		$this->IdTrabajo = $IdTrabajo;//se le asigna un valor a IdTrabajo
-		$this->LoginEvaluador = $LoginEvaluador;//se le asigna un valor a LoginEvaluador
-        $this->AliasEvaluado=$AliasEvaluado;//se le asigna un valor a AliasEvaluado
-		$this->IdHistoria = $IdHistoria;//se le asigna un valor a IdHistoria
-		$this->CorrectoA = $CorrectoA;//se le asigna un valor a Correcto
-		$this->ComenIncorrectoA = $ComenIncorrectoA;//se le asigna un valor a ComenIncorrectoA
-        $this->CorrectoP = $CorrectoP;//se le asigna un valor a CorrectoP
-        $this->ComentIncorrectoP=$ComentIncorrectoP;//se le asigna un valor a ComentInCorrectoP
-		$this->OK = $OK;//se le asigna un valor a OK
+		$this->IdTrabajo = $IdTrabajo;//declaracion de la variable que almacena IdTrabajo
+		$this->LoginEvaluador = $LoginEvaluador;//declaracion de la variable que almacena LoginEvaluador
+        $this->AliasEvaluado=$AliasEvaluado;//declaracion de la variable que almacena AliasEvaluado
+		$this->IdHistoria = $IdHistoria;//declaracion de la variable que almacena IdHistoria
+		$this->CorrectoA = $CorrectoA;//declaracion de la variable que almacena Correcto
+		$this->ComenIncorrectoA = $ComenIncorrectoA;//declaracion de la variable que almacena ComenIncorrectoA
+        $this->CorrectoP = $CorrectoP;//declaracion de la variable que almacena CorrectoP
+        $this->ComentIncorrectoP=$ComentIncorrectoP;//declaracion de la variable que almacena ComentInCorrectoP
+		$this->OK = $OK;//declaracion de la variable que almacena OK
 		
         
 		// incluimos la funcion de acceso a la bd
@@ -55,7 +55,7 @@ class EVALUACION{
     $resultado = $this->mysqli->query( $sql );
     	//si el resultado de la query tiene 0 filas devuelve null
 		if ( $resultado->num_rows == 0 ) { return null; }
-		//Caragamos las tuplas resultado de la consulta en un array
+		//Cargamos las tuplas resultado de la consulta en un array
 		while($datos = mysqli_fetch_row ($resultado)){
 			//Variable que almacena el array de las tuplas resultado de la query
 			$miarray[] = $datos;
@@ -79,7 +79,7 @@ class EVALUACION{
     $resultado = $this->mysqli->query( $sql );
     //Si la consulta devuelve 0 filas retorna null
 		if ( $resultado->num_rows == 0 ) { return null; }
-		//Caragamos las tuplas resultado de la consulta en un array
+		//Cargamos las tuplas resultado de la consulta en un array
 		while($datos = mysqli_fetch_row ($resultado)){
 			//Variable que almacena el array de las tuplas resultado de la query
 			$miarray[] = $datos;
@@ -113,7 +113,7 @@ function mostrarEntregas($nombre){
      //Si la query da error devuelve el mensaje de error
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
-		//Si no falla devñuelve el resultado
+		//Si no falla devuelve el resultado
 		} else { 
 			return $resultado;
 		}
@@ -127,14 +127,14 @@ function mostrarEntregas($nombre){
     //Si la query da error devuelve el mensaje de error
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
-		//Si no falla devñuelve el resultado
+		//Si no falla devuelve el resultado
 	} else {
 			return $resultado;
 		}
         
     }
     
-    //Funcíón que devuelve todas las entregas echas de un usuario para ver las correciones
+    //Funcíón que devuelve todas las entregas hechas de un usuario para ver las correciones
     function mostrarCorrecion($IdTrabajo,$nombre){
     	//Variable que almacena la sentencia sql
         $sql = "SELECT DISTINCT LoginEvaluador,ET.login,E.IdTrabajo FROM EVALUACION E,ENTREGA ET WHERE 
@@ -148,7 +148,7 @@ function mostrarEntregas($nombre){
 			return $resultado;
 		}
     }
-   //Función que devuelve la correción echa de la entrega de un usuario
+   //Función que devuelve la correción hecha de la entrega de un usuario
   function mostrarCorrecion1($IdTrabajo,$nombre,$entrega){
   		//Variable que almacena una setencia sql 
         $sql ="SELECT DISTINCT H.IdTrabajo,NombreTrabajo,LoginEvaluador,TextoHistoria,H.IdHistoria,CorrectoP,ComentIncorrectoP FROM EVALUACION E,ENTREGA ET,HISTORIA H,TRABAJO T WHERE 
@@ -158,7 +158,7 @@ function mostrarEntregas($nombre){
     //Si la query da error devuelve el mensaje de error
     if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
-		//Si no falla devñuelve el resultado
+		//Si no falla devuelve el resultado
 	} else { // si existe se devuelve la tupla resultado
  
 			return $resultado;
@@ -482,7 +482,8 @@ function mostrarEntregas($nombre){
 		} else 
 			return 'No existe en la base de datos';
 	} // fin del metodo EDIT
-
+    
+    //Funcion que permite editar la evaluación por parte de un administrador
 	function EDITAR_EVALUACION_ADMIN() {
 		// Variable que almacena la sentencia sql
 		$sql = "SELECT * FROM EVALUACION WHERE (IdTrabajo = '$this->IdTrabajo' && LoginEvaluador = '$this->LoginEvaluador' && AliasEvaluado = '$this->AliasEvaluado' && IdHistoria = '$this->IdHistoria')";
