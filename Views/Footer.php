@@ -32,7 +32,8 @@
 	
 <div id="capaFondo1"></div>
 	<footer>
-		<?php echo date("d-M-Y", mktime()); ?></br><?php if (IsAuthenticated()){   echo $strings['Usuario'] . ' : ' . 'LICORCA' . '<br>'; }?><!-- miramos si el usuario esta autenticado -->
+		<p>LICORCA</p>
+		<p>23/12/2017</p>
 		<a href="../Views/INFO_GRUPO_ET.php"><?php echo $strings['INFORMACIÓN GRUPO'];?></a>
 	</footer>
   </body>
