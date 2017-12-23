@@ -179,10 +179,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		} else {//Si recibe datos los recoge y mediante la funcionalidad de FUNCIONALIDAD_MODEL busca los datos
 			$PERMISO = $USUARIO->comprobarPermisos();//comprobamos los permisos que tiene el usuario
+		    $ADMIN = $USUARIO->comprobarAdmin();//comprobamos si es administrador el usuario
 			$FUNCIONALIDAD = get_data_form();//Variable que almacena los datos recogidos
 			$datos = $FUNCIONALIDAD->SEARCH();//mostramos la vista SEARCH de FUNCIONALIDAD
 			$lista = array( 'NombreFuncionalidad', 'DescripFuncionalidad' );//metemos en un array los campos que queremos mostrar
-			new FUNCIONALIDAD_SHOWALL( $lista, $datos,$PERMISO,true);//mostramos la vista SHOWALL de FUNCIONALIDAD
+			if($ADMIN == true){//si el usuario es administrador mostramos  una vista showall con todos los iconos y permisos
+				new FUNCIONALIDAD_SHOWALL( $lista, $datos,$PERMISO,true);//mostramos la vista SHOWALL de FUNCIONALIDAD
+			}else{//en caso de que no sea administrador no se le mostrará los demás iconos y permisos.
+				new FUNCIONALIDAD_SHOWALL( $lista, $datos,$PERMISO,false);//mostramos la vista SHOWALL de FUNCIONALIDAD
+			}
+			
 		}
 		break;
 

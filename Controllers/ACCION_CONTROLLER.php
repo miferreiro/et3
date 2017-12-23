@@ -184,10 +184,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de ACCION_MODEL edita los datos
 			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
+			$ADMIN = $USUARIO->comprobarAdmin();//comprobamos si es administrador el usuario
 			$ACCION = get_data_form();//Variable que almacena los datos recogidos de los atributos
 			$datos = $ACCION->SEARCH();//Variable que almacena los datos de realizar el borrado
 			$lista = array( 'NombreAccion','DescripAccion' );//campos que apareceran en la tabla
-			new ACCION_SHOWALL( $lista, $datos,$PERMISO,true );//se muestra una tabla SHOWALL con los datos que se buscaron
+			if($ADMIN == true){//si el usuario es administrador mostramos  una vista showall con todos los iconos y permisos
+				new ACCION_SHOWALL( $lista, $datos,$PERMISO,true );//se muestra una tabla SHOWALL con los datos que se buscaron
+			}else{//en caso de que no sea administrador no se le mostrará los demás iconos y permisos.
+				new ACCION_SHOWALL( $lista, $datos,$PERMISO,false );//se muestra una tabla SHOWALL con los datos que se buscaron
+			}
+			
 		}
 		break;
 	case 'SHOWCURRENT'://caso ver en detalle

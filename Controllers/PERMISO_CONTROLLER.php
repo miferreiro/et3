@@ -299,7 +299,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//si no estamos con el administrador la variable a enviar es 'false' que indica que no somos admin
 			}else{
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-			new PERMISO_SHOWALL( $lista, $datos.$ACL,false );	
+			new PERMISO_SHOWALL( $lista, $datos,$ACL,false );	
 			}
 		}
 		break;//fin del case buscar
