@@ -1,8 +1,8 @@
 <script language="JavaScript" type="text/javascript" >
 	/*  Archivo javaScript
 		Nombre: validaciones.js
-		Autor: 	fta875
-		Fecha de creación: 26/9/2017 
+		Autor: 	Miguel Ferreiro
+		Fecha de creación: 26/11/2017 
 		Función: el objetivo principal de este fichero es validar los distintos campos de los formularios, permitiendo así que los datos cumplan los
 		requisitos y formatos necesarios para ser válidos. Además se incluyen las funciones asociadas a mostrar el mensaje de error cuando los datos
 		son incorrectos

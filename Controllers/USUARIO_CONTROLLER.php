@@ -60,13 +60,14 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano de si este usuario es administrador
 			if($ADMIN == true){//si el usuario es administrador mostramos la vista ADD
 				new USUARIO_ADD();
 			}else{//si no es administrador
-            $cont=0;//iniciamos la variable a 0
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
+           //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
+           $cont=0;//iniciamos la variable a 0
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene el usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
 			if($fila['IdFuncionalidad']=='1'){//miramos si este usuario tiene la funcionalidad de Gestión de usuarios
 				if($fila['IdAccion']=='0'){//miramos si este usuario tiene la acción de añadir
@@ -82,7 +83,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			}
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de USUARIO_MODEL inserta los datos
-			$USUARIO = get_data_form();//Variable que almacena los datos recogidos
+			$USUARIO = get_data_form();//Variable que almacena un objecto USUARIO(modelo) con los datos recogidos
 			$respuesta = $USUARIO->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
 			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
@@ -91,8 +92,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//llamando a esta función podremos saber si este usuario es administrador
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//Variable que almacenas un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano para saber si este usuario es administrador
 			if($ADMIN == true){//miramos si este usuario es administrador
 			//Variable que recoge un objecto model con solo el login
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
@@ -100,19 +101,20 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			
             
-            $dependencias = $USUARIO->dependencias($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias = $USUARIO->dependencias($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
                 
             //Crea una vista delete para ver la tupla
 			new USUARIO_DELETE( $valores,$dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7 );
 			}else{//si el usuario no es administrador
+			//Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
 			$cont=0;//inicializamos la variable cont a 0.
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene dicho usuario
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se repite mientras haya permisos
 			if($fila['IdFuncionalidad']=='1'){//miramos si este usuario tiene la funcionalidad de Gestión de Usuarios
 				if($fila['IdAccion']=='1'){//miramos si el usuario tiene la acción para borrar
@@ -128,13 +130,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 			
               
-            $dependencias = $USUARIO->dependencias($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-			$dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);//pasamos las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias = $USUARIO->dependencias($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+			$dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
                 
             //Crea una vista delete para ver la tupla
 			new USUARIO_DELETE($valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6,$dependencias7 );
@@ -144,7 +146,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			//Si recibe valores ejecuta el borrado
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de USUARIO_MODEL borra los datos
-			//Variable que almacena los datos recogidos de los atributos
+			//Variable que almacena un objecto USUARIO(modelo) con los datos recogidos de los atributos
 			$USUARIO = get_data_form();
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $USUARIO->DELETE();
@@ -155,19 +157,20 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//comprobamos si dicho usuario es administrador
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano de si el usuario es administrador
 			if($ADMIN == true){//si es el usuario es administrador
-						//Variable que almacena un objeto model con el login
+						//Variable que almacena un objeto USUARIO model con el login
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
-			//Variable que almacena los datos de los atibutos rellenados a traves de login
+			//Variable que almacena un objecto USUARIO(modelo) con los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 
 			//Muestra la vista del formulario editar
 			new USUARIO_EDIT( $valores);
 			}else{//si el usuaio no es administrador inicializamos la variable cont a 0.
+			//Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
 			$cont=0;
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para saber los permisos que tiene el usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene el usuario
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle va a seguir mientras haya permisos
 
 			if($fila['IdFuncionalidad']=='1'){//mira si este usuario tiene la funcionalidad de gestion de usuarios
@@ -179,7 +182,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			//Si se han encontado que el usuario tiene esos permisos
 			if($cont>=1){
-			//Variable que almacena un objeto model con el login
+			//Variable que almacena un objeto model USUARIO con el login
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 			//Variable que almacena los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
@@ -191,7 +194,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			//Si se reciben valores
 		} else {
-			//Variable que almacena los datos recogidos
+			//Variable que almacena un objecto Usuario model de los datos recogidos
 			$USUARIO = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $USUARIO->EDIT();
@@ -202,13 +205,14 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//instanciamos un objeto del modelo USU_GRUPO pasandole el login del usuario conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//comprobamos si el usuario conectado es administrador
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el login del usuario conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano para saber si el usuario conectado es administrador
 			if($ADMIN == true){//miramos si es administrador, si lo es, nos muestra la vista SEARCH
 				new USUARIO_SEARCH();
 			}else{//si no es administrador el usuario
+			//Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
 			$cont=0;//instanciamos la variable cont a 0.
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para saber que permisos tiene el usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos tiene el usuario
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
 
 			if($fila['IdFuncionalidad']=='1'){//mira si el usuario tiene la funcionalidad de gestión de usuarios
@@ -227,8 +231,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Si se reciben datos	
 		} else {
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamosa esta función para saber los permisos que tiene dicho usuario
-			$ADMIN = $USUARIO->comprobarAdmin();//comprobamos si es administrador el usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene dicho usuario
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano para saber si es administrador el usuario
 			//Variable que almacena los datos recogidos de los atributos
 			$USUARIO = get_data_form();
 			//Variable que almacena el resultado de la busqueda
@@ -246,18 +250,19 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//comprobamos si es administrador el usuario
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ],'');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano de si es administrador el usuario
 			if($ADMIN == true){//miramos si el usuario es administrador
-					//Variable que almacena un objeto model con el login
+					//Variable que almacena un objeto USUARIO model con el login
 		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
 		           $valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		           //Creación de la vista showcurrent
 		           new USUARIO_SHOWCURRENT( $valores );
 			}else{//en el caso de que no sea administrador
+			//Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
 			$cont=0;//instanciamos la variabel cont a 0.
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamosa esta función para saber los permisos que tiene dicho usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene dicho usuario
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
 	
 			if($fila['IdFuncionalidad']=='1'){//miramos si este usuario tiene la funcionalidad de gestión de usuarios
@@ -281,25 +286,26 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-		$USER = new USU_GRUPO(  $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-		$ADMIN = $USER->comprobarAdmin();//comprobamos si es administrador el usuario
+		$USER = new USU_GRUPO(  $_SESSION[ 'login' ],'');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+		$ADMIN = $USER->comprobarAdmin();//Variable que almacena un booleano de si es administrador el usuario
 			if($ADMIN == true){//miramos si el usuario es administrador
 				if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');//intanciamos un objeto del modelo USUARIO
+			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');//Variable que almacena la un objeto del modelo USUARIO
 		//Si se reciben datos
 		} else {
-			$USUARIO = get_data_form();//pasamos a la variable los valores de un objeto USUARIO_MODEL
+			$USUARIO = get_data_form();//Variable que almacena los valores de un objeto USUARIO_MODEL
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $USUARIO->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'login','DNI','Nombre','Apellidos','Correo');
-		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+		//Variable que almacena los permisos del usuario
 		$PERMISO = $USER->comprobarPermisos();
 		new USUARIO_SHOWALL( $lista, $datos, $PERMISO,true);//nos muestra una vista showall con todos los permisos
 			}else{//en el caso de que el usuario no sea administrador
+		//Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
 		$cont=0;//instanciamos el contador a 0.
-		$PERMISO = $USER->comprobarPermisos();//llamamos a esta función para comprobar los permisos de este usuario
+		$PERMISO = $USER->comprobarPermisos();//Variable que almacena los permisos de este usuario
 		while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos
 
 			if($fila['IdFuncionalidad']=='1'){//miramos si este usuario tiene la funcionalidad de gestión de usuarios
@@ -311,15 +317,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			if($cont>=1){//miramos si cont es mayor o igual a uno
 		if ( !$_POST ) {//Si no se han recibido datos 
-			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');//intanciamos un objeto del modelo USUARIO
+			$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');//Variable que almacena la intancia de un objeto del modelo USUARIO
 		//Si se reciben datos
 		} else {
-			$USUARIO = get_data_form();//pasamos a la variable los valores de un objeto USUARIO_MODEL
+			$USUARIO = get_data_form();//Variable que almacena los valores de un objeto USUARIO_MODEL
 		}
-		//Variable que almacena los datos de la busqueda
+		//Variable que almacena un recordset con el resultado de los datos de la busqueda
 		$datos = $USUARIO->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'login','DNI','Nombre','Apellidos','Correo');
+		//Variable que almacena los permisos del usuario
 		$PERMISO = $USER->comprobarPermisos();
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new USUARIO_SHOWALL( $lista, $datos, $PERMISO,false);
