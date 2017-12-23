@@ -12,7 +12,7 @@ class ENTREGA_EDIT {
 	}
 	//funcion que mostrará el formulario EDIT con los campos correspondientes
 	function render($valores) { 
-        $this->valores=$valores;//pasamos el valor de cada uno de los campos
+        $this->valores=$valores;//Variable que almacena el valor de cada uno de los campos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
         include_once '../Functions/permisosAcc.php';//incluimos este fichero para saber que permisos tiene el usuario

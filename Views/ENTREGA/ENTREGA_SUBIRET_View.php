@@ -8,14 +8,14 @@
 class ENTREGA_SHOWET {
 	//Constructor de la clase ENTREGA_SHOWET
 	function __construct( $lista, $datos) {
-		$this->lista = $lista;
-		$this->datos = $datos;
-		$this->render($this->lista,$this->datos);
+		$this->lista = $lista;//Variable que almacena un array con los atributos a mostrar en la vista
+		$this->datos = $datos;//Variable que almacena un recordset con los valores de la ET
+		$this->render($this->lista,$this->datos);//Método que llama a la función render que contiene el código de la vista
 	}
 	//función que muestra la vista de subir una entrega
 	function render($lista,$datos){
-		$this->lista = $lista;//Tiene el nombre de atributos a mostrar en la tabla
-		$this->datos = $datos;//Tiene el nombre de los valores de los atributos a mostrar
+		$this->lista = $lista;//Variable que almacena los atributos a mostrar en la tabla
+		$this->datos = $datos;//Variable que almacena los valores de los atributos a mostrar
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Include del idioma a mostrar
 		include '../Views/Header.php';//Include de la vista de la cabecera
         include_once '../Functions/permisosAcc.php';//Include que tiene la funcion para comprobar los permisos

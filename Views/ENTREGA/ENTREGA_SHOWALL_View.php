@@ -11,16 +11,14 @@
 class ENTREGA_SHOWALL {
 	//es el constructor de ENTREGA_SHOWALL
 	function __construct( $lista, $datos) { 
-		$this->lista = $lista;//se pasa cada uno de los campos de la tabla ENTREGA
-		$this->datos = $datos;//se pasan los valores de cada uno de los campos
-		/*$this->PERMISO = $PERMISO;
-		$this->admin = $admin;*/
+		$this->lista = $lista;//Variable que almacena los atributos a mostrar de la tabla ENTREGA
+		$this->datos = $datos;//Variable que almacena los valores de cada uno de los campos
 		$this->render($this->lista,$this->datos/*,$this->PERMISO,$this->admin*/);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 	}
 	//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 	function render($lista,$datos){
-		$this->lista = $lista;//se pasa cada uno de los campos de la tabla ENTREGA
-		$this->datos = $datos;//se pasan los valores de cada uno de los campos
+		$this->lista = $lista;//Variable que almacena cada uno de los atributos a mostrar de la tabla ENTREGA
+		$this->datos = $datos;//Variable que almacena los valores de cada uno de los campos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
         include_once '../Functions/permisosAcc.php';//incluimos este fichero para saber que permisos tiene el usuario
 		include_once '../Functions/comprobarAdministrador.php';//incluimos este fichero para saber si un usuario es administrador
@@ -47,6 +45,7 @@ class ENTREGA_SHOWALL {
 				</caption>
 				<tr>
 <?php
+					//bucle que recorre todos los atributos de la tabla a mostrar
 					foreach ( $lista as $atributo ) {
 ?>
 					<th>
@@ -111,10 +110,12 @@ class ENTREGA_SHOWALL {
 				}
 ?>
 			</table>
+			<!-- Si tiene permisos el usuario al realizar una vuelta atras la realiza a la accion SUBIRET -->
 <?php if((permisosAcc($_SESSION['login'],8,5)==false) && (permisosAcc($_SESSION['login'],8,10)==true)){ ?>
 			<form action='../Controllers/ENTREGA_CONTROLLER.php?action=SUBIRET' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
-			</form>					
+			</form>
+			<!-- Si no tiene permisos la vuelta atras la realiza a la accion por defecto del usuario  -->
 <?php }else{ ?>
 			<form action='../Controllers/ENTREGA_CONTROLLER.php' method="post">
 				<button type="submit" ><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

@@ -16,9 +16,9 @@
         }
         // funcion que mostrará el formulario DELETE con los campos correspondientes
         function mostrar($valores, $dependencias, $dependencias2){
-            $this->valores = $valores;//pasa el valor de cada uno de los campos
-            $this->dependencias = $dependencias;//pasa depencias a la hora de borrar
-            $this->dependencias2 = $dependencias2;//pasa dependencias a la hora de borrar
+            $this->valores = $valores;//Variable que almacena el valor de cada uno de los campos
+            $this->dependencias = $dependencias;//Variable que almacena las depencias a la hora de borrar
+            $this->dependencias2 = $dependencias2;//Variable que almacena las dependencias a la hora de borrar
 		    include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		    include '../Views/Header.php';//incluimos la cabecera
                 
