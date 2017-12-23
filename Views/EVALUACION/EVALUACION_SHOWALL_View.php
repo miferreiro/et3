@@ -208,7 +208,7 @@ class EVALUACION_SHOWALL {
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el footer
 		}
 		}
 ?>

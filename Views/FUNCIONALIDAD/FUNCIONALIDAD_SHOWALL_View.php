@@ -28,30 +28,30 @@ class FUNCIONALIDAD_SHOWALL {
 	
         
 //pasamos a todas las variables el valor false porque no tienen dicho permiso        
-$ADD=false;	
-$EDIT=false;	
-$SEARCH=false;	
-$DELETE=false;	
-$SHOW=false;
-$ASIGN=false;
-$GESTUSU=false;
-$GESTGRUP=false;
-$GESTFUNC=false;
-$GESTACC=false;
-$GESTPERM=false;		
-$GESTQAS=false;		
-$GESTENTR=false;		
-$GESTHIST=false;
-$GESTTRAB=false;		
-$GESTEVAL=false;		
+$ADD=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso
+$EDIT=false;	//pasamos a la  variable  el valor false porque no tiene dicho permiso
+$SEARCH=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso	
+$DELETE=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso	
+$SHOW=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso
+$ASIGN=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso
+$GESTUSU=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso
+$GESTGRUP=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso
+$GESTFUNC=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso
+$GESTACC=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso
+$GESTPERM=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso		
+$GESTQAS=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso		
+$GESTENTR=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso		
+$GESTHIST=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso
+$GESTTRAB=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso		
+$GESTEVAL=false;//pasamos a la  variable  el valor false porque no tiene dicho permiso		
 		
 	if($admin==true){ //si es administrador, tiene todos los permisos, por eso le pasamos el valor true a todas las variables
-			    $ADD=true;	
-			    $DELETE=true;				   
-			    $EDIT=true;	
-			    $SEARCH=true;	
-			    $SHOW=true;	
-			    $ASIGN=true;	
+			    $ADD=true;	//pasamos el valor true a la variable
+			    $DELETE=true;//pasamos el valor true a la variable				   
+			    $EDIT=true;	//pasamos el valor true a la variable
+			    $SEARCH=true;//pasamos el valor true a la variable	
+			    $SHOW=true;	//pasamos el valor true a la variable
+			    $ASIGN=true;//pasamos el valor true a la variable	
 	}	
 	while ( $fila = mysqli_fetch_array( $PERMISO ) ) { //este bucle se va a repetir mientras haya permisos
 
