@@ -50,13 +50,14 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			//Crea una nueva vista del formulario añadir
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano para saber si un usuario es administrador
 			if($ADMIN == true){//si el usuario es administrador mostramos la vista ADD
 				new GRUPO_ADD();
 			}else{//si el usuario no es administrador
+             //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
             $cont=0;//inicializamos la variable cont a 0
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene el usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
 			if($fila['IdFuncionalidad']=='2'){//mira si este usuario tiene la funcionalidad de gestión de grupos
 				if($fila['IdAccion']=='0'){//mira si este usuario tiene la acción de añadir
@@ -72,8 +73,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 			}
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de GRUPO inserta los datos
-			$GRUPOS = get_data_form();//Variable que almacena los datos recogidos
-			//$GRUPOS->IdGrupo = $GRUPOS->NumRows() + 1;
+			$GRUPOS = get_data_form();//Variable que almacena un objecto GRUPO(modelo) con los datos recogidos
 			$respuesta = $GRUPOS->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
 			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
@@ -82,8 +82,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano de si el usuario es administrador
 			if($ADMIN == true){//si el usuario es administrador mostramos la vista DELETE
 			//Variable que recoge un objecto model con solo el idgrupo
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
@@ -91,16 +91,18 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $GRUPOS->RellenaShowCurrent( $_REQUEST[ 'IdGrupo' ] );//Variable que almacena el relleno de los datos utilizando el IdGrupo
 			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );	//Variable que almacena el relleno de los datos utilizando el IdGrupo
                 
-            //pasamos todas las dependencias de la tabla GRUPO a la hora de borrar    
+            //Variable que almacena todas las dependencias de la tabla GRUPO a la hora de borrar    
             $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);
+            //Variable que almacena todas las dependencias de la tabla GRUPO a la hora de borrar
             $dependencias2 = $GRUPOS->dependencias2($_REQUEST['IdGrupo']);
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'login', 'IdGrupo');
 			//Crea una vista delete para ver la tupla
 			new GRUPO_DELETE( $valores, $valores2, $lista, $dependencias, $dependencias2);
 			}else{//si el usuario no es administrador
+             //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
             $cont=0;//inicializamos la variable cont a 0
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene el usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
 			if($fila['IdFuncionalidad']=='2'){//mira si este usuario tiene la funcionalidad de gestión de grupos
 				if($fila['IdAccion']=='1'){//mira si este usuario tiene la acción de borrar
@@ -117,8 +119,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores2 = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );//Variable que almacena el relleno de los datos utilizando el IdGrupo
                 
                 
-            $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);//pasamos todas las dependencias de la tabla GRUPO a la hora de borrar  
-            $dependencias2 = $GRUPOS->dependencias2($_REQUEST['IdGrupo']);//pasamos todas las dependencias de la tabla GRUPO a la hora de borrar  
+            $dependencias = $GRUPOS->dependencias($_REQUEST['IdGrupo']);//Variable que almacena las dependencias de la tabla GRUPO a la hora de borrar  
+            $dependencias2 = $GRUPOS->dependencias2($_REQUEST['IdGrupo']);//Variable que almacena las dependencias de la tabla GRUPO a la hora de borrar  
 			
 			$lista = array( 'login', 'IdGrupo');//Variable que almacena array con el nombre de los atributos
 			
@@ -128,7 +130,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 			}
 		} else {//Si recibe valores ejecuta el borrado
-			//Variable que almacena los datos recogidos de los atributos
+			//Variable que almacena un objecto GRUPO(modelo) con los datos recogidos de los atributos
 			$GRUPOS = get_data_form();
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $GRUPOS->DELETE();
@@ -139,16 +141,17 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano de si un usuario es administrador
 			if($ADMIN == true){//si el usuario es administrador mostramos la vista EDIT
 			$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');//Variable que recoge un objecto model con solo el idgrupo
 			$valores = $GRUPOS->RellenaDatos( $_REQUEST[ 'IdGrupo' ] );//Variable que almacena el relleno de los datos utilizando el IdGrupo
 			
 			new GRUPO_EDIT( $valores);//Muestra la vista del formulario editar
 			}else{//Si el usuario no es administrador
+             //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
             $cont=0;//inicializamos la variable cont a 0
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene el usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
 			if($fila['IdFuncionalidad']=='2'){//mira si este usuario tiene la funcionalidad de gestión de grupos
 				if($fila['IdAccion']=='2'){//mira si este usuario tiene la acción de editar
@@ -169,7 +172,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 			}
 		} else {//Si se reciben valores
-			//Variable que almacena los datos recogidos
+			//Variable que almacena un objecto GRUPO(modelo) con los datos recogidos
 			$GRUPOS = get_data_form();
 			//Variable que almacena la respuesta de la edición de los datos
 			$respuesta = $GRUPOS->EDIT();
@@ -181,12 +184,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano de si este usuario es administrador
 			if($ADMIN == true){//si el usuario es administrador mostramos la vista SEARCH
             new GRUPO_SEARCH();
 			}else{//Si el usuario no es administrador
+             //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
             $cont=0;//inicializamos la variable cont a 0
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene el usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
 			if($fila['IdFuncionalidad']=='2'){//mira si este usuario tiene la funcionalidad de gestión de grupos
 				if($fila['IdAccion']=='3'){//mira si este usuario tiene la acción de buscar
@@ -209,9 +213,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$datos = $GRUPOS->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
 			$lista = array( 'NombreGrupo','DescripGrupo');
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano de si este usuario es administrador
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene el usuario
 			if($ADMIN == true){//si el usuario es administrador mostramos la vista SHOWALL
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 			new GRUPO_SHOWALL( $lista, $datos,$PERMISO,true);
@@ -223,7 +227,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-			$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
+			$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano de si este usuario es administrador
 			if($ADMIN == true){//miramos si este usuario es administrador
 		//Variable que almacena un objeto model con el IdGrupo
 		$GRUPOS = new GRUPO( $_REQUEST[ 'IdGrupo' ], '', '');
@@ -236,8 +240,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Creación de la vista showcurrent
 		new GRUPO_SHOWCURRENT( $lista, $valores, $valores2 );
 			}else{//si el usuario no es administrador
+             //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
             $cont=0;//inicializamos la variable cont a 0
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene el usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
 			if($fila['IdFuncionalidad']=='2'){//mira si este usuario tiene la funcionalidad de gestión de grupos
 				if($fila['IdAccion']=='4'){//mira si este usuario tiene la acción de ver en detalle
@@ -264,26 +269,28 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
-		$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador
+		$USUARIO = new USU_GRUPO(  $_SESSION[ 'login' ], '', '', '', '', '', '', '','');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+		$ADMIN = $USUARIO->comprobarAdmin();//Variable que almacena un booleano de si este usuario es administrador
 			if($ADMIN == true){//miramos si este usuario es administrador
 				if ( !$_POST ) {//Si no se han recibido datos 
-			$GRUPOS = new GRUPO( '', '', '', '');//creamos un objeto de tipo GRUPO
+			$GRUPOS = new GRUPO( '', '', '', '');//Variable que almacena un objeto de tipo GRUPO
 		
 		} else {//Si se reciben datos
-			$GRUPOS= get_data_form();//Variable que almacena los datos recogidos de los atributos
+			$GRUPOS= get_data_form();//Variable que almacena un objecto GRUPO con los datos recogidos de los atributos
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $GRUPOS->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array('NombreGrupo','DescripGrupo');
+		//Variable que almacena los permisos de un usuario
 		$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new GRUPO_SHOWALL( $lista, $datos,$PERMISO,true );
 			}else{//si el usuario no es administrador
-			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//Variable que almacena un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
+             //Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
             $cont=0;//inicializamos la variable cont a 0
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
+			$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene el usuario
 			while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va repetir mientras haya permisos
 			if($fila['IdFuncionalidad']=='2'){//mira si este usuario tiene la funcionalidad de gestión de grupos
 				if($fila['IdAccion']=='5'){//mira si este usuario tiene la acción de showall
@@ -297,13 +304,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$GRUPOS = new GRUPO( '', '', '','');//creamos un objeto de tipo GRUPO
 		
 		} else {//Si se reciben datos
-			$GRUPOS = get_data_form();//Variable que almacena los datos recogidos de los atributos
+			$GRUPOS = get_data_form();//Variable que almacena un objecto GRUPO(modelo) los datos recogidos de los atributos
 		}
 		//Variable que almacena los datos de la busqueda
 		$datos = $GRUPOS->SEARCH();
 		//Variable que almacena array con el nombre de los atributos
 		$lista = array( 'NombreGrupo','DescripGrupo');
-		$PERMISO = $USUARIO->comprobarPermisos();//llamamos a la función comprobarPermisos para saber los permisos que tiene el usuario
+		$PERMISO = $USUARIO->comprobarPermisos();//Variable que almacena los permisos que tiene el usuario
 		//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		new GRUPO_SHOWALL( $lista, $datos,$PERMISO,false );
 		}else{//si el usuario no tiene el permiso de showall se muestra una vista por defecto que no tiene nada
