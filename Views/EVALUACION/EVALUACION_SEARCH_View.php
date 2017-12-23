@@ -63,7 +63,7 @@ class EVALUACION_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['ComenIncorrectoA'];?>
 						</th>
-                        <td class="formThTd"><textarea  id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="32" rows="8" onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300') && comprobarAlfabetico(this,'300')"></textarea>
+                        <td class="formThTd"><textarea  id="ComenIncorrectoA" name="ComenIncorrectoA" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="32" rows="8" onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300')"></textarea>
 					</tr>
                     
                     <tr>
@@ -77,7 +77,7 @@ class EVALUACION_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['ComentIncorrectoP'];?>
 						</th>
-                        <td class="formThTd"><textarea id="ComentIncorrectoP" name="ComentIncorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="32" rows="8" onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300') && comprobarAlfabetico(this,'300')"></textarea>
+                        <td class="formThTd"><textarea id="ComentIncorrectoP" name="ComentIncorrectoP" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="300" cols="32" rows="8" onBlur="comprobarLongitud(this,'300') && comprobarTexto(this,'300') "></textarea>
 					</tr>
                     
                     <tr>
