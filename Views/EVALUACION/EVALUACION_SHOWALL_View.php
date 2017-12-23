@@ -82,11 +82,71 @@ class EVALUACION_SHOWALL {
 <?php
 					//Si el atributo es diferente a ComenIncorrectoA o ComentIncorrectoP muestra la celda sin modificar
 					} else {
+                        //Si el valor de CorrectoP es igual a 1 se muestra el valor en una celda verde
+                        if($atributo == 'CorrectoP' && $fila[$atributo] == '1'){
+                            ?>
+                                <td bgcolor="#4e8726">
+                                        <?php echo $fila[$atributo]; ?>
+                                </td>
+ <?php                           
+                        }
+                        //Si el valor de CorrectoP es 0 muestra el valor en una celda roja 
+                        else if($atributo == 'CorrectoP' && $fila[$atributo] == '0'){
+                            ?>
+                                <td bgcolor="#ff3700">
+                                         <?php echo $fila[$atributo]; ?>
+                                </td>
+                            
+ <?php                           
+                        }
+                        //si el atributo es corrcto del alumno y valor es 1 se pone de color verde
+                        else
+                        //Si el valor de ok es igual a 1 se muestra el valor en una celda verde
+                        if($atributo == 'OK' && $fila[$atributo] == '1'){
+                            ?>
+                                <td bgcolor="#4e8726">
+                                        <?php echo $fila[$atributo]; ?>
+                                </td>
+ <?php                           
+                        }
+                        //Si el valor de ok es 0 muestra el valor en una celda roja 
+                        else if($atributo == 'OK' && $fila[$atributo] == '0'){
+                            ?>
+                                <td bgcolor="#ff3700">
+                                         <?php echo $fila[$atributo]; ?>
+                                </td>
+                            
+ <?php                           
+                        }
+                        //si el atributo es corrcto del alumno y valor es 1 se pone de color verde
+                        else if($atributo == 'CorrectoA' && $fila[$atributo] == '1'){
+                            ?>
+                                  <td bgcolor="#4e8726">
+                                      <?php echo $fila[$atributo]; ?>
+ 
+                                </td>
+                       
+<?php                  
+                    }
+                         //si el atributo es correcto del alumno y valor es 0 se pone de color rojo
+                        else if($atributo == 'CorrectoA' && $fila[$atributo] == '0'){
+                            ?>
+                                 <td bgcolor="#ff3700">
+                                         <?php echo $fila[$atributo]; ?>
+                                </td>
+                
+<?php                
+                        }
+                        
+                        
+                        //Si el valor de ok no es 0 ni 1 muestra la celda sin color
+                        else{
 ?>
 						<td>	
 <?php
 						//Muestra el valor del array para cada atributo
 						echo $fila[ $atributo ];
+					}
 					}
 							//Variable que almacena e IdTrabajo para enviar en un hidden
 							$id = $fila['IdTrabajo'];
