@@ -19,8 +19,8 @@ else{//si existe el y la password
 
 	//Incluye el acceso al modelo de datos
 	include '../Models/USUARIO_MODEL.php';
-	$usuario = new USUARIO_MODEL($_REQUEST['login'],$_REQUEST['password'], '', '', '', '', '', '','');//se instancia un objeto del modelo USUARIOS_MODEL
-	$respuesta = $usuario->login();//llamamos al método login de USARIOS_MODEL para saber si está bien logeado
+	$usuario = new USUARIO_MODEL($_REQUEST['login'],$_REQUEST['password'], '', '', '', '', '', '','');//Variable que almacena un objeto del modelo USUARIOS_MODEL
+	$respuesta = $usuario->login();//Variable que almacena la respuesta al método login de USARIOS_MODEL para saber si está bien logeado
 
 	//Si existe el usuario se devuelve true y le asignamos a la variable de sesion el valor del login
 	if ($respuesta == 'true'){
