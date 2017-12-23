@@ -8,13 +8,13 @@
 
  //es la clase EDIT de NOTA_TRABAJO que nos permite editar una nota
 class NOTA_TRABAJO_EDIT {
-
-	function __construct($valores) { //es el constructor de la clase  NOTA_TRABAJO_EDIT
+//es el constructor de la clase  NOTA_TRABAJO_EDIT
+	function __construct($valores) { 
 		$this->valores = $valores;//pasamos los valores de cada uno de los campos de la tupla que eligimos en el showall
 		$this->render($this->valores);//funcion que mostrará el formulario EDIT con los campos correspondientes
 	}
-
-	function render($valores) { //funcion que mostrará el formulario EDIT con los campos correspondientes
+//funcion que mostrará el formulario EDIT con los campos correspondientes
+	function render($valores) { 
  		$this->valores = $valores;//pasamos los valores de cada uno de los campos de la tupla que eligimos en el showall
 		
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego

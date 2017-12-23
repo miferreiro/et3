@@ -7,12 +7,12 @@
 
  //es la clase SEARCH de NOTA_TRABAJO que nos permite buscar una nota
 class NOTA_TRABAJO_SEARCH {
-
-	function __construct() { //es el constructor de la clase  NOTA_TRABAJO_SEARCH
+//es el constructor de la clase  NOTA_TRABAJO_SEARCH
+	function __construct() { 
 		$this->render(); //funcion que mostrará el formulario SEARCH con los campos correspondientes
 	}
-
-	function render() { //funcion que mostrará el formulario SEARCH con los campos correspondientes
+ //funcion que mostrará el formulario SEARCH con los campos correspondientes
+	function render() {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 ?>

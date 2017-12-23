@@ -6,16 +6,16 @@
 	Función: se encarga de generar las notas d elas entregas
 */
 
- //esta clase es la enccargada de generar las notas de las entregas
+ //esta clase es la encargada de generar las notas de las entregas
 class GENERAR_NOTA_ET {
-
-	function __construct($datos) { //es el constructor de la clase  GENERAR_NOTA_ET
+//es el constructor de la clase  GENERAR_NOTA_ET
+	function __construct($datos) { 
 		$this->datos = $datos;//pasamos todos los Idtrabajo que en este caso serán entregas
 		$this->render($this->datos);//funcion que mostrará la vista para generar la nota de las entregas
 
 	}
-
-	function render($datos) {//funcion que mostrará la vista para generar la nota de las entregas
+//funcion que mostrará la vista para generar la nota de las entregas
+	function render($datos) {
 		$this->datos = $datos;//pasamos todos los Idtrabajo que en este caso serán entregas
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

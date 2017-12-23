@@ -6,15 +6,15 @@
     //es la clase DELETE de NOTA_TRABAJO que nos permite borrar una nota
     class NOTA_TRABAJO_DELETE{
         
-        
-        function __construct($valores){ //es el constructor de la clase  NOTA_TRABAJO_DELETE
+         //es el constructor de la clase  NOTA_TRABAJO_DELETE
+        function __construct($valores){
             
             $this->mostrar($valores);//funcion que mostrará el formulario DELETE con los campos correspondientes
             
             
         }
-        
-        public function mostrar($valores){ //funcion que mostrará el formulario ADD con los campos correspondientes
+        //funcion que mostrará el formulario ADD con los campos correspondientes
+        public function mostrar($valores){ 
             $this->valores = $valores;//pasamos los valores de cada uno de los campos de la tupla que eligimos en el showall
 		    include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		    include '../Views/Header.php';//incluimos la cabecera

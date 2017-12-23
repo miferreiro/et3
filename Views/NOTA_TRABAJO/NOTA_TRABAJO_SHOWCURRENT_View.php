@@ -8,13 +8,13 @@
 
 //es la clase SHOWCURRENT  de NOTA_TRABAJO que nos permite ver en detalle una nota
 class NOTA_TRABAJO_SHOWCURRENT {
-
-	function __construct( $lista ) { //es el constructor de la clase  NOTA_TRABAJO_SHOWCURRENT
+//es el constructor de la clase  NOTA_TRABAJO_SHOWCURRENT
+	function __construct( $lista ) { 
 		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
 		$this->render( $this->lista );//funcion que mostrará el formulario SHOWCURRENT con los campos correspondientes
 	}
-
-	function render( $lista ) {//funcion que mostrará el formulario SHOWCURRENT con los campos correspondientes
+//funcion que mostrará el formulario SHOWCURRENT con los campos correspondientes
+	function render( $lista ) {
 		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

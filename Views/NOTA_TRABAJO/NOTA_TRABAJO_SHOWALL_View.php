@@ -8,15 +8,15 @@
 
 //es la clase SHOWALL de NOTA_TRABAJO que nos permite mostrar todas las notas
 class NOTA_TRABAJO_SHOWALL {
-        
-	function __construct( $lista, $datos,$bol) { //es el constructor de la clase  NOTA_TRABAJO_SHOWALL
+        //es el constructor de la clase  NOTA_TRABAJO_SHOWALL
+	function __construct( $lista, $datos,$bol) { 
 		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
 		$this->datos = $datos;//pasamos los valores de cada uno de los campos
         $this->bol=$bol;//pasamos una variable booleana para saber si es un alumno para mostrar la nota o un profesor
 		$this->render($this->lista,$this->datos,$this->bol);//funcion que mostrará el formulario SHOWALL con los campos correspondientes
 	}
-	
-	function render($lista,$datos,$bol){ //funcion que mostrará el formulario SHOWALL con los campos correspondientes
+	//funcion que mostrará el formulario SHOWALL con los campos correspondientes
+	function render($lista,$datos,$bol){ 
 		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
 		$this->datos = $datos;//pasamos los valores de cada uno de los campos
         $this->bol=$bol;//pasamos una variable booleana para saber si es un alumno para mostrar la nota o un profesor

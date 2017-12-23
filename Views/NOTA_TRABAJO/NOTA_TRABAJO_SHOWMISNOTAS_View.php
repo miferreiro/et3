@@ -7,14 +7,14 @@
 
 //esta clase muestra las notas de un alumno
 class NOTA_TRABAJO_SHOWMISNOTAS {
-        
-	function __construct( $lista, $datos) { //es el constructor de la clase  NOTA_TRABAJO_SHOWMISNOTAS
+        //es el constructor de la clase  NOTA_TRABAJO_SHOWMISNOTAS
+	function __construct( $lista, $datos) { 
 		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
 		$this->datos = $datos;//pasamos los valores de cada campo
 		$this->render($this->lista,$this->datos);//funcion que mostrará un formulario SHOWALL con los campos correspondientes
 	}
-	
-	function render($lista,$datos){//funcion que mostrará un formulario SHOWALL con los campos correspondientes
+	//funcion que mostrará un formulario SHOWALL con los campos correspondientes
+	function render($lista,$datos){
 		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
 		$this->datos = $datos;//pasamos los valores de cada campo
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
