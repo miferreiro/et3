@@ -47,6 +47,7 @@ class CORRECION_QA_RESULTADO {
 ?>
 				<tr>
 <?php
+					//Bucle que recorre todo  el array de atributos a mostrar
 					foreach ( $lista as $atributo ) {
 ?>
 					<td>

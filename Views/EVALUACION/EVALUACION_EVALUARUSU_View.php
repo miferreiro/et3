@@ -27,6 +27,7 @@ class EVALUACION_USUARIO_EVALUAR {
 			<table>
 				<tr>
 <?php
+					//Bucle que recorre todo  el array de atributos a mostrar
 					foreach ( $lista as $atributo ) {
 ?>
 					<th>
