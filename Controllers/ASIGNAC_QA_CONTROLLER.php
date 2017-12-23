@@ -70,11 +70,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$QA = $TRABAJO->DevolverQA();
 				//Creación vista para generación de qas
 				new ASIGNAC_QA_HISTORIAS($QA);
-			//Si no tiene permisos se muestra un vista mensaje con el mensaje de información
-			}else{
-				//crea la vista mensaje que muestra el mensaje de información
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
-			}				
+     	//Si no tiene permisos crea una vista por defecto que mostrará el espacio de trabajo en blanco
+    	}else{
+		   //Crea una vista de defecto de usuario para que se vea el espacio de trabajo vacio
+		   new USUARIO_DEFAULT();
+	    }			
 		//Si se reciben parametros
 		} else {
 			//Variable que almacena el mensaje por defecto
@@ -127,9 +127,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ET = $TRABAJO->DevolverET();
 			//Creación de una nueva vista para generar QAs
 			new ASIGNAC_QA_GENERAR($ET);
-			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ASIGNAC_QA_CONTROLLER.php' );
-			}	
+		//Si no tiene permisos crea una vista por defecto que mostrará el espacio de trabajo en blanco
+		}else{
+			//Crea una vista de defecto de usuario para que se vea el espacio de trabajo vacio
+			new USUARIO_DEFAULT();
+		}
 		//Si se reciben parámetros
 		} else {
 		//Variable que almacena un nuevo objecto model

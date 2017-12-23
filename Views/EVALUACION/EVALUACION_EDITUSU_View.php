@@ -80,7 +80,7 @@ class EVALUACION_USUARIO_EDIT_HISTORIAS {
 				<input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo']?>">
 				<input type="hidden" name="AliasEvaluado" value="<?php echo $this->valores['AliasEvaluado']?>">
 				
-				<button type="submit" name="action" value="EVALUAR"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button type="submit" name="action" value="EVALUARUSU"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</tr>
 

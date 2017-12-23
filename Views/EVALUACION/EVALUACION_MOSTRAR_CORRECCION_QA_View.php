@@ -71,7 +71,7 @@ class CORRECION_QA {
 				}
 ?>
 			</table>
-			<form action='../Controllers/EVALUACION_CONTROLLER.php' method="post">
+			<form action='../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_QA' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
