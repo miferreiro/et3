@@ -399,7 +399,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		          new ENTREGA_SHOWCURRENT( $valores );
 			}else{//si el usuario no es administrador
 			$cont=0;//iniciamos la variable cont a 0
-			$PERMISO = $USUARIO->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
+			$PERMISO = $ENTREGA->comprobarPermisos();//llamamos a esta función para comprobar los permisos que tiene dicho usuario
 						while ( $fila = mysqli_fetch_array( $PERMISO ) ) {//este bucle se va a repetir mientras haya permisos 
 	
 			if($fila['IdFuncionalidad']=='8'){//miramos si el usuario tiene la funcionalidad de gestion de entregas
