@@ -235,7 +235,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             //Si el alias recuperado no se corresponde con el seleccionado nos dará un aviso de ello
             if($datos[0] != $_REQUEST['AliasEvaluado']){
                 //Se define un mensaje determinado
-                $respuesta = 'El alias insertado no se corresponde con el alias evaluado';
+                $respuesta = 'El alias evaluado no se corresponde con LoginEvaluado';
                 //Se crea la vista con el mensaje definido anteriormente
                 new MESSAGE($respuesta, '../Controllers/ASIGNAC_QA_CONTROLLER.php');
             }
