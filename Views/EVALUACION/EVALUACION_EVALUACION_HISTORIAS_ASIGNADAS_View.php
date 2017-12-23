@@ -1,5 +1,5 @@
 <?php
-    //Esta vista hace posible que el usuario pueda evaluar a otros usuarios
+    //Función:Esta vista hace posible que el usuario pueda evaluar a otros usuarios
     //Fecha de creación:30/11/2017
    // Autor: Alejandro Vila
 	
@@ -14,8 +14,8 @@ class EVALUACION_SELECT_QA {
 		$this->datos = $datos;//Variable que almacena el recordset de la base de datos
 		$this->render($this->lista,$this->datos);//llamamos a la función render donde se mostrará un formulario para evaluar historias asignadas con los campos correspondientes
 	}
-	
-	function render($lista,$datos){//funcion que  mostrará un formulario para evaluar historias asignadas con los campos correspondientes
+	//funcion que  mostrará un formulario para evaluar historias asignadas con los campos correspondientes
+	function render($lista,$datos){
 		$this->lista = $lista;//Variable que almacena el array de atributos a mostrar en la vista
 		$this->datos = $datos;//Variable que almacena el recordset de la base de datos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego

@@ -8,13 +8,13 @@
 
 //es la clase donde se muestra una vista por defecto
 class USUARIO_DEFAULT {
-
-	function __construct( ) { //es el constructor de la clase
+//es el constructor de la clase
+	function __construct( ) { 
 
 		$this->render();//llamamos a esta función para mostrar la vista
 	}
-	
-	function render(){//función para mostrar la vista
+	//función para mostrar la vista
+	function render(){
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 ?>

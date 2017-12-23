@@ -13,7 +13,7 @@ class GRUPO_EDIT {
 		//metodo que llama a la función render que contiene todo el código de la vista
 		$this->render( $this->valores);
 	}
-
+//función render que contiene todo el código de la vista
 	function render( $valores) {
  		$this->valores = $valores;//Variable que almacena la información de la tupla a editar
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma

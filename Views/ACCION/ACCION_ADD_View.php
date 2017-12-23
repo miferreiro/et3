@@ -9,8 +9,8 @@
 //es la clase ADD de ACCION que nos permite añadir una accion
 class ACCION_ADD {
 
-    
-	function __construct() {//es el constructor de la clase ACCION_ADD
+    //es el constructor de la clase ACCION_ADD
+	function __construct() {
 		$this->render();//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 	}
 

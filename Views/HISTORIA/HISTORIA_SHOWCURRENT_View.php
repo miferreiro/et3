@@ -9,13 +9,13 @@
 
 //es la clase SHOWCURRENT de HISTORIA que nos permite mostrar la vista en detalle de una historia
 class HISTORIA_SHOWCURRENT {
-
-	function __construct( $lista ) { //es el constructor de la clase HISTORIA_SHOWCURRENT
+//es el constructor de la clase HISTORIA_SHOWCURRENT
+	function __construct( $lista ) { 
 		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
 		$this->render( $this->lista );//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes y sus valores correspondientes
 	}
-
-	function render( $lista ) { //funcion que  mostrará el formulario SHOWALL con los campos correspondientes y sus valores correspondientes
+ //funcion que  mostrará el formulario SHOWALL con los campos correspondientes y sus valores correspondientes
+	function render( $lista ) {
 		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

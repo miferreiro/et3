@@ -8,12 +8,12 @@
 
 //es la clase ADD de FUNCIONALIDAD que nos permite añadir una funcionalidad
 class FUNCIONALIDAD_ADD {
-
-	function __construct() {//es el constructor de la clase FUNCIONALIDAD_ADD
+//es el constructor de la clase FUNCIONALIDAD_ADD
+	function __construct() {
 		$this->render();//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 	}
-
-	function render() {//función render donde se mostrará el formulario ADD con los campos correspondientes
+//función render donde se mostrará el formulario ADD con los campos correspondientes
+	function render() {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 ?>

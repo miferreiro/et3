@@ -8,12 +8,12 @@
 
 //Es la clase SEARCH de ACCION que nos permite buscar una accion
 class ACCION_SEARCH {
-
-	function __construct() {//es el constructor de la clase ACCION_SEARCH
+//es el constructor de la clase ACCION_SEARCH
+	function __construct() {
 		$this->render();//llamamos a la función render donde se mostrará el formulario SEARCH con los campos correspondientes
 	}
-
-	function render() {//función render donde se mostrará el formulario SEARCH con los campos correspondientes
+//función render donde se mostrará el formulario SEARCH con los campos correspondientes
+	function render() {
 
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

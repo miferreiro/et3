@@ -8,8 +8,8 @@
 
 //es la clase DELETE de FUNCIONALIDAD que nos permite borrar una funcionalidad
 class FUNCIONALIDAD_DELETE {
-
-	function __construct( $valores, $dependencias ){  //es el constructor de la clase FUNCIONALIDAD_DELETE
+ //es el constructor de la clase FUNCIONALIDAD_DELETE
+	function __construct( $valores, $dependencias ){ 
 		$this->valores = $valores;//pasamos el valor de los campos
 		$this->dependencias = $dependencias;//pasamos las dependencias de la tabla FUNCIONALIDAD a la hora de borrar
 		$this->render( $this->valores, $this->dependencias);//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes

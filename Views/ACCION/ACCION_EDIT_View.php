@@ -8,13 +8,13 @@
 
 //Es la clase EDIT de ACCION que nos permite editar una accion
 class ACCION_EDIT {
-
-	function __construct( $valores ) { //es el constructor de la clase ACCION_EDIT
+//es el constructor de la clase ACCION_EDIT
+	function __construct( $valores ) { 
 		$this->valores = $valores;//le pasamos el valor de los campos de la tabla ACCION
 		$this->render( $this->valores );//llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
 	}
-
-	function render( $valores ) {//función render donde se mostrará el formulario EDIT con los campos correspondientes
+//función render donde se mostrará el formulario EDIT con los campos correspondientes
+	function render( $valores ) {
 		$this->valores = $valores;//le pasamos el valor de los campos de la tabla ACCION
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

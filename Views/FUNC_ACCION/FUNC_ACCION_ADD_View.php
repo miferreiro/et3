@@ -9,12 +9,12 @@
 
 //es la clase ADD de FUNC_ACCION que nos permite añadir una accion de una funcionalidad
 class FUNC_ACCION_ADD {
-
-	function __construct($valores,$acciones) { //es el constructor de la clase FUNC_ACCION_ADD
+//es el constructor de la clase FUNC_ACCION_ADD
+	function __construct($valores,$acciones) { 
 		$this->render($valores,$acciones); //llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 	}
-
-	function render($valores,$acciones) {// funcion que se mostrará el formulario ADD con los campos correspondientes
+// funcion que se mostrará el formulario ADD con los campos correspondientes
+	function render($valores,$acciones) {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 ?>

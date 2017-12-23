@@ -72,7 +72,7 @@ if ( !isset( $_REQUEST[ 'NombreGrupo' ] ) ) {
 if ( !isset( $_REQUEST[ 'NombreFuncionalidad' ] ) ) {
 	$_REQUEST[ 'NombreFuncionalidad' ] = '';
 }
-
+//Si no se obtiene valor de NombreAccion le asignamos el valor ''
 if ( !isset( $_REQUEST[ 'NombreAccion' ] ) ) {
 	$_REQUEST[ 'NombreAccion' ] = '';
 }
@@ -252,7 +252,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($ADMIN == true){
 				//Crea una nueva vista de formulario buscar
 				new PERMISO_SEARCH();
-			}else{
+			}else{//Si no es del grupo administrador
 				//Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
 	            $cont=0;
 	            //Variable que almacena un recordset con la info de los permisos que tiene el usuario

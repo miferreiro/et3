@@ -9,13 +9,13 @@
 
 //es la clase DELETE de EVALUACION que nos permite borrar una evaluacion
 class EVALUACION_DELETE {
-
-	function __construct( $valores ) { //es el constructor de la clase EVALUACION_DELETE
+//es el constructor de la clase EVALUACION_DELETE
+	function __construct( $valores ) { 
 		$this->valores = $valores;//Variable que almacena el recordset de la base de datos
 		$this->render( $this->valores );//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
-
-	function render( $valores ) { //funcion que  mostrará el formulario DELETE con los campos correspondientes
+//funcion que  mostrará el formulario DELETE con los campos correspondientes
+	function render( $valores ) { 
 		$this->valores = $valores;//Variable que almacena el recordset de la base de datos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

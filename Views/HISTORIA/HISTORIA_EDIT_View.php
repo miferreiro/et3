@@ -8,13 +8,13 @@
 
 //es la clase EDIT de HISTORIA que nos permite editar una historia
 class HISTORIA_EDIT {
-
-	function __construct( $valores ) { //es el constructor de la clase HISTORIA_EDIT
+//es el constructor de la clase HISTORIA_EDIT
+	function __construct( $valores ) { 
 		$this->valores = $valores;//pasamos los valores de cada campo de la tupla que fue seleccionada en el showall
 		$this->render( $this->valores );//llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
 	}
-
-	function render( $valores ) { //llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
+//llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
+	function render( $valores ) { 
 		$this->valores = $valores;//pasamos los valores de cada campo de la tupla que fue seleccionada en el showall
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

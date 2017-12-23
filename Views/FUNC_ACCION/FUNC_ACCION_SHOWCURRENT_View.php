@@ -1,20 +1,22 @@
 <?php
 /*  Archivo php
 	Nombre: FUNC_ACCION_SHOWCURRENT_View.php
+	Autor: Miguel Ferreiro Díaz
 	Fecha de creación: 26/11/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una accion de una Funcionalidad
 */
+//Declaramos la clase FUNC_ACCION_SHOWCURRENT
 class FUNC_ACCION_SHOWCURRENT {
-
+	//Constructor de la clase
 	function __construct( $lista ) {
-		$this->lista = $lista;
-		$this->render( $this->lista );
+		$this->lista = $lista;//Variable que tiene el valor de los atributos a mostrar
+		$this->render( $this->lista );//LLamamos a la función que tiene la vista showcurrent
 	}
-
+	//Función que crea la vista showcurrent
 	function render( $lista ) {
-		$this->lista = $lista;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		$this->lista = $lista;//Variable que tiene el valor de los atributos a mostrar
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Include del idioma que tiene la página
+		include '../Views/Header.php';//Include de la cabecera
 ?>
 		<h2>
 			<?php echo $strings['Vista detallada'];?>
@@ -46,7 +48,7 @@ class FUNC_ACCION_SHOWCURRENT {
 		</table>
 
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//Include del pie de página
 	}
 }
 ?>

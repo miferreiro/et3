@@ -16,8 +16,8 @@ class MESSAGE {
 		$this->ruta = $ruta;//pasamos la ruta para volver atras
 		$this->render();//llamamos a la función para que muestre el mensaje y vuelta atras
 	}
-
-	function render() {//función para que muestre el mensaje y vuelta atras
+//función para que muestre el mensaje y vuelta atras
+	function render() {
 
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos todos los strings de los idiomas:ingles,español y galego
 		include '../Views/Header.php';//incluimos la cabecera

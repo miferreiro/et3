@@ -9,8 +9,8 @@
 
 //es la clase SHOWALL de FUNCIONALIDAD que nos permite mostrar todas funcionalidades
 class FUNCIONALIDAD_SHOWALL {
-
-	function __construct( $lista, $datos, $PERMISO,$admin) { //es el constructor de la clase FUNCIONALIDAD_SHOWALL
+//es el constructor de la clase FUNCIONALIDAD_SHOWALL
+	function __construct( $lista, $datos, $PERMISO,$admin) { 
 		$this->lista = $lista;//pasamos los campos de la tabla FUNCIONALIDAD
 		$this->datos = $datos;//pasamos cada una de las tuplas de la tabla FUNCIONALIDAD
 		$this->PERMISO = $PERMISO;//pasamos los permisos
@@ -18,8 +18,8 @@ class FUNCIONALIDAD_SHOWALL {
 		$this->render($this->lista,$this->datos,$this->PERMISO,$this->admin);//llamamos a la función render donde se mostrará el formulario showall con los campos correspondientes
 	}
 	
-    
-	function render($lista,$datos,$PERMISO,$admin){//función render donde se mostrará el formulario showall con los campos correspondientes
+    //función render donde se mostrará el formulario showall con los campos correspondientes
+	function render($lista,$datos,$PERMISO,$admin){
 		$this->lista = $lista;//pasamos los campos de la tabla FUNCIONALIDAD
 		$this->datos = $datos;//pasamos cada una de las tuplas de la tabla FUNCIONALIDAD
 		$this->PERMISO = $PERMISO;//pasamos los permisos

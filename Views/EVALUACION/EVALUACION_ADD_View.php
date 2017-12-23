@@ -17,8 +17,8 @@ class EVALUACION_ADD {
 		$this->render($this->datos,$this->trabajos,$this->trabajos2,$this->hists);//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 
 	}
-
-	function render($datos,$trabajos,$trabajos2,$hists) { //funcion que mostrará el formulario ADD con los campos correspondientes
+//funcion que mostrará el formulario ADD con los campos correspondientes
+	function render($datos,$trabajos,$trabajos2,$hists) { 
 		$this->datos = $datos;//Variable que almacena todos los trabajos
 		$this->trabajos = $trabajos;//Variable que almacena todos los usuarios 
 		$this->trabajos2 = $trabajos2;//Variable que almacena todos los usuarios

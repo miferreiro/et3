@@ -10,14 +10,14 @@
 
 //es la clase DELETE de FUNC_ACCION que nos permite borrar una accion de una funcionalidad
 class FUNC_ACCION_DELETE {
-
-	function __construct( $valores, $dependencias ) { //es el constructor de la clase FUNC_ACCION_DELETE
+//es el constructor de la clase FUNC_ACCION_DELETE
+	function __construct( $valores, $dependencias ) { 
 		$this->valores = $valores; //pasamos los valores de cada uno de los campos
 		$this->dependencias = $dependencias; //pasamos las dependdencias de la tabla a la hora de borrar
 		$this->render( $this->valores, $this->dependencias );//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
-
-	function render( $valores, $dependencias ) { //funcion que mostrará el formulario DELETE con los campos correspondientes
+//funcion que mostrará el formulario DELETE con los campos correspondientes
+	function render( $valores, $dependencias ) { 
 		$this->valores = $valores;//pasamos los valores de cada uno de los campos
 		$this->dependencias = $dependencias; //pasamos las dependdencias de la tabla a la hora de borrar
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego

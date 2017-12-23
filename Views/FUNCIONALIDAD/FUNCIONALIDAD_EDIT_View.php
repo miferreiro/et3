@@ -9,13 +9,13 @@
 
 //es la clase EDIT de FUNCIONALIDAD que nos permite editar una funcionalidad
 class FUNCIONALIDAD_EDIT {
-
-	function __construct( $valores ) { //es el constructor de la clase FUNCIONALIDAD_EDIT
+//es el constructor de la clase FUNCIONALIDAD_EDIT
+	function __construct( $valores ) { 
 		$this->valores = $valores;//pasamos los valores de los campos
 		$this->render( $this->valores );//llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
 	}
-
-	function render( $valores ) {//función render donde se mostrará el formulario EDIT con los campos correspondientes
+//función render donde se mostrará el formulario EDIT con los campos correspondientes
+	function render( $valores ) {
 		$this->valores = $valores;//pasamos los valores de los campos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

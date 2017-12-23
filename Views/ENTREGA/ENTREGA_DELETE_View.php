@@ -6,16 +6,16 @@
 //es la clase DELETE de ENTREGA que nos permite borrar una entrega
     class ENTREGA_DELETE{
         
-        
-        function __construct($valores, $dependencias, $dependencias2){  //es el constructor de la clase ENTREGA_DELETE
+        //es el constructor de la clase ENTREGA_DELETE
+        function __construct($valores, $dependencias, $dependencias2){  
             
             $this->mostrar($valores, $dependencias, $dependencias2);//llamamos a la función mostrar donde se mostrará el formulario DELETE con los campos correspondientes
 
             
             
         }
-        
-        public function mostrar($valores, $dependencias, $dependencias2){// funcion que mostrará el formulario DELETE con los campos correspondientes
+        // funcion que mostrará el formulario DELETE con los campos correspondientes
+        function mostrar($valores, $dependencias, $dependencias2){
             $this->valores = $valores;//pasa el valor de cada uno de los campos
             $this->dependencias = $dependencias;//pasa depencias a la hora de borrar
             $this->dependencias2 = $dependencias2;//pasa dependencias a la hora de borrar

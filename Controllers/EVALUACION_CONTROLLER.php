@@ -272,7 +272,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		//Final del bloque
 		break;
-    case 'EVALUACION_HISTORIAS':  
+    case 'EVALUACION_HISTORIAS':  //Caso evaluacion_historias
     	if ( !$_POST ) {//Si no se han recibido datos 
     		if(permisosAcc($_SESSION['login'],12,11)==true){//miramos si el usuario conectado tiene permiso para evaluar historias
                  $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');//creamos un objeto de tipo EVALUACION
@@ -285,7 +285,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			 
 		}
     break;
-    case 'EVALUACION_HISTORIAS_ASIGNADAS':		
+    case 'EVALUACION_HISTORIAS_ASIGNADAS':	//Caso evaluacion_historias_asignadas
     	if ( !$_POST ) {//Si no se han recibido datos	
 			if(permisosAcc($_SESSION['login'],12,10)==true){//miramos si el usuario conectado tiene permiso para evaluar historias asignadas
                 $EVALUACION = new EVALUACION('','', '', '', '', '', '', '', '');

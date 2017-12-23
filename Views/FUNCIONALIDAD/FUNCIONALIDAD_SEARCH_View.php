@@ -9,13 +9,13 @@
 
 //es la clase SEARCH de FUNCIONALIDAD que nos permite buscar una funcionalidad
 class FUNCIONALIDAD_SEARCH {
-
-	function __construct() { //es el constructor de la clase FUNCIONALIDAD_SEARCH
+//es el constructor de la clase FUNCIONALIDAD_SEARCH
+	function __construct() { 
 		$this->render();//llamamos a la función render donde se mostrará el formulario search con los campos correspondientes
 	}
 
-    
-	function render() {//función render donde se mostrará el formulario search con los campos correspondientes
+    //función render donde se mostrará el formulario search con los campos correspondientes
+	function render() {
 
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

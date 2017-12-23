@@ -2,6 +2,8 @@
 <?php
 //modelo que interactuará con el controlador y llevará datos a la base de datos ó recogerá valores de la base de datos.
 //Fecha de creación:23/11/2017 //Autor:Brais Santos
+
+//Declaracción de la clase ACCION
 class ACCION{
 
     var $IdAccion;//clave de la tabla de ACCION
@@ -181,8 +183,8 @@ class ACCION{
 					   from ACCION";
         //se ejecuta la query
 		$resultado = $this->mysqli->query( $sql );
-		if ( $resultado->num_rows == 0 ) 
-        { return null; }//miramos si el número de filas es 0.
+		if ( $resultado->num_rows == 0 ) //miramos si el número de filas es 0.
+        { return null; }
 		//Cargamos las tuplas resultado de la consulta en un array
 		while($datos = mysqli_fetch_row ($resultado)){
 			//Variable que almacena el array de las tuplas resultado de la query

@@ -8,13 +8,13 @@
 
 //es la clase SHOWCURRENT de FUNCIONALIDAD que nos permite mostrar todas funcionalidades
 class FUNCIONALIDAD_SHOWCURRENT {
-
-	function __construct( $lista ) { //es el constructor de la clase FUNCIONALIDAD_SHOWCURRENT
+ //es el constructor de la clase FUNCIONALIDAD_SHOWCURRENT
+	function __construct( $lista ) {
 		$this->lista = $lista;//pasamos los campos de la tabla FUNCIONALIDAD
 		$this->render( $this->lista );//llamamos a la función render donde se mostrará el formulario showcurrent con los campos correspondientes
 	}
-
-	function render( $lista ) { //funcion donde se mostrará el formulario showcurrent con los campos correspondientes
+//funcion donde se mostrará el formulario showcurrent con los campos correspondientes
+	function render( $lista ) { 
 		$this->lista = $lista;//pasamos los campos de la tabla FUNCIONALIDAD
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

@@ -1,6 +1,6 @@
 <?php
 /*  Archivo php
-	Nombre: USUARIOS_SHOWALL_View.php
+	
 	Autor: 	Brais Santos
 	Fecha de creación: 29/11/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la entrega deseada
@@ -9,85 +9,22 @@
 
 //es la clase SHOWALL de ENTREGA que nos permite editar una entrega
 class ENTREGA_SHOWALL {
-
-	function __construct( $lista, $datos/*, $PERMISO, $admin*/) { //es el constructor de ENTREGA_SHOWALL
+	//es el constructor de ENTREGA_SHOWALL
+	function __construct( $lista, $datos) { 
 		$this->lista = $lista;//se pasa cada uno de los campos de la tabla ENTREGA
 		$this->datos = $datos;//se pasan los valores de cada uno de los campos
 		/*$this->PERMISO = $PERMISO;
 		$this->admin = $admin;*/
 		$this->render($this->lista,$this->datos/*,$this->PERMISO,$this->admin*/);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 	}
-	
-	function render($lista,$datos/*,$PERMISO,$admin*/){//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
+	//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
+	function render($lista,$datos){
 		$this->lista = $lista;//se pasa cada uno de los campos de la tabla ENTREGA
 		$this->datos = $datos;//se pasan los valores de cada uno de los campos
-		/*$this->PERMISO = $PERMISO;
-		$this->admin = $admin;*/
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
         include_once '../Functions/permisosAcc.php';//incluimos este fichero para saber que permisos tiene el usuario
 		include_once '../Functions/comprobarAdministrador.php';//incluimos este fichero para saber si un usuario es administrador
-/*$ADD=false;	
-$EDIT=true;	
-$SEARCH=false;	
-$DELETE=false;	
-$SHOW=false;
-$ASIGN=false;
-$GESTUSU=false;
-$GESTGRUP=false;
-$GESTFUNC=false;
-$GESTACC=false;
-$GESTPERM=false;		
-$GESTQAS=false;		
-$GESTENTR=false;		
-$GESTHIST=false;
-$GESTTRAB=false;		
-$GESTEVAL=false;		
-		
-	if($admin==true){
-			    $ADD=true;	
-			    $DELETE=true;				   
-			    $EDIT=true;	
-			    $SEARCH=true;	
-			    $SHOW=true;	
-			    $ASIGN=true;	
-	}	
-	while ( $fila = mysqli_fetch_array( $PERMISO ) ) {
 
-	 if($fila['IdFuncionalidad']=='1'){
-				$GESTUSU=true;
-		 if($fila['IdAccion']=='0'){
-			    $ADD=true;	
-			   }
-		 if($fila['IdAccion']=='1'){
-			    $DELETE=true;	
-			   }
-		 if($fila['IdAccion']=='2'){
-			    $EDIT=true;	
-			   }
-		 if($fila['IdAccion']=='3'){
-			    $SEARCH=true;	
-			   }
-		 if($fila['IdAccion']=='4'){
-			    $SHOW=true;	
-			   }
-		 if($fila['IdAccion']=='6'){
-			    $ASIGN=true;	
-			   }
-			   }
-	 if($fila['IdFuncionalidad']=='2'){
-				$GESTGRUP=true;
-			   }
-	 if($fila['IdFuncionalidad']=='5'){
-				$GESTPERM=true;
-			   }
-	 if($fila['IdFuncionalidad']=='3'){
-				$GESTFUNC=true;
-			   }
-	 if($fila['IdFuncionalidad']=='4'){
-				$GESTACC=true;
-			   }
-
-			}*/
 	include '../Views/Header.php';		//incluimos la cabecera	
 ?>
 

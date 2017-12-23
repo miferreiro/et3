@@ -1,8 +1,8 @@
 <?php
 /*  Archivo php
 	Nombre: ASIGNAC_QA_ADD_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Jonatan Couto Riádigos
+	Fecha de creación: 29/11/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
 */
 //Clase Asignac_qa_dd que contiene la vista de formulario para añadir una qa

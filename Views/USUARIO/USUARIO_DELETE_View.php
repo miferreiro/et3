@@ -9,8 +9,8 @@
 
 //es la clase DELETE de USUARIO que nos permite borrar un usuario
 class USUARIO_DELETE {
-
-	function __construct( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7) { //es el constructor de la clase USUARIO_DELETE
+//es el constructor de la clase USUARIO_DELETE
+	function __construct( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7) { 
 		$this->valores = $valores;//pasamos los valores de cada uno de los campos
 		$this->dependencias = $dependencias;//pasamos las dependencias que tiene a la hora de borrar
 		$this->dependencias2 = $dependencias2;//pasamos las dependencias que tiene a la hora de borrar
@@ -21,8 +21,8 @@ class USUARIO_DELETE {
 		$this->dependencias7 = $dependencias7;//pasamos las dependencias que tiene a la hora de borrar
 		$this->render( $this->valores, $this->dependencias,$this->dependencias2,$this->dependencias3,$this->dependencias4,$this->dependencias5,$this->dependencias6, $this->dependencias7);//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
-
-	function render( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7) { //funcion que mostrará el formulario DELETE con los campos correspondientes
+//funcion que mostrará el formulario DELETE con los campos correspondientes
+	function render( $valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7) { 
 		$this->valores = $valores;//pasamos los valores de cada uno de los campos
 		$this->dependencias = $dependencias;//pasamos las dependencias que tiene a la hora de borrar
 		$this->dependencias2 = $dependencias2;//pasamos las dependencias que tiene a la hora de borrar

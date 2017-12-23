@@ -1,18 +1,18 @@
 <?php
 /*  Archivo php
 	Nombre: ASIGNAC_QA_HISTORIAS_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Jonatan Couto Riádigos
+	Fecha de creación: 29/11/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una acción a la base de datos
 */
 //Clase Asignac_qa_historias que contiene la vista para poder generar las historias por cada qa	
 class ASIGNAC_QA_HISTORIAS {
-
+	//Constructor de la clase
 	function __construct($valores) {
 		//$valores variable que almacena un array con la informacion de las qas existentes para asignar las historias
 		$this->render($valores);
 	}
-	//Constructor de la clase
+	//Función que muestra la vista para generar automáticamente las historias
 	function render($QA) {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluye el contenido de los strings necesarios para el multiidioma
 		include '../Views/Header.php';//Incluye el contenido del header

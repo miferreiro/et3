@@ -8,15 +8,15 @@
 
 //es la clase DELETE de HISTORIA que nos permite borrar una historia
 class HISTORIA_DELETE {
-
-	function __construct( $valores, $dependencias) { //es el constructor de la clase HISTORIA_DELETE
+//es el constructor de la clase HISTORIA_DELETE
+	function __construct( $valores, $dependencias) { 
 		$this->valores = $valores;//pasamos los valores de cada campo de la tupla que fue seleccionada en el showall
 		$this->dependencias = $dependencias;//pasamos las dependencias de la tabla HISTORIA a la hora de borrar
 		
 		$this->render( $this->valores, $this->dependencias);//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
-
-	function render( $valores, $dependencias) { //funcion que mostrará el formulario DELETE con los campos correspondientes
+//funcion que mostrará el formulario DELETE con los campos correspondientes
+	function render( $valores, $dependencias) { 
 		$this->valores = $valores;//pasamos los valores de cada campo de la tupla que fue seleccionada en el showall
 		$this->dependencias = $dependencias;//pasamos las dependencias de la tabla HISTORIA a la hora de borrar
 		

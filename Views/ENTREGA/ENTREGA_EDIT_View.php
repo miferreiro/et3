@@ -6,12 +6,12 @@
 
 //es la clase EDIT de ENTREGA que nos permite editar una entrega
 class ENTREGA_EDIT {
-
-	function __construct($valores) {    //es el constructor de la clase ENTREGA_EDIT
+//es el constructor de la clase ENTREGA_EDIT
+	function __construct($valores) {    
 		$this->render($valores);//llamamos a la función render donde se mostrará el formulario EDIT con los campos correspondientes
 	}
-
-	function render($valores) { //funcion que mostrará el formulario EDIT con los campos correspondientes
+	//funcion que mostrará el formulario EDIT con los campos correspondientes
+	function render($valores) { 
         $this->valores=$valores;//pasamos el valor de cada uno de los campos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

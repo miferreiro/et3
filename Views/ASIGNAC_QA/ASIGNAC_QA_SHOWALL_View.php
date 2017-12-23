@@ -1,8 +1,8 @@
 <?php
 /*  Archivo php
 	Nombre: ASIGNAC_QA_SHOWALL_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Jonatan Couto Riádigos
+	Fecha de creación: 29/11/2017 
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
 */
 //Clase Asigna_qa_showall que contiene la vista para ver los resultados de la tabla ASIGNAC_QA

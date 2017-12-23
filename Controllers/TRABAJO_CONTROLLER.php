@@ -44,9 +44,9 @@ function get_data_form(){
 		$FechaIniTrabajo,
 		$FechaFinTrabajo,
         $PorcentajeNota
-	);//Devuelve el valor del objecto model creado
+	);//Se crea un objeto de clase TRABAJO con los atributos llegados del formulario
 	
-	return $TRABAJO;
+	return $TRABAJO;//Devuelve el valor del objecto model creado
 }
 
 

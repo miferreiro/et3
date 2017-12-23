@@ -8,13 +8,13 @@
 
 //es la clase DELETE de USU_GRUPO que nos permite borrar un usuario a un grupo
 class USU_GRUPO_DELETE {
-
-	function __construct( $valores ) { //es el constructor de la clase USU_GRUPO_DELETE
+//es el constructor de la clase USU_GRUPO_DELETE
+	function __construct( $valores ) { 
 		$this->valores = $valores;//pasamos los valores de cada uno de los campos
 		$this->render( $this->valores );//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes
 	}
-
-	function render( $valores ) { //se mostrará el formulario DELETE con los campos correspondientes
+//se mostrará el formulario DELETE con los campos correspondientes
+	function render( $valores ) { 
 		$this->valores = $valores;//pasamos los valores de cada uno de los campos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

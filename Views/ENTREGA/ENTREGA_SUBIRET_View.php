@@ -1,24 +1,24 @@
 <?php
 /*  Archivo php
-	Nombre: TRABAJO_SHOWALL_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la acción que se desea realizar en la aplicación
+	Autor: 	Brais Santos Negreira
+	Fecha de creación: 24/11/2017 
+	Función: vista que permite al usuario subir una entrega
 */
+//Declaracion de la clase ENTREGA_SHOWET
 class ENTREGA_SHOWET {
-
+	//Constructor de la clase ENTREGA_SHOWET
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
 		$this->datos = $datos;
 		$this->render($this->lista,$this->datos);
 	}
-	
+	//función que muestra la vista de subir una entrega
 	function render($lista,$datos){
-		$this->lista = $lista;
-		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
-        include_once '../Functions/permisosAcc.php';
+		$this->lista = $lista;//Tiene el nombre de atributos a mostrar en la tabla
+		$this->datos = $datos;//Tiene el nombre de los valores de los atributos a mostrar
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Include del idioma a mostrar
+		include '../Views/Header.php';//Include de la vista de la cabecera
+        include_once '../Functions/permisosAcc.php';//Include que tiene la funcion para comprobar los permisos
 ?>
 		<div class="seccion">
 			<h2>
@@ -27,7 +27,7 @@ class ENTREGA_SHOWET {
 			<table>
 
 				<tr>
-<?php
+<?php				//Se recorre la lista de los nombres de atributos a mostrar
 					foreach ( $lista as $atributo ) {
 ?>
 					<th>
@@ -35,6 +35,7 @@ class ENTREGA_SHOWET {
 					</th>
 <?php
 					}
+		//Si tiene el permiso de subir entrega, muestra opciones
 		if(permisosAcc($_SESSION['login'],8,2)==true){
 ?>
 					<th>
@@ -43,16 +44,23 @@ class ENTREGA_SHOWET {
        <?php } ?>
 				</tr>
 <?php
+				//Bucle que recorre el array de valores
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
-<?php
+<?php				
+					//Recorre el array que contiene el nombre de los atributos a mostrar
 					foreach ( $lista as $atributo ) {
 ?>
 					<td>
-<?php 				if ( $atributo == 'FechaIniTrabajo' ) {
+					
+<?php 				
+					//Si el atributo es fecha, se cambia el formato al formato europeo
+					if ( $atributo == 'FechaIniTrabajo' ) {
 						$fila[ $atributo ] = date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
 					} 
+					//Si el atributo es fecha, se cambia el formato al formato europeo
+													
 					if ( $atributo == 'FechaFinTrabajo' ) {
 							$fila[ $atributo ] = date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
 					} 
@@ -72,7 +80,9 @@ class ENTREGA_SHOWET {
                          
 
                                 <?php
+							//Si tiene los permisos para subir una entrega
 	                       		if(permisosAcc($_SESSION['login'],8,2)==true){
+									//Si la fecha de fin de trabajo es mayor que la fecha actual se permite subir la entrega
                                     if(date('d-m-Y')<$fila['FechaFinTrabajo']){
                                  ?>
                                 
@@ -95,7 +105,7 @@ class ENTREGA_SHOWET {
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//Include del pie de página
 		}
 		}
 ?>

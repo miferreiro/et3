@@ -14,8 +14,8 @@ class USUARIO_SHOWCURRENT {
 		$this->lista = $lista;//pasamos los campos de la tabla usuario
 		$this->render( $this->lista );//llamamos a la función render donde se mostrará el formulario SHOWCURRENT con los campos correspondientes
 	}
-
-	function render( $lista ) { //funcion que mostrará el formulario SHOWCURRENT con los campos correspondientes
+//funcion que mostrará el formulario SHOWCURRENT con los campos correspondientes
+	function render( $lista ) { 
 		$this->lista = $lista;//pasamos los campos de la tabla usuario
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

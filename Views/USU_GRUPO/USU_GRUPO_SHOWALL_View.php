@@ -8,16 +8,16 @@
 
 //es la clase SHOWALL de USU_GRUPO que nos permite mostrar todos los usuarios asociasdos a grupos
 class USU_GRUPO_SHOWALL {
-
-	function __construct( $lista, $datos,$login) { //es el constructor de la clase USU_GRUPO_SHOWALL
+ //es el constructor de la clase USU_GRUPO_SHOWALL
+	function __construct( $lista, $datos,$login) {
 		$this->lista = $lista;//pasamos los campos que queremos mostrar
 		$this->datos = $datos;//pasamos cada una de las tuplas de USU_GRUPO que queremos mostrar
 		$this->login = $login;//pasamos el login
 		$this->render($this->lista,$this->datos,$this->login);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 		
 	}
-	
-	function render($lista,$datos,$login){ //Función que  mostrará el formulario SHOWALL con los campos correspondientes
+	//Función que  mostrará el formulario SHOWALL con los campos correspondientes
+	function render($lista,$datos,$login){ 
 		$this->lista = $lista;//pasamos los campos que queremos mostrar
 		$this->datos = $datos;//pasamos cada una de las tuplas de USU_GRUPO que queremos mostrar
 		$this->login = $login;//pasamos el login

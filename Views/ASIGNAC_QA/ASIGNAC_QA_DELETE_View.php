@@ -1,8 +1,8 @@
 <?php
 /*  Archivo php
 	Nombre: ASIGNAC_QA_DELETE_View.php
-	Autor: 	fta875
-	Fecha de creación: 9/10/2017 
+	Autor: 	Jonatan Couto Riádigos
+	Fecha de creación: 29/11/2017 
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de un usuario y da la opción de borrarlos
 */
 //Clase Asignac_qa_delete que contiene la vista para poder borrar una tupla de ASIGNAC_QA

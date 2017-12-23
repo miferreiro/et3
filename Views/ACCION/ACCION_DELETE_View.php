@@ -8,8 +8,8 @@
 
 //Es la clase DELETE de ACCION que nos permite borrar una accion
 class ACCION_DELETE {
-
-	function __construct( $valores, $dependencias ) { //es el constructor de la clase ACCION_DELETE
+//es el constructor de la clase ACCION_DELETE
+	function __construct( $valores, $dependencias ) { 
 		$this->valores = $valores;//le pasamos el valor de los campos de la tabla ACCION
 		$this->dependencias = $dependencias;//pasamos todas las dependencias que tiene la tabla a la hora de borrar
 		$this->render( $this->valores, $this->dependencias );//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes

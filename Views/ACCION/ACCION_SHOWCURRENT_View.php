@@ -9,13 +9,13 @@
 
 //Es la clase SHOWCURRENT de ACCION que nos permite ver en detalle una accion
 class ACCION_SHOWCURRENT {
-
-	function __construct( $lista ) { //es el constructor de la clase ACCION_SHOWCURRENT
+	//es el constructor de la clase ACCION_SHOWCURRENT
+	function __construct( $lista ) { 
 		$this->lista = $lista;//pasamos una array con los campos a mostrar
 		$this->render( $this->lista );//llamamos a la función render donde se mostrará el formulario SHOWCURRENT con los campos correspondientes
 	}
-
-	function render( $lista ) {//Función render donde se mostrará el formulario SHOWCURRENT con los campos correspondientes
+//Función render donde se mostrará el formulario SHOWCURRENT con los campos correspondientes
+	function render( $lista ) {
 		$this->lista = $lista;//pasamos una array con los campos a mostrar
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

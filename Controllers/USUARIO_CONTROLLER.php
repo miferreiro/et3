@@ -47,7 +47,7 @@ function get_data_form() {
 		$correo,
 		$direccion,
 		$telefono
-	);
+	);//Creamos un objeto de usuario con las variables que se han recibido del formulario
 	//Devuelve el valor del objecto model creado
 	return $USUARIO;
 }

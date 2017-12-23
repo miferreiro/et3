@@ -7,14 +7,14 @@
 
 //es la clase ADD de HISTORIA que nos permite añadir una historia
 class HISTORIA_ADD {
-
-	function __construct($datos) { //es el constructor de la clase HISTORIA_ADD
+//es el constructor de la clase HISTORIA_ADD
+	function __construct($datos) { 
 		$this->datos = $datos;//pasamos los valores de cada uno de los campos
 		$this->render($this->datos);//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 
 	}
-
-	function render($datos) { //funcion que mostrará el formulario ADD con los campos correspondientes
+//funcion que mostrará el formulario ADD con los campos correspondientes
+	function render($datos) { 
 		$this->datos = $datos;//pasamos los valores de cada uno de los campos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera

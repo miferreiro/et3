@@ -1,19 +1,21 @@
 <?php
 /*  Archivo php
 	Nombre: FUNC_ACCION_SEARCH_View.php
+	Autor: Alejandro Vila Cid
 	Fecha de creación: 26/11/2017 
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a una accion de una funcionalidad de la base de datos
 */
+//Creamos la clase FUNC_ACCION_SEARCH
 class FUNC_ACCION_SEARCH {
-
+	//Creamos el constructor de la clase FUNC_ACCION_SEARCH
 	function __construct() {
-		$this->render();
+		$this->render();//Variable que contiene la vista de func_accion_search
 	}
-
+	//Función que tiene la vista de buscar func_accion
 	function render() {
 
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//Incluimos el idioma de la página
+		include '../Views/Header.php';//Incluimos la cabecera
 ?>
 		<div class="seccion">
 			<h2>
@@ -48,7 +50,7 @@ class FUNC_ACCION_SEARCH {
 
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//Incluimos el pie de página
 		}
 		}
 ?>

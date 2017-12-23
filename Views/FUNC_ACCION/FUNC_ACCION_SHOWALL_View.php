@@ -8,14 +8,14 @@
 
 //es la clase SHOWALL de FUNC_ACCION que nos permite mostrar todas las acciones de una funcionalidad
 class FUNC_ACCION_SHOWALL {
-
-	function __construct( $lista, $datos, $name) {  //es el constructor de la clase FUNC_ACCION_SHOWALL
+//es el constructor de la clase FUNC_ACCION_SHOWALL
+	function __construct( $lista, $datos, $name) {  
 		$this->lista = $lista;//pasamos cada uno de los campos a mostrar
 		$this->datos = $datos; //pasamos los valores de cada uno de los campos
 		$this->render($this->lista,$this->datos,$name);//llamamos a la función render donde se mostrará el formulario showall con los campos correspondientes
 	}
-	
-	function render($lista,$datos,$name){ // funcion  que mostrará el formulario showall con los campos correspondientes
+	// funcion  que mostrará el formulario showall con los campos correspondientes
+	function render($lista,$datos,$name){ 
 		$this->lista = $lista;//pasamos cada uno de los campos a mostrar
 		$this->datos = $datos;//pasamos los valores de cada uno de los campos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego

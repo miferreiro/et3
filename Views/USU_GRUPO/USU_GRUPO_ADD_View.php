@@ -8,14 +8,14 @@
 
 //es la clase ADD de USU_GRUPO que nos permite añadir un usuario a un grupo
 class USU_GRUPO_ADD {
-
-	function __construct($login,$grupos) { //es el constructor de la clase USU_GRUPO_ADD
+ //es el constructor de la clase USU_GRUPO_ADD
+	function __construct($login,$grupos) {
 		$this->grupos = $grupos;//pasamos todos los grupos
 		$this->login = $login;//pasamos el login de un usuario
 		$this->render($this->grupos,$this->login); //llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 	}
-
-	function render($grupos,$login) { //se mostrará el formulario ADD con los campos correspondientes
+ //se mostrará el formulario ADD con los campos correspondientes
+	function render($grupos,$login) {
 		$this->grupos = $grupos;//pasamos todos los grupos
 		$this->login = $login;//pasamos el login de un usuario
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego

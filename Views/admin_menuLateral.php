@@ -1,8 +1,8 @@
 <!--
 Archivo php
 Nombre: users_menuLateral . php
-Autor: fta875
-Fecha de creación: 23 / 10 / 2017
+Autor: Alejandro Vila Cid
+Fecha de creación: 23 / 11 / 2017
 Función: contiene todas las características del menú lateral
 	-->
 	<?php

@@ -5,15 +5,15 @@
 
 //es la clase ADD de ENTREGA que nos permite añadir una entrega
 class ENTREGA_ADD {
-
-	function __construct($datos,$trabajos) { //es el constructor de la clase ENTREGA_ADD
+//es el constructor de la clase ENTREGA_ADD
+	function __construct($datos,$trabajos) { 
 		$this->datos = $datos;//pasamos todos los login
 		$this->trabajos = $trabajos;//pasamos todos los trabajos
 		$this->render($this->datos,$this->trabajos);//llamamos a la función render donde se mostrará el formulario ADD con los campos correspondientes
 
 	}
-
-	function render($datos,$trabajos) {//funcion que mostrará el formulario ADD con los campos correspondientes
+//funcion que mostrará el formulario ADD con los campos correspondientes
+	function render($datos,$trabajos) {
 		$this->datos = $datos;//pasamos todos los login
 		$this->trabajos = $trabajos;//pasamos todos los trabajos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego

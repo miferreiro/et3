@@ -1,6 +1,7 @@
 <?php
 /* 
 	Fecha de creación: 2/12/2017 
+	Autor: Brais Santos Negreira
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la historia deseada
     
 */
@@ -8,14 +9,14 @@
 
 //es la clase SHOWALL de HISTORIA que nos permite mostrar todas las historias
 class HISTORIA_SHOWALL {
-
-	function __construct( $lista, $datos) { //es el constructor de la clase HISTORIA_SHOWALL
+//es el constructor de la clase HISTORIA_SHOWALL
+	function __construct( $lista, $datos) { 
 		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
 		$this->datos = $datos;//pasamos los valores de cada uno de los campos
 		$this->render($this->lista,$this->datos);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes y sus valores
 	}
-	
-	function render($lista,$datos){//funcion que mostrará el formulario SHOWALL con los campos correspondientes y sus valores
+	//funcion que mostrará el formulario SHOWALL con los campos correspondientes y sus valores
+	function render($lista,$datos){
 		$this->lista = $lista;//pasamos cada uno de los campos de la tabla
 		$this->datos = $datos;//pasamos los valores de cada uno de los campos
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
