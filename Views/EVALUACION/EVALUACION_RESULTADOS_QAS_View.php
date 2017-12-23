@@ -67,7 +67,7 @@ class CORRECION_QA_RESULTADOS {
 					//Si el atributo es igual a comentIncorrectoA se muestra un td con el texto adptado a la celda
                     if($atributo == 'ComenIncorrectoA'){
 ?>
-                        <td><P class="alinear">
+                        <td><p class="ajustar">
 <?php                    
                             //Se muestra el valor de comentarioIncorrectoA
                            echo $fila[ $atributo ]; 
@@ -76,7 +76,7 @@ class CORRECION_QA_RESULTADOS {
 							$Id= $fila[ 'IdTrabajo' ];
 						}
 ?>                       
-                        </P></td>
+                        </p></td>
 <?php                       
                     }
                      //Si el atributo es distinto de comentIncorrecto A, comprobamos el atributo ok  
@@ -98,6 +98,27 @@ class CORRECION_QA_RESULTADOS {
                             
  <?php                           
                         }
+                        //si el atributo es corrcto del alumno y valor es 1 se pone de color verde
+                        else if($atributo == 'CorrectoA' && $fila[$atributo] == '1'){
+                            ?>
+                                  <td bgcolor="#4e8726">
+                                      <?php echo $fila[$atributo]; ?>
+ 
+                                </td>
+                       
+<?php                  
+                    }
+                         //si el atributo es corrcto del alumno y valor es 0 se pone de color rojo
+                        else if($atributo == 'CorrectoA' && $fila[$atributo] == '0'){
+                            ?>
+                                 <td bgcolor="#ff3700">
+                                         <?php echo $fila[$atributo]; ?>
+                                </td>
+                
+<?php                
+                        }
+                        
+                        
                         //Si el valor de ok no es 0 ni 1 muestra la celda sin color
                         else{
                             
@@ -139,7 +160,7 @@ class CORRECION_QA_RESULTADOS {
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';
+		include '../Views/Footer.php';//incluimos el footer
 		}
 		}
 ?>
