@@ -5,7 +5,7 @@
 	CorrectoA: EVALUACION_CONTROLLER.php
 	Autores:Brais Rodriguez,Brais Santos,Alex Vila,Miguel Ferreiro
 	Fecha de creación: 9/10/2017 
-	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas.
+	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas de la tabla EVALUACION
 */
 session_start(); //solicito trabajar con la session
 include '../Functions/Authentication.php'; //incluye el contenido de la función de autentificación

@@ -3,7 +3,7 @@
 	Nombre: EVALUACION_SHOWCURRENT_View.php
 	Autor: 	Brais Rodriguez
 	Fecha de creación: 9/10/2017 
-	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una evalaucion
+	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de una evaluacion
 */
 //Clase Evaluación_Showcurrent que contiene la vista para ver una tupla en detalle evaluación
 class EVALUACION_SHOWCURRENT {

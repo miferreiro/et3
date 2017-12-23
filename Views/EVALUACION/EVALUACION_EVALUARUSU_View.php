@@ -2,7 +2,7 @@
 /*  
 	Autor: 	Alejandro Vila
 	Fecha de creación: 9/10/2017 
-	Función: esta vista sirve para qu un usuario evalue a otros
+	Función: esta vista sirve para qa un usuario evalue a otros
 */
 //Clase Evaluación_usuario_evaluar que almacena la vista para que el usuario pueda evaluar
 class EVALUACION_USUARIO_EVALUAR {

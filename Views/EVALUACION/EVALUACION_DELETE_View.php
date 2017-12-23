@@ -1,7 +1,7 @@
 <?php
 /*  Archivo php
 	Nombre: EVALUACION_DELETE_View.php
-	Autor: 	Alejandro Vila
+	Autor: 	Brais Rodríguez
 	Fecha de creación: 28/11/2017 
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una evaluacion y da la opción de borrarlos
 */

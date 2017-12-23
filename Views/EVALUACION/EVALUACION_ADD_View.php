@@ -1,7 +1,7 @@
 <?php
 /*  Archivo php
 	Nombre: EVALUACION_ADD_View.php
-	Autor: 	Alejandro Vila
+	Autor: 	Brais Rodríguez
 	Fecha de creación: 28/11/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una evaluacion en la base de datos
 */

@@ -1,5 +1,5 @@
 <?php
-    //Se muestra una tabla SHOWALL con todas las entregas y iconos para añadir,insertar,borrar,buscar y buscar en detalle.
+    //Se muestra una tabla SHOWALL con todas las evaluaciones y iconos para añadir,insertar,borrar,buscar y buscar en detalle.
     //Fecha de creación:30/11/2017
     // Autor: Alejandro Vila
 
