@@ -2,9 +2,9 @@
 /*
 	Archivo php
 	Nombre: PERMISO_CONTROLLER.php
-	Autor: 	miferreiro
+	Autor: 	Miguel Ferreiro
 	Fecha de creación: 25/11/2017 
-	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas.
+	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas en la tabla PERMISO.
 */
 
 session_start();//solicito trabajar con la sesión

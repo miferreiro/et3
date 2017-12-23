@@ -1,7 +1,7 @@
 <?php
 /*  Archivo php
 	Nombre: FUNC_ACCION_DELETE_View.php
-    Autor: Alejandro Vila
+    Autor: Brais Rodríguez 
 	Fecha de creación: 26/11/2017  
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de una accion de una Funcionalidad y da la opción de borrarlos
 */

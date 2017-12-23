@@ -3,7 +3,7 @@
 	Nombre: USUARIOS_ADD_View.php
 	Autor: 	Alejandro Vila
 	Fecha de creación: 20/11/2017  
-	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir un usuario a la base de datos
+	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir un usuario a un grupo
 */
 
 //es la clase ADD de USU_GRUPO que nos permite añadir un usuario a un grupo

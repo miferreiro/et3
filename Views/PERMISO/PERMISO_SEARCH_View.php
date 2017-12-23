@@ -2,7 +2,7 @@
 /*  Archivo php
 	Nombre: PERMISOS_SEARCH_View.php
 	Fecha de creación: 27/11/2017 
-	Autor: Alejandro Vila Cid
+	Autor: Jonatan Couto
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar un permiso en la base de datos
 */
 //Es la clase SEARCH de PERMISO que nos permite buscar permisos 

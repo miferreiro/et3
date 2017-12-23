@@ -1,7 +1,7 @@
 <?php
 
 //Modelo que interactúa con el controlador de FUNCIONALIDAD y la tabla de FUNCIONALIDAD de la base de datos.
-//Fecha de creación:26/11/2017 //Autor:Alejandro Vila
+//Fecha de creación:26/11/2017 //Autor:Brais Santos
 
 
 //declaración de la clase

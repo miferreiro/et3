@@ -3,7 +3,7 @@
 	Nombre: USUARIOS_GRUPO_DELETE_View.php
 	Autor: 	Alejandro Vila
 	Fecha de creación: 20/11/2017
-	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los datos de un usuario y da la opción de borrarlos
+	Función: vista de la tabla de borrado(delete) realizada con una clase donde se puede borrar un usuario de un grupo
 */
 
 //es la clase DELETE de USU_GRUPO que nos permite borrar un usuario a un grupo

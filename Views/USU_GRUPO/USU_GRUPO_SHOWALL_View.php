@@ -3,7 +3,7 @@
 	Nombre: USUARIOS_GRUPO_SHOWALL_View.php
 	Autor: 	Alejandro Vila
 	Fecha de creación: 20/11/2017
-	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar el usario y el grupo al que pertenecen
+	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar el usuario y el grupo al que pertenecen
 */
 
 //es la clase SHOWALL de USU_GRUPO que nos permite mostrar todos los usuarios asociasdos a grupos

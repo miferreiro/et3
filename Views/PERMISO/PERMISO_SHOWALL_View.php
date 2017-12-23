@@ -2,7 +2,7 @@
 /* 
 	Archivo php
 	Fecha de creación: 27/11/2017 
-	Autor: Alejandro Vila Cid
+	Autor: Jonatan Couto
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite mostrar los permisos que existen
 */
 //Es la clase SHOWALL de PERMISO que nos permite mostrar todas los permisos

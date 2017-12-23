@@ -2,8 +2,8 @@
 /*  Archivo php
 	Nombre: PERMISO_DELETE_View.php
 	Fecha de creación: 27/11/2017 
-	Autor: Alejandro Vila Cid
-	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los valores de un grupo y da la opción de borrarlos
+	Autor: Jonatan Couto
+	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los valores de un permiso y da la opción de borrarlos
 */
 //Es la clase DELETE de PERMISO que nos permite borrar permisos
 

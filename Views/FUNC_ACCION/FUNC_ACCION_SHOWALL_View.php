@@ -1,7 +1,7 @@
 <?php
 /*  Archivo php
 	Nombre: FUNC_ACCION_SHOWALL_View.php
-    Autor: Alejandro Vila
+    Autor: Brais Rodríguez
 	Fecha de creación: 26/11/2017  
 	Función: vista de tabla de datos(showall) realizada con una clase donde se muestran datos caracteristicos y permite seleccionar la accion de una funcionalidad que se desea realizar en la aplicación
 */

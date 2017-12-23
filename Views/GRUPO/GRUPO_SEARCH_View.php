@@ -1,7 +1,7 @@
 <?php
 /*  Archivo php
 	Nombre: GRUPO_SEARCH_View.php
-	Autor: 	Brais Santos
+	Autor: 	Alejandro Vila
 	Fecha de creación: 22/11/2017 
 	Función: vista de el formulario de búsqueda(search) realizada con una clase donde se muestran todos los campos a rellenar para buscar a un grupo e la base de datos
 */

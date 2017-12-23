@@ -1,5 +1,5 @@
 <!--Modelo que contiene un constructor permisos y las funciones de la base de datos como insertar, buscar, etc-->
-<!--Fecha: 24-11-2017 Autor: Alex Vila Dedicados: 25 minutos-->
+<!--Fecha: 24-11-2017 Autor: Brais Rod´riguez Dedicados: 25 minutos-->
 
 <?php
 

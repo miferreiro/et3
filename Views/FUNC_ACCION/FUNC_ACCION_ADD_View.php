@@ -1,7 +1,7 @@
 <?php
 /*  Archivo php
 	Nombre: FUNC_ACCION_ADD_View.php
-    Autor: Alejandro Vila
+    Autor: Brais Rodríguez 
 	Fecha de creación: 26/11/2017 
 	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una accion de una funcionalidad a la base de datos
 */

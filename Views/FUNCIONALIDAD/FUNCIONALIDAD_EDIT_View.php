@@ -1,7 +1,7 @@
 <?php
 /*  Archivo php
 	Nombre: FUNCIONALIDAD_EDIT_View.php
-	Autor: 	Alejandro Vila
+	Autor: 	Brais Rodríguez
 	Fecha de creación: 22/11/2017  
 	Función: vista de el formulario de editar(edit) realizada con una clase donde se muestran todos los campos posibles a modificar para cambiar los datos de una Funcionalidad en la base de datos
 */

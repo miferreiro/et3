@@ -2,8 +2,8 @@
 /*  
 	Archivo php
 	Fecha de creación: 27/11/2017 
-	Autor: Alejandro Vila Cid
-	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir una accion de una funcionalidad a la base de datos
+	Autor: Jonatan Couto
+	Función: vista de el formulario de añadir(add) realizada con una clase donde se muestran todos los campos a rellenar para añadir un permiso a la base de datos
 */
 //Es la clase ADD de PERMISO que nos permite añadir permisos
 class PERMISO_ADD {

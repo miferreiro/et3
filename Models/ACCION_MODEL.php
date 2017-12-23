@@ -1,6 +1,6 @@
 
 <?php
-//modelo que interactuará con el controlador y llevará datos a la base de datos ó recogerá valores de la base de datos.
+//modelo que interactuará con el controlador de ACCION y llevará datos a la base de datos ó recogerá valores de la base de datos.
 //Fecha de creación:23/11/2017 //Autor:Brais Santos
 
 //Declaracción de la clase ACCION

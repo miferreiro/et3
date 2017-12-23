@@ -1,7 +1,7 @@
 <?php
 /*  Archivo php
 	Nombre: GRUPO_SHOWCURRENT_View.php
-	Autor: 	Brais Santos
+	Autor: 	Alejandro Vila
 	Fecha de creación: 21/11/2017 
 	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de un grupo
 */

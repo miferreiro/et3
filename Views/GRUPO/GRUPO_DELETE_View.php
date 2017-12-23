@@ -1,7 +1,7 @@
 <?php
 /*  Archivo php
 	Nombre: GRUPO_DELETE_View.php
-	Autor: 	Brais Santos
+	Autor: 	Alejandro Vila
 	Fecha de creación: 20/11/2017 
 	Función: vista de la tabla de borrado(delete) realizada con una clase donde se muestran todos los valores de un grupo y da la opción de borrarlos
 */
