@@ -55,7 +55,7 @@ function get_data_form() {
 	$ComentIncorrectoP = $_REQUEST[ 'ComentIncorrectoP' ]; //Variable que almacena el valor de ComentIncorrectoP
 	$OK = $_REQUEST[ 'OK' ]; //Variable que almacena el valor de OK
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
-
+    //Varible que guarda un modelo de EVALUACION
 	$EVALUACION = new EVALUACION(
 		$IdTrabajo,
 		$LoginEvaluador,
@@ -284,7 +284,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			 
 		}
-    break;
+    break;//Finaliza el bloque
     case 'EVALUACION_HISTORIAS_ASIGNADAS':	//Caso evaluacion_historias_asignadas
     	if ( !$_POST ) {//Si no se han recibido datos	
 			if(permisosAcc($_SESSION['login'],12,10)==true){//miramos si el usuario conectado tiene permiso para evaluar historias asignadas
@@ -301,7 +301,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php' );//mostramos en pantalla un mensaje con la diciendo que no tiene
 			}
 		}
-    break;
+    break;//Finaliza el bloque
 
     case 'RESULTADOS_ENTREGAS'://caso donde se muestran todas las correciones por parte del  profesor
     if(permisosAcc($_SESSION['login'],12,7)==true){	//miramos si el usuario conectado tiene permiso para ver los resultados de sus entregas
@@ -314,7 +314,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	}else{//si no tiene permisos 
 	 new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_ET' );//mostramos en pantalla un mensaje con la diciendo que no tiene
     }
-        break;
+        break;//Finaliza el bloque
     
    
     case 'MOSTRAR_CORRECCION_ET'://caso por defecto con vista SHOWALL
@@ -327,7 +327,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {//Si no tiene permisos muestra pantalla en blanco
 				new USUARIO_DEFAULT();//se muestra una vista por defecto
 		}
-        break;		
+        break;//Finaliza el bloque	
 		
 				
     case 'RESULTADOS_QAS'://caso donde nos aparecen los resultados de nuestras QAs
@@ -335,11 +335,11 @@ switch ( $_REQUEST[ 'action' ] ) {
         $CORRECION = new EVALUACION('','','','','','','','','');//variable que almacena un objeto de tipo EVALUACION
         $lista=array('LoginEvaluador','AliasEvaluado','NombreTrabajo','CorrectoA','ComenIncorrectoA','OK');//variable que almacena un arrray con los atributos que queremos mostrar
         $datos =$CORRECION->mostrarCorrecion3($_REQUEST['IdTrabajo'],$_SESSION['login'],$_REQUEST['AliasEvaluado']);//variable que almacena los resultados de nuestras QAs y se mete en la vista
-        new CORRECION_QA_RESULTADOS($lista,$datos);
+        new CORRECION_QA_RESULTADOS($lista,$datos);//Se crea la vista que muestra los resultados de las correcciones de QA
 		}else{//si no tiene permiso 
 	      new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_QA' );//mostramos en pantalla un mensaje con la diciendo que no tiene
         }  
-        break;
+        break;//Finaliza el bloque
         
     case 'RESULTADO_QA'://caso donde se muestran todas las QAs que corregimos
 		if(permisosAcc($_SESSION['login'],12,14)==true){	//miramos si el usuario conectado tiene permiso para ver cuantas personas evalúo en un mismo trabajo
@@ -350,7 +350,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	    }else{//si no tiene permiso
 	     new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/EVALUACION_CONTROLLER.php?action=MOSTRAR_CORRECCION_QA' );//mostramos en pantalla un mensaje con la diciendo que no tiene
         }
-        break;
+        break;//Finaliza el bloque
         
         
      case 'MOSTRAR_CORRECCION_QA'://caso por defecto con vista SHOWALL
@@ -362,7 +362,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {//Si no tiene permisos muestra pantalla en blanco
 				new USUARIO_DEFAULT();//se muestra una vista por defecto
 			}
-      break;		
+      break;//Finaliza el bloque		
 		
 
 	default: //Caso que se ejecuta por defecto

@@ -35,7 +35,7 @@ function get_data_form() {
 	$NombreFuncionalidad = $_REQUEST[ 'NombreFuncionalidad' ];//Variable que almacena el valor de NombreFuncionalidad
 	$DescripFuncionalidad = $_REQUEST[ 'DescripFuncionalidad' ];//Variable que almacena el valor de DescripFuncionalidad
 	$action = $_REQUEST[ 'action' ];//Variable que almacena el valor de la acción
-
+    //Se guarda en una variable el modelo de FUNCIONALIDAD
 	$FUNCIONALIDAD = new FUNCIONALIDAD(
 		$IdFuncionalidad,
 		$NombreFuncionalidad,
@@ -81,7 +81,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$respuesta = $FUNCIONALIDAD->ADD();//inserta la funcionalidad en la base de datos
 			new MESSAGE( $respuesta, '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );//muestra un mensaje de la base de datos 
 		}
-		break;
+		break;//Finaliza el bloque
 	case 'DELETE'://caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 			//Crea una nueva vista del formulario borrar
@@ -118,7 +118,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$respuesta = $FUNCIONALIDAD->DELETE();//borra la funcionalidad en la base de datos
 			new MESSAGE( $respuesta, '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );//muestra un mensaje de la base de datos 
 		}
-		break;
+		break;//Finaliza el bloque
 	case 'EDIT'://caso editar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 			
@@ -153,7 +153,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$respuesta = $FUNCIONALIDAD->EDIT();//edita la funcionalidad en la base de datos
 			new MESSAGE( $respuesta, '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );//muestra un mensaje de la base de datos 
 		}
-		break;
+		break;//Finaliza el bloque
 	case 'SEARCH'://caso buscar
 		$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ], '' );//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
@@ -190,7 +190,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			
 		}
-		break;
+		break;//Finaliza el bloque
 
 	case 'SHOWCURRENT'://caso ver en detalle
 		$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ], '' );//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
@@ -218,7 +218,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/FUNCIONALIDAD_CONTROLLER.php' );
 			}
 		}
-		break;
+		break;//Finaliza el bloque
 	default://caso por defecto
 		$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ], '' );//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
 		$ADMIN = $USUARIO->comprobarAdmin();//miramos si este usuario es administrador

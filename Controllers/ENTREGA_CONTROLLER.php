@@ -363,6 +363,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			   }
 			}
 			if($cont>=1){//si la variable cont es uno, por tanto si el usuario tiene permiso
+            //Se crea la vista de search
 			new ENTREGA_SEARCH();
 			}else{//si el usuario no tiene dicho permiso, se muestra un mensaje indicandolo
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
@@ -419,7 +420,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php' );
 		}
 		}
-		break;
+		break;//Finaliza el bloque
         
     case 'SUBIR_ENTREGA'://caso para añadir una entrega cuando un usuario entra a gestión de entregas
 		if(permisosAcc($_SESSION['login'],8,10)==true){	//miramos si el usuario tiene dicho permiso	
@@ -444,14 +445,12 @@ switch ( $_REQUEST[ 'action' ] ) {
                   
          $ENTREGA = new ENTREGA_MODEL($_SESSION['login'],$_REQUEST['IdTrabajo'],'','','');//Variable que almacena un objeto de tipo ENTREGA_MODEL
          $datos=$ENTREGA->SEARCH2();//Variable que almacena todas las entregas
-       // var_dump($datos);
-        //exit;
           $lista = array('login','NombreTrabajo','Alias','Horas','Ruta');//Variable que almacena un array almacenamos los campos a mostrar
           new ENTREGA_SHOWALL( $lista, $datos/*,$PERMISO,false */);//mostramos la vista showall 
 		}else{//si el usuario no tiene dicho permiso se indica
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ENTREGA_CONTROLLER.php?action=SUBIRET' );
 		}
-        break;
+        break;//Finaliza el bloque
 		
 	case 'SUBIRET'://caso subir directorio
 		if(permisosAcc($_SESSION['login'],8,10)==true){	//miramos si el usuario tiene dicho permiso	
@@ -469,7 +468,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new USUARIO_DEFAULT();
 		
 		}
-	break;
+	break;//Finaliza el bloque
 		
 		
 	default: //Caso que se ejecuta por defecto

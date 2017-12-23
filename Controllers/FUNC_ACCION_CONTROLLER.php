@@ -31,7 +31,7 @@ function get_data_form(){
 	
 	$IdFuncionalidad = $_REQUEST['IdFuncionalidad'];//Variable que almacena el valor de IdFuncionalidad
 	$IdAccion = $_REQUEST['IdAccion'];//Variable que almacena el valor de IdAccion
-	
+	//Variable que guarda un modelo de FUNC_ACCION
 	$FUNC_ACCION = new FUNC_ACCION(
 		$IdFuncionalidad,
 		$IdAccion
@@ -85,7 +85,7 @@ switch ( $_REQUEST[ 'action' ] ) {//Si la variable action no tiene contenido le 
 			$at = "?IdFuncionalidad=".$_REQUEST['IdFuncionalidad'];//le pasamos a la variable un valor de IdFuncionalidad
 			new MESSAGE( $respuesta, "../Controllers/FUNC_ACCION_CONTROLLER.php" . $at );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 		}
-		break;
+		break;//Finaliza el bloque
 	case 'DELETE'://caso borrar
 		if ( !$_POST ) { //Si no se han recibido datos se envia a la vista del formulario DELETE
 			$USUARIO = new USU_GRUPO( $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
@@ -123,7 +123,7 @@ switch ( $_REQUEST[ 'action' ] ) {//Si la variable action no tiene contenido le 
 			$at = "?IdFuncionalidad=".$_REQUEST['IdFuncionalidad'];//pasamos a la varianle el IdFuncionalidad
 			new MESSAGE( $respuesta, "../Controllers/FUNC_ACCION_CONTROLLER.php" . $at );//mostramos en pantalla un mensaje con la respuesta y un enlace para volver al principio.
 		}
-		break;
+		break;//Finaliza el bloque
 	default://caso por defecto
 		$USER = new USU_GRUPO(  $_SESSION[ 'login' ],'');//creamos un objeto del modelo USU_GRUPO pasandole el usuario que está conectado
 		$ADMIN = $USER->comprobarAdmin();//llamamos a esta funcion para mirar si este usuario es administrador
