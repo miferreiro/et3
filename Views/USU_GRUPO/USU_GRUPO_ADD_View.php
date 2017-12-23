@@ -40,7 +40,7 @@ class USU_GRUPO_ADD {
 							<?php echo $strings['NombreGrupo'];?>
 						</th>
                   <td>
-                   <select id="IdGrupo" name="IdGrupo">
+                   <select id="IdGrupo" name="IdGrupo" required>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->grupos ) ) { //este bucle se va a repetir mientras no se devuelvan todos los grupos
 ?>

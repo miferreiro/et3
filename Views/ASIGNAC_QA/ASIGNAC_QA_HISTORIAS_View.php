@@ -28,7 +28,7 @@ class ASIGNAC_QA_HISTORIAS {
 							<?php echo $strings['QA'];?>
 						</th>
 						<td class="formThTd">
-							<select name="IdTrabajo">						        
+							<select name="IdTrabajo" required>						        
 								<?php
 								//Bucle que recorre el array las posibles QA para generer las historias
 								for ($i=0; $i < count($QA); $i++) { 

@@ -34,7 +34,7 @@ class PERMISO_ADD {
 							<?php echo $strings['NombreFuncionalidad'];?>
 						</th>
 						<td class="formThTd">
-							<select name="IdFuncionalidad">						        
+							<select name="IdFuncionalidad" required>						        
 								<?php
 								//Bucle que recorre los posibles permisos 
 								for ($i=0; $i < count($acciones); $i++) { 

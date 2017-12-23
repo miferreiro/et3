@@ -29,7 +29,7 @@ class ASIGNAC_QA_GENERAR {
 							<?php echo $strings['ET'];?>
 						</th>
 						<td class="formThTd">
-							<select name="IdTrabajo">						        
+							<select name="IdTrabajo" required>						        
 								<?php
 								//Bucle que recorre el array de las posibles et para generer qas
 								for ($i=0; $i < count($ET); $i++) { 

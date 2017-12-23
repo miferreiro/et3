@@ -36,7 +36,7 @@ class FUNC_ACCION_ADD {
 							<?php echo $strings['NombreAccion'];?>
 						</th>
 						<td class="formThTd">
-							<select name="IdAccion">						        
+							<select name="IdAccion" required>						        
 								<?php
 								
 								for ($i=0; $i < count($acciones); $i++) {  //Bucle que recorre todas acciones
