@@ -82,12 +82,13 @@ class ENTREGA_SHOWET {
                                 <?php
 							//Si tiene los permisos para subir una entrega
 	                       		if(permisosAcc($_SESSION['login'],8,2)==true){
+									
+
+									$mes = substr($fila['FechaFinTrabajo'], 3, 2);  // Variable que almacena el mes de finTrabajo
+									$dia = substr($fila['FechaFinTrabajo'], 0, 2);  // Variable que almacena el dia de finTrabajo
+									$anho = substr($fila['FechaFinTrabajo'], 6, 4); // Variable que almacena el año de finTrabajo
+									
 									//Si la fecha de fin de trabajo es mayor que la fecha actual se permite subir la entrega
-
-									$mes = substr($fila['FechaFinTrabajo'], 3, 2);  // devuelve "abcde"
-									$dia = substr($fila['FechaFinTrabajo'], 0, 2);  // devuelve false
-									$anho = substr($fila['FechaFinTrabajo'], 6, 4); // devuelve "de"
-
                                     if((date("Y")<=$anho)&&(date("m")<=$mes)&&(date("d")<=$dia)){
 	
                                  ?>
