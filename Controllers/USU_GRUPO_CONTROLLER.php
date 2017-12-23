@@ -16,10 +16,8 @@ if (!IsAuthenticated()){
 //incluimos las vistas asociadas para este controlador y el modelo adecuado
 include '../Models/USU_GRUPO_MODEL.php';//incluye el contenido del modelo USU_GRUPO_MODEL
 include '../Views/USU_GRUPO/USU_GRUPO_SHOWALL_View.php';//incluye el contenido de la vista SHOWALL de USU_GRUPO
-include '../Views/USU_GRUPO/USU_GRUPO_SEARCH_View.php';//incluye el contenido de la vista SEARCH de USU_GRUPO
 include '../Views/USU_GRUPO/USU_GRUPO_ADD_View.php';//incluye el contenido de la vista ADD de USU_GRUPO
 include '../Views/USU_GRUPO/USU_GRUPO_DELETE_View.php';//incluye el contenido de la vista DELETE de USU_GRUPO
-include '../Views/USU_GRUPO/USU_GRUPO_SHOWCURRENT_View.php';//incluye el contenido de la vista SHOWCURRENT de USU_GRUPO
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php';//incluye una vista que muestra un mensaje y vuelta atrás
 
