@@ -6,8 +6,8 @@ Fecha de creación: 23 / 11 / 2017
 Función: contiene todas las características del menú lateral
 	-->
 	<?php
-include_once '../Functions/permisosAcc.php';
-include_once '../Functions/comprobarAdministrador.php';
+include_once '../Functions/permisosAcc.php';//incluye la función permisosAcc
+include_once '../Functions/comprobarAdministrador.php';//incluye la funcion comprobarAdministrador
 
 ?>
 <nav>

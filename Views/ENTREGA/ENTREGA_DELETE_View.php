@@ -1,5 +1,5 @@
 <?php
-    //vista que muestra una tabla con todos los atributos de la clase ENTREGA a borrar.
+    //Función: vista que muestra una tabla con todos los atributos de la clase ENTREGA a borrar de una tupla.
     //Fecha de creación:28/11/2017
     //Autor:Brais Santos
 

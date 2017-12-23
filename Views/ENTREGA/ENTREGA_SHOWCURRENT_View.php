@@ -1,5 +1,5 @@
 <?php
-//Esta clase sirve para mostrar una tupla del SHOWALL en detalle con todos los atributos
+//Función: Esta clase sirve para mostrar una tupla del SHOWALL de ENTREGA, en detalle con todos los atributos
 //Fecha de creación:28/11/2017
 //Autor:Brais Santos
 

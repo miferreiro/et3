@@ -1,5 +1,5 @@
 <?php
-//Esta función es la vista que sirve para añadir una entrega.
+//Función: es la vista que sirve para añadir una entrega(añade una tupla a la tabla).
 //Autor:Brais Santos
 //Fecha de creación:27/11/2017
 
