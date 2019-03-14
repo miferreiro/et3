@@ -1,37 +1,17 @@
 ﻿# README #
 
-# GRUPO: LICORCA #
-# INTEGRANTES: #
-# MIGUEL FERREIRO DIAZ #
-# ALEJANDRO VILA CID #
-# JONATAN COUTO RIÁDIGOS #
-# BRAIS SANTOS NEGREIRA #
-# BRAIS RODRÍGUEZ MARTINEZ #
+The project was made in the subject of "Interfaces de Usuario" in the Degree of Computer Engineering of the University of Vigo in 2017
 
-This README would normally document whatever steps are necessary to get your application up and running.
+GRUPO: LICORCA
 
-### What is this repository for? ###
+INTEGRANTES:
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+- MIGUEL FERREIRO DIAZ 
 
-### How do I get set up? ###
+- ALEJANDRO VILA CID 
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+- JONATAN COUTO RIÁDIGOS 
 
-### Contribution guidelines ###
+- BRAIS SANTOS NEGREIRA
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+- BRAIS RODRÍGUEZ MARTINEZ 
